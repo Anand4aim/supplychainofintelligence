@@ -74,51 +74,72 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* The visible L0–L8 stack */}
+          {/* The visible L0–L8 stack — vertical, interactive */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
+            className="max-w-2xl"
           >
-            <p className="text-[9px] font-bold uppercase tracking-[2.5px] text-white/20 mb-4">
-              The 9-Layer Stack — L0 to L8
+            <p className="text-[9px] font-bold uppercase tracking-[2.5px] text-white/20 mb-3">
+              The 9-Layer Stack — Click any layer to explore
             </p>
-            <div className="grid grid-cols-3 md:grid-cols-9 gap-1.5">
+            <div className="space-y-1">
               {LAYERS.map((layer, i) => {
                 const defCount = layer.sublayers.filter((s) => s.defensible).length;
                 return (
                   <motion.div
                     key={layer.id}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + i * 0.05 }}
-                    className="rounded-lg p-3 text-center"
-                    style={{
-                      background: `hsl(${layer.bg} / 0.1)`,
-                      borderBottom: `3px solid hsl(${layer.color})`,
-                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.45 + i * 0.05 }}
                   >
-                    <span className="text-lg block mb-1">{layer.goldIcon}</span>
-                    <span
-                      className="font-display text-sm font-bold block"
-                      style={{ color: `hsl(${layer.color})` }}
+                    <Link
+                      to={`/framework#${layer.id}`}
+                      className="flex items-center gap-3 rounded-lg px-4 py-2.5 group transition-all duration-200 hover:translate-x-1"
+                      style={{
+                        background: `hsl(${layer.bg} / 0.1)`,
+                        borderLeft: `4px solid hsl(${layer.color})`,
+                      }}
                     >
-                      {layer.id}
-                    </span>
-                    <span className="text-[9px] text-white/40 block leading-tight mt-0.5">
-                      {layer.shortName}
-                    </span>
-                    {defCount > 0 && (
-                      <span className="text-[8px] text-white/20 block mt-1">
-                        {defCount}★
+                      <span className="text-base shrink-0">{layer.goldIcon}</span>
+                      <span
+                        className="font-display text-sm font-bold min-w-[28px] shrink-0"
+                        style={{ color: `hsl(${layer.color})` }}
+                      >
+                        {layer.id}
                       </span>
-                    )}
+                      <span className="text-white/70 text-sm font-medium flex-1 group-hover:text-white transition-colors">
+                        {layer.name}
+                      </span>
+                      {/* Sublayer dots */}
+                      <div className="flex gap-1 items-center shrink-0">
+                        {layer.sublayers.map((sub) => (
+                          <div
+                            key={sub.id}
+                            className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-125"
+                            style={{
+                              background: sub.defensible
+                                ? `hsl(${layer.color})`
+                                : `hsl(${layer.color} / 0.25)`,
+                            }}
+                            title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
+                          />
+                        ))}
+                      </div>
+                      {defCount > 0 && (
+                        <span className="text-[9px] font-bold text-white/20 min-w-[20px] text-right shrink-0">
+                          {defCount}★
+                        </span>
+                      )}
+                      <ArrowRight size={12} className="text-white/10 group-hover:text-white/40 transition-colors shrink-0" />
+                    </Link>
                   </motion.div>
                 );
               })}
             </div>
-            <p className="text-[9px] text-white/15 mt-3 text-center">
-              ★ = defensible sub-layer positions · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ sub-layers mapped
+            <p className="text-[9px] text-white/15 mt-3">
+              ★ = defensible positions · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ sub-layers mapped · Filled dots = defensible
             </p>
           </motion.div>
 
