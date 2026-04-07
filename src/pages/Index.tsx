@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import IntelligenceCube from "@/components/IntelligenceCube";
 import { LAYERS, GOLD_KEY_INSIGHT } from "@/data/layers";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -236,7 +237,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Y-axis column */}
                 <div>
-                  <SketchLabel color="#888" className="text-[13px] mb-3 block">Traditional PM Thinking</SketchLabel>
+                  <p className="text-sm font-semibold text-[#555] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>Traditional PM Thinking</p>
                   <SketchBox color="#ccc" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
@@ -246,22 +247,22 @@ const Index = () => {
                         "How do we improve retention?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#999] text-xs mt-0.5">—</span>
-                          <span className="text-[#555] text-[13px] leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-[#999] text-sm mt-0.5">—</span>
+                          <span className="text-[#444] text-sm leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <SketchLabel color="#999" className="text-xs italic block mt-2">
+                  <p className="text-xs text-[#999] italic mt-2">
                     Necessary — but no longer sufficient
-                  </SketchLabel>
+                  </p>
                 </div>
 
                 {/* Z-axis column */}
                 <div>
-                  <SketchLabel color="#DC2626" className="text-[13px] mb-3 block font-bold">
+                  <p className="text-sm font-bold text-[#DC2626] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>
                     + Structural Depth Thinking ← NEW
-                  </SketchLabel>
+                  </p>
                   <SketchBox color="#DC2626" fill="rgba(220,38,38,0.03)" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
@@ -271,15 +272,15 @@ const Index = () => {
                         "Do we own the Defensible Triangle?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#DC2626] text-xs mt-0.5">→</span>
-                          <span className="text-[#333] text-[13px] leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-[#DC2626] text-sm mt-0.5">→</span>
+                          <span className="text-[#333] text-sm leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <SketchLabel color="#DC2626" className="text-xs font-bold block mt-2">
+                  <p className="text-xs font-bold text-[#DC2626] mt-2">
                     This determines survival
-                  </SketchLabel>
+                  </p>
                 </div>
               </div>
 
@@ -349,9 +350,9 @@ const Index = () => {
           {/* ──── SKETCH MODULE: Gold supply chain journey ──── */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-5 md:p-8">
-              <SketchLabel color="#888" className="text-[13px] mb-5 block">
+              <p className="text-sm font-semibold text-[#666] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
                 The Intelligence Supply Chain — each layer transforms the one below ↓
-              </SketchLabel>
+              </p>
 
               <div className="space-y-0">
                 {LAYERS.map((layer, i) => (
@@ -361,7 +362,7 @@ const Index = () => {
                       <div className="flex flex-col items-center min-w-[50px] md:min-w-[60px]">
                         <span className="text-xl">{layer.goldIcon}</span>
                         <span
-                          className="text-[13px] font-bold mt-0.5"
+                          className="text-sm font-bold mt-0.5"
                           style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
                         >
                           {layer.id}
@@ -371,12 +372,12 @@ const Index = () => {
                       {/* Name + analogy */}
                       <div className="flex-1 min-w-0">
                         <span
-                          className="text-[14px] font-bold block"
+                          className="text-base font-bold block"
                           style={{ fontFamily: "'Caveat', cursive", color: "#333" }}
                         >
                           {layer.goldTitle}
                         </span>
-                        <span className="text-[11px] text-[#888] leading-snug block mt-0.5">
+                        <span className="text-xs text-[#777] leading-snug block mt-0.5">
                           {layer.desc}
                         </span>
                       </div>
@@ -404,7 +405,7 @@ const Index = () => {
                           <line x1="8" y1="2" x2="8" y2="14" stroke="#bbb" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
                           <path d="M4 12 L8 18 L12 12" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
-                        <SketchLabel color="#bbb" className="text-[9px]">transforms into</SketchLabel>
+                        <span className="text-[10px] text-[#aaa]">transforms into</span>
                       </div>
                     )}
                   </div>
@@ -413,10 +414,10 @@ const Index = () => {
 
               {/* Key insight in sketch style */}
               <div className="mt-6 pt-4 border-t border-[#e0ddd8]">
-                <SketchLabel color="#DC2626" className="text-[13px] font-bold block mb-1">
+                <p className="text-sm font-bold text-[#DC2626] mb-1" style={{ fontFamily: "'Caveat', cursive" }}>
                   ← Key insight
-                </SketchLabel>
-                <p className="text-[12px] text-[#666] leading-relaxed" style={{ fontFamily: "'Caveat', cursive" }}>
+                </p>
+                <p className="text-sm text-[#555] leading-relaxed">
                   {GOLD_KEY_INSIGHT}
                 </p>
               </div>
@@ -504,9 +505,9 @@ const Index = () => {
           {/* ──── SKETCH MODULE: Defensible Triangle ──── */}
           <motion.div {...fadeIn} className="mt-10">
             <SketchBoard className="p-6 md:p-8">
-              <SketchLabel color="#DC2626" className="text-[14px] font-bold block mb-5">
+              <p className="text-base font-bold text-[#DC2626] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
                 The Defensible Triangle — where survival actually lives
-              </SketchLabel>
+              </p>
 
               <div className="flex flex-col items-center">
                 {/* Triangle diagram */}
@@ -523,19 +524,19 @@ const Index = () => {
                   </svg>
                   {/* Labels */}
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-center">
-                    <SketchLabel color="#3B82F6" className="text-[12px] font-bold block">L1b ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Proprietary Data</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#3B82F6" }}>L1b ★</span>
+                    <span className="text-xs text-[#555] block">Proprietary Data</span>
                   </span>
                   <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <SketchLabel color="#10B981" className="text-[12px] font-bold block">L5b/c/d ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Deep Skills</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#10B981" }}>L5b/c/d ★</span>
+                    <span className="text-xs text-[#555] block">Deep Skills</span>
                   </span>
                   <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <SketchLabel color="#6366F1" className="text-[12px] font-bold block">L8c/d ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Compounding Memory</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#6366F1" }}>L8c/d ★</span>
+                    <span className="text-xs text-[#555] block">Compounding Memory</span>
                   </span>
                   <span className="absolute" style={{ left: "135px", top: "122px" }}>
-                    <SketchLabel color="#DC2626" className="text-[10px] font-bold">FORTRESS</SketchLabel>
+                    <span className="text-xs font-bold text-[#DC2626]" style={{ fontFamily: "'Caveat', cursive" }}>FORTRESS</span>
                   </span>
                 </div>
 
@@ -546,20 +547,20 @@ const Index = () => {
                     { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "#6366F1" },
                   ].map((item) => (
                     <SketchBox key={item.id} color={item.color} className="p-3.5">
-                      <SketchLabel color={item.color} className="text-[12px] font-bold block mb-1">
+                      <span className="text-sm font-bold block mb-1" style={{ fontFamily: "'Caveat', cursive", color: item.color }}>
                         {item.id} ★
-                      </SketchLabel>
-                      <span className="text-[13px] font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
+                      </span>
+                      <span className="text-sm font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
                         {item.name}
                       </span>
-                      <span className="text-[11px] text-[#888] block mt-1">{item.note}</span>
+                      <span className="text-xs text-[#777] block mt-1">{item.note}</span>
                     </SketchBox>
                   ))}
                 </div>
 
-                <SketchLabel color="#888" className="text-[11px] italic block mt-4 text-center">
+                <p className="text-xs text-[#888] italic mt-4 text-center">
                   Own all three → fortress · Own none → graveyard · Most companies own one
-                </SketchLabel>
+                </p>
               </div>
             </SketchBoard>
           </motion.div>
@@ -620,7 +621,7 @@ const Index = () => {
                     {/* Number */}
                     <div className="min-w-[50px] text-center">
                       <span
-                        className="text-[36px] font-bold leading-none"
+                        className="text-4xl font-bold leading-none"
                         style={{ fontFamily: "'Caveat', cursive", color: "#DC2626" }}
                       >
                         {law.num}
@@ -630,19 +631,19 @@ const Index = () => {
                     <div className="flex-1">
                       <SketchBox color="#333" className="p-4">
                         <span
-                          className="text-[16px] font-bold text-[#222] block mb-1.5"
+                          className="text-lg font-bold text-[#222] block mb-1.5"
                           style={{ fontFamily: "'Caveat', cursive" }}
                         >
                           {law.title}
                         </span>
-                        <span className="text-[12px] text-[#777] leading-relaxed block mb-2">
+                        <span className="text-sm text-[#666] leading-relaxed block mb-2">
                           {law.desc}
                         </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
-                          <SketchLabel color="#DC2626" className="text-[11px] font-bold">
+                          <span className="text-xs font-bold text-[#DC2626]">
                             Predicts {law.predicts}
-                          </SketchLabel>
+                          </span>
                         </div>
                       </SketchBox>
                     </div>
@@ -684,6 +685,29 @@ const Index = () => {
               All case studies <ArrowRight size={14} />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          SECTION 6.5 — THE INTELLIGENCE CUBE™ (premium dark)
+      ══════════════════════════════════════════════════════ */}
+      <section className="bg-navy border-y border-white/5">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+          <motion.div {...fadeIn} className="text-center mb-10">
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
+              The Intelligence Cube™
+            </p>
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-white mb-3">
+              9 Functions × 9 Verticals × 9 Layers
+            </h2>
+            <p className="text-sm text-white/40 max-w-xl mx-auto">
+              Volume = structural durability. Companies that occupy thin slivers get dissolved.
+              Companies that fill the cube become fortresses. Drag to explore.
+            </p>
+          </motion.div>
+          <motion.div {...fadeIn}>
+            <IntelligenceCube />
+          </motion.div>
         </div>
       </section>
 
