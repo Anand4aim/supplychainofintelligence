@@ -60,7 +60,7 @@ const SpeakingPage = () => {
               <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">About the Speaker</p>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Anand Arivukkarasu</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Ex-Meta and Google Product Leader who has spent over a decade at the intersection of platform 
+                Ex-Meta Product Leader who has spent over a decade at the intersection of platform 
                 strategy and AI. Creator of The Supply Chain of Intelligence™ and The Intelligence Cube™ — 
                 frameworks that map the structural forces reshaping the software industry.
               </p>
@@ -70,7 +70,7 @@ const SpeakingPage = () => {
                 stack matters as much as understanding your customer.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Ex-Meta", "Ex-Google", "Product Strategy", "AI Frameworks", "Enterprise SaaS"].map((tag) => (
+                {["Ex-Meta", "Product Strategy", "AI Frameworks", "Enterprise SaaS"].map((tag) => (
                   <span key={tag} className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary text-foreground">
                     {tag}
                   </span>
@@ -83,7 +83,7 @@ const SpeakingPage = () => {
               </div>
               <h3 className="font-display text-xl font-bold text-white mb-2">Anand Arivukkarasu</h3>
               <p className="text-white/50 text-sm mb-4">Creator, The Supply Chain of Intelligence™</p>
-              <p className="text-white/40 text-xs">Ex-Meta · Ex-Google · SupplyChainOfAI.com</p>
+              <p className="text-white/40 text-xs">Ex-Meta · SupplyChainOfAI.com</p>
             </div>
           </div>
         </div>
