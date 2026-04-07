@@ -36,112 +36,111 @@ const Index = () => {
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-14 md:pt-28 md:pb-16">
-          {/* Headline block */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-[680px] mb-14"
-          >
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-white/30 mb-5">
-              A structural framework by Anand Arivukkarasu · Ex-Meta Product Leader
-            </p>
-            <h1 className="font-display text-[32px] md:text-[42px] lg:text-[48px] font-bold text-white leading-[1.12] mb-5">
-              AI is reorganizing software into a new supply chain.{" "}
-              <span className="text-indigo">Most companies only own one layer.</span>
-            </h1>
-            <p className="text-[15px] md:text-base text-white/50 leading-[1.7] max-w-xl mb-3">
-              The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
-              that determine who captures value, who becomes infrastructure, and who
-              gets dissolved.
-            </p>
-            <p className="text-xs text-white/25 mb-7">
-              For product leaders, founders, and investors trying to understand where AI actually captures value.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/framework"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition"
-              >
-                Explore the Framework <ArrowRight size={15} />
-              </Link>
-              <Link
-                to="/analysis"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/12 text-white/60 text-sm font-medium rounded-md hover:bg-white/5 transition"
-              >
-                See Case Studies
-              </Link>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left: Headline block */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-white/30 mb-5">
+                A structural framework by Anand Arivukkarasu · Ex-Meta Product Leader
+              </p>
+              <h1 className="font-display text-[30px] md:text-[38px] lg:text-[44px] font-bold text-white leading-[1.12] mb-5">
+                AI is reorganizing software into a new supply chain.{" "}
+                <span className="text-indigo">Most companies only own one layer.</span>
+              </h1>
+              <p className="text-[15px] text-white/50 leading-[1.7] max-w-xl mb-3">
+                The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
+                that determine who captures value, who becomes infrastructure, and who
+                gets dissolved.
+              </p>
+              <p className="text-xs text-white/25 mb-7">
+                For product leaders, founders, and investors trying to understand where AI actually captures value.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/framework"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition"
+                >
+                  Explore the Framework <ArrowRight size={15} />
+                </Link>
+                <Link
+                  to="/analysis"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/12 text-white/60 text-sm font-medium rounded-md hover:bg-white/5 transition"
+                >
+                  See Case Studies
+                </Link>
+              </div>
+            </motion.div>
 
-          {/* The visible L0–L8 stack — vertical, interactive */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <p className="text-[9px] font-bold uppercase tracking-[2.5px] text-white/20 mb-3">
-              The 9-Layer Stack — Click any layer to explore
-            </p>
-            <div className="space-y-1">
-              {LAYERS.map((layer, i) => {
-                const defCount = layer.sublayers.filter((s) => s.defensible).length;
-                return (
-                  <motion.div
-                    key={layer.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.45 + i * 0.05 }}
-                  >
-                    <Link
-                      to={`/framework#${layer.id}`}
-                      className="flex items-center gap-3 rounded-lg px-4 py-2.5 group transition-all duration-200 hover:translate-x-1"
-                      style={{
-                        background: `hsl(${layer.bg} / 0.1)`,
-                        borderLeft: `4px solid hsl(${layer.color})`,
-                      }}
+            {/* Right: The L0–L8 vertical interactive stack */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <p className="text-[9px] font-bold uppercase tracking-[2.5px] text-white/20 mb-3">
+                The 9-Layer Stack — Click to explore
+              </p>
+              <div className="space-y-1">
+                {LAYERS.map((layer, i) => {
+                  const defCount = layer.sublayers.filter((s) => s.defensible).length;
+                  return (
+                    <motion.div
+                      key={layer.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + i * 0.05 }}
                     >
-                      <span className="text-base shrink-0">{layer.goldIcon}</span>
-                      <span
-                        className="font-display text-sm font-bold min-w-[28px] shrink-0"
-                        style={{ color: `hsl(${layer.color})` }}
+                      <Link
+                        to={`/framework#${layer.id}`}
+                        className="flex items-center gap-2.5 rounded-lg px-3.5 py-2 group transition-all duration-200 hover:translate-x-1"
+                        style={{
+                          background: `hsl(${layer.bg} / 0.1)`,
+                          borderLeft: `4px solid hsl(${layer.color})`,
+                        }}
                       >
-                        {layer.id}
-                      </span>
-                      <span className="text-white/70 text-sm font-medium flex-1 group-hover:text-white transition-colors">
-                        {layer.name}
-                      </span>
-                      {/* Sublayer dots */}
-                      <div className="flex gap-1 items-center shrink-0">
-                        {layer.sublayers.map((sub) => (
-                          <div
-                            key={sub.id}
-                            className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-125"
-                            style={{
-                              background: sub.defensible
-                                ? `hsl(${layer.color})`
-                                : `hsl(${layer.color} / 0.25)`,
-                            }}
-                            title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
-                          />
-                        ))}
-                      </div>
-                      {defCount > 0 && (
-                        <span className="text-[9px] font-bold text-white/20 min-w-[20px] text-right shrink-0">
-                          {defCount}★
+                        <span className="text-base shrink-0">{layer.goldIcon}</span>
+                        <span
+                          className="font-display text-[13px] font-bold min-w-[26px] shrink-0"
+                          style={{ color: `hsl(${layer.color})` }}
+                        >
+                          {layer.id}
                         </span>
-                      )}
-                      <ArrowRight size={12} className="text-white/10 group-hover:text-white/40 transition-colors shrink-0" />
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-            <p className="text-[9px] text-white/15 mt-3">
-              ★ = defensible positions · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ sub-layers mapped · Filled dots = defensible
-            </p>
-          </motion.div>
+                        <span className="text-white/60 text-[13px] font-medium flex-1 group-hover:text-white transition-colors truncate">
+                          {layer.name}
+                        </span>
+                        <div className="flex gap-0.5 items-center shrink-0">
+                          {layer.sublayers.map((sub) => (
+                            <div
+                              key={sub.id}
+                              className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-125"
+                              style={{
+                                background: sub.defensible
+                                  ? `hsl(${layer.color})`
+                                  : `hsl(${layer.color} / 0.25)`,
+                              }}
+                              title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
+                            />
+                          ))}
+                        </div>
+                        {defCount > 0 && (
+                          <span className="text-[8px] font-bold text-white/20 shrink-0">
+                            {defCount}★
+                          </span>
+                        )}
+                        <ArrowRight size={11} className="text-white/10 group-hover:text-white/40 transition-colors shrink-0" />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <p className="text-[8px] text-white/15 mt-2.5">
+                ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ mapped
+              </p>
+            </motion.div>
+          </div>
 
           {/* Immediate proof block — Jasper vs Grammarly vs ChatGPT */}
           <motion.div
