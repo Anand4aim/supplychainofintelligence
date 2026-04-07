@@ -5,6 +5,16 @@ import { Link } from "react-router-dom";
 import { LAYERS, GOLD_KEY_INSIGHT } from "@/data/layers";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import {
+  SketchFilters,
+  SketchBoard,
+  SketchArrow,
+  SketchCircle,
+  SketchUnderline,
+  SketchBox,
+  SketchLabel,
+  SketchConnector,
+} from "@/components/sketch/SketchElements";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -26,9 +36,10 @@ const Index = () => {
 
   return (
     <SiteLayout>
+      <SketchFilters />
+
       {/* ══════════════════════════════════════════════════════
-          SECTION 1 — HERO
-          Thesis + Visible L0–L8 Stack + Immediate Proof
+          SECTION 1 — HERO (editorial shell, no sketch)
       ══════════════════════════════════════════════════════ */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]">
@@ -37,7 +48,7 @@ const Index = () => {
 
         <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-14 md:pt-28 md:pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Left: Headline block */}
+            {/* Left: Headline */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,7 +85,7 @@ const Index = () => {
               </div>
             </motion.div>
 
-            {/* Right: The L0–L8 vertical interactive stack */}
+            {/* Right: L0–L8 vertical interactive stack */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -142,7 +153,7 @@ const Index = () => {
             </motion.div>
           </div>
 
-          {/* Immediate proof block — Jasper vs Grammarly vs ChatGPT */}
+          {/* Immediate proof — Jasper vs Grammarly vs ChatGPT */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,20 +168,17 @@ const Index = () => {
                 {
                   name: "Jasper", logo: "https://logo.clearbit.com/jasper.ai",
                   pos: "L7a only", fate: "Collapsed", color: "hsl(0 84% 60%)",
-                  note: "$1.5B → ~$300M · Thin wrapper, no moat",
-                  layers: [7],
+                  note: "$1.5B → ~$300M · Thin wrapper, no moat", layers: [7],
                 },
                 {
                   name: "Grammarly", logo: "https://logo.clearbit.com/grammarly.com",
                   pos: "L4 + L5 + L7 + L8", fate: "Thriving", color: "hsl(160 84% 39%)",
-                  note: "Stable $13B · Memory compounds, deep integrations",
-                  layers: [4, 5, 7, 8],
+                  note: "Stable $13B · Memory compounds, deep integrations", layers: [4, 5, 7, 8],
                 },
                 {
                   name: "ChatGPT", logo: "https://logo.clearbit.com/openai.com",
                   pos: "L2 + L7", fate: "Dominant", color: "hsl(243 75% 59%)",
-                  note: "Owns the smelter. Surface is free because the model IS the moat",
-                  layers: [2, 7],
+                  note: "Owns the smelter. Surface is free because the model IS the moat", layers: [2, 7],
                 },
               ].map((c) => (
                 <div key={c.name} className="flex items-start gap-3">
@@ -182,19 +190,14 @@ const Index = () => {
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
                       <span className="text-sm font-bold text-white">{c.name}</span>
-                      <span className="text-[10px] font-bold uppercase" style={{ color: c.color }}>
-                        {c.fate}
-                      </span>
+                      <span className="text-[10px] font-bold uppercase" style={{ color: c.color }}>{c.fate}</span>
                     </div>
                     <p className="text-[11px] text-white/35 mt-0.5">{c.pos}</p>
                     <p className="text-[10px] text-white/25 mt-1 leading-relaxed">{c.note}</p>
                     <div className="flex gap-1 mt-1.5">
                       {c.layers.map((n) => (
-                        <span
-                          key={n}
-                          className="text-[8px] font-bold px-1.5 py-0.5 rounded"
-                          style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg) / 0.15)` }}
-                        >
+                        <span key={n} className="text-[8px] font-bold px-1.5 py-0.5 rounded"
+                          style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg) / 0.15)` }}>
                           L{n}
                         </span>
                       ))}
@@ -208,7 +211,7 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 2 — WHY CUSTOMER UNDERSTANDING ISN'T ENOUGH
+          SECTION 2 — Y-AXIS vs Z-AXIS (editorial + SKETCH MODULE)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
@@ -227,65 +230,92 @@ const Index = () => {
             </p>
           </motion.div>
 
-          {/* 2-column comparison */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <motion.div
-              {...fadeIn}
-              transition={{ delay: 0.1 }}
-              className="bg-card border border-border rounded-xl p-7"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[2px] text-muted-foreground mb-5">
-                Traditional PM Thinking
-              </p>
-              <ul className="space-y-3.5">
-                {[
-                  "What does the customer need?",
-                  "What should we build next?",
-                  "What features matter most?",
-                  "How do we improve retention?",
-                  "What's our product-market fit?",
-                ].map((q, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 mt-2 shrink-0" />
-                    {q}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-[11px] text-muted-foreground/60 mt-6 italic">
-                Necessary — but no longer sufficient.
-              </p>
-            </motion.div>
+          {/* ──── SKETCH MODULE: Y-axis vs Z-axis ──── */}
+          <motion.div {...fadeIn}>
+            <SketchBoard className="p-6 md:p-10 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                {/* Y-axis column */}
+                <div>
+                  <SketchLabel color="#888" className="text-[13px] mb-3 block">Traditional PM Thinking</SketchLabel>
+                  <SketchBox color="#ccc" className="p-4 mb-3">
+                    <div className="space-y-2.5">
+                      {[
+                        "What does the customer need?",
+                        "What should we build next?",
+                        "What features matter most?",
+                        "How do we improve retention?",
+                      ].map((q, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <span className="text-[#999] text-xs mt-0.5">—</span>
+                          <span className="text-[#555] text-[13px] leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </SketchBox>
+                  <SketchLabel color="#999" className="text-xs italic block mt-2">
+                    Necessary — but no longer sufficient
+                  </SketchLabel>
+                </div>
 
-            <motion.div
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
-              className="bg-card border-2 border-indigo/20 rounded-xl p-7"
-            >
-              <p className="text-[10px] font-bold uppercase tracking-[2px] text-indigo mb-5">
-                Structural Depth Thinking
-              </p>
-              <ul className="space-y-3.5">
-                {[
-                  "Which layer of the intelligence stack do we actually own?",
-                  "Which sublayer is defensible?",
-                  "If the interface becomes free, what remains?",
-                  "Are we building on a layer that will still matter in 3 years?",
-                  "Do we own any part of the Defensible Triangle?",
-                ].map((q, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-foreground font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo mt-2 shrink-0" />
-                    {q}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-[11px] text-indigo/70 mt-6 italic font-medium">
-                This determines whether your product survives.
-              </p>
-            </motion.div>
-          </div>
+                {/* Z-axis column */}
+                <div>
+                  <SketchLabel color="#DC2626" className="text-[13px] mb-3 block font-bold">
+                    + Structural Depth Thinking ← NEW
+                  </SketchLabel>
+                  <SketchBox color="#DC2626" fill="rgba(220,38,38,0.03)" className="p-4 mb-3">
+                    <div className="space-y-2.5">
+                      {[
+                        "Which layer do we actually own?",
+                        "Which sublayer is defensible?",
+                        "If the interface becomes free — what remains?",
+                        "Do we own the Defensible Triangle?",
+                      ].map((q, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <span className="text-[#DC2626] text-xs mt-0.5">→</span>
+                          <span className="text-[#333] text-[13px] leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </SketchBox>
+                  <SketchLabel color="#DC2626" className="text-xs font-bold block mt-2">
+                    This determines survival
+                  </SketchLabel>
+                </div>
+              </div>
 
-          {/* Quote */}
-          <motion.div {...fadeIn} transition={{ delay: 0.3 }} className="mt-10">
+              {/* Sketch diagram: Y vs Z axes */}
+              <div className="mt-8 flex justify-center">
+                <div className="relative w-[280px] h-[200px]">
+                  {/* Y axis */}
+                  <svg className="absolute inset-0" viewBox="0 0 280 200" style={{ filter: "url(#sketch-wobble)" }}>
+                    {/* Y-axis line */}
+                    <line x1="60" y1="180" x2="60" y2="20" stroke="#555" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M54 28 L60 16 L66 28" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" />
+                    {/* Z-axis line */}
+                    <line x1="60" y1="180" x2="260" y2="180" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M252 174 L264 180 L252 186" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
+                    {/* Diagonal "winning zone" */}
+                    <rect x="120" y="40" width="110" height="90" rx="6" fill="rgba(220,38,38,0.06)" stroke="#DC2626" strokeWidth="1" strokeDasharray="4 3" />
+                  </svg>
+                  <SketchLabel className="absolute left-0 top-0 text-[12px]" color="#555" rotate={-90}>
+                    Customer Depth (Y)
+                  </SketchLabel>
+                  <SketchLabel className="absolute right-0 bottom-0 text-[12px]" color="#DC2626">
+                    Stack Depth (Z)
+                  </SketchLabel>
+                  <SketchLabel className="absolute text-[11px]" color="#DC2626" style={{ left: "145px", top: "70px" }}>
+                    winning zone
+                  </SketchLabel>
+                  <SketchLabel className="absolute text-[10px]" color="#999" style={{ left: "70px", top: "145px" }}>
+                    thin layer risk
+                  </SketchLabel>
+                </div>
+              </div>
+            </SketchBoard>
+          </motion.div>
+
+          {/* Quote (editorial shell, not sketch) */}
+          <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
             <div className="border-l-4 border-indigo/30 bg-muted/40 rounded-r-lg p-5 max-w-2xl">
               <p className="text-sm text-foreground leading-[1.75] italic">
                 "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
@@ -299,111 +329,104 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 3 — THE GOLD MINING ANALOGY
-          Signature visual — the supply chain from shovels to ring
+          SECTION 3 — GOLD MINING ANALOGY (editorial header + SKETCH MODULE)
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-navy">
+      <section className="bg-card border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
             <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
               Why We Call It a Supply Chain
             </p>
-            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-white leading-tight mb-4">
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground leading-tight mb-4">
               From Gold in the Ground to the Ring on Your Finger
             </h2>
-            <p className="text-sm text-white/40 leading-[1.75] max-w-3xl mb-12">
+            <p className="text-sm text-muted-foreground leading-[1.75] max-w-3xl mb-10">
               Each layer transforms the output of the layer below it. No layer works alone. Most
               companies only own one. The supply chain is only as strong as its weakest link.
             </p>
           </motion.div>
 
-          {/* The gold journey — continuous vertical visual */}
-          <div className="relative">
-            <div className="absolute left-5 md:left-7 top-4 bottom-4 w-px bg-white/[0.06]" />
+          {/* ──── SKETCH MODULE: Gold supply chain journey ──── */}
+          <motion.div {...fadeIn}>
+            <SketchBoard className="p-5 md:p-8">
+              <SketchLabel color="#888" className="text-[13px] mb-5 block">
+                The Intelligence Supply Chain — each layer transforms the one below ↓
+              </SketchLabel>
 
-            <div className="space-y-1">
-              {LAYERS.map((layer, i) => (
-                <motion.div
-                  key={layer.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ delay: i * 0.04, duration: 0.35 }}
-                  className="relative"
-                >
-                  <div
-                    className="flex gap-0 rounded-xl overflow-hidden bg-white/[0.03] border border-white/[0.06]"
-                    style={{ borderLeftWidth: "4px", borderLeftColor: `hsl(${layer.color})` }}
-                  >
-                    {/* Layer icon + ID */}
-                    <div
-                      className="flex flex-col items-center justify-center px-4 py-4 min-w-[70px] md:min-w-[90px]"
-                      style={{ background: `hsl(${layer.bg} / 0.08)` }}
-                    >
-                      <span className="text-xl mb-1">{layer.goldIcon}</span>
-                      <span
-                        className="font-display text-base font-bold"
-                        style={{ color: `hsl(${layer.color})` }}
-                      >
-                        {layer.id}
-                      </span>
-                    </div>
+              <div className="space-y-0">
+                {LAYERS.map((layer, i) => (
+                  <div key={layer.id}>
+                    <div className="flex items-start gap-3 md:gap-4 py-2.5 px-2">
+                      {/* Icon + ID */}
+                      <div className="flex flex-col items-center min-w-[50px] md:min-w-[60px]">
+                        <span className="text-xl">{layer.goldIcon}</span>
+                        <span
+                          className="text-[13px] font-bold mt-0.5"
+                          style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
+                        >
+                          {layer.id}
+                        </span>
+                      </div>
 
-                    {/* Content */}
-                    <div className="flex-1 py-3.5 px-4 md:px-5">
-                      <h3
-                        className="font-display text-sm md:text-[15px] font-bold mb-1"
-                        style={{ color: `hsl(${layer.color})` }}
-                      >
-                        {layer.goldTitle}
-                      </h3>
-                      <p className="text-xs text-white/35 leading-relaxed mb-2.5 max-w-xl">
-                        {layer.desc}
-                      </p>
-                      {/* Sublayer chips */}
-                      <div className="flex flex-wrap gap-1">
+                      {/* Name + analogy */}
+                      <div className="flex-1 min-w-0">
+                        <span
+                          className="text-[14px] font-bold block"
+                          style={{ fontFamily: "'Caveat', cursive", color: "#333" }}
+                        >
+                          {layer.goldTitle}
+                        </span>
+                        <span className="text-[11px] text-[#888] leading-snug block mt-0.5">
+                          {layer.desc}
+                        </span>
+                      </div>
+
+                      {/* Sublayer dots */}
+                      <div className="flex gap-1 items-center shrink-0 mt-1">
                         {layer.sublayers.map((sub) => (
-                          <span
+                          <div
                             key={sub.id}
-                            className="text-[9px] font-semibold px-2 py-0.5 rounded"
+                            className="w-2 h-2 rounded-full"
                             style={{
-                              color: sub.defensible ? `hsl(${layer.color})` : `hsl(${layer.color} / 0.5)`,
-                              background: sub.defensible
-                                ? `hsl(${layer.bg} / 0.25)`
-                                : `hsl(${layer.bg} / 0.08)`,
-                              border: sub.defensible ? `1px solid hsl(${layer.color} / 0.2)` : "1px solid transparent",
+                              background: sub.defensible ? `hsl(${layer.color})` : `hsl(${layer.color} / 0.2)`,
+                              border: sub.defensible ? "1.5px solid #333" : "1px solid #ddd",
                             }}
-                          >
-                            {sub.id}{sub.defensible ? " ★" : ""} {sub.name}
-                          </span>
+                            title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
+                          />
                         ))}
                       </div>
                     </div>
+
+                    {/* Sketch arrow between layers */}
+                    {i < LAYERS.length - 1 && (
+                      <div className="flex items-center gap-2 pl-6 md:pl-8 py-0.5">
+                        <svg width="16" height="20" viewBox="0 0 16 20" style={{ filter: "url(#sketch-wobble)" }}>
+                          <line x1="8" y1="2" x2="8" y2="14" stroke="#bbb" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
+                          <path d="M4 12 L8 18 L12 12" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+                        </svg>
+                        <SketchLabel color="#bbb" className="text-[9px]">transforms into</SketchLabel>
+                      </div>
+                    )}
                   </div>
+                ))}
+              </div>
 
-                  {i < LAYERS.length - 1 && (
-                    <div className="flex justify-center py-0.5">
-                      <ArrowDown size={11} className="text-white/10" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Key insight */}
-          <motion.div {...fadeIn} className="mt-10 bg-white/[0.04] border border-white/[0.07] rounded-xl p-6">
-            <p className="text-sm text-white/60 leading-[1.75]">
-              <span className="text-yellow-400/80 font-bold">Key insight: </span>
-              {GOLD_KEY_INSIGHT}
-            </p>
+              {/* Key insight in sketch style */}
+              <div className="mt-6 pt-4 border-t border-[#e0ddd8]">
+                <SketchLabel color="#DC2626" className="text-[13px] font-bold block mb-1">
+                  ← Key insight
+                </SketchLabel>
+                <p className="text-[12px] text-[#666] leading-relaxed" style={{ fontFamily: "'Caveat', cursive" }}>
+                  {GOLD_KEY_INSIGHT}
+                </p>
+              </div>
+            </SketchBoard>
           </motion.div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4 — THE FULL 9-LAYER MAP
-          All sublayers visible, defensible markers prominent
+          SECTION 4 — FULL 9-LAYER MAP (editorial, clean)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-background">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
@@ -416,7 +439,6 @@ const Index = () => {
             </h2>
             <p className="text-sm text-muted-foreground max-w-2xl">
               This is not a metaphor. It is a structural map. The ★ markers show where defensibility actually sits.
-              The sublayer dimension is where the real power lives.
             </p>
           </motion.div>
 
@@ -432,24 +454,18 @@ const Index = () => {
                 style={{ borderLeftWidth: "4px", borderLeftColor: `hsl(${layer.color})` }}
               >
                 <div className="flex flex-col lg:flex-row">
-                  {/* Layer label */}
                   <div
                     className="flex items-center gap-3 px-5 py-3 lg:min-w-[200px] lg:flex-col lg:justify-center lg:items-center lg:py-5"
                     style={{ background: `hsl(${layer.bg} / 0.35)` }}
                   >
                     <span className="text-xl">{layer.goldIcon}</span>
                     <div className="flex items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
-                      <span
-                        className="font-display text-lg font-bold"
-                        style={{ color: `hsl(${layer.color})` }}
-                      >
+                      <span className="font-display text-lg font-bold" style={{ color: `hsl(${layer.color})` }}>
                         {layer.id}
                       </span>
                       <span className="text-xs font-medium text-muted-foreground">{layer.name}</span>
                     </div>
                   </div>
-
-                  {/* Sublayers */}
                   <div className="flex-1 p-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {layer.sublayers.map((sub) => (
@@ -457,18 +473,11 @@ const Index = () => {
                           key={sub.id}
                           className="flex items-start gap-2 rounded-lg px-3 py-2"
                           style={{
-                            background: sub.defensible
-                              ? `hsl(${layer.bg} / 0.55)`
-                              : `hsl(${layer.bg} / 0.15)`,
-                            border: sub.defensible
-                              ? `1px solid hsl(${layer.color} / 0.25)`
-                              : "1px solid transparent",
+                            background: sub.defensible ? `hsl(${layer.bg} / 0.55)` : `hsl(${layer.bg} / 0.15)`,
+                            border: sub.defensible ? `1px solid hsl(${layer.color} / 0.25)` : "1px solid transparent",
                           }}
                         >
-                          <span
-                            className="text-[11px] font-bold whitespace-nowrap mt-0.5"
-                            style={{ color: `hsl(${layer.color})` }}
-                          >
+                          <span className="text-[11px] font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
                             {sub.id}{sub.defensible ? " ★" : ""}
                           </span>
                           <div className="min-w-0">
@@ -478,17 +487,11 @@ const Index = () => {
                         </div>
                       ))}
                     </div>
-                    {/* Verdict + players */}
                     <div className="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-border/50">
                       {layer.players.slice(0, 4).map((p) => (
-                        <span key={p} className="text-[9px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                          {p}
-                        </span>
+                        <span key={p} className="text-[9px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">{p}</span>
                       ))}
-                      <span
-                        className="text-[9px] font-bold uppercase tracking-wider ml-auto"
-                        style={{ color: `hsl(${layer.color})` }}
-                      >
+                      <span className="text-[9px] font-bold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
                         {layer.verdict}
                       </span>
                     </div>
@@ -498,58 +501,71 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Defensible Triangle */}
-          <motion.div {...fadeIn} className="mt-10 bg-card border border-border rounded-xl p-6 md:p-8">
-            <p className="text-[10px] font-bold uppercase tracking-[2px] text-indigo mb-5">
-              The Defensible Triangle — Where Survival Lives
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                {
-                  id: "L1b ★", name: "Proprietary Data", layer: 1,
-                  note: "Data behind enterprise walls. Your gold deposit. The deeper the vein, the stronger the moat.",
-                },
-                {
-                  id: "L5b/c/d ★", name: "Deep Skills & Playbooks", layer: 5,
-                  note: "Domain execution, reasoning patterns, company SOPs. Transforms generic intelligence into irreplaceable capability.",
-                },
-                {
-                  id: "L8c/d ★", name: "Compounding Memory", layer: 8,
-                  note: "Cross-customer patterns + institutional knowledge. The system gets smarter every day. Lock-in that compounds.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.id}
-                  className="rounded-lg p-5"
-                  style={{
-                    background: `hsl(var(--layer-${item.layer}-bg) / 0.5)`,
-                    borderTop: `3px solid hsl(var(--layer-${item.layer}))`,
-                  }}
-                >
-                  <span
-                    className="text-[10px] font-bold px-2 py-0.5 rounded inline-block mb-2.5"
-                    style={{
-                      color: `hsl(var(--layer-${item.layer}))`,
-                      background: `hsl(var(--layer-${item.layer}-bg))`,
-                    }}
-                  >
-                    {item.id}
+          {/* ──── SKETCH MODULE: Defensible Triangle ──── */}
+          <motion.div {...fadeIn} className="mt-10">
+            <SketchBoard className="p-6 md:p-8">
+              <SketchLabel color="#DC2626" className="text-[14px] font-bold block mb-5">
+                The Defensible Triangle — where survival actually lives
+              </SketchLabel>
+
+              <div className="flex flex-col items-center">
+                {/* Triangle diagram */}
+                <div className="relative w-[300px] h-[220px] mb-6">
+                  <svg viewBox="0 0 300 220" className="w-full h-full" style={{ filter: "url(#sketch-wobble)" }}>
+                    {/* Triangle lines */}
+                    <path d="M150 30 L50 190 L250 190 Z" fill="rgba(220,38,38,0.04)" stroke="#333" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                    {/* Nodes */}
+                    <circle cx="150" cy="30" r="18" fill="#fff" stroke="#3B82F6" strokeWidth="2.5" />
+                    <circle cx="50" cy="190" r="18" fill="#fff" stroke="#10B981" strokeWidth="2.5" />
+                    <circle cx="250" cy="190" r="18" fill="#fff" stroke="#6366F1" strokeWidth="2.5" />
+                    {/* Center */}
+                    <circle cx="150" cy="135" r="10" fill="rgba(220,38,38,0.15)" stroke="#DC2626" strokeWidth="1.5" />
+                  </svg>
+                  {/* Labels */}
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-center">
+                    <SketchLabel color="#3B82F6" className="text-[12px] font-bold block">L1b ★</SketchLabel>
+                    <SketchLabel color="#555" className="text-[10px] block">Proprietary Data</SketchLabel>
                   </span>
-                  <h4 className="font-display text-base font-bold text-foreground mb-1.5">{item.name}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{item.note}</p>
+                  <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
+                    <SketchLabel color="#10B981" className="text-[12px] font-bold block">L5b/c/d ★</SketchLabel>
+                    <SketchLabel color="#555" className="text-[10px] block">Deep Skills</SketchLabel>
+                  </span>
+                  <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
+                    <SketchLabel color="#6366F1" className="text-[12px] font-bold block">L8c/d ★</SketchLabel>
+                    <SketchLabel color="#555" className="text-[10px] block">Compounding Memory</SketchLabel>
+                  </span>
+                  <span className="absolute" style={{ left: "135px", top: "122px" }}>
+                    <SketchLabel color="#DC2626" className="text-[10px] font-bold">FORTRESS</SketchLabel>
+                  </span>
                 </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground/70 mt-5 italic text-center">
-              Own all three → fortress. Own none → graveyard. Most companies own one — and that determines their timeline.
-            </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                  {[
+                    { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "#3B82F6" },
+                    { id: "L5b/c/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "#10B981" },
+                    { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "#6366F1" },
+                  ].map((item) => (
+                    <SketchBox key={item.id} color={item.color} className="p-3.5">
+                      <SketchLabel color={item.color} className="text-[12px] font-bold block mb-1">
+                        {item.id} ★
+                      </SketchLabel>
+                      <span className="text-[13px] font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
+                        {item.name}
+                      </span>
+                      <span className="text-[11px] text-[#888] block mt-1">{item.note}</span>
+                    </SketchBox>
+                  ))}
+                </div>
+
+                <SketchLabel color="#888" className="text-[11px] italic block mt-4 text-center">
+                  Own all three → fortress · Own none → graveyard · Most companies own one
+                </SketchLabel>
+              </div>
+            </SketchBoard>
           </motion.div>
 
           <div className="mt-6 text-center">
-            <Link
-              to="/framework"
-              className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all"
-            >
+            <Link to="/framework" className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all">
               Deep-dive into every layer and sublayer <ArrowRight size={14} />
             </Link>
           </div>
@@ -557,8 +573,7 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 5 — THE THREE STRUCTURAL LAWS
-          Canonical, engraved, inevitable
+          SECTION 5 — THREE STRUCTURAL LAWS (editorial + SKETCH MODULE)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-card border-y border-border">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
@@ -574,48 +589,73 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-5">
-            {[
-              {
-                num: "I",
-                title: "The Creator Cannot Be the Gatekeeper",
-                desc: "When one entity controls both intelligence (L2) and trust (L3), credibility degrades. Tells you WHAT can't be vertically integrated.",
-              },
-              {
-                num: "II",
-                title: "Memory That Doesn't Learn Isn't Intelligence",
-                desc: "L8 must feed back into L5. A system that remembers but doesn't improve is just a database with a chat UI. Tells you WHO captures long-term value.",
-              },
-              {
-                num: "III",
-                title: "Value Migrates to the Scarcest Layer",
-                desc: "When a layer commoditizes, value transfers to adjacent scarce layers. Models commoditize → data wins. Surfaces commoditize → memory wins. Tells you WHERE value is going.",
-              },
-            ].map((law, i) => (
-              <motion.div
-                key={law.num}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex gap-5 items-start bg-background border border-border rounded-xl p-6 md:p-7"
-              >
-                <span className="font-display text-4xl md:text-5xl font-black text-indigo/80 leading-none shrink-0 mt-1">
-                  {law.num}
-                </span>
-                <div>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">{law.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-[1.7]">{law.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* ──── SKETCH MODULE: The three laws ──── */}
+          <motion.div {...fadeIn}>
+            <SketchBoard className="p-6 md:p-8">
+              <div className="space-y-6">
+                {[
+                  {
+                    num: "I",
+                    title: "The Creator Cannot Be the Gatekeeper",
+                    sketch: "L2 ←✗→ L3",
+                    desc: "When one entity controls both intelligence and trust, credibility degrades.",
+                    predicts: "WHAT can't be vertically integrated",
+                  },
+                  {
+                    num: "II",
+                    title: "Memory That Doesn't Learn Isn't Intelligence",
+                    sketch: "L8 ──→ L5",
+                    desc: "A system that remembers but doesn't improve is just a database with a chat UI.",
+                    predicts: "WHO captures long-term value",
+                  },
+                  {
+                    num: "III",
+                    title: "Value Migrates to the Scarcest Layer",
+                    sketch: "commodity → scarce",
+                    desc: "When a layer commoditizes, value transfers to adjacent scarce layers.",
+                    predicts: "WHERE value is going",
+                  },
+                ].map((law, i) => (
+                  <div key={law.num} className="flex gap-4 items-start">
+                    {/* Number */}
+                    <div className="min-w-[50px] text-center">
+                      <span
+                        className="text-[36px] font-bold leading-none"
+                        style={{ fontFamily: "'Caveat', cursive", color: "#DC2626" }}
+                      >
+                        {law.num}
+                      </span>
+                    </div>
+
+                    <div className="flex-1">
+                      <SketchBox color="#333" className="p-4">
+                        <span
+                          className="text-[16px] font-bold text-[#222] block mb-1.5"
+                          style={{ fontFamily: "'Caveat', cursive" }}
+                        >
+                          {law.title}
+                        </span>
+                        <span className="text-[12px] text-[#777] leading-relaxed block mb-2">
+                          {law.desc}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <SketchArrow direction="right" size={24} />
+                          <SketchLabel color="#DC2626" className="text-[11px] font-bold">
+                            Predicts {law.predicts}
+                          </SketchLabel>
+                        </div>
+                      </SketchBox>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </SketchBoard>
+          </motion.div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 6 — CASE STUDIES PREVIEW
-          6 visual cards as proof engine
+          SECTION 6 — CASE STUDIES (editorial shell)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
@@ -628,10 +668,7 @@ const Index = () => {
                 Case Studies — Proof Through the Stack
               </h2>
             </div>
-            <Link
-              to="/analysis"
-              className="hidden md:inline-flex items-center gap-1 text-sm text-indigo font-medium hover:gap-2 transition-all"
-            >
+            <Link to="/analysis" className="hidden md:inline-flex items-center gap-1 text-sm text-indigo font-medium hover:gap-2 transition-all">
               All case studies <ArrowRight size={14} />
             </Link>
           </motion.div>
@@ -643,10 +680,7 @@ const Index = () => {
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link
-              to="/analysis"
-              className="inline-flex items-center gap-2 text-sm text-indigo font-medium"
-            >
+            <Link to="/analysis" className="inline-flex items-center gap-2 text-sm text-indigo font-medium">
               All case studies <ArrowRight size={14} />
             </Link>
           </div>
@@ -654,7 +688,7 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 7 — DIAGNOSTIC CTA
+          SECTION 7 — DIAGNOSTIC CTA (editorial shell)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-navy">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
@@ -690,7 +724,7 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 8 — ANALYSIS + SUBSCRIBE
+          SECTION 8 — SUBSCRIBE (editorial shell)
       ══════════════════════════════════════════════════════ */}
       <section id="newsletter" className="bg-card border-t border-border">
         <div className="max-w-xl mx-auto px-6 py-14 text-center">
@@ -702,22 +736,12 @@ const Index = () => {
             One company analyzed through the 9 layers. Every week. Free. No fluff.
           </p>
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Newsletter signup will be connected soon! Thanks for your interest.");
-            }}
+            onSubmit={(e) => { e.preventDefault(); alert("Newsletter signup will be connected soon!"); }}
             className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
           >
-            <input
-              type="email"
-              placeholder="you@company.com"
-              required
-              className="flex-1 px-4 py-2.5 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-indigo/50 text-sm"
-            />
-            <button
-              type="submit"
-              className="px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition whitespace-nowrap"
-            >
+            <input type="email" placeholder="you@company.com" required
+              className="flex-1 px-4 py-2.5 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-indigo/50 text-sm" />
+            <button type="submit" className="px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition whitespace-nowrap">
               Subscribe
             </button>
           </form>
@@ -725,7 +749,7 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 9 — SPEAKING CTA (earned position)
+          SECTION 9 — SPEAKING CTA (editorial shell)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-background border-t border-border">
         <div className="max-w-3xl mx-auto px-6 py-14 text-center">
@@ -737,10 +761,7 @@ const Index = () => {
             Keynotes, executive briefings, and half-day workshops. Map your company's structural
             position across all 32+ sublayers.
           </p>
-          <Link
-            to="/speaking"
-            className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all"
-          >
+          <Link to="/speaking" className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all">
             Speaking & Workshops <ArrowRight size={14} />
           </Link>
         </div>
