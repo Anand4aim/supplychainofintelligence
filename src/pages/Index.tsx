@@ -621,7 +621,7 @@ const Index = () => {
                     {/* Number */}
                     <div className="min-w-[50px] text-center">
                       <span
-                        className="text-[36px] font-bold leading-none"
+                        className="text-4xl font-bold leading-none"
                         style={{ fontFamily: "'Caveat', cursive", color: "#DC2626" }}
                       >
                         {law.num}
@@ -631,19 +631,19 @@ const Index = () => {
                     <div className="flex-1">
                       <SketchBox color="#333" className="p-4">
                         <span
-                          className="text-[16px] font-bold text-[#222] block mb-1.5"
+                          className="text-lg font-bold text-[#222] block mb-1.5"
                           style={{ fontFamily: "'Caveat', cursive" }}
                         >
                           {law.title}
                         </span>
-                        <span className="text-[12px] text-[#777] leading-relaxed block mb-2">
+                        <span className="text-sm text-[#666] leading-relaxed block mb-2">
                           {law.desc}
                         </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
-                          <SketchLabel color="#DC2626" className="text-[11px] font-bold">
+                          <span className="text-xs font-bold text-[#DC2626]">
                             Predicts {law.predicts}
-                          </SketchLabel>
+                          </span>
                         </div>
                       </SketchBox>
                     </div>
