@@ -1,0 +1,205 @@
+import { motion } from "framer-motion";
+import { TrendingDown, TrendingUp, ArrowRight, Minus } from "lucide-react";
+
+export interface CaseStudy {
+  slug: string;
+  companies: {
+    name: string;
+    logo: string;
+    color: string;
+  }[];
+  tag: string;
+  title: string;
+  verdict: string;
+  excerpt: string;
+  layers: string[];
+  date: string;
+  readTime: string;
+  valuation?: {
+    label: string;
+    before: string;
+    after: string;
+    trend: "down" | "up" | "flat";
+    changeLabel: string;
+  };
+  content: string;
+}
+
+interface Props {
+  study: CaseStudy;
+  index: number;
+  featured?: boolean;
+}
+
+const CaseStudyCard = ({ study, index, featured = false }: Props) => {
+  const TrendIcon = study.valuation?.trend === "down" ? TrendingDown : study.valuation?.trend === "up" ? TrendingUp : Minus;
+  const trendColor = study.valuation?.trend === "down" ? "text-red-500" : study.valuation?.trend === "up" ? "text-emerald-500" : "text-muted-foreground";
+
+  if (featured) {
+    return (
+      <motion.article
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1, duration: 0.5 }}
+        className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-indigo/30 hover:shadow-xl transition-all duration-500"
+      >
+        <div className="p-8 md:p-10">
+          {/* Tag + meta */}
+          <div className="flex items-center gap-3 mb-5">
+            <span className="font-body text-[10px] font-bold uppercase tracking-[2px] text-indigo bg-indigo/10 px-3 py-1 rounded-full">
+              {study.tag}
+            </span>
+            <span className="text-xs text-muted-foreground">{study.date}</span>
+            <span className="text-xs text-muted-foreground">· {study.readTime}</span>
+          </div>
+
+          {/* Company logos row */}
+          <div className="flex items-center gap-3 mb-6">
+            {study.companies.map((company, ci) => (
+              <div key={company.name} className="flex items-center gap-2">
+                {ci > 0 && <span className="text-muted-foreground text-lg font-light mx-1">vs</span>}
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    className="w-8 h-8 rounded-lg object-contain bg-white p-0.5"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                  <span className="font-body text-sm font-semibold text-foreground">{company.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Title */}
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 group-hover:text-indigo transition-colors leading-tight">
+            {study.title}
+          </h2>
+
+          {/* Excerpt */}
+          <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-2xl">
+            {study.excerpt}
+          </p>
+
+          {/* Valuation + Layers row */}
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            {/* Valuation block */}
+            {study.valuation && (
+              <div className="bg-background border border-border rounded-xl p-5 min-w-[260px]">
+                <p className="text-[10px] font-bold uppercase tracking-[2px] text-muted-foreground mb-3">{study.valuation.label}</p>
+                <div className="flex items-baseline gap-4">
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-0.5">Peak</p>
+                    <p className="font-display text-2xl font-black text-foreground">{study.valuation.before}</p>
+                  </div>
+                  <ArrowRight size={18} className="text-muted-foreground mb-1" />
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-0.5">Now</p>
+                    <p className="font-display text-2xl font-black text-foreground">{study.valuation.after}</p>
+                  </div>
+                  <div className={`flex items-center gap-1 ml-2 ${trendColor}`}>
+                    <TrendIcon size={16} />
+                    <span className="text-xs font-bold">{study.valuation.changeLabel}</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Layers + verdict */}
+            <div className="flex flex-col items-end gap-3">
+              <div className="flex gap-2">
+                {study.layers.map((l) => {
+                  const n = parseInt(l.replace("L", ""));
+                  return (
+                    <span
+                      key={l}
+                      className="text-[11px] font-bold px-3 py-1 rounded-md"
+                      style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}
+                    >
+                      {l}
+                    </span>
+                  );
+                })}
+              </div>
+              <p className="text-xs font-bold uppercase tracking-wider" style={{ color: study.valuation?.trend === "down" ? "hsl(0 84% 60%)" : "hsl(160 84% 39%)" }}>
+                {study.verdict}
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+    );
+  }
+
+  // Compact card variant
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className="group bg-card border border-border rounded-xl p-6 hover:border-indigo/30 hover:shadow-md transition-all duration-300"
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <span className="font-body text-[10px] font-bold uppercase tracking-[2px] text-indigo">{study.tag}</span>
+        <span className="text-xs text-muted-foreground">{study.readTime}</span>
+      </div>
+
+      {/* Logos */}
+      <div className="flex items-center gap-2 mb-3">
+        {study.companies.map((company) => (
+          <img
+            key={company.name}
+            src={company.logo}
+            alt={company.name}
+            className="w-6 h-6 rounded object-contain bg-white p-0.5"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+          />
+        ))}
+      </div>
+
+      <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-indigo transition-colors leading-snug">
+        {study.title}
+      </h3>
+
+      <p className="text-muted-foreground text-sm leading-relaxed mb-4">{study.excerpt}</p>
+
+      {/* Valuation mini */}
+      {study.valuation && (
+        <div className="flex items-center gap-3 mb-4 text-sm">
+          <span className="text-muted-foreground">{study.valuation.before}</span>
+          <ArrowRight size={12} className="text-muted-foreground" />
+          <span className="text-foreground font-semibold">{study.valuation.after}</span>
+          <span className={`flex items-center gap-1 ${trendColor} text-xs font-bold`}>
+            <TrendIcon size={12} /> {study.valuation.changeLabel}
+          </span>
+        </div>
+      )}
+
+      <div className="flex items-center justify-between">
+        <div className="flex gap-1.5">
+          {study.layers.map((l) => {
+            const n = parseInt(l.replace("L", ""));
+            return (
+              <span
+                key={l}
+                className="text-[10px] font-bold px-2 py-0.5 rounded"
+                style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}
+              >
+                {l}
+              </span>
+            );
+          })}
+        </div>
+        <span className="text-xs text-indigo font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+          Read <ArrowRight size={12} />
+        </span>
+      </div>
+    </motion.article>
+  );
+};
+
+export default CaseStudyCard;
