@@ -237,7 +237,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Y-axis column */}
                 <div>
-                  <SketchLabel color="#888" className="text-[13px] mb-3 block">Traditional PM Thinking</SketchLabel>
+                  <p className="text-sm font-semibold text-[#555] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>Traditional PM Thinking</p>
                   <SketchBox color="#ccc" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
@@ -247,22 +247,22 @@ const Index = () => {
                         "How do we improve retention?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#999] text-xs mt-0.5">—</span>
-                          <span className="text-[#555] text-[13px] leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-[#999] text-sm mt-0.5">—</span>
+                          <span className="text-[#444] text-sm leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <SketchLabel color="#999" className="text-xs italic block mt-2">
+                  <p className="text-xs text-[#999] italic mt-2">
                     Necessary — but no longer sufficient
-                  </SketchLabel>
+                  </p>
                 </div>
 
                 {/* Z-axis column */}
                 <div>
-                  <SketchLabel color="#DC2626" className="text-[13px] mb-3 block font-bold">
+                  <p className="text-sm font-bold text-[#DC2626] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>
                     + Structural Depth Thinking ← NEW
-                  </SketchLabel>
+                  </p>
                   <SketchBox color="#DC2626" fill="rgba(220,38,38,0.03)" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
@@ -272,15 +272,15 @@ const Index = () => {
                         "Do we own the Defensible Triangle?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#DC2626] text-xs mt-0.5">→</span>
-                          <span className="text-[#333] text-[13px] leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-[#DC2626] text-sm mt-0.5">→</span>
+                          <span className="text-[#333] text-sm leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <SketchLabel color="#DC2626" className="text-xs font-bold block mt-2">
+                  <p className="text-xs font-bold text-[#DC2626] mt-2">
                     This determines survival
-                  </SketchLabel>
+                  </p>
                 </div>
               </div>
 
