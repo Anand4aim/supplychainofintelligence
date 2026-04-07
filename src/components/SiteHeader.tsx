@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { label: "Framework", path: "/framework" },
   { label: "Case Studies", path: "/analysis" },
-  { label: "For Product Leaders", path: "/for-product-leaders" },
+  { label: "Analysis", path: "/for-product-leaders" },
   { label: "Speaking", path: "/speaking" },
 ];
 
@@ -14,10 +14,10 @@ const SiteHeader = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-base font-bold text-white tracking-tight">
+          <span className="font-display text-[15px] font-bold text-white tracking-tight">
             Supply Chain of Intelligence<span className="text-indigo">™</span>
           </span>
         </Link>
@@ -31,7 +31,7 @@ const SiteHeader = () => {
               className={`text-[13px] font-medium transition-colors ${
                 location.pathname === item.path
                   ? "text-white"
-                  : "text-white/50 hover:text-white"
+                  : "text-white/40 hover:text-white/80"
               }`}
             >
               {item.label}
@@ -39,7 +39,7 @@ const SiteHeader = () => {
           ))}
           <a
             href="#newsletter"
-            className="px-3.5 py-1.5 bg-indigo text-white text-[13px] font-semibold rounded-md hover:opacity-90 transition-opacity"
+            className="px-3.5 py-1.5 bg-indigo text-white text-[12px] font-semibold rounded-md hover:opacity-90 transition-opacity"
           >
             Subscribe
           </a>
@@ -48,7 +48,7 @@ const SiteHeader = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white"
+          className="md:hidden text-white/70"
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -57,7 +57,7 @@ const SiteHeader = () => {
 
       {/* Mobile nav */}
       {open && (
-        <div className="md:hidden bg-navy border-t border-white/10 px-6 py-4 space-y-3">
+        <div className="md:hidden bg-navy border-t border-white/[0.06] px-6 py-4 space-y-3">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -66,7 +66,7 @@ const SiteHeader = () => {
               className={`block text-sm font-medium ${
                 location.pathname === item.path
                   ? "text-white"
-                  : "text-white/60"
+                  : "text-white/50"
               }`}
             >
               {item.label}
