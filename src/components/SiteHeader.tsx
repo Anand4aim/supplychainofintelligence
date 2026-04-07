@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Home", path: "/" },
   { label: "Framework", path: "/framework" },
-  { label: "Analysis", path: "/analysis" },
+  { label: "Case Studies", path: "/analysis" },
+  { label: "For Product Leaders", path: "/for-product-leaders" },
   { label: "Speaking", path: "/speaking" },
 ];
 
@@ -15,23 +15,23 @@ const SiteHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-lg font-bold text-white tracking-tight">
+          <span className="font-display text-base font-bold text-white tracking-tight">
             Supply Chain of Intelligence<span className="text-indigo">™</span>
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-[13px] font-medium transition-colors ${
                 location.pathname === item.path
                   ? "text-white"
-                  : "text-white/60 hover:text-white"
+                  : "text-white/50 hover:text-white"
               }`}
             >
               {item.label}
@@ -39,7 +39,7 @@ const SiteHeader = () => {
           ))}
           <a
             href="#newsletter"
-            className="px-4 py-2 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition-opacity"
+            className="px-3.5 py-1.5 bg-indigo text-white text-[13px] font-semibold rounded-md hover:opacity-90 transition-opacity"
           >
             Subscribe
           </a>
@@ -51,7 +51,7 @@ const SiteHeader = () => {
           className="md:hidden text-white"
           aria-label="Toggle menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
