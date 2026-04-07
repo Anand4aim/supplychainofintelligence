@@ -689,6 +689,29 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
+          SECTION 6.5 — THE INTELLIGENCE CUBE™ (premium dark)
+      ══════════════════════════════════════════════════════ */}
+      <section className="bg-navy border-y border-white/5">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+          <motion.div {...fadeIn} className="text-center mb-10">
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
+              The Intelligence Cube™
+            </p>
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-white mb-3">
+              9 Functions × 9 Verticals × 9 Layers
+            </h2>
+            <p className="text-sm text-white/40 max-w-xl mx-auto">
+              Volume = structural durability. Companies that occupy thin slivers get dissolved.
+              Companies that fill the cube become fortresses. Drag to explore.
+            </p>
+          </motion.div>
+          <motion.div {...fadeIn}>
+            <IntelligenceCube />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           SECTION 7 — DIAGNOSTIC CTA (editorial shell)
       ══════════════════════════════════════════════════════ */}
       <section className="bg-navy">
