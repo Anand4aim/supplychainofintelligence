@@ -505,9 +505,9 @@ const Index = () => {
           {/* ──── SKETCH MODULE: Defensible Triangle ──── */}
           <motion.div {...fadeIn} className="mt-10">
             <SketchBoard className="p-6 md:p-8">
-              <SketchLabel color="#DC2626" className="text-[14px] font-bold block mb-5">
+              <p className="text-base font-bold text-[#DC2626] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
                 The Defensible Triangle — where survival actually lives
-              </SketchLabel>
+              </p>
 
               <div className="flex flex-col items-center">
                 {/* Triangle diagram */}
@@ -524,19 +524,19 @@ const Index = () => {
                   </svg>
                   {/* Labels */}
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-center">
-                    <SketchLabel color="#3B82F6" className="text-[12px] font-bold block">L1b ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Proprietary Data</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#3B82F6" }}>L1b ★</span>
+                    <span className="text-xs text-[#555] block">Proprietary Data</span>
                   </span>
                   <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <SketchLabel color="#10B981" className="text-[12px] font-bold block">L5b/c/d ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Deep Skills</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#10B981" }}>L5b/c/d ★</span>
+                    <span className="text-xs text-[#555] block">Deep Skills</span>
                   </span>
                   <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <SketchLabel color="#6366F1" className="text-[12px] font-bold block">L8c/d ★</SketchLabel>
-                    <SketchLabel color="#555" className="text-[10px] block">Compounding Memory</SketchLabel>
+                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#6366F1" }}>L8c/d ★</span>
+                    <span className="text-xs text-[#555] block">Compounding Memory</span>
                   </span>
                   <span className="absolute" style={{ left: "135px", top: "122px" }}>
-                    <SketchLabel color="#DC2626" className="text-[10px] font-bold">FORTRESS</SketchLabel>
+                    <span className="text-xs font-bold text-[#DC2626]" style={{ fontFamily: "'Caveat', cursive" }}>FORTRESS</span>
                   </span>
                 </div>
 
@@ -547,20 +547,20 @@ const Index = () => {
                     { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "#6366F1" },
                   ].map((item) => (
                     <SketchBox key={item.id} color={item.color} className="p-3.5">
-                      <SketchLabel color={item.color} className="text-[12px] font-bold block mb-1">
+                      <span className="text-sm font-bold block mb-1" style={{ fontFamily: "'Caveat', cursive", color: item.color }}>
                         {item.id} ★
-                      </SketchLabel>
-                      <span className="text-[13px] font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
+                      </span>
+                      <span className="text-sm font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
                         {item.name}
                       </span>
-                      <span className="text-[11px] text-[#888] block mt-1">{item.note}</span>
+                      <span className="text-xs text-[#777] block mt-1">{item.note}</span>
                     </SketchBox>
                   ))}
                 </div>
 
-                <SketchLabel color="#888" className="text-[11px] italic block mt-4 text-center">
+                <p className="text-xs text-[#888] italic mt-4 text-center">
                   Own all three → fortress · Own none → graveyard · Most companies own one
-                </SketchLabel>
+                </p>
               </div>
             </SketchBoard>
           </motion.div>
