@@ -303,12 +303,12 @@ const Index = () => {
                   <SketchLabel className="absolute right-0 bottom-0 text-[12px]" color="#DC2626">
                     Stack Depth (Z)
                   </SketchLabel>
-                  <SketchLabel className="absolute text-[11px]" color="#DC2626" style={{ left: "145px", top: "70px" }}>
-                    winning zone
-                  </SketchLabel>
-                  <SketchLabel className="absolute text-[10px]" color="#999" style={{ left: "70px", top: "145px" }}>
-                    thin layer risk
-                  </SketchLabel>
+                  <span className="absolute text-center" style={{ left: "120px", top: "70px" }}>
+                    <SketchLabel color="#DC2626" className="text-[11px] font-bold">winning zone</SketchLabel>
+                  </span>
+                  <span className="absolute" style={{ left: "70px", top: "145px" }}>
+                    <SketchLabel color="#999" className="text-[10px]">thin layer risk</SketchLabel>
+                  </span>
                 </div>
               </div>
             </SketchBoard>
