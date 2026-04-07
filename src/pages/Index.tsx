@@ -2,23 +2,13 @@ import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, Layers, Box, Scale, BookOpen, Mic } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const LAYERS = [
-  { id: "L1", name: "Data & Knowledge", desc: "Proprietary datasets — the raw fuel", color: "var(--layer-1)", bg: "var(--layer-1-bg)" },
-  { id: "L2", name: "Model & Reasoning", desc: "The intelligence layer — OpenAI, Anthropic", color: "var(--layer-2)", bg: "var(--layer-2-bg)" },
-  { id: "L3", name: "Trust & Governance", desc: "Compliance, audit trails — can't be automated", color: "var(--layer-3)", bg: "var(--layer-3-bg)" },
-  { id: "L4", name: "Infrastructure", desc: "AWS, Snowflake, Supabase — the plumbing", color: "var(--layer-4)", bg: "var(--layer-4-bg)" },
-  { id: "L5", name: "Orchestration", desc: "LangChain, CrewAI — the nervous system", color: "var(--layer-5)", bg: "var(--layer-5-bg)" },
-  { id: "L6", name: "Domain Skills", desc: "Harvey, Sierra — encoded expertise", color: "var(--layer-6)", bg: "var(--layer-6-bg)" },
-  { id: "L7", name: "Expression & Surfaces", desc: "ChatGPT, voice, embedded UIs — commoditizing", color: "var(--layer-7)", bg: "var(--layer-7-bg)" },
-  { id: "L8", name: "Memory & Learning", desc: "Context, feedback loops — the ultimate lock-in", color: "var(--layer-8)", bg: "var(--layer-8-bg)" },
-];
+import { LAYERS } from "@/data/layers";
 
 const STATS = [
   { value: "$1T+", label: "SaaS market cap erased Feb 2026" },
   { value: "<10%", label: "Enterprises with agents in production" },
   { value: "70%", label: "Will abandon seat-based pricing by 2028" },
-  { value: "8", label: "Structural layers that determine survival" },
+  { value: "9", label: "Structural layers that determine survival" },
 ];
 
 const Index = () => {
@@ -48,7 +38,7 @@ const Index = () => {
                   <span className="text-indigo">Now master the stack</span> — or watch your product dissolve.
                 </h1>
                 <p className="text-lg text-white/60 leading-relaxed max-w-xl mb-8">
-                  SaaS doesn't die — it dissolves into 8 structural layers. The Supply Chain of Intelligence™ 
+                  SaaS doesn't die — it dissolves into 9 structural layers (L0–L8). The Supply Chain of Intelligence™
                   maps where AI companies live, compete, and die. Three laws predict who survives.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -68,32 +58,57 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Right: Layer Stack */}
+            {/* Right: Layer Stack with sublayer hints */}
             <div className="hidden lg:block">
-              <div className="space-y-2">
-                {LAYERS.map((layer, i) => (
-                  <motion.div
-                    key={layer.id}
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + i * 0.08, duration: 0.4 }}
-                    className="flex items-center gap-4 rounded-lg px-5 py-3 backdrop-blur-sm"
-                    style={{
-                      background: `hsl(${layer.bg} / 0.12)`,
-                      borderLeft: `4px solid hsl(${layer.color})`,
-                    }}
-                  >
-                    <span
-                      className="font-display text-lg font-bold min-w-[32px]"
-                      style={{ color: `hsl(${layer.color})` }}
+              <div className="space-y-1.5">
+                {LAYERS.map((layer, i) => {
+                  const defensibleCount = layer.sublayers.filter((s) => s.defensible).length;
+                  return (
+                    <motion.div
+                      key={layer.id}
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + i * 0.07, duration: 0.4 }}
+                      className="flex items-center gap-3 rounded-lg px-4 py-2.5 backdrop-blur-sm"
+                      style={{
+                        background: `hsl(${layer.bg} / 0.12)`,
+                        borderLeft: `4px solid hsl(${layer.color})`,
+                      }}
                     >
-                      {layer.id}
-                    </span>
-                    <span className="text-white font-medium text-sm">{layer.name}</span>
-                    <span className="text-white/40 text-xs ml-auto hidden xl:block">{layer.desc}</span>
-                  </motion.div>
-                ))}
+                      <span
+                        className="font-display text-base font-bold min-w-[28px]"
+                        style={{ color: `hsl(${layer.color})` }}
+                      >
+                        {layer.id}
+                      </span>
+                      <span className="text-white font-medium text-sm flex-1">{layer.name}</span>
+                      {/* Sublayer dots */}
+                      <div className="flex gap-1 items-center">
+                        {layer.sublayers.map((sub) => (
+                          <div
+                            key={sub.id}
+                            className="w-2 h-2 rounded-full"
+                            style={{
+                              background: sub.defensible
+                                ? `hsl(${layer.color})`
+                                : `hsl(${layer.color} / 0.25)`,
+                            }}
+                            title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
+                          />
+                        ))}
+                      </div>
+                      {defensibleCount > 0 && (
+                        <span className="text-[9px] font-bold text-white/30 min-w-[20px] text-right">
+                          {defensibleCount}★
+                        </span>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
+              <p className="text-[10px] text-white/30 mt-3 text-center">
+                32+ sub-layers · Filled dots = defensible positions (★)
+              </p>
             </div>
           </div>
         </div>
@@ -134,15 +149,15 @@ const Index = () => {
               SaaS Doesn't Die — It Dissolves & Evolves
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              The interface layer commoditizes. The intelligence layer gets automated. What remains is 
-              encoded expertise, proprietary data, and orchestration. Product leaders have mastered the 
-              vertical — understanding customer needs through JTBD. But in the AI era, you also need the 
+              The interface layer commoditizes. The intelligence layer gets automated. What remains is
+              encoded expertise, proprietary data, and orchestration. Product leaders have mastered the
+              vertical — understanding customer needs through JTBD. But in the AI era, you also need the
               depth axis: where in the intelligence stack are you playing?
             </p>
             <div className="border-l-4 border-indigo bg-secondary/50 rounded-r-lg p-6 text-left max-w-2xl mx-auto">
               <p className="font-display text-lg italic text-foreground leading-relaxed">
-                "Great product leaders have mastered the Y-axis — customer depth. In the AI era, you also need 
-                the Z-axis — infrastructure depth — or you'll build something customers love today that gets 
+                "Great product leaders have mastered the Y-axis — customer depth. In the AI era, you also need
+                the Z-axis — infrastructure depth — or you'll build something customers love today that gets
                 commoditized tomorrow."
               </p>
               <p className="mt-3 text-sm text-muted-foreground font-medium">— Anand Arivukkarasu</p>
@@ -163,14 +178,14 @@ const Index = () => {
             {[
               {
                 icon: <Layers size={28} />,
-                title: "The 8-Layer Stack",
-                desc: "Every AI company maps to one or more structural layers. Where you sit determines whether you survive — not your features, not your funding.",
+                title: "The 9-Layer Stack",
+                desc: "Every AI company maps to one or more structural layers (L0–L8), each with 3–5 sub-layers. Where you sit determines whether you survive — not your features, not your funding.",
                 link: "/framework",
               },
               {
                 icon: <Box size={28} />,
                 title: "The Intelligence Cube™",
-                desc: "8 Functions × 8 Verticals × 8 Layers. Volume in the cube equals structural durability. Thin slivers die. Tall fortresses survive.",
+                desc: "8 Functions × 8 Verticals × 9 Layers. Volume in the cube equals structural durability. Thin slivers die. Tall fortresses survive.",
                 link: "/framework#cube",
               },
               {
@@ -208,7 +223,7 @@ const Index = () => {
       {/* Mobile Layer Stack */}
       <section className="lg:hidden bg-navy">
         <div className="max-w-xl mx-auto px-6 py-16">
-          <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-6">The 8 Layers</p>
+          <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-6">The 9 Layers (L0–L8)</p>
           <div className="space-y-2">
             {LAYERS.map((layer) => (
               <div
@@ -222,7 +237,8 @@ const Index = () => {
                 <span className="font-display text-base font-bold" style={{ color: `hsl(${layer.color})` }}>
                   {layer.id}
                 </span>
-                <span className="text-white text-sm font-medium">{layer.name}</span>
+                <span className="text-white text-sm font-medium flex-1">{layer.name}</span>
+                <span className="text-[10px] text-white/30">{layer.sublayers.length} sub</span>
               </div>
             ))}
           </div>
@@ -247,20 +263,20 @@ const Index = () => {
               {
                 tag: "ARCHETYPE ANALYSIS",
                 title: "Gamma at $2.1B: A Thin-Layer Graveyard Case Study",
-                excerpt: "Presentation generation sits at L6a+L7a — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. Here's why Cube volume predicted this.",
-                layers: ["L6", "L7"],
+                excerpt: "Presentation generation sits at L7a — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. Here's why Cube volume predicted this.",
+                layers: ["L7"],
               },
               {
-                tag: "STRUCTURAL LAW III",
-                title: "Where Does Apollo.io Sit? And Why It's Structurally Safe",
-                excerpt: "Proprietary data (L1b) is the scarcest layer. Apollo went headless, API-first. When models and surfaces commoditize, the data layer gets stronger.",
-                layers: ["L1"],
+                tag: "THE GREAT UNWINDING",
+                title: "Jasper vs ChatGPT vs Grammarly: Three Structural Fates",
+                excerpt: "Same market. Three different structural positions. One dead, one surviving, one thriving. The difference isn't PMF — it's stack position.",
+                layers: ["L6", "L7", "L8"],
               },
               {
-                tag: "THE FIVE ERAS",
-                title: "From Dashboard to Skill Hire: The Evolution of Software",
-                excerpt: "We're in Era 3 — The Dialogue. By 2028, agents ARE the workers. Your roadmap needs both the customer axis and the depth axis.",
-                layers: ["L5", "L6", "L7"],
+                tag: "CASUALTY REPORT",
+                title: "Chegg: $12B to 99% Collapse — Law III in Real Time",
+                excerpt: "Generic content at L6a was the most commoditizable layer in the stack. ChatGPT didn't kill Chegg — structural inevitability did.",
+                layers: ["L6"],
               },
             ].map((article, i) => (
               <motion.div
@@ -315,7 +331,7 @@ const Index = () => {
               "Where Do YOU Sit in the Stack?"
             </h2>
             <p className="text-lg text-white/60 leading-relaxed max-w-2xl mx-auto mb-8">
-              Keynotes, workshops, and executive deep-dives. Map your company's structural position 
+              Keynotes, workshops, and executive deep-dives. Map your company's structural position
               in the Intelligence Cube™ before the market forces it.
             </p>
             <Link
@@ -336,7 +352,7 @@ const Index = () => {
             Weekly Structural Analysis
           </h2>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Every week, one company analyzed through the lens of the 8 layers. Free. Unsubscribe anytime.
+            Every week, one company analyzed through the lens of the 9 layers. Free. Unsubscribe anytime.
           </p>
           <form
             onSubmit={(e) => {

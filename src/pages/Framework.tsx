@@ -1,65 +1,7 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight } from "lucide-react";
-
-const LAYERS = [
-  {
-    id: "L1", name: "Data & Knowledge", color: "var(--layer-1)", bg: "var(--layer-1-bg)",
-    desc: "The foundation. What data do you have that nobody else can get?",
-    detail: "Apollo, Bloomberg, proprietary datasets — the raw fuel. More agents = more demand for data. This layer gets stronger, not weaker.",
-    players: ["Apollo.io", "Bloomberg", "ZoomInfo", "Clay"],
-    verdict: "Structurally safe. API-first wins.",
-  },
-  {
-    id: "L2", name: "Model & Reasoning", color: "var(--layer-2)", bg: "var(--layer-2-bg)",
-    desc: "The reasoning engine. Rent early, build custom at scale if your data warrants it.",
-    detail: "OpenAI, Anthropic, ElevenLabs — THE intelligence layer. Models are commoditizing fast. The frontier race is temporary; the distribution race is permanent.",
-    players: ["OpenAI", "Anthropic", "Google DeepMind", "ElevenLabs"],
-    verdict: "Winner-take-most. Commodity risk high.",
-  },
-  {
-    id: "L3", name: "Trust & Governance", color: "var(--layer-3)", bg: "var(--layer-3-bg)",
-    desc: "The compliance gate. Can the enterprise trust your system?",
-    detail: "Permissions, compliance, audit trails — can't be automated. Regulators won't accept 'the agent did it.' SOC2, HIPAA, SOX require human accountability.",
-    players: ["Vanta", "Drata", "OneTrust"],
-    verdict: "Essential. More agents = more access control needed.",
-  },
-  {
-    id: "L4", name: "Infrastructure", color: "var(--layer-4)", bg: "var(--layer-4-bg)",
-    desc: "The integration layer. What systems can your agent reach?",
-    detail: "AWS, Snowflake, Supabase, Twilio — the plumbing. Delivery networks, payment rails, data centers. These get MORE critical as agents proliferate.",
-    players: ["AWS", "Snowflake", "Supabase", "Twilio", "Cal.com"],
-    verdict: "Load-bearing walls. Invest accordingly.",
-  },
-  {
-    id: "L5", name: "Orchestration", color: "var(--layer-5)", bg: "var(--layer-5-bg)",
-    desc: "The workflow engine. How do you compose skills into multi-step processes?",
-    detail: "LangChain, CrewAI — the nervous system. Automation becomes a feature inside workspaces, not a standalone product. Zapier/Make at risk.",
-    players: ["LangChain", "CrewAI", "Zapier (at risk)", "Make (at risk)"],
-    verdict: "Contested. Becoming a feature, not a product.",
-  },
-  {
-    id: "L6", name: "Domain Skills", color: "var(--layer-6)", bg: "var(--layer-6-bg)",
-    desc: "What domain expertise is encoded as agent behavior?",
-    detail: "Harvey (legal), Sierra (CX), 11x (sales) — encoded expertise. The companies that encode deep domain knowledge into agent behavior build structural moats.",
-    players: ["Harvey", "Sierra", "11x", "Cursor"],
-    verdict: "Durable if deep. Thin wrappers die.",
-  },
-  {
-    id: "L7", name: "Expression & Surfaces", color: "var(--layer-7)", bg: "var(--layer-7-bg)",
-    desc: "How and where does the user meet the intelligence?",
-    detail: "ChatGPT, Gemini, voice, embedded UIs — commoditizing fast. If your entire product is one prompt away from being a free feature, you are already dead.",
-    players: ["ChatGPT", "Gemini", "Copilot", "Gamma (dying)"],
-    verdict: "Danger zone. Commoditizing rapidly.",
-  },
-  {
-    id: "L8", name: "Memory & Learning", color: "var(--layer-8)", bg: "var(--layer-8-bg)",
-    desc: "What does the system remember and compound over time?",
-    detail: "Personal context, feedback loops — the ultimate lock-in. Sierra learns from every resolution. Salesforce doesn't. Memory = lock-in = pricing power.",
-    players: ["Sierra", "Notion (partial)", "Rewind AI"],
-    verdict: "The ultimate moat. Memory that compounds wins.",
-  },
-];
+import { LAYERS, DEFENSIBLE_TRIANGLE } from "@/data/layers";
 
 const LAWS = [
   {
@@ -71,7 +13,7 @@ const LAWS = [
   {
     num: "II",
     title: "Memory That Doesn't Learn Isn't Intelligence",
-    desc: "L8 must feed back into L6. A system that remembers but doesn't improve is just a database with a chat UI. Sierra learns from every resolution. Salesforce doesn't.",
+    desc: "L8 must feed back into L5. A system that remembers but doesn't improve is just a database with a chat UI. Sierra learns from every resolution. Salesforce doesn't.",
     prediction: "Tells you WHO captures long-term value.",
   },
   {
@@ -92,19 +34,24 @@ const FrameworkPage = () => (
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-[1.1] mb-6">
             The Supply Chain of Intelligence™
           </h1>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Every AI company maps to one or more of 8 structural layers. Where you sit determines whether you survive — 
-            not your features, not your funding, not your UI.
+          <p className="text-lg text-white/60 max-w-2xl mx-auto mb-8">
+            Every AI company maps to one or more of 9 structural layers (L0–L8), with 32+ sub-layers.
+            Where you sit determines whether you survive — not your features, not your funding, not your UI.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
+            <span className="text-xs text-white/40 font-semibold uppercase tracking-wider">Defensible Triangle:</span>
+            <span className="text-xs text-indigo font-bold">{DEFENSIBLE_TRIANGLE}</span>
+          </div>
         </motion.div>
       </div>
     </section>
 
-    {/* The 8 Layers */}
+    {/* The 9 Layers with Sublayers */}
     <section className="bg-card">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">The 8 Layers</p>
-        <h2 className="font-display text-3xl font-bold text-foreground mb-10">Where Does Your Company Sit?</h2>
+        <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">9 Layers · 32+ Sub-Layers</p>
+        <h2 className="font-display text-3xl font-bold text-foreground mb-3">Where Does Your Company Sit?</h2>
+        <p className="text-sm text-muted-foreground mb-10">★ = defensible, invest here</p>
 
         <div className="space-y-4">
           {LAYERS.map((layer, i) => (
@@ -127,20 +74,50 @@ const FrameworkPage = () => (
                   <span className="font-body text-base font-semibold text-foreground">{layer.name}</span>
                   <span className="block text-sm text-muted-foreground mt-0.5">{layer.desc}</span>
                 </div>
+                <span className="text-xs text-muted-foreground hidden sm:block">{layer.sublayers.length} sub-layers</span>
                 <ArrowRight size={16} className="text-muted-foreground group-open:rotate-90 transition-transform" />
               </summary>
-              <div className="px-5 pb-5 pt-2 ml-[60px] border-t border-border">
-                <p className="text-sm text-foreground leading-relaxed mb-4">{layer.detail}</p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {layer.players.map((p) => (
-                    <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full bg-secondary text-foreground">
-                      {p}
-                    </span>
+              <div className="px-5 pb-5 pt-2 border-t border-border">
+                <p className="text-sm text-foreground leading-relaxed mb-5 ml-[56px]">{layer.detail}</p>
+
+                {/* Sublayers */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 ml-[56px]">
+                  {layer.sublayers.map((sub) => (
+                    <div
+                      key={sub.id}
+                      className="flex items-start gap-3 rounded-lg px-4 py-3 border"
+                      style={{
+                        borderColor: sub.defensible ? `hsl(${layer.color} / 0.4)` : undefined,
+                        background: sub.defensible ? `hsl(${layer.bg} / 0.5)` : undefined,
+                      }}
+                    >
+                      <div className="flex items-center gap-1.5 min-w-[52px]">
+                        <span className="text-xs font-bold" style={{ color: `hsl(${layer.color})` }}>
+                          {sub.id}
+                        </span>
+                        {sub.defensible && <span className="text-xs" style={{ color: `hsl(${layer.color})` }}>★</span>}
+                      </div>
+                      <div>
+                        <span className="text-sm font-semibold text-foreground">{sub.name}</span>
+                        <p className="text-xs text-muted-foreground mt-0.5">{sub.desc}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: `hsl(${layer.color})` }}>
-                  {layer.verdict}
-                </p>
+
+                {/* Players + Verdict */}
+                <div className="ml-[56px] flex flex-wrap items-center gap-3">
+                  <div className="flex flex-wrap gap-2">
+                    {layer.players.map((p) => (
+                      <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full bg-secondary text-foreground">
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
+                    {layer.verdict}
+                  </span>
+                </div>
               </div>
             </motion.details>
           ))}
@@ -154,26 +131,25 @@ const FrameworkPage = () => (
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
           <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">The Intelligence Cube™</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
-            8 Functions × 8 Verticals × 8 Layers
+            8 Functions × 8 Verticals × 9 Layers
           </h2>
           <p className="text-lg text-white/60 max-w-3xl mb-10">
-            Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals. 
+            Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals.
             Thin slivers die. Tall fortresses survive.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Sierra - Fortress */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">🏰</span>
                 <h3 className="font-display text-xl font-bold text-white">Sierra = FORTRESS</h3>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Customer Care × 4 verticals × 3 layers (L1 + L6 + L8). Memory compounds. 
+                Customer Care × 4 verticals × 3 layers (L1 + L5 + L8). Memory compounds.
                 Volume = massive. Hard to displace. Structurally durable.
               </p>
               <div className="flex gap-2 flex-wrap">
-                {["L1", "L6", "L8"].map((l) => {
+                {["L1", "L5", "L8"].map((l) => {
                   const n = parseInt(l.replace("L", ""));
                   return (
                     <span key={l} className="text-xs font-bold px-2.5 py-1 rounded" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg) / 0.2)` }}>
@@ -184,19 +160,18 @@ const FrameworkPage = () => (
               </div>
             </div>
 
-            {/* Gamma - Thin */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">💀</span>
                 <h3 className="font-display text-xl font-bold text-white">Gamma ($2.1B) = DEAD</h3>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Product + PM × cross-industry × L7 surface only. No data, no doctrine, no memory. 
+                Product + PM × cross-industry × L7a surface only. No data, no doctrine, no memory.
                 Just a wrapper. Claude, Copilot, Gemini do this for free. → $0.
               </p>
               <div className="flex gap-2">
                 <span className="text-xs font-bold px-2.5 py-1 rounded" style={{ color: "hsl(var(--layer-7))", background: "hsl(var(--layer-7-bg) / 0.2)" }}>
-                  L7 only
+                  L7a only
                 </span>
               </div>
             </div>
@@ -243,7 +218,7 @@ const FrameworkPage = () => (
             { title: "Data Refineries", status: "safe", desc: "L1 — Proprietary data compounds. Apollo, Bloomberg. More agents = more demand.", color: "var(--layer-1)" },
             { title: "Infrastructure Rails", status: "safe", desc: "L3/L4 — Essential pipes. Supabase, Cal.com, Twilio. Agent backends.", color: "var(--layer-4)" },
             { title: "Workflow Fortresses", status: "contested", desc: "L5+L6 — Salesforce, HubSpot. Too embedded to replace. Switching cost buys 3-5 years.", color: "var(--layer-5)" },
-            { title: "Domain Specialists", status: "safe", desc: "L6 deep — Harvey, Sierra. Encoded expertise + memory loops = structural moat.", color: "var(--layer-6)" },
+            { title: "Domain Specialists", status: "safe", desc: "L5 deep — Harvey, Sierra. Encoded expertise + memory loops = structural moat.", color: "var(--layer-5)" },
             { title: "Thin-Layer Graveyard", status: "dead", desc: "L6a/L7a — Gamma, Jasper, Chegg. One prompt from free. Already dead.", color: "var(--layer-3)" },
             { title: "Full-Stack Juggernauts", status: "dominant", desc: "L2+L7+L8 — Claude, ChatGPT, Gemini, Copilot. The last interfaces.", color: "var(--layer-8)" },
           ].map((arch, i) => (
