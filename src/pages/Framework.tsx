@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
-import { ArrowRight } from "lucide-react";
-import { LAYERS, DEFENSIBLE_TRIANGLE } from "@/data/layers";
+import { ArrowRight, ArrowDown } from "lucide-react";
+import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT } from "@/data/layers";
 
 const LAWS = [
   {
@@ -35,8 +35,8 @@ const FrameworkPage = () => (
             The Supply Chain of Intelligence™
           </h1>
           <p className="text-lg text-white/60 max-w-2xl mx-auto mb-8">
-            Every AI company maps to one or more of 9 structural layers (L0–L8), with 32+ sub-layers.
-            Where you sit determines whether you survive — not your features, not your funding, not your UI.
+            Follow the gold from the ground to the person wearing the ring — and you'll see every layer 
+            of the intelligence stack. 9 layers. 32+ sub-layers. One structural map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10">
             <span className="text-xs text-white/40 font-semibold uppercase tracking-wider">Defensible Triangle:</span>
@@ -46,82 +46,197 @@ const FrameworkPage = () => (
       </div>
     </section>
 
-    {/* The 9 Layers with Sublayers */}
-    <section className="bg-card">
+    {/* ═══════ THE GOLD MINING ANALOGY ═══════ */}
+    <section className="bg-card border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">9 Layers · 32+ Sub-Layers</p>
-        <h2 className="font-display text-3xl font-bold text-foreground mb-3">Where Does Your Company Sit?</h2>
-        <p className="text-sm text-muted-foreground mb-10">★ = defensible, invest here</p>
-
-        <div className="space-y-4">
-          {LAYERS.map((layer, i) => (
-            <motion.details
-              key={layer.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="group rounded-xl border border-border overflow-hidden"
-            >
-              <summary
-                className="flex items-center gap-4 cursor-pointer p-5 hover:bg-secondary/50 transition"
-                style={{ borderLeft: `5px solid hsl(${layer.color})` }}
-              >
-                <span className="font-display text-2xl font-bold min-w-[40px]" style={{ color: `hsl(${layer.color})` }}>
-                  {layer.id}
-                </span>
-                <div className="flex-1">
-                  <span className="font-body text-base font-semibold text-foreground">{layer.name}</span>
-                  <span className="block text-sm text-muted-foreground mt-0.5">{layer.desc}</span>
-                </div>
-                <span className="text-xs text-muted-foreground hidden sm:block">{layer.sublayers.length} sub-layers</span>
-                <ArrowRight size={16} className="text-muted-foreground group-open:rotate-90 transition-transform" />
-              </summary>
-              <div className="px-5 pb-5 pt-2 border-t border-border">
-                <p className="text-sm text-foreground leading-relaxed mb-5 ml-[56px]">{layer.detail}</p>
-
-                {/* Sublayers */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 ml-[56px]">
-                  {layer.sublayers.map((sub) => (
-                    <div
-                      key={sub.id}
-                      className="flex items-start gap-3 rounded-lg px-4 py-3 border"
-                      style={{
-                        borderColor: sub.defensible ? `hsl(${layer.color} / 0.4)` : undefined,
-                        background: sub.defensible ? `hsl(${layer.bg} / 0.5)` : undefined,
-                      }}
-                    >
-                      <div className="flex items-center gap-1.5 min-w-[52px]">
-                        <span className="text-xs font-bold" style={{ color: `hsl(${layer.color})` }}>
-                          {sub.id}
-                        </span>
-                        {sub.defensible && <span className="text-xs" style={{ color: `hsl(${layer.color})` }}>★</span>}
-                      </div>
-                      <div>
-                        <span className="text-sm font-semibold text-foreground">{sub.name}</span>
-                        <p className="text-xs text-muted-foreground mt-0.5">{sub.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Players + Verdict */}
-                <div className="ml-[56px] flex flex-wrap items-center gap-3">
-                  <div className="flex flex-wrap gap-2">
-                    {layer.players.map((p) => (
-                      <span key={p} className="text-xs font-medium px-2.5 py-1 rounded-full bg-secondary text-foreground">
-                        {p}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
-                    {layer.verdict}
-                  </span>
-                </div>
-              </div>
-            </motion.details>
-          ))}
+        <div className="text-center mb-14">
+          <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">
+            Why We Call It a Supply Chain
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            From Gold in the Ground to the Ring on Your Finger
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Every layer transforms the output of the layer below it. Most companies only own one layer. 
+            The supply chain is only as strong as its weakest link.
+          </p>
         </div>
+
+        {/* The gold journey — vertical visual */}
+        <div className="relative">
+          {/* Connecting line */}
+          <div className="absolute left-[39px] md:left-[47px] top-0 bottom-0 w-px bg-border z-0" />
+
+          <div className="space-y-1">
+            {LAYERS.map((layer, i) => (
+              <motion.div
+                key={layer.id}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="relative z-10"
+              >
+                <div
+                  className="flex gap-0 rounded-xl overflow-hidden border border-border bg-background"
+                  style={{ borderLeftWidth: "5px", borderLeftColor: `hsl(${layer.color})` }}
+                >
+                  {/* Layer ID column */}
+                  <div
+                    className="flex flex-col items-center justify-center px-4 py-5 min-w-[78px] md:min-w-[94px]"
+                    style={{ background: `hsl(${layer.bg} / 0.5)` }}
+                  >
+                    <span className="text-2xl mb-1">{layer.goldIcon}</span>
+                    <span
+                      className="font-display text-xl font-bold"
+                      style={{ color: `hsl(${layer.color})` }}
+                    >
+                      {layer.id}
+                    </span>
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-wider mt-0.5"
+                      style={{ color: `hsl(${layer.color})` }}
+                    >
+                      {layer.shortName}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 py-4 px-5 md:px-6">
+                    {/* Gold analogy title + description */}
+                    <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-1.5">
+                      {layer.goldTitle}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {layer.goldAnalogy}
+                    </p>
+
+                    {/* ═══ SUBLAYERS — the real meat ═══ */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {layer.sublayers.map((sub) => (
+                        <div
+                          key={sub.id}
+                          className="flex items-start gap-2.5 rounded-lg px-3 py-2.5"
+                          style={{
+                            background: sub.defensible
+                              ? `hsl(${layer.bg} / 0.6)`
+                              : `hsl(${layer.bg} / 0.2)`,
+                            border: sub.defensible
+                              ? `1.5px solid hsl(${layer.color} / 0.35)`
+                              : "1.5px solid transparent",
+                          }}
+                        >
+                          <span
+                            className="text-xs font-bold whitespace-nowrap mt-0.5"
+                            style={{ color: `hsl(${layer.color})` }}
+                          >
+                            {sub.id}{sub.defensible ? " ★" : ""}
+                          </span>
+                          <div className="min-w-0">
+                            <span className="text-sm font-semibold text-foreground">{sub.name}</span>
+                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{sub.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Players + verdict */}
+                    <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-border/50">
+                      {layer.players.map((p) => (
+                        <span key={p} className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-secondary text-foreground">
+                          {p}
+                        </span>
+                      ))}
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-wider ml-auto"
+                        style={{ color: `hsl(${layer.color})` }}
+                      >
+                        {layer.verdict}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Arrow between layers */}
+                {i < LAYERS.length - 1 && (
+                  <div className="flex justify-center py-0.5">
+                    <ArrowDown size={14} className="text-muted-foreground/40" />
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Key insight callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-8 bg-navy rounded-xl p-6 md:p-8"
+          >
+            <p className="text-sm md:text-base text-white/80 leading-relaxed">
+              <span className="text-yellow-400 font-bold">The key insight: </span>
+              {GOLD_KEY_INSIGHT}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* ═══════ DEFENSIBLE TRIANGLE ═══════ */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">
+            The Defensible Triangle
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
+            Three Sub-Layers That Determine Survival
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {[
+              {
+                id: "L1b", name: "Proprietary Data", layer: "L1",
+                desc: "Data behind enterprise walls. No one else has it. This is your gold deposit — the deeper the vein, the stronger the moat.",
+              },
+              {
+                id: "L5b/c/d", name: "Deep Skills & Playbooks", layer: "L5",
+                desc: "Domain execution, mindset frameworks, company SOPs. The encoded expertise that transforms generic intelligence into irreplaceable capability.",
+              },
+              {
+                id: "L8c/d", name: "Compounding Memory", layer: "L8",
+                desc: "Cross-customer patterns and institutional knowledge. The system gets smarter with every interaction. This is lock-in that compounds daily.",
+              },
+            ].map((item, i) => {
+              const n = parseInt(item.layer.replace("L", ""));
+              return (
+                <div
+                  key={i}
+                  className="bg-card border border-border rounded-xl p-6 text-left"
+                  style={{ borderTop: `4px solid hsl(var(--layer-${n}))` }}
+                >
+                  <span
+                    className="text-xs font-bold px-2.5 py-1 rounded inline-block mb-3"
+                    style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}
+                  >
+                    {item.id} ★
+                  </span>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-sm text-muted-foreground mt-8 max-w-xl mx-auto italic">
+            If you own all three, you're a fortress. If you own none, you're in the graveyard. 
+            Most companies own one — and that determines their timeline.
+          </p>
+        </motion.div>
       </div>
     </section>
 
@@ -145,18 +260,15 @@ const FrameworkPage = () => (
                 <h3 className="font-display text-xl font-bold text-white">Sierra = FORTRESS</h3>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Customer Care × 4 verticals × 3 layers (L1 + L5 + L8). Memory compounds.
-                Volume = massive. Hard to displace. Structurally durable.
+                Customer Care × 4 verticals × 3 layers (L1b + L5b + L8c). Memory compounds.
+                Volume = massive. Hard to displace. Owns the Defensible Triangle.
               </p>
               <div className="flex gap-2 flex-wrap">
-                {["L1", "L5", "L8"].map((l) => {
-                  const n = parseInt(l.replace("L", ""));
-                  return (
-                    <span key={l} className="text-xs font-bold px-2.5 py-1 rounded" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg) / 0.2)` }}>
-                      {l}
-                    </span>
-                  );
-                })}
+                {["L1b ★", "L5b ★", "L8c ★"].map((l) => (
+                  <span key={l} className="text-xs font-bold px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400">
+                    {l}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -166,12 +278,12 @@ const FrameworkPage = () => (
                 <h3 className="font-display text-xl font-bold text-white">Gamma ($2.1B) = DEAD</h3>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Product + PM × cross-industry × L7a surface only. No data, no doctrine, no memory.
-                Just a wrapper. Claude, Copilot, Gemini do this for free. → $0.
+                Product + PM × cross-industry × L7a only. No proprietary data (L1b), no playbooks (L5d),
+                no memory (L8c). Just a display case. Claude, Copilot, Gemini do this for free.
               </p>
               <div className="flex gap-2">
-                <span className="text-xs font-bold px-2.5 py-1 rounded" style={{ color: "hsl(var(--layer-7))", background: "hsl(var(--layer-7-bg) / 0.2)" }}>
-                  L7a only
+                <span className="text-xs font-bold px-2.5 py-1 rounded bg-red-500/20 text-red-400">
+                  L7a only — no ★
                 </span>
               </div>
             </div>
@@ -211,16 +323,16 @@ const FrameworkPage = () => (
       <div className="max-w-5xl mx-auto px-6 py-20">
         <p className="font-body text-xs font-semibold uppercase tracking-[3px] text-indigo mb-4">Company Archetypes</p>
         <h2 className="font-display text-3xl font-bold text-foreground mb-4">The Six Fates of SaaS</h2>
-        <p className="text-muted-foreground max-w-3xl mb-10">Every SaaS company alive today fits one of these patterns. Each has a strategy, a structural position, and a fate.</p>
+        <p className="text-muted-foreground max-w-3xl mb-10">Every SaaS company fits one of these patterns. Each has a strategy, a structural position, and a fate.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Data Refineries", status: "safe", desc: "L1 — Proprietary data compounds. Apollo, Bloomberg. More agents = more demand.", color: "var(--layer-1)" },
-            { title: "Infrastructure Rails", status: "safe", desc: "L3/L4 — Essential pipes. Supabase, Cal.com, Twilio. Agent backends.", color: "var(--layer-4)" },
-            { title: "Workflow Fortresses", status: "contested", desc: "L5+L6 — Salesforce, HubSpot. Too embedded to replace. Switching cost buys 3-5 years.", color: "var(--layer-5)" },
-            { title: "Domain Specialists", status: "safe", desc: "L5 deep — Harvey, Sierra. Encoded expertise + memory loops = structural moat.", color: "var(--layer-5)" },
-            { title: "Thin-Layer Graveyard", status: "dead", desc: "L6a/L7a — Gamma, Jasper, Chegg. One prompt from free. Already dead.", color: "var(--layer-3)" },
-            { title: "Full-Stack Juggernauts", status: "dominant", desc: "L2+L7+L8 — Claude, ChatGPT, Gemini, Copilot. The last interfaces.", color: "var(--layer-8)" },
+            { title: "Data Refineries", status: "safe", desc: "L1b ★ — Proprietary data compounds. Apollo, Bloomberg. More agents = more demand.", color: "var(--layer-1)" },
+            { title: "Infrastructure Rails", status: "safe", desc: "L3/L4b ★ — Essential pipes. Supabase, Twilio. Deep integration switching costs.", color: "var(--layer-4)" },
+            { title: "Workflow Fortresses", status: "contested", desc: "L5+L6b ★ — Salesforce, HubSpot. Agent loops + playbooks. Switching cost buys 3-5 years.", color: "var(--layer-5)" },
+            { title: "Domain Specialists", status: "safe", desc: "L5b/c/d ★ + L8c ★ — Harvey, Sierra. Encoded expertise + compounding memory = fortress.", color: "var(--layer-5)" },
+            { title: "Thin-Layer Graveyard", status: "dead", desc: "L6a/L7a — no ★ positions. Gamma, Jasper, Chegg. One prompt from free. Already dead.", color: "var(--layer-3)" },
+            { title: "Full-Stack Juggernauts", status: "dominant", desc: "L2a+L7d/e ★+L8c ★ — Claude, ChatGPT, Copilot. Own the smelter AND the memory.", color: "var(--layer-8)" },
           ].map((arch, i) => (
             <motion.div
               key={i}
@@ -255,7 +367,7 @@ const FrameworkPage = () => (
         <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
           Do you know where YOU sit in the stack?
         </h2>
-        <p className="text-white/60 mb-6">Book a workshop to map your company's structural position.</p>
+        <p className="text-white/60 mb-6">Book a workshop to map your company's structural position across all 32+ sub-layers.</p>
         <a href="/speaking" className="inline-flex items-center gap-2 px-6 py-3 bg-indigo text-white font-semibold rounded-md hover:opacity-90 transition">
           Book a Workshop <ArrowRight size={18} />
         </a>
