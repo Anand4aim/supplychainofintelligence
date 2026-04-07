@@ -350,9 +350,9 @@ const Index = () => {
           {/* ──── SKETCH MODULE: Gold supply chain journey ──── */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-5 md:p-8">
-              <SketchLabel color="#888" className="text-[13px] mb-5 block">
+              <p className="text-sm font-semibold text-[#666] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
                 The Intelligence Supply Chain — each layer transforms the one below ↓
-              </SketchLabel>
+              </p>
 
               <div className="space-y-0">
                 {LAYERS.map((layer, i) => (
@@ -362,7 +362,7 @@ const Index = () => {
                       <div className="flex flex-col items-center min-w-[50px] md:min-w-[60px]">
                         <span className="text-xl">{layer.goldIcon}</span>
                         <span
-                          className="text-[13px] font-bold mt-0.5"
+                          className="text-sm font-bold mt-0.5"
                           style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
                         >
                           {layer.id}
@@ -372,12 +372,12 @@ const Index = () => {
                       {/* Name + analogy */}
                       <div className="flex-1 min-w-0">
                         <span
-                          className="text-[14px] font-bold block"
+                          className="text-base font-bold block"
                           style={{ fontFamily: "'Caveat', cursive", color: "#333" }}
                         >
                           {layer.goldTitle}
                         </span>
-                        <span className="text-[11px] text-[#888] leading-snug block mt-0.5">
+                        <span className="text-xs text-[#777] leading-snug block mt-0.5">
                           {layer.desc}
                         </span>
                       </div>
@@ -405,7 +405,7 @@ const Index = () => {
                           <line x1="8" y1="2" x2="8" y2="14" stroke="#bbb" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
                           <path d="M4 12 L8 18 L12 12" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
-                        <SketchLabel color="#bbb" className="text-[9px]">transforms into</SketchLabel>
+                        <span className="text-[10px] text-[#aaa]">transforms into</span>
                       </div>
                     )}
                   </div>
@@ -414,10 +414,10 @@ const Index = () => {
 
               {/* Key insight in sketch style */}
               <div className="mt-6 pt-4 border-t border-[#e0ddd8]">
-                <SketchLabel color="#DC2626" className="text-[13px] font-bold block mb-1">
+                <p className="text-sm font-bold text-[#DC2626] mb-1" style={{ fontFamily: "'Caveat', cursive" }}>
                   ← Key insight
-                </SketchLabel>
-                <p className="text-[12px] text-[#666] leading-relaxed" style={{ fontFamily: "'Caveat', cursive" }}>
+                </p>
+                <p className="text-sm text-[#555] leading-relaxed">
                   {GOLD_KEY_INSIGHT}
                 </p>
               </div>
