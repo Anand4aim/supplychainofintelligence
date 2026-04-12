@@ -598,39 +598,42 @@ const Index = () => {
                     title: "The Creator Cannot Be the Gatekeeper",
                     desc: "When one entity controls both intelligence and trust, credibility degrades.",
                     predicts: "WHAT can't be vertically integrated",
+                    highlight: "pink" as const,
                   },
                   {
                     num: "II",
                     title: "Memory That Doesn't Learn Isn't Intelligence",
                     desc: "A system that remembers but doesn't improve is just a database with a chat UI.",
                     predicts: "WHO captures long-term value",
+                    highlight: "cyan" as const,
                   },
                   {
                     num: "III",
                     title: "Value Migrates to the Scarcest Layer",
                     desc: "When a layer commoditizes, value transfers to adjacent scarce layers.",
                     predicts: "WHERE value is going",
+                    highlight: "yellow" as const,
                   },
-                ].map((law) => (
-                  <div key={law.num} className="flex gap-4 items-start">
+                ].map((law, idx) => (
+                  <div key={law.num} className="flex gap-4 items-start" style={{ transform: `rotate(${[-0.5, 0.3, -0.2][idx]}deg)` }}>
                     <div className="min-w-[50px] text-center">
-                      <span className="font-sketch text-4xl font-bold leading-none text-sketch-red">
+                      <SketchBigWord size="4xl" color="hsl(var(--sketch-red))" rotate={[-2, 1, -1][idx]}>
                         {law.num}
-                      </span>
+                      </SketchBigWord>
                     </div>
                     <div className="flex-1">
                       <SketchBox color="hsl(25 12% 75%)" className="p-4">
                         <span className="font-sketch text-xl font-bold text-foreground block mb-1.5">
-                          {law.title}
+                          <SketchHighlight color={law.highlight}>{law.title}</SketchHighlight>
                         </span>
                         <span className="text-sm text-muted-foreground leading-relaxed block mb-2">
                           {law.desc}
                         </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
-                          <span className="font-sketch text-sm font-bold text-sketch-red">
+                          <SketchAnnotation>
                             Predicts {law.predicts}
-                          </span>
+                          </SketchAnnotation>
                         </div>
                       </SketchBox>
                     </div>
