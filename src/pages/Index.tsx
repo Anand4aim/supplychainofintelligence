@@ -40,11 +40,12 @@ const Index = () => {
       <SketchFilters />
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 1 — HERO (editorial shell, no sketch)
+          SECTION 1 — HERO (warm cream, hand-drawn accents)
       ══════════════════════════════════════════════════════ */}
-      <section className="relative bg-navy overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute top-10 left-1/3 w-[500px] h-[500px] rounded-full bg-indigo blur-[160px]" />
+      <section className="relative bg-background overflow-hidden">
+        {/* Subtle warm gradient */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 left-1/3 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[160px]" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-14 md:pt-28 md:pb-16">
@@ -55,47 +56,55 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-white/30 mb-5">
-                A structural framework by Anand Arivukkarasu · Ex-Meta Product Leader
+              <p className="font-sketch text-sm text-muted-foreground mb-4">
+                A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
-              <h1 className="font-display text-[30px] md:text-[38px] lg:text-[44px] font-bold text-white leading-[1.12] mb-5">
-                AI is reorganizing software into a new supply chain.{" "}
-                <span className="text-indigo">Most companies only own one layer.</span>
+              <h1 className="font-display text-[30px] md:text-[38px] lg:text-[44px] font-bold text-foreground leading-[1.12] mb-5">
+                AI is reorganizing software into a{" "}
+                <span className="font-sketch text-accent relative inline-block">
+                  new supply chain
+                  <svg className="absolute -bottom-1 left-0 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none" style={{ filter: "url(#sketch-wobble)" }}>
+                    <path d="M4 8 C40 3, 80 10, 120 5 C160 0, 180 8, 196 4" fill="none" stroke="hsl(var(--sketch-red))" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </span>
+                .{" "}
+                Most companies only own one layer.
               </h1>
-              <p className="text-[15px] text-white/50 leading-[1.7] max-w-xl mb-3">
+              <p className="text-[15px] text-muted-foreground leading-[1.7] max-w-xl mb-3">
                 The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
                 that determine who captures value, who becomes infrastructure, and who
                 gets dissolved.
               </p>
-              <p className="text-xs text-white/25 mb-7">
+              <p className="font-sketch text-sm text-muted-foreground/60 mb-7">
                 For product leaders, founders, and investors trying to understand where AI actually captures value.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/framework"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition"
                 >
                   Explore the Framework <ArrowRight size={15} />
                 </Link>
                 <Link
                   to="/analysis"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/12 text-white/60 text-sm font-medium rounded-md hover:bg-white/5 transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-muted-foreground text-sm font-medium rounded-lg hover:bg-secondary transition"
                 >
                   See Case Studies
                 </Link>
               </div>
             </motion.div>
 
-            {/* Right: L0–L8 vertical interactive stack */}
+            {/* Right: L0–L8 layer stack */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <p className="text-[9px] font-bold uppercase tracking-[2.5px] text-white/20 mb-3">
-                The 9-Layer Stack — Click to explore
+              <p className="font-sketch text-sm text-muted-foreground mb-3">
+                The 9-Layer Stack — Click to explore ↓
               </p>
-              <div className="space-y-1">
+              <div className="sketch-paper rounded-2xl p-4 space-y-1.5">
+                <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
                 {LAYERS.map((layer, i) => {
                   const defCount = layer.sublayers.filter((s) => s.defensible).length;
                   return (
@@ -107,20 +116,20 @@ const Index = () => {
                     >
                       <Link
                         to={`/framework#${layer.id}`}
-                        className="flex items-center gap-2.5 rounded-lg px-3.5 py-2 group transition-all duration-200 hover:translate-x-1"
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 group transition-all duration-200 hover:translate-x-1 sketch-border"
                         style={{
-                          background: `hsl(${layer.bg} / 0.1)`,
+                          background: `hsl(${layer.bg})`,
                           borderLeft: `4px solid hsl(${layer.color})`,
                         }}
                       >
                         <span className="text-base shrink-0">{layer.goldIcon}</span>
                         <span
-                          className="font-display text-[13px] font-bold min-w-[26px] shrink-0"
+                          className="font-sketch text-[15px] font-bold min-w-[28px] shrink-0"
                           style={{ color: `hsl(${layer.color})` }}
                         >
                           {layer.id}
                         </span>
-                        <span className="text-white/60 text-[13px] font-medium flex-1 group-hover:text-white transition-colors truncate">
+                        <span className="text-foreground/70 text-[13px] font-medium flex-1 group-hover:text-foreground transition-colors truncate">
                           {layer.name}
                         </span>
                         <div className="flex gap-0.5 items-center shrink-0">
@@ -138,17 +147,17 @@ const Index = () => {
                           ))}
                         </div>
                         {defCount > 0 && (
-                          <span className="text-[8px] font-bold text-white/20 shrink-0">
+                          <span className="font-sketch text-[10px] text-muted-foreground shrink-0">
                             {defCount}★
                           </span>
                         )}
-                        <ArrowRight size={11} className="text-white/10 group-hover:text-white/40 transition-colors shrink-0" />
+                        <ArrowRight size={11} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors shrink-0" />
                       </Link>
                     </motion.div>
                   );
                 })}
               </div>
-              <p className="text-[8px] text-white/15 mt-2.5">
+              <p className="font-sketch text-[11px] text-muted-foreground/50 mt-2.5">
                 ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ mapped
               </p>
             </motion.div>
@@ -159,46 +168,47 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
-            className="mt-12 bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 md:p-7"
+            className="mt-12 sketch-paper rounded-2xl p-5 md:p-7 border border-border relative"
           >
-            <p className="text-[9px] font-bold uppercase tracking-[2px] text-indigo/70 mb-4">
-              Proof — One example, three fates
+            <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
+            <p className="font-sketch text-sm text-accent mb-4 relative">
+              ✏️ Proof — One example, three fates
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
               {[
                 {
                   name: "Jasper", logo: "https://logo.clearbit.com/jasper.ai",
-                  pos: "L7a only", fate: "Collapsed", color: "hsl(0 84% 60%)",
+                  pos: "L7a only", fate: "Collapsed", color: "hsl(var(--verdict-exposed))",
                   note: "$1.5B → ~$300M · Thin wrapper, no moat", layers: [7],
                 },
                 {
                   name: "Grammarly", logo: "https://logo.clearbit.com/grammarly.com",
-                  pos: "L4 + L5 + L7 + L8", fate: "Thriving", color: "hsl(160 84% 39%)",
+                  pos: "L4 + L5 + L7 + L8", fate: "Thriving", color: "hsl(var(--verdict-fortified))",
                   note: "Stable $13B · Memory compounds, deep integrations", layers: [4, 5, 7, 8],
                 },
                 {
                   name: "ChatGPT", logo: "https://logo.clearbit.com/openai.com",
-                  pos: "L2 + L7", fate: "Dominant", color: "hsl(243 75% 59%)",
+                  pos: "L2 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
                   note: "Owns the smelter. Surface is free because the model IS the moat", layers: [2, 7],
                 },
               ].map((c) => (
                 <div key={c.name} className="flex items-start gap-3">
                   <img
                     src={c.logo} alt={c.name}
-                    className="w-7 h-7 rounded-md object-contain bg-white p-0.5 mt-0.5 shrink-0"
+                    className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                   />
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-bold text-white">{c.name}</span>
-                      <span className="text-[10px] font-bold uppercase" style={{ color: c.color }}>{c.fate}</span>
+                      <span className="text-sm font-semibold text-foreground">{c.name}</span>
+                      <span className="font-sketch text-sm font-bold" style={{ color: c.color }}>{c.fate}</span>
                     </div>
-                    <p className="text-[11px] text-white/35 mt-0.5">{c.pos}</p>
-                    <p className="text-[10px] text-white/25 mt-1 leading-relaxed">{c.note}</p>
+                    <p className="font-sketch text-[12px] text-muted-foreground mt-0.5">{c.pos}</p>
+                    <p className="text-[11px] text-muted-foreground/60 mt-1 leading-relaxed">{c.note}</p>
                     <div className="flex gap-1 mt-1.5">
                       {c.layers.map((n) => (
-                        <span key={n} className="text-[8px] font-bold px-1.5 py-0.5 rounded"
-                          style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg) / 0.15)` }}>
+                        <span key={n} className="font-sketch text-[10px] font-bold px-1.5 py-0.5 rounded-md"
+                          style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
                           L{n}
                         </span>
                       ))}
@@ -212,13 +222,13 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 2 — Y-AXIS vs Z-AXIS (editorial + SKETCH MODULE)
+          SECTION 2 — Y-AXIS vs Z-AXIS
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-background">
+      <section className="bg-secondary/50">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
-              The Missing Dimension
+            <p className="font-sketch text-sm text-accent mb-4">
+              ✏️ The Missing Dimension
             </p>
             <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground leading-tight mb-5">
               Why customer understanding is no longer enough
@@ -231,14 +241,14 @@ const Index = () => {
             </p>
           </motion.div>
 
-          {/* ──── SKETCH MODULE: Y-axis vs Z-axis ──── */}
+          {/* SKETCH MODULE: Y-axis vs Z-axis */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-6 md:p-10 mb-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Y-axis column */}
                 <div>
-                  <p className="text-sm font-semibold text-[#555] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>Traditional PM Thinking</p>
-                  <SketchBox color="#ccc" className="p-4 mb-3">
+                  <p className="font-sketch text-base text-sketch-muted mb-3">Traditional PM Thinking</p>
+                  <SketchBox color="#bbb" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
                         "What does the customer need?",
@@ -247,23 +257,23 @@ const Index = () => {
                         "How do we improve retention?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#999] text-sm mt-0.5">—</span>
-                          <span className="text-[#444] text-sm leading-snug" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-muted-foreground text-sm mt-0.5">—</span>
+                          <span className="font-sketch text-sm text-foreground/70 leading-snug">{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <p className="text-xs text-[#999] italic mt-2">
+                  <p className="font-sketch text-xs text-muted-foreground italic mt-2">
                     Necessary — but no longer sufficient
                   </p>
                 </div>
 
                 {/* Z-axis column */}
                 <div>
-                  <p className="text-sm font-bold text-[#DC2626] mb-3" style={{ fontFamily: "'Caveat', cursive" }}>
+                  <p className="font-sketch text-base font-bold text-sketch-red mb-3">
                     + Structural Depth Thinking ← NEW
                   </p>
-                  <SketchBox color="#DC2626" fill="rgba(220,38,38,0.03)" className="p-4 mb-3">
+                  <SketchBox color="hsl(var(--sketch-red))" fill="hsl(var(--sketch-red) / 0.03)" className="p-4 mb-3">
                     <div className="space-y-2.5">
                       {[
                         "Which layer do we actually own?",
@@ -272,13 +282,13 @@ const Index = () => {
                         "Do we own the Defensible Triangle?",
                       ].map((q, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <span className="text-[#DC2626] text-sm mt-0.5">→</span>
-                          <span className="text-[#333] text-sm leading-snug font-medium" style={{ fontFamily: "'Caveat', cursive" }}>{q}</span>
+                          <span className="text-sketch-red text-sm mt-0.5">→</span>
+                          <span className="font-sketch text-sm text-foreground font-medium leading-snug">{q}</span>
                         </div>
                       ))}
                     </div>
                   </SketchBox>
-                  <p className="text-xs font-bold text-[#DC2626] mt-2">
+                  <p className="font-sketch text-xs font-bold text-sketch-red mt-2">
                     This determines survival
                   </p>
                 </div>
@@ -287,56 +297,52 @@ const Index = () => {
               {/* Sketch diagram: Y vs Z axes */}
               <div className="mt-8 flex justify-center">
                 <div className="relative w-[280px] h-[200px]">
-                  {/* Y axis */}
                   <svg className="absolute inset-0" viewBox="0 0 280 200" style={{ filter: "url(#sketch-wobble)" }}>
-                    {/* Y-axis line */}
-                    <line x1="60" y1="180" x2="60" y2="20" stroke="#555" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M54 28 L60 16 L66 28" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" />
-                    {/* Z-axis line */}
-                    <line x1="60" y1="180" x2="260" y2="180" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M252 174 L264 180 L252 186" fill="none" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
-                    {/* Diagonal "winning zone" */}
-                    <rect x="120" y="40" width="110" height="90" rx="6" fill="rgba(220,38,38,0.06)" stroke="#DC2626" strokeWidth="1" strokeDasharray="4 3" />
+                    <line x1="60" y1="180" x2="60" y2="20" stroke="hsl(var(--sketch-muted))" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M54 28 L60 16 L66 28" fill="none" stroke="hsl(var(--sketch-muted))" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="60" y1="180" x2="260" y2="180" stroke="hsl(var(--sketch-red))" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M252 174 L264 180 L252 186" fill="none" stroke="hsl(var(--sketch-red))" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="120" y="40" width="110" height="90" rx="6" fill="hsl(var(--sketch-red) / 0.06)" stroke="hsl(var(--sketch-red))" strokeWidth="1" strokeDasharray="4 3" />
                   </svg>
-                  <SketchLabel className="absolute left-0 top-0 text-[12px]" color="#555" rotate={-90}>
+                  <SketchLabel className="absolute left-0 top-0 text-[12px]" color="hsl(var(--sketch-muted))" rotate={-90}>
                     Customer Depth (Y)
                   </SketchLabel>
-                  <SketchLabel className="absolute right-0 bottom-0 text-[12px]" color="#DC2626">
+                  <SketchLabel className="absolute right-0 bottom-0 text-[12px]" color="hsl(var(--sketch-red))">
                     Stack Depth (Z)
                   </SketchLabel>
                   <span className="absolute text-center" style={{ left: "120px", top: "70px" }}>
-                    <SketchLabel color="#DC2626" className="text-[11px] font-bold">winning zone</SketchLabel>
+                    <SketchLabel color="hsl(var(--sketch-red))" className="text-[11px] font-bold">winning zone</SketchLabel>
                   </span>
                   <span className="absolute" style={{ left: "70px", top: "145px" }}>
-                    <SketchLabel color="#999" className="text-[10px]">thin layer risk</SketchLabel>
+                    <SketchLabel color="hsl(var(--sketch-muted))" className="text-[10px]">thin layer risk</SketchLabel>
                   </span>
                 </div>
               </div>
             </SketchBoard>
           </motion.div>
 
-          {/* Quote (editorial shell, not sketch) */}
+          {/* Quote */}
           <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
-            <div className="border-l-4 border-indigo/30 bg-muted/40 rounded-r-lg p-5 max-w-2xl">
+            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl">
               <p className="text-sm text-foreground leading-[1.75] italic">
                 "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
                 you also need the Z-axis — infrastructure depth — or you'll build something customers
                 love today that gets commoditized tomorrow."
               </p>
-              <p className="mt-2 text-xs text-muted-foreground font-medium">— Anand Arivukkarasu</p>
+              <p className="mt-2 font-sketch text-sm text-muted-foreground">— Anand Arivukkarasu</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 3 — GOLD MINING ANALOGY (editorial header + SKETCH MODULE)
+          SECTION 3 — GOLD MINING ANALOGY
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-card border-y border-border">
+      <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
-              Why We Call It a Supply Chain
+            <p className="font-sketch text-sm text-accent mb-4">
+              ✏️ Why We Call It a Supply Chain
             </p>
             <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground leading-tight mb-4">
               From Gold in the Ground to the Ring on Your Finger
@@ -347,25 +353,25 @@ const Index = () => {
             </p>
           </motion.div>
 
-          {/* ──── SKETCH MODULE: Side-by-side comparative flowchart ──── */}
+          {/* Side-by-side comparative flowchart */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-5 md:p-8">
-              <p className="text-sm font-semibold text-[#666] mb-6" style={{ fontFamily: "'Caveat', cursive" }}>
+              <p className="font-sketch text-sm text-sketch-muted mb-6">
                 Same supply chain. Different raw material. ↓
               </p>
 
               {/* Column headers */}
               <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] gap-0 mb-4">
                 <div className="text-center">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase"
-                    style={{ background: "#FEF3C7", color: "#92400E", fontFamily: "'Caveat', cursive", fontSize: "14px", letterSpacing: "1px" }}>
+                  <span className="inline-block px-3 py-1 rounded-full font-sketch text-sm font-bold"
+                    style={{ background: "hsl(var(--layer-6-bg))", color: "hsl(var(--layer-6))" }}>
                     ⛏️ Gold Rush
                   </span>
                 </div>
                 <div />
                 <div className="text-center">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase"
-                    style={{ background: "#EEF2FF", color: "#4338CA", fontFamily: "'Caveat', cursive", fontSize: "14px", letterSpacing: "1px" }}>
+                  <span className="inline-block px-3 py-1 rounded-full font-sketch text-sm font-bold"
+                    style={{ background: "hsl(var(--layer-8-bg))", color: "hsl(var(--layer-8))" }}>
                     🧠 AI Supply Chain
                   </span>
                 </div>
@@ -376,50 +382,44 @@ const Index = () => {
                 {LAYERS.map((layer, i) => (
                   <div key={layer.id}>
                     <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] items-center gap-0">
-                      {/* LEFT — Gold analogy */}
                       <div className="text-right pr-2 md:pr-4 py-2">
                         <span className="text-lg leading-none">{layer.goldIcon}</span>
-                        <span className="block text-sm font-bold text-[#92400E] mt-0.5" style={{ fontFamily: "'Caveat', cursive" }}>
+                        <span className="block font-sketch text-sm font-bold mt-0.5" style={{ color: "hsl(var(--layer-6))" }}>
                           {layer.goldTitle?.replace(/^The\s+/i, "")}
                         </span>
                       </div>
 
-                      {/* CENTER — Layer badge */}
                       <div className="flex flex-col items-center justify-center">
                         <div
-                          className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-xs font-bold shadow-sm"
+                          className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center font-sketch text-[13px] font-bold shadow-sm sketch-border"
                           style={{
                             background: `hsl(${layer.bg})`,
                             color: `hsl(${layer.color})`,
                             border: `2px solid hsl(${layer.color} / 0.4)`,
-                            fontFamily: "'Caveat', cursive",
-                            fontSize: "13px",
                           }}
                         >
                           {layer.id}
                         </div>
                       </div>
 
-                      {/* RIGHT — AI layer name + desc */}
                       <div className="pl-2 md:pl-4 py-2">
                         <span
-                          className="block text-sm font-bold"
-                          style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
+                          className="block font-sketch text-sm font-bold"
+                          style={{ color: `hsl(${layer.color})` }}
                         >
                           {layer.name}
                         </span>
-                        <span className="text-[11px] text-[#777] leading-snug block mt-0.5">
+                        <span className="text-[11px] text-muted-foreground leading-snug block mt-0.5">
                           {layer.desc}
                         </span>
                       </div>
                     </div>
 
-                    {/* Arrow between rows */}
                     {i < LAYERS.length - 1 && (
                       <div className="flex justify-center py-0.5">
                         <svg width="16" height="18" viewBox="0 0 16 18" style={{ filter: "url(#sketch-wobble)" }}>
-                          <line x1="8" y1="1" x2="8" y2="12" stroke="#ccc" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
-                          <path d="M4 10 L8 16 L12 10" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+                          <line x1="8" y1="1" x2="8" y2="12" stroke="hsl(var(--border))" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
+                          <path d="M4 10 L8 16 L12 10" fill="none" stroke="hsl(var(--sketch-red))" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
                       </div>
                     )}
@@ -427,12 +427,11 @@ const Index = () => {
                 ))}
               </div>
 
-              {/* Key insight */}
-              <div className="mt-6 pt-4 border-t border-[#e0ddd8]">
-                <p className="text-sm font-bold text-[#DC2626] mb-1" style={{ fontFamily: "'Caveat', cursive" }}>
+              <div className="mt-6 pt-4 border-t border-border">
+                <p className="font-sketch text-sm font-bold text-sketch-red mb-1">
                   ← Key insight
                 </p>
-                <p className="text-sm text-[#555] leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {GOLD_KEY_INSIGHT}
                 </p>
               </div>
@@ -442,13 +441,13 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4 — FULL 9-LAYER MAP (editorial, clean)
+          SECTION 4 — FULL 9-LAYER MAP
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-background">
+      <section className="bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-3">
-              The Full Map
+            <p className="font-sketch text-sm text-accent mb-3">
+              ✏️ The Full Map
             </p>
             <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground mb-3 leading-tight">
               9 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ Sublayers. The Defensible Positions Marked.
@@ -466,17 +465,17 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
                 transition={{ delay: i * 0.03, duration: 0.3 }}
-                className="rounded-xl overflow-hidden border border-border bg-card"
+                className="rounded-xl overflow-hidden border border-border bg-card sketch-border"
                 style={{ borderLeftWidth: "4px", borderLeftColor: `hsl(${layer.color})` }}
               >
                 <div className="flex flex-col lg:flex-row">
                   <div
                     className="flex items-center gap-3 px-5 py-3 lg:min-w-[200px] lg:flex-col lg:justify-center lg:items-center lg:py-5"
-                    style={{ background: `hsl(${layer.bg} / 0.35)` }}
+                    style={{ background: `hsl(${layer.bg})` }}
                   >
                     <span className="text-xl">{layer.goldIcon}</span>
                     <div className="flex items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
-                      <span className="font-display text-lg font-bold" style={{ color: `hsl(${layer.color})` }}>
+                      <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
                         {layer.id}
                       </span>
                       <span className="text-xs font-medium text-muted-foreground">{layer.name}</span>
@@ -487,13 +486,13 @@ const Index = () => {
                       {layer.sublayers.map((sub) => (
                         <div
                           key={sub.id}
-                          className="flex items-start gap-2 rounded-lg px-3 py-2"
+                          className="flex items-start gap-2 rounded-lg px-3 py-2 sketch-border"
                           style={{
-                            background: sub.defensible ? `hsl(${layer.bg} / 0.55)` : `hsl(${layer.bg} / 0.15)`,
-                            border: sub.defensible ? `1px solid hsl(${layer.color} / 0.25)` : "1px solid transparent",
+                            background: sub.defensible ? `hsl(${layer.bg})` : `hsl(${layer.bg} / 0.4)`,
+                            border: sub.defensible ? `1.5px solid hsl(${layer.color} / 0.3)` : "1.5px solid transparent",
                           }}
                         >
-                          <span className="text-[11px] font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
+                          <span className="font-sketch text-[12px] font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
                             {sub.id}{sub.defensible ? " ★" : ""}
                           </span>
                           <div className="min-w-0">
@@ -505,9 +504,9 @@ const Index = () => {
                     </div>
                     <div className="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-border/50">
                       {layer.players.slice(0, 4).map((p) => (
-                        <span key={p} className="text-[9px] font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">{p}</span>
+                        <span key={p} className="text-[9px] font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">{p}</span>
                       ))}
-                      <span className="text-[9px] font-bold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
+                      <span className="font-sketch text-[11px] font-bold ml-auto" style={{ color: `hsl(${layer.color})` }}>
                         {layer.verdict}
                       </span>
                     </div>
@@ -517,63 +516,58 @@ const Index = () => {
             ))}
           </div>
 
-          {/* ──── SKETCH MODULE: Defensible Triangle ──── */}
+          {/* Defensible Triangle */}
           <motion.div {...fadeIn} className="mt-10">
             <SketchBoard className="p-6 md:p-8">
-              <p className="text-base font-bold text-[#DC2626] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
+              <p className="font-sketch text-lg font-bold text-sketch-red mb-5">
                 The Defensible Triangle — where survival actually lives
               </p>
 
               <div className="flex flex-col items-center">
-                {/* Triangle diagram */}
                 <div className="relative w-[300px] h-[220px] mb-6">
                   <svg viewBox="0 0 300 220" className="w-full h-full" style={{ filter: "url(#sketch-wobble)" }}>
-                    {/* Triangle lines */}
-                    <path d="M150 30 L50 190 L250 190 Z" fill="rgba(220,38,38,0.04)" stroke="#333" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
-                    {/* Nodes */}
-                    <circle cx="150" cy="30" r="18" fill="#fff" stroke="#3B82F6" strokeWidth="2.5" />
-                    <circle cx="50" cy="190" r="18" fill="#fff" stroke="#10B981" strokeWidth="2.5" />
-                    <circle cx="250" cy="190" r="18" fill="#fff" stroke="#6366F1" strokeWidth="2.5" />
-                    {/* Center */}
-                    <circle cx="150" cy="135" r="10" fill="rgba(220,38,38,0.15)" stroke="#DC2626" strokeWidth="1.5" />
+                    <path d="M150 30 L50 190 L250 190 Z" fill="hsl(var(--sketch-red) / 0.04)" stroke="hsl(var(--sketch-dark))" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                    <circle cx="150" cy="30" r="18" fill="hsl(var(--sketch-paper))" stroke="hsl(var(--layer-1))" strokeWidth="2.5" />
+                    <circle cx="50" cy="190" r="18" fill="hsl(var(--sketch-paper))" stroke="hsl(var(--layer-5))" strokeWidth="2.5" />
+                    <circle cx="250" cy="190" r="18" fill="hsl(var(--sketch-paper))" stroke="hsl(var(--layer-8))" strokeWidth="2.5" />
+                    <circle cx="150" cy="135" r="10" fill="hsl(var(--sketch-red) / 0.15)" stroke="hsl(var(--sketch-red))" strokeWidth="1.5" />
                   </svg>
-                  {/* Labels */}
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-center">
-                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#3B82F6" }}>L1b ★</span>
-                    <span className="text-xs text-[#555] block">Proprietary Data</span>
+                    <span className="font-sketch text-sm font-bold block" style={{ color: "hsl(var(--layer-1))" }}>L1b ★</span>
+                    <span className="text-xs text-muted-foreground block">Proprietary Data</span>
                   </span>
                   <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#10B981" }}>L5b/c/d ★</span>
-                    <span className="text-xs text-[#555] block">Deep Skills</span>
+                    <span className="font-sketch text-sm font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5b/c/d ★</span>
+                    <span className="text-xs text-muted-foreground block">Deep Skills</span>
                   </span>
                   <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <span className="text-sm font-bold block" style={{ fontFamily: "'Caveat', cursive", color: "#6366F1" }}>L8c/d ★</span>
-                    <span className="text-xs text-[#555] block">Compounding Memory</span>
+                    <span className="font-sketch text-sm font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d ★</span>
+                    <span className="text-xs text-muted-foreground block">Compounding Memory</span>
                   </span>
                   <span className="absolute" style={{ left: "135px", top: "122px" }}>
-                    <span className="text-xs font-bold text-[#DC2626]" style={{ fontFamily: "'Caveat', cursive" }}>FORTRESS</span>
+                    <span className="font-sketch text-xs font-bold text-sketch-red">FORTRESS</span>
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                   {[
-                    { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "#3B82F6" },
-                    { id: "L5b/c/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "#10B981" },
-                    { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "#6366F1" },
+                    { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "hsl(var(--layer-1))" },
+                    { id: "L5b/c/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
+                    { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
                   ].map((item) => (
                     <SketchBox key={item.id} color={item.color} className="p-3.5">
-                      <span className="text-sm font-bold block mb-1" style={{ fontFamily: "'Caveat', cursive", color: item.color }}>
+                      <span className="font-sketch text-sm font-bold block mb-1" style={{ color: item.color }}>
                         {item.id} ★
                       </span>
-                      <span className="text-sm font-bold text-[#333] block" style={{ fontFamily: "'Caveat', cursive" }}>
+                      <span className="font-sketch text-sm font-bold text-foreground block">
                         {item.name}
                       </span>
-                      <span className="text-xs text-[#777] block mt-1">{item.note}</span>
+                      <span className="text-xs text-muted-foreground block mt-1">{item.note}</span>
                     </SketchBox>
                   ))}
                 </div>
 
-                <p className="text-xs text-[#888] italic mt-4 text-center">
+                <p className="font-sketch text-xs text-muted-foreground italic mt-4 text-center">
                   Own all three → fortress · Own none → graveyard · Most companies own one
                 </p>
               </div>
@@ -581,7 +575,7 @@ const Index = () => {
           </motion.div>
 
           <div className="mt-6 text-center">
-            <Link to="/framework" className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all">
+            <Link to="/framework" className="inline-flex items-center gap-2 text-sm text-accent font-medium hover:gap-3 transition-all">
               Deep-dive into every layer and sublayer <ArrowRight size={14} />
             </Link>
           </div>
@@ -589,13 +583,13 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 5 — THREE STRUCTURAL LAWS (editorial + SKETCH MODULE)
+          SECTION 5 — THREE STRUCTURAL LAWS
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-card border-y border-border">
+      <section className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
-              Three Structural Laws
+            <p className="font-sketch text-sm text-accent mb-4">
+              ✏️ Three Structural Laws
             </p>
             <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground mb-3">
               The Laws That Predict the Future
@@ -605,7 +599,6 @@ const Index = () => {
             </p>
           </motion.div>
 
-          {/* ──── SKETCH MODULE: The three laws ──── */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-6 md:p-8">
               <div className="space-y-6">
@@ -613,50 +606,39 @@ const Index = () => {
                   {
                     num: "I",
                     title: "The Creator Cannot Be the Gatekeeper",
-                    sketch: "L2 ←✗→ L3",
                     desc: "When one entity controls both intelligence and trust, credibility degrades.",
                     predicts: "WHAT can't be vertically integrated",
                   },
                   {
                     num: "II",
                     title: "Memory That Doesn't Learn Isn't Intelligence",
-                    sketch: "L8 ──→ L5",
                     desc: "A system that remembers but doesn't improve is just a database with a chat UI.",
                     predicts: "WHO captures long-term value",
                   },
                   {
                     num: "III",
                     title: "Value Migrates to the Scarcest Layer",
-                    sketch: "commodity → scarce",
                     desc: "When a layer commoditizes, value transfers to adjacent scarce layers.",
                     predicts: "WHERE value is going",
                   },
-                ].map((law, i) => (
+                ].map((law) => (
                   <div key={law.num} className="flex gap-4 items-start">
-                    {/* Number */}
                     <div className="min-w-[50px] text-center">
-                      <span
-                        className="text-4xl font-bold leading-none"
-                        style={{ fontFamily: "'Caveat', cursive", color: "#DC2626" }}
-                      >
+                      <span className="font-sketch text-4xl font-bold leading-none text-sketch-red">
                         {law.num}
                       </span>
                     </div>
-
                     <div className="flex-1">
-                      <SketchBox color="#333" className="p-4">
-                        <span
-                          className="text-lg font-bold text-[#222] block mb-1.5"
-                          style={{ fontFamily: "'Caveat', cursive" }}
-                        >
+                      <SketchBox color="hsl(var(--sketch-dark))" className="p-4">
+                        <span className="font-sketch text-lg font-bold text-foreground block mb-1.5">
                           {law.title}
                         </span>
-                        <span className="text-sm text-[#666] leading-relaxed block mb-2">
+                        <span className="text-sm text-muted-foreground leading-relaxed block mb-2">
                           {law.desc}
                         </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
-                          <span className="text-xs font-bold text-[#DC2626]">
+                          <span className="font-sketch text-xs font-bold text-sketch-red">
                             Predicts {law.predicts}
                           </span>
                         </div>
@@ -671,20 +653,20 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 6 — CASE STUDIES (editorial shell)
+          SECTION 6 — CASE STUDIES
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-background">
+      <section className="bg-secondary/30">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="flex items-end justify-between mb-10">
             <div>
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-3">
-                The Framework in Action
+              <p className="font-sketch text-sm text-accent mb-3">
+                ✏️ The Framework in Action
               </p>
               <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground">
                 Case Studies — Proof Through the Stack
               </h2>
             </div>
-            <Link to="/analysis" className="hidden md:inline-flex items-center gap-1 text-sm text-indigo font-medium hover:gap-2 transition-all">
+            <Link to="/analysis" className="hidden md:inline-flex items-center gap-1 text-sm text-accent font-medium hover:gap-2 transition-all">
               All case studies <ArrowRight size={14} />
             </Link>
           </motion.div>
@@ -696,7 +678,7 @@ const Index = () => {
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link to="/analysis" className="inline-flex items-center gap-2 text-sm text-indigo font-medium">
+            <Link to="/analysis" className="inline-flex items-center gap-2 text-sm text-accent font-medium">
               All case studies <ArrowRight size={14} />
             </Link>
           </div>
@@ -704,20 +686,20 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 6.5 — THE INTELLIGENCE CUBE™ (premium dark)
+          SECTION 6.5 — THE INTELLIGENCE CUBE™
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-navy border-y border-white/5">
+      <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
-              The Intelligence Cube™
+            <p className="font-sketch text-sm text-accent mb-4">
+              ✏️ The Intelligence Cube™
             </p>
-            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-white mb-3">
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground mb-3">
               9 Functions × 9 Verticals × 9 Layers
             </h2>
-            <p className="text-sm text-white/40 max-w-xl mx-auto">
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto">
               Volume = structural durability. Companies that occupy thin slivers get dissolved.
-              Companies that fill the cube become fortresses. Drag to explore.
+              Companies that fill the cube become fortresses.
             </p>
           </motion.div>
           <motion.div {...fadeIn}>
@@ -727,34 +709,36 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 7 — DIAGNOSTIC CTA (editorial shell)
+          SECTION 7 — DIAGNOSTIC CTA
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-navy">
+      <section className="bg-secondary/50">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
           <motion.div {...fadeIn}>
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[3px] text-indigo mb-4">
-              The Diagnostic
+            <p className="font-sketch text-sm text-accent mb-4">
+              ✏️ The Diagnostic
             </p>
-            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-white mb-6">
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-foreground mb-6">
               Where Do You Actually Sit in the Stack?
             </h2>
-            <div className="text-left max-w-md mx-auto space-y-3 mb-8">
-              {[
-                "What layer do you think you own?",
-                "What sublayer is actually defensible?",
-                "What happens when L7 becomes free?",
-                "Are you rising by gravity — or climbing down too late?",
-                "Do you own any part of the Defensible Triangle?",
-              ].map((q, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <span className="text-indigo/70 font-bold text-xs mt-0.5">{i + 1}.</span>
-                  <p className="text-white/45 text-sm leading-relaxed">{q}</p>
-                </div>
-              ))}
-            </div>
+            <SketchBoard className="p-6 max-w-md mx-auto mb-8">
+              <div className="text-left space-y-3">
+                {[
+                  "What layer do you think you own?",
+                  "What sublayer is actually defensible?",
+                  "What happens when L7 becomes free?",
+                  "Are you rising by gravity — or climbing down too late?",
+                  "Do you own any part of the Defensible Triangle?",
+                ].map((q, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="font-sketch text-accent font-bold text-sm mt-0.5">{i + 1}.</span>
+                    <p className="font-sketch text-sm text-foreground/70 leading-relaxed">{q}</p>
+                  </div>
+                ))}
+              </div>
+            </SketchBoard>
             <Link
               to="/speaking"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition"
             >
               Book a Workshop — Map Your Position <ArrowRight size={15} />
             </Link>
@@ -763,11 +747,11 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 8 — SUBSCRIBE (editorial shell)
+          SECTION 8 — SUBSCRIBE
       ══════════════════════════════════════════════════════ */}
-      <section id="newsletter" className="bg-card border-t border-border">
+      <section id="newsletter" className="bg-background border-t border-border">
         <div className="max-w-xl mx-auto px-6 py-14 text-center">
-          <BookOpen className="mx-auto mb-3 text-indigo/70" size={26} />
+          <BookOpen className="mx-auto mb-3 text-accent/70" size={26} />
           <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
             Weekly Structural Analysis
           </h2>
@@ -779,8 +763,8 @@ const Index = () => {
             className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
           >
             <input type="email" placeholder="you@company.com" required
-              className="flex-1 px-4 py-2.5 rounded-md border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-indigo/50 text-sm" />
-            <button type="submit" className="px-5 py-2.5 bg-indigo text-white text-sm font-semibold rounded-md hover:opacity-90 transition whitespace-nowrap">
+              className="flex-1 px-4 py-2.5 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 text-sm" />
+            <button type="submit" className="px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition whitespace-nowrap">
               Subscribe
             </button>
           </form>
@@ -788,9 +772,9 @@ const Index = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 9 — SPEAKING CTA (editorial shell)
+          SECTION 9 — SPEAKING CTA
       ══════════════════════════════════════════════════════ */}
-      <section className="bg-background border-t border-border">
+      <section className="bg-secondary/30 border-t border-border">
         <div className="max-w-3xl mx-auto px-6 py-14 text-center">
           <Mic className="mx-auto mb-3 text-muted-foreground" size={24} />
           <h2 className="font-display text-lg md:text-xl font-bold text-foreground mb-2">
@@ -800,7 +784,7 @@ const Index = () => {
             Keynotes, executive briefings, and half-day workshops. Map your company's structural
             position across all 32+ sublayers.
           </p>
-          <Link to="/speaking" className="inline-flex items-center gap-2 text-sm text-indigo font-medium hover:gap-3 transition-all">
+          <Link to="/speaking" className="inline-flex items-center gap-2 text-sm text-accent font-medium hover:gap-3 transition-all">
             Speaking & Workshops <ArrowRight size={14} />
           </Link>
         </div>
