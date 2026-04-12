@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
 import { LAYERS, GOLD_KEY_INSIGHT } from "@/data/layers";
+import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import {
