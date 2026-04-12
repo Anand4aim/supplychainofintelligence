@@ -346,14 +346,14 @@ const Index = () => {
                 <div className="text-center">
                   <span className="inline-block px-3 py-1 rounded-full font-sketch text-base font-bold"
                     style={{ background: "hsl(var(--layer-6-bg))", color: "hsl(var(--layer-6))" }}>
-                    ⛏️ Gold Rush
+                    <IconPickaxe size={18} color="hsl(var(--layer-6))" className="inline-block mr-1 -mt-0.5" /> Gold Rush
                   </span>
                 </div>
                 <div />
                 <div className="text-center">
                   <span className="inline-block px-3 py-1 rounded-full font-sketch text-base font-bold"
                     style={{ background: "hsl(var(--layer-8-bg))", color: "hsl(var(--layer-8))" }}>
-                    🧠 AI Supply Chain
+                    <IconBrain size={18} color="hsl(var(--layer-8))" className="inline-block mr-1 -mt-0.5" /> AI Supply Chain
                   </span>
                 </div>
               </div>
@@ -364,7 +364,7 @@ const Index = () => {
                   <div key={layer.id}>
                     <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] items-center gap-0">
                       <div className="text-right pr-2 md:pr-4 py-2">
-                        <span className="text-lg leading-none">{layer.goldIcon}</span>
+                        <SketchIcon name={layer.goldIcon} size={20} color="hsl(var(--layer-6))" />
                         <span className="block font-sketch text-sm font-bold mt-0.5" style={{ color: "hsl(var(--layer-6))" }}>
                           {layer.goldTitle?.replace(/^The\s+/i, "")}
                         </span>
