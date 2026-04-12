@@ -40,7 +40,7 @@ const FrameworkPage = () => (
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-sketch text-base text-accent mb-6">— The Framework</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-6">— The Framework</p>
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             The Supply Chain of Intelligence™
           </h1>
@@ -60,7 +60,7 @@ const FrameworkPage = () => (
     <section className="bg-secondary/30 border-y border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <p className="font-sketch text-base text-accent mb-4">
+          <p className="font-sketch text-lg font-bold text-accent mb-4">
             — Why We Call It a Supply Chain
           </p>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-4">
@@ -175,7 +175,7 @@ const FrameworkPage = () => (
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
-          <p className="font-sketch text-base text-accent mb-4">— The Defensible Triangle</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— The Defensible Triangle</p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
             Three Sub-Layers That Determine Survival
           </h2>
@@ -209,7 +209,7 @@ const FrameworkPage = () => (
     <section id="cube" className="bg-secondary/30 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <p className="font-sketch text-base text-accent mb-4">— The Intelligence Cube™</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— The Intelligence Cube™</p>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             8 Functions × 8 Verticals × 9 Layers
           </h2>
@@ -260,7 +260,7 @@ const FrameworkPage = () => (
     {/* Three Laws */}
     <section id="laws" className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-sketch text-base text-accent mb-4">— Three Structural Laws</p>
+        <p className="font-sketch text-lg font-bold text-accent mb-4">— Three Structural Laws</p>
         <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">The Laws That Predict the Future</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -286,7 +286,7 @@ const FrameworkPage = () => (
     {/* Six Archetypes */}
     <section className="bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-sketch text-base text-accent mb-4">— Company Archetypes</p>
+        <p className="font-sketch text-lg font-bold text-accent mb-4">— Company Archetypes</p>
         <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-4">The Six Fates of SaaS</h2>
         <p className="text-muted-foreground max-w-3xl mb-10">Every SaaS company fits one of these patterns.</p>
 
