@@ -28,18 +28,19 @@ const SiteHeader = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-[13px] font-medium transition-colors ${
+              className={`text-[13px] font-semibold transition-colors ${
                 location.pathname === item.path
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
+              style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               {item.label}
             </Link>
           ))}
           <a
             href="#newsletter"
-            className="px-3.5 py-1.5 bg-accent text-accent-foreground text-[12px] font-semibold rounded-lg hover:opacity-90 transition-opacity"
+            className="btn-sketch text-[12px] px-3.5 py-1.5"
           >
             Subscribe
           </a>
@@ -63,11 +64,12 @@ const SiteHeader = () => {
               key={item.path}
               to={item.path}
               onClick={() => setOpen(false)}
-              className={`block text-sm font-medium ${
+              className={`block text-sm font-semibold ${
                 location.pathname === item.path
                   ? "text-foreground"
                   : "text-muted-foreground"
               }`}
+              style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               {item.label}
             </Link>
