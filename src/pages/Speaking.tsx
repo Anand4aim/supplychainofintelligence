@@ -25,7 +25,7 @@ const SpeakingPage = () => {
         <div className="max-w-4xl mx-auto px-6 py-24 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Mic className="mx-auto mb-6 text-accent" size={40} />
-            <p className="font-sketch text-base text-accent mb-6">— Speaking & Workshops</p>
+            <p className="font-sketch text-lg font-bold text-accent mb-6">— Speaking & Workshops</p>
             <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
               Bring the Framework to Your Team
             </h1>
@@ -41,7 +41,7 @@ const SpeakingPage = () => {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="font-sketch text-base text-accent mb-4">— About the Speaker</p>
+              <p className="font-sketch text-lg font-bold text-accent mb-4">— About the Speaker</p>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Anand Arivukkarasu</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Ex-Meta & Google Product Leader who has spent over a decade at the intersection of platform 
@@ -72,7 +72,7 @@ const SpeakingPage = () => {
       {/* Topics */}
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20">
-          <p className="font-sketch text-base text-accent mb-4">— Speaking Topics</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— Speaking Topics</p>
           <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">Signature Talks & Workshops</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -92,7 +92,7 @@ const SpeakingPage = () => {
       {/* Workshop */}
       <section className="bg-secondary/30">
         <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="font-sketch text-base text-accent mb-4">— Featured Workshop</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— Featured Workshop</p>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             "Where Do YOU Sit in the Stack?"
           </h2>
@@ -122,7 +122,7 @@ const SpeakingPage = () => {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <p className="font-sketch text-base text-accent mb-4">— Get in Touch</p>
+              <p className="font-sketch text-lg font-bold text-accent mb-4">— Get in Touch</p>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Book Anand for Your Event</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
