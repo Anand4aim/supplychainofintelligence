@@ -664,7 +664,9 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredStudies.map((study, i) => (
-              <CaseStudyCard key={study.slug} study={study} index={i} />
+              <div key={study.slug} style={{ transform: `rotate(${[-0.6, 0.4, -0.3][i % 3]}deg)` }}>
+                <CaseStudyCard study={study} index={i} />
+              </div>
             ))}
           </div>
 
@@ -684,11 +686,11 @@ const Index = () => {
               — The Intelligence Cube™
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              9 Functions × 9 Verticals × 9 Layers
+              <SketchBigWord size="3xl" color="hsl(var(--accent))" rotate={-1}>9</SketchBigWord> Functions × <SketchBigWord size="3xl" color="hsl(var(--sketch-red))" rotate={1}>9</SketchBigWord> Verticals × <SketchBigWord size="3xl" color="hsl(var(--verdict-fortified))" rotate={-0.5}>9</SketchBigWord> Layers
             </h2>
             <p className="text-base text-muted-foreground max-w-xl mx-auto">
-              Volume = structural durability. Companies that occupy thin slivers get dissolved.
-              Companies that fill the cube become fortresses.
+              Volume = <SketchHighlight color="green">structural durability</SketchHighlight>. Companies that occupy thin slivers get dissolved.
+              Companies that fill the cube become <SketchHighlight color="cyan">fortresses</SketchHighlight>.
             </p>
           </motion.div>
           <motion.div {...fadeIn}>
