@@ -347,72 +347,87 @@ const Index = () => {
             </p>
           </motion.div>
 
-          {/* ──── SKETCH MODULE: Gold supply chain journey ──── */}
+          {/* ──── SKETCH MODULE: Side-by-side comparative flowchart ──── */}
           <motion.div {...fadeIn}>
             <SketchBoard className="p-5 md:p-8">
-              <p className="text-sm font-semibold text-[#666] mb-5" style={{ fontFamily: "'Caveat', cursive" }}>
-                The Intelligence Supply Chain — each layer transforms the one below ↓
+              <p className="text-sm font-semibold text-[#666] mb-6" style={{ fontFamily: "'Caveat', cursive" }}>
+                Same supply chain. Different raw material. ↓
               </p>
 
+              {/* Column headers */}
+              <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] gap-0 mb-4">
+                <div className="text-center">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase"
+                    style={{ background: "#FEF3C7", color: "#92400E", fontFamily: "'Caveat', cursive", fontSize: "14px", letterSpacing: "1px" }}>
+                    ⛏️ Gold Rush
+                  </span>
+                </div>
+                <div />
+                <div className="text-center">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase"
+                    style={{ background: "#EEF2FF", color: "#4338CA", fontFamily: "'Caveat', cursive", fontSize: "14px", letterSpacing: "1px" }}>
+                    🧠 AI Supply Chain
+                  </span>
+                </div>
+              </div>
+
+              {/* Rows */}
               <div className="space-y-0">
                 {LAYERS.map((layer, i) => (
                   <div key={layer.id}>
-                    <div className="flex items-start gap-3 md:gap-4 py-2.5 px-2">
-                      {/* Icon + ID */}
-                      <div className="flex flex-col items-center min-w-[50px] md:min-w-[60px]">
-                        <span className="text-xl">{layer.goldIcon}</span>
-                        <span
-                          className="text-sm font-bold mt-0.5"
-                          style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
-                        >
-                          {layer.id}
+                    <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] items-center gap-0">
+                      {/* LEFT — Gold analogy */}
+                      <div className="text-right pr-2 md:pr-4 py-2">
+                        <span className="text-lg leading-none">{layer.goldIcon}</span>
+                        <span className="block text-sm font-bold text-[#92400E] mt-0.5" style={{ fontFamily: "'Caveat', cursive" }}>
+                          {layer.goldTitle?.replace(/^The\s+/i, "")}
                         </span>
                       </div>
 
-                      {/* Name + analogy */}
-                      <div className="flex-1 min-w-0">
-                        <span
-                          className="text-base font-bold block"
-                          style={{ fontFamily: "'Caveat', cursive", color: "#333" }}
+                      {/* CENTER — Layer badge */}
+                      <div className="flex flex-col items-center justify-center">
+                        <div
+                          className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-xs font-bold shadow-sm"
+                          style={{
+                            background: `hsl(${layer.bg})`,
+                            color: `hsl(${layer.color})`,
+                            border: `2px solid hsl(${layer.color} / 0.4)`,
+                            fontFamily: "'Caveat', cursive",
+                            fontSize: "13px",
+                          }}
                         >
-                          {layer.goldTitle}
+                          {layer.id}
+                        </div>
+                      </div>
+
+                      {/* RIGHT — AI layer name + desc */}
+                      <div className="pl-2 md:pl-4 py-2">
+                        <span
+                          className="block text-sm font-bold"
+                          style={{ fontFamily: "'Caveat', cursive", color: `hsl(${layer.color})` }}
+                        >
+                          {layer.name}
                         </span>
-                        <span className="text-xs text-[#777] leading-snug block mt-0.5">
+                        <span className="text-[11px] text-[#777] leading-snug block mt-0.5">
                           {layer.desc}
                         </span>
                       </div>
-
-                      {/* Sublayer dots */}
-                      <div className="flex gap-1 items-center shrink-0 mt-1">
-                        {layer.sublayers.map((sub) => (
-                          <div
-                            key={sub.id}
-                            className="w-2 h-2 rounded-full"
-                            style={{
-                              background: sub.defensible ? `hsl(${layer.color})` : `hsl(${layer.color} / 0.2)`,
-                              border: sub.defensible ? "1.5px solid #333" : "1px solid #ddd",
-                            }}
-                            title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
-                          />
-                        ))}
-                      </div>
                     </div>
 
-                    {/* Sketch arrow between layers */}
+                    {/* Arrow between rows */}
                     {i < LAYERS.length - 1 && (
-                      <div className="flex items-center gap-2 pl-6 md:pl-8 py-0.5">
-                        <svg width="16" height="20" viewBox="0 0 16 20" style={{ filter: "url(#sketch-wobble)" }}>
-                          <line x1="8" y1="2" x2="8" y2="14" stroke="#bbb" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
-                          <path d="M4 12 L8 18 L12 12" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+                      <div className="flex justify-center py-0.5">
+                        <svg width="16" height="18" viewBox="0 0 16 18" style={{ filter: "url(#sketch-wobble)" }}>
+                          <line x1="8" y1="1" x2="8" y2="12" stroke="#ccc" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
+                          <path d="M4 10 L8 16 L12 10" fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
-                        <span className="text-[10px] text-[#aaa]">transforms into</span>
                       </div>
                     )}
                   </div>
                 ))}
               </div>
 
-              {/* Key insight in sketch style */}
+              {/* Key insight */}
               <div className="mt-6 pt-4 border-t border-[#e0ddd8]">
                 <p className="text-sm font-bold text-[#DC2626] mb-1" style={{ fontFamily: "'Caveat', cursive" }}>
                   ← Key insight
