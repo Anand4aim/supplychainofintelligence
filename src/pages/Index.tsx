@@ -707,7 +707,7 @@ const Index = () => {
               — The Diagnostic
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-6">
-              Where Do You Actually Sit in the Stack?
+              Where Do <SketchHighlight color="yellow">You</SketchHighlight> Actually Sit in the Stack?
             </h2>
             <SketchBoard className="p-6 max-w-md mx-auto mb-8">
               <div className="text-left space-y-3">
