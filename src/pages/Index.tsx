@@ -17,6 +17,13 @@ import {
   SketchLabel,
   SketchConnector,
 } from "@/components/sketch/SketchElements";
+import {
+  SketchHighlight,
+  SketchBubble,
+  SketchBigWord,
+  SketchDivider,
+  SketchAnnotation,
+} from "@/components/sketch/SketchNote";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
