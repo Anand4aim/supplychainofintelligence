@@ -8,15 +8,15 @@
   :root {
     /* Warm cream whiteboard palette */
     --background: 40 33% 96%;
-    --foreground: 25 15% 20%;
+    --foreground: 25 20% 12%;
 
     --card: 38 28% 97%;
-    --card-foreground: 25 15% 20%;
+    --card-foreground: 25 20% 12%;
 
     --popover: 38 28% 97%;
-    --popover-foreground: 25 15% 20%;
+    --popover-foreground: 25 20% 12%;
 
-    --primary: 25 15% 20%;
+    --primary: 25 20% 12%;
     --primary-foreground: 40 33% 96%;
 
     --secondary: 37 22% 93%;
