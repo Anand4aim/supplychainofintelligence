@@ -2,26 +2,21 @@ import React from "react";
 
 /**
  * SVG filter that adds hand-drawn wobble to strokes.
- * Mount once in any page that uses sketch elements.
+ * Consistent, subtle wobble — educational, not chaotic.
  */
 export const SketchFilters = () => (
   <svg className="absolute w-0 h-0" aria-hidden="true">
     <defs>
       <filter id="sketch-wobble">
-        <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" seed="2" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
-      </filter>
-      <filter id="sketch-wobble-heavy">
-        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" seed="5" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" />
+        <feTurbulence type="turbulence" baseFrequency="0.012" numOctaves="3" seed="2" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" />
       </filter>
     </defs>
   </svg>
 );
 
 /**
- * Whiteboard wrapper — off-white paper background with subtle sketch feel.
- * Use this around framework teaching content only.
+ * Whiteboard wrapper — warm paper background with subtle sketch feel.
  */
 export const SketchBoard = ({
   children,
@@ -33,15 +28,16 @@ export const SketchBoard = ({
   <div
     className={`sketch-board relative rounded-2xl overflow-hidden ${className}`}
     style={{
-      background: "linear-gradient(135deg, #FAFAF8 0%, #F5F3EF 50%, #FAF9F7 100%)",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.06), inset 0 0 80px rgba(0,0,0,0.02)",
+      background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 24% 95%) 60%, hsl(40 28% 96%) 100%)",
+      boxShadow: "0 1px 3px rgba(0,0,0,0.04), inset 0 0 60px rgba(0,0,0,0.015)",
+      border: "1px solid hsl(35 18% 88%)",
     }}
   >
     {/* Paper grid dots */}
     <div
-      className="absolute inset-0 opacity-[0.04] pointer-events-none"
+      className="absolute inset-0 opacity-[0.03] pointer-events-none"
       style={{
-        backgroundImage: "radial-gradient(circle, #333 0.5px, transparent 0.5px)",
+        backgroundImage: "radial-gradient(circle, hsl(25 10% 40%) 0.5px, transparent 0.5px)",
         backgroundSize: "24px 24px",
       }}
     />
@@ -50,7 +46,7 @@ export const SketchBoard = ({
 );
 
 /**
- * Sketch arrow — red hand-drawn arrow pointing right or down
+ * Sketch arrow — consistent 2px stroke, red accent
  */
 export const SketchArrow = ({
   direction = "right",
@@ -73,16 +69,16 @@ export const SketchArrow = ({
       <path
         d="M4 18 C12 16, 28 14, 42 17 C44 17.5, 46 18, 48 18"
         fill="none"
-        stroke="#DC2626"
-        strokeWidth="2.5"
+        stroke="hsl(0 65% 48%)"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M42 10 L50 18 L42 26"
         fill="none"
-        stroke="#DC2626"
-        strokeWidth="2.5"
+        stroke="hsl(0 65% 48%)"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -91,12 +87,12 @@ export const SketchArrow = ({
 };
 
 /**
- * Sketch circle — hand-drawn emphasis circle
+ * Sketch circle — hand-drawn emphasis circle, consistent 1.5px stroke
  */
 export const SketchCircle = ({
   children,
   className = "",
-  color = "#DC2626",
+  color = "hsl(0 65% 48%)",
 }: {
   children?: React.ReactNode;
   className?: string;
@@ -113,10 +109,9 @@ export const SketchCircle = ({
         cx="50" cy="30" rx="46" ry="24"
         fill="none"
         stroke={color}
-        strokeWidth="1.8"
+        strokeWidth="1.5"
         strokeLinecap="round"
-        strokeDasharray="2 0"
-        opacity="0.7"
+        opacity="0.6"
       />
     </svg>
     <span className="relative">{children}</span>
@@ -124,12 +119,12 @@ export const SketchCircle = ({
 );
 
 /**
- * Sketch underline — wavy hand-drawn underline
+ * Sketch underline — wavy hand-drawn underline, consistent 1.5px
  */
 export const SketchUnderline = ({
   children,
   className = "",
-  color = "#DC2626",
+  color = "hsl(0 65% 48%)",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -155,12 +150,12 @@ export const SketchUnderline = ({
 );
 
 /**
- * Sketch box — hand-drawn rectangle border
+ * Sketch box — hand-drawn rectangle border, consistent 1.5px
  */
 export const SketchBox = ({
   children,
   className = "",
-  color = "#1a1a1a",
+  color = "hsl(25 12% 70%)",
   fill = "transparent",
 }: {
   children: React.ReactNode;
@@ -176,7 +171,7 @@ export const SketchBox = ({
       style={{ filter: "url(#sketch-wobble)" }}
     >
       <rect
-        x="3" y="3" width="194" height="94" rx="4"
+        x="3" y="3" width="194" height="94" rx="6"
         fill={fill}
         stroke={color}
         strokeWidth="1.5"
@@ -189,12 +184,12 @@ export const SketchBox = ({
 );
 
 /**
- * Sketch label — small hand-lettered annotation
+ * Sketch label — Caveat annotation, consistent sizing
  */
 export const SketchLabel = ({
   children,
   className = "",
-  color = "#555",
+  color = "hsl(25 6% 55%)",
   rotate = 0,
 }: {
   children: React.ReactNode;
@@ -203,10 +198,10 @@ export const SketchLabel = ({
   rotate?: number;
 }) => (
   <span
-    className={`sketch-label inline-block text-[11px] font-medium tracking-wide ${className}`}
+    className={`sketch-label inline-block font-sketch text-[12px] tracking-wide ${className}`}
     style={{
       color,
-      fontFamily: "'Caveat', 'Patrick Hand', cursive",
+      fontWeight: 500,
       transform: rotate ? `rotate(${rotate}deg)` : undefined,
     }}
   >
@@ -215,7 +210,7 @@ export const SketchLabel = ({
 );
 
 /**
- * Sketch connector — line with optional arrow between elements
+ * Sketch connector — line with optional arrow, consistent 1.5px
  */
 export const SketchConnector = ({
   className = "",
@@ -237,18 +232,18 @@ export const SketchConnector = ({
     >
       {vertical ? (
         <>
-          <line x1="10" y1="2" x2="10" y2={length - 8} stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 3" />
-          <path d={`M6 ${length - 12} L10 ${length - 4} L14 ${length - 12}`} fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="10" y1="2" x2="10" y2={length - 8} stroke="hsl(25 6% 72%)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 3" />
+          <path d={`M6 ${length - 12} L10 ${length - 4} L14 ${length - 12}`} fill="none" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
         </>
       ) : (
         <>
-          <line x1="2" y1="10" x2={length - 8} y2="10" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 3" />
-          <path d={`M${length - 12} 6 L${length - 4} 10 L${length - 12} 14`} fill="none" stroke="#DC2626" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="2" y1="10" x2={length - 8} y2="10" stroke="hsl(25 6% 72%)" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 3" />
+          <path d={`M${length - 12} 6 L${length - 4} 10 L${length - 12} 14`} fill="none" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
         </>
       )}
     </svg>
     {label && (
-      <SketchLabel className="mx-1" color="#DC2626">{label}</SketchLabel>
+      <SketchLabel className="mx-1" color="hsl(0 65% 48%)">{label}</SketchLabel>
     )}
   </div>
 );

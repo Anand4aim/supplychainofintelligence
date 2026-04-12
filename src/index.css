@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,83 +8,83 @@
   :root {
     /* Warm cream whiteboard palette */
     --background: 40 33% 96%;
-    --foreground: 30 10% 15%;
+    --foreground: 25 15% 20%;
 
-    --card: 40 30% 97%;
-    --card-foreground: 30 10% 15%;
+    --card: 38 28% 97%;
+    --card-foreground: 25 15% 20%;
 
-    --popover: 40 30% 97%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 38 28% 97%;
+    --popover-foreground: 25 15% 20%;
 
-    --primary: 30 10% 15%;
+    --primary: 25 15% 20%;
     --primary-foreground: 40 33% 96%;
 
-    --secondary: 35 20% 92%;
-    --secondary-foreground: 30 10% 25%;
+    --secondary: 37 22% 93%;
+    --secondary-foreground: 25 12% 30%;
 
-    --muted: 35 15% 91%;
-    --muted-foreground: 30 8% 45%;
+    --muted: 37 18% 91%;
+    --muted-foreground: 25 8% 48%;
 
-    --accent: 243 75% 59%;
+    --accent: 243 55% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 18% 86%;
-    --input: 35 18% 86%;
-    --ring: 243 75% 59%;
+    --border: 35 18% 87%;
+    --input: 35 18% 87%;
+    --ring: 243 55% 55%;
 
     --radius: 0.75rem;
 
     /* Layer colors (HSL) */
     --layer-0: 30 6% 46%;
-    --layer-1: 217 91% 60%;
-    --layer-2: 263 70% 50%;
-    --layer-3: 0 72% 51%;
-    --layer-4: 25 95% 53%;
-    --layer-5: 160 84% 39%;
-    --layer-6: 48 96% 45%;
-    --layer-7: 189 94% 43%;
-    --layer-8: 239 70% 55%;
+    --layer-1: 217 72% 50%;
+    --layer-2: 263 55% 48%;
+    --layer-3: 0 65% 48%;
+    --layer-4: 25 85% 50%;
+    --layer-5: 160 70% 36%;
+    --layer-6: 45 85% 42%;
+    --layer-7: 189 75% 40%;
+    --layer-8: 239 55% 50%;
 
-    --layer-0-bg: 30 20% 93%;
-    --layer-1-bg: 214 80% 95%;
-    --layer-2-bg: 263 60% 95%;
-    --layer-3-bg: 0 80% 95%;
-    --layer-4-bg: 33 80% 93%;
-    --layer-5-bg: 152 60% 93%;
-    --layer-6-bg: 48 80% 93%;
-    --layer-7-bg: 183 60% 93%;
-    --layer-8-bg: 240 60% 95%;
+    --layer-0-bg: 30 20% 94%;
+    --layer-1-bg: 214 65% 95%;
+    --layer-2-bg: 263 45% 95%;
+    --layer-3-bg: 0 60% 96%;
+    --layer-4-bg: 33 65% 94%;
+    --layer-5-bg: 152 45% 94%;
+    --layer-6-bg: 48 65% 94%;
+    --layer-7-bg: 183 45% 94%;
+    --layer-8-bg: 240 45% 95%;
 
     /* Brand */
-    --indigo: 243 75% 59%;
-    --indigo-glow: 239 84% 67%;
-    --navy: 222 47% 11%;
-    --navy-mid: 217 33% 17%;
+    --indigo: 243 55% 55%;
+    --indigo-glow: 239 65% 62%;
+    --navy: 222 40% 18%;
+    --navy-mid: 217 30% 25%;
 
     /* Verdict colors */
-    --verdict-exposed: 0 72% 51%;
-    --verdict-fortified: 152 60% 38%;
-    --verdict-consolidating: 40 90% 50%;
-    --verdict-dominant: 243 75% 59%;
+    --verdict-exposed: 0 65% 48%;
+    --verdict-fortified: 152 55% 35%;
+    --verdict-consolidating: 40 80% 48%;
+    --verdict-dominant: 243 55% 55%;
 
     /* Sketch / hand-drawn accents */
-    --sketch-red: 0 72% 50%;
-    --sketch-dark: 30 10% 20%;
-    --sketch-muted: 30 5% 55%;
-    --sketch-paper: 40 33% 95%;
+    --sketch-red: 0 65% 48%;
+    --sketch-dark: 25 12% 25%;
+    --sketch-muted: 25 6% 55%;
+    --sketch-paper: 40 30% 95%;
 
     /* Sidebar */
-    --sidebar-background: 40 30% 97%;
-    --sidebar-foreground: 30 8% 30%;
-    --sidebar-primary: 30 10% 15%;
+    --sidebar-background: 38 28% 97%;
+    --sidebar-foreground: 25 8% 35%;
+    --sidebar-primary: 25 15% 20%;
     --sidebar-primary-foreground: 40 33% 96%;
-    --sidebar-accent: 35 20% 93%;
-    --sidebar-accent-foreground: 30 10% 15%;
-    --sidebar-border: 35 18% 86%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-accent: 37 22% 93%;
+    --sidebar-accent-foreground: 25 15% 20%;
+    --sidebar-border: 35 18% 87%;
+    --sidebar-ring: 217 72% 50%;
   }
 }
 
@@ -95,53 +95,88 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Fredoka', 'Inter', -apple-system, sans-serif;
+    font-family: 'Nunito', 'Inter', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Fredoka', -apple-system, sans-serif;
     font-weight: 600;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.75;
   }
 }
 
-/* Sketch annotation font */
+/* Sketch annotation font — consistent weight */
 .font-sketch {
   font-family: 'Caveat', cursive;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 /* Paper texture for sketch boards */
 .sketch-paper {
-  background: linear-gradient(135deg, #FAF9F5 0%, #F3F0E8 50%, #FAF8F4 100%);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06), inset 0 0 60px rgba(0,0,0,0.015);
+  background: linear-gradient(135deg, hsl(40 30% 97%) 0%, hsl(38 25% 95%) 50%, hsl(40 28% 96%) 100%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), inset 0 0 60px rgba(0,0,0,0.01);
 }
 
 /* Dot grid for whiteboard feel */
 .sketch-dots {
-  background-image: radial-gradient(circle, #999 0.5px, transparent 0.5px);
+  background-image: radial-gradient(circle, hsl(25 8% 60%) 0.5px, transparent 0.5px);
   background-size: 24px 24px;
-  opacity: 0.04;
+  opacity: 0.035;
 }
 
-/* Hand-drawn border effect */
+/* Hand-drawn border effect — consistent subtle style */
 .sketch-border {
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 
-    1px 1px 0 rgba(0,0,0,0.05),
-    -0.5px -0.5px 0 rgba(0,0,0,0.03);
+    0.5px 0.5px 0 rgba(0,0,0,0.04),
+    -0.5px -0.5px 0 rgba(0,0,0,0.02);
 }
 
 /* Verdict border classes */
 .verdict-exposed {
-  border-left: 4px solid hsl(var(--verdict-exposed));
+  border-left: 3px solid hsl(var(--verdict-exposed));
 }
 .verdict-fortified {
-  border-left: 4px solid hsl(var(--verdict-fortified));
+  border-left: 3px solid hsl(var(--verdict-fortified));
 }
 .verdict-consolidating {
-  border-left: 4px solid hsl(var(--verdict-consolidating));
+  border-left: 3px solid hsl(var(--verdict-consolidating));
 }
 .verdict-dominant {
-  border-left: 4px solid hsl(var(--verdict-dominant));
+  border-left: 3px solid hsl(var(--verdict-dominant));
+}
+
+/* Sketch-style button — warm, approachable, not dark */
+.btn-sketch {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200;
+  font-family: 'Fredoka', sans-serif;
+  background: hsl(var(--accent));
+  color: white;
+  box-shadow: 0 2px 8px hsl(var(--accent) / 0.2);
+}
+.btn-sketch:hover {
+  box-shadow: 0 4px 14px hsl(var(--accent) / 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-sketch-outline {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-200;
+  font-family: 'Fredoka', sans-serif;
+  background: transparent;
+  color: hsl(var(--foreground));
+  border: 1.5px solid hsl(var(--border));
+}
+.btn-sketch-outline:hover {
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--muted-foreground) / 0.3);
 }
 
 /* Custom scrollbar */
@@ -152,7 +187,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.2);
+  background: hsl(var(--muted-foreground) / 0.15);
   border-radius: 3px;
 }
 

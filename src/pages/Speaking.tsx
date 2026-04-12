@@ -25,11 +25,11 @@ const SpeakingPage = () => {
         <div className="max-w-4xl mx-auto px-6 py-24 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <Mic className="mx-auto mb-6 text-accent" size={40} />
-            <p className="font-sketch text-sm text-accent mb-6">✏️ Speaking & Workshops</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
+            <p className="font-sketch text-base text-accent mb-6">✏️ Speaking & Workshops</p>
+            <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
               Bring the Framework to Your Team
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Keynotes, executive briefings, and hands-on workshops.
             </p>
           </motion.div>
@@ -41,7 +41,7 @@ const SpeakingPage = () => {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="font-sketch text-sm text-accent mb-4">✏️ About the Speaker</p>
+              <p className="font-sketch text-base text-accent mb-4">✏️ About the Speaker</p>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Anand Arivukkarasu</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Ex-Meta & Google Product Leader who has spent over a decade at the intersection of platform 
@@ -53,7 +53,7 @@ const SpeakingPage = () => {
               </p>
               <div className="flex flex-wrap gap-3">
                 {["Ex-Meta", "Ex-Google", "Product Strategy", "AI Frameworks"].map((tag) => (
-                  <span key={tag} className="text-xs font-medium px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
+                  <span key={tag} className="text-sm font-medium px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground">{tag}</span>
                 ))}
               </div>
             </div>
@@ -63,7 +63,7 @@ const SpeakingPage = () => {
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-2">Anand Arivukkarasu</h3>
               <p className="text-muted-foreground text-sm mb-4">Creator, The Supply Chain of Intelligence™</p>
-              <p className="font-sketch text-xs text-muted-foreground/60">Ex-Meta · Ex-Google · SupplyChainOfAI.com</p>
+              <p className="font-sketch text-sm text-muted-foreground/60">Ex-Meta · Ex-Google · SupplyChainOfAI.com</p>
             </div>
           </div>
         </div>
@@ -72,8 +72,8 @@ const SpeakingPage = () => {
       {/* Topics */}
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20">
-          <p className="font-sketch text-sm text-accent mb-4">✏️ Speaking Topics</p>
-          <h2 className="font-display text-3xl font-bold text-foreground mb-10">Signature Talks & Workshops</h2>
+          <p className="font-sketch text-base text-accent mb-4">✏️ Speaking Topics</p>
+          <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">Signature Talks & Workshops</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TOPICS.map((topic, i) => (
@@ -82,7 +82,7 @@ const SpeakingPage = () => {
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-5">{topic.icon}</div>
                 <h3 className="font-display text-lg font-bold text-foreground mb-3">{topic.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">{topic.desc}</p>
-                <p className="font-sketch text-xs font-bold text-accent">{topic.format}</p>
+                <p className="font-sketch text-sm font-bold text-accent">{topic.format}</p>
               </motion.div>
             ))}
           </div>
@@ -92,8 +92,8 @@ const SpeakingPage = () => {
       {/* Workshop */}
       <section className="bg-secondary/30">
         <div className="max-w-4xl mx-auto px-6 py-20">
-          <p className="font-sketch text-sm text-accent mb-4">✏️ Featured Workshop</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <p className="font-sketch text-base text-accent mb-4">✏️ Featured Workshop</p>
+          <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             "Where Do YOU Sit in the Stack?"
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -110,7 +110,7 @@ const SpeakingPage = () => {
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <ArrowRight size={16} className="text-accent mt-0.5 shrink-0" />
-                <p className="text-muted-foreground text-sm">{item}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item}</p>
               </div>
             ))}
           </div>
@@ -122,7 +122,7 @@ const SpeakingPage = () => {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <p className="font-sketch text-sm text-accent mb-4">✏️ Get in Touch</p>
+              <p className="font-sketch text-base text-accent mb-4">✏️ Get in Touch</p>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Book Anand for Your Event</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
@@ -131,21 +131,21 @@ const SpeakingPage = () => {
                   { label: "Email", type: "email", key: "email", placeholder: "you@company.com" },
                 ].map((field) => (
                   <div key={field.key}>
-                    <label className="block text-sm font-medium text-foreground mb-1">{field.label}</label>
+                    <label className="block text-sm font-semibold text-foreground mb-1">{field.label}</label>
                     <input type={field.type} required value={(form as any)[field.key]}
                       onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
+                      className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40"
                       placeholder={field.placeholder} />
                   </div>
                 ))}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">Message</label>
+                  <label className="block text-sm font-semibold text-foreground mb-1">Message</label>
                   <textarea required rows={4} value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 resize-none"
                     placeholder="Tell us about your event..." />
                 </div>
-                <button type="submit" className="w-full px-6 py-3 bg-foreground text-background font-semibold rounded-lg hover:opacity-90 transition">
+                <button type="submit" className="btn-sketch w-full justify-center">
                   Send Inquiry
                 </button>
               </form>
@@ -159,10 +159,10 @@ const SpeakingPage = () => {
                   Book a 30-minute discovery call.
                 </p>
                 <a href="https://calendly.com" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-semibold rounded-lg hover:opacity-90 transition">
+                  className="btn-sketch justify-center">
                   Book a Call <ArrowRight size={18} />
                 </a>
-                <p className="font-sketch text-xs text-muted-foreground/50 mt-4">Or email: hello@supplychainofai.com</p>
+                <p className="font-sketch text-sm text-muted-foreground/50 mt-4">Or email: hello@supplychainofai.com</p>
               </div>
 
               <div className="mt-8 bg-secondary rounded-xl p-6">

@@ -48,11 +48,11 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       >
         <div className="p-8 md:p-10">
           <div className="flex items-center gap-3 mb-5">
-            <span className="font-sketch text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
+            <span className="font-sketch text-base font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
               {study.tag}
             </span>
-            <span className="text-xs text-muted-foreground">{study.date}</span>
-            <span className="text-xs text-muted-foreground">· {study.readTime}</span>
+            <span className="text-sm text-muted-foreground">{study.date}</span>
+            <span className="text-sm text-muted-foreground">· {study.readTime}</span>
           </div>
 
           <div className="flex items-center gap-3 mb-6">
@@ -63,7 +63,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
                   <img src={company.logo} alt={company.name}
                     className="w-8 h-8 rounded-lg object-contain bg-white p-0.5 border border-border"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <span className="text-sm font-semibold text-foreground">{company.name}</span>
+                  <span className="text-sm font-bold text-foreground">{company.name}</span>
                 </div>
               </div>
             ))}
@@ -80,7 +80,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
           <div className="flex flex-wrap items-end justify-between gap-6">
             {study.valuation && (
               <div className="bg-secondary border border-border rounded-xl p-5 min-w-[260px] sketch-border">
-                <p className="font-sketch text-xs font-bold text-muted-foreground mb-3">{study.valuation.label}</p>
+                <p className="font-sketch text-sm font-bold text-muted-foreground mb-3">{study.valuation.label}</p>
                 <div className="flex items-baseline gap-4">
                   <div>
                     <p className="text-xs text-muted-foreground mb-0.5">Peak</p>
@@ -93,7 +93,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
                   </div>
                   <div className={`flex items-center gap-1 ml-2 ${trendColor}`}>
                     <TrendIcon size={16} />
-                    <span className="font-sketch text-xs font-bold">{study.valuation.changeLabel}</span>
+                    <span className="font-sketch text-sm font-bold">{study.valuation.changeLabel}</span>
                   </div>
                 </div>
               </div>
@@ -104,14 +104,14 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
                 {study.layers.map((l) => {
                   const n = parseInt(l.replace("L", ""));
                   return (
-                    <span key={l} className="font-sketch text-[12px] font-bold px-3 py-1 rounded-lg"
+                    <span key={l} className="font-sketch text-sm font-bold px-3 py-1 rounded-lg"
                       style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
                       {l}
                     </span>
                   );
                 })}
               </div>
-              <p className={`font-sketch text-xs font-bold uppercase ${study.valuation?.trend === "down" ? "text-verdict-exposed" : "text-verdict-fortified"}`}>
+              <p className={`font-sketch text-sm font-bold uppercase ${study.valuation?.trend === "down" ? "text-verdict-exposed" : "text-verdict-fortified"}`}>
                 {study.verdict}
               </p>
             </div>
@@ -130,8 +130,8 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       className={`group bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
     >
       <div className="flex items-center gap-3 mb-4">
-        <span className="font-sketch text-[11px] font-bold text-accent">{study.tag}</span>
-        <span className="text-xs text-muted-foreground">{study.readTime}</span>
+        <span className="font-sketch text-sm font-bold text-accent">{study.tag}</span>
+        <span className="text-sm text-muted-foreground">{study.readTime}</span>
       </div>
 
       <div className="flex items-center gap-2 mb-3">
@@ -153,7 +153,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
           <span className="text-muted-foreground">{study.valuation.before}</span>
           <ArrowRight size={12} className="text-muted-foreground" />
           <span className="text-foreground font-semibold">{study.valuation.after}</span>
-          <span className={`flex items-center gap-1 ${trendColor} font-sketch text-xs font-bold`}>
+          <span className={`flex items-center gap-1 ${trendColor} font-sketch text-sm font-bold`}>
             <TrendIcon size={12} /> {study.valuation.changeLabel}
           </span>
         </div>
@@ -164,14 +164,14 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
           {study.layers.map((l) => {
             const n = parseInt(l.replace("L", ""));
             return (
-              <span key={l} className="font-sketch text-[11px] font-bold px-2 py-0.5 rounded-md"
+              <span key={l} className="font-sketch text-sm font-bold px-2 py-0.5 rounded-md"
                 style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
                 {l}
               </span>
             );
           })}
         </div>
-        <span className="text-xs text-accent font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+        <span className="text-sm text-accent font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
           Read <ArrowRight size={12} />
         </span>
       </div>

@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['Fredoka', '-apple-system', 'sans-serif'],
-        body: ['Fredoka', 'Inter', '-apple-system', 'sans-serif'],
+        body: ['Nunito', 'Inter', '-apple-system', 'sans-serif'],
         sketch: ['Caveat', 'cursive'],
       },
       colors: {
