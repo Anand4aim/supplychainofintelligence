@@ -39,17 +39,17 @@ const FrameworkPage = () => (
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-sketch text-sm text-accent mb-6">✏️ The Framework</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
+          <p className="font-sketch text-base text-accent mb-6">✏️ The Framework</p>
+          <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             The Supply Chain of Intelligence™
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
             Follow the gold from the ground to the person wearing the ring — and you'll see every layer 
             of the intelligence stack. 9 layers. 32+ sub-layers. One structural map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border sketch-border">
-            <span className="font-sketch text-sm text-muted-foreground">Defensible Triangle:</span>
-            <span className="font-sketch text-sm text-accent font-bold">{DEFENSIBLE_TRIANGLE}</span>
+            <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>
+            <span className="font-sketch text-base text-accent font-bold">{DEFENSIBLE_TRIANGLE}</span>
           </div>
         </motion.div>
       </div>
@@ -59,13 +59,13 @@ const FrameworkPage = () => (
     <section className="bg-secondary/30 border-y border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
-          <p className="font-sketch text-sm text-accent mb-4">
+          <p className="font-sketch text-base text-accent mb-4">
             ✏️ Why We Call It a Supply Chain
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-4">
             From Gold in the Ground to the Ring on Your Finger
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Every layer transforms the output of the layer below it. Most companies only own one layer. 
             The supply chain is only as strong as its weakest link.
           </p>
@@ -87,7 +87,7 @@ const FrameworkPage = () => (
               >
                 <div
                   className="flex gap-0 rounded-xl overflow-hidden border border-border bg-card sketch-border"
-                  style={{ borderLeftWidth: "5px", borderLeftColor: `hsl(${layer.color})` }}
+                  style={{ borderLeftWidth: "4px", borderLeftColor: `hsl(${layer.color})` }}
                 >
                   <div
                     className="flex flex-col items-center justify-center px-4 py-5 min-w-[78px] md:min-w-[94px]"
@@ -97,7 +97,7 @@ const FrameworkPage = () => (
                     <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
                       {layer.id}
                     </span>
-                    <span className="font-sketch text-[10px] font-bold mt-0.5" style={{ color: `hsl(${layer.color})` }}>
+                    <span className="font-sketch text-xs font-bold mt-0.5" style={{ color: `hsl(${layer.color})` }}>
                       {layer.shortName}
                     </span>
                   </div>
@@ -120,7 +120,7 @@ const FrameworkPage = () => (
                             border: sub.defensible ? `1.5px solid hsl(${layer.color} / 0.35)` : "1.5px solid transparent",
                           }}
                         >
-                          <span className="font-sketch text-xs font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
+                          <span className="font-sketch text-sm font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
                             {sub.id}{sub.defensible ? " ★" : ""}
                           </span>
                           <div className="min-w-0">
@@ -133,11 +133,11 @@ const FrameworkPage = () => (
 
                     <div className="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-border/50">
                       {layer.players.map((p) => (
-                        <span key={p} className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
+                        <span key={p} className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
                           {p}
                         </span>
                       ))}
-                      <span className="font-sketch text-[11px] font-bold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
+                      <span className="font-sketch text-sm font-bold uppercase tracking-wider ml-auto" style={{ color: `hsl(${layer.color})` }}>
                         {layer.verdict}
                       </span>
                     </div>
@@ -160,8 +160,8 @@ const FrameworkPage = () => (
             className="mt-8"
           >
             <SketchBoard className="p-6 md:p-8">
-              <p className="text-sm md:text-base text-foreground leading-relaxed">
-                <span className="font-sketch text-lg font-bold text-sketch-red">← Key insight: </span>
+              <p className="text-base text-foreground leading-relaxed">
+                <span className="font-sketch text-xl font-bold text-sketch-red">← Key insight: </span>
                 {GOLD_KEY_INSIGHT}
               </p>
             </SketchBoard>
@@ -174,7 +174,7 @@ const FrameworkPage = () => (
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
-          <p className="font-sketch text-sm text-accent mb-4">✏️ The Defensible Triangle</p>
+          <p className="font-sketch text-base text-accent mb-4">✏️ The Defensible Triangle</p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
             Three Sub-Layers That Determine Survival
           </h2>
@@ -186,8 +186,8 @@ const FrameworkPage = () => (
             ].map((item, i) => {
               const n = parseInt(item.layer.replace("L", ""));
               return (
-                <div key={i} className="bg-card border border-border rounded-xl p-6 text-left sketch-border" style={{ borderTop: `4px solid hsl(var(--layer-${n}))` }}>
-                  <span className="font-sketch text-xs font-bold px-2.5 py-1 rounded inline-block mb-3" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
+                <div key={i} className="bg-card border border-border rounded-xl p-6 text-left sketch-border" style={{ borderTop: `3px solid hsl(var(--layer-${n}))` }}>
+                  <span className="font-sketch text-sm font-bold px-2.5 py-1 rounded inline-block mb-3" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
                     {item.id} ★
                   </span>
                   <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.name}</h3>
@@ -196,7 +196,7 @@ const FrameworkPage = () => (
               );
             })}
           </div>
-          <p className="font-sketch text-sm text-muted-foreground mt-8 max-w-xl mx-auto italic">
+          <p className="font-sketch text-base text-muted-foreground mt-8 max-w-xl mx-auto italic">
             If you own all three, you're a fortress. If you own none, you're in the graveyard. 
             Most companies own one — and that determines their timeline.
           </p>
@@ -208,11 +208,11 @@ const FrameworkPage = () => (
     <section id="cube" className="bg-secondary/30 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <p className="font-sketch text-sm text-accent mb-4">✏️ The Intelligence Cube™</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <p className="font-sketch text-base text-accent mb-4">✏️ The Intelligence Cube™</p>
+          <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             8 Functions × 8 Verticals × 9 Layers
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mb-10">
+          <p className="text-lg text-muted-foreground max-w-3xl mb-10 leading-relaxed">
             Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals.
             Thin slivers die. Tall fortresses survive.
           </p>
@@ -229,7 +229,7 @@ const FrameworkPage = () => (
               </p>
               <div className="flex gap-2 flex-wrap">
                 {["L1b ★", "L5b ★", "L8c ★"].map((l) => (
-                  <span key={l} className="font-sketch text-xs font-bold px-2.5 py-1 rounded-md bg-verdict-fortified/10 text-verdict-fortified">
+                  <span key={l} className="font-sketch text-sm font-bold px-2.5 py-1 rounded-md bg-verdict-fortified/10 text-verdict-fortified">
                     {l}
                   </span>
                 ))}
@@ -246,7 +246,7 @@ const FrameworkPage = () => (
                 no memory. Just a display case.
               </p>
               <div className="flex gap-2">
-                <span className="font-sketch text-xs font-bold px-2.5 py-1 rounded-md bg-verdict-exposed/10 text-verdict-exposed">
+                <span className="font-sketch text-sm font-bold px-2.5 py-1 rounded-md bg-verdict-exposed/10 text-verdict-exposed">
                   L7a only — no ★
                 </span>
               </div>
@@ -259,8 +259,8 @@ const FrameworkPage = () => (
     {/* Three Laws */}
     <section id="laws" className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-sketch text-sm text-accent mb-4">✏️ Three Structural Laws</p>
-        <h2 className="font-display text-3xl font-bold text-foreground mb-10">The Laws That Predict the Future</h2>
+        <p className="font-sketch text-base text-accent mb-4">✏️ Three Structural Laws</p>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">The Laws That Predict the Future</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {LAWS.map((law, i) => (
@@ -275,7 +275,7 @@ const FrameworkPage = () => (
               <div className="font-sketch text-5xl font-bold text-accent mb-4">{law.num}</div>
               <h3 className="font-display text-lg font-bold text-foreground mb-3">{law.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">{law.desc}</p>
-              <p className="font-sketch text-xs font-bold text-accent">{law.prediction}</p>
+              <p className="font-sketch text-sm font-bold text-accent">{law.prediction}</p>
             </motion.div>
           ))}
         </div>
@@ -285,8 +285,8 @@ const FrameworkPage = () => (
     {/* Six Archetypes */}
     <section className="bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <p className="font-sketch text-sm text-accent mb-4">✏️ Company Archetypes</p>
-        <h2 className="font-display text-3xl font-bold text-foreground mb-4">The Six Fates of SaaS</h2>
+        <p className="font-sketch text-base text-accent mb-4">✏️ Company Archetypes</p>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-4">The Six Fates of SaaS</h2>
         <p className="text-muted-foreground max-w-3xl mb-10">Every SaaS company fits one of these patterns.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -308,7 +308,7 @@ const FrameworkPage = () => (
             >
               <div className="flex items-center gap-2 mb-3">
                 <h3 className="font-display text-base font-bold text-foreground">{arch.title}</h3>
-                <span className={`font-sketch text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                <span className={`font-sketch text-sm font-bold px-2 py-0.5 rounded-full ${
                   arch.status === "safe" ? "bg-verdict-fortified/10 text-verdict-fortified" :
                   arch.status === "contested" ? "bg-verdict-consolidating/10 text-verdict-consolidating" :
                   arch.status === "dead" ? "bg-verdict-exposed/10 text-verdict-exposed" :
@@ -334,10 +334,10 @@ const FrameworkPage = () => (
           Read real case studies analyzed through the framework, or bring it to your team.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <a href="/analysis" className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition">
+          <a href="/analysis" className="btn-sketch">
             Case Studies <ArrowRight size={16} />
           </a>
-          <a href="/speaking" className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-muted-foreground text-sm font-medium rounded-lg hover:bg-secondary transition">
+          <a href="/speaking" className="btn-sketch-outline">
             Speaking & Workshops
           </a>
         </div>

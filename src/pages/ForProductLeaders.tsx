@@ -12,10 +12,10 @@ const ForProductLeaders = () => (
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-sketch text-sm text-accent mb-5">
+          <p className="font-sketch text-base text-accent mb-5">
             ✏️ For Product Leaders
           </p>
-          <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.15] mb-5">
+          <h1 className="font-display text-[28px] md:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
             You've Mastered the Customer Axis.{" "}
             <span className="text-accent">Now Master the Depth Axis.</span>
           </h1>
@@ -31,7 +31,7 @@ const ForProductLeaders = () => (
     {/* The Two Axes */}
     <section className="bg-secondary/30">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-sketch text-sm text-accent mb-4">✏️ The Shift</p>
+        <p className="font-sketch text-base text-accent mb-4">✏️ The Shift</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           From Y-Axis Thinking to Y+Z Thinking
         </h2>
@@ -43,7 +43,7 @@ const ForProductLeaders = () => (
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Customer needs, JTBD, user research, product-market fit. The vertical dimension.
             </p>
-            <p className="font-sketch text-xs text-muted-foreground italic">
+            <p className="font-sketch text-sm text-muted-foreground italic">
               Necessary — but no longer sufficient.
             </p>
           </div>
@@ -54,7 +54,7 @@ const ForProductLeaders = () => (
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Infrastructure depth. Which layer do you own? Which sublayers are defensible?
             </p>
-            <p className="font-sketch text-xs font-bold text-accent italic">
+            <p className="font-sketch text-sm font-bold text-accent italic">
               This determines whether your product survives the next 3 years.
             </p>
           </div>
@@ -66,7 +66,7 @@ const ForProductLeaders = () => (
             the Z-axis — infrastructure depth — or you'll build something customers love today that gets 
             commoditized tomorrow."
           </p>
-          <p className="mt-2 font-sketch text-sm text-muted-foreground">— Anand Arivukkarasu</p>
+          <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
         </div>
       </div>
     </section>
@@ -74,7 +74,7 @@ const ForProductLeaders = () => (
     {/* How to Use */}
     <section className="bg-background border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-sketch text-sm text-accent mb-4">✏️ Practical Application</p>
+        <p className="font-sketch text-base text-accent mb-4">✏️ Practical Application</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           How Product Leaders Use the Framework
         </h2>
@@ -93,7 +93,7 @@ const ForProductLeaders = () => (
                 <h3 className="font-display text-lg font-bold text-foreground">{item.title}</h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">{item.desc}</p>
-              <p className="font-sketch text-xs text-muted-foreground/70 italic">{item.example}</p>
+              <p className="font-sketch text-sm text-muted-foreground/70 italic">{item.example}</p>
             </motion.div>
           ))}
         </div>
@@ -111,10 +111,10 @@ const ForProductLeaders = () => (
           Half-day workshop. Every sublayer mapped. Migration strategy built.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Link to="/speaking" className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition">
+          <Link to="/speaking" className="btn-sketch">
             Book a Workshop <ArrowRight size={16} />
           </Link>
-          <Link to="/framework" className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-muted-foreground text-sm font-medium rounded-lg hover:bg-secondary transition">
+          <Link to="/framework" className="btn-sketch-outline">
             Explore the Framework
           </Link>
         </div>

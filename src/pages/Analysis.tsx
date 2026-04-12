@@ -19,13 +19,13 @@ const AnalysisPage = () => (
     <section className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-sketch text-sm text-accent mb-6">
+          <p className="font-sketch text-base text-accent mb-6">
             ✏️ Structural Analysis
           </p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
+          <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             Case Studies Through the Lens of the Stack
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Real companies. Real valuations. Real collapses. Every case analyzed through the 9 layers,
             the Intelligence Cube™, and the Three Structural Laws.
           </p>
@@ -38,7 +38,7 @@ const AnalysisPage = () => (
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-sketch text-3xl md:text-4xl font-bold text-accent">{stat.value}</p>
-                <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -49,7 +49,7 @@ const AnalysisPage = () => (
     {/* Featured */}
     <section className="bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-sketch text-sm text-accent mb-8">
+        <p className="font-sketch text-base text-accent mb-8">
           ✏️ Featured Case Studies
         </p>
         <div className="space-y-8">
@@ -63,7 +63,7 @@ const AnalysisPage = () => (
     {/* Remaining */}
     <section className="bg-background border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-sketch text-sm text-accent mb-8">
+        <p className="font-sketch text-base text-accent mb-8">
           ✏️ More Analysis
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -77,7 +77,7 @@ const AnalysisPage = () => (
     {/* Structural Scoreboard */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-sketch text-sm text-accent mb-6">
+        <p className="font-sketch text-base text-accent mb-6">
           ✏️ The Structural Scoreboard
         </p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-10">
@@ -88,11 +88,11 @@ const AnalysisPage = () => (
           <table className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-border">
-                <th className="pb-3 font-sketch text-xs font-bold text-muted-foreground">Company</th>
-                <th className="pb-3 font-sketch text-xs font-bold text-muted-foreground">Layers</th>
-                <th className="pb-3 font-sketch text-xs font-bold text-muted-foreground">Cube Volume</th>
-                <th className="pb-3 font-sketch text-xs font-bold text-muted-foreground">Verdict</th>
-                <th className="pb-3 font-sketch text-xs font-bold text-muted-foreground">Valuation Impact</th>
+                <th className="pb-3 font-display text-xs font-semibold text-muted-foreground uppercase tracking-wider">Company</th>
+                <th className="pb-3 font-display text-xs font-semibold text-muted-foreground uppercase tracking-wider">Layers</th>
+                <th className="pb-3 font-display text-xs font-semibold text-muted-foreground uppercase tracking-wider">Cube Volume</th>
+                <th className="pb-3 font-display text-xs font-semibold text-muted-foreground uppercase tracking-wider">Verdict</th>
+                <th className="pb-3 font-display text-xs font-semibold text-muted-foreground uppercase tracking-wider">Valuation Impact</th>
               </tr>
             </thead>
             <tbody>
@@ -115,20 +115,20 @@ const AnalysisPage = () => (
                       {row.layers.map((l) => {
                         const n = parseInt(l.replace("L", ""));
                         return (
-                          <span key={l} className="font-sketch text-[11px] font-bold px-2 py-0.5 rounded-md" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
+                          <span key={l} className="font-sketch text-sm font-bold px-2 py-0.5 rounded-md" style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
                             {l}
                           </span>
                         );
                       })}
                     </div>
                   </td>
-                  <td className="py-4 text-muted-foreground text-xs">{row.volume}</td>
+                  <td className="py-4 text-muted-foreground text-sm">{row.volume}</td>
                   <td className="py-4">
-                    <span className="font-sketch text-xs font-bold" style={{ color: row.verdictColor }}>
+                    <span className="font-sketch text-sm font-bold" style={{ color: row.verdictColor }}>
                       {row.verdict}
                     </span>
                   </td>
-                  <td className="py-4 text-muted-foreground text-xs">{row.impact}</td>
+                  <td className="py-4 text-muted-foreground text-sm">{row.impact}</td>
                 </tr>
               ))}
             </tbody>
@@ -149,8 +149,8 @@ const AnalysisPage = () => (
           className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
         >
           <input type="email" placeholder="you@company.com" required
-            className="flex-1 px-4 py-3 rounded-lg border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50" />
-          <button type="submit" className="px-6 py-3 bg-foreground text-background font-semibold rounded-lg hover:opacity-90 transition">
+            className="flex-1 px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40" />
+          <button type="submit" className="btn-sketch">
             Subscribe
           </button>
         </form>
