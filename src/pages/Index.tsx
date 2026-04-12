@@ -107,7 +107,7 @@ const Index = () => {
                           borderLeft: `3px solid hsl(${layer.color})`,
                         }}
                       >
-                        <span className="text-base shrink-0">{layer.goldIcon}</span>
+                        <SketchIcon name={layer.goldIcon} size={24} className="shrink-0" />
                         <span
                           className="font-sketch text-base font-bold min-w-[28px] shrink-0"
                           style={{ color: `hsl(${layer.color})` }}
