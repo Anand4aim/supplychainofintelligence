@@ -13,7 +13,7 @@ export interface Layer {
   bg: string;
   desc: string;
   detail: string;
-  goldIcon: string;
+  goldIcon: string; // sketch icon name from SketchIcons
   goldTitle: string;
   goldAnalogy: string;
   players: string[];
@@ -26,7 +26,7 @@ export const LAYERS: Layer[] = [
     id: "L0", name: "Physical Substrate", shortName: "Physical", color: "var(--layer-0)", bg: "var(--layer-0-bg)",
     desc: "The shovels. Chips, data centers, energy, cooling — the floor everything stands on.",
     detail: "Before a single token is generated, someone has to build the physical infrastructure. When L2 commoditizes, value accrues to L0. NVIDIA doesn't care which model wins — they sell to all of them.",
-    goldIcon: "⛏️",
+    goldIcon: "pickaxe",
     goldTitle: "The Shovels & Mining Equipment",
     goldAnalogy: "Before anyone finds gold, someone has to build the pickaxes, drill rigs, and mine shafts. In AI: NVIDIA builds the GPUs, CoreWeave builds the data centers, energy companies power the grid. No shovels → no gold rush. When L2 commoditizes, value accrues back here — just like mining equipment companies outlasted most gold miners.",
     players: ["NVIDIA", "AMD", "TSMC", "CoreWeave", "Equinix"],
@@ -42,7 +42,7 @@ export const LAYERS: Layer[] = [
     id: "L1", name: "Data & Knowledge", shortName: "Data", color: "var(--layer-1)", bg: "var(--layer-1-bg)",
     desc: "The foundation. What data do you have that nobody else can get?",
     detail: "Proprietary datasets are the raw fuel. More agents = more demand for data. The L1b test: if your data is public, the model layer wins.",
-    goldIcon: "🪨",
+    goldIcon: "rock",
     goldTitle: "The Raw Gold Ore",
     goldAnalogy: "The unrefined material pulled from the earth. Some mines have pure veins (proprietary data) — others have common dirt (public data). In AI: your proprietary data is your gold deposit. Public data is already mined by everyone. The L1b test: if your data is public, the model layer wins.",
     players: ["Apollo.io", "Bloomberg", "ZoomInfo", "Scale AI"],
@@ -58,7 +58,7 @@ export const LAYERS: Layer[] = [
     id: "L2", name: "Model & Reasoning", shortName: "Models", color: "var(--layer-2)", bg: "var(--layer-2-bg)",
     desc: "The reasoning engine. Rent early, build custom at scale.",
     detail: "Foundation models are the smelters — expensive, few can operate at scale. But once refined, the gold is a commodity — which is why model providers need to move up the chain.",
-    goldIcon: "🔥",
+    goldIcon: "flame",
     goldTitle: "The Smelter & Refinery",
     goldAnalogy: "Raw ore becomes pure gold through smelting. In AI: foundation models (Claude, GPT, Gemini) are the smelters — they transform raw data into intelligence. Refining is expensive and only a few can do it at scale. But once refined, the gold is a commodity — which is why model providers need to move up the chain.",
     players: ["OpenAI", "Anthropic", "Google DeepMind", "Meta AI"],
@@ -74,7 +74,7 @@ export const LAYERS: Layer[] = [
     id: "L3", name: "Trust & Governance", shortName: "Trust", color: "var(--layer-3)", bg: "var(--layer-3-bg)",
     desc: "The compliance gate. Can the enterprise trust your system?",
     detail: "Without the hallmark, no enterprise buyer touches it. L3 is the slowest moat to build and the hardest to replicate.",
-    goldIcon: "✅",
+    goldIcon: "shield",
     goldTitle: "The Hallmark & Assay Office",
     goldAnalogy: "Before gold enters the market, the assay office verifies purity. The hallmark guarantees quality. In AI: trust is the compliance gate — guardrails, safety, governance, audit trails. Without the hallmark, no enterprise buyer touches it. L3 is the slowest moat to build and the hardest to replicate.",
     players: ["Vanta", "Drata", "OneTrust"],
@@ -90,7 +90,7 @@ export const LAYERS: Layer[] = [
     id: "L4", name: "Access & Integration", shortName: "Access", color: "var(--layer-4)", bg: "var(--layer-4-bg)",
     desc: "The integration layer. What systems can your agent reach?",
     detail: "Grammarly survived because it had railroad tracks (plugins) into Word, Gmail, Chrome. Jasper had no tracks. Deep integrations create switching costs.",
-    goldIcon: "🚂",
+    goldIcon: "railroad",
     goldTitle: "The Railroads & Transport",
     goldAnalogy: "Refined gold needs to move — by rail, armored truck, secure vault. In AI: APIs, SDKs, plugins, MCP connectors are the railroads. Supabase, LangChain, Vercel — they build the transport layer. Grammarly survived because it had railroad tracks (plugins) into Word, Gmail, Chrome. Jasper had no tracks.",
     players: ["AWS", "Snowflake", "Supabase", "Twilio"],
@@ -106,7 +106,7 @@ export const LAYERS: Layer[] = [
     id: "L5", name: "Skills & Expertise", shortName: "Skills", color: "var(--layer-5)", bg: "var(--layer-5-bg)",
     desc: "What domain expertise is encoded as agent behavior?",
     detail: "A jeweler takes refined gold and crafts rings, necklaces, watches — each requiring specialized skill. L5 is THE entry point for AI-native companies.",
-    goldIcon: "💎",
+    goldIcon: "gem",
     goldTitle: "The Master Jeweler",
     goldAnalogy: "A jeweler takes refined gold and crafts rings, necklaces, watches — each requiring specialized skill. In AI: domain skills transform generic intelligence into specific capability. Harvey knows legal reasoning. Sierra knows customer service. L5 is THE entry point for AI-native companies.",
     players: ["Harvey", "Sierra", "11x", "Cursor"],
@@ -122,7 +122,7 @@ export const LAYERS: Layer[] = [
     id: "L6", name: "Orchestration", shortName: "Orchestration", color: "var(--layer-6)", bg: "var(--layer-6-bg)",
     desc: "How do you compose skills into multi-step processes?",
     detail: "A single ring is useful. A curated jewelry collection with tasting, fitting, and custom design is an experience. Orchestration composes individual skills into entire workflows.",
-    goldIcon: "🏪",
+    goldIcon: "storefront",
     goldTitle: "The Jewelry Store & Workshop",
     goldAnalogy: "A single ring is useful. A curated jewelry collection with tasting, fitting, and custom design is an experience. In AI: orchestration composes individual skills into multi-step workflows. Cursor orchestrates code skills into dev workflows. One skill → one task. Orchestration → entire workflows.",
     players: ["LangChain", "CrewAI", "Zapier (at risk)", "Make (at risk)"],
@@ -138,7 +138,7 @@ export const LAYERS: Layer[] = [
     id: "L7", name: "Expression & Surfaces", shortName: "Expression", color: "var(--layer-7)", bg: "var(--layer-7-bg)",
     desc: "How and where does the user meet the intelligence?",
     detail: "People see the ring on the finger — the surface, the sparkle. If all you own is the display case (L7), anyone can build another display case. Modality commoditizes; context is the moat.",
-    goldIcon: "👰",
+    goldIcon: "ring",
     goldTitle: "Wearing the Jewelry — The Moment of Experience",
     goldAnalogy: "People see the ring on the finger — the surface, the sparkle, the emotional moment. In AI: L7 is the UI, the chat interface, the dashboard — where users interact with intelligence. Beautiful, but the most exposed layer. If all you own is the display case (L7), anyone can build another display case.",
     players: ["ChatGPT", "Gemini", "Copilot", "ElevenLabs"],
@@ -155,7 +155,7 @@ export const LAYERS: Layer[] = [
     id: "L8", name: "Memory & Learning", shortName: "Memory", color: "var(--layer-8)", bg: "var(--layer-8-bg)",
     desc: "What does the system remember and compound over time?",
     detail: "The jeweler keeps records: which designs sold, which metals each customer prefers. Over time, this memory makes every decision better. Memory is the only layer that gets stronger every day.",
-    goldIcon: "📖",
+    goldIcon: "book",
     goldTitle: "The Record Book — Compounding Knowledge",
     goldAnalogy: "The jeweler keeps records: which designs sold, which metals each customer prefers, what styles trend each season. Over time, this memory makes every decision better. In AI: L8 is compound learning — Cursor remembers developer patterns, Harvey accumulates case law. The system that remembers wins long-term. Memory is the only layer that gets stronger every day.",
     players: ["Sierra", "Notion (partial)", "Rewind AI"],
