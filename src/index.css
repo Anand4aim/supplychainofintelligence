@@ -1,60 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Navy-Indigo editorial palette */
-    --background: 220 20% 98%;
-    --foreground: 222 84% 5%;
+    /* Warm cream whiteboard palette */
+    --background: 40 33% 96%;
+    --foreground: 30 10% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 5%;
+    --card: 40 30% 97%;
+    --card-foreground: 30 10% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 5%;
+    --popover: 40 30% 97%;
+    --popover-foreground: 30 10% 15%;
 
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 30 10% 15%;
+    --primary-foreground: 40 33% 96%;
 
-    --secondary: 220 15% 95%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 35 20% 92%;
+    --secondary-foreground: 30 10% 25%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 35 15% 91%;
+    --muted-foreground: 30 8% 45%;
 
     --accent: 243 75% 59%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 35 18% 86%;
+    --input: 35 18% 86%;
     --ring: 243 75% 59%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Layer colors (HSL) */
     --layer-0: 30 6% 46%;
     --layer-1: 217 91% 60%;
-    --layer-2: 263 70% 66%;
-    --layer-3: 0 84% 60%;
+    --layer-2: 263 70% 50%;
+    --layer-3: 0 72% 51%;
     --layer-4: 25 95% 53%;
     --layer-5: 160 84% 39%;
-    --layer-6: 48 96% 53%;
+    --layer-6: 48 96% 45%;
     --layer-7: 189 94% 43%;
-    --layer-8: 239 84% 67%;
+    --layer-8: 239 70% 55%;
 
-    --layer-0-bg: 30 20% 96%;
-    --layer-1-bg: 214 100% 97%;
-    --layer-2-bg: 263 100% 97%;
-    --layer-3-bg: 0 100% 97%;
-    --layer-4-bg: 33 100% 96%;
-    --layer-5-bg: 152 76% 96%;
-    --layer-6-bg: 48 100% 96%;
-    --layer-7-bg: 183 100% 96%;
-    --layer-8-bg: 240 100% 97%;
+    --layer-0-bg: 30 20% 93%;
+    --layer-1-bg: 214 80% 95%;
+    --layer-2-bg: 263 60% 95%;
+    --layer-3-bg: 0 80% 95%;
+    --layer-4-bg: 33 80% 93%;
+    --layer-5-bg: 152 60% 93%;
+    --layer-6-bg: 48 80% 93%;
+    --layer-7-bg: 183 60% 93%;
+    --layer-8-bg: 240 60% 95%;
 
     /* Brand */
     --indigo: 243 75% 59%;
@@ -62,44 +64,26 @@
     --navy: 222 47% 11%;
     --navy-mid: 217 33% 17%;
 
-    /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 240 6% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 240 6% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
-  }
+    /* Verdict colors */
+    --verdict-exposed: 0 72% 51%;
+    --verdict-fortified: 152 60% 38%;
+    --verdict-consolidating: 40 90% 50%;
+    --verdict-dominant: 243 75% 59%;
 
-  .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 243 75% 59%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
-    --sidebar-background: 240 6% 10%;
-    --sidebar-foreground: 240 5% 96%;
-    --sidebar-primary: 224 76% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4% 16%;
-    --sidebar-accent-foreground: 240 5% 96%;
-    --sidebar-border: 240 4% 16%;
+    /* Sketch / hand-drawn accents */
+    --sketch-red: 0 72% 50%;
+    --sketch-dark: 30 10% 20%;
+    --sketch-muted: 30 5% 55%;
+    --sketch-paper: 40 33% 95%;
+
+    /* Sidebar */
+    --sidebar-background: 40 30% 97%;
+    --sidebar-foreground: 30 8% 30%;
+    --sidebar-primary: 30 10% 15%;
+    --sidebar-primary-foreground: 40 33% 96%;
+    --sidebar-accent: 35 20% 93%;
+    --sidebar-accent-foreground: 30 10% 15%;
+    --sidebar-border: 35 18% 86%;
     --sidebar-ring: 217 91% 60%;
   }
 }
@@ -111,12 +95,53 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Fredoka', 'Inter', -apple-system, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Fredoka', -apple-system, sans-serif;
+    font-weight: 600;
   }
+}
+
+/* Sketch annotation font */
+.font-sketch {
+  font-family: 'Caveat', cursive;
+}
+
+/* Paper texture for sketch boards */
+.sketch-paper {
+  background: linear-gradient(135deg, #FAF9F5 0%, #F3F0E8 50%, #FAF8F4 100%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), inset 0 0 60px rgba(0,0,0,0.015);
+}
+
+/* Dot grid for whiteboard feel */
+.sketch-dots {
+  background-image: radial-gradient(circle, #999 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.04;
+}
+
+/* Hand-drawn border effect */
+.sketch-border {
+  border-radius: 8px;
+  box-shadow: 
+    1px 1px 0 rgba(0,0,0,0.05),
+    -0.5px -0.5px 0 rgba(0,0,0,0.03);
+}
+
+/* Verdict border classes */
+.verdict-exposed {
+  border-left: 4px solid hsl(var(--verdict-exposed));
+}
+.verdict-fortified {
+  border-left: 4px solid hsl(var(--verdict-fortified));
+}
+.verdict-consolidating {
+  border-left: 4px solid hsl(var(--verdict-consolidating));
+}
+.verdict-dominant {
+  border-left: 4px solid hsl(var(--verdict-dominant));
 }
 
 /* Custom scrollbar */
@@ -127,7 +152,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: hsl(var(--muted-foreground) / 0.2);
   border-radius: 3px;
 }
 

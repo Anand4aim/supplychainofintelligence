@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        body: ['Inter', '-apple-system', 'sans-serif'],
+        display: ['Fredoka', '-apple-system', 'sans-serif'],
+        body: ['Fredoka', 'Inter', '-apple-system', 'sans-serif'],
+        sketch: ['Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -74,6 +75,18 @@ export default {
           6: "hsl(var(--layer-6))",
           7: "hsl(var(--layer-7))",
           8: "hsl(var(--layer-8))",
+        },
+        verdict: {
+          exposed: "hsl(var(--verdict-exposed))",
+          fortified: "hsl(var(--verdict-fortified))",
+          consolidating: "hsl(var(--verdict-consolidating))",
+          dominant: "hsl(var(--verdict-dominant))",
+        },
+        sketch: {
+          red: "hsl(var(--sketch-red))",
+          dark: "hsl(var(--sketch-dark))",
+          muted: "hsl(var(--sketch-muted))",
+          paper: "hsl(var(--sketch-paper))",
         },
       },
       borderRadius: {
