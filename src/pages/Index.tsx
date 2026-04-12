@@ -62,14 +62,17 @@ const Index = () => {
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
                 AI is reorganizing software into a{" "}
-                <SketchUnderline color="hsl(var(--accent))">
-                  <span className="text-accent">new supply chain</span>
-                </SketchUnderline>
+                <SketchHighlight color="cyan">
+                  <SketchUnderline color="hsl(var(--accent))">
+                    <span className="text-accent">new supply chain</span>
+                  </SketchUnderline>
+                </SketchHighlight>
                 .{" "}
-                Most companies only own one layer.
+                Most companies only own{" "}
+                <SketchHighlight color="yellow">one layer</SketchHighlight>.
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
+                The Supply Chain of Intelligence™ maps the <SketchBigWord size="2xl" color="hsl(var(--accent))" rotate={-1}>9</SketchBigWord> layers and <SketchBigWord size="2xl" color="hsl(var(--sketch-red))" rotate={1}>32+</SketchBigWord> sublayers
                 that determine who captures value, who becomes infrastructure, and who
                 gets dissolved.
               </p>
@@ -162,9 +165,10 @@ const Index = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-12"
           >
-            <SketchBoard className="p-5 md:p-7">
+             <SketchBoard className="p-5 md:p-7">
               <p className="font-sketch text-lg font-bold text-accent mb-4 relative">
-                — Proof — One example, three fates
+                — Proof — <SketchHighlight color="pink">One example, three fates</SketchHighlight>
+              </p>
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
                 {[
@@ -183,8 +187,8 @@ const Index = () => {
                     pos: "L2 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
                     note: "Owns the smelter. Surface is free because the model IS the moat", layers: [2, 7],
                   },
-                ].map((c) => (
-                  <div key={c.name} className="flex items-start gap-3">
+                ].map((c, idx) => (
+                  <div key={c.name} className="flex items-start gap-3" style={{ transform: `rotate(${[-0.8, 0.5, -0.3][idx]}deg)` }}>
                     <img
                       src={c.logo} alt={c.name}
                       className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
@@ -193,7 +197,9 @@ const Index = () => {
                     <div className="min-w-0">
                       <div className="flex items-baseline gap-2">
                         <span className="text-sm font-bold text-foreground">{c.name}</span>
-                        <span className="font-sketch text-base font-bold" style={{ color: c.color }}>{c.fate}</span>
+                        <SketchHighlight color={c.fate === "Collapsed" ? "pink" : c.fate === "Thriving" ? "green" : "cyan"}>
+                          <span className="font-sketch text-base font-bold" style={{ color: c.color }}>{c.fate}</span>
+                        </SketchHighlight>
                       </div>
                       <p className="font-sketch text-sm text-muted-foreground mt-0.5">{c.pos}</p>
                       <p className="text-xs text-muted-foreground/60 mt-1 leading-relaxed">{c.note}</p>
