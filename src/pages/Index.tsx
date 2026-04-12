@@ -318,14 +318,15 @@ const Index = () => {
 
           {/* Quote */}
           <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
-            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl">
+            <SketchDivider className="mb-8" />
+            <SketchBubble accentColor="hsl(var(--accent))" tail="bottom-left" className="max-w-2xl">
               <p className="text-sm text-foreground leading-relaxed italic">
-                "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
-                you also need the Z-axis — infrastructure depth — or you'll build something customers
+                "Great product leaders have mastered the <SketchHighlight color="cyan">Y-axis — customer depth</SketchHighlight>. In the AI era,
+                you also need the <SketchHighlight color="pink">Z-axis — infrastructure depth</SketchHighlight> — or you'll build something customers
                 love today that gets commoditized tomorrow."
               </p>
               <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
-            </div>
+            </SketchBubble>
           </motion.div>
         </div>
       </section>
