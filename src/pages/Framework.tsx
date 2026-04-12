@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT } from "@/data/layers";
+import { SketchIcon } from "@/components/sketch/SketchIcons";
 import {
   SketchFilters,
   SketchBoard,
@@ -93,7 +94,7 @@ const FrameworkPage = () => (
                     className="flex flex-col items-center justify-center px-4 py-5 min-w-[78px] md:min-w-[94px]"
                     style={{ background: `hsl(${layer.bg})` }}
                   >
-                    <span className="text-2xl mb-1">{layer.goldIcon}</span>
+                    <SketchIcon name={layer.goldIcon} size={36} className="mb-1" />
                     <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
                       {layer.id}
                     </span>

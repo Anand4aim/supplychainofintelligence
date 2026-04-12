@@ -452,7 +452,7 @@ const Index = () => {
                     className="flex items-center gap-3 px-5 py-3 lg:min-w-[200px] lg:flex-col lg:justify-center lg:items-center lg:py-5"
                     style={{ background: `hsl(${layer.bg})` }}
                   >
-                    <span className="text-xl">{layer.goldIcon}</span>
+                    <SketchIcon name={layer.goldIcon} size={32} />
                     <div className="flex items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
                       <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
                         {layer.id}
