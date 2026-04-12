@@ -20,7 +20,7 @@ const AnalysisPage = () => (
       <div className="max-w-5xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <p className="font-sketch text-base text-accent mb-6">
-            ✏️ Structural Analysis
+            — Structural Analysis
           </p>
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             Case Studies Through the Lens of the Stack
@@ -50,7 +50,7 @@ const AnalysisPage = () => (
     <section className="bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <p className="font-sketch text-base text-accent mb-8">
-          ✏️ Featured Case Studies
+          — Featured Case Studies
         </p>
         <div className="space-y-8">
           {featured.map((study, i) => (
@@ -64,7 +64,7 @@ const AnalysisPage = () => (
     <section className="bg-background border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <p className="font-sketch text-base text-accent mb-8">
-          ✏️ More Analysis
+          — More Analysis
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {remaining.map((study, i) => (
@@ -78,7 +78,7 @@ const AnalysisPage = () => (
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <p className="font-sketch text-base text-accent mb-6">
-          ✏️ The Structural Scoreboard
+          — The Structural Scoreboard
         </p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-10">
           Where Do They All Sit?

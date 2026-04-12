@@ -107,7 +107,7 @@ const Index = () => {
                           borderLeft: `3px solid hsl(${layer.color})`,
                         }}
                       >
-                        <span className="text-base shrink-0">{layer.goldIcon}</span>
+                        <SketchIcon name={layer.goldIcon} size={24} className="shrink-0" />
                         <span
                           className="font-sketch text-base font-bold min-w-[28px] shrink-0"
                           style={{ color: `hsl(${layer.color})` }}
@@ -157,7 +157,7 @@ const Index = () => {
           >
             <SketchBoard className="p-5 md:p-7">
               <p className="font-sketch text-base text-accent mb-4 relative">
-                ✏️ Proof — One example, three fates
+                — Proof — One example, three fates
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
                 {[
@@ -212,7 +212,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
             <p className="font-sketch text-base text-accent mb-4">
-              ✏️ The Missing Dimension
+              — The Missing Dimension
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-5">
               Why customer understanding is no longer enough
@@ -323,7 +323,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
             <p className="font-sketch text-base text-accent mb-4">
-              ✏️ Why We Call It a Supply Chain
+              — Why We Call It a Supply Chain
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-4">
               From Gold in the Ground to the Ring on Your Finger
@@ -426,7 +426,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
             <p className="font-sketch text-base text-accent mb-3">
-              ✏️ The Full Map
+              — The Full Map
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
               9 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ Sublayers. The Defensible Positions Marked.
@@ -452,7 +452,7 @@ const Index = () => {
                     className="flex items-center gap-3 px-5 py-3 lg:min-w-[200px] lg:flex-col lg:justify-center lg:items-center lg:py-5"
                     style={{ background: `hsl(${layer.bg})` }}
                   >
-                    <span className="text-xl">{layer.goldIcon}</span>
+                    <SketchIcon name={layer.goldIcon} size={32} />
                     <div className="flex items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
                       <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
                         {layer.id}
@@ -566,7 +566,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
             <p className="font-sketch text-base text-accent mb-4">
-              ✏️ Three Structural Laws
+              — Three Structural Laws
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               The Laws That Predict the Future
@@ -635,7 +635,7 @@ const Index = () => {
           <motion.div {...fadeIn} className="flex items-end justify-between mb-10">
             <div>
               <p className="font-sketch text-base text-accent mb-3">
-                ✏️ The Framework in Action
+                — The Framework in Action
               </p>
               <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground">
                 Case Studies — Proof Through the Stack
@@ -665,7 +665,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
             <p className="font-sketch text-base text-accent mb-4">
-              ✏️ The Intelligence Cube™
+              — The Intelligence Cube™
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               9 Functions × 9 Verticals × 9 Layers
@@ -686,7 +686,7 @@ const Index = () => {
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
           <motion.div {...fadeIn}>
             <p className="font-sketch text-base text-accent mb-4">
-              ✏️ The Diagnostic
+              — The Diagnostic
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-6">
               Where Do You Actually Sit in the Stack?
