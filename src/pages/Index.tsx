@@ -169,7 +169,6 @@ const Index = () => {
               <p className="font-sketch text-lg font-bold text-accent mb-4 relative">
                 — Proof — <SketchHighlight color="pink">One example, three fates</SketchHighlight>
               </p>
-              </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
                 {[
                   {
