@@ -13,7 +13,7 @@ export interface Layer {
   bg: string;
   desc: string;
   detail: string;
-  goldIcon: string;
+  goldIcon: string; // sketch icon name from SketchIcons
   goldTitle: string;
   goldAnalogy: string;
   players: string[];
