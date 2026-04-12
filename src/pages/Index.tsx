@@ -17,13 +17,6 @@ import {
   SketchLabel,
   SketchConnector,
 } from "@/components/sketch/SketchElements";
-import {
-  SketchHighlight,
-  SketchBubble,
-  SketchBigWord,
-  SketchDivider,
-  SketchAnnotation,
-} from "@/components/sketch/SketchNote";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -62,17 +55,14 @@ const Index = () => {
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
                 AI is reorganizing software into a{" "}
-                <SketchHighlight color="cyan">
-                  <SketchUnderline color="hsl(var(--accent))">
-                    <span className="text-accent">new supply chain</span>
-                  </SketchUnderline>
-                </SketchHighlight>
+                <SketchUnderline color="hsl(var(--accent))">
+                  <span className="text-accent">new supply chain</span>
+                </SketchUnderline>
                 .{" "}
-                Most companies only own{" "}
-                <SketchHighlight color="yellow">one layer</SketchHighlight>.
+                Most companies only own one layer.
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                The Supply Chain of Intelligence™ maps the <SketchBigWord size="2xl" color="hsl(var(--accent))" rotate={-1}>9</SketchBigWord> layers and <SketchBigWord size="2xl" color="hsl(var(--sketch-red))" rotate={1}>32+</SketchBigWord> sublayers
+                The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
                 that determine who captures value, who becomes infrastructure, and who
                 gets dissolved.
               </p>
@@ -165,9 +155,9 @@ const Index = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-12"
           >
-             <SketchBoard className="p-5 md:p-7">
+            <SketchBoard className="p-5 md:p-7">
               <p className="font-sketch text-lg font-bold text-accent mb-4 relative">
-                — Proof — <SketchHighlight color="pink">One example, three fates</SketchHighlight>
+                — Proof — One example, three fates
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
                 {[
@@ -186,8 +176,8 @@ const Index = () => {
                     pos: "L2 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
                     note: "Owns the smelter. Surface is free because the model IS the moat", layers: [2, 7],
                   },
-                ].map((c, idx) => (
-                  <div key={c.name} className="flex items-start gap-3" style={{ transform: `rotate(${[-0.8, 0.5, -0.3][idx]}deg)` }}>
+                ].map((c) => (
+                  <div key={c.name} className="flex items-start gap-3">
                     <img
                       src={c.logo} alt={c.name}
                       className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
@@ -196,9 +186,7 @@ const Index = () => {
                     <div className="min-w-0">
                       <div className="flex items-baseline gap-2">
                         <span className="text-sm font-bold text-foreground">{c.name}</span>
-                        <SketchHighlight color={c.fate === "Collapsed" ? "pink" : c.fate === "Thriving" ? "green" : "cyan"}>
-                          <span className="font-sketch text-base font-bold" style={{ color: c.color }}>{c.fate}</span>
-                        </SketchHighlight>
+                        <span className="font-sketch text-base font-bold" style={{ color: c.color }}>{c.fate}</span>
                       </div>
                       <p className="font-sketch text-sm text-muted-foreground mt-0.5">{c.pos}</p>
                       <p className="text-xs text-muted-foreground/60 mt-1 leading-relaxed">{c.note}</p>
@@ -318,15 +306,14 @@ const Index = () => {
 
           {/* Quote */}
           <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
-            <SketchDivider className="mb-8" />
-            <SketchBubble accentColor="hsl(var(--accent))" tail="bottom-left" className="max-w-2xl">
+            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl">
               <p className="text-sm text-foreground leading-relaxed italic">
-                "Great product leaders have mastered the <SketchHighlight color="cyan">Y-axis — customer depth</SketchHighlight>. In the AI era,
-                you also need the <SketchHighlight color="pink">Z-axis — infrastructure depth</SketchHighlight> — or you'll build something customers
+                "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
+                you also need the Z-axis — infrastructure depth — or you'll build something customers
                 love today that gets commoditized tomorrow."
               </p>
               <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
-            </SketchBubble>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -598,42 +585,39 @@ const Index = () => {
                     title: "The Creator Cannot Be the Gatekeeper",
                     desc: "When one entity controls both intelligence and trust, credibility degrades.",
                     predicts: "WHAT can't be vertically integrated",
-                    highlight: "pink" as const,
                   },
                   {
                     num: "II",
                     title: "Memory That Doesn't Learn Isn't Intelligence",
                     desc: "A system that remembers but doesn't improve is just a database with a chat UI.",
                     predicts: "WHO captures long-term value",
-                    highlight: "cyan" as const,
                   },
                   {
                     num: "III",
                     title: "Value Migrates to the Scarcest Layer",
                     desc: "When a layer commoditizes, value transfers to adjacent scarce layers.",
                     predicts: "WHERE value is going",
-                    highlight: "yellow" as const,
                   },
-                ].map((law, idx) => (
-                  <div key={law.num} className="flex gap-4 items-start" style={{ transform: `rotate(${[-0.5, 0.3, -0.2][idx]}deg)` }}>
+                ].map((law) => (
+                  <div key={law.num} className="flex gap-4 items-start">
                     <div className="min-w-[50px] text-center">
-                      <SketchBigWord size="4xl" color="hsl(var(--sketch-red))" rotate={[-2, 1, -1][idx]}>
+                      <span className="font-sketch text-4xl font-bold leading-none text-sketch-red">
                         {law.num}
-                      </SketchBigWord>
+                      </span>
                     </div>
                     <div className="flex-1">
                       <SketchBox color="hsl(25 12% 75%)" className="p-4">
                         <span className="font-sketch text-xl font-bold text-foreground block mb-1.5">
-                          <SketchHighlight color={law.highlight}>{law.title}</SketchHighlight>
+                          {law.title}
                         </span>
                         <span className="text-sm text-muted-foreground leading-relaxed block mb-2">
                           {law.desc}
                         </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
-                          <SketchAnnotation>
+                          <span className="font-sketch text-sm font-bold text-sketch-red">
                             Predicts {law.predicts}
-                          </SketchAnnotation>
+                          </span>
                         </div>
                       </SketchBox>
                     </div>
@@ -664,9 +648,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredStudies.map((study, i) => (
-              <div key={study.slug} style={{ transform: `rotate(${[-0.6, 0.4, -0.3][i % 3]}deg)` }}>
-                <CaseStudyCard study={study} index={i} />
-              </div>
+              <CaseStudyCard key={study.slug} study={study} index={i} />
             ))}
           </div>
 
@@ -686,11 +668,11 @@ const Index = () => {
               — The Intelligence Cube™
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              <SketchBigWord size="3xl" color="hsl(var(--accent))" rotate={-1}>9</SketchBigWord> Functions × <SketchBigWord size="3xl" color="hsl(var(--sketch-red))" rotate={1}>9</SketchBigWord> Verticals × <SketchBigWord size="3xl" color="hsl(var(--verdict-fortified))" rotate={-0.5}>9</SketchBigWord> Layers
+              9 Functions × 9 Verticals × 9 Layers
             </h2>
             <p className="text-base text-muted-foreground max-w-xl mx-auto">
-              Volume = <SketchHighlight color="green">structural durability</SketchHighlight>. Companies that occupy thin slivers get dissolved.
-              Companies that fill the cube become <SketchHighlight color="cyan">fortresses</SketchHighlight>.
+              Volume = structural durability. Companies that occupy thin slivers get dissolved.
+              Companies that fill the cube become fortresses.
             </p>
           </motion.div>
           <motion.div {...fadeIn}>
@@ -707,7 +689,7 @@ const Index = () => {
               — The Diagnostic
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-6">
-              Where Do <SketchHighlight color="yellow">You</SketchHighlight> Actually Sit in the Stack?
+              Where Do You Actually Sit in the Stack?
             </h2>
             <SketchBoard className="p-6 max-w-md mx-auto mb-8">
               <div className="text-left space-y-3">
