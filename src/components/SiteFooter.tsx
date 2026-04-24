@@ -16,6 +16,9 @@ const SiteFooter = () => (
           <p className="text-xs mt-3 text-muted-foreground/60">
             By Anand Arivukkarasu · Ex-Meta & Google Product Leader
           </p>
+          <p className="text-xs mt-2 text-muted-foreground/70">
+            An <a href="https://www.ideas2it.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:underline">Ideas2IT</a> initiative
+          </p>
         </div>
 
         {/* Links */}
@@ -25,7 +28,6 @@ const SiteFooter = () => (
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
             <Link to="/for-product-leaders" className="block text-sm hover:text-foreground transition-colors">Analysis</Link>
-            <Link to="/speaking" className="block text-sm hover:text-foreground transition-colors">Speaking & Workshops</Link>
           </div>
         </div>
 

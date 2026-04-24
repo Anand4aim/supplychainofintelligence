@@ -7,7 +7,6 @@ import Index from "./pages/Index";
 import FrameworkPage from "./pages/Framework";
 import AnalysisPage from "./pages/Analysis";
 import ForProductLeaders from "./pages/ForProductLeaders";
-import SpeakingPage from "./pages/Speaking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,7 +22,6 @@ const App = () => (
           <Route path="/framework" element={<FrameworkPage />} />
           <Route path="/analysis" element={<AnalysisPage />} />
           <Route path="/for-product-leaders" element={<ForProductLeaders />} />
-          <Route path="/speaking" element={<SpeakingPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
