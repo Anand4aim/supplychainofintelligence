@@ -6,7 +6,6 @@ const navItems = [
   { label: "Framework", path: "/framework" },
   { label: "Case Studies", path: "/analysis" },
   { label: "Analysis", path: "/for-product-leaders" },
-  { label: "Speaking", path: "/speaking" },
 ];
 
 const SiteHeader = () => {
