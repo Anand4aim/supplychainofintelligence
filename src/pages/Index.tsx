@@ -552,7 +552,7 @@ const Index = () => {
                 </div>
 
                 <p className="font-sketch text-sm text-muted-foreground italic mt-4 text-center">
-                  Own all three → fortress · Own none → graveyard · Most companies own one
+                  Own all three → fortress · Own one layer deeply (Vanta on L3, NVIDIA on L0) → still survives · Own a thin sliver of a contested layer → graveyard
                 </p>
               </div>
             </SketchBoard>
