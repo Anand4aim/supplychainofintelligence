@@ -516,11 +516,11 @@ const Index = () => {
                     <span className="text-xs text-muted-foreground block">Proprietary Data</span>
                   </span>
                   <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5b/c/d ★</span>
+                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5a/b/d ★</span>
                     <span className="text-xs text-muted-foreground block">Deep Skills</span>
                   </span>
                   <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d ★</span>
+                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d/e ★</span>
                     <span className="text-xs text-muted-foreground block">Compounding Memory</span>
                   </span>
                   <span className="absolute" style={{ left: "135px", top: "122px" }}>
