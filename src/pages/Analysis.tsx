@@ -26,7 +26,7 @@ const AnalysisPage = () => (
             Case Studies Through the Lens of the Stack
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Real companies. Real valuations. Real collapses. Every case analyzed through the 9 layers,
+            Real companies. Real valuations. Real collapses. Every case analyzed through the 10 layers,
             the Intelligence Cube™, and the Three Structural Laws.
           </p>
 
