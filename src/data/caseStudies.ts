@@ -35,7 +35,7 @@ Jasper occupied L7 (Expression Surface) — a thin UI wrapper around OpenAI's GP
 
 **Why Grammarly survived:** Grammarly looks similar on the surface — it's also a writing tool. But structurally, it's completely different:
 - L1: Proprietary language model trained on billions of corrections
-- L6: Deep domain skills (tone detection, style guides, team conventions)
+- L5: Deep domain execution (tone detection, style guides, team conventions)
 - L8: Memory — it learns YOUR writing patterns, YOUR team's voice
 
 When ChatGPT can write anything, Grammarly's value isn't writing — it's knowing HOW you write. That's L8. That's defensible.
@@ -54,8 +54,8 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     title: "Chegg: From $12B to 99% Collapse — The Fastest Value Destruction in EdTech",
     verdict: "STRUCTURAL INEVITABILITY",
     excerpt:
-      "Chegg sat at L6a — generic educational content with no proprietary data, no memory loops, no compliance moat. When ChatGPT arrived, it didn't compete with Chegg — it made Chegg's entire layer free. The stock dropped 99%. Law III predicted it.",
-    layers: ["L6"],
+      "Chegg sat at L7b — generic educational content with no proprietary data, no memory loops, no compliance moat. When ChatGPT arrived, it didn't compete with Chegg — it made Chegg's entire layer free. The stock dropped 99%. Law III predicted it.",
+    layers: ["L7"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
@@ -67,7 +67,7 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     },
     content: `Chegg's collapse is the clearest case study of Law III: Value Migrates to the Scarcest Layer.
 
-**Chegg's position:** L6a — generic educational content. Homework answers, textbook solutions, Q&A. No proprietary data (L1). No memory loops (L8). No compliance moat (L3). Just content that any LLM can generate.
+**Chegg's position:** L7b — generic educational content. Homework answers, textbook solutions, Q&A. No proprietary data (L1). No memory loops (L8). No compliance moat (L3). Just content that any LLM can generate.
 
 **The timeline:**
 - 2021: $12B market cap, dominant in homework help
@@ -90,8 +90,8 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
     verdict: "GRAVEYARD CANDIDATE",
     excerpt:
-      "Presentation generation sits at L7a — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. The Intelligence Cube™ predicted this before the market priced it in. When your entire product is one prompt away from being free, you're already dead.",
-    layers: ["L6", "L7"],
+      "Presentation generation sits at L7b — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. The Intelligence Cube™ predicted this before the market priced it in. When your entire product is one prompt away from being free, you're already dead.",
+    layers: ["L7"],
     date: "March 2026",
     readTime: "8 min",
     valuation: {
@@ -104,9 +104,9 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     content: `When Gamma raised at a $2.1B valuation, the market saw a hot AI startup. The Supply Chain of Intelligence™ saw a company occupying a single thin layer.
 
 **The Cube Analysis:**
-- Functions: Product + PM only (2/8)
+- Functions: Product + PM only (2/9)
 - Verticals: Cross-industry (generic)
-- Layers: L7 surface only (1/8)
+- Layers: L7 surface only (1/10)
 - Volume: Minimal. Structurally fragile.
 
 **What happened:** Claude added artifact generation. Copilot added presentation creation. Gemini added slide generation. All FREE with existing subscriptions.
@@ -122,10 +122,10 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     ],
     tag: "TRAFFIC COLLAPSE",
     title: "Stack Overflow: When Your Community Becomes Training Data",
-    verdict: "L6a COMMODITY",
+    verdict: "L7b COMMODITY",
     excerpt:
-      "Stack Overflow's traffic dropped 35%+ after ChatGPT launched. 15 years of community-built knowledge at L6a — consumed by models at L2. The community that built the data got none of the value. The model layer captured it all.",
-    layers: ["L1", "L6"],
+      "Stack Overflow's traffic dropped 35%+ after ChatGPT launched. 15 years of community-built knowledge packaged as L7b content — consumed by models at L2. The community that built the data got none of the value. The model layer captured it all.",
+    layers: ["L1", "L7"],
     date: "March 2026",
     readTime: "8 min",
     valuation: {
@@ -135,11 +135,11 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
       trend: "down",
       changeLabel: "-45%",
     },
-    content: `Stack Overflow is a fascinating structural case: they had L1 data (community knowledge) but packaged it as L6a (generic content access).
+    content: `Stack Overflow is a fascinating structural case: they had L1 data (community knowledge) but packaged it as L7b (generic content access).
 
 **The irony:** Stack Overflow's data trained the very models that now replace it. Their 15+ years of developer Q&A became fuel for ChatGPT and Copilot.
 
-**The structural mistake:** Stack Overflow treated its data as content (L6a) rather than proprietary fuel (L1b). They could have:
+**The structural mistake:** Stack Overflow treated its data as content (L7b) rather than proprietary fuel (L1b). They could have:
 - Licensed data at premium rates (L1b monetization)
 - Built developer memory (L8) — personalized to each dev's stack
 - Created compliance layers (L3) — verified, auditable answers for enterprise
@@ -186,7 +186,7 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     verdict: "MEMORY = MOAT",
     excerpt:
       "Sierra learns from every customer resolution. Salesforce Agentforce doesn't. This single architectural difference — compounding memory at L8 — determines who captures the next decade of enterprise CX value.",
-    layers: ["L1", "L6", "L8"],
+    layers: ["L1", "L5", "L8"],
     date: "March 2026",
     readTime: "9 min",
     valuation: {
@@ -196,7 +196,7 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
       trend: "up",
       changeLabel: "Rising",
     },
-    content: `Sierra occupies the most structurally durable position in customer experience: L1 (customer data) + L6 (domain skills) + L8 (memory that compounds).
+    content: `Sierra occupies the most structurally durable position in customer experience: L1 (customer data) + L5 (domain execution) + L8 (memory that compounds).
 
 **The memory advantage:** Every customer interaction makes Sierra smarter. It remembers resolution patterns, customer preferences, and edge cases. This creates a compounding data moat that grows with usage.
 
@@ -245,7 +245,7 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     verdict: "ERA 3 → ERA 5",
     excerpt:
       "We're in Era 3 — The Dialogue. Human directs, AI builds. By 2028, agents ARE the workers. Per-seat pricing dies because AI replaces seats. Your roadmap needs both the customer axis and the depth axis to survive.",
-    layers: ["L5", "L6", "L7"],
+    layers: ["L5", "L7"],
     date: "March 2026",
     readTime: "10 min",
     content: `Software has evolved through five distinct eras, and most product leaders are still building for Era 2.
@@ -267,8 +267,8 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
     title: "Harvey AI: The Vertical Fortress That Generic AI Can't Touch",
     verdict: "FORTRESS — SAFE",
     excerpt:
-      "Harvey occupies L1 (legal data) + L3 (compliance/governance) + L6 (domain skills) + L8 (case memory). Four layers deep in a regulated vertical. Generic AI can't replicate L3. This is the fortress archetype.",
-    layers: ["L1", "L3", "L6", "L8"],
+      "Harvey occupies L1 (legal data) + L3 (compliance/governance) + L5 (domain execution) + L8 (case memory). Four layers deep in a regulated vertical. Generic AI can't replicate L3. This is the fortress archetype.",
+    layers: ["L1", "L3", "L5", "L8"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
@@ -283,7 +283,7 @@ When ChatGPT can write anything, Grammarly's value isn't writing — it's knowin
 **The stack position:**
 - L1: Proprietary legal training data from top law firms
 - L3: Compliance, privilege, audit trails — legally required, can't be automated away
-- L6: Deep legal reasoning skills — contract analysis, case research, regulatory interpretation
+- L5: Deep legal execution — contract analysis, case research, regulatory interpretation
 - L8: Case memory — learns from each firm's precedents and preferences
 
 **Why generic AI can't compete:** ChatGPT can write a legal memo. But it can't guarantee privilege. It can't audit its reasoning. It can't learn from your firm's specific playbook. The compliance layer (L3) is the moat that no generic model can cross.`,

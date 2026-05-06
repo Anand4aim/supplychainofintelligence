@@ -62,7 +62,7 @@ const Index = () => {
                 Most companies only own one layer.
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                The Supply Chain of Intelligence™ maps the 9 layers and 32+ sublayers
+                The Supply Chain of Intelligence™ maps the 10 layers and 50 sublayers
                 that determine who captures value, who becomes infrastructure, and who
                 gets dissolved.
               </p>
@@ -79,14 +79,14 @@ const Index = () => {
               </div>
             </motion.div>
 
-            {/* Right: L0–L8 layer stack */}
+            {/* Right: L-1–L8 layer stack */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <p className="font-sketch text-base text-muted-foreground mb-3">
-                The 9-Layer Stack — Click to explore ↓
+                The 10-Layer Stack — Click to explore ↓
               </p>
               <div className="sketch-paper rounded-2xl p-4 space-y-1.5 relative">
                 <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
@@ -421,7 +421,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ FULL 9-LAYER MAP ═══════════ */}
+      {/* ═══════════ FULL 10-LAYER MAP ═══════════ */}
       <section className="bg-secondary/40">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
@@ -429,7 +429,7 @@ const Index = () => {
               — The Full Map
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
-              9 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ Sublayers. The Defensible Positions Marked.
+              10 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} Sublayers. The Defensible Positions Marked.
             </h2>
             <p className="text-base text-muted-foreground max-w-2xl">
               This is not a metaphor. It is a structural map. The ★ markers show where defensibility actually sits.
@@ -516,11 +516,11 @@ const Index = () => {
                     <span className="text-xs text-muted-foreground block">Proprietary Data</span>
                   </span>
                   <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5b/c/d ★</span>
+                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5a/b/d ★</span>
                     <span className="text-xs text-muted-foreground block">Deep Skills</span>
                   </span>
                   <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d ★</span>
+                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d/e ★</span>
                     <span className="text-xs text-muted-foreground block">Compounding Memory</span>
                   </span>
                   <span className="absolute" style={{ left: "135px", top: "122px" }}>
@@ -531,8 +531,8 @@ const Index = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                   {[
                     { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "hsl(var(--layer-1))" },
-                    { id: "L5b/c/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
-                    { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
+                    { id: "L5a/b/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
+                    { id: "L8c/d/e", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
                   ].map((item) => (
                     <SketchBox key={item.id} color={item.color} className="p-3.5">
                       <span className="font-sketch text-base font-bold block mb-1" style={{ color: item.color }}>
@@ -668,7 +668,7 @@ const Index = () => {
               — The Intelligence Cube™
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              9 Functions × 9 Verticals × 9 Layers
+              9 Functions × 9 Verticals × 10 Layers
             </h2>
             <p className="text-base text-muted-foreground max-w-xl mx-auto">
               Volume = structural durability. Companies that occupy thin slivers get dissolved.
@@ -722,7 +722,7 @@ const Index = () => {
             Weekly Structural Analysis
           </h2>
           <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
-            One company analyzed through the 9 layers. Every week. Free. No fluff.
+            One company analyzed through the 10 layers. Every week. Free. No fluff.
           </p>
           <form
             onSubmit={(e) => { e.preventDefault(); alert("Newsletter signup will be connected soon!"); }}
@@ -746,7 +746,7 @@ const Index = () => {
           </h2>
           <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
             Keynotes, executive briefings, and half-day workshops. Map your company's structural
-            position across all 32+ sublayers.
+            position across all 50 sublayers.
           </p>
           <Link to="/speaking" className="inline-flex items-center gap-2 text-sm text-accent font-semibold hover:gap-3 transition-all">
             Speaking & Workshops <ArrowRight size={14} />

@@ -11,7 +11,7 @@ const SiteFooter = () => (
           </h3>
           <p className="text-sm leading-relaxed max-w-md">
             A structural framework that maps where AI companies live, compete, and die. 
-            9 Layers. 32+ Sublayers. 3 Laws. The Intelligence Cube™.
+            10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube™.
           </p>
           <p className="text-xs mt-3 text-muted-foreground/60">
             By Anand Arivukkarasu · Ex-Meta & Google Product Leader

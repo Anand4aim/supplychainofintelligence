@@ -46,7 +46,7 @@ const FrameworkPage = () => (
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
             Follow the gold from the ground to the person wearing the ring — and you'll see every layer 
-            of the intelligence stack. 9 layers. 32+ sub-layers. One structural map.
+            of the intelligence stack. 10 layers. 50 sublayers. One structural map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border sketch-border">
             <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>
@@ -182,8 +182,8 @@ const FrameworkPage = () => (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
               { id: "L1b", name: "Proprietary Data", layer: "L1", desc: "Data behind enterprise walls. No one else has it. This is your gold deposit — the deeper the vein, the stronger the moat." },
-              { id: "L5b/c/d", name: "Deep Skills & Playbooks", layer: "L5", desc: "Domain execution, mindset frameworks, company SOPs. The encoded expertise that transforms generic intelligence into irreplaceable capability." },
-              { id: "L8c/d", name: "Compounding Memory", layer: "L8", desc: "Cross-customer patterns and institutional knowledge. The system gets smarter with every interaction. This is lock-in that compounds daily." },
+              { id: "L5a/b/d", name: "Deep Skills & Playbooks", layer: "L5", desc: "Domain execution, decision frameworks, company SOPs. The encoded expertise that transforms generic intelligence into irreplaceable capability." },
+              { id: "L8c/d/e", name: "Compounding Memory", layer: "L8", desc: "Network learning, institutional knowledge, world models. The system gets smarter with every interaction. This is lock-in that compounds daily." },
             ].map((item, i) => {
               const n = parseInt(item.layer.replace("L", ""));
               return (
@@ -211,7 +211,7 @@ const FrameworkPage = () => (
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
           <p className="font-sketch text-lg font-bold text-accent mb-4">— The Intelligence Cube™</p>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
-            8 Functions × 8 Verticals × 9 Layers
+            9 Functions × 9 Verticals × 10 Layers
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mb-10 leading-relaxed">
             Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals.
@@ -229,7 +229,7 @@ const FrameworkPage = () => (
                 Volume = massive. Hard to displace.
               </p>
               <div className="flex gap-2 flex-wrap">
-                {["L1b ★", "L5b ★", "L8c ★"].map((l) => (
+                {["L1b ★", "L5a ★", "L8c ★"].map((l) => (
                   <span key={l} className="font-sketch text-sm font-bold px-2.5 py-1 rounded-md bg-verdict-fortified/10 text-verdict-fortified">
                     {l}
                   </span>
@@ -293,11 +293,11 @@ const FrameworkPage = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { title: "Data Refineries", status: "safe", desc: "L1b ★ — Proprietary data compounds. Apollo, Bloomberg.", color: "var(--layer-1)", verdict: "fortified" },
-            { title: "Infrastructure Rails", status: "safe", desc: "L3/L4b ★ — Essential pipes. Supabase, Twilio.", color: "var(--layer-4)", verdict: "fortified" },
-            { title: "Workflow Fortresses", status: "contested", desc: "L5+L6b ★ — Salesforce, HubSpot. Agent loops + playbooks.", color: "var(--layer-5)", verdict: "consolidating" },
-            { title: "Domain Specialists", status: "safe", desc: "L5b/c/d ★ + L8c ★ — Harvey, Sierra. Encoded expertise.", color: "var(--layer-5)", verdict: "fortified" },
-            { title: "Thin-Layer Graveyard", status: "dead", desc: "L6a/L7a — no ★. Gamma, Jasper, Chegg. Already dead.", color: "var(--layer-3)", verdict: "exposed" },
-            { title: "Full-Stack Juggernauts", status: "dominant", desc: "L2a+L7d/e ★+L8c ★ — Claude, ChatGPT, Copilot.", color: "var(--layer-8)", verdict: "dominant" },
+            { title: "Infrastructure Rails", status: "safe", desc: "L4b/L4e ★ — Essential pipes & agent identity. Supabase, Twilio.", color: "var(--layer-4)", verdict: "fortified" },
+            { title: "Workflow Fortresses", status: "contested", desc: "L5+L6b ★ — Salesforce, HubSpot. Agent loops + human-in-loop.", color: "var(--layer-5)", verdict: "consolidating" },
+            { title: "Domain Specialists", status: "safe", desc: "L5a/b/d ★ + L8c ★ — Harvey, Sierra. Encoded expertise.", color: "var(--layer-5)", verdict: "fortified" },
+            { title: "Thin-Layer Graveyard", status: "dead", desc: "L7a/L7b — no ★. Gamma, Jasper, Chegg. Already dead.", color: "var(--layer-3)", verdict: "exposed" },
+            { title: "Full-Stack Juggernauts", status: "dominant", desc: "L2a+L7c/d ★+L8c ★ — Claude, ChatGPT, Copilot.", color: "var(--layer-8)", verdict: "dominant" },
           ].map((arch, i) => (
             <motion.div
               key={i}
@@ -337,9 +337,6 @@ const FrameworkPage = () => (
         <div className="flex flex-wrap gap-3 justify-center">
           <a href="/analysis" className="btn-sketch">
             Case Studies <ArrowRight size={16} />
-          </a>
-          <a href="/speaking" className="btn-sketch-outline">
-            Speaking & Workshops
           </a>
         </div>
       </div>
