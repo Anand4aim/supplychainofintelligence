@@ -531,8 +531,8 @@ const Index = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
                   {[
                     { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "hsl(var(--layer-1))" },
-                    { id: "L5b/c/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
-                    { id: "L8c/d", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
+                    { id: "L5a/b/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
+                    { id: "L8c/d/e", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
                   ].map((item) => (
                     <SketchBox key={item.id} color={item.color} className="p-3.5">
                       <span className="font-sketch text-base font-bold block mb-1" style={{ color: item.color }}>
