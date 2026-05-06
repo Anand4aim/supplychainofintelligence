@@ -4,7 +4,7 @@ import { LAYERS } from "@/data/layers";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy"];
 const VERTICALS = ["FinTech", "EdTech", "Legal", "Health", "Travel", "eCom", "Media", "Gov", "SaaS"];
-const LAYER_LABELS = ["L0 Silicon", "L1 Data", "L2 Model", "L3 Trust", "L4 Infra", "L5 Orch", "L6 Skills", "L7 Surface", "L8 Memory"];
+const LAYER_LABELS = ["L-1 Resources", "L0 Infra", "L1 Data", "L2 Models", "L3 Gates", "L4 Access", "L5 Execution", "L6 Orch", "L7 Surface", "L8 Memory"];
 
 interface CompanyPlot {
   name: string; color: string; opacity: number;
@@ -66,7 +66,7 @@ function IsoBox({ company, highlighted }: { company: CompanyPlot; highlighted: b
 
 const IntelligenceCube = () => {
   const [activeCompany, setActiveCompany] = useState<string | null>(null);
-  const N = 9;
+  const N = 10;
 
   return (
     <div className="space-y-8">
