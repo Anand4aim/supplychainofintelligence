@@ -207,8 +207,9 @@ const FrameworkPage = () => (
             })}
           </div>
           <p className="font-sketch text-base text-muted-foreground mt-8 max-w-xl mx-auto italic">
-            If you own all three, you're a fortress. If you own none, you're in the graveyard. 
-            Most companies own one — and that determines their timeline.
+            Own all three → fortress. Own none of these <em>and</em> no deep single-layer moat
+            (like Vanta on L3 or NVIDIA on L0) → graveyard. The Triangle is one route to
+            survival; deep ownership of any single layer is another.
           </p>
         </motion.div>
       </div>
