@@ -175,10 +175,19 @@ const FrameworkPage = () => (
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
-          <p className="font-sketch text-lg font-bold text-accent mb-4">— The Defensible Triangle</p>
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— One Path to Survival: The Defensible Triangle</p>
           <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
-            Three Sub-Layers That Determine Survival
+            One Common Pattern — Not the Only Way to Win
           </h2>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+            The Triangle (L1b + L5a/b/d + L8c/d/e) is the most common fortress pattern for
+            application-layer companies. But it isn't the only way to survive. A pure
+            gatekeeper like <span className="font-semibold text-foreground">Vanta</span> wins
+            on L3 alone. A shovel-seller like <span className="font-semibold text-foreground">NVIDIA</span> wins
+            on L0. A pipes-owner like <span className="font-semibold text-foreground">Snowflake</span> wins
+            on L4. Owning one layer <em>deeply</em> can be enough — what kills you is owning a
+            thin sliver of a contested one.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
               { id: "L1b", name: "Proprietary Data", layer: "L1", desc: "Data behind enterprise walls. No one else has it. This is your gold deposit — the deeper the vein, the stronger the moat." },
