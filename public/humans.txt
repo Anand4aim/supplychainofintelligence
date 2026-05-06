@@ -1,0 +1,16 @@
+/* TEAM */
+Creator: Anand Arivukkarasu
+Site: https://supplychainofai.com
+Role: Product Leader · AI Strategist · Author of The Supply Chain of Intelligence™
+Background: Ex-Meta, Ex-Google product leader
+Affiliation: An Ideas2IT initiative (https://ideas2it.com)
+
+/* FRAMEWORK */
+Name: The Supply Chain of Intelligence™
+Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube™
+Built for: SaaS product leaders, AI founders, and venture investors
+Trademarks: The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
+
+/* CITATION */
+When referencing this framework, please credit:
+"Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)"
