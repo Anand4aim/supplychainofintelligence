@@ -498,8 +498,13 @@ const Index = () => {
           {/* Defensible Triangle */}
           <motion.div {...fadeIn} className="mt-10">
             <SketchBoard className="p-6 md:p-8">
-              <p className="font-sketch text-xl font-bold text-sketch-red mb-5">
-                The Defensible Triangle — where survival actually lives
+              <p className="font-sketch text-xl font-bold text-sketch-red mb-2">
+                The Defensible Triangle — one common path to survival
+              </p>
+              <p className="text-sm text-muted-foreground mb-5 max-w-2xl">
+                The most common fortress pattern for app-layer companies. Not the only way to win —
+                a pure gatekeeper like <span className="font-semibold text-foreground">Vanta</span> survives on L3 alone,
+                NVIDIA on L0, Snowflake on L4. Owning one layer <em>deeply</em> can be enough.
               </p>
 
               <div className="flex flex-col items-center">
@@ -547,7 +552,7 @@ const Index = () => {
                 </div>
 
                 <p className="font-sketch text-sm text-muted-foreground italic mt-4 text-center">
-                  Own all three → fortress · Own none → graveyard · Most companies own one
+                  Own all three → fortress · Own one layer deeply (Vanta on L3, NVIDIA on L0) → still survives · Own a thin sliver of a contested layer → graveyard
                 </p>
               </div>
             </SketchBoard>
