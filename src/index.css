@@ -38,6 +38,7 @@
     --radius: 0.75rem;
 
     /* Layer colors (HSL) */
+    --layer-neg1: 30 25% 38%;
     --layer-0: 30 6% 46%;
     --layer-1: 217 72% 50%;
     --layer-2: 263 55% 48%;
@@ -48,6 +49,7 @@
     --layer-7: 189 75% 40%;
     --layer-8: 239 55% 50%;
 
+    --layer-neg1-bg: 30 30% 93%;
     --layer-0-bg: 30 20% 94%;
     --layer-1-bg: 214 65% 95%;
     --layer-2-bg: 263 45% 95%;
