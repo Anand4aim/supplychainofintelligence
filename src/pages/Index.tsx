@@ -54,28 +54,28 @@ const Index = () => {
                 A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
-                AI is reorganizing software into a{" "}
                 <SketchUnderline color="hsl(var(--accent))">
-                  <span className="text-accent">new supply chain</span>
-                </SketchUnderline>
-                .{" "}
-                Most companies only own one layer.
+                  <span className="text-accent">JTBD tells you what users want.</span>
+                </SketchUnderline>{" "}
+                The Supply Chain of Intelligence™ tells you{" "}
+                <span className="text-foreground">where value accrues</span> — and who can fire your product.
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                The Supply Chain of Intelligence™ maps the 10 layers and 50 sublayers
-                that determine who captures value, who becomes infrastructure, and who
-                gets dissolved.
+                A strategic map of the 10 layers and 50 sublayers of AI value. Built for founders,
+                product leaders, and investors who need to know whether a product owns a durable
+                layer of intelligence — or merely sits on a surface a foundation model, hyperscaler,
+                or productivity suite can absorb.
               </p>
-              <p className="font-sketch text-base text-muted-foreground/60 mb-7">
-                For product leaders, founders, and investors trying to understand where AI actually captures value.
+              <p className="font-sketch text-base text-muted-foreground/70 mb-7">
+                The new AI product trap: <strong className="text-foreground">desirability without defensibility.</strong>
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
                   Explore the Framework <ArrowRight size={15} />
                 </Link>
-                <Link to="/analysis" className="btn-sketch-outline">
-                  See Case Studies
-                </Link>
+                <a href="#defensibility-audit" className="btn-sketch-outline">
+                  Run the Defensibility Audit
+                </a>
               </div>
             </motion.div>
 
