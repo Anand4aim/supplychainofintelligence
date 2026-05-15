@@ -13,10 +13,19 @@ const SiteHeader = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-foreground/10">
+      {/* DWG marker strip */}
+      <div className="hidden md:block border-b border-foreground/10 bg-background/60">
+        <div className="max-w-7xl mx-auto px-6 h-6 flex items-center justify-between font-mono-marker text-[10px] text-muted-foreground">
+          <span>DWG · SCI-001 · REV 4.0</span>
+          <span className="text-accent">THE SUPPLY CHAIN OF INTELLIGENCE™ · ANAND ARIVUKKARASU</span>
+          <span>SHEET 01 / 22</span>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-[15px] font-semibold text-foreground tracking-tight">
+          <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
             Supply Chain of Intelligence<span className="text-accent">™</span>
           </span>
         </Link>
@@ -27,20 +36,16 @@ const SiteHeader = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-[13px] font-semibold transition-colors ${
+              className={`font-mono-marker text-[11px] transition-colors ${
                 location.pathname === item.path
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-accent"
+                  : "text-foreground/70 hover:text-foreground"
               }`}
-              style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               {item.label}
             </Link>
           ))}
-          <a
-            href="#newsletter"
-            className="btn-sketch text-[12px] px-3.5 py-1.5"
-          >
+          <a href="#newsletter" className="btn-sketch text-[11px] px-3 py-1.5">
             Subscribe
           </a>
         </nav>
@@ -48,7 +53,7 @@ const SiteHeader = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-muted-foreground"
+          className="md:hidden text-foreground"
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -63,12 +68,9 @@ const SiteHeader = () => {
               key={item.path}
               to={item.path}
               onClick={() => setOpen(false)}
-              className={`block text-sm font-semibold ${
-                location.pathname === item.path
-                  ? "text-foreground"
-                  : "text-muted-foreground"
+              className={`block font-mono-marker text-xs ${
+                location.pathname === item.path ? "text-accent" : "text-foreground/70"
               }`}
-              style={{ fontFamily: "'Nunito', sans-serif" }}
             >
               {item.label}
             </Link>
