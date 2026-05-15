@@ -5,44 +5,45 @@ const logo = (domain: string) => `https://logo.clearbit.com/${domain}`;
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: "jasper-vs-chatgpt-grammarly",
+    slug: "jasper-vs-grammarly-copilot",
     companies: [
       { name: "Jasper", logo: logo("jasper.ai"), color: "#FF6B6B" },
-      { name: "ChatGPT", logo: logo("openai.com"), color: "#10A37F" },
       { name: "Grammarly", logo: logo("grammarly.com"), color: "#15C39A" },
+      { name: "Copilot in Word", logo: logo("microsoft.com"), color: "#0078D4" },
     ],
-    tag: "THE GREAT UNWINDING",
-    title: "Jasper vs ChatGPT vs Grammarly: Why One Collapsed, One Survived, One Thrived",
-    verdict: "THIN LAYER = DEATH",
+    tag: "WORKED EXAMPLE · WRITING TOOLS",
+    title: "Jasper, Grammarly, Copilot in Word: Same Category, Three Structural Fates",
+    verdict: "L4 EATS L4",
     excerpt:
-      "Jasper raised $125M at $1.5B wrapping GPT-3 in a marketing UI. ChatGPT made that wrapper free overnight. Grammarly survived because it owned L8 — memory of your writing style, tone preferences, and team conventions. Same market. Three different structural positions. Three different outcomes.",
-    layers: ["L6", "L7", "L8"],
-    date: "March 2026",
+      "All three help you write. Jasper owned only the surface (L7) and dissolved when the model went free. Grammarly owned distribution (L4) into every browser and editor — until a bigger L4 owner, Microsoft, integrated the model directly into Word, Outlook, and Teams. Same layer. Bigger railroad. The market is repricing layer ownership, not ARR.",
+    layers: ["L4", "L7"],
+    date: "May 2026",
     readTime: "10 min",
     valuation: {
       label: "Jasper Valuation",
-      before: "$1.5B",
+      before: "$1.5B (Oct 2022)",
       after: "~$300M",
       trend: "down",
       changeLabel: "-80%",
     },
-    content: `In 2023, Jasper was the poster child of AI startups — $125M raised, $1.5B valuation, 100K+ customers. By 2025, the story had reversed completely.
+    content: `Three writing products. Three structural positions. Three different fates — and none of them were predicted by ARR or product quality alone.
 
-**What happened structurally:**
-Jasper occupied L7 (Expression Surface) — a thin UI wrapper around OpenAI's GPT-3. When ChatGPT launched, it didn't just compete with Jasper — it made Jasper's entire value proposition free.
+**Jasper — surface only (L7).** At its Oct 2022 peak Jasper raised $125M at a $1.5B valuation as the canonical "GPT wrapper for marketers." Defensibility lived entirely at the surface: prompt templates, brand voice presets, a polished UI. When ChatGPT shipped six weeks later, the model layer absorbed the value. By 2024 Jasper was reportedly trading hands at a fraction of that mark. **Law I in motion: intelligence commoditized downward.**
 
-**The Jasper trap:** No proprietary data (L1). No custom model (L2). No memory (L8). Just a prompt template library on top of someone else's intelligence. Classic thin-layer position.
+**Grammarly — distribution + orchestration (L4 + L6).** Already a $13B writing leader at its Nov 2021 peak, Grammarly was never a thin wrapper. It owned L4 (railroad) — extensions in Chrome, Word, Gmail, Slack, the OS keyboard — and L6 (orchestration) — tone detection, style enforcement, team voice. That depth carried it through the first wave: the surface might be a copilot, but the *distribution* was the moat.
 
-**Why Grammarly survived:** Grammarly looks similar on the surface — it's also a writing tool. But structurally, it's completely different:
-- L1: Proprietary language model trained on billions of corrections
-- L5: Deep domain execution (tone detection, style guides, team conventions)
-- L8: Memory — it learns YOUR writing patterns, YOUR team's voice
+**Copilot in Word — the L4 owner that ate L4.** Then Microsoft did the thing that breaks the framework's most important asymmetry. Microsoft already owned a *bigger* L4 — Word, Outlook, Teams, the entire 365 install base. They integrated GPT-class models *directly into the document surface* and bundled it with E3/E5. The same kind of moat (distribution into the editor) was now owned by an entity with vastly more of it. Grammarly's L4 didn't disappear — it just got out-scaled.
 
-When ChatGPT can write anything, Grammarly's value isn't writing — it's knowing HOW you write. That's L8. That's defensible.
+**Why this is the right triad to study.** Most decks compare Jasper to ChatGPT. That's a category mismatch — ChatGPT is a general assistant. The honest comparison is Jasper, Grammarly, and Microsoft Copilot in Word: all three are *literally* writing-assistance products embedded in the prose-creation moment. The three fates are then driven entirely by structural depth.
 
-**ChatGPT's position:** L2 (model) + L7 (surface). OpenAI owns the model layer. They can afford to give the surface away because the model IS the moat.
+**The structural read:**
+- Jasper (L7 only) — exposed; absorbed by L2 commoditization
+- Grammarly (L4 + L6) — defended for years; now squeezed by a bigger L4 owner above it
+- Copilot in Word (L0 + L2 + L4 + L7) — vertically integrated from compute to surface, bundled into existing distribution
 
-**The lesson:** Three companies in "AI writing." One dead, one surviving, one thriving. The difference isn't product-market fit — it's structural position.`,
+**Law III — the surface captures attention; the chain captures power.** Same category does not equal same future. The market is repricing *layer ownership*, not feature quality. And when a bigger owner of your moat layer arrives, owning that layer is no longer enough — you need a layer they don't own. For Grammarly, that question now becomes: where is the L8 (memory of *your* writing voice across years and teams) that Microsoft can't easily replicate?
+
+*Illustrative strategic patterns only — not investment recommendations. Public reporting; numbers approximate.*`,
   },
   {
     slug: "chegg-collapse",
