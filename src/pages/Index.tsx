@@ -39,6 +39,11 @@ const Index = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Supply Chain of Intelligence™ — Where AI Value Accrues"
+        description="JTBD finds demand. The Supply Chain of Intelligence finds defensibility. A 10-layer framework by Anand Arivukkarasu for AI founders and investors."
+        path="/"
+      />
       <SketchFilters />
 
       {/* ═══════════ HERO ═══════════ */}

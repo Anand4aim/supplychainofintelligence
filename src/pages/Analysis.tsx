@@ -15,6 +15,11 @@ const remaining = CASE_STUDIES.filter((s) => !FEATURED_SLUGS.includes(s.slug));
 
 const AnalysisPage = () => (
   <SiteLayout>
+    <Seo
+      title="AI Case Studies — Jasper, Chegg, Sierra, Harvey & More"
+      description="Real companies analyzed through the 10-layer stack. $50B+ in market cap explained by where each AI product sits in the Supply Chain of Intelligence."
+      path="/analysis"
+    />
     {/* Hero */}
     <section className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-24 text-center">

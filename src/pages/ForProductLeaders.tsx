@@ -6,6 +6,11 @@ import { SketchFilters, SketchBoard, SketchBox } from "@/components/sketch/Sketc
 
 const ForProductLeaders = () => (
   <SiteLayout>
+    <Seo
+      title="AI Strategy for Product Leaders — Add the Depth Axis"
+      description="JTBD covers the customer axis. In the AI era, you also need the Z-axis — where in the intelligence stack your product sits — or it gets commoditized."
+      path="/for-product-leaders"
+    />
     <SketchFilters />
 
     {/* Hero */}
