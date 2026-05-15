@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";

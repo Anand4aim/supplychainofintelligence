@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
