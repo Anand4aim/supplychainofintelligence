@@ -53,14 +53,14 @@ const Index = () => {
               <p className="font-sketch text-base text-muted-foreground mb-4">
                 A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
-              <h1 className="font-display text-[24px] md:text-[30px] lg:text-[34px] font-bold leading-[1.25] mb-5 text-accent">
-                The Supply Chain of Intelligence™ is a strategic framework for mapping where AI value is created, captured, and defended. It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence—or merely sits on a surface that larger platforms can absorb.
+              <h1 className="font-display text-[32px] md:text-[44px] lg:text-[52px] font-bold leading-[1.1] mb-4 text-accent">
+                Where AI value is created, captured, and defended.
               </h1>
-              <p className="font-sketch text-base text-muted-foreground/80 mb-3 lowercase">
-                jtbd (jobs to be done) tells you what users want.
+              <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl mb-4">
+                The Supply Chain of Intelligence™ — a strategic map for founders, product leaders, and investors to see whether an AI product owns a durable layer of intelligence, or merely sits on a surface larger platforms can absorb.
               </p>
-              <p className="font-sketch text-base text-muted-foreground/70 mb-7">
-                The new AI product trap: <strong className="text-foreground">desirability without defensibility.</strong>
+              <p className="font-sketch text-base text-muted-foreground/80 mb-6 lowercase">
+                jtbd tells you what users want. this tells you where value accrues.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
