@@ -207,110 +207,112 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ Y-AXIS vs Z-AXIS ═══════════ */}
+      {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
             <p className="font-sketch text-lg font-bold text-accent mb-4">
-              — The Missing Dimension
+              — The New AI Product Trap
             </p>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-5">
-              Why customer understanding is no longer enough
+            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-5">
+              Desirability without Defensibility
             </h2>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              In the old software world, a product could win by solving a user problem better.
+              In the AI world, that is only half the question. The other half is structural:
+              <strong className="text-foreground"> where does the intelligence come from, where does
+              context accumulate, where does trust get verified, where does the workflow live, and
+              where does value accrue?</strong>
+            </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-10">
-              Great product leaders have mastered the vertical dimension — customer needs, JTBD,
-              workflows, prioritization. But AI forces a second dimension:{" "}
-              <strong className="text-foreground">structural depth</strong>. You can build something
-              users love today and still lose if your value sits on a thin layer.
+              A product can solve a real user job and still be structurally fragile. That is what
+              kills most AI products — not lack of users, but a layer that a foundation model,
+              cloud platform, or productivity suite can absorb in a quarter.
             </p>
           </motion.div>
 
+          {/* JTBD vs SCoI contrast table */}
           <motion.div {...fadeIn}>
-            <SketchBoard className="p-6 md:p-10 mb-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                {/* Y-axis column */}
-                <div>
-                  <p className="font-sketch text-lg text-sketch-muted mb-3">Traditional PM Thinking</p>
-                  <SketchBox color="hsl(25 12% 75%)" className="p-4 mb-3">
-                    <div className="space-y-2.5">
-                      {[
-                        "What does the customer need?",
-                        "What should we build next?",
-                        "What features matter most?",
-                        "How do we improve retention?",
-                      ].map((q, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="text-muted-foreground text-sm mt-0.5">—</span>
-                          <span className="font-sketch text-base text-foreground/70 leading-snug">{q}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </SketchBox>
-                  <p className="font-sketch text-sm text-muted-foreground italic mt-2">
-                    Necessary — but no longer sufficient
-                  </p>
+            <SketchBoard className="p-5 md:p-8 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 mb-2 pb-3 border-b-2 border-border/60">
+                <div />
+                <div className="font-sketch text-base font-bold text-muted-foreground px-3">
+                  Jobs to Be Done
                 </div>
-
-                {/* Z-axis column */}
-                <div>
-                  <p className="font-sketch text-lg font-bold text-sketch-red mb-3">
-                    + Structural Depth Thinking ← NEW
-                  </p>
-                  <SketchBox color="hsl(var(--sketch-red))" fill="hsl(var(--sketch-red) / 0.03)" className="p-4 mb-3">
-                    <div className="space-y-2.5">
-                      {[
-                        "Which layer do we actually own?",
-                        "Which sublayer is defensible?",
-                        "If the interface becomes free — what remains?",
-                        "Do we own the Defensible Triangle?",
-                      ].map((q, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="text-sketch-red text-sm mt-0.5">→</span>
-                          <span className="font-sketch text-base text-foreground font-bold leading-snug">{q}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </SketchBox>
-                  <p className="font-sketch text-sm font-bold text-sketch-red mt-2">
-                    This determines survival
-                  </p>
+                <div className="font-sketch text-base font-bold text-accent px-3">
+                  Supply Chain of Intelligence™
                 </div>
               </div>
 
-              {/* Sketch diagram: Y vs Z axes */}
-              <div className="mt-8 flex justify-center">
-                <div className="relative w-[280px] h-[200px]">
-                  <svg className="absolute inset-0" viewBox="0 0 280 200" style={{ filter: "url(#sketch-wobble)" }}>
-                    <line x1="60" y1="180" x2="60" y2="20" stroke="hsl(25 6% 65%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M54 28 L60 16 L66 28" fill="none" stroke="hsl(25 6% 65%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <line x1="60" y1="180" x2="260" y2="180" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M252 174 L264 180 L252 186" fill="none" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <rect x="120" y="40" width="110" height="90" rx="6" fill="hsl(0 65% 48% / 0.05)" stroke="hsl(0 65% 48%)" strokeWidth="1" strokeDasharray="4 3" />
-                  </svg>
-                  <SketchLabel className="absolute left-0 top-0 text-sm" color="hsl(25 6% 55%)" rotate={-90}>
-                    Customer Depth (Y)
-                  </SketchLabel>
-                  <SketchLabel className="absolute right-0 bottom-0 text-sm" color="hsl(0 65% 48%)">
-                    Stack Depth (Z)
-                  </SketchLabel>
-                  <span className="absolute text-center" style={{ left: "120px", top: "70px" }}>
-                    <SketchLabel color="hsl(0 65% 48%)" className="text-sm font-bold">winning zone</SketchLabel>
-                  </span>
-                  <span className="absolute" style={{ left: "70px", top: "145px" }}>
-                    <SketchLabel color="hsl(25 6% 55%)" className="text-xs">thin layer risk</SketchLabel>
-                  </span>
+              {JTBD_VS_SCOI.map((row, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 py-3 border-b border-border/40 last:border-b-0"
+                >
+                  <div className="font-sketch text-sm font-bold text-foreground px-3 py-1">
+                    {row.question}
+                  </div>
+                  <div className="text-sm text-muted-foreground px-3 py-1 leading-relaxed">
+                    {row.jtbd}
+                  </div>
+                  <div className="text-sm text-foreground px-3 py-1 leading-relaxed font-medium">
+                    {row.scoi}
+                  </div>
                 </div>
+              ))}
+
+              <div className="mt-5 pt-4 border-t border-border/60 text-center">
+                <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
+                  <strong className="text-muted-foreground">JTBD finds demand.</strong>{" "}
+                  <strong className="text-accent">The Supply Chain of Intelligence finds defensibility.</strong>
+                </p>
               </div>
             </SketchBoard>
           </motion.div>
 
-          {/* Quote */}
-          <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
-            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl">
+          {/* Two-fate proof: Gamma surface vs Replit deep ownership */}
+          <motion.div {...fadeIn}>
+            <p className="font-sketch text-base text-sketch-muted mb-3 text-center">
+              — Same prompt-to-output category. Different fate. ↓
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="rounded-xl p-5 border border-verdict-exposed/30 bg-verdict-exposed/5 sketch-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-sketch text-base font-bold text-verdict-exposed">Gamma</span>
+                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-exposed/15 text-verdict-exposed">L7 only</span>
+                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-2">
+                  Solves a real JTBD: "help me create a polished deck quickly." Beautiful surface.
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  But most of the value comes from models and rendering anyone can reproduce.
+                  Brand workflow, design system, and proprietary usage data are thin. The platform
+                  layer below it can absorb the category.
+                </p>
+              </div>
+
+              <div className="rounded-xl p-5 border border-verdict-fortified/30 bg-verdict-fortified/5 sketch-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-sketch text-base font-bold text-verdict-fortified">Replit</span>
+                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-fortified/15 text-verdict-fortified">L4 + L5 + L6 + L8</span>
+                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-2">
+                  Same prompt-to-output category. But owns the execution chain end-to-end.
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Agent + code generation + hosting + auth + database + monitoring + integrations
+                  + enterprise controls. Not a UI on top of a model — a system the platform can't
+                  bundle in a sprint.
+                </p>
+              </div>
+            </div>
+
+            {/* Quote */}
+            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl mx-auto mt-10">
               <p className="text-sm text-foreground leading-relaxed italic">
-                "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
-                you also need the Z-axis — infrastructure depth — or you'll build something customers
-                love today that gets commoditized tomorrow."
+                "JTBD answers <strong>why a user will hire your product</strong>. The Supply Chain
+                of Intelligence answers <strong>why OpenAI, Google, Anthropic, Microsoft, or
+                Salesforce won't erase it</strong>. You need both."
               </p>
               <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
             </div>
