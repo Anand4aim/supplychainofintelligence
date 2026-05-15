@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
+import { ArrowRight, BookOpen, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
 import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS, JTBD_VS_SCOI } from "@/data/layers";
