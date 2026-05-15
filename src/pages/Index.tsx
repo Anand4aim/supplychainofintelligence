@@ -28,7 +28,7 @@ const fadeIn = {
 
 const Index = () => {
   const featuredSlugs = [
-    "jasper-vs-chatgpt-grammarly",
+    "jasper-vs-grammarly-copilot",
     "chegg-collapse",
     "sierra-vs-salesforce",
     "harvey-vs-generic-legal",
@@ -171,9 +171,9 @@ const Index = () => {
                     note: "Stable $13B · Memory compounds, deep integrations", layers: [4, 5, 7, 8],
                   },
                   {
-                    name: "ChatGPT", logo: "https://logo.clearbit.com/openai.com",
-                    pos: "L2 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
-                    note: "Owns the smelter. Surface is free because the model IS the moat", layers: [2, 7],
+                    name: "Copilot in Word", logo: "https://logo.clearbit.com/microsoft.com",
+                    pos: "L0 + L2 + L4 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
+                    note: "Bigger L4 owner ate the L4 moat — model bundled into Word, Outlook, Teams", layers: [4, 7],
                   },
                 ].map((c) => (
                   <div key={c.name} className="flex items-start gap-3">

@@ -6,7 +6,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
 
 const FEATURED_SLUGS = [
-  "jasper-vs-chatgpt-grammarly",
+  "jasper-vs-grammarly-copilot",
   "chegg-collapse",
   "gamma-thin-layer-graveyard",
 ];
