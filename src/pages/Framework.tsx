@@ -23,9 +23,15 @@ const FrameworkPage = () => (
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             The Supply Chain of Intelligence™
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Follow the gold from the ground to the person wearing the ring — and you'll see every layer 
-            of the intelligence stack. 10 layers. 50 sublayers. One structural map.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
+            <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
+            The Supply Chain of Intelligence tells you{" "}
+            <strong className="text-foreground">where value accrues</strong> — and which AI
+            companies a foundation model, hyperscaler, or productivity suite can erase next quarter.
+          </p>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+            Follow the gold from the ground to the person wearing the ring and you'll see every layer
+            of the intelligence stack. 10 layers. 50 sublayers. 3 structural laws. One map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border sketch-border">
             <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>
