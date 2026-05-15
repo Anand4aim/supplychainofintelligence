@@ -53,18 +53,11 @@ const Index = () => {
               <p className="font-sketch text-base text-muted-foreground mb-4">
                 A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
-              <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
-                <SketchUnderline color="hsl(var(--accent))">
-                  <span className="text-accent">JTBD tells you what users want.</span>
-                </SketchUnderline>{" "}
-                The Supply Chain of Intelligence™ tells you{" "}
-                <span className="text-foreground">where value accrues</span> — and who can fire your product.
+              <h1 className="font-display text-[24px] md:text-[30px] lg:text-[34px] font-bold leading-[1.25] mb-5 text-accent">
+                The Supply Chain of Intelligence™ is a strategic framework for mapping where AI value is created, captured, and defended. It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence—or merely sits on a surface that larger platforms can absorb.
               </h1>
-              <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                A strategic map of the 10 layers and 50 sublayers of AI value. Built for founders,
-                product leaders, and investors who need to know whether a product owns a durable
-                layer of intelligence — or merely sits on a surface a foundation model, hyperscaler,
-                or productivity suite can absorb.
+              <p className="font-sketch text-base text-muted-foreground/80 mb-3 lowercase">
+                jtbd (jobs to be done) tells you what users want.
               </p>
               <p className="font-sketch text-base text-muted-foreground/70 mb-7">
                 The new AI product trap: <strong className="text-foreground">desirability without defensibility.</strong>
