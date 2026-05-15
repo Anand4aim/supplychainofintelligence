@@ -256,9 +256,13 @@ const FrameworkPage = () => (
     <section id="laws" className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <p className="font-sketch text-lg font-bold text-accent mb-4">— Three Structural Laws</p>
-        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">The Laws That Predict the Future</h2>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">The Laws That Predict the Future</h2>
+        <p className="text-base text-muted-foreground max-w-2xl mb-10 leading-relaxed">
+          Not opinions. Structural forces that explain why most AI products die in the layer they were
+          built in — and which ones survive the platforms coming for them.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {LAWS.map((law, i) => (
             <motion.div
               key={law.num}
@@ -266,14 +270,25 @@ const FrameworkPage = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl p-8 sketch-border"
+              className="bg-card border border-border rounded-xl p-7 sketch-border"
             >
-              <div className="font-sketch text-5xl font-bold text-accent mb-4">{law.num}</div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-3">{law.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{law.desc}</p>
+              <div className="font-sketch text-5xl font-bold text-accent mb-3">{law.num}</div>
+              <h3 className="font-display text-lg font-bold text-foreground mb-3 leading-snug">{law.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">{law.desc}</p>
+              <div className="text-xs text-muted-foreground/80 italic mb-3 pl-3 border-l-2 border-border">
+                {law.example}
+              </div>
               <p className="font-sketch text-sm font-bold text-accent">{law.prediction}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* JTBD vs SCoI line */}
+        <div className="mt-10 p-5 rounded-xl bg-accent/5 border border-accent/20 text-center">
+          <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
+            <strong>JTBD finds demand.</strong> The Supply Chain of Intelligence{" "}
+            <strong>finds defensibility.</strong>
+          </p>
         </div>
       </div>
     </section>
