@@ -797,8 +797,8 @@ const Index = () => {
                 ))}
               </div>
             </SketchBoard>
-            <Link to="/speaking" className="btn-sketch">
-              Book a Workshop — Map Your Position <ArrowRight size={15} />
+            <Link to="/framework" className="btn-sketch">
+              Explore the Framework <ArrowRight size={15} />
             </Link>
           </motion.div>
         </div>
@@ -827,22 +827,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ SPEAKING CTA ═══════════ */}
-      <section className="bg-secondary/40 border-t border-border">
-        <div className="max-w-3xl mx-auto px-6 py-14 text-center">
-          <Mic className="mx-auto mb-3 text-muted-foreground" size={24} />
-          <h2 className="font-display text-lg md:text-xl font-bold text-foreground mb-2">
-            Bring This Framework to Your Team
-          </h2>
-          <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
-            Keynotes, executive briefings, and half-day workshops. Map your company's structural
-            position across all 50 sublayers.
-          </p>
-          <Link to="/speaking" className="inline-flex items-center gap-2 text-sm text-accent font-semibold hover:gap-3 transition-all">
-            Speaking & Workshops <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
     </SiteLayout>
   );
 };
