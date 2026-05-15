@@ -53,14 +53,14 @@ const Index = () => {
               <p className="font-sketch text-base text-muted-foreground mb-4">
                 A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
-              <h1 className="font-display text-[32px] md:text-[44px] lg:text-[52px] font-bold leading-[1.1] mb-4 text-accent">
-                Where AI value is created, captured, and defended.
+              <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold leading-[1.15] mb-5">
+                <SketchUnderline color="hsl(var(--accent))">
+                  <span className="text-accent">JTBD tells you what users want.</span>
+                </SketchUnderline>{" "}
+                <span className="text-foreground">The Supply Chain of Intelligence™ tells you where value accrues</span> — and who can absorb your product.
               </h1>
-              <p className="text-base md:text-lg text-foreground/80 leading-relaxed max-w-xl mb-4">
-                The Supply Chain of Intelligence™ — a strategic map for founders, product leaders, and investors to see whether an AI product owns a durable layer of intelligence, or merely sits on a surface larger platforms can absorb.
-              </p>
-              <p className="font-sketch text-base text-muted-foreground/80 mb-6 lowercase">
-                jtbd tells you what users want. this tells you where value accrues.
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-6">
+                A strategic map for founders, product leaders, and investors to see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
