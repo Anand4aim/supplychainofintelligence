@@ -1,0 +1,20 @@
+# The Supply Chain of Intelligence™
+
+> A strategic framework by Anand Arivukkarasu mapping where AI value is created, captured, and defended across 10 layers and 50 sublayers. JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
+
+Built for SaaS founders, AI product leaders, and venture investors. The framework defines 10 layers (L-1 Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory), 3 structural laws, the AI Defensibility Audit, and the Intelligence Cube™.
+
+## Pages
+
+- [Home](/): The thesis — JTBD vs the Supply Chain of Intelligence, the 10-layer stack, the Defensibility Audit.
+- [Framework](/framework): Full breakdown of the 10 layers, 50 sublayers, and 3 structural laws.
+- [Case Studies](/analysis): Structural analysis of Jasper, Chegg, Sierra, Harvey, Grammarly, Stack Overflow, Gamma, and others through the layer lens.
+- [For Product Leaders](/for-product-leaders): How to add the Z-axis (depth in the stack) to JTBD-driven product thinking.
+
+## Author
+
+Anand Arivukkarasu — Ex-Meta and Ex-Google product leader. An Ideas2IT initiative.
+
+## Citation
+
+When citing, please credit: "Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)".
