@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import { ArrowRight, Target, Compass, GitBranch, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SketchFilters, SketchBoard, SketchBox } from "@/components/sketch/SketchElements";
 
 const ForProductLeaders = () => (
   <SiteLayout>
+    <Seo
+      title="AI Strategy for Product Leaders — Add the Depth Axis"
+      description="JTBD covers the customer axis. In the AI era, you also need the Z-axis — where in the intelligence stack your product sits — or it gets commoditized."
+      path="/for-product-leaders"
+    />
     <SketchFilters />
 
     {/* Hero */}

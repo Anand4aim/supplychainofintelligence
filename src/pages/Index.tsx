@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
@@ -38,6 +39,11 @@ const Index = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Supply Chain of Intelligence™ — Where AI Value Accrues"
+        description="JTBD finds demand. The Supply Chain of Intelligence finds defensibility. A 10-layer framework by Anand Arivukkarasu for AI founders and investors."
+        path="/"
+      />
       <SketchFilters />
 
       {/* ═══════════ HERO ═══════════ */}
@@ -135,7 +141,7 @@ const Index = () => {
                   );
                 })}
               </div>
-              <p className="font-sketch text-xs text-muted-foreground/50 mt-2.5">
+              <p className="font-sketch text-xs text-muted-foreground mt-2.5">
                 ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ mapped
               </p>
             </motion.div>
@@ -172,7 +178,7 @@ const Index = () => {
                 ].map((c) => (
                   <div key={c.name} className="flex items-start gap-3">
                     <img
-                      src={c.logo} alt={c.name}
+                      src={c.logo} alt={`${c.name} company logo`}
                       className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                     />

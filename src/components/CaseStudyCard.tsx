@@ -60,7 +60,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
               <div key={company.name} className="flex items-center gap-2">
                 {ci > 0 && <span className="text-muted-foreground text-lg font-light mx-1">vs</span>}
                 <div className="flex items-center gap-2.5">
-                  <img src={company.logo} alt={company.name}
+                  <img src={company.logo} alt={`${company.name} logo`}
                     className="w-8 h-8 rounded-lg object-contain bg-white p-0.5 border border-border"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                   <span className="text-sm font-bold text-foreground">{company.name}</span>
@@ -136,7 +136,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
 
       <div className="flex items-center gap-2 mb-3">
         {study.companies.map((company) => (
-          <img key={company.name} src={company.logo} alt={company.name}
+          <img key={company.name} src={company.logo} alt={`${company.name} logo`}
             className="w-6 h-6 rounded object-contain bg-white p-0.5 border border-border"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
         ))}

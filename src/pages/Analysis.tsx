@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
@@ -15,6 +16,11 @@ const remaining = CASE_STUDIES.filter((s) => !FEATURED_SLUGS.includes(s.slug));
 
 const AnalysisPage = () => (
   <SiteLayout>
+    <Seo
+      title="AI Case Studies — Jasper, Chegg, Sierra, Harvey & More"
+      description="Real companies analyzed through the 10-layer stack. $50B+ in market cap explained by where each AI product sits in the Supply Chain of Intelligence."
+      path="/analysis"
+    />
     {/* Hero */}
     <section className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-24 text-center">
@@ -149,6 +155,7 @@ const AnalysisPage = () => (
           className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
         >
           <input type="email" placeholder="you@company.com" required
+            aria-label="Email address for weekly case study newsletter"
             className="flex-1 px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40" />
           <button type="submit" className="btn-sketch">
             Subscribe

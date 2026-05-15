@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
@@ -13,6 +14,11 @@ import {
 
 const FrameworkPage = () => (
   <SiteLayout>
+    <Seo
+      title="The Framework — 10 Layers of the Supply Chain of Intelligence"
+      description="The full breakdown: 10 layers, 50 sublayers, 3 structural laws, and the Defensible Triangle. Where AI value is created, captured, and defended."
+      path="/framework"
+    />
     <SketchFilters />
 
     {/* Hero */}
@@ -132,7 +138,7 @@ const FrameworkPage = () => (
 
                 {i < LAYERS.length - 1 && (
                   <div className="flex justify-center py-0.5">
-                    <ArrowDown size={14} className="text-muted-foreground/40" />
+                    <ArrowDown size={14} className="text-muted-foreground" />
                   </div>
                 )}
               </motion.div>
