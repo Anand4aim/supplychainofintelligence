@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
+import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
