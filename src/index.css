@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Kalam:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,87 +6,91 @@
 
 @layer base {
   :root {
-    /* Warm cream whiteboard palette */
-    --background: 40 33% 96%;
-    --foreground: 25 20% 12%;
+    /* ─── Blueprint palette ─────────────────────────────── */
+    /* Pale icy blueprint paper */
+    --background: 211 53% 95%;
+    --foreground: 218 56% 13%;
 
-    --card: 38 28% 97%;
-    --card-foreground: 25 20% 12%;
+    --card: 210 45% 97%;
+    --card-foreground: 218 56% 13%;
 
-    --popover: 38 28% 97%;
-    --popover-foreground: 25 20% 12%;
+    --popover: 210 45% 97%;
+    --popover-foreground: 218 56% 13%;
 
-    --primary: 25 20% 12%;
-    --primary-foreground: 40 33% 96%;
+    --primary: 218 56% 13%;
+    --primary-foreground: 211 53% 96%;
 
-    --secondary: 37 22% 93%;
-    --secondary-foreground: 25 12% 30%;
+    --secondary: 210 40% 92%;
+    --secondary-foreground: 218 40% 22%;
 
-    --muted: 37 18% 91%;
-    --muted-foreground: 25 8% 48%;
+    --muted: 210 32% 90%;
+    --muted-foreground: 218 18% 38%;
 
-    --accent: 243 55% 55%;
+    /* Engineering gold accent */
+    --accent: 42 53% 46%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 65% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 18% 87%;
-    --input: 35 18% 87%;
-    --ring: 243 55% 55%;
+    --border: 213 30% 82%;
+    --input: 213 30% 82%;
+    --ring: 42 53% 46%;
 
-    --radius: 0.75rem;
+    --radius: 0.25rem;
 
-    /* Layer colors (HSL) */
-    --layer-neg1: 30 25% 38%;
-    --layer-0: 30 6% 46%;
-    --layer-1: 217 72% 50%;
-    --layer-2: 263 55% 48%;
-    --layer-3: 0 65% 48%;
-    --layer-4: 25 85% 50%;
-    --layer-5: 160 70% 36%;
-    --layer-6: 45 85% 42%;
-    --layer-7: 189 75% 40%;
-    --layer-8: 239 55% 50%;
+    /* ─── Layer colors (deck spectrum) ──────────────────── */
+    /* Below the line — foundation, deliberately desaturated */
+    --layer-neg1: 263 35% 30%;
+    --layer-0: 258 30% 38%;
+    /* Above the line — full spectrum */
+    --layer-1: 273 51% 48%;
+    --layer-2: 221 44% 41%;
+    --layer-3: 207 44% 49%;
+    --layer-4: 177 70% 41%;
+    --layer-5: 146 50% 36%;
+    --layer-6: 43 74% 49%;
+    --layer-7: 25 75% 47%;
+    --layer-8: 336 56% 44%;
 
-    --layer-neg1-bg: 30 30% 93%;
-    --layer-0-bg: 30 20% 94%;
-    --layer-1-bg: 214 65% 95%;
-    --layer-2-bg: 263 45% 95%;
-    --layer-3-bg: 0 60% 96%;
-    --layer-4-bg: 33 65% 94%;
-    --layer-5-bg: 152 45% 94%;
-    --layer-6-bg: 48 65% 94%;
-    --layer-7-bg: 183 45% 94%;
-    --layer-8-bg: 240 45% 95%;
+    --layer-neg1-bg: 263 30% 92%;
+    --layer-0-bg: 258 25% 92%;
+    --layer-1-bg: 273 45% 94%;
+    --layer-2-bg: 221 45% 93%;
+    --layer-3-bg: 207 50% 93%;
+    --layer-4-bg: 177 55% 92%;
+    --layer-5-bg: 146 40% 92%;
+    --layer-6-bg: 43 70% 92%;
+    --layer-7-bg: 25 70% 93%;
+    --layer-8-bg: 336 50% 94%;
 
     /* Brand */
-    --indigo: 243 55% 55%;
-    --indigo-glow: 239 65% 62%;
-    --navy: 222 40% 18%;
-    --navy-mid: 217 30% 25%;
+    --indigo: 221 44% 41%;
+    --indigo-glow: 207 50% 55%;
+    --navy: 218 56% 13%;
+    --navy-mid: 218 40% 22%;
 
     /* Verdict colors */
-    --verdict-exposed: 0 65% 48%;
-    --verdict-fortified: 152 55% 35%;
-    --verdict-consolidating: 40 80% 48%;
-    --verdict-dominant: 243 55% 55%;
+    --verdict-exposed: 0 65% 45%;
+    --verdict-fortified: 146 50% 36%;
+    --verdict-consolidating: 42 53% 46%;
+    --verdict-dominant: 218 56% 13%;
 
-    /* Sketch / hand-drawn accents */
-    --sketch-red: 0 65% 48%;
-    --sketch-dark: 25 12% 25%;
-    --sketch-muted: 25 6% 55%;
-    --sketch-paper: 40 30% 95%;
+    /* Legacy sketch tokens (kept so existing components don't break) */
+    --sketch-red: 0 65% 45%;
+    --sketch-dark: 218 56% 13%;
+    --sketch-muted: 218 18% 38%;
+    --sketch-paper: 210 45% 97%;
 
     /* Sidebar */
-    --sidebar-background: 38 28% 97%;
-    --sidebar-foreground: 25 8% 35%;
-    --sidebar-primary: 25 15% 20%;
-    --sidebar-primary-foreground: 40 33% 96%;
-    --sidebar-accent: 37 22% 93%;
-    --sidebar-accent-foreground: 25 15% 20%;
-    --sidebar-border: 35 18% 87%;
-    --sidebar-ring: 217 72% 50%;
+    --sidebar-background: 210 45% 97%;
+    --sidebar-foreground: 218 18% 38%;
+    --sidebar-primary: 218 56% 13%;
+    --sidebar-primary-foreground: 211 53% 96%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 218 56% 13%;
+    --sidebar-border: 213 30% 82%;
+    --sidebar-ring: 42 53% 46%;
   }
 }
 
@@ -97,104 +101,124 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Nunito', 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     font-weight: 400;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    /* Blueprint graph-paper background */
+    background-color: hsl(var(--background));
+    background-image:
+      linear-gradient(to right, hsl(218 30% 82% / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(218 30% 82% / 0.35) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fredoka', -apple-system, sans-serif;
-    font-weight: 600;
-    line-height: 1.2;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   p {
-    line-height: 1.75;
+    line-height: 1.7;
   }
 }
 
-/* Sketch annotation font — consistent weight */
+/* ─── Engineering marker — the DWG / SHEET / mono labels ─── */
 .font-sketch {
-  font-family: 'Kalam', cursive;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  font-size: 1.05em;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78em;
 }
 
-/* Paper texture for sketch boards */
+.font-mono-marker {
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Blueprint paper — used by hero/proof boards */
 .sketch-paper {
-  background: linear-gradient(135deg, hsl(40 30% 97%) 0%, hsl(38 25% 95%) 50%, hsl(40 28% 96%) 100%);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05), inset 0 0 60px rgba(0,0,0,0.01);
+  background: hsl(210 45% 97%);
+  border: 1px solid hsl(var(--border));
+  box-shadow:
+    inset 0 0 0 4px hsl(var(--background)),
+    inset 0 0 0 5px hsl(var(--border) / 0.6);
 }
 
-/* Dot grid for whiteboard feel */
+/* Subtle dot grid overlay */
 .sketch-dots {
-  background-image: radial-gradient(circle, hsl(25 8% 60%) 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  opacity: 0.035;
+  background-image: radial-gradient(circle, hsl(218 25% 50%) 0.5px, transparent 0.5px);
+  background-size: 16px 16px;
+  opacity: 0.05;
 }
 
-/* Hand-drawn border effect — consistent subtle style */
+/* Blueprint frame — double-line drafting border */
 .sketch-border {
-  border-radius: 10px;
-  box-shadow: 
-    0.5px 0.5px 0 rgba(0,0,0,0.04),
-    -0.5px -0.5px 0 rgba(0,0,0,0.02);
+  border-radius: 4px;
+  position: relative;
+}
+
+.blueprint-frame {
+  position: relative;
+  border: 1px solid hsl(var(--border));
+  background: hsl(210 45% 97% / 0.5);
+}
+.blueprint-frame::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid hsl(var(--border) / 0.6);
+  pointer-events: none;
 }
 
 /* Verdict border classes */
-.verdict-exposed {
-  border-left: 3px solid hsl(var(--verdict-exposed));
-}
-.verdict-fortified {
-  border-left: 3px solid hsl(var(--verdict-fortified));
-}
-.verdict-consolidating {
-  border-left: 3px solid hsl(var(--verdict-consolidating));
-}
-.verdict-dominant {
-  border-left: 3px solid hsl(var(--verdict-dominant));
-}
+.verdict-exposed { border-left: 3px solid hsl(var(--verdict-exposed)); }
+.verdict-fortified { border-left: 3px solid hsl(var(--verdict-fortified)); }
+.verdict-consolidating { border-left: 3px solid hsl(var(--verdict-consolidating)); }
+.verdict-dominant { border-left: 3px solid hsl(var(--verdict-dominant)); }
 
-/* Sketch-style button — warm, approachable, not dark */
+/* Buttons — engineering-stamp feel */
 .btn-sketch {
-  @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200;
-  font-family: 'Fredoka', sans-serif;
-  background: hsl(var(--accent));
-  color: white;
-  box-shadow: 0 2px 8px hsl(var(--accent) / 0.2);
+  @apply inline-flex items-center gap-2 px-4 py-2 text-[12px] font-semibold rounded-sm transition-all duration-200;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+  border: 1px solid hsl(var(--foreground));
 }
 .btn-sketch:hover {
-  box-shadow: 0 4px 14px hsl(var(--accent) / 0.3);
-  transform: translateY(-1px);
+  background: hsl(var(--accent));
+  border-color: hsl(var(--accent));
+  color: white;
 }
 
 .btn-sketch-outline {
-  @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-200;
-  font-family: 'Fredoka', sans-serif;
+  @apply inline-flex items-center gap-2 px-4 py-2 text-[12px] font-semibold rounded-sm transition-all duration-200;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   background: transparent;
   color: hsl(var(--foreground));
-  border: 1.5px solid hsl(var(--border));
+  border: 1px solid hsl(var(--foreground) / 0.4);
 }
 .btn-sketch-outline:hover {
-  background: hsl(var(--secondary));
-  border-color: hsl(var(--muted-foreground) / 0.3);
+  border-color: hsl(var(--foreground));
+  background: hsl(var(--foreground) / 0.04);
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.15);
+  background: hsl(var(--foreground) / 0.15);
   border-radius: 3px;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
