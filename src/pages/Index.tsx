@@ -57,10 +57,10 @@ const Index = () => {
                 <SketchUnderline color="hsl(var(--accent))">
                   <span className="text-accent">JTBD tells you what users want.</span>
                 </SketchUnderline>{" "}
-                <span className="text-foreground">The Supply Chain of Intelligence™ tells you where AI value is created, captured, and defended.</span> It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence.
+                <span className="text-foreground">The Supply Chain of Intelligence™ tells you where AI value is created, captured, and defended.</span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-6">
-                Or merely sits on a surface larger platforms can absorb.
+                It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
