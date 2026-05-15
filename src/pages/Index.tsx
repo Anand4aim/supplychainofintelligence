@@ -718,8 +718,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-        </div>
-      </section>
+
 
       {/* ═══════════ CASE STUDIES ═══════════ */}
       <section className="bg-secondary/40">
