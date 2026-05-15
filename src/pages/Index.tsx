@@ -3,7 +3,7 @@ import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, BookOpen, Mic, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
-import { LAYERS, GOLD_KEY_INSIGHT } from "@/data/layers";
+import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS, JTBD_VS_SCOI } from "@/data/layers";
 import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -54,28 +54,28 @@ const Index = () => {
                 A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
-                AI is reorganizing software into a{" "}
                 <SketchUnderline color="hsl(var(--accent))">
-                  <span className="text-accent">new supply chain</span>
-                </SketchUnderline>
-                .{" "}
-                Most companies only own one layer.
+                  <span className="text-accent">JTBD tells you what users want.</span>
+                </SketchUnderline>{" "}
+                The Supply Chain of Intelligence™ tells you{" "}
+                <span className="text-foreground">where value accrues</span> — and who can fire your product.
               </h1>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mb-3">
-                The Supply Chain of Intelligence™ maps the 10 layers and 50 sublayers
-                that determine who captures value, who becomes infrastructure, and who
-                gets dissolved.
+                A strategic map of the 10 layers and 50 sublayers of AI value. Built for founders,
+                product leaders, and investors who need to know whether a product owns a durable
+                layer of intelligence — or merely sits on a surface a foundation model, hyperscaler,
+                or productivity suite can absorb.
               </p>
-              <p className="font-sketch text-base text-muted-foreground/60 mb-7">
-                For product leaders, founders, and investors trying to understand where AI actually captures value.
+              <p className="font-sketch text-base text-muted-foreground/70 mb-7">
+                The new AI product trap: <strong className="text-foreground">desirability without defensibility.</strong>
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
                   Explore the Framework <ArrowRight size={15} />
                 </Link>
-                <Link to="/analysis" className="btn-sketch-outline">
-                  See Case Studies
-                </Link>
+                <a href="#defensibility-audit" className="btn-sketch-outline">
+                  Run the Defensibility Audit
+                </a>
               </div>
             </motion.div>
 
@@ -207,110 +207,112 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ Y-AXIS vs Z-AXIS ═══════════ */}
+      {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
             <p className="font-sketch text-lg font-bold text-accent mb-4">
-              — The Missing Dimension
+              — The New AI Product Trap
             </p>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-5">
-              Why customer understanding is no longer enough
+            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-5">
+              Desirability without Defensibility
             </h2>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              In the old software world, a product could win by solving a user problem better.
+              In the AI world, that is only half the question. The other half is structural:
+              <strong className="text-foreground"> where does the intelligence come from, where does
+              context accumulate, where does trust get verified, where does the workflow live, and
+              where does value accrue?</strong>
+            </p>
             <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-10">
-              Great product leaders have mastered the vertical dimension — customer needs, JTBD,
-              workflows, prioritization. But AI forces a second dimension:{" "}
-              <strong className="text-foreground">structural depth</strong>. You can build something
-              users love today and still lose if your value sits on a thin layer.
+              A product can solve a real user job and still be structurally fragile. That is what
+              kills most AI products — not lack of users, but a layer that a foundation model,
+              cloud platform, or productivity suite can absorb in a quarter.
             </p>
           </motion.div>
 
+          {/* JTBD vs SCoI contrast table */}
           <motion.div {...fadeIn}>
-            <SketchBoard className="p-6 md:p-10 mb-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                {/* Y-axis column */}
-                <div>
-                  <p className="font-sketch text-lg text-sketch-muted mb-3">Traditional PM Thinking</p>
-                  <SketchBox color="hsl(25 12% 75%)" className="p-4 mb-3">
-                    <div className="space-y-2.5">
-                      {[
-                        "What does the customer need?",
-                        "What should we build next?",
-                        "What features matter most?",
-                        "How do we improve retention?",
-                      ].map((q, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="text-muted-foreground text-sm mt-0.5">—</span>
-                          <span className="font-sketch text-base text-foreground/70 leading-snug">{q}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </SketchBox>
-                  <p className="font-sketch text-sm text-muted-foreground italic mt-2">
-                    Necessary — but no longer sufficient
-                  </p>
+            <SketchBoard className="p-5 md:p-8 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 mb-2 pb-3 border-b-2 border-border/60">
+                <div />
+                <div className="font-sketch text-base font-bold text-muted-foreground px-3">
+                  Jobs to Be Done
                 </div>
-
-                {/* Z-axis column */}
-                <div>
-                  <p className="font-sketch text-lg font-bold text-sketch-red mb-3">
-                    + Structural Depth Thinking ← NEW
-                  </p>
-                  <SketchBox color="hsl(var(--sketch-red))" fill="hsl(var(--sketch-red) / 0.03)" className="p-4 mb-3">
-                    <div className="space-y-2.5">
-                      {[
-                        "Which layer do we actually own?",
-                        "Which sublayer is defensible?",
-                        "If the interface becomes free — what remains?",
-                        "Do we own the Defensible Triangle?",
-                      ].map((q, i) => (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="text-sketch-red text-sm mt-0.5">→</span>
-                          <span className="font-sketch text-base text-foreground font-bold leading-snug">{q}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </SketchBox>
-                  <p className="font-sketch text-sm font-bold text-sketch-red mt-2">
-                    This determines survival
-                  </p>
+                <div className="font-sketch text-base font-bold text-accent px-3">
+                  Supply Chain of Intelligence™
                 </div>
               </div>
 
-              {/* Sketch diagram: Y vs Z axes */}
-              <div className="mt-8 flex justify-center">
-                <div className="relative w-[280px] h-[200px]">
-                  <svg className="absolute inset-0" viewBox="0 0 280 200" style={{ filter: "url(#sketch-wobble)" }}>
-                    <line x1="60" y1="180" x2="60" y2="20" stroke="hsl(25 6% 65%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M54 28 L60 16 L66 28" fill="none" stroke="hsl(25 6% 65%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <line x1="60" y1="180" x2="260" y2="180" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M252 174 L264 180 L252 186" fill="none" stroke="hsl(0 65% 48%)" strokeWidth="1.5" strokeLinecap="round" />
-                    <rect x="120" y="40" width="110" height="90" rx="6" fill="hsl(0 65% 48% / 0.05)" stroke="hsl(0 65% 48%)" strokeWidth="1" strokeDasharray="4 3" />
-                  </svg>
-                  <SketchLabel className="absolute left-0 top-0 text-sm" color="hsl(25 6% 55%)" rotate={-90}>
-                    Customer Depth (Y)
-                  </SketchLabel>
-                  <SketchLabel className="absolute right-0 bottom-0 text-sm" color="hsl(0 65% 48%)">
-                    Stack Depth (Z)
-                  </SketchLabel>
-                  <span className="absolute text-center" style={{ left: "120px", top: "70px" }}>
-                    <SketchLabel color="hsl(0 65% 48%)" className="text-sm font-bold">winning zone</SketchLabel>
-                  </span>
-                  <span className="absolute" style={{ left: "70px", top: "145px" }}>
-                    <SketchLabel color="hsl(25 6% 55%)" className="text-xs">thin layer risk</SketchLabel>
-                  </span>
+              {JTBD_VS_SCOI.map((row, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 py-3 border-b border-border/40 last:border-b-0"
+                >
+                  <div className="font-sketch text-sm font-bold text-foreground px-3 py-1">
+                    {row.question}
+                  </div>
+                  <div className="text-sm text-muted-foreground px-3 py-1 leading-relaxed">
+                    {row.jtbd}
+                  </div>
+                  <div className="text-sm text-foreground px-3 py-1 leading-relaxed font-medium">
+                    {row.scoi}
+                  </div>
                 </div>
+              ))}
+
+              <div className="mt-5 pt-4 border-t border-border/60 text-center">
+                <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
+                  <strong className="text-muted-foreground">JTBD finds demand.</strong>{" "}
+                  <strong className="text-accent">The Supply Chain of Intelligence finds defensibility.</strong>
+                </p>
               </div>
             </SketchBoard>
           </motion.div>
 
-          {/* Quote */}
-          <motion.div {...fadeIn} transition={{ delay: 0.3 }}>
-            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl">
+          {/* Two-fate proof: Gamma surface vs Replit deep ownership */}
+          <motion.div {...fadeIn}>
+            <p className="font-sketch text-base text-sketch-muted mb-3 text-center">
+              — Same prompt-to-output category. Different fate. ↓
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="rounded-xl p-5 border border-verdict-exposed/30 bg-verdict-exposed/5 sketch-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-sketch text-base font-bold text-verdict-exposed">Gamma</span>
+                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-exposed/15 text-verdict-exposed">L7 only</span>
+                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-2">
+                  Solves a real JTBD: "help me create a polished deck quickly." Beautiful surface.
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  But most of the value comes from models and rendering anyone can reproduce.
+                  Brand workflow, design system, and proprietary usage data are thin. The platform
+                  layer below it can absorb the category.
+                </p>
+              </div>
+
+              <div className="rounded-xl p-5 border border-verdict-fortified/30 bg-verdict-fortified/5 sketch-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-sketch text-base font-bold text-verdict-fortified">Replit</span>
+                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-fortified/15 text-verdict-fortified">L4 + L5 + L6 + L8</span>
+                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-2">
+                  Same prompt-to-output category. But owns the execution chain end-to-end.
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Agent + code generation + hosting + auth + database + monitoring + integrations
+                  + enterprise controls. Not a UI on top of a model — a system the platform can't
+                  bundle in a sprint.
+                </p>
+              </div>
+            </div>
+
+            {/* Quote */}
+            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl mx-auto mt-10">
               <p className="text-sm text-foreground leading-relaxed italic">
-                "Great product leaders have mastered the Y-axis — customer depth. In the AI era,
-                you also need the Z-axis — infrastructure depth — or you'll build something customers
-                love today that gets commoditized tomorrow."
+                "JTBD answers <strong>why a user will hire your product</strong>. The Supply Chain
+                of Intelligence answers <strong>why OpenAI, Google, Anthropic, Microsoft, or
+                Salesforce won't erase it</strong>. You need both."
               </p>
               <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
             </div>
@@ -584,26 +586,7 @@ const Index = () => {
           <motion.div {...fadeIn}>
             <SketchBoard className="p-6 md:p-8">
               <div className="space-y-6">
-                {[
-                  {
-                    num: "I",
-                    title: "The Creator Cannot Be the Gatekeeper",
-                    desc: "When one entity controls both intelligence and trust, credibility degrades.",
-                    predicts: "WHAT can't be vertically integrated",
-                  },
-                  {
-                    num: "II",
-                    title: "Memory That Doesn't Learn Isn't Intelligence",
-                    desc: "A system that remembers but doesn't improve is just a database with a chat UI.",
-                    predicts: "WHO captures long-term value",
-                  },
-                  {
-                    num: "III",
-                    title: "Value Migrates to the Scarcest Layer",
-                    desc: "When a layer commoditizes, value transfers to adjacent scarce layers.",
-                    predicts: "WHERE value is going",
-                  },
-                ].map((law) => (
+                {LAWS.map((law) => (
                   <div key={law.num} className="flex gap-4 items-start">
                     <div className="min-w-[50px] text-center">
                       <span className="font-sketch text-4xl font-bold leading-none text-sketch-red">
@@ -612,16 +595,19 @@ const Index = () => {
                     </div>
                     <div className="flex-1">
                       <SketchBox color="hsl(25 12% 75%)" className="p-4">
-                        <span className="font-sketch text-xl font-bold text-foreground block mb-1.5">
+                        <span className="font-sketch text-xl font-bold text-foreground block mb-1.5 leading-snug">
                           {law.title}
                         </span>
                         <span className="text-sm text-muted-foreground leading-relaxed block mb-2">
                           {law.desc}
                         </span>
+                        <span className="text-xs text-foreground/70 italic block mb-2 pl-3 border-l-2 border-border">
+                          {law.example}
+                        </span>
                         <div className="flex items-center gap-2">
                           <SketchArrow direction="right" size={24} />
                           <span className="font-sketch text-sm font-bold text-sketch-red">
-                            Predicts {law.predicts}
+                            {law.prediction}
                           </span>
                         </div>
                       </SketchBox>
@@ -631,8 +617,108 @@ const Index = () => {
               </div>
             </SketchBoard>
           </motion.div>
+
+          {/* JTBD vs SCoI tagline */}
+          <motion.div {...fadeIn} className="text-center mt-8">
+            <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
+              <strong className="text-muted-foreground">JTBD finds demand.</strong>{" "}
+              <strong className="text-accent">The Supply Chain of Intelligence finds defensibility.</strong>
+            </p>
+          </motion.div>
         </div>
       </section>
+
+      {/* ═══════════ AI DEFENSIBILITY AUDIT ═══════════ */}
+      <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+          <motion.div {...fadeIn} className="mb-10">
+            <p className="font-sketch text-lg font-bold text-accent mb-4">
+              — Use the Framework
+            </p>
+            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-3">
+              The AI Defensibility Audit
+            </h2>
+            <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
+              Score each area 1–5 (1 = exposed, 5 = owned). Total it. The band tells you whether
+              your product is a wrapper, a workflow, or a platform candidate. Built for product
+              leaders preparing a strategy review and for investors auditing a SaaS portfolio.
+            </p>
+          </motion.div>
+
+          <motion.div {...fadeIn}>
+            <SketchBoard className="p-5 md:p-7">
+              {/* 8 questions */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-7">
+                {AUDIT_QUESTIONS.map((q, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-3 rounded-lg border border-border bg-card p-3.5 sketch-border"
+                  >
+                    <span className="font-sketch text-lg font-bold text-accent shrink-0 leading-none mt-0.5">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm font-bold text-foreground">{q.area}</span>
+                        <span className="font-sketch text-xs px-1.5 py-0.5 rounded-md bg-secondary text-muted-foreground shrink-0">
+                          {q.layer}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{q.question}</p>
+                      {/* 1–5 dot scale */}
+                      <div className="flex gap-1 mt-2">
+                        {[1, 2, 3, 4, 5].map((n) => (
+                          <span
+                            key={n}
+                            className="w-4 h-4 rounded-full border border-border bg-background"
+                            title={`${n}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bands */}
+              <div className="pt-5 border-t border-border/60">
+                <p className="font-sketch text-base font-bold text-sketch-red mb-3">
+                  ← Score yourself out of 40
+                </p>
+                <div className="space-y-2">
+                  {AUDIT_BANDS.map((b) => (
+                    <div
+                      key={b.range}
+                      className="grid grid-cols-[60px_1fr] md:grid-cols-[70px_180px_1fr] gap-3 items-start py-2 border-b border-border/40 last:border-b-0"
+                    >
+                      <span
+                        className="font-sketch text-base font-bold"
+                        style={{ color: `hsl(${b.color})` }}
+                      >
+                        {b.range}
+                      </span>
+                      <span
+                        className="font-display text-sm font-bold text-foreground"
+                        style={{ color: `hsl(${b.color})` }}
+                      >
+                        {b.label}
+                      </span>
+                      <span className="text-xs md:text-sm text-muted-foreground leading-relaxed col-span-2 md:col-span-1">
+                        {b.verdict}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <p className="font-sketch text-xs text-muted-foreground/60 mt-5 text-center">
+                Use it as a one-page scorecard in your next strategy review or investment memo.
+              </p>
+            </SketchBoard>
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* ═══════════ CASE STUDIES ═══════════ */}
       <section className="bg-secondary/40">

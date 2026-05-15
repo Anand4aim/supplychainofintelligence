@@ -196,4 +196,94 @@ export const LAYERS: Layer[] = [
 
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
+// ─── The Three Structural Laws ──────────────────────────────────────
+// JTBD tells you what users want. The Supply Chain of Intelligence
+// tells you where value accrues — and who can fire you.
+export interface StructuralLaw {
+  num: string;
+  title: string;
+  shortTitle: string;
+  desc: string;
+  example: string;
+  prediction: string;
+}
+
+export const LAWS: StructuralLaw[] = [
+  {
+    num: "I",
+    title: "Intelligence Commoditizes Downward",
+    shortTitle: "Intelligence commoditizes downward",
+    desc: "If your product depends only on generic model capability, the platform layer below you will eventually absorb it. Wrappers don't survive — wrappers become features.",
+    example: "Jasper ($1.5B → ~$300M) was a wrapper on GPT. Once ChatGPT shipped, the value flowed to L2.",
+    prediction: "Predicts WHO gets absorbed.",
+  },
+  {
+    num: "II",
+    title: "Value Accrues at Bottlenecks",
+    shortTitle: "Value accrues at bottlenecks",
+    desc: "Durable value rarely sits in the model or the UI. It sits at the scarce layer — proprietary data, workflow control, verification, distribution, memory, compliance, or trust. Find the bottleneck. Own it.",
+    example: "NVIDIA owns L0 silicon. Vanta owns L3 compliance. Bloomberg owns L1b data. Each is the bottleneck in their chain.",
+    prediction: "Predicts WHERE value is going.",
+  },
+  {
+    num: "III",
+    title: "The Surface Captures Attention; the Chain Captures Power",
+    shortTitle: "Surface captures attention, chain captures power",
+    desc: "A beautiful UI may get users. But durable companies own a deeper layer of the intelligence chain — data, execution, memory, gates. Surface without depth is a graveyard.",
+    example: "Gamma owns L7 surface. Replit owns agent + code-gen + hosting + auth + database (L4 + L5 + L6 + L8). Same prompt-to-output category. Different fate.",
+    prediction: "Predicts WHO survives the platform era.",
+  },
+];
+
+// ─── AI Defensibility Audit ─────────────────────────────────────────
+// A simple 8-question scorecard. Score each 1–5. Total / 40 → band.
+export interface AuditQuestion {
+  area: string;
+  question: string;
+  layer: string;
+}
+
+export const AUDIT_QUESTIONS: AuditQuestion[] = [
+  { area: "Model dependency", question: "Could a better GPT/Claude/Gemini release replace your core value?", layer: "L2" },
+  { area: "Data ownership", question: "Do you create or own proprietary context that competitors can't access?", layer: "L1b" },
+  { area: "Workflow depth", question: "Are you embedded in a daily or high-stakes workflow users can't easily exit?", layer: "L5 / L6" },
+  { area: "Trust gate", question: "Do users rely on you for verification, compliance, quality, or approval?", layer: "L3" },
+  { area: "Distribution", question: "Do you own a channel, community, brand, or enterprise relationship?", layer: "L4 / L7c" },
+  { area: "Memory", question: "Does the product become smarter or more useful with usage history?", layer: "L8" },
+  { area: "Switching cost", question: "Would leaving you destroy useful state, process, or institutional knowledge?", layer: "L8d" },
+  { area: "Platform exposure", question: "Could a major platform (OpenAI, Google, Microsoft, Salesforce) bundle this for free?", layer: "L2 / L7" },
+];
+
+export interface AuditBand {
+  range: string;
+  label: string;
+  verdict: string;
+  color: string;
+}
+
+export const AUDIT_BANDS: AuditBand[] = [
+  { range: "8–16",  label: "Thin Wrapper",            verdict: "Generic model + thin UI. The platform will absorb you.",          color: "var(--verdict-exposed)" },
+  { range: "17–24", label: "Useful Tool, Weak Moat",  verdict: "Real utility, but no structural protection. Time-bound.",         color: "var(--verdict-consolidating)" },
+  { range: "25–30", label: "Workflow Product",        verdict: "Embedded in a workflow. Survivable, but watch the platforms.",    color: "var(--accent)" },
+  { range: "31–36", label: "Defensible AI System",    verdict: "Owns multiple layers. The chain is yours, not rented.",            color: "var(--verdict-fortified)" },
+  { range: "37–40", label: "Intelligence Gate",       verdict: "Platform candidate. You are the bottleneck others must cross.",   color: "var(--verdict-dominant)" },
+];
+
+// ─── JTBD vs Supply Chain of Intelligence ───────────────────────────
+// JTBD finds demand. SCoI finds defensibility.
+export interface JtbdContrastRow {
+  question: string;
+  jtbd: string;
+  scoi: string;
+}
+
+export const JTBD_VS_SCOI: JtbdContrastRow[] = [
+  { question: "What does it answer?",   jtbd: "Why will users hire this product?",                scoi: "Why won't a platform fire it next quarter?" },
+  { question: "What does it find?",     jtbd: "Demand.",                                          scoi: "Defensibility." },
+  { question: "Time horizon",           jtbd: "Today's user need.",                               scoi: "Tomorrow's structural position." },
+  { question: "Failure mode it catches",jtbd: "Building something nobody wants.",                  scoi: "Building something everyone can copy or absorb." },
+  { question: "Audience",               jtbd: "PMs, designers, researchers.",                     scoi: "Founders, product leaders, investors, boards." },
+  { question: "Output",                 jtbd: "Roadmap, features, positioning.",                  scoi: "Layer ownership, moat strategy, exit/defend/deepen call." },
+];
+
 export const GOLD_KEY_INSIGHT = "Each layer transforms the output of the layer below it. Land and power (L-1) feed the shovels (L0). Shovels mine the ore (L1). Ore is refined (L2), assayed (L3), transported (L4), crafted (L5), arranged (L6), and worn (L7) — and none of it compounds without record-keeping (L8). The supply chain is only as strong as its weakest layer — and most companies only own one.";

@@ -5,10 +5,41 @@ Role: Product Leader · AI Strategist · Author of The Supply Chain of Intellige
 Background: Ex-Meta, Ex-Google product leader
 Affiliation: An Ideas2IT initiative (https://ideas2it.com)
 
+/* POSITIONING */
+JTBD tells you what users want.
+The Supply Chain of Intelligence tells you where AI value accrues — and who can fire your product.
+JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
+
 /* FRAMEWORK */
 Name: The Supply Chain of Intelligence™
-Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube™
-Built for: SaaS product leaders, AI founders, and venture investors
+Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube™ · AI Defensibility Audit
+
+The 10 Layers:
+  L-1 Resources       — energy, water, fabs, materials, skilled trades
+  L0  Infrastructure  — silicon, data centers, interconnect, cloud, edge
+  L1  Data            — public, proprietary, behavioral, outcome, synthetic
+  L2  Models          — foundation, specialized, embedding, routing, reasoning
+  L3  Gatekeeping     — compliance, quality, safety, editorial, distribution
+  L4  Access          — APIs, agent protocols (MCP), governance, real-time pipes, agent identity
+  L5  Execution       — domain skills, decision frameworks, RAG, playbooks, interactional skills
+  L6  Orchestration   — agent loops, human-in-the-loop, role routing, context state, runtime assurance
+  L7  Surface         — conversational, visual, embedded/copilot, transactional, ambient
+  L8  Memory          — session, entity, network, institutional, world-model
+
+The 3 Structural Laws:
+  I.   Intelligence commoditizes downward.        Wrappers become features.
+  II.  Value accrues at bottlenecks.              Own the scarce layer.
+  III. The surface captures attention; the chain captures power.
+
+The Defensible Triangle: L1b proprietary data + L5a/b/d deep skills/playbooks + L8c/d/e compounding memory.
+Single-layer survival examples: Vanta on L3 (gates), NVIDIA on L0 (silicon), Snowflake on L4 (pipes).
+
+The AI Defensibility Audit:
+  Eight 1–5 questions on model dependency, data ownership, workflow depth, trust gate,
+  distribution, memory, switching cost, platform exposure. Bands: Thin Wrapper · Useful Tool, Weak
+  Moat · Workflow Product · Defensible AI System · Intelligence Gate.
+
+Built for: SaaS founders, AI product leaders, and venture investors auditing portfolios for AI exposure.
 Trademarks: The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
 
 /* CITATION */

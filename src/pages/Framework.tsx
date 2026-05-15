@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT } from "@/data/layers";
+import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import {
   SketchFilters,
@@ -10,27 +10,6 @@ import {
   SketchBox,
   SketchLabel,
 } from "@/components/sketch/SketchElements";
-
-const LAWS = [
-  {
-    num: "I",
-    title: "The Creator Cannot Be the Gatekeeper",
-    desc: "When one entity controls both intelligence (L2) and trust (L3), credibility degrades. Google is both AI and advertiser — Gemini's recommendations will always be suspect.",
-    prediction: "Tells you WHAT can't be vertically integrated.",
-  },
-  {
-    num: "II",
-    title: "Memory That Doesn't Learn Isn't Intelligence",
-    desc: "L8 must feed back into L5. A system that remembers but doesn't improve is just a database with a chat UI. Sierra learns from every resolution. Salesforce doesn't.",
-    prediction: "Tells you WHO captures long-term value.",
-  },
-  {
-    num: "III",
-    title: "Value Migrates to the Scarcest Layer",
-    desc: "When a layer commoditizes, value transfers to adjacent scarce layers. Models commoditize → data wins. Surfaces commoditize → memory wins.",
-    prediction: "Tells you WHERE value is going.",
-  },
-];
 
 const FrameworkPage = () => (
   <SiteLayout>
@@ -44,9 +23,15 @@ const FrameworkPage = () => (
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             The Supply Chain of Intelligence™
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Follow the gold from the ground to the person wearing the ring — and you'll see every layer 
-            of the intelligence stack. 10 layers. 50 sublayers. One structural map.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
+            <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
+            The Supply Chain of Intelligence tells you{" "}
+            <strong className="text-foreground">where value accrues</strong> — and which AI
+            companies a foundation model, hyperscaler, or productivity suite can erase next quarter.
+          </p>
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+            Follow the gold from the ground to the person wearing the ring and you'll see every layer
+            of the intelligence stack. 10 layers. 50 sublayers. 3 structural laws. One map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border sketch-border">
             <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>
@@ -271,9 +256,13 @@ const FrameworkPage = () => (
     <section id="laws" className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <p className="font-sketch text-lg font-bold text-accent mb-4">— Three Structural Laws</p>
-        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-10">The Laws That Predict the Future</h2>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">The Laws That Predict the Future</h2>
+        <p className="text-base text-muted-foreground max-w-2xl mb-10 leading-relaxed">
+          Not opinions. Structural forces that explain why most AI products die in the layer they were
+          built in — and which ones survive the platforms coming for them.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {LAWS.map((law, i) => (
             <motion.div
               key={law.num}
@@ -281,14 +270,25 @@ const FrameworkPage = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl p-8 sketch-border"
+              className="bg-card border border-border rounded-xl p-7 sketch-border"
             >
-              <div className="font-sketch text-5xl font-bold text-accent mb-4">{law.num}</div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-3">{law.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{law.desc}</p>
+              <div className="font-sketch text-5xl font-bold text-accent mb-3">{law.num}</div>
+              <h3 className="font-display text-lg font-bold text-foreground mb-3 leading-snug">{law.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">{law.desc}</p>
+              <div className="text-xs text-muted-foreground/80 italic mb-3 pl-3 border-l-2 border-border">
+                {law.example}
+              </div>
               <p className="font-sketch text-sm font-bold text-accent">{law.prediction}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* JTBD vs SCoI line */}
+        <div className="mt-10 p-5 rounded-xl bg-accent/5 border border-accent/20 text-center">
+          <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
+            <strong>JTBD finds demand.</strong> The Supply Chain of Intelligence{" "}
+            <strong>finds defensibility.</strong>
+          </p>
         </div>
       </div>
     </section>
