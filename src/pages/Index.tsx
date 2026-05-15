@@ -178,7 +178,7 @@ const Index = () => {
                 ].map((c) => (
                   <div key={c.name} className="flex items-start gap-3">
                     <img
-                      src={c.logo} alt={c.name}
+                      src={c.logo} alt={`${c.name} company logo`}
                       className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                     />

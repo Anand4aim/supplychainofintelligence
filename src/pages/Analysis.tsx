@@ -155,6 +155,7 @@ const AnalysisPage = () => (
           className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
         >
           <input type="email" placeholder="you@company.com" required
+            aria-label="Email address for weekly case study newsletter"
             className="flex-1 px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40" />
           <button type="submit" className="btn-sketch">
             Subscribe
