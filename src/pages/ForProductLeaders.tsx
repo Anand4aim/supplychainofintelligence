@@ -113,15 +113,15 @@ const ForProductLeaders = () => (
           Map Your Company's Position
         </h2>
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
-          Bring the Supply Chain of Intelligence™ to your leadership team. 
-          Half-day workshop. Every sublayer mapped. Migration strategy built.
+          Use the Supply Chain of Intelligence™ to audit your roadmap, your competitive
+          position, and your structural defensibility — sublayer by sublayer.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Link to="/speaking" className="btn-sketch">
-            Book a Workshop <ArrowRight size={16} />
+          <Link to="/framework" className="btn-sketch">
+            Explore the Framework <ArrowRight size={16} />
           </Link>
-          <Link to="/framework" className="btn-sketch-outline">
-            Explore the Framework
+          <Link to="/analysis" className="btn-sketch-outline">
+            See Case Studies
           </Link>
         </div>
       </div>

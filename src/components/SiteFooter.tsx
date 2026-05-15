@@ -19,9 +19,6 @@ const SiteFooter = () => (
           <p className="text-xs mt-3 text-muted-foreground">
             By Anand Arivukkarasu · Ex-Meta &amp; Google Product Leader
           </p>
-          <p className="text-xs mt-2 text-muted-foreground">
-            An <a href="https://www.ideas2it.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-accent hover:underline">Ideas2IT</a> initiative
-          </p>
         </div>
 
         {/* Links */}
