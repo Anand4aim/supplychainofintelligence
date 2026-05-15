@@ -138,7 +138,7 @@ const FrameworkPage = () => (
 
                 {i < LAYERS.length - 1 && (
                   <div className="flex justify-center py-0.5">
-                    <ArrowDown size={14} className="text-muted-foreground/40" />
+                    <ArrowDown size={14} className="text-muted-foreground" />
                   </div>
                 )}
               </motion.div>

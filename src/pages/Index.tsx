@@ -141,7 +141,7 @@ const Index = () => {
                   );
                 })}
               </div>
-              <p className="font-sketch text-xs text-muted-foreground/50 mt-2.5">
+              <p className="font-sketch text-xs text-muted-foreground mt-2.5">
                 ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ mapped
               </p>
             </motion.div>

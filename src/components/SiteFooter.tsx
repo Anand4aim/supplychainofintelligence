@@ -23,7 +23,7 @@ const SiteFooter = () => (
 
         {/* Links */}
         <div>
-          <h4 className="font-display text-xs font-semibold uppercase tracking-[2px] text-muted-foreground/50 mb-4">Navigate</h4>
+          <h4 className="font-display text-xs font-semibold uppercase tracking-[2px] text-muted-foreground mb-4">Navigate</h4>
           <div className="space-y-2.5">
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
@@ -32,7 +32,7 @@ const SiteFooter = () => (
         </div>
 
         <div>
-          <h4 className="font-display text-xs font-semibold uppercase tracking-[2px] text-muted-foreground/50 mb-4">Connect</h4>
+          <h4 className="font-display text-xs font-semibold uppercase tracking-[2px] text-muted-foreground mb-4">Connect</h4>
           <div className="space-y-2.5">
             <a href="https://supplychainofai.com" className="block text-sm hover:text-foreground transition-colors">SupplyChainOfAI.com</a>
             <a href="#newsletter" className="block text-sm hover:text-foreground transition-colors">Newsletter</a>
@@ -41,10 +41,10 @@ const SiteFooter = () => (
       </div>
 
       <div className="border-t border-border mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-        <p className="text-xs text-muted-foreground/40">
+        <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Anand Arivukkarasu. All rights reserved.
         </p>
-        <p className="text-xs text-muted-foreground/40">
+        <p className="text-xs text-muted-foreground">
           The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
         </p>
       </div>
