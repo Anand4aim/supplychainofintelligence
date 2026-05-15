@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT } from "@/data/layers";
+import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import {
   SketchFilters,
@@ -10,27 +10,6 @@ import {
   SketchBox,
   SketchLabel,
 } from "@/components/sketch/SketchElements";
-
-const LAWS = [
-  {
-    num: "I",
-    title: "The Creator Cannot Be the Gatekeeper",
-    desc: "When one entity controls both intelligence (L2) and trust (L3), credibility degrades. Google is both AI and advertiser — Gemini's recommendations will always be suspect.",
-    prediction: "Tells you WHAT can't be vertically integrated.",
-  },
-  {
-    num: "II",
-    title: "Memory That Doesn't Learn Isn't Intelligence",
-    desc: "L8 must feed back into L5. A system that remembers but doesn't improve is just a database with a chat UI. Sierra learns from every resolution. Salesforce doesn't.",
-    prediction: "Tells you WHO captures long-term value.",
-  },
-  {
-    num: "III",
-    title: "Value Migrates to the Scarcest Layer",
-    desc: "When a layer commoditizes, value transfers to adjacent scarce layers. Models commoditize → data wins. Surfaces commoditize → memory wins.",
-    prediction: "Tells you WHERE value is going.",
-  },
-];
 
 const FrameworkPage = () => (
   <SiteLayout>
