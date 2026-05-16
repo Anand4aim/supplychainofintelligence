@@ -8,9 +8,10 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 
-const slugFor = (id: string) => `${id.toLowerCase().replace("-", "neg")}-${
-  LAYERS.find((l) => l.id === id)?.shortName.toLowerCase().replace(/\s+/g, "-")
-}`;
+const slugFor = (id: string) => {
+  const layer = LAYERS.find((l) => l.id === id);
+  return `${id.toLowerCase()}-${layer?.shortName.toLowerCase().replace(/\s+/g, "-")}`;
+};
 
 const LayerDetailPage = () => {
   const { layerId } = useParams();
