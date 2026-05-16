@@ -117,7 +117,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
               </p>
             </div>
           </div>
-        </div>
+        </Link>
       </motion.article>
     );
   }
@@ -176,6 +176,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
           Read <ArrowRight size={12} />
         </span>
       </div>
+      </Link>
     </motion.article>
   );
 };
