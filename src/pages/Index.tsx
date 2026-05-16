@@ -162,18 +162,18 @@ const Index = () => {
                 {[
                   {
                     name: "Jasper", logo: "https://logo.clearbit.com/jasper.ai",
-                    pos: "L7a only", fate: "Collapsed", color: "hsl(var(--verdict-exposed))",
+                    pos: "L7 only", fate: "Collapsed", color: "hsl(var(--verdict-exposed))",
                     note: "$1.5B → ~$300M · Thin wrapper, no moat", layers: [7],
                   },
                   {
                     name: "Grammarly", logo: "https://logo.clearbit.com/grammarly.com",
-                    pos: "L4 + L5 + L7 + L8", fate: "Thriving", color: "hsl(var(--verdict-fortified))",
-                    note: "Stable $13B · Memory compounds, deep integrations", layers: [4, 5, 7, 8],
+                    pos: "L4 + L7 + L8", fate: "Survived", color: "hsl(var(--verdict-fortified))",
+                    note: "Stable $13B · Distribution into every editor + memory of your voice", layers: [4, 7, 8],
                   },
                   {
-                    name: "Copilot in Word", logo: "https://logo.clearbit.com/microsoft.com",
-                    pos: "L0 + L2 + L4 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
-                    note: "Bigger L4 owner ate the L4 moat — model bundled into Word, Outlook, Teams", layers: [4, 7],
+                    name: "ChatGPT plug-in for Word", logo: "https://logo.clearbit.com/openai.com",
+                    pos: "L2 + L4 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
+                    note: "Model owner pushed into the surface — writing assistance now ships from L2, free, inside the editor", layers: [2, 4, 7],
                   },
                 ].map((c) => (
                   <div key={c.name} className="flex items-start gap-3">
