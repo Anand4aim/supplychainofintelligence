@@ -34,6 +34,8 @@ const App = () => (
           <Route path="/audit" element={<AuditPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/work-with-me" element={<WorkWithMePage />} />
+          <Route path="/live" element={<LivePage />} />
+          <Route path="/live/:slug" element={<LiveArticleDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
