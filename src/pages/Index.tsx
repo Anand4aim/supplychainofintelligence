@@ -57,7 +57,7 @@ const Index = () => {
               transition={{ duration: 0.7 }}
             >
               <p className="font-sketch text-base text-muted-foreground mb-4">
-                A structural framework by Anand Arivukkarasu · Ex-Meta & Google Product Leader
+                A structural framework by Anand Arivukkarasu · Ex-Meta Product Leader
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold leading-[1.15] mb-5">
                 <SketchUnderline color="hsl(var(--accent))">

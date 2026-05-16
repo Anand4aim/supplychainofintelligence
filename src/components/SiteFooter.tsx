@@ -17,7 +17,7 @@ const SiteFooter = () => (
             10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube™.
           </p>
           <p className="text-xs mt-3 text-muted-foreground">
-            By Anand Arivukkarasu · Ex-Meta &amp; Google Product Leader
+            By Anand Arivukkarasu · Ex-Meta Product Leader
           </p>
         </div>
 
