@@ -2,7 +2,7 @@
 Creator: Anand Arivukkarasu
 Site: https://supplychainofai.com
 Role: Product Leader · AI Strategist · Author of The Supply Chain of Intelligence™
-Background: Ex-Meta, Ex-Google product leader
+Background: Ex-Meta product leader
 
 /* POSITIONING */
 JTBD tells you what users want.
