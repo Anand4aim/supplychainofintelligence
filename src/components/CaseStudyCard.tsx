@@ -128,8 +128,9 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className={`group bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
+      className={`group bg-card border border-border rounded-xl hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
     >
+      <Link to={`/analysis/${study.slug}`} className="block p-6" aria-label={`Read case study: ${study.title}`}>
       <div className="flex items-center gap-3 mb-4">
         <span className="font-sketch text-sm font-bold text-accent">{study.tag}</span>
         <span className="text-sm text-muted-foreground">{study.readTime}</span>
