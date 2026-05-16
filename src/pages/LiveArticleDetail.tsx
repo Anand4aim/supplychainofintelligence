@@ -22,8 +22,14 @@ interface LiveArticle {
   published_at: string;
   analysis: {
     layer_scores: LayerScore[];
+    why_now?: string;
     structural_take: string;
+    second_order_effects?: string;
+    who_wins?: { name: string; reason: string }[];
+    who_loses?: { name: string; reason: string }[];
     vertical_lens: string;
+    counter_thesis?: string;
+    what_to_watch?: string[];
     new_law_candidate: string;
   };
 }
