@@ -147,60 +147,120 @@ const Index = () => {
             </motion.div>
           </div>
 
-          {/* Immediate proof — Jasper vs Grammarly vs ChatGPT */}
+          {/* Worked example — Sales Tech layer matrix */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-12"
           >
-            <SketchBoard className="p-5 md:p-7">
-              <p className="font-sketch text-lg font-bold text-accent mb-4 relative">
-                — Proof — One example, three fates
+            <SketchBoard className="p-5 md:p-8">
+              <p className="font-mono-marker text-[11px] tracking-[0.2em] text-accent mb-2">
+                WORKED EXAMPLE · SALES & MARKETING TECH
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative">
-                {[
-                  {
-                    name: "Jasper", logo: "https://logo.clearbit.com/jasper.ai",
-                    pos: "L7 only", fate: "Collapsed", color: "hsl(var(--verdict-exposed))",
-                    note: "$1.5B → ~$300M · Thin wrapper, no moat", layers: [7],
-                  },
-                  {
-                    name: "Grammarly", logo: "https://logo.clearbit.com/grammarly.com",
-                    pos: "L4 + L7 + L8", fate: "Survived", color: "hsl(var(--verdict-fortified))",
-                    note: "Stable $13B · Distribution into every editor + memory of your voice", layers: [4, 7, 8],
-                  },
-                  {
-                    name: "ChatGPT plug-in for Word", logo: "https://logo.clearbit.com/openai.com",
-                    pos: "L2 + L4 + L7", fate: "Dominant", color: "hsl(var(--verdict-dominant))",
-                    note: "Model owner pushed into the surface — writing assistance now ships from L2, free, inside the editor", layers: [2, 4, 7],
-                  },
-                ].map((c) => (
-                  <div key={c.name} className="flex items-start gap-3">
-                    <img
-                      src={c.logo} alt={`${c.name} company logo`}
-                      className="w-7 h-7 rounded-lg object-contain bg-white p-0.5 mt-0.5 shrink-0 border border-border"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                    />
-                    <div className="min-w-0">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-sm font-bold text-foreground">{c.name}</span>
-                        <span className="font-sketch text-base font-bold" style={{ color: c.color }}>{c.fate}</span>
-                      </div>
-                      <p className="font-sketch text-sm text-muted-foreground mt-0.5">{c.pos}</p>
-                      <p className="text-xs text-muted-foreground/60 mt-1 leading-relaxed">{c.note}</p>
-                      <div className="flex gap-1 mt-1.5">
-                        {c.layers.map((n) => (
-                          <span key={n} className="font-sketch text-xs font-bold px-1.5 py-0.5 rounded-md"
-                            style={{ color: `hsl(var(--layer-${n}))`, background: `hsl(var(--layer-${n}-bg))` }}>
-                            L{n}
-                          </span>
-                        ))}
-                      </div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight mb-1">
+                Same category. Different layers. Different fates.
+              </h3>
+              <div className="h-px w-16 bg-accent/70 mb-6" />
+
+              {/* Header row */}
+              <div className="grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-center mb-2">
+                <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
+                <div className="grid grid-cols-8 gap-1.5">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <div
+                      key={n}
+                      className="text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
+                      style={{ background: `hsl(var(--layer-${n}))` }}
+                    >
+                      L{n}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <span />
               </div>
+
+              {/* Rows */}
+              {([
+                {
+                  name: "Claude / Anthropic", sub: "L2 giant",
+                  cells: { 2: 3, 3: 2, 4: 2, 5: 1, 6: 1 },
+                  verdict: "EXPANDING ↑", verdictClass: "text-emerald-600",
+                },
+                {
+                  name: "Clay", sub: "$3B · data + workflow",
+                  cells: { 1: 3, 4: 1, 6: 3, 8: 1 },
+                  verdict: "FORTIFIED", verdictClass: "text-emerald-600",
+                },
+                {
+                  name: "Sierra", sub: "$15B · agent infra",
+                  cells: { 1: 2, 5: 3, 6: 3, 8: 2 },
+                  verdict: "FORTIFIED", verdictClass: "text-emerald-600",
+                },
+                {
+                  name: "Apollo", sub: "GTM platform",
+                  cells: { 1: 2, 6: 3, 7: 1 },
+                  verdict: "THINNING ↓", verdictClass: "text-orange-600",
+                },
+                {
+                  name: "Outreach", sub: "Sales Engagement",
+                  cells: { 6: 3 },
+                  verdict: "COMPRESSES", verdictClass: "text-orange-600",
+                },
+              ] as const).map((row, i) => (
+                <div
+                  key={row.name}
+                  className={`grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-center py-3 ${
+                    i % 2 === 0 ? "bg-foreground/[0.025]" : ""
+                  } border-t border-foreground/10`}
+                >
+                  <div>
+                    <div className="font-display text-[15px] font-bold text-foreground leading-tight">{row.name}</div>
+                    <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
+                  </div>
+                  <div className="grid grid-cols-8 gap-1.5">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => {
+                      const intensity = (row.cells as Record<number, number>)[n] ?? 0;
+                      return (
+                        <div key={n} className="flex justify-center items-center gap-[3px] h-6">
+                          {[1, 2, 3].map((d) => (
+                            <span
+                              key={d}
+                              className="rounded-full"
+                              style={{
+                                width: 6, height: 6,
+                                background: d <= intensity ? `hsl(var(--layer-${n}))` : "transparent",
+                              }}
+                            />
+                          ))}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <span className={`font-mono-marker text-[10px] font-bold tracking-[0.12em] text-right ${row.verdictClass}`}>
+                    {row.verdict}
+                  </span>
+                </div>
+              ))}
+
+              {/* Legend */}
+              <div className="flex flex-wrap items-center justify-center gap-5 mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="flex gap-[3px]">{[1, 2, 3].map((d) => <span key={d} className="w-1.5 h-1.5 rounded-full bg-foreground/70" />)}</span> Core
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="flex gap-[3px]"><span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /><span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /></span> Significant
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /> Emerging
+                </span>
+                <span>Empty = no presence</span>
+              </div>
+
+              <p className="font-display italic text-[13px] md:text-[14px] text-orange-700 text-center mt-4 leading-relaxed max-w-3xl mx-auto">
+                Claude owns L2 and is reaching into L5/L6/L7 — gravity at work. Apollo thins to a data + connector play
+                as Claude becomes the marketer's command center. Most of martech gets swallowed by the juggernaut.
+              </p>
             </SketchBoard>
           </motion.div>
         </div>
