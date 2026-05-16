@@ -179,11 +179,59 @@ const LiveArticleDetail = () => {
             </div>
           </section>
 
+          {/* Why now */}
+          {article.analysis.why_now && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Why Now</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.why_now}</p>
+            </section>
+          )}
+
           {/* Structural take */}
           <section className="mb-12">
             <p className="font-sketch text-base font-bold text-accent mb-3">— The Structural Take</p>
             <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.structural_take}</p>
           </section>
+
+          {/* Second order */}
+          {article.analysis.second_order_effects && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Second-Order Effects</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.second_order_effects}</p>
+            </section>
+          )}
+
+          {/* Winners & losers */}
+          {((article.analysis.who_wins?.length ?? 0) > 0 || (article.analysis.who_loses?.length ?? 0) > 0) && (
+            <section className="mb-12 grid md:grid-cols-2 gap-6">
+              {(article.analysis.who_wins?.length ?? 0) > 0 && (
+                <div className="border-l-4 border-[hsl(var(--verdict-fortified))] pl-4">
+                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-fortified))] mb-3">— Who Wins</p>
+                  <ul className="space-y-3">
+                    {article.analysis.who_wins!.map((w, i) => (
+                      <li key={i} className="text-[15px] leading-snug">
+                        <span className="font-display font-bold text-foreground">{w.name}.</span>{" "}
+                        <span className="text-foreground/75">{w.reason}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {(article.analysis.who_loses?.length ?? 0) > 0 && (
+                <div className="border-l-4 border-[hsl(var(--verdict-exposed))] pl-4">
+                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3">— Who Loses</p>
+                  <ul className="space-y-3">
+                    {article.analysis.who_loses!.map((w, i) => (
+                      <li key={i} className="text-[15px] leading-snug">
+                        <span className="font-display font-bold text-foreground">{w.name}.</span>{" "}
+                        <span className="text-foreground/75">{w.reason}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* Vertical lens */}
           {article.vertical && (
@@ -192,6 +240,29 @@ const LiveArticleDetail = () => {
                 — The {article.vertical} Lens
               </p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.vertical_lens}</p>
+            </section>
+          )}
+
+          {/* Counter thesis */}
+          {article.analysis.counter_thesis && (
+            <section className="mb-12 bg-card border-l-4 border-foreground/40 p-5">
+              <p className="font-sketch text-base font-bold text-foreground/70 mb-2">— Steelman: The Counter-Thesis</p>
+              <p className="text-foreground/85 leading-relaxed text-[16px] whitespace-pre-line">{article.analysis.counter_thesis}</p>
+            </section>
+          )}
+
+          {/* What to watch */}
+          {(article.analysis.what_to_watch?.length ?? 0) > 0 && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— What to Watch (Next 90 Days)</p>
+              <ul className="space-y-2">
+                {article.analysis.what_to_watch!.map((s, i) => (
+                  <li key={i} className="flex gap-3 text-[15px] leading-snug">
+                    <span className="font-mono-marker text-[10px] text-accent mt-1.5">0{i + 1}</span>
+                    <span className="text-foreground/85">{s}</span>
+                  </li>
+                ))}
+              </ul>
             </section>
           )}
 
