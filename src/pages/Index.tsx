@@ -69,12 +69,12 @@ const Index = () => {
                 It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/framework" className="btn-sketch">
-                  Explore the Framework <ArrowRight size={15} />
+                <Link to="/audit" className="btn-sketch">
+                  Run the Defensibility Audit <ArrowRight size={15} />
                 </Link>
-                <a href="#defensibility-audit" className="btn-sketch-outline">
-                  Run the Defensibility Audit
-                </a>
+                <Link to="/framework" className="btn-sketch-outline">
+                  Read the Framework
+                </Link>
               </div>
             </motion.div>
 
@@ -869,19 +869,20 @@ const Index = () => {
         <div className="max-w-xl mx-auto px-6 py-14 text-center">
           <BookOpen className="mx-auto mb-3 text-accent/70" size={26} />
           <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-            Weekly Structural Analysis
+            One worked example per month
           </h2>
           <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
-            One company analyzed through the 10 layers. Every week. Free. No fluff.
+            One company. Scored on the 10 layers. Verdict in plain English. No filler, no upsell.
           </p>
           <form
             onSubmit={(e) => { e.preventDefault(); alert("Newsletter signup will be connected soon!"); }}
             className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
           >
             <input type="email" placeholder="you@company.com" required
+              aria-label="Email address"
               className="flex-1 px-4 py-2.5 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 text-sm" />
             <button type="submit" className="btn-sketch whitespace-nowrap">
-              Subscribe
+              Get it monthly
             </button>
           </form>
         </div>
