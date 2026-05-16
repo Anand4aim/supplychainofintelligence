@@ -7,7 +7,7 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
-interface LayerScore { layer: string; owned: boolean; note: string; }
+interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: string[]; }
 
 interface LiveArticle {
   id: string;
