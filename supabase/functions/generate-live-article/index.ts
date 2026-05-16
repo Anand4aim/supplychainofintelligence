@@ -51,12 +51,18 @@ const ANALYSIS_SCHEMA = {
           required: ["layer", "owned", "note"]
         }
       },
-      structural_take: { type: "string", description: "4-6 sentences. Apply the 3 laws. Why does this matter structurally? What's the moat or lack thereof?" },
-      vertical_lens: { type: "string", description: "3-5 sentences. How does this play specifically in the named vertical? Who wins, who loses, why?" },
+      why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
+      structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat — and the way the moat could break. This is the heart of the piece; do not be brief." },
+      second_order_effects: { type: "string", description: "4-6 sentences. What happens 2-3 moves downstream that most people will miss? Pricing pressure on adjacent layers, partner rage, talent flow, sales-cycle shift, regulatory response, ecosystem rewiring. Be concrete." },
+      who_wins: { type: "array", description: "3-5 specific named winners with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
+      who_loses: { type: "array", description: "3-5 specific named losers with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
+      vertical_lens: { type: "string", description: "5-7 sentences. Inside the named vertical, walk through the actual buyer journey, the incumbent's defensive options, the realistic 12-month sales motion change, and which budget line this cannibalizes. Cite real product names and contract shapes." },
+      counter_thesis: { type: "string", description: "3-5 sentences. The strongest argument the analysis is WRONG. Steelman it. Then in one sentence, say why you still hold your position (or concede)." },
+      what_to_watch: { type: "array", description: "3-5 specific signals to track in the next 90 days that would confirm or break the thesis. Each is a one-liner.", items: { type: "string" } },
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
-      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 150-220 words, opens with a hook, ends with a question or sharp statement, uses line breaks generously, no hashtag spam (max 3 hashtags at end)" }
+      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." }
     },
-    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "structural_take", "vertical_lens", "new_law_candidate", "linkedin_post"]
+    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
   }
 };
 
