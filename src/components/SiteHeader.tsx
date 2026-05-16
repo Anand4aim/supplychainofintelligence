@@ -6,6 +6,7 @@ const navItems = [
   { label: "Framework", path: "/framework" },
   { label: "Case Studies", path: "/analysis" },
   { label: "Analysis", path: "/for-product-leaders" },
+  { label: "About", path: "/about" },
 ];
 
 const SiteHeader = () => {
@@ -45,9 +46,9 @@ const SiteHeader = () => {
               {item.label}
             </Link>
           ))}
-          <a href="#newsletter" className="btn-sketch text-[11px] px-3 py-1.5">
-            Subscribe
-          </a>
+          <Link to="/audit" className="btn-sketch text-[11px] px-3 py-1.5">
+            Run the Audit
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -75,6 +76,13 @@ const SiteHeader = () => {
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/audit"
+            onClick={() => setOpen(false)}
+            className="btn-sketch text-[11px] px-3 py-1.5 inline-block"
+          >
+            Run the Audit
+          </Link>
         </div>
       )}
     </header>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
@@ -11,6 +12,9 @@ import {
   SketchBox,
   SketchLabel,
 } from "@/components/sketch/SketchElements";
+
+const layerSlug = (id: string, shortName: string) =>
+  `${id.toLowerCase()}-${shortName.toLowerCase().replace(/\s+/g, "-")}`;
 
 const FrameworkPage = () => (
   <SiteLayout>
@@ -133,6 +137,12 @@ const FrameworkPage = () => (
                         {layer.verdict}
                       </span>
                     </div>
+                    <Link
+                      to={`/framework/${layerSlug(layer.id, layer.shortName)}`}
+                      className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent hover:gap-2 transition-all"
+                    >
+                      Deep dive on {layer.id} <ArrowRight size={11} />
+                    </Link>
                   </div>
                 </div>
 

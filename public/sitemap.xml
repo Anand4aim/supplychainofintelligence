@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://supplychainofai.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://supplychainofai.com/framework</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://supplychainofai.com/analysis</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://supplychainofai.com/for-product-leaders</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://supplychainofai.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://supplychainofai.com/framework</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://supplychainofai.com/analysis</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://supplychainofai.com/for-product-leaders</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/audit</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://supplychainofai.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/work-with-me</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Framework: per-layer pages -->
+  <url><loc>https://supplychainofai.com/framework/l-1-resources</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l0-infra</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l1-data</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l2-models</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l3-gates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l4-access</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l5-execution</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l6-orchestration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l7-surface</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/framework/l8-memory</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Case studies -->
+  <url><loc>https://supplychainofai.com/analysis/jasper-vs-grammarly-copilot</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/chegg-collapse</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/gamma-thin-layer-graveyard</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/stack-overflow-decline</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/apollo-vs-zoominfo</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/sierra-vs-salesforce</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/stability-ai-open-model-trap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/five-eras-of-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/harvey-vs-generic-legal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

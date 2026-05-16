@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { TrendingDown, TrendingUp, ArrowRight, Minus } from "lucide-react";
 
 export interface CaseStudy {
@@ -46,7 +47,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
         transition={{ delay: index * 0.1, duration: 0.5 }}
         className={`group relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-500 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
       >
-        <div className="p-8 md:p-10">
+        <Link to={`/analysis/${study.slug}`} className="block p-8 md:p-10" aria-label={`Read case study: ${study.title}`}>
           <div className="flex items-center gap-3 mb-5">
             <span className="font-sketch text-base font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
               {study.tag}
@@ -116,7 +117,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
               </p>
             </div>
           </div>
-        </div>
+        </Link>
       </motion.article>
     );
   }
@@ -127,8 +128,9 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className={`group bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
+      className={`group bg-card border border-border rounded-xl hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
     >
+      <Link to={`/analysis/${study.slug}`} className="block p-6" aria-label={`Read case study: ${study.title}`}>
       <div className="flex items-center gap-3 mb-4">
         <span className="font-sketch text-sm font-bold text-accent">{study.tag}</span>
         <span className="text-sm text-muted-foreground">{study.readTime}</span>
@@ -175,6 +177,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
           Read <ArrowRight size={12} />
         </span>
       </div>
+      </Link>
     </motion.article>
   );
 };

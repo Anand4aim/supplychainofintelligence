@@ -28,14 +28,16 @@ const SiteFooter = () => (
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
             <Link to="/for-product-leaders" className="block text-sm hover:text-foreground transition-colors">Analysis</Link>
+            <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>
           </div>
         </div>
 
         <div>
           <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
           <div className="space-y-2.5">
-            <a href="https://supplychainofai.com" className="block text-sm hover:text-foreground transition-colors">SupplyChainOfAI.com</a>
-            <a href="#newsletter" className="block text-sm hover:text-foreground transition-colors">Newsletter</a>
+            <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
+            <Link to="/work-with-me" className="block text-sm hover:text-foreground transition-colors">Work With Me</Link>
+            <a href="https://www.linkedin.com/in/anandarivukkarasu" target="_blank" rel="noopener" className="block text-sm hover:text-foreground transition-colors">LinkedIn</a>
           </div>
         </div>
       </div>
