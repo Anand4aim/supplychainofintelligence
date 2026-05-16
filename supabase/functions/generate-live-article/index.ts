@@ -7,21 +7,24 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const SYSTEM_PROMPT = `You are the analyst for "The Supply Chain of Intelligence" — a Stratechery-style strategy publication by Anand Arivukkarasu (Ex-Meta Product Leader).
+const SYSTEM_PROMPT = `You are the lead analyst for "The Supply Chain of Intelligence" — a Stratechery-grade strategy publication by Anand Arivukkarasu (Ex-Meta & Google product leader). Your readers are senior product, strategy, and investing operators. They already know the headline. They are here for the WHY underneath it, written by someone who has actually shipped product at scale.
 
-You analyze AI product launches through this framework:
+You write like a master product leader doing a war-room teardown — not a journalist, not a McKinsey deck, not a LinkedIn influencer. You go SEVERAL LEVELS deeper than the obvious read.
 
-THE 10 LAYERS (L-1 through L8):
-L-1 Energy & Power | L0 Compute & Silicon | L1 Cloud Infrastructure | L2 Foundation Models | L3 Inference & Serving | L4 Agents & Orchestration | L5 Tools & APIs | L6 Applications | L7 Distribution & Trust | L8 Memory & Continuity
+FRAMEWORK:
+- 10 layers (L-1 to L8): L-1 Energy & Power | L0 Compute & Silicon | L1 Cloud Infrastructure | L2 Foundation Models | L3 Inference & Serving | L4 Agents & Orchestration | L5 Tools & APIs | L6 Applications | L7 Distribution & Trust | L8 Memory & Continuity
+- 3 structural laws: (1) Value accrues to the scarcest layer. (2) Thin wrappers get crushed; deep stacks compound. (3) Distribution beats intelligence until intelligence becomes distribution.
+- Verdicts: DOMINANT | SAFE | CONTESTED | DEAD
 
-THE 3 STRUCTURAL LAWS:
-1. Value accrues to the scarcest layer
-2. Thin wrappers get crushed; deep stacks compound
-3. Distribution beats intelligence until intelligence becomes distribution
+DEPTH RULES — non-negotiable:
+1. Every claim must answer "why" at least twice. Surface fact → underlying mechanic → structural reason → second-order consequence.
+2. Name specific companies, products, contracts, pricing dynamics, distribution channels, org incentives. No generic phrases like "this is a big move" or "the industry will respond".
+3. Connect the move to unit economics: what changes in gross margin, CAC, retention, contract size, gatekeeping, or scarcity? Quantify when you can ("a 10-seat Cursor wedge becomes a 2,000-seat Copilot replacement").
+4. Identify the non-obvious. The obvious take is table stakes — say it in one line, then go past it. Surface the thing most analysts will miss for 6 months.
+5. Take a position. No "it remains to be seen". If the evidence is mixed, name BOTH sides and say which one wins and why.
+6. Use the language of a builder: roadmap, distribution, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
 
-VERDICTS: DOMINANT | SAFE | CONTESTED | DEAD
-
-Your job: given a news item, return a sharp, opinionated analysis. Avoid hedge words. Take a position. Write like Ben Thompson — declarative, structural, no fluff.`;
+VOICE: declarative, structural, slightly contrarian, zero hedge words, zero filler adjectives. Short sentences land harder than long ones. Use them.`;
 
 const ANALYSIS_SCHEMA = {
   name: "framework_analysis",
@@ -48,12 +51,18 @@ const ANALYSIS_SCHEMA = {
           required: ["layer", "owned", "note"]
         }
       },
-      structural_take: { type: "string", description: "4-6 sentences. Apply the 3 laws. Why does this matter structurally? What's the moat or lack thereof?" },
-      vertical_lens: { type: "string", description: "3-5 sentences. How does this play specifically in the named vertical? Who wins, who loses, why?" },
+      why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
+      structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat — and the way the moat could break. This is the heart of the piece; do not be brief." },
+      second_order_effects: { type: "string", description: "4-6 sentences. What happens 2-3 moves downstream that most people will miss? Pricing pressure on adjacent layers, partner rage, talent flow, sales-cycle shift, regulatory response, ecosystem rewiring. Be concrete." },
+      who_wins: { type: "array", description: "3-5 specific named winners with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
+      who_loses: { type: "array", description: "3-5 specific named losers with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
+      vertical_lens: { type: "string", description: "5-7 sentences. Inside the named vertical, walk through the actual buyer journey, the incumbent's defensive options, the realistic 12-month sales motion change, and which budget line this cannibalizes. Cite real product names and contract shapes." },
+      counter_thesis: { type: "string", description: "3-5 sentences. The strongest argument the analysis is WRONG. Steelman it. Then in one sentence, say why you still hold your position (or concede)." },
+      what_to_watch: { type: "array", description: "3-5 specific signals to track in the next 90 days that would confirm or break the thesis. Each is a one-liner.", items: { type: "string" } },
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
-      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 150-220 words, opens with a hook, ends with a question or sharp statement, uses line breaks generously, no hashtag spam (max 3 hashtags at end)" }
+      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." }
     },
-    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "structural_take", "vertical_lens", "new_law_candidate", "linkedin_post"]
+    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
   }
 };
 
@@ -86,7 +95,7 @@ async function analyzeWithFramework(lovableKey: string, newsContext: string) {
       model: "google/gemini-2.5-pro",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: `Here is this week's news item with sources:\n\n${newsContext}\n\nProduce the full framework analysis. Be opinionated. The vertical_lens must be specific and concrete (real downstream effects, not generalities). The linkedin_post must be ready to paste — start with a hook, no preamble.` }
+        { role: "user", content: `This week's news item:\n\n${newsContext}\n\nProduce the full framework analysis. Remember the depth rules: every claim answered "why" at least twice, name specific companies and mechanics, surface what most analysts will miss for 6 months, take a position. The structural_take is the centerpiece — do not be brief. The vertical_lens must walk the actual buyer journey. The linkedin_post must be paste-ready, no preamble.` }
       ],
       tools: [{ type: "function", function: { name: ANALYSIS_SCHEMA.name, description: "Return the structured framework analysis", parameters: ANALYSIS_SCHEMA.schema } }],
       tool_choice: { type: "function", function: { name: ANALYSIS_SCHEMA.name } },
@@ -141,8 +150,14 @@ Deno.serve(async (req) => {
       source_urls: analysis.source_urls ?? [],
       analysis: {
         layer_scores: analysis.layer_scores,
+        why_now: analysis.why_now,
         structural_take: analysis.structural_take,
+        second_order_effects: analysis.second_order_effects,
+        who_wins: analysis.who_wins ?? [],
+        who_loses: analysis.who_loses ?? [],
         vertical_lens: analysis.vertical_lens,
+        counter_thesis: analysis.counter_thesis,
+        what_to_watch: analysis.what_to_watch ?? [],
         new_law_candidate: analysis.new_law_candidate,
       },
       linkedin_post: analysis.linkedin_post,
