@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Live Feed", path: "/live" },
   { label: "Framework", path: "/framework" },
   { label: "Case Studies", path: "/analysis" },
-  { label: "Analysis", path: "/for-product-leaders" },
   { label: "About", path: "/about" },
 ];
 

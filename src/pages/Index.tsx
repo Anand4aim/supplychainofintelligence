@@ -72,6 +72,9 @@ const Index = () => {
                 <Link to="/audit" className="btn-sketch">
                   Run the Defensibility Audit <ArrowRight size={15} />
                 </Link>
+                <Link to="/live" className="btn-sketch-outline">
+                  This Week's Analysis →
+                </Link>
                 <Link to="/framework" className="btn-sketch-outline">
                   Read the Framework
                 </Link>
