@@ -12,6 +12,8 @@ import ForProductLeaders from "./pages/ForProductLeaders";
 import AuditPage from "./pages/Audit";
 import AboutPage from "./pages/About";
 import WorkWithMePage from "./pages/WorkWithMe";
+import LivePage from "./pages/Live";
+import LiveArticleDetail from "./pages/LiveArticleDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
