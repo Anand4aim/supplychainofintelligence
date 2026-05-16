@@ -30,18 +30,34 @@ const verdictTone = (v: string) => {
 const LivePage = () => {
   const [articles, setArticles] = useState<LiveArticle[]>([]);
   const [loading, setLoading] = useState(true);
+  const [generating, setGenerating] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const { data } = await supabase
-        .from("live_articles")
-        .select("id, slug, headline, subheadline, news_summary, verdict, vertical, published_at")
-        .eq("status", "published")
-        .order("published_at", { ascending: false });
-      setArticles(data ?? []);
-      setLoading(false);
-    })();
-  }, []);
+  const load = async () => {
+    const { data } = await supabase
+      .from("live_articles")
+      .select("id, slug, headline, subheadline, news_summary, verdict, vertical, published_at")
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
+    setArticles(data ?? []);
+    setLoading(false);
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const triggerNow = async () => {
+    setGenerating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-live-article");
+      if (error) throw error;
+      if (!data?.success) throw new Error(data?.error ?? "Failed");
+      await load();
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      alert(`Generation failed: ${msg}`);
+    } finally {
+      setGenerating(false);
+    }
+  };
 
   return (
     <SiteLayout>
