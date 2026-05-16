@@ -140,42 +140,105 @@ const LiveArticleDetail = () => {
             )}
           </section>
 
-          {/* Layer scoring */}
+          {/* Layer scoring — chip + dot intensity matrix */}
           <section className="mb-12">
             <p className="font-sketch text-base font-bold text-accent mb-4">— Layer Scoring</p>
-            <div className="space-y-1.5">
-              {LAYER_ORDER.map((layer) => {
-                const s = scoreMap.get(layer);
-                const owned = s?.owned ?? false;
-                return (
+
+            <div
+              className="rounded-2xl p-5 md:p-6"
+              style={{
+                background: "linear-gradient(145deg, hsl(140 38% 96%) 0%, hsl(145 32% 94%) 60%, hsl(140 36% 95%) 100%)",
+                border: "1px solid hsl(140 22% 86%)",
+              }}
+            >
+              {/* Chip header row */}
+              <div className="grid grid-cols-10 gap-1.5 mb-3">
+                {LAYER_ORDER.map((layer) => (
                   <div
                     key={layer}
-                    className="flex items-center gap-3 p-3 border-l-4"
-                    style={{
-                      borderColor: `hsl(var(${layerVar(layer)}))`,
-                      background: `hsl(var(${layerVar(layer)}-bg))`,
-                    }}
+                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
+                    style={{ background: `hsl(var(${layerVar(layer)}))` }}
                   >
-                    <span
-                      className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 min-w-[36px] text-center"
-                      style={{ background: `hsl(var(${layerVar(layer)}))` }}
-                    >
-                      {layer}
-                    </span>
-                    <span className="font-mono-marker text-[11px] text-foreground/70 min-w-[140px] hidden sm:inline">
-                      {LAYER_LABEL[layer]}
-                    </span>
-                    {owned ? (
-                      <Check size={16} className="text-[hsl(var(--verdict-fortified))] shrink-0"/>
-                    ) : (
-                      <X size={16} className="text-foreground/30 shrink-0"/>
-                    )}
-                    <span className="text-sm text-foreground/80 leading-snug">
-                      {s?.note ?? "—"}
-                    </span>
+                    {layer}
                   </div>
-                );
-              })}
+                ))}
+              </div>
+
+              {/* Dot intensity row */}
+              <div className="grid grid-cols-10 gap-1.5 pb-4 border-b border-foreground/10">
+                {LAYER_ORDER.map((layer) => {
+                  const s = scoreMap.get(layer);
+                  const intensity = s?.intensity ?? (s?.owned ? 2 : 0);
+                  return (
+                    <div key={layer} className="flex justify-center items-center gap-[3px] h-7">
+                      {[1, 2, 3].map((d) => (
+                        <span
+                          key={d}
+                          className="rounded-full"
+                          style={{
+                            width: 7,
+                            height: 7,
+                            background: d <= intensity ? `hsl(var(${layerVar(layer)}))` : "transparent",
+                            border: d <= intensity ? "none" : "1px solid hsl(var(--foreground) / 0.12)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Per-layer notes + sublayers */}
+              <div className="mt-4 space-y-2.5">
+                {LAYER_ORDER.map((layer) => {
+                  const s = scoreMap.get(layer);
+                  const intensity = s?.intensity ?? (s?.owned ? 2 : 0);
+                  if (intensity === 0) return null;
+                  return (
+                    <div key={layer} className="flex gap-3 items-start">
+                      <span
+                        className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 min-w-[34px] text-center shrink-0 mt-0.5"
+                        style={{ background: `hsl(var(${layerVar(layer)}))` }}
+                      >
+                        {layer}
+                      </span>
+                      <div className="flex-1 text-[14px] leading-snug">
+                        <span className="text-foreground">{s?.note}</span>
+                        {s?.sublayers && s.sublayers.length > 0 && (
+                          <div className="mt-1 flex flex-wrap gap-1.5">
+                            {s.sublayers.map((sub, i) => (
+                              <span
+                                key={i}
+                                className="font-mono-marker text-[10px] px-1.5 py-0.5 rounded-sm"
+                                style={{
+                                  background: `hsl(var(${layerVar(layer)}) / 0.12)`,
+                                  color: `hsl(var(${layerVar(layer)}))`,
+                                }}
+                              >
+                                {sub}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Legend */}
+              <div className="flex flex-wrap items-center gap-4 mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="flex gap-[3px]">{[1, 2, 3].map((d) => <span key={d} className="w-1.5 h-1.5 rounded-full bg-foreground/70" />)}</span> Core
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="flex gap-[3px]"><span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /><span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /></span> Significant
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/70" /> Emerging
+                </span>
+                <span>Empty = no presence</span>
+              </div>
             </div>
           </section>
 
