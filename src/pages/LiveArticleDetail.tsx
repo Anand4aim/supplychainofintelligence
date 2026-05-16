@@ -59,7 +59,7 @@ const LiveArticleDetail = () => {
     if (!slug) return;
     (async () => {
       const { data } = await supabase.from("live_articles").select("*").eq("slug", slug).maybeSingle();
-      setArticle(data as LiveArticle | null);
+      setArticle(data ? (data as unknown as LiveArticle) : null);
       setLoading(false);
     })();
   }, [slug]);
