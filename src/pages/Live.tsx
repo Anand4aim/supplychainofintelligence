@@ -157,6 +157,7 @@ const LivePage = () => {
                 </motion.div>
               ))}
             </div>
+            </>
           )}
         </div>
       </section>
