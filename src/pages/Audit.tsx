@@ -11,6 +11,15 @@ import { ArrowRight, RotateCcw, Share2 } from "lucide-react";
 // invert: a higher answer = higher risk, so we flip them.
 const INVERT = new Set([0, 7]);
 
+// Map an audit question's layer string (e.g. "L2", "L1b", "L5 / L6") to its
+// signature 10-layer color token. Uses the first layer mentioned.
+const layerVarFor = (layerStr: string) => {
+  const m = layerStr.match(/L(-?\d+)/);
+  if (!m) return "var(--layer-0)";
+  const n = parseInt(m[1], 10);
+  return n < 0 ? "var(--layer-neg1)" : `var(--layer-${n})`;
+};
+
 const SCALE = [
   { v: 1, label: "Strongly no" },
   { v: 2, label: "No" },
@@ -102,10 +111,17 @@ const AuditPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: qi * 0.04 }}
-                className="bg-card border border-border rounded-2xl p-6 sketch-border"
+                className="bg-card border border-border rounded-2xl p-6 sketch-border relative overflow-hidden"
+                style={{ borderLeft: `4px solid hsl(${layerVarFor(q.layer)})` }}
               >
                 <div className="flex items-start gap-3 mb-4">
-                  <span className="font-sketch text-lg font-bold text-accent shrink-0">
+                  <span
+                    className="font-sketch text-base font-bold shrink-0 px-2 py-1 rounded-md"
+                    style={{
+                      color: `hsl(${layerVarFor(q.layer)})`,
+                      background: `hsl(${layerVarFor(q.layer).replace(")", "-bg)")})`,
+                    }}
+                  >
                     {String(qi + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -113,7 +129,7 @@ const AuditPage = () => {
                       {q.question}
                     </p>
                     <p className="font-sketch text-xs text-muted-foreground mt-1">
-                      {q.area} · maps to {q.layer}
+                      {q.area} · maps to <span style={{ color: `hsl(${layerVarFor(q.layer)})` }} className="font-bold">{q.layer}</span>
                     </p>
                   </div>
                 </div>
