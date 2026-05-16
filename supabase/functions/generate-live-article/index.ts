@@ -46,9 +46,11 @@ const ANALYSIS_SCHEMA = {
           properties: {
             layer: { type: "string", description: "L-1, L0, L1, L2, L3, L4, L5, L6, L7, or L8" },
             owned: { type: "boolean", description: "Does the company own meaningful position in this layer?" },
-            note: { type: "string", description: "8-15 words explaining" }
+            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership" },
+            note: { type: "string", description: "8-15 words explaining" },
+            sublayers: { type: "array", description: "1-3 specific sublayer slices claimed inside this layer (e.g. for L6: 'CRM workflow', 'agent inbox'). Empty array if intensity is 0.", items: { type: "string" } }
           },
-          required: ["layer", "owned", "note"]
+          required: ["layer", "owned", "intensity", "note", "sublayers"]
         }
       },
       why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
