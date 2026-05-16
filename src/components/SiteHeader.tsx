@@ -15,13 +15,11 @@ const SiteHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-foreground/10">
-      {/* DWG marker strip */}
-      <div className="hidden md:block border-b border-foreground/10 bg-background/60">
-        <div className="max-w-7xl mx-auto px-6 h-6 flex items-center justify-between font-mono-marker text-[10px] text-muted-foreground">
-          <span>DWG · SCI-001 · REV 4.0</span>
-          <span className="text-accent">THE SUPPLY CHAIN OF INTELLIGENCE™ · ANAND ARIVUKKARASU</span>
-          <span>SHEET 01 / 22</span>
-        </div>
+      {/* 10-layer color spectrum — signature visual language */}
+      <div className="h-[3px] w-full flex" aria-hidden="true">
+        {["neg1","0","1","2","3","4","5","6","7","8"].map((n) => (
+          <div key={n} className="flex-1" style={{ background: `hsl(var(--layer-${n}))` }} />
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">

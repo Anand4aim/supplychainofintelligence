@@ -6,9 +6,11 @@ const SiteFooter = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="md:col-span-2">
-          <p className="font-mono-marker text-[10px] text-accent mb-3">
-            DWG · SCI-000 · REV 4.0 · MAY 2026
-          </p>
+          <div className="flex gap-0.5 mb-4" aria-hidden="true">
+            {["neg1","0","1","2","3","4","5","6","7","8"].map((n) => (
+              <div key={n} className="h-1.5 flex-1 rounded-sm" style={{ background: `hsl(var(--layer-${n}))` }} />
+            ))}
+          </div>
           <h3 className="font-display text-lg font-bold text-foreground mb-3">
             The Supply Chain of Intelligence<span className="text-accent">™</span>
           </h3>
