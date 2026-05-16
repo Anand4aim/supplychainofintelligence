@@ -95,7 +95,7 @@ async function analyzeWithFramework(lovableKey: string, newsContext: string) {
       model: "google/gemini-2.5-pro",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: `Here is this week's news item with sources:\n\n${newsContext}\n\nProduce the full framework analysis. Be opinionated. The vertical_lens must be specific and concrete (real downstream effects, not generalities). The linkedin_post must be ready to paste — start with a hook, no preamble.` }
+        { role: "user", content: `This week's news item:\n\n${newsContext}\n\nProduce the full framework analysis. Remember the depth rules: every claim answered "why" at least twice, name specific companies and mechanics, surface what most analysts will miss for 6 months, take a position. The structural_take is the centerpiece — do not be brief. The vertical_lens must walk the actual buyer journey. The linkedin_post must be paste-ready, no preamble.` }
       ],
       tools: [{ type: "function", function: { name: ANALYSIS_SCHEMA.name, description: "Return the structured framework analysis", parameters: ANALYSIS_SCHEMA.schema } }],
       tool_choice: { type: "function", function: { name: ANALYSIS_SCHEMA.name } },
