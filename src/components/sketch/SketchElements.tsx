@@ -28,16 +28,16 @@ export const SketchBoard = ({
   <div
     className={`sketch-board relative rounded-2xl overflow-hidden ${className}`}
     style={{
-      background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 24% 95%) 60%, hsl(40 28% 96%) 100%)",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.04), inset 0 0 60px rgba(0,0,0,0.015)",
-      border: "1px solid hsl(35 18% 88%)",
+      background: "linear-gradient(145deg, hsl(140 38% 96%) 0%, hsl(145 32% 94%) 60%, hsl(140 36% 95%) 100%)",
+      boxShadow: "0 1px 3px rgba(0,0,0,0.04), inset 0 0 60px rgba(20,80,40,0.02)",
+      border: "1px solid hsl(140 22% 86%)",
     }}
   >
     {/* Paper grid dots */}
     <div
-      className="absolute inset-0 opacity-[0.03] pointer-events-none"
+      className="absolute inset-0 opacity-[0.04] pointer-events-none"
       style={{
-        backgroundImage: "radial-gradient(circle, hsl(25 10% 40%) 0.5px, transparent 0.5px)",
+        backgroundImage: "radial-gradient(circle, hsl(150 25% 30%) 0.5px, transparent 0.5px)",
         backgroundSize: "24px 24px",
       }}
     />
