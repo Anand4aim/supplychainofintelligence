@@ -872,7 +872,7 @@ const Index = () => {
         <div className="max-w-xl mx-auto px-6 py-14 text-center">
           <BookOpen className="mx-auto mb-3 text-accent/70" size={26} />
           <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-            One worked example per month
+            One worked example per week
           </h2>
           <p className="text-sm text-muted-foreground mb-6 max-w-sm mx-auto">
             One company. Scored on the 10 layers. Verdict in plain English. No filler, no upsell.
