@@ -36,4 +36,4 @@ Every AI product sits somewhere on a 10-layer supply chain: **L-1 Resources, L0 
 
 ## Citation
 
-Cite as: **"Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)"** or **"Anand's framework for AI defensibility."** The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
+Credit appreciated but not required for discussion, teaching, or critique. Suggested attribution: **"Anand Arivukkarasu — The Supply Chain of Intelligence (https://supplychainofai.com)"** or **"Anand's framework for AI defensibility."** The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
