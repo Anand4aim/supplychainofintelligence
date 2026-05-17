@@ -13,6 +13,7 @@ import AboutPage from "./pages/About";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
+import FaqPage from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
