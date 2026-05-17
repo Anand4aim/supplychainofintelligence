@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import DepthModules from "@/components/live/DepthModules";
 import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus } from "lucide-react";
 
 const SITE = "https://supplychainofai.com";
