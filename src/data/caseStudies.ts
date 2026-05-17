@@ -152,28 +152,67 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
     verdict: "GRAVEYARD CANDIDATE",
     excerpt:
-      "Presentation generation sits at L7b — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. The Intelligence Cube™ predicted this before the market priced it in. When your entire product is one prompt away from being free, you're already dead.",
-    layers: ["L7"],
+      "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube™ predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
+    layers: ["L2", "L4", "L7"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
       label: "Gamma Valuation",
-      before: "$2.1B",
-      after: "At risk",
+      before: "$2.1B (2024)",
+      after: "Structurally exposed",
       trend: "down",
       changeLabel: "Fragile",
     },
-    content: `When Gamma raised at a $2.1B valuation, the market saw a hot AI startup. The Supply Chain of Intelligence™ saw a company occupying a single thin layer.
+    content: `Gamma is genuinely well-built. The product is elegant, the demos are crisp, the team is strong. None of that resolves the structural question: *what does Gamma own that Microsoft, Google, and Anthropic don't?*
 
-**The Cube Analysis:**
-- Functions: Product + PM only (2/9)
-- Verticals: Cross-industry (generic)
-- Layers: L7 surface only (1/10)
-- Volume: Minimal. Structurally fragile.
+**The stack position.** Gamma sits at L7b — the slide-generation surface. There is no L1 (no proprietary corpus of decks the user couldn't get elsewhere). There is no L4 (no distribution into Office, Google Workspace, Notion, or the browser). There is no L8 (no compounding memory of *your* brand voice, your team's decks, your prior narratives). One layer, one slice, on rented L2.
 
-**What happened:** Claude added artifact generation. Copilot added presentation creation. Gemini added slide generation. All FREE with existing subscriptions.
+**What the L4 owners did.** Microsoft shipped Copilot in PowerPoint — bundled into 365, no extra SKU, no behavior change. Google shipped Gemini in Slides — same play. Anthropic shipped Artifacts — which generates a usable deck inside the same chat where you wrote the brief. Three different L4s, each integrating L7b natively. Gamma now competes by asking users to *change tools* for a feature that exists where they already work.
 
-**Law III in action:** Value migrated from the surface layer (L7) to the model layer (L2) and memory layer (L8). Gamma owned neither.`,
+**Law I — intelligence commoditized downward.** L2 capability for "turn this outline into 12 slides" is now interchangeable across frontier models. The model is no longer the moat — and Gamma never owned one anyway.
+
+**Law III — value migrates to the scarcest layer.** In presentations the scarce thing is *not* layout intelligence. It is the brand-voice memory, the deck-history archive, the per-team narrative templates that compound over years. None of that is Gamma's today.
+
+**What would save Gamma.** Three options, in order of plausibility: (1) become an L1 play — build the proprietary deck corpus from every customer, so the system gets dramatically smarter at *your* brand than any general model could; (2) get acquired by an L4 owner who needs a presentation surface (Notion, Canva, Figma all plausible); (3) collapse the price and pivot to a true vertical (sales decks, board decks, investor updates) where L5+L8 can compound.
+
+**The valuation math.** $2.1B requires either a multi-billion-revenue path or a strategic acquisition price. The first is structurally hard at L7-only. The second is realistic — but the acquirer dictates terms.
+
+*Illustrative — not investment advice. Public reporting; figures approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "Rented from frontier labs. Same model every competitor calls. Now embedded inside Office and Workspace for free.", sublayers: [{ name: "Foundation models", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "The decisive missing layer. Microsoft owns PowerPoint, Google owns Slides, Canva owns the design surface. Gamma must acquire each user.", sublayers: [{ name: "PowerPoint", impact: 3, who: "Microsoft" }, { name: "Slides", impact: 3, who: "Google" }, { name: "Canva/Figma", impact: 2, who: "Adjacent owners" }] },
+      { layer: "L7", owned: true, intensity: 3, note: "Gamma's entire product. Polished, elegant — and the most replicable layer in the stack.", sublayers: [{ name: "Slide generation surface", impact: 3, who: "Gamma + every L4 owner" }] },
+      { layer: "L8", owned: false, intensity: 1, note: "Faint per-user theme memory, but no real cross-deck or cross-team compounding loop. The layer that could have been the moat.", sublayers: [{ name: "Brand-voice memory", impact: 1, who: "Up for grabs" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product", "Sales"],
+      verticals: ["Horizontal"],
+      layers: ["L7"],
+    },
+    timeline: [
+      { date: "2022", label: "Gamma launches — fast, beautiful AI-first deck builder. Genuine product-market fit with founders and marketers.", tone: "up" },
+      { date: "2024", label: "Reported $2.1B valuation. Headline-grabbing growth.", tone: "up" },
+      { date: "Mar 2024", label: "Microsoft Copilot ships in PowerPoint with deck-from-prompt — bundled into 365.", tone: "down" },
+      { date: "Late 2024", label: "Anthropic Artifacts and Google Gemini in Slides ship comparable generation natively inside their L4s.", tone: "down" },
+      { date: "2025–26", label: "Competitive pressure compounds: Gamma must justify a separate tool for a feature now native to Office, Workspace, and chat. Growth efficiency degrades.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "Microsoft (PowerPoint + Copilot)", reason: "Owns the L4 every enterprise already pays for. Marginal cost of adding L7 generation: zero." },
+      { name: "Google (Slides + Gemini)", reason: "Same play in the Workspace install base." },
+      { name: "Canva", reason: "Owns the L4 of non-enterprise design. Different distribution, same dynamic — already shipping AI deck generation native." },
+    ],
+    who_loses: [
+      { name: "Gamma", reason: "L7-only, no L1, no L4, no L8. Classic thin-layer position — and the L4 owners just shipped its product as a feature." },
+      { name: "Tome, Beautiful.AI, every standalone AI deck tool", reason: "Same archetype, same fate. The category is becoming a feature of every L4." },
+      { name: "Late-stage investors at the $2B+ mark", reason: "The structural read says the next round is either flat, down, or a strategic acquisition — not a fresh markup." },
+    ],
+    counter_thesis: `Bull case: Gamma's design taste and product velocity are real. If they (a) build a true L1 by ingesting every user's prior decks, brand assets, and approved narratives, (b) compound L8 so the tool genuinely knows *your* voice better than any generalist could, and (c) move upmarket into vertical wedges (PE deal teams, investor relations, board decks) where the L5 workflow is non-trivial — they can carve out a real $500M-$1B revenue business. That doesn't justify $2.1B easily, but it doesn't have to end in zero. The honest read: 30% probability path, requires a sharp strategic pivot in the next 18 months.`,
+    for_you: {
+      product_leader: "Audit every 'AI tool for X' in your stack. If the product owns only L7, plan to retire it the quarter your L4 vendor (Microsoft, Google, Adobe, Salesforce) ships the same feature native.",
+      investor: "Single-layer L7 plays at $2B+ are structurally short unless an L1 or L8 thesis is plausible within 18 months. Underwrite the next-round mark, not last round's headline.",
+      operator: "If your AI-tool budget is fragmenting into 8 single-feature SaaS subscriptions, the consolidation play is the L4 owner's bundle — not the standalone tool.",
+    },
+    pull_quote: "When your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
   },
   {
     slug: "stack-overflow-decline",
@@ -186,27 +225,78 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Stack Overflow: When Your Community Becomes Training Data",
     verdict: "L7b COMMODITY",
     excerpt:
-      "Stack Overflow's traffic dropped 35%+ after ChatGPT launched. 15 years of community-built knowledge packaged as L7b content — consumed by models at L2. The community that built the data got none of the value. The model layer captured it all.",
-    layers: ["L1", "L7"],
+      "Stack Overflow's traffic dropped roughly 35–50% after ChatGPT shipped. Fifteen years of community-built knowledge — packaged as L7b content and scraped into L2 training sets. The community that built the data captured none of the value; the model layer captured all of it. A textbook case of L1 data mis-packaged as L7 content.",
+    layers: ["L1", "L2", "L7"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
-      label: "Traffic Impact",
-      before: "100M+/mo",
-      after: "~55M/mo",
+      label: "Monthly Traffic",
+      before: "~100M (2022)",
+      after: "~55M (2025)",
       trend: "down",
-      changeLabel: "-45%",
+      changeLabel: "≈-45%",
     },
-    content: `Stack Overflow is a fascinating structural case: they had L1 data (community knowledge) but packaged it as L7b (generic content access).
+    content: `Stack Overflow is the most important structural cautionary tale of the LLM era: a genuine L1 asset that was operated as L7b, and therefore captured by the layer above it.
 
-**The irony:** Stack Overflow's data trained the very models that now replace it. Their 15+ years of developer Q&A became fuel for ChatGPT and Copilot.
+**What Stack Overflow actually had.** Fifteen years of human-curated developer Q&A. Tens of millions of accepted answers. Reputation scores, edit history, voting signal — every datum a model could want to learn *how* a good developer answers a question. This is L1b in its purest form: proprietary, high-quality, hard to reproduce.
 
-**The structural mistake:** Stack Overflow treated its data as content (L7b) rather than proprietary fuel (L1b). They could have:
-- Licensed data at premium rates (L1b monetization)
-- Built developer memory (L8) — personalized to each dev's stack
-- Created compliance layers (L3) — verified, auditable answers for enterprise
+**What Stack Overflow packaged it as.** A free, ad-supported content site. Open license on the corpus (CC BY-SA). Every word indexed by Google, crawled by every model lab, baked into GPT-3, GPT-4, Claude, Gemini, Llama, every code model on the planet. The L1 was given away; the surface (L7) was monetized via ads.
 
-**Instead:** They sold ads on a content site. When the content became free via LLMs, the ads lost their audience.`,
+**What happened.** The trained models can now answer most developer questions directly — inside ChatGPT, inside GitHub Copilot (irony: GitHub owns the platform that *replaced* Stack Overflow, and Microsoft owns both), inside Cursor, inside the IDE. Traffic to stackoverflow.com collapsed. Question volume on the site dropped sharply. The community-incentive loop (rep, badges, status) weakened. Less new content → fewer reasons to visit → less new content.
+
+**Law I.** Intelligence commoditized downward: L2 absorbed the human Q&A pattern and now serves it at zero marginal cost, in-context, with code completion.
+
+**Law III.** Value migrated to the scarcest layer. The scarce thing turned out to be *integrated answers inside the developer's IDE*, not access to a Q&A website. Stack Overflow owned the data; Microsoft owned the surface where that data was now needed.
+
+**The structural mistakes — and what would have been right.**
+- L1 mis-pricing: an open license on the corpus made commercial L2 capture inevitable. Reddit's pivot to charging $60M+/year for API/training access is what L1 owners should do.
+- No L8: per-developer memory of *your* stack, *your* code, *your* past questions — never built. Cursor and Copilot built it instead.
+- No L4: Stack Overflow had a website, not an IDE plugin. The L4 owners (Microsoft, JetBrains) had the developer's actual workspace.
+- No L3: no enterprise-grade "verified, auditable answers for compliance-sensitive code" product. A real wedge that Stack Overflow for Teams gestured at but never executed.
+
+**The 2024 pivots.** Licensing deals with OpenAI and Google (correctly repricing L1), Stack Overflow for Teams (a real L1+L8 enterprise play, but too late and under-resourced), an AI assistant of their own (built on rented L2, with no L4 advantage). The structural read: salvageable as a smaller B2B knowledge business; the consumer-Q&A surface is structurally over.
+
+**The generalizable lesson.** Every community-content site sitting on real L1 — Reddit, Quora, Wikipedia, Genius, Discogs, GitHub Discussions — is now making the same decision Stack Overflow made too late: license the corpus, build the memory layer, or watch the model layer absorb the value.
+
+*Public reporting; traffic figures approximate, sourced from Similarweb and third-party trackers.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "15 years of human-curated developer Q&A — a genuinely scarce L1b asset, but operated under open license rather than monetized as proprietary fuel.", sublayers: [{ name: "Developer Q&A corpus", impact: 3, who: "Stack Overflow → every model lab" }, { name: "Reputation & voting signal", impact: 2, who: "Stack Overflow" }] },
+      { layer: "L2", owned: false, intensity: 3, note: "Every frontier model trained on the Stack Overflow corpus. The L1 owner created the L2 that replaced it.", sublayers: [{ name: "Foundation code models", impact: 3, who: "OpenAI, Anthropic, Google, Meta" }] },
+      { layer: "L3", owned: false, intensity: 1, note: "Stack Overflow for Teams gestured at enterprise governance but never built a real L3 wedge (verified-answer SLA, audit trail, compliance).", sublayers: [{ name: "Verified-answer enterprise SKU", impact: 1, who: "Underbuilt" }] },
+      { layer: "L4", owned: false, intensity: 0, note: "The decisive missing layer. A website is not where developers work. The IDE is — and Microsoft and JetBrains own that.", sublayers: [{ name: "IDE distribution", impact: 0, who: "Microsoft, JetBrains" }] },
+      { layer: "L7", owned: true, intensity: 3, note: "The Q&A surface — where Stack Overflow lived for 15 years, and where ChatGPT and Copilot now answer in-context.", sublayers: [{ name: "Q&A website", impact: 3, who: "Stack Overflow (declining)" }] },
+      { layer: "L8", owned: false, intensity: 0, note: "Per-developer memory of *your* stack and *your* past questions was never built. Cursor and Copilot are building it now." },
+    ],
+    cube_position: {
+      functions: ["Eng"],
+      verticals: ["Horizontal"],
+      layers: ["L1", "L7"],
+    },
+    timeline: [
+      { date: "2008–2020", label: "Stack Overflow becomes the default developer Q&A site. ~100M+ monthly visitors at peak.", tone: "up" },
+      { date: "2021", label: "Prosus acquires Stack Overflow for $1.8B — peak valuation of the consumer Q&A surface.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Trained on Stack Overflow's corpus. Answers most dev questions for free, in context.", tone: "down" },
+      { date: "Mid-2023", label: "Traffic drop becomes public — Similarweb shows 35%+ year-over-year decline. Layoffs follow.", tone: "down" },
+      { date: "2024", label: "Stack Overflow signs paid licensing deals with OpenAI and Google — repricing L1, but the L2 already trained on the open corpus.", tone: "neutral" },
+      { date: "2025", label: "Traffic stabilizes at roughly half of 2022. Strategy pivots to Teams (B2B knowledge) + their own AI assistant. Consumer surface is structurally over.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "Microsoft (GitHub + Copilot + VS Code)", reason: "Owns the L4 (IDE) where developer questions are now answered — built on L2 trained partly on Stack Overflow's L1." },
+      { name: "Cursor", reason: "L4 + L8 — answers live inside the editor with per-codebase memory. The product Stack Overflow could have built but didn't." },
+      { name: "Reddit (the contrarian)", reason: "Watched the Stack Overflow movie and immediately repriced L1 — $60M+/year API/training licensing deals before giving the corpus away." },
+    ],
+    who_loses: [
+      { name: "Stack Overflow", reason: "Owned real L1 but gave it away under open license and operated only L7. The model layer captured the value." },
+      { name: "Every contributor", reason: "15 years of free expert labor trained the models that replaced the platform. Zero economic capture for the people who built the corpus." },
+      { name: "Every community-content site that hasn't repriced its L1", reason: "Quora, Genius, niche Stack Exchanges, forums — same archetype. Same fate unless the licensing pivot is made early." },
+    ],
+    counter_thesis: `Bull case: Stack Overflow's consumer surface dies, but the L1 corpus + the brand + Teams becomes a credible $200–400M ARR B2B knowledge product — "the verified, source-of-truth developer Q&A inside your enterprise." That's a real business, just a much smaller one than the consumer ad model implied. The honest read: the company survives, the *category* of "free public developer Q&A site" does not. Anyone betting on traffic recovery is fighting Law III.`,
+    for_you: {
+      product_leader: "If your product is community-generated content monetized by ads, the corpus is L1 and the surface is L7. Reprice L1 (licensing, exclusivity, contracts) before a model trains on the open version, or accept that L2 will capture you.",
+      investor: "Any consumer-Q&A or community-knowledge asset that hasn't signed paid LLM-training deals by now is structurally exposed. The Reddit move is the floor, not the ceiling.",
+      operator: "Stack Overflow for Teams remains the cheapest 'verified institutional Q&A' you can buy. The consumer site is a search fallback, not a primary tool — plan the team workflow accordingly.",
+    },
+    pull_quote: "Stack Overflow had genuine L1 and operated it as L7. The L2 layer that trained on the corpus is what captured the value.",
   },
   {
     slug: "apollo-vs-zoominfo",
@@ -243,28 +333,79 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "Sierra", logo: logo("sierra.ai"), color: "#6366F1" },
       { name: "Salesforce", logo: logo("salesforce.com"), color: "#00A1E0" },
     ],
-    tag: "DEEP DIVE",
+    tag: "DEEP DIVE · CUSTOMER EXPERIENCE",
     title: "Sierra's Memory Moat: Why L8 Beats Salesforce's Agentforce",
-    verdict: "MEMORY = MOAT",
+    verdict: "L1 + L5 + L8 FORTRESS",
     excerpt:
-      "Sierra learns from every customer resolution. Salesforce Agentforce doesn't. This single architectural difference — compounding memory at L8 — determines who captures the next decade of enterprise CX value.",
-    layers: ["L1", "L5", "L8"],
+      "Sierra and Salesforce Agentforce look like the same product on stage — an AI agent that resolves customer issues. The Cube projection shows they are structurally opposite. Sierra was architected as L1+L5+L8 from day one: every resolution compounds into per-customer memory. Agentforce is L5 bolted onto Salesforce's existing L1, with no compounding loop. Same demo, opposite trajectories.",
+    layers: ["L1", "L4", "L5", "L8"],
     date: "March 2026",
-    readTime: "9 min",
+    readTime: "10 min",
     valuation: {
       label: "Sierra Valuation",
-      before: "—",
-      after: "$4.5B",
+      before: "$0 (2023)",
+      after: "$10B+ (2025)",
       trend: "up",
-      changeLabel: "Rising",
+      changeLabel: "Compounding",
     },
-    content: `Sierra occupies the most structurally durable position in customer experience: L1 (customer data) + L5 (domain execution) + L8 (memory that compounds).
+    content: `Sierra is Bret Taylor's second act and the most architecturally honest AI company of this cycle. The structural read explains the valuation in a way the press release cannot.
 
-**The memory advantage:** Every customer interaction makes Sierra smarter. It remembers resolution patterns, customer preferences, and edge cases. This creates a compounding data moat that grows with usage.
+**What Sierra is.** A customer-experience agent platform. Brands (SiriusXM, Sonos, WeightWatchers, ADT, Casper) deploy a Sierra agent to handle inbound customer issues across chat, voice, email. The agent doesn't just answer — it executes (refunds, plan changes, returns, escalations) inside the brand's existing systems.
 
-**Compare to Salesforce:** Agentforce is impressive, but Salesforce's architecture doesn't compound. It stores data but doesn't learn from it.
+**The four layers Sierra owns simultaneously:**
+- **L1 — proprietary data per customer.** Every conversation, every resolution, every CSAT score, every edge case is logged per-brand and *stays* per-brand. The corpus compounds.
+- **L5 — domain execution.** Real workflows: refund authorization, subscription changes, account merges. Not a chatbot — an agent with execute permissions.
+- **L8 — memory that compounds.** Month 2 is meaningfully better than month 1 on the same brand's queries. This is the structural moat.
+- **Partial L4 — brand-perimeter distribution.** Sierra is the agent *behind your brand's surface*. Once embedded, the switching cost is the cumulative L8 — not just an integration cost.
 
-**The Cube view:** Sierra is TALL — multiple layers, focused verticals, deep functions. This is the fortress pattern.`,
+**Why Salesforce Agentforce looks the same on stage and is not.** Salesforce already owns one of the largest L1 assets in enterprise (the CRM data). Agentforce is Salesforce's L5 layer on top of that L1. That sounds equivalent — and it is, on day one. The architectural difference is the *compounding loop*: Salesforce's data model was built for record-of-truth, not per-conversation learning. Agentforce can be configured to learn, but every Salesforce customer's deployment is bespoke and the cross-tenant memory is constrained by Salesforce's contractual posture.
+
+Sierra's loop is the product. Agentforce's loop is an option you have to architect.
+
+**Law III in action.** As L2 (the underlying LLM) commoditizes, the question is what gets *more* valuable as model capability commoditizes. Three layers do: L1 (your data), L4 (your distribution), and L8 (your memory). Sierra is built on two of those plus the L5 that turns the memory into action. Agentforce is built on Salesforce's existing L1 and a less-compounding L8.
+
+**The Cube projection.** Sierra is TALL (4 layers), focused on a narrow set of high-touch verticals (consumer subscriptions, retail, services), and DEEP into the support function. Textbook fortress: tall, narrow, deep. Agentforce is WIDE (every Salesforce vertical), SHALLOW (one or two layers above the CRM), and broad across functions. Different cube shape, different fate.
+
+**Where this lands by 2027.** Two equally plausible futures: (a) Sierra builds a $1B+ revenue franchise as the default AI-CX layer for premium consumer brands; or (b) Salesforce/Microsoft acquire it to inject a real L8 loop into their existing L1+L5 stacks. Either way the *layer* wins. The standalone-startup outcome is the higher-variance bet on a structurally lower-variance moat.
+
+*Public reporting; valuations as disclosed by Sierra, Salesforce.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "Per-brand proprietary corpus of every resolved conversation. The structural advantage CRMs were never architected to compound.", sublayers: [{ name: "Per-brand conversation log", impact: 3, who: "Sierra" }, { name: "Resolution outcomes & CSAT", impact: 3, who: "Sierra" }] },
+      { layer: "L4", owned: true, intensity: 2, note: "Embedded behind the brand's customer surface across chat, voice, email. Distribution is the brand itself, not a Sierra-owned app.", sublayers: [{ name: "Brand-perimeter integration", impact: 2, who: "Sierra" }] },
+      { layer: "L5", owned: true, intensity: 3, note: "Real execute permissions inside the brand's systems — refunds, returns, plan changes. Not a chatbot, an actor.", sublayers: [{ name: "Refund / subscription / dispute execution", impact: 3, who: "Sierra" }] },
+      { layer: "L8", owned: true, intensity: 3, note: "The decisive moat. Month-over-month accuracy improves per brand — a compounding asset every L7-only competitor structurally cannot reproduce.", sublayers: [{ name: "Per-brand resolution memory", impact: 3, who: "Sierra" }, { name: "Edge-case adaptation", impact: 2, who: "Sierra" }] },
+      { layer: "L2", owned: false, intensity: 2, note: "Rented from frontier labs. Swappable. Not the moat — and Sierra is rightly indifferent to which lab provides it.", sublayers: [{ name: "Foundation model", impact: 2, who: "OpenAI / Anthropic (swappable)" }] },
+    ],
+    cube_position: {
+      functions: ["CustCare", "Sales"],
+      verticals: ["Retail/Ecom", "Health", "FinTech"],
+      layers: ["L1", "L4", "L5", "L8"],
+    },
+    timeline: [
+      { date: "Feb 2024", label: "Sierra emerges from stealth (Bret Taylor + Clay Bavor). Launches with SiriusXM, Sonos, WeightWatchers as design partners.", tone: "up" },
+      { date: "Mid-2024", label: "First disclosed deployments showing measurable cost reduction and CSAT maintenance. ADT, Casper added.", tone: "up" },
+      { date: "Sep 2024", label: "Sierra valued at ~$4.5B in early growth round.", tone: "up" },
+      { date: "Late 2024", label: "Salesforce announces Agentforce — same surface category, structurally different architecture (L5 on existing L1, weaker L8 loop).", tone: "neutral" },
+      { date: "2025", label: "Sierra raises again at ~$10B. Vertical expansion: travel, financial services, consumer health. L8 compounding becomes a referenceable metric in sales motions.", tone: "up" },
+      { date: "2026", label: "Acquisition rumors recur (Microsoft, Salesforce, Adobe). Standalone path remains plausible.", tone: "up" },
+    ],
+    who_wins: [
+      { name: "Sierra", reason: "Owns L1+L5+L8 in a category where the LLM is the cheapest ingredient. The compounding loop is the business." },
+      { name: "Premium consumer brands deploying it", reason: "Get an agent that actually gets better at *their* customers — not a generic model with a wrapper." },
+      { name: "Bret Taylor / Clay Bavor archetype", reason: "Architectural-discipline AI startups beat me-too L7 agents. Sierra will be the case study for a decade." },
+    ],
+    who_loses: [
+      { name: "Pure-play L7 'AI customer service' startups", reason: "Without per-brand L1+L8 compounding, you're a chatbot pricing race-to-the-bottom against Salesforce, Zendesk, Intercom." },
+      { name: "Legacy CX SaaS priced per agent seat", reason: "Sierra's pricing is per-resolution. As agents replace seats, per-seat economics collapse. Era 4 in production." },
+      { name: "Salesforce Agentforce (partially)", reason: "Strong demo, but architecturally the compounding loop is harder to retrofit than to build from day one." },
+    ],
+    counter_thesis: `The counter is that Sierra's L8 is overstated because the underlying LLM keeps getting better fast — and a 'generic' model with a thin per-brand RAG layer (Salesforce Agentforce, Zendesk AI, Intercom Fin) may close 80% of the perceived gap as base capability rises. If that happens, Sierra's $10B valuation rests on premium-brand willingness to pay for the last 20% of resolution quality, which is a much smaller TAM than the bull case requires. The honest read: Sierra is structurally durable in a $500M–$1B revenue band; whether it ever justifies a standalone $30B+ outcome depends on how much of the compounding loop the L4-incumbent CRMs can replicate before the lock-in fully sets.`,
+    for_you: {
+      product_leader: "If you're shipping an AI feature on top of someone else's L1, you do not have a moat — your L4 owner does. Architect L8 (memory that compounds per customer) from day one or accept feature-status.",
+      investor: "AI-agent companies built as L7+rented-L2 are structurally short. AI-agent companies built as L1+L5+L8 are the new fortress archetype. Underwrite the architecture, not the demo.",
+      operator: "When evaluating a CX-AI vendor, ask one question: 'Does month 2 measurably outperform month 1 on the same query mix?' If the answer is no, you are buying a chatbot, not a system.",
+    },
+    pull_quote: "Sierra was architected as L1+L5+L8 from day one. Agentforce is L5 bolted onto Salesforce's existing L1. Same demo, opposite trajectories.",
   },
   {
     slug: "stability-ai-open-model-trap",
@@ -276,24 +417,74 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Stability AI vs Midjourney: Why Open-Source L2 Couldn't Monetize",
     verdict: "OPEN L2 = NO MOAT",
     excerpt:
-      "Stability AI open-sourced its model (L2) and couldn't build a business. Midjourney kept its model closed and built a $10B+ community. Same technology, opposite monetization strategies, dramatically different outcomes.",
-    layers: ["L2", "L7"],
+      "Stability AI open-sourced Stable Diffusion and watched the L2 it created become free infrastructure for everyone *except* Stability. Midjourney kept the model closed, built an obsessive Discord community, and compounded aesthetic memory at L8. Same underlying technology, opposite layer architecture, 100× valuation gap. The cleanest L2-vs-L8 lesson in the open-vs-closed model debate.",
+    layers: ["L2", "L7", "L8"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
       label: "Stability AI",
-      before: "$1B",
-      after: "~$80M",
+      before: "$1B (2022)",
+      after: "Restructured (2024)",
       trend: "down",
-      changeLabel: "-92%",
+      changeLabel: "≈-90%",
     },
-    content: `Stability AI raised at $1B by open-sourcing Stable Diffusion. The model was revolutionary. The business was not.
+    content: `Stability AI is the most important structural cautionary tale about open-sourcing L2 without owning anything above or below it.
 
-**The structural problem:** Open-sourcing L2 (model) means anyone can replicate your core value. Stability had no L1 (proprietary data), no L8 (memory), no L3 (governance). Just an open model.
+**What Stability built.** Stable Diffusion — a genuinely revolutionary text-to-image model, open-sourced under a permissive license in mid-2022. Within months it was running on consumer GPUs, in ComfyUI, in Automatic1111, in every AI-image startup's backend, and inside every other company's product. Stability's L2 became infrastructure for an entire industry.
 
-**Midjourney's approach:** Kept the model closed. Built community (L7e surface). Created aesthetic memory (proto-L8). Result: $10B+ valuation, profitable from day one.
+**What Stability captured.** Almost none of the value the model created. Compute costs grew with usage they didn't monetize. Enterprise revenue stayed thin. There was no L1 (no proprietary training-data advantage), no L4 (no distribution surface of their own), no L8 (no per-user memory), and the L2 itself was, by design, available to every competitor for free. By 2024 the company had restructured, the founder had departed, and the valuation collapsed roughly 90% from the $1B peak.
 
-**The lesson:** L2 (models) are structurally fragile when open. The value migrates to whoever wraps them in scarce layers.`,
+**What Midjourney did instead.**
+- L2 — kept the model fully closed. No weights, no API for years, no fine-tuning leakage.
+- L7 — chose Discord as the surface. Eccentric, sticky, community-native. Every generation is visible by default — a public aesthetic feed that made every user a marketer.
+- L8 — *the decisive layer*. Style references, character references, mood boards, personalization tokens — Midjourney built a memory of *your* aesthetic that no other model can replicate without your usage history.
+- Pricing — subscription, not API. Captured value at the surface where the user actually was.
+
+Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuation, and a model that competitors cannot fully replicate even when their underlying L2 is technically comparable. Because the moat is no longer the model — it's the L8 wrapper around it.
+
+**Law I — intelligence commoditizes downward.** Stability accelerated this on themselves by open-sourcing their own L2. Midjourney accepted that L2 would commoditize *eventually* and built L7+L8 as the durable layers from day one.
+
+**Law III — value migrates to the scarcest layer.** Once Stable Diffusion was open, the scarce layer in AI image generation was not the model — it was the *taste-and-memory* layer that knew what looked good and remembered your prior work. Midjourney owns that. Stability gave it away.
+
+**The generalizable lesson.** Open-sourcing L2 is a defensible strategy *only if you own one of the other nine layers*. Meta open-sources Llama because they own L4 (Facebook, Instagram, WhatsApp distribution at 3B+ users). DeepSeek open-sources because they own L0 (a national-strategy compute relationship). Stability open-sourced and owned nothing else — which is why the open model became the entire industry's gain and Stability's structural loss.
+
+*Public reporting; valuations approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "Stability gave away its only asset. Midjourney kept it closed. The L2 layer is fragile when open *and* unprotected by adjacent layers.", sublayers: [{ name: "Stable Diffusion (open)", impact: 3, who: "Stability → everyone" }, { name: "Midjourney v6+ (closed)", impact: 3, who: "Midjourney" }] },
+      { layer: "L4", owned: false, intensity: 1, note: "Stability had no real distribution surface. Midjourney chose Discord — eccentric, sticky, and a real L4 in its own right.", sublayers: [{ name: "Discord community", impact: 3, who: "Midjourney" }] },
+      { layer: "L7", owned: false, intensity: 2, note: "Stability shipped Clipdrop and Dreamstudio late. Midjourney made the surface itself a moat — every generation public, every user a marketer.", sublayers: [{ name: "Dreamstudio/Clipdrop", impact: 1, who: "Stability (sub-scale)" }, { name: "Discord generation feed", impact: 3, who: "Midjourney" }] },
+      { layer: "L8", owned: false, intensity: 3, note: "The decisive layer. Midjourney's style refs, character refs, and mood-board memory of *your* taste are unreplicable. Stability never built it.", sublayers: [{ name: "Aesthetic memory / style refs", impact: 3, who: "Midjourney" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product"],
+      verticals: ["Horizontal", "Media"],
+      layers: ["L2", "L7", "L8"],
+    },
+    timeline: [
+      { date: "Aug 2022", label: "Stability releases Stable Diffusion as open source. Genuinely revolutionary, immediately ubiquitous.", tone: "neutral" },
+      { date: "Oct 2022", label: "Stability raises at ~$1B. Midjourney quietly profitable on subscription, no funding round.", tone: "neutral" },
+      { date: "2023", label: "Stable Diffusion becomes the de facto open model. Stability sees almost none of the resulting commercial value.", tone: "down" },
+      { date: "Late 2023", label: "Midjourney v6 ships with style references and character consistency — the L8 wedge widens.", tone: "up" },
+      { date: "2024", label: "Stability AI restructures. Founder departs. Sean Parker-led group invests on heavily revised terms. Valuation reported at a fraction of peak.", tone: "down" },
+      { date: "2025–26", label: "Midjourney crosses $200M+ ARR, remains profitable. Stable Diffusion lineage continues open-source — but the company that birthed it is no longer the commercial vehicle.", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Midjourney", reason: "Closed L2 + Discord L4 + compounding L8 aesthetic memory. The textbook closed-model + memory-moat play." },
+      { name: "Every downstream product built on Stable Diffusion", reason: "Got a free industrial L2. Captured the commercial surface that Stability didn't." },
+      { name: "Open-source as an ecosystem (vs. Stability the company)", reason: "Stable Diffusion + ComfyUI + LoRA culture is one of the most generative open ecosystems in tech. The ecosystem won; the foundry didn't." },
+    ],
+    who_loses: [
+      { name: "Stability AI (the company)", reason: "Open L2, no L1, no L4, no L8, no L3. The cleanest example of layer-architecture failure in the AI cycle." },
+      { name: "L2-only startups generally", reason: "Without an adjacent layer to capture value, your model is either a science project (open) or a vendor in a price war (closed)." },
+      { name: "The 'open source is automatically a moat' thesis", reason: "Open source is a *distribution* strategy, not a moat. You still need to own one of the other nine layers, or you'll watch the value flow past you." },
+    ],
+    counter_thesis: `The counter is that Stability's contribution is best understood as a *strategic* gift to the open ecosystem, not a failed business — and that the post-restructuring company can re-emerge as a focused enterprise vendor (fine-tunes, custom models, licensed weights) for buyers who specifically want non-OpenAI/non-Anthropic optionality. There is a real niche there, plausibly a $50–150M ARR business over time. But that's a 5–10× smaller outcome than the $1B valuation implied — which is the structural verdict the market has already delivered.`,
+    for_you: {
+      product_leader: "If your roadmap depends on 'we'll open-source our model and capture downstream value,' name the L1, L4, or L8 layer you own that the open model funnels users into. If none exist, you are not Meta — you are Stability.",
+      investor: "L2-only startups (closed or open) without an adjacent moat layer are structurally short. The closed-vs-open debate is a distraction; the layer-architecture question is the actual decision.",
+      operator: "For image generation, Midjourney is the L8 play (long-term consistency for a brand's aesthetic) and Stable Diffusion is the L0 play (cheap, owned, on-prem when you need it). They solve different problems — don't conflate them.",
+    },
+    pull_quote: "Open-source L2 is a defensible strategy *only if* you own one of the other nine layers. Stability owned none.",
   },
   {
     slug: "five-eras-of-software",
@@ -302,23 +493,79 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "Notion", logo: logo("notion.so"), color: "#000000" },
       { name: "ChatGPT", logo: logo("openai.com"), color: "#10A37F" },
     ],
-    tag: "THE FIVE ERAS",
+    tag: "THE FIVE ERAS · STRUCTURAL THESIS",
     title: "From Dashboard to Skill Hire: The Death of Per-Seat Software",
     verdict: "ERA 3 → ERA 5",
     excerpt:
-      "We're in Era 3 — The Dialogue. Human directs, AI builds. By 2028, agents ARE the workers. Per-seat pricing dies because AI replaces seats. Your roadmap needs both the customer axis and the depth axis to survive.",
-    layers: ["L5", "L7"],
+      "Software has moved through five distinct eras of human–machine division of labor. We are mid-transition between Era 3 (The Dialogue — human directs, AI builds) and Era 4 (The Workspace — AI orchestrates, human supervises). Era 5 (The Skill Hire — the agent IS the worker) arrives by 2028. Per-seat pricing is structurally dead in Eras 4–5 because the seat itself goes away. Every product roadmap needs to be re-priced and re-architected along both the customer axis and the depth axis.",
+    layers: ["L5", "L6", "L7", "L8"],
     date: "March 2026",
-    readTime: "10 min",
-    content: `Software has evolved through five distinct eras, and most product leaders are still building for Era 2.
+    readTime: "11 min",
+    content: `Most product organizations are still building Era 2 software in an Era 3 market and pricing it for an Era 1 buyer. That mismatch is what's actually breaking SaaS roadmaps right now — not "AI."
 
-**Era 1 (1999–2015): The Dashboard** — Software shows data. Human decides.
-**Era 2 (2015–2023): The Workflow** — Software guides. Human executes.
-**Era 3 (2023–Now): The Dialogue** — Human directs. AI builds. ← WE ARE HERE
-**Era 4 (2026–2028): The Workspace** — AI orchestrates. Human supervises.
-**Era 5 (2028+): The Skill Hire** — Agent IS the worker. Human strategizes.
+**The five eras of software.**
 
-**Why per-seat dies:** AI replaces seats. Better AI = fewer humans = less revenue. Per-seat pricing is self-defeating in an agent world.`,
+**Era 1 (1999–2015) — The Dashboard.** Software *shows* data; the human decides everything. Salesforce reports, Tableau dashboards, Google Analytics. Value created by visibility. L7 (the surface) is the entire product. Per-seat pricing makes perfect sense — each seat is a pair of human eyes interpreting the data.
+
+**Era 2 (2015–2023) — The Workflow.** Software *guides* the human through a sequence; the human still executes. Asana, Notion, HubSpot sequences, modern CRM workflows. Value created by structured guidance. L5 (workflow) joins L7 as a product layer. Per-seat still works — each seat is a human moving through the workflow.
+
+**Era 3 (2023–now) — The Dialogue.** Human directs, AI builds. ChatGPT, Cursor, Copilot, Claude. The user states intent in natural language; the system generates the artifact. L2 (model) becomes a first-class product layer for the first time. Per-seat starts to crack — one human with AI can do the work of three without it, so seat counts compress even as the user base grows. We are here.
+
+**Era 4 (2026–2028) — The Workspace.** AI orchestrates a multi-step task across systems; the human supervises and approves. Klarna's CX agent. Sierra. Devin (in theory). Salesforce Agentforce. L5 + L6 + L8 become the dominant layers. Per-seat pricing collapses — the unit is the *resolution*, the *task*, the *outcome*, not the human seat. Pricing models migrate to per-action, per-success, per-outcome.
+
+**Era 5 (2028+) — The Skill Hire.** The agent IS the worker. You "hire" an agent for a role the way you hire a contractor — with a job spec, an outcome, an SLA. The human role moves up: strategy, governance, edge-case judgment, supervision of a fleet of agents. L1 + L5 + L8 dominate (proprietary data, real execution, compounding memory). Per-seat pricing is structurally over. The Skill Hire is priced like labor — by output, by retainer, by guaranteed result.
+
+**Why per-seat is dead.** The math is brutal and simple. Per-seat economics assume *more humans use the product → more revenue*. AI makes the inverse true: *better AI → fewer humans needed → fewer seats → less revenue*. Every SaaS that's "AI-powered" with per-seat pricing is structurally short its own roadmap. The harder the AI works, the faster the customer's seat count falls. Pricing has to migrate to per-action, per-outcome, or per-deployment — any unit that *grows* with usage instead of compressing with productivity.
+
+**Why both axes matter.** The Cube projection is the right lens here. The *customer axis* (which functions × which verticals you serve) determines TAM. The *depth axis* (which layers you own — L1, L4, L5, L6, L8) determines defensibility as the era shifts. Era 3–5 products that own only L7 + a rented L2 are surface plays — they will be absorbed by L4 owners. Era 3–5 products that own L1+L5+L8 are durable across the transition.
+
+**The structural read for product leaders.**
+- If you are building for Era 2 (workflow guidance) and your buyer is buying for Era 4 (outcome delivery), you will lose the contract to a startup that is.
+- If you are pricing per seat and your customer's seat count is dropping because of AI, you are pricing your own decline.
+- If your moat is L7 (a polished surface), an L4 owner will ship the same surface for free as a feature within 12–18 months.
+- If your moat is L1+L5+L8 (data + execution + memory) in a focused vertical, the era transition makes you *more* valuable, not less.
+
+**The investor read.** The per-seat-SaaS multiple compression isn't a sentiment shift; it's an architectural one. The companies trading at a premium across the Era 3→4→5 transition are the ones with proprietary data, real execution permissions, and compounding memory loops — Sierra, Glean, Cursor, Harvey, Bloomberg, Adobe Firefly. The companies under pressure are the ones with thin surfaces on rented models — most of the GPT-wrapper class and any 2018-vintage SaaS that bolted "AI" onto a per-seat workflow product without re-architecting.
+
+*Framework synthesis; era boundaries are illustrative, not strict dates. The transitions are gradients, not step functions.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "L2 becomes a first-class product layer starting in Era 3 — but ownership is concentrated in 4–5 frontier labs. Most products rent it.", sublayers: [{ name: "Foundation model", impact: 3, who: "OpenAI, Anthropic, Google, Meta, xAI" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "L4 (distribution surface) is where Era 3 wrappers go to die. Era 4–5 winners own real distribution — Microsoft 365, Google Workspace, Salesforce, the IDE.", sublayers: [{ name: "Suite owners", impact: 3, who: "Microsoft, Google, Salesforce, Adobe" }] },
+      { layer: "L5", owned: false, intensity: 3, note: "Era 4 is *defined* by L5 — real execution permissions inside systems of record. Klarna and Sierra are the proof points.", sublayers: [{ name: "Workflow execution", impact: 3, who: "Era 4 winners" }] },
+      { layer: "L6", owned: false, intensity: 2, note: "Multi-step orchestration becomes table stakes as agents proliferate. Necessary but not sufficient.", sublayers: [{ name: "Agent orchestration", impact: 2, who: "Every Era 4+ product" }] },
+      { layer: "L7", owned: false, intensity: 2, note: "The surface still matters, but its share of total value drops every era. Era 5 may dissolve L7 entirely into ambient interaction.", sublayers: [{ name: "Generation surface", impact: 2, who: "Diminishing in importance" }] },
+      { layer: "L8", owned: false, intensity: 3, note: "The decisive long-term moat. Compounding per-customer memory — the only layer that *gets more valuable* as Era 4 and 5 arrive.", sublayers: [{ name: "Per-customer memory", impact: 3, who: "Era 5 winners" }] },
+    ],
+    cube_position: {
+      functions: ["Strategy", "Product", "PM/Proj", "Sales", "CustCare", "Eng"],
+      verticals: ["Horizontal"],
+      layers: ["L2", "L5", "L6", "L7", "L8"],
+    },
+    timeline: [
+      { date: "1999–2015", label: "Era 1 — The Dashboard. Salesforce, Tableau, Google Analytics. Per-seat is the natural pricing unit.", tone: "neutral" },
+      { date: "2015–2023", label: "Era 2 — The Workflow. Asana, Notion, HubSpot. Per-seat still aligns with humans-doing-work.", tone: "neutral" },
+      { date: "Nov 2022 → now", label: "Era 3 — The Dialogue begins with ChatGPT. Per-seat starts to crack as one human + AI replaces three humans.", tone: "neutral" },
+      { date: "2024–2025", label: "Klarna's 700-agent disclosure and Sierra's L8-architected agent platform mark the first production Era 4 deployments.", tone: "up" },
+      { date: "2026–2028", label: "Era 4 — The Workspace becomes default in CX, support, sales ops, software engineering. Per-resolution and per-outcome pricing become standard.", tone: "neutral" },
+      { date: "2028+", label: "Era 5 — The Skill Hire. Agents are 'hired' for roles. Per-seat is structurally over. Pricing resembles labor contracts more than software.", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Outcome-priced AI-native vendors", reason: "Per-resolution (Sierra), per-action (Klarna's internal model), per-deployment (Glean) — pricing units that grow with usage as humans compress." },
+      { name: "L4 incumbents that re-price aggressively", reason: "Microsoft moving Copilot to per-message and per-agent rather than per-seat 365 add-ons. Adapting the pricing model is the harder act than building the product." },
+      { name: "Vertical fortresses with L1+L5+L8", reason: "Harvey, Bloomberg, Sierra, Glean — the architecture is exactly what Era 4 and 5 buyers want to pay for." },
+    ],
+    who_loses: [
+      { name: "Pure per-seat SaaS with bolt-on AI", reason: "Pricing model self-defeats. The harder the AI works, the faster seat count falls. Every 2015-vintage workflow SaaS faces this." },
+      { name: "L7-only AI products", reason: "Era 4 absorbs them. The surface is the cheapest layer to replicate — every L4 owner ships it for free as the era turns." },
+      { name: "Workforce categories whose work is structured + reviewable", reason: "Customer support tier 1, software bug fixes, scheduling, invoice processing, basic legal review, content moderation. Era 4 hits these first." },
+    ],
+    counter_thesis: `The strongest counter is that AI capability gains will plateau or hit a regulatory ceiling before Era 4 truly arrives, leaving the world in an extended Era 3 — humans clearly augmented but still in the loop, per-seat pricing still working because seat counts compress slowly rather than collapse. There is real evidence for this: model improvement is becoming more incremental, regulated industries (healthcare, legal, finance) require human-in-the-loop by law, and most enterprises have integration constraints that make full agent deployment a multi-year program. Honest read: Era 4 arrives unevenly. Customer support, software engineering, and L&D land in Era 4 by 2027. Legal, healthcare, and most regulated B2B remain in Era 3 well into the 2030s. The era thesis is directionally right; the dates are illustrative.`,
+    for_you: {
+      product_leader: "Audit your pricing today against the era you're actually building for. If your roadmap is Era 4 (AI orchestrates) and your pricing is Era 2 (per seat), you're pricing your own decline.",
+      investor: "The SaaS multiple compression is structural, not sentiment. Underwrite which era a company is *architected* for, not which era they market in. Per-seat AI is structurally short.",
+      operator: "When negotiating an AI vendor contract, push for per-outcome or per-resolution pricing. If they refuse, ask why — the answer reveals whether they are Era 3 or Era 4 architecture.",
+    },
+    pull_quote: "Per-seat pricing assumes more humans means more revenue. AI makes the inverse true. Every per-seat SaaS with AI features is structurally short its own roadmap.",
   },
   {
     slug: "harvey-vs-generic-legal",

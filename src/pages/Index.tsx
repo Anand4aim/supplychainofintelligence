@@ -18,6 +18,7 @@ import {
   SketchLabel,
   SketchConnector,
 } from "@/components/sketch/SketchElements";
+import SixtySecondTour from "@/components/SixtySecondTour";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -45,6 +46,7 @@ const Index = () => {
         path="/"
       />
       <SketchFilters />
+      <SixtySecondTour />
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative bg-background overflow-hidden">
