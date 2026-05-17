@@ -24,6 +24,7 @@ interface LiveArticle {
   published_at: string;
   analysis: {
     layer_scores: LayerScore[];
+    cube_position?: CubePosition;
     why_now?: string;
     structural_take: string;
     second_order_effects?: string;
