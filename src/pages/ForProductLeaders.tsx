@@ -114,7 +114,7 @@ const ForProductLeaders = () => (
           Map Your Company's Position
         </h2>
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
-          Use the Supply Chain of Intelligence to audit your roadmap, your competitive
+          Use the Supply Chain of Intelligence™ to audit your roadmap, your competitive
           position, and your structural defensibility — sublayer by sublayer.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">

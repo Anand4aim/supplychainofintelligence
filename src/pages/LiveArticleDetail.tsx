@@ -428,7 +428,7 @@ const LiveArticleDetail = () => {
 
           <div className="border-t border-foreground/10 mt-10 pt-8">
             <p className="text-sm text-muted-foreground">
-              Written by the Supply Chain of Intelligence analysis engine, reviewed weekly.
+              Written by the Supply Chain of Intelligence™ analysis engine, reviewed weekly.
               By <Link to="/about" className="text-accent underline">Anand Arivukkarasu</Link> · Ex-Meta Product Leader.
             </p>
           </div>

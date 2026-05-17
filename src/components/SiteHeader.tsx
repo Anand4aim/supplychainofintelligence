@@ -26,7 +26,7 @@ const SiteHeader = () => {
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
-            Supply Chain of Intelligence
+            Supply Chain of Intelligence<span className="text-accent">™</span>
           </span>
         </Link>
 

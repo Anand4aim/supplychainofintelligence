@@ -1,4 +1,4 @@
-// The Market Map — companies plotted on the 10-layer Supply Chain of Intelligence
+// The Market Map — companies plotted on the 10-layer Supply Chain of Intelligence™
 // Curated. Layer assignments reflect the company's *primary* structural position(s),
 // not every layer they touch. Edit freely.
 

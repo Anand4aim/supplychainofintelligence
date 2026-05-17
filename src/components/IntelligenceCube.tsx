@@ -603,7 +603,7 @@ const IntelligenceCube = () => {
       </div>
 
       <p className="font-mono-marker text-[11px] text-muted-foreground text-center uppercase tracking-wider">
-        The Intelligence Cube — Volume = Layers × Verticals × Functions = structural durability
+        The Intelligence Cube™ — Volume = Layers × Verticals × Functions = structural durability
       </p>
     </div>
   );

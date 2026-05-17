@@ -72,7 +72,7 @@ const AnalysisPage = () => (
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Real companies. Real valuations. Real shifts. Every case mapped to the 10 layers,
-            the Intelligence Cube, and the Three Structural Laws — across software, regulated
+            the Intelligence Cube™, and the Three Structural Laws — across software, regulated
             verticals, and the physical world.
           </p>
 

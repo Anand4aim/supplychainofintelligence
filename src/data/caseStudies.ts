@@ -152,7 +152,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
     verdict: "L7 on rented L2",
     excerpt:
-      "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
+      "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube™ predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
     layers: ["L2", "L4", "L7"],
     date: "March 2026",
     readTime: "9 min",

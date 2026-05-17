@@ -45,8 +45,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Supply Chain of Intelligence — the 10 layers of the generative AI stack"
-        description="The Supply Chain of Intelligence — the 10 layers of the generative AI stack. JTBD finds demand; this finds defensibility. For AI founders, product leaders, and investors."
+        title="The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack"
+        description="The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack. JTBD finds demand; this finds defensibility. For AI founders, product leaders, and investors."
         path="/"
       />
       <SketchFilters />
@@ -69,7 +69,7 @@ const Index = () => {
                 <SketchUnderline color="hsl(var(--accent))">
                   <span className="text-accent">JTBD tells you what users want.</span>
                 </SketchUnderline>{" "}
-                <span className="text-foreground">The Supply Chain of Intelligence tells you where AI value is created, captured, and defended.</span>
+                <span className="text-foreground">The Supply Chain of Intelligence™ tells you where AI value is created, captured, and defended.</span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-6">
                 It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
@@ -350,7 +350,7 @@ const Index = () => {
                       The Structural Tool
                     </span>
                     <span className="font-display text-lg md:text-xl text-foreground">
-                      Supply Chain of Intelligence
+                      Supply Chain of Intelligence™
                     </span>
                   </div>
                 </div>
@@ -973,12 +973,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ THE INTELLIGENCE CUBE ═══════════ */}
+      {/* ═══════════ THE INTELLIGENCE CUBE™ ═══════════ */}
       <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
             <Eyebrow className="mb-4">
-  The Intelligence Cube
+  The Intelligence Cube™
 </Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               10 Functions × 10 Verticals × 10 Layers
