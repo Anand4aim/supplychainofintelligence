@@ -493,23 +493,79 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
       { name: "Notion", logo: logo("notion.so"), color: "#000000" },
       { name: "ChatGPT", logo: logo("openai.com"), color: "#10A37F" },
     ],
-    tag: "THE FIVE ERAS",
+    tag: "THE FIVE ERAS · STRUCTURAL THESIS",
     title: "From Dashboard to Skill Hire: The Death of Per-Seat Software",
     verdict: "ERA 3 → ERA 5",
     excerpt:
-      "We're in Era 3 — The Dialogue. Human directs, AI builds. By 2028, agents ARE the workers. Per-seat pricing dies because AI replaces seats. Your roadmap needs both the customer axis and the depth axis to survive.",
-    layers: ["L5", "L7"],
+      "Software has moved through five distinct eras of human–machine division of labor. We are mid-transition between Era 3 (The Dialogue — human directs, AI builds) and Era 4 (The Workspace — AI orchestrates, human supervises). Era 5 (The Skill Hire — the agent IS the worker) arrives by 2028. Per-seat pricing is structurally dead in Eras 4–5 because the seat itself goes away. Every product roadmap needs to be re-priced and re-architected along both the customer axis and the depth axis.",
+    layers: ["L5", "L6", "L7", "L8"],
     date: "March 2026",
-    readTime: "10 min",
-    content: `Software has evolved through five distinct eras, and most product leaders are still building for Era 2.
+    readTime: "11 min",
+    content: `Most product organizations are still building Era 2 software in an Era 3 market and pricing it for an Era 1 buyer. That mismatch is what's actually breaking SaaS roadmaps right now — not "AI."
 
-**Era 1 (1999–2015): The Dashboard** — Software shows data. Human decides.
-**Era 2 (2015–2023): The Workflow** — Software guides. Human executes.
-**Era 3 (2023–Now): The Dialogue** — Human directs. AI builds. ← WE ARE HERE
-**Era 4 (2026–2028): The Workspace** — AI orchestrates. Human supervises.
-**Era 5 (2028+): The Skill Hire** — Agent IS the worker. Human strategizes.
+**The five eras of software.**
 
-**Why per-seat dies:** AI replaces seats. Better AI = fewer humans = less revenue. Per-seat pricing is self-defeating in an agent world.`,
+**Era 1 (1999–2015) — The Dashboard.** Software *shows* data; the human decides everything. Salesforce reports, Tableau dashboards, Google Analytics. Value created by visibility. L7 (the surface) is the entire product. Per-seat pricing makes perfect sense — each seat is a pair of human eyes interpreting the data.
+
+**Era 2 (2015–2023) — The Workflow.** Software *guides* the human through a sequence; the human still executes. Asana, Notion, HubSpot sequences, modern CRM workflows. Value created by structured guidance. L5 (workflow) joins L7 as a product layer. Per-seat still works — each seat is a human moving through the workflow.
+
+**Era 3 (2023–now) — The Dialogue.** Human directs, AI builds. ChatGPT, Cursor, Copilot, Claude. The user states intent in natural language; the system generates the artifact. L2 (model) becomes a first-class product layer for the first time. Per-seat starts to crack — one human with AI can do the work of three without it, so seat counts compress even as the user base grows. We are here.
+
+**Era 4 (2026–2028) — The Workspace.** AI orchestrates a multi-step task across systems; the human supervises and approves. Klarna's CX agent. Sierra. Devin (in theory). Salesforce Agentforce. L5 + L6 + L8 become the dominant layers. Per-seat pricing collapses — the unit is the *resolution*, the *task*, the *outcome*, not the human seat. Pricing models migrate to per-action, per-success, per-outcome.
+
+**Era 5 (2028+) — The Skill Hire.** The agent IS the worker. You "hire" an agent for a role the way you hire a contractor — with a job spec, an outcome, an SLA. The human role moves up: strategy, governance, edge-case judgment, supervision of a fleet of agents. L1 + L5 + L8 dominate (proprietary data, real execution, compounding memory). Per-seat pricing is structurally over. The Skill Hire is priced like labor — by output, by retainer, by guaranteed result.
+
+**Why per-seat is dead.** The math is brutal and simple. Per-seat economics assume *more humans use the product → more revenue*. AI makes the inverse true: *better AI → fewer humans needed → fewer seats → less revenue*. Every SaaS that's "AI-powered" with per-seat pricing is structurally short its own roadmap. The harder the AI works, the faster the customer's seat count falls. Pricing has to migrate to per-action, per-outcome, or per-deployment — any unit that *grows* with usage instead of compressing with productivity.
+
+**Why both axes matter.** The Cube projection is the right lens here. The *customer axis* (which functions × which verticals you serve) determines TAM. The *depth axis* (which layers you own — L1, L4, L5, L6, L8) determines defensibility as the era shifts. Era 3–5 products that own only L7 + a rented L2 are surface plays — they will be absorbed by L4 owners. Era 3–5 products that own L1+L5+L8 are durable across the transition.
+
+**The structural read for product leaders.**
+- If you are building for Era 2 (workflow guidance) and your buyer is buying for Era 4 (outcome delivery), you will lose the contract to a startup that is.
+- If you are pricing per seat and your customer's seat count is dropping because of AI, you are pricing your own decline.
+- If your moat is L7 (a polished surface), an L4 owner will ship the same surface for free as a feature within 12–18 months.
+- If your moat is L1+L5+L8 (data + execution + memory) in a focused vertical, the era transition makes you *more* valuable, not less.
+
+**The investor read.** The per-seat-SaaS multiple compression isn't a sentiment shift; it's an architectural one. The companies trading at a premium across the Era 3→4→5 transition are the ones with proprietary data, real execution permissions, and compounding memory loops — Sierra, Glean, Cursor, Harvey, Bloomberg, Adobe Firefly. The companies under pressure are the ones with thin surfaces on rented models — most of the GPT-wrapper class and any 2018-vintage SaaS that bolted "AI" onto a per-seat workflow product without re-architecting.
+
+*Framework synthesis; era boundaries are illustrative, not strict dates. The transitions are gradients, not step functions.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "L2 becomes a first-class product layer starting in Era 3 — but ownership is concentrated in 4–5 frontier labs. Most products rent it.", sublayers: [{ name: "Foundation model", impact: 3, who: "OpenAI, Anthropic, Google, Meta, xAI" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "L4 (distribution surface) is where Era 3 wrappers go to die. Era 4–5 winners own real distribution — Microsoft 365, Google Workspace, Salesforce, the IDE.", sublayers: [{ name: "Suite owners", impact: 3, who: "Microsoft, Google, Salesforce, Adobe" }] },
+      { layer: "L5", owned: false, intensity: 3, note: "Era 4 is *defined* by L5 — real execution permissions inside systems of record. Klarna and Sierra are the proof points.", sublayers: [{ name: "Workflow execution", impact: 3, who: "Era 4 winners" }] },
+      { layer: "L6", owned: false, intensity: 2, note: "Multi-step orchestration becomes table stakes as agents proliferate. Necessary but not sufficient.", sublayers: [{ name: "Agent orchestration", impact: 2, who: "Every Era 4+ product" }] },
+      { layer: "L7", owned: false, intensity: 2, note: "The surface still matters, but its share of total value drops every era. Era 5 may dissolve L7 entirely into ambient interaction.", sublayers: [{ name: "Generation surface", impact: 2, who: "Diminishing in importance" }] },
+      { layer: "L8", owned: false, intensity: 3, note: "The decisive long-term moat. Compounding per-customer memory — the only layer that *gets more valuable* as Era 4 and 5 arrive.", sublayers: [{ name: "Per-customer memory", impact: 3, who: "Era 5 winners" }] },
+    ],
+    cube_position: {
+      functions: ["Strategy", "Product", "PM/Proj", "Sales", "CustCare", "Eng"],
+      verticals: ["Horizontal"],
+      layers: ["L2", "L5", "L6", "L7", "L8"],
+    },
+    timeline: [
+      { date: "1999–2015", label: "Era 1 — The Dashboard. Salesforce, Tableau, Google Analytics. Per-seat is the natural pricing unit.", tone: "neutral" },
+      { date: "2015–2023", label: "Era 2 — The Workflow. Asana, Notion, HubSpot. Per-seat still aligns with humans-doing-work.", tone: "neutral" },
+      { date: "Nov 2022 → now", label: "Era 3 — The Dialogue begins with ChatGPT. Per-seat starts to crack as one human + AI replaces three humans.", tone: "neutral" },
+      { date: "2024–2025", label: "Klarna's 700-agent disclosure and Sierra's L8-architected agent platform mark the first production Era 4 deployments.", tone: "up" },
+      { date: "2026–2028", label: "Era 4 — The Workspace becomes default in CX, support, sales ops, software engineering. Per-resolution and per-outcome pricing become standard.", tone: "neutral" },
+      { date: "2028+", label: "Era 5 — The Skill Hire. Agents are 'hired' for roles. Per-seat is structurally over. Pricing resembles labor contracts more than software.", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Outcome-priced AI-native vendors", reason: "Per-resolution (Sierra), per-action (Klarna's internal model), per-deployment (Glean) — pricing units that grow with usage as humans compress." },
+      { name: "L4 incumbents that re-price aggressively", reason: "Microsoft moving Copilot to per-message and per-agent rather than per-seat 365 add-ons. Adapting the pricing model is the harder act than building the product." },
+      { name: "Vertical fortresses with L1+L5+L8", reason: "Harvey, Bloomberg, Sierra, Glean — the architecture is exactly what Era 4 and 5 buyers want to pay for." },
+    ],
+    who_loses: [
+      { name: "Pure per-seat SaaS with bolt-on AI", reason: "Pricing model self-defeats. The harder the AI works, the faster seat count falls. Every 2015-vintage workflow SaaS faces this." },
+      { name: "L7-only AI products", reason: "Era 4 absorbs them. The surface is the cheapest layer to replicate — every L4 owner ships it for free as the era turns." },
+      { name: "Workforce categories whose work is structured + reviewable", reason: "Customer support tier 1, software bug fixes, scheduling, invoice processing, basic legal review, content moderation. Era 4 hits these first." },
+    ],
+    counter_thesis: `The strongest counter is that AI capability gains will plateau or hit a regulatory ceiling before Era 4 truly arrives, leaving the world in an extended Era 3 — humans clearly augmented but still in the loop, per-seat pricing still working because seat counts compress slowly rather than collapse. There is real evidence for this: model improvement is becoming more incremental, regulated industries (healthcare, legal, finance) require human-in-the-loop by law, and most enterprises have integration constraints that make full agent deployment a multi-year program. Honest read: Era 4 arrives unevenly. Customer support, software engineering, and L&D land in Era 4 by 2027. Legal, healthcare, and most regulated B2B remain in Era 3 well into the 2030s. The era thesis is directionally right; the dates are illustrative.`,
+    for_you: {
+      product_leader: "Audit your pricing today against the era you're actually building for. If your roadmap is Era 4 (AI orchestrates) and your pricing is Era 2 (per seat), you're pricing your own decline.",
+      investor: "The SaaS multiple compression is structural, not sentiment. Underwrite which era a company is *architected* for, not which era they market in. Per-seat AI is structurally short.",
+      operator: "When negotiating an AI vendor contract, push for per-outcome or per-resolution pricing. If they refuse, ask why — the answer reveals whether they are Era 3 or Era 4 architecture.",
+    },
+    pull_quote: "Per-seat pricing assumes more humans means more revenue. AI makes the inverse true. Every per-seat SaaS with AI features is structurally short its own roadmap.",
   },
   {
     slug: "harvey-vs-generic-legal",
