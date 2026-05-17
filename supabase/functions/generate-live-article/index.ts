@@ -70,18 +70,24 @@ const ANALYSIS_SCHEMA = {
   }
 };
 
-async function fetchLatestNews(perplexityKey: string): Promise<string> {
+async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<string> {
+  const systemMsg = topic
+    ? "You are a research assistant. The user will name a specific AI product story. Return: (1) a clear factual summary of what shipped/was announced, key dates, products, partners; (2) 4-6 source URLs from reputable outlets (Bloomberg, WSJ, FT, The Information, Reuters, TechCrunch, official company blogs). Do not editorialize."
+    : "You surface the single most strategically important AI move from the past 7 days made by a TIER-1 company only. Tier-1 means: OpenAI, Anthropic, Google/DeepMind, Microsoft, Meta, Amazon/AWS, Apple, NVIDIA, xAI, Salesforce, Oracle, ServiceNow, SAP, Adobe, Databricks, Snowflake, Palantir, Cloudflare, Stripe, Shopify, IBM, Cisco, Dell, HPE — or top-tier consulting/enterprise plays (McKinsey, BCG, Accenture, Deloitte, Bain, KPMG, PwC, EY) — or breakout AI-native scale leaders already at >$1B valuation and >$100M ARR (Sierra, Harvey, Glean, Perplexity, Cursor, Mistral, Cohere, Writer, Hugging Face). Reject: small startups, funding announcements, benchmark wins, minor feature updates, research papers without product impact, or anything below this bar. If nothing qualifies, return the biggest qualifying move from the past 14 days instead.";
+  const userMsg = topic
+    ? `Research this specific story in depth and return facts + sources: "${topic}". Include: what exactly shipped, when, the legal/vertical angle, named partners/customers, pricing or packaging details if public, and competitive context (especially vs Harvey, Thomson Reuters CoCounsel, Lexis+ AI). Give 4-6 source URLs.`
+    : "What is the single biggest AI product launch, platform shift, partnership, or transformation announcement from the past 7 days made by a tier-1 company (per the system criteria)? Examples of the bar: 'OpenAI partners with McKinsey', 'Salesforce launches Agentforce 360', 'Sierra hits $10B valuation with new vertical agents', 'Anthropic ships enterprise plugin'. Give me: (1) the headline, (2) what shipped or was announced, (3) the company, (4) 3-5 source URLs from reputable outlets (Bloomberg, WSJ, FT, The Information, Reuters, TechCrunch, official company blogs). Pick the move with the largest structural implication.";
   const res = await fetch("https://api.perplexity.ai/chat/completions", {
     method: "POST",
     headers: { "Authorization": `Bearer ${perplexityKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: "sonar",
       messages: [
-        { role: "system", content: "You surface the single most strategically important AI move from the past 7 days made by a TIER-1 company only. Tier-1 means: OpenAI, Anthropic, Google/DeepMind, Microsoft, Meta, Amazon/AWS, Apple, NVIDIA, xAI, Salesforce, Oracle, ServiceNow, SAP, Adobe, Databricks, Snowflake, Palantir, Cloudflare, Stripe, Shopify, IBM, Cisco, Dell, HPE — or top-tier consulting/enterprise plays (McKinsey, BCG, Accenture, Deloitte, Bain, KPMG, PwC, EY) — or breakout AI-native scale leaders already at >$1B valuation and >$100M ARR (Sierra, Harvey, Glean, Perplexity, Cursor, Mistral, Cohere, Writer, Hugging Face). Reject: small startups, funding announcements, benchmark wins, minor feature updates, research papers without product impact, or anything below this bar. If nothing qualifies, return the biggest qualifying move from the past 14 days instead." },
-        { role: "user", content: "What is the single biggest AI product launch, platform shift, partnership, or transformation announcement from the past 7 days made by a tier-1 company (per the system criteria)? Examples of the bar: 'OpenAI partners with McKinsey', 'Salesforce launches Agentforce 360', 'Sierra hits $10B valuation with new vertical agents', 'Anthropic ships enterprise plugin'. Give me: (1) the headline, (2) what shipped or was announced, (3) the company, (4) 3-5 source URLs from reputable outlets (Bloomberg, WSJ, FT, The Information, Reuters, TechCrunch, official company blogs). Pick the move with the largest structural implication." }
+        { role: "system", content: systemMsg },
+        { role: "user", content: userMsg }
       ],
-      search_recency_filter: "week",
-      max_tokens: 800,
+      search_recency_filter: topic ? "month" : "week",
+      max_tokens: 1000,
     }),
   });
   if (!res.ok) throw new Error(`Perplexity ${res.status}: ${await res.text()}`);
@@ -129,8 +135,16 @@ Deno.serve(async (req) => {
       throw new Error("Missing required environment variables");
     }
 
-    console.log("[live-article] fetching latest news via Perplexity");
-    const newsContext = await fetchLatestNews(perplexityKey);
+    let topic: string | undefined;
+    try {
+      if (req.method === "POST") {
+        const body = await req.json();
+        topic = typeof body?.topic === "string" ? body.topic : undefined;
+      }
+    } catch (_) { /* no body */ }
+
+    console.log("[live-article] fetching news via Perplexity", topic ? `(topic: ${topic})` : "(weekly auto)");
+    const newsContext = await fetchLatestNews(perplexityKey, topic);
 
     console.log("[live-article] running framework analysis");
     const analysis = await analyzeWithFramework(lovableKey, newsContext);
@@ -160,6 +174,8 @@ Deno.serve(async (req) => {
         who_wins: analysis.who_wins ?? [],
         who_loses: analysis.who_loses ?? [],
         vertical_lens: analysis.vertical_lens,
+        deep_product_lens: analysis.deep_product_lens,
+        deep_strategy_lens: analysis.deep_strategy_lens,
         counter_thesis: analysis.counter_thesis,
         what_to_watch: analysis.what_to_watch ?? [],
         new_law_candidate: analysis.new_law_candidate,
