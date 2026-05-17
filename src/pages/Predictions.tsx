@@ -118,8 +118,9 @@ const fmtDate = (iso: string) =>
 
 const Predictions = () => {
   const total = PREDICTIONS.length;
-  const confirmed = PREDICTIONS_BY_STATUS.confirmed.length;
-  const playing = PREDICTIONS_BY_STATUS["playing-out"].length;
+  const confirmed = PREDICTIONS_BY_STRUCTURAL.confirmed.length;
+  const playing = PREDICTIONS_BY_STRUCTURAL["playing-out"].length;
+  const fasterThanExpected = PREDICTIONS.filter((p) => p.timing === "faster").length;
 
   const [query, setQuery] = useState("");
 
@@ -132,7 +133,7 @@ const Predictions = () => {
     const q = query.trim().toLowerCase();
     if (!q) return sorted;
     return sorted.filter((p) =>
-      [p.subject, p.call, p.outcome, ...p.layers, p.status]
+      [p.subject, p.call, p.outcome, ...p.layers, p.structural, p.timing]
         .join(" ")
         .toLowerCase()
         .includes(q),
