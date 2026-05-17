@@ -572,34 +572,32 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     companies: [
       { name: "Harvey AI", logo: logo("harvey.ai"), color: "#1E3A5F" },
     ],
-    tag: "FORTRESS PATTERN — NOW CONTESTED",
-    title: "Harvey AI: A Vertical Fortress, Now Under Platform Attack",
-    verdict: "FORTRESS — CONTESTED",
+    tag: "FORTRESS PATTERN",
+    title: "Harvey AI Through the Layers",
+    verdict: "L1 + L3 + L5 + L8",
     excerpt:
-      "Harvey was built four layers deep — L1 (legal data) + L3 (compliance) + L5 (domain execution) + L8 (case memory) — the textbook Fortress archetype. May 2026 update: Anthropic's Claude for Legal is now attacking from L2 upward, testing whether vertical depth still beats horizontal platform reach.",
+      "Harvey is built across four layers — L1 (legal data), L3 (compliance), L5 (domain execution), L8 (case memory). A useful case for mapping how a vertical-AI company actually stacks up, and where horizontal platforms can and can't reach.",
     layers: ["L1", "L3", "L5", "L8"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
-      label: "Harvey Valuation",
-      before: "$1.5B (Mar 2026)",
-      after: "Contested (May 2026)",
-      trend: "down",
-      changeLabel: "Platform pressure",
+      label: "Last reported valuation",
+      before: "—",
+      after: "~$1.5B (Mar 2026)",
+      trend: "up",
+      changeLabel: "Public reporting",
     },
-    content: `Harvey AI is the textbook example of the Fortress archetype — multiple structural layers in a regulated vertical.
+    content: `Harvey AI is often cited as a vertical-AI example. Mapped against the framework, here is what the stack looks like.
 
 **The stack position:**
-- L1: Proprietary legal training data from top law firms
-- L3: Compliance, privilege, audit trails — legally required, can't be automated away
-- L5: Deep legal execution — contract analysis, case research, regulatory interpretation
-- L8: Case memory — learns from each firm's precedents and preferences
+- L1: Proprietary legal training data sourced from partner firms.
+- L3: Compliance, privilege handling, audit trails — table stakes in the vertical.
+- L5: Legal execution — contract analysis, case research, regulatory interpretation.
+- L8: Case memory — accumulates firm-specific precedents and preferences over time.
 
-**Why generic AI couldn't compete (March 2026 read):** ChatGPT can write a legal memo. But it can't guarantee privilege. It can't audit its reasoning. It can't learn from your firm's specific playbook. The compliance layer (L3) is the moat that no generic model can cross.
+**What this maps to.** L1 and L8 are firm-specific and accumulate over time. L5 is workflow depth. L3 is regulatory surface area that any provider in the vertical has to clear.
 
----
-
-**Update — May 17, 2026: The fortress is being tested.** Anthropic released Claude for Legal, open-sourcing legal workflow tools and pushing the L2 platform up into L5/L6 territory. Harvey's L1 + L8 advantages still stand — proprietary firm data and accumulated case memory don't transfer to a horizontal platform overnight — but the L5 execution layer (contract analysis, research workflows) is exactly what Anthropic is commoditizing. The fortress thesis isn't dead; it's now a live test of Law II: does the scarce layer (firm-specific data + memory) hold when a deep-pocketed platform owns the layers above and below it? See the [live analysis](/live/anthropic-legal-stack-commoditizes-vertical-saas) for the full read.`,
+**What's worth watching.** Horizontal platforms (e.g. Anthropic's May 2026 Claude for Legal release) are moving up into L5/L6 with general-purpose legal tooling. That doesn't replace L1 or L8 directly, but it does compress L5 over time and shifts where the value sits inside the vertical. The interesting question isn't "fortress or not" — it's which sublayers are firm-specific versus generalizable, and how that line moves as platforms expand. See the [live analysis](/live/anthropic-legal-stack-commoditizes-vertical-saas) for the recent move.`,
   },
   {
     slug: "mckinsey-openai-lilli",
