@@ -294,7 +294,7 @@ const Predictions = () => {
 
       <section className="max-w-5xl mx-auto px-6 pb-24">
         {filtered.length === 0 ? (
-          <p className="text-foreground/60 text-sm">No predictions match “{query}”.</p>
+          <p className="text-foreground/60 text-sm">No predictions match the current filter{query ? ` and search “${query}”` : ""}.</p>
         ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
           {filtered.map((p, i) => {
