@@ -516,6 +516,21 @@ const Index = () => {
                     Anand Arivukkarasu
                   </cite>
                 </div>
+
+                <div className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Link
+                    to="/framework"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-accent-foreground font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:opacity-90 transition-opacity"
+                  >
+                    Read the full Framework <ArrowRight size={15} />
+                  </Link>
+                  <Link
+                    to="/market-map"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-background/25 text-background font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:bg-background/5 transition-colors"
+                  >
+                    See the Market Map →
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>
