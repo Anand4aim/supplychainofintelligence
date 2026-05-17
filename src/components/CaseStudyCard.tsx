@@ -83,12 +83,17 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
         className={`group relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-500 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
       >
         <Link to={`/analysis/${study.slug}`} className="block p-8 md:p-10" aria-label={`Read case study: ${study.title}`}>
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-5 flex-wrap">
             <span className="font-sketch text-base font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
               {study.tag}
             </span>
             <span className="text-sm text-muted-foreground">{study.date}</span>
             <span className="text-sm text-muted-foreground">· {study.readTime}</span>
+            {study.brief && (
+              <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/60 border border-foreground/20 px-2 py-0.5 rounded">
+                Brief
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-3 mb-6">
@@ -166,9 +171,14 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       className={`group bg-card border border-border rounded-xl hover:shadow-md transition-all duration-300 sketch-border ${getVerdictClass(study.valuation?.trend)}`}
     >
       <Link to={`/analysis/${study.slug}`} className="block p-6" aria-label={`Read case study: ${study.title}`}>
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 flex-wrap">
         <span className="font-sketch text-sm font-bold text-accent">{study.tag}</span>
         <span className="text-sm text-muted-foreground">{study.readTime}</span>
+        {study.brief && (
+          <span className="font-mono-marker text-[9px] uppercase tracking-wider text-foreground/60 border border-foreground/20 px-1.5 py-0.5 rounded">
+            Brief
+          </span>
+        )}
       </div>
 
       <div className="flex items-center gap-2 mb-3">
