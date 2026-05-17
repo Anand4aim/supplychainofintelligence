@@ -316,11 +316,11 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
       {edge(0, 0, 0, 0, N, 0)}
       {edge(N, 0, 0, N, N, 0)}
       {edge(0, N, 0, N, N, 0)}
-      {/* verticals — front-most is dashed (it's the hidden corner closest in iso) */}
-      {edge(0, 0, 0, 0, 0, N, true)}
+      {/* verticals — back-most (f=N,v=N) is the hidden edge */}
+      {edge(0, 0, 0, 0, 0, N)}
       {edge(N, 0, 0, N, 0, N)}
       {edge(0, N, 0, 0, N, N)}
-      {edge(N, N, 0, N, N, N)}
+      {edge(N, N, 0, N, N, N, true)}
       {/* top rectangle */}
       {edge(0, 0, N, N, 0, N)}
       {edge(0, 0, N, 0, N, N)}
