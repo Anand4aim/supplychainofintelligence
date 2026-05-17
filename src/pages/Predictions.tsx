@@ -1,56 +1,113 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, AlertCircle, XCircle, Search } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  AlertCircle,
+  XCircle,
+  Search,
+  Zap,
+  TrendingDown,
+  Minus,
+  HelpCircle,
+} from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import {
   PREDICTIONS,
-  PREDICTIONS_BY_STATUS,
+  PREDICTIONS_BY_STRUCTURAL,
   type Prediction,
-  type PredictionStatus,
+  type StructuralStatus,
+  type TimingStatus,
 } from "@/data/predictions";
 
 /**
  * /predictions — The track record.
  *
- * The single page that converts "smart lens" into "lens with a public scorecard".
- * Every entry has: date the call was made, the layer exposure that drove it,
- * what happened since, a status, and a link into the deep analysis. Optional
- * external source link for falsifiability.
+ * Two-axis scoring: every call is judged on STRUCTURAL (did the framework
+ * identify the right layer exposure?) and TIMING (did it arrive on the
+ * expected horizon?). Conflating those two is the most common way a
+ * framework loses credibility — separating them is how it earns trust.
  */
 
-const STATUS_META: Record<
-  PredictionStatus,
-  { label: string; icon: typeof CheckCircle2; color: string; bg: string }
-> = {
+type PillMeta = {
+  label: string;
+  icon: typeof CheckCircle2;
+  color: string;
+  bg: string;
+};
+
+const STRUCTURAL_META: Record<StructuralStatus, PillMeta> = {
   confirmed: {
-    label: "Confirmed",
+    label: "Structural · Confirmed",
     icon: CheckCircle2,
     color: "hsl(var(--layer-1))",
     bg: "hsl(var(--layer-1) / 0.08)",
   },
   "playing-out": {
-    label: "Playing out",
+    label: "Structural · Playing out",
     icon: Clock,
     color: "hsl(var(--layer-4))",
     bg: "hsl(var(--layer-4) / 0.08)",
   },
   pending: {
-    label: "Pending",
+    label: "Structural · Pending",
     icon: AlertCircle,
     color: "hsl(var(--layer-6))",
     bg: "hsl(var(--layer-6) / 0.08)",
   },
   wrong: {
-    label: "Wrong",
+    label: "Structural · Wrong",
     icon: XCircle,
     color: "hsl(var(--destructive))",
     bg: "hsl(var(--destructive) / 0.08)",
   },
 };
+
+const TIMING_META: Record<TimingStatus, PillMeta> = {
+  "on-pace": {
+    label: "Timing · On pace",
+    icon: Minus,
+    color: "hsl(var(--layer-3))",
+    bg: "hsl(var(--layer-3) / 0.08)",
+  },
+  faster: {
+    label: "Timing · Faster than expected",
+    icon: Zap,
+    color: "hsl(var(--layer-7))",
+    bg: "hsl(var(--layer-7) / 0.08)",
+  },
+  slower: {
+    label: "Timing · Slower than expected",
+    icon: TrendingDown,
+    color: "hsl(var(--layer-5))",
+    bg: "hsl(var(--layer-5) / 0.08)",
+  },
+  "too-early": {
+    label: "Timing · Too early to score",
+    icon: HelpCircle,
+    color: "hsl(var(--layer-6))",
+    bg: "hsl(var(--layer-6) / 0.08)",
+  },
+};
+
+const Pill = ({ meta }: { meta: PillMeta }) => {
+  const Icon = meta.icon;
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-marker text-[10px] font-semibold whitespace-nowrap"
+      style={{ background: meta.bg, color: meta.color }}
+    >
+      <Icon size={11} />
+      {meta.label}
+    </span>
+  );
+};
+
 
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
