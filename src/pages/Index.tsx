@@ -20,6 +20,7 @@ import {
 } from "@/components/sketch/SketchElements";
 import SixtySecondTour from "@/components/SixtySecondTour";
 import Eyebrow from "@/components/Eyebrow";
+import LayerTag from "@/components/LayerTag";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
