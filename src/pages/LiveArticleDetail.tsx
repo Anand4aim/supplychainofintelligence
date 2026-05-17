@@ -42,11 +42,7 @@ interface LiveArticle {
 }
 
 const LAYER_ORDER = ["L-1","L0","L1","L2","L3","L4","L5","L6","L7","L8"];
-const LAYER_LABEL: Record<string,string> = {
-  "L-1":"Resources","L0":"Infrastructure","L1":"Data","L2":"Models",
-  "L3":"Gatekeeping & Trust","L4":"Access & Distribution","L5":"Execution","L6":"Orchestration",
-  "L7":"Surface","L8":"Memory & Record-Keeping"
-};
+import { LAYER_LABEL } from "@/data/layers";
 const layerVar = (l: string) => {
   const key = l === "L-1" ? "neg1" : l.replace("L", "");
   return `--layer-${key}`;
