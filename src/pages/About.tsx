@@ -15,7 +15,7 @@ const personSchema = {
   jobTitle: "Product Leader & AI Product Architect",
   url: "https://supplychainofai.com/about",
   description:
-    "Ex-Meta (Instagram) product leader. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
+    "Ex-Meta (Instagram) product leader. Creator of The Supply Chain of Intelligence — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
   alumniOf: [
     { "@type": "Organization", name: "Meta (Instagram)" },
     { "@type": "Organization", name: "Vungle" },
@@ -49,7 +49,7 @@ const TALKS = [
 const AboutPage = () => (
   <SiteLayout>
     <Seo
-      title="About Anand Arivukkarasu — Author of The Supply Chain of Intelligence™"
+      title="About Anand Arivukkarasu — Author of The Supply Chain of Intelligence"
       description="Ex-Meta (Instagram) product leader. VP/Head of Product at Ideas2IT, Refersion, GRIN. Angel investor. Creator of the 10-layer framework for where AI value accrues."
       path="/about"
     />
@@ -137,7 +137,7 @@ const AboutPage = () => (
             this framework down.
           </p>
           <p>
-            <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
+            <strong className="text-foreground">The Supply Chain of Intelligence</strong> is that framework. Ten
             layers, fifty sublayers, three structural laws, one diagnostic cube. It is opinionated, it is portable
             across categories, and it is free.
           </p>

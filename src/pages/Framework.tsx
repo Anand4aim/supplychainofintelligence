@@ -32,7 +32,7 @@ const FrameworkPage = () => (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <Eyebrow className="mb-6">The Framework</Eyebrow>
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
-            The Supply Chain of Intelligence™
+            The Supply Chain of Intelligence
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
             <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
@@ -326,7 +326,7 @@ const FrameworkPage = () => (
     <section id="cube" className="bg-secondary/30 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <Eyebrow className="mb-4">The Intelligence Cube™</Eyebrow>
+          <Eyebrow className="mb-4">The Intelligence Cube</Eyebrow>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             10 Functions × 10 Verticals × 10 Layers
           </h2>
