@@ -824,12 +824,20 @@ const Index = () => {
                         <span className="text-xs text-foreground/70 italic block mb-2 pl-3 border-l-2 border-border">
                           {law.example}
                         </span>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 mb-3">
                           <SketchArrow direction="right" size={24} />
                           <span className="font-sketch text-sm font-bold text-sketch-red">
                             {law.prediction}
                           </span>
                         </div>
+                        {LAW_ESSAY_BY_NUM[law.num] && (
+                          <Link
+                            to={`/laws/${LAW_ESSAY_BY_NUM[law.num].slug}`}
+                            className="inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all"
+                          >
+                            Read the full essay <ArrowRight size={13} />
+                          </Link>
+                        )}
                       </SketchBox>
                     </div>
                   </div>
