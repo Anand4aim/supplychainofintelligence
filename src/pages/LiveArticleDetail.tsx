@@ -158,7 +158,7 @@ const LiveArticleDetail = () => {
               </div>
 
               {/* Dot intensity row */}
-              <div className="grid grid-cols-10 gap-1.5 pb-4 border-b border-foreground/10">
+              <div className="grid grid-cols-10 gap-1.5">
                 {LAYER_ORDER.map((layer) => {
                   const s = scoreMap.get(layer);
                   const intensity = s?.intensity ?? (s?.owned ? 2 : 0);
@@ -181,7 +181,37 @@ const LiveArticleDetail = () => {
                 })}
               </div>
 
-              {/* Per-layer notes + sublayers */}
+              {/* Sublayer stack — tiles stacked under each layer column in lighter shades */}
+              <div className="grid grid-cols-10 gap-1.5 mt-1.5 pb-4 border-b border-foreground/10 items-start">
+                {LAYER_ORDER.map((layer) => {
+                  const s = scoreMap.get(layer);
+                  const subs = s?.sublayers ?? [];
+                  return (
+                    <div key={layer} className="flex flex-col gap-1">
+                      {subs.map((sub, i) => {
+                        const alpha = Math.max(0.08, 0.22 - i * 0.05);
+                        return (
+                          <div
+                            key={i}
+                            className="text-center font-mono-marker text-[9px] leading-tight px-1 py-1 rounded-sm break-words"
+                            style={{
+                              background: `hsl(var(${layerVar(layer)}) / ${alpha})`,
+                              color: `hsl(var(${layerVar(layer)}))`,
+                              border: `1px solid hsl(var(${layerVar(layer)}) / 0.18)`,
+                              minHeight: 22,
+                            }}
+                            title={sub}
+                          >
+                            {sub}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Per-layer notes (sublayers shown in matrix above) */}
               <div className="mt-4 space-y-2.5">
                 {LAYER_ORDER.map((layer) => {
                   const s = scoreMap.get(layer);
@@ -195,24 +225,8 @@ const LiveArticleDetail = () => {
                       >
                         {layer}
                       </span>
-                      <div className="flex-1 text-[14px] leading-snug">
-                        <span className="text-foreground">{s?.note}</span>
-                        {s?.sublayers && s.sublayers.length > 0 && (
-                          <div className="mt-1 flex flex-wrap gap-1.5">
-                            {s.sublayers.map((sub, i) => (
-                              <span
-                                key={i}
-                                className="font-mono-marker text-[10px] px-1.5 py-0.5 rounded-sm"
-                                style={{
-                                  background: `hsl(var(${layerVar(layer)}) / 0.12)`,
-                                  color: `hsl(var(${layerVar(layer)}))`,
-                                }}
-                              >
-                                {sub}
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                      <div className="flex-1 text-[14px] leading-snug text-foreground">
+                        {s?.note}
                       </div>
                     </div>
                   );
