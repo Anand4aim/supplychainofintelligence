@@ -94,7 +94,7 @@ const ANALYSIS_SCHEMA = {
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
       linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." }
     },
-    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
+    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "cube_position", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
   }
 };
 
