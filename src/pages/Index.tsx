@@ -76,14 +76,14 @@ const Index = () => {
                 It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/framework" className="btn-sketch">
-                  Read the Framework <ArrowRight size={15} />
+                <Link to="/start" className="btn-sketch">
+                  Start in 5 minutes <ArrowRight size={15} />
+                </Link>
+                <Link to="/framework" className="btn-sketch-outline">
+                  Read the Framework →
                 </Link>
                 <Link to="/live" className="btn-sketch-outline">
-                  This Week's Analysis →
-                </Link>
-                <Link to="/market-map" className="btn-sketch-outline">
-                  Market Map by Layer
+                  This Week's Analysis
                 </Link>
               </div>
             </motion.div>
