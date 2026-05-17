@@ -375,6 +375,7 @@ const IntelligenceCube = () => {
   const [visible, setVisible] = useState<Record<string, boolean>>(
     Object.fromEntries(COMPANIES.map((c) => [c.name, true])),
   );
+  const [view, setView] = useState<"cube" | "grids">("cube");
 
   const toggle = (name: string) =>
     setVisible((v) => ({ ...v, [name]: !v[name] }));
