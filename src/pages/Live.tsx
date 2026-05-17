@@ -363,9 +363,20 @@ const LivePage = () => {
                                       {a.subheadline}
                                     </p>
                                   )}
-                                  <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-8">
+                                  <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-6">
                                     {a.news_summary}
                                   </p>
+
+                                  {a.analysis?.cube_position?.layers && a.analysis.cube_position.layers.length > 0 && (
+                                    <div className="mb-8 max-w-3xl">
+                                      <FeaturedLayerStrip
+                                        layers={a.analysis.cube_position.layers}
+                                        functions={a.analysis.cube_position.functions ?? []}
+                                        verticals={a.analysis.cube_position.verticals ?? []}
+                                      />
+                                    </div>
+                                  )}
+
                                   <div className="inline-flex items-center gap-2 text-accent font-mono-marker text-[12px] font-bold border-b border-accent/50 group-hover:gap-3 transition-all">
                                     Read the full teardown <ArrowRight size={13} />
                                   </div>
