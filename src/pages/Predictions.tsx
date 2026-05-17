@@ -308,14 +308,27 @@ const Predictions = () => {
         </ol>
         )}
 
-        <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02]">
+        <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02] space-y-4">
           <h3 className="font-display text-xl font-semibold text-foreground">
-            On honesty
+            On honesty — structural vs. timing
           </h3>
-          <p className="mt-2 text-foreground/75 leading-relaxed">
+          <p className="text-foreground/75 leading-relaxed">
+            A framework's job is to identify <em>where</em> value compresses and
+            <em> where</em> it accrues. Its job is not to predict <em>when</em> —
+            that depends on frontier-model release cadence, regulatory shocks,
+            distribution deals, and cap-table accidents the lens does not see.
+          </p>
+          <p className="text-foreground/75 leading-relaxed">
+            So every call is scored twice. A <strong className="text-foreground">structural</strong> call
+            can be confirmed even when <strong className="text-foreground">timing</strong> is faster
+            (Harvey, Jasper, Devin) or slower than expected. Christensen, Porter, and
+            JTBD all called direction correctly and timing wrong on multiple cases.
+            Naming the variable the framework can't control is how it stays
+            intellectually serious — and how it survives the cases it gets wrong.
+          </p>
+          <p className="text-foreground/75 leading-relaxed">
             Calls stay on this page whether they age well or not. Anything that
-            turns out wrong is marked wrong, not deleted. The framework earns its
-            keep one falsifiable call at a time.
+            turns out wrong is marked wrong, not deleted.
           </p>
         </div>
       </section>
