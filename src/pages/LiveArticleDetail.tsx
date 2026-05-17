@@ -7,6 +7,8 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
+import WhatThisMeans from "@/components/WhatThisMeans";
+import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 
 
@@ -39,6 +41,11 @@ interface LiveArticle {
     counter_thesis?: string;
     what_to_watch?: string[];
     new_law_candidate: string;
+    for_you?: {
+      product_leader?: string;
+      investor?: string;
+      operator?: string;
+    };
   };
 }
 
