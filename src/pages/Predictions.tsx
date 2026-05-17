@@ -1,6 +1,7 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, AlertCircle, XCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, AlertCircle, XCircle, Search } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
@@ -8,6 +9,7 @@ import LayerTag from "@/components/LayerTag";
 import {
   PREDICTIONS,
   PREDICTIONS_BY_STATUS,
+  type Prediction,
   type PredictionStatus,
 } from "@/data/predictions";
 
