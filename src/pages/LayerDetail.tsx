@@ -26,12 +26,41 @@ const LayerDetailPage = () => {
 
   const relevantStudies = CASE_STUDIES.filter((s) => s.layers.includes(layer.id)).slice(0, 4);
 
-  const articleSchema = {
+  const slug = slugFor(layer.id);
+  const layerUrl = `https://supplychainofai.com/framework/${slug}`;
+  const definedTerm = {
     "@context": "https://schema.org",
     "@type": "DefinedTerm",
-    name: `${layer.id} — ${layer.name}`,
-    description: layer.desc,
-    inDefinedTermSet: "https://supplychainofai.com/framework",
+    "@id": `${layerUrl}#term`,
+    termCode: layer.id,
+    name: `${layer.id} ${layer.name}`,
+    alternateName: [`Layer ${layer.id}`, `${layer.id} — ${layer.shortName}`],
+    description: `${layer.desc} ${layer.detail}`,
+    url: layerUrl,
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      "@id": "https://supplychainofai.com/#framework",
+      name: "The Supply Chain of Intelligence™ — 10 Layers of the Generative AI Stack",
+      url: "https://supplychainofai.com/framework",
+      numberOfItems: 10,
+    },
+    hasPart: layer.sublayers.map((s) => ({
+      "@type": "DefinedTerm",
+      termCode: s.id,
+      name: `${s.id} ${s.name}`,
+      description: s.desc,
+      url: `${layerUrl}#${s.id.toLowerCase()}`,
+      ...(s.defensible ? { additionalType: "https://supplychainofai.com/#defensible-sublayer" } : {}),
+    })),
+  };
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://supplychainofai.com/" },
+      { "@type": "ListItem", position: 2, name: "Framework", item: "https://supplychainofai.com/framework" },
+      { "@type": "ListItem", position: 3, name: `${layer.id} ${layer.name}`, item: layerUrl },
+    ],
   };
 
   return (
@@ -42,7 +71,8 @@ const LayerDetailPage = () => {
         path={`/framework/${slugFor(layer.id)}`}
       />
       <Helmet>
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(definedTerm)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
 
       <article className="bg-background">

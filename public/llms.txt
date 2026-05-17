@@ -86,10 +86,10 @@ The [Predictions archive](https://supplychainofai.com/predictions) is a dated, s
 Each layer has its own indexable page at `/framework/{layer-id}` with definition, sublayers, exemplary players, defensibility analysis, and verdicts.
 
 - [L-1 Resources](https://supplychainofai.com/framework/l-1-resources) — energy, water, fabs, materials, skilled trades.
-- [L0 Infrastructure](https://supplychainofai.com/framework/l0-infrastructure) — silicon, data centers, interconnect, cloud, edge.
+- [L0 Infrastructure](https://supplychainofai.com/framework/l0-infra) — silicon, data centers, interconnect, cloud, edge.
 - [L1 Data](https://supplychainofai.com/framework/l1-data) — public, proprietary, behavioral, outcome, synthetic.
 - [L2 Models](https://supplychainofai.com/framework/l2-models) — foundation, specialized, embedding, routing, reasoning.
-- [L3 Gatekeeping](https://supplychainofai.com/framework/l3-gatekeeping) — compliance, quality, safety, editorial, distribution.
+- [L3 Gatekeeping](https://supplychainofai.com/framework/l3-gates) — compliance, quality, safety, editorial, distribution.
 - [L4 Access](https://supplychainofai.com/framework/l4-access) — APIs, agent protocols (MCP), governance, real-time pipes, agent identity.
 - [L5 Execution](https://supplychainofai.com/framework/l5-execution) — domain skills, decision frameworks, RAG, playbooks.
 - [L6 Orchestration](https://supplychainofai.com/framework/l6-orchestration) — agent loops, human-in-the-loop, role routing, runtime assurance.
