@@ -300,7 +300,7 @@ const FrameworkPage = () => (
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
           <Eyebrow className="mb-4">The Intelligence Cube™</Eyebrow>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
-            9 Functions × 9 Verticals × 10 Layers
+            10 Functions × 10 Verticals × 10 Layers
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mb-10 leading-relaxed">
             Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals.

@@ -968,7 +968,7 @@ const Index = () => {
   The Intelligence Cube™
 </Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              9 Functions × 9 Verticals × 10 Layers
+              10 Functions × 10 Verticals × 10 Layers
             </h2>
             <p className="text-base text-muted-foreground max-w-xl mx-auto">
               Volume = structural durability. Companies that occupy thin slivers get dissolved.
