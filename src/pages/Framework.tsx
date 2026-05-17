@@ -62,10 +62,37 @@ const FrameworkPage = () => (
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-4">
             From Gold in the Ground to the Ring on Your Finger
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Every layer transforms the output of the layer below it. Most companies only own one layer. 
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
+            Every layer transforms the output of the layer below it. Most companies only own one layer.
             The supply chain is only as strong as its weakest link.
           </p>
+          <details className="max-w-2xl mx-auto text-left mt-4 group">
+            <summary className="cursor-pointer font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent inline-flex items-center gap-1.5 hover:underline">
+              Why one ladder, when L-1→L2 and L3→L8 are different kinds of layer? ↓
+            </summary>
+            <div className="mt-3 text-sm text-muted-foreground leading-relaxed space-y-2 pl-4 border-l-2 border-accent/30">
+              <p>
+                Honest answer: they are different kinds of layer. <strong className="text-foreground">L-1 through L2</strong>{" "}
+                (Resources → Infrastructure → Data → Models) is an economic / physical stack —
+                value flows up through transformation. <strong className="text-foreground">L3 through L8</strong>{" "}
+                (Gatekeeping → Access → Execution → Orchestration → Surface → Memory) is a
+                product-architecture stack — value flows through control of the user moment.
+              </p>
+              <p>
+                We treat them as one chain on purpose. The whole strategic claim of the
+                framework is that <em>value, attention, and pricing power move continuously
+                across both</em> — NVIDIA's L0 dominance prices Anthropic's L2, which prices
+                Glean's L8 product, which is squeezed by Microsoft's L4 distribution. Splitting
+                them into two diagrams hides the cascade.
+              </p>
+              <p>
+                If you're placing your own company, you'll feel a seam between L2 and L3. That's
+                real. The seam is where most acquisitions happen — model labs buying app companies,
+                hyperscalers buying inference layers. The single ladder makes that seam visible
+                instead of erasing it.
+              </p>
+            </div>
+          </details>
         </div>
 
         <div className="relative">
@@ -259,8 +286,9 @@ const FrameworkPage = () => (
             One Common Pattern — Not the Only Way to Win
           </h2>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            The Triangle (L1b + L5a/b/d + L8c/d/e) is the most common fortress pattern for
-            application-layer companies. But it isn't the only way to survive. A pure
+            The Triangle (L1b + L5a/b/d + L8c/d/e) is a <em>recurring</em> fortress pattern we
+            see across application-layer companies — Sierra, Harvey, Glean, BloombergGPT, Tempus
+            all exhibit some version of it. It is not the only way to survive. A pure
             gatekeeper like <span className="font-semibold text-foreground">Vanta</span> wins
             on L3 alone. A shovel-seller like <span className="font-semibold text-foreground">NVIDIA</span> wins
             on L0. A pipes-owner like <span className="font-semibold text-foreground">Snowflake</span> wins
