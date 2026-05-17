@@ -61,7 +61,6 @@ const LiveArticleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<LiveArticle | null>(null);
   const [loading, setLoading] = useState(true);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!slug) return;
@@ -71,14 +70,6 @@ const LiveArticleDetail = () => {
       setLoading(false);
     })();
   }, [slug]);
-
-  const copyLinkedIn = async () => {
-    if (!article) return;
-    await navigator.clipboard.writeText(article.linkedin_post);
-    setCopied(true);
-    toast.success("LinkedIn post copied — paste anywhere");
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   if (loading) {
     return <SiteLayout><div className="max-w-3xl mx-auto py-32 text-center text-muted-foreground"><Loader2 className="animate-spin inline mr-2" size={18}/>Loading…</div></SiteLayout>;
