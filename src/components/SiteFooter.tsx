@@ -16,9 +16,12 @@ const SiteFooter = () => (
               <div key={n} className="h-1.5 flex-1 rounded-sm" style={{ background: `hsl(var(--layer-${n}))` }} />
             ))}
           </div>
-          <h3 className="font-display text-lg font-bold text-foreground mb-3">
+          <h3 className="font-display text-lg font-bold text-foreground mb-1">
             The Supply Chain of Intelligence<span className="text-accent">™</span>
           </h3>
+          <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent mb-3">
+            the 10 layers of the generative AI stack
+          </p>
           <p className="text-sm leading-relaxed max-w-md mb-5">
             A structural framework that maps where AI companies live, compete, and die.
             10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube™.
