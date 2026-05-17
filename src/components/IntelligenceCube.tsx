@@ -174,10 +174,208 @@ const ComparisonGrid: React.FC<{
   );
 };
 
+/* ─────────────────────────  Isometric 3D Cube view  ───────────────────────── */
+
+const ISO_STEP = 30; // pixel size of one cell along F / V axes
+const ISO_Z = 24; // pixel size of one cell along L axis (up)
+const ISO_COS = Math.cos(Math.PI / 6); // 0.866
+const ISO_SIN = Math.sin(Math.PI / 6); // 0.5
+const N = 10;
+
+// Origin chosen so cube fits viewBox 0 0 620 460
+const ORIGIN_X = 280;
+const ORIGIN_Y = 420;
+
+const isoX = (f: number, v: number) => ORIGIN_X + (f - v) * ISO_STEP * ISO_COS;
+const isoY = (f: number, v: number, l: number) =>
+  ORIGIN_Y + (f + v) * ISO_STEP * ISO_SIN - l * ISO_Z;
+
+const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) => {
+  // Collect all occupied cells from all visible companies, then depth-sort.
+  type Dot = { f: number; v: number; l: number; company: CompanyPlot; depth: number };
+  const dots: Dot[] = [];
+  COMPANIES.forEach((c) => {
+    if (!visible[c.name]) return;
+    c.functions.forEach((f) =>
+      c.verticals.forEach((v) =>
+        c.layers.forEach((l) => {
+          dots.push({ f, v, l, company: c, depth: f + v - l * 0.35 });
+        }),
+      ),
+    );
+  });
+  // Smaller depth = further back, drawn first.
+  dots.sort((a, b) => b.depth - a.depth);
+
+  // Stagger overlapping dots (same f/v/l from multiple companies)
+  const cellCount = new Map<string, number>();
+  const offsetFor = (key: string) => {
+    const i = cellCount.get(key) ?? 0;
+    cellCount.set(key, i + 1);
+    return i;
+  };
+
+  const edge = (
+    f1: number,
+    v1: number,
+    l1: number,
+    f2: number,
+    v2: number,
+    l2: number,
+    dashed = false,
+  ) => (
+    <line
+      x1={isoX(f1, v1)}
+      y1={isoY(f1, v1, l1)}
+      x2={isoX(f2, v2)}
+      y2={isoY(f2, v2, l2)}
+      stroke="hsl(var(--foreground) / 0.18)"
+      strokeWidth={1}
+      strokeDasharray={dashed ? "3 3" : undefined}
+    />
+  );
+
+  return (
+    <svg viewBox="0 0 620 460" className="w-full max-w-[640px] mx-auto block">
+      {/* Floor grid (L = 0 plane) — faint */}
+      {Array.from({ length: N + 1 }).map((_, i) => (
+        <React.Fragment key={`fl-${i}`}>
+          <line
+            x1={isoX(i, 0)}
+            y1={isoY(i, 0, 0)}
+            x2={isoX(i, N)}
+            y2={isoY(i, N, 0)}
+            stroke="hsl(var(--foreground) / 0.06)"
+            strokeWidth={0.5}
+          />
+          <line
+            x1={isoX(0, i)}
+            y1={isoY(0, i, 0)}
+            x2={isoX(N, i)}
+            y2={isoY(N, i, 0)}
+            stroke="hsl(var(--foreground) / 0.06)"
+            strokeWidth={0.5}
+          />
+        </React.Fragment>
+      ))}
+
+      {/* Layer "shelves" — faint horizontal planes at each L tick on the back wall */}
+      {LAYERS.map((l, i) => (
+        <line
+          key={`shelf-${l}`}
+          x1={isoX(0, N)}
+          y1={isoY(0, N, i)}
+          x2={isoX(N, N)}
+          y2={isoY(N, N, i)}
+          stroke={`hsl(var(${layerVar(l)}) / 0.25)`}
+          strokeWidth={1}
+        />
+      ))}
+
+      {/* Cube wireframe — 12 edges */}
+      {/* bottom rectangle */}
+      {edge(0, 0, 0, N, 0, 0, true)}
+      {edge(0, 0, 0, 0, N, 0, true)}
+      {edge(N, 0, 0, N, N, 0)}
+      {edge(0, N, 0, N, N, 0)}
+      {/* verticals */}
+      {edge(0, 0, 0, 0, 0, N, true)}
+      {edge(N, 0, 0, N, 0, N)}
+      {edge(0, N, 0, 0, N, N)}
+      {edge(N, N, 0, N, N, N)}
+      {/* top rectangle */}
+      {edge(0, 0, N, N, 0, N)}
+      {edge(0, 0, N, 0, N, N)}
+      {edge(N, 0, N, N, N, N)}
+      {edge(0, N, N, N, N, N)}
+
+      {/* Axis labels */}
+      <text
+        x={isoX(N, 0) + 8}
+        y={isoY(N, 0, 0) + 14}
+        fill="hsl(var(--muted-foreground))"
+        fontSize={10}
+        fontFamily="ui-monospace, monospace"
+        fontWeight={700}
+        textAnchor="start"
+      >
+        FUNCTIONS →
+      </text>
+      <text
+        x={isoX(0, N) - 8}
+        y={isoY(0, N, 0) + 14}
+        fill="hsl(var(--muted-foreground))"
+        fontSize={10}
+        fontFamily="ui-monospace, monospace"
+        fontWeight={700}
+        textAnchor="end"
+      >
+        ← VERTICALS
+      </text>
+      <text
+        x={isoX(0, 0) - 14}
+        y={isoY(0, 0, N) - 4}
+        fill="hsl(var(--muted-foreground))"
+        fontSize={10}
+        fontFamily="ui-monospace, monospace"
+        fontWeight={700}
+        textAnchor="end"
+      >
+        LAYERS ↑
+      </text>
+
+      {/* Layer ticks on the L axis (back-left edge) */}
+      {LAYERS.map((l, i) => (
+        <text
+          key={`lt-${l}`}
+          x={isoX(0, 0) - 6}
+          y={isoY(0, 0, i) + 3}
+          fill={`hsl(var(${layerVar(l)}))`}
+          fontSize={8}
+          fontFamily="ui-monospace, monospace"
+          fontWeight={700}
+          textAnchor="end"
+        >
+          {l}
+        </text>
+      ))}
+
+      {/* The dots — depth-sorted */}
+      {dots.map((d, idx) => {
+        const key = `${d.f}-${d.v}-${d.l}`;
+        const stackIdx = offsetFor(key);
+        const cx = isoX(d.f + 0.5, d.v + 0.5) + stackIdx * 3.5 - 3;
+        const cy = isoY(d.f + 0.5, d.v + 0.5, d.l + 0.5) - stackIdx * 3.5;
+        return (
+          <g key={idx}>
+            <circle
+              cx={cx}
+              cy={cy + 1.5}
+              r={4.5}
+              fill="hsl(var(--foreground) / 0.18)"
+            />
+            <circle
+              cx={cx}
+              cy={cy}
+              r={4.5}
+              fill={d.company.color}
+              stroke="hsl(40 30% 97%)"
+              strokeWidth={1.2}
+            >
+              <title>{`${d.company.name} · ${LAYERS[d.l]} × ${VERTICALS[d.v]} × ${FUNCTIONS[d.f]}`}</title>
+            </circle>
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
+
 const IntelligenceCube = () => {
   const [visible, setVisible] = useState<Record<string, boolean>>(
     Object.fromEntries(COMPANIES.map((c) => [c.name, true])),
   );
+  const [view, setView] = useState<"cube" | "grids">("cube");
 
   const toggle = (name: string) =>
     setVisible((v) => ({ ...v, [name]: !v[name] }));
@@ -216,8 +414,28 @@ const IntelligenceCube = () => {
         })}
       </div>
 
-      {/* Two overlay grids */}
+      {/* View toggle */}
+      <div className="flex justify-center">
+        <div className="inline-flex rounded-full border border-border bg-card p-0.5">
+          {(["cube", "grids"] as const).map((v) => (
+            <button
+              key={v}
+              onClick={() => setView(v)}
+              className={`px-4 py-1.5 rounded-full text-[12px] font-display font-bold transition-all ${
+                view === v
+                  ? "bg-foreground text-background"
+                  : "text-foreground/60 hover:text-foreground"
+              }`}
+            >
+              {v === "cube" ? "3D Cube" : "Flat Grids"}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Visualization panel */}
       <motion.div
+        key={view}
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.25 }}
@@ -228,27 +446,33 @@ const IntelligenceCube = () => {
           border: "1px solid hsl(35 20% 88%)",
         }}
       >
-        <div className="grid md:grid-cols-2 gap-8">
-          <ComparisonGrid
-            yAxis={LAYERS}
-            xAxis={VERTICALS}
-            xAxisKey="verticals"
-            yLabel="Layers"
-            xLabel="Verticals"
-            visible={visible}
-          />
-          <ComparisonGrid
-            yAxis={LAYERS}
-            xAxis={FUNCTIONS}
-            xAxisKey="functions"
-            yLabel="Layers"
-            xLabel="Functions"
-            visible={visible}
-          />
-        </div>
+        {view === "cube" ? (
+          <IsoCube visible={visible} />
+        ) : (
+          <div className="grid md:grid-cols-2 gap-8">
+            <ComparisonGrid
+              yAxis={LAYERS}
+              xAxis={VERTICALS}
+              xAxisKey="verticals"
+              yLabel="Layers"
+              xLabel="Verticals"
+              visible={visible}
+            />
+            <ComparisonGrid
+              yAxis={LAYERS}
+              xAxis={FUNCTIONS}
+              xAxisKey="functions"
+              yLabel="Layers"
+              xLabel="Functions"
+              visible={visible}
+            />
+          </div>
+        )}
 
         <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
-          Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint.
+          {view === "cube"
+            ? "Each dot = one company occupies one (Function × Vertical × Layer) cell. Stacked dots = contested cells. Toggle a name above to isolate its footprint."
+            : "Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint."}
         </p>
       </motion.div>
 
