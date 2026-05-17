@@ -92,7 +92,7 @@ const Index = () => {
               </p>
               <div className="sketch-paper rounded-2xl p-4 space-y-1.5 relative">
                 <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
-                {TABLE_LAYERS.map((layer, i) => {
+                {LAYERS.map((layer, i) => {
                   const defCount = layer.sublayers.filter((s) => s.defensible).length;
                   return (
                     <motion.div
