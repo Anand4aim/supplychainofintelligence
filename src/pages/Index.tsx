@@ -216,8 +216,9 @@ const Index = () => {
                 const gridCols = `grid-cols-${LAYERS.length}`;
 
                 return (
-                  <>
-                    <div className="grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
+                  <div className="-mx-5 md:mx-0 overflow-x-auto">
+                    <div className="min-w-[640px] md:min-w-0 px-5 md:px-0">
+                    <div className="grid grid-cols-[140px_1fr_96px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
                       <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
                         {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
@@ -240,7 +241,7 @@ const Index = () => {
                     {rows.map((row, i) => (
                       <div
                         key={row.name}
-                        className={`grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-center py-3 ${
+                        className={`grid grid-cols-[140px_1fr_96px] md:grid-cols-[180px_1fr_110px] gap-3 items-center py-3 ${
                           i % 2 === 0 ? "bg-foreground/[0.025]" : ""
                         } border-t border-foreground/10`}
                       >
@@ -272,7 +273,8 @@ const Index = () => {
                         </span>
                       </div>
                     ))}
-                  </>
+                    </div>
+                  </div>
                 );
               })()}
 
