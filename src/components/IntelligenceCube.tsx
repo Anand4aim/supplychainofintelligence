@@ -182,9 +182,9 @@ const ISO_COS = Math.cos(Math.PI / 6); // 0.866
 const ISO_SIN = Math.sin(Math.PI / 6); // 0.5
 const N = 10;
 
-// viewBox 460×480; cube fully centered
-const ORIGIN_X = 230;
-const ORIGIN_Y = 250;
+// viewBox 560×500; cube fully centered with room for axis labels
+const ORIGIN_X = 280;
+const ORIGIN_Y = 320;
 
 const isoX = (f: number, v: number) => ORIGIN_X + (f - v) * ISO_STEP * ISO_COS;
 const isoY = (f: number, v: number, l: number) =>
