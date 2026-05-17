@@ -298,6 +298,22 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
+          {/* Deep Product Lens */}
+          {article.analysis.deep_product_lens && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Product Lens</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_product_lens}</p>
+            </section>
+          )}
+
+          {/* Deep Strategy Lens */}
+          {article.analysis.deep_strategy_lens && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Strategy Lens</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_strategy_lens}</p>
+            </section>
+          )}
+
           {/* Vertical lens */}
           {article.vertical && (
             <section className="mb-12">
@@ -340,22 +356,6 @@ const LiveArticleDetail = () => {
               </p>
             </section>
           )}
-
-          {/* LinkedIn post */}
-          <section className="mb-12 bg-foreground text-background p-6 md:p-8">
-            <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-              <p className="font-sketch text-base font-bold text-accent">— Ready for LinkedIn</p>
-              <button
-                onClick={copyLinkedIn}
-                className="inline-flex items-center gap-1.5 bg-accent text-accent-foreground px-3 py-1.5 font-mono-marker text-[11px] hover:opacity-90"
-              >
-                {copied ? <><Check size={12}/> Copied</> : <><Copy size={12}/> Copy post</>}
-              </button>
-            </div>
-            <p className="whitespace-pre-line text-[15px] leading-relaxed text-background/90">
-              {article.linkedin_post}
-            </p>
-          </section>
 
           <div className="border-t border-foreground/10 pt-8">
             <p className="text-sm text-muted-foreground">
