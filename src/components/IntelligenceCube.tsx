@@ -10,16 +10,47 @@ const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L",
 interface CompanyPlot {
   name: string;
   color: string;
-  functions: [number, number];
-  verticals: [number, number];
-  layers: [number, number];
+  /** Indices into FUNCTIONS, VERTICALS, LAYERS — explicit cells, not ranges. */
+  functions: number[];
+  verticals: number[];
+  layers: number[];
   verdict: string;
 }
 
+// Indices: LAYERS = ["L-1"=0, "L0"=1, "L1"=2, "L2"=3, "L3"=4, "L4"=5, "L5"=6, "L6"=7, "L7"=8, "L8"=9]
+// FUNCTIONS = ["Dev/Eng"=0, "Design"=1, "Product"=2, "PM/Proj"=3, "Ops"=4, "Mktg"=5, "Sales"=6, "CustCare"=7, "Strategy"=8, "Finance"=9]
+// VERTICALS = ["FinTech"=0, "EdTech"=1, "Legal"=2, "Health"=3, "Travel"=4, "eCom"=5, "Media"=6, "Gov"=7, "SaaS"=8, "Horizontal"=9]
 const COMPANIES: CompanyPlot[] = [
-  { name: "Sierra", color: "#10B981", functions: [5, 8], verticals: [0, 3], layers: [3, 8], verdict: "Deep vertical fortress — owns trust through memory." },
-  { name: "Gamma", color: "#9CA3AF", functions: [1, 3], verticals: [2, 5], layers: [7, 8], verdict: "Thin surface wrapper — vulnerable to commoditization." },
-  { name: "Harvey", color: "#4F46E5", functions: [0, 1], verticals: [2, 2], layers: [1, 7], verdict: "Vertical spike — single vertical, deep layer ownership." },
+  {
+    name: "Sierra",
+    color: "#10B981",
+    // CX agents: serves Sales/CustCare across FinTech/Health/eCom. Owns L1 (convo data),
+    // L3 (safety/QA), L5 (skills/playbooks), L6 (orchestration), L7 (surface), L8 (memory). Rents L2.
+    functions: [6, 7],
+    verticals: [0, 3, 5],
+    layers: [2, 4, 6, 7, 8, 9],
+    verdict: "CX agent fortress — owns L1 data, L3 gates, L5 skills, L6 orchestration, L8 memory.",
+  },
+  {
+    name: "Gamma",
+    color: "#9CA3AF",
+    // AI deck builder: Design/Product across horizontal use. Surface (L7) on rented L2, with
+    // a thin L5 templating layer. No proprietary data, no memory, no gates.
+    functions: [1, 2],
+    verticals: [9],
+    layers: [3, 6, 8],
+    verdict: "Thin L7 surface + light L5 templating on rented L2 — vulnerable to platform absorb.",
+  },
+  {
+    name: "Harvey",
+    color: "#4F46E5",
+    // Legal AI: Dev/Eng + Strategy + CustCare inside Legal only. Owns L1 (legal corpus),
+    // L3 (citation/compliance), L5 (legal workflows), L7 (chat surface), L8 (matter memory). Rents L2.
+    functions: [0, 8],
+    verticals: [2],
+    layers: [2, 4, 6, 8, 9],
+    verdict: "Vertical spike in Legal — L1 corpus, L3 citation gates, L5 workflows, L8 matter memory.",
+  },
 ];
 
 const occupies = (c: CompanyPlot, axis: "layers" | "verticals" | "functions", idx: number) =>
