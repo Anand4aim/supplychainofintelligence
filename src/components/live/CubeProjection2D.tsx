@@ -118,6 +118,11 @@ const Grid: React.FC<{
               </div>
             ))}
           </div>
+          {emptyAxis && (
+            <p className="font-mono-marker text-[10px] text-foreground/50 italic mt-3">
+              Axis-agnostic on {xLabel.toLowerCase()} — this move reshapes the stack itself, not a specific {xLabel.toLowerCase().replace(/s$/, "")}.
+            </p>
+          )}
         </div>
       </div>
     </div>
