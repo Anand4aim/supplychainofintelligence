@@ -28,6 +28,8 @@ interface LiveArticle {
     who_wins?: { name: string; reason: string }[];
     who_loses?: { name: string; reason: string }[];
     vertical_lens: string;
+    deep_product_lens?: string;
+    deep_strategy_lens?: string;
     counter_thesis?: string;
     what_to_watch?: string[];
     new_law_candidate: string;
