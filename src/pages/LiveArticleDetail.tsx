@@ -147,8 +147,8 @@ const LiveArticleDetail = () => {
             <div
               className="rounded-2xl p-5 md:p-6"
               style={{
-                background: "linear-gradient(145deg, hsl(140 38% 96%) 0%, hsl(145 32% 94%) 60%, hsl(140 36% 95%) 100%)",
-                border: "1px solid hsl(140 22% 86%)",
+                background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
+                border: "1px solid hsl(35 20% 88%)",
               }}
             >
               {/* Chip header row */}
