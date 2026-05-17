@@ -62,8 +62,8 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Live Feed — Weekly AI Launches Scored on the 10 Layers"
-        description="Every Monday: one major AI product launch analyzed through the Supply Chain of Intelligence framework. Structural take + vertical lens + LinkedIn-ready post."
+        title="The Live Feed — Every Important AI Move, Tracked & Scored by Anand Arivukkarasu"
+        description="Always-on analysis of every consequential AI launch, funding round, and structural shift — scored on the Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
 
@@ -75,15 +75,15 @@ const LivePage = () => {
               <p className="font-sketch text-lg font-bold text-accent">— The Live Feed</p>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
-              Every Monday. One launch. <br />Scored on the 10 layers, 50 sublayers, and the 10 laws.
+              Every important AI move — <br />watched, tracked, analyzed, and scored.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              An always-on analysis of the most strategically important AI move each week —
-              run through the Supply Chain of Intelligence™ framework, the three structural laws,
-              and the vertical lens that matters most.
+              An always-on read of the AI market by <span className="text-foreground font-semibold">Anand Arivukkarasu</span> —
+              every consequential launch, funding round, and structural shift run through the
+              Supply Chain of Intelligence™ framework, the three laws, and the vertical lens that matters.
             </p>
             <p className="text-sm text-muted-foreground/80 italic">
-              Auto-published Monday 09:00 UTC · Free to read, copy and repost anywhere.
+              New analysis published as the news breaks · Free to read, copy, and repost anywhere.
             </p>
           </motion.div>
         </div>
