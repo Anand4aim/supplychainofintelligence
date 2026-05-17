@@ -122,8 +122,56 @@ async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<s
   if (!res.ok) throw new Error(`Perplexity ${res.status}: ${await res.text()}`);
   const data = await res.json();
   const content = data.choices?.[0]?.message?.content ?? "";
-  const citations = (data.citations ?? []).slice(0, 5).join("\n");
-  return `${content}\n\nSources:\n${citations}`;
+  const citations: string[] = (data.citations ?? []).slice(0, 5);
+
+  // GUARDRAIL: refuse to proceed when Perplexity couldn't verify a real story.
+  // Without this, hallucinated/typo topics ("Claude Opus 4.7") become meta-articles.
+  const lower = content.toLowerCase();
+  const refusalSignals = [
+    "non-existent", "nonexistent", "does not exist", "could not find",
+    "cannot verify", "can't verify", "unable to verify", "no verifiable",
+    "no credible sources", "no reliable sources", "no public record",
+    "i could not locate", "i cannot find", "no evidence of",
+    "hasn't been announced", "has not been announced", "not been released",
+    "appears to be fictional", "appears fictional", "no such product",
+  ];
+  const hasRefusal = refusalSignals.some((s) => lower.includes(s));
+  const realCitations = citations.filter((u) => {
+    try {
+      const path = new URL(u).pathname.replace(/\/+$/, "");
+      return path.length > 1; // reject bare-domain links like https://stratechery.com/
+    } catch { return false; }
+  });
+  if (hasRefusal || realCitations.length < 2 || content.trim().length < 200) {
+    throw new Error(
+      `NO_STORY: Perplexity could not verify a real news event for this topic. ` +
+      `Refusal=${hasRefusal} realCitations=${realCitations.length} contentLen=${content.trim().length}. ` +
+      `Re-run with a more specific, real topic.`
+    );
+  }
+
+  return `${content}\n\nSources:\n${citations.join("\n")}`;
+}
+
+// Headline quality gate — block one-word / clickbait / missing-subject titles.
+function validateAnalysis(a: { headline?: string; subheadline?: string; news_summary?: string; source_urls?: string[] }) {
+  const h = (a.headline ?? "").trim();
+  const sub = (a.subheadline ?? "").trim();
+  const summary = (a.news_summary ?? "").trim();
+  const words = h.split(/\s+/).filter(Boolean);
+  const reasons: string[] = [];
+  if (words.length < 4) reasons.push(`headline too short (${words.length} words)`);
+  if (h.length < 18) reasons.push(`headline too short (${h.length} chars)`);
+  if (/^(ai|the|news|update|analysis)$/i.test(h)) reasons.push("headline is a generic single word");
+  if (sub.length < 40) reasons.push("subheadline too thin");
+  if (summary.length < 200) reasons.push("news_summary too thin");
+  // Self-referential meta-articles about the agent itself
+  const meta = /(this (interaction|response|article)|the ai (model|response)|demonstration of trust)/i;
+  if (meta.test(summary) || meta.test(sub)) reasons.push("article is meta/self-referential, not real news");
+  if ((a.source_urls?.length ?? 0) < 2) reasons.push("fewer than 2 source URLs");
+  if (reasons.length) {
+    throw new Error(`QUALITY_REJECTED: ${reasons.join("; ")}. Headline was: "${h}"`);
+  }
 }
 
 async function analyzeWithFramework(lovableKey: string, newsContext: string) {
