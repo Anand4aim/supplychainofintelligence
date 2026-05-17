@@ -5,9 +5,13 @@ import { ArrowLeft, ExternalLink, Loader2 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
+import SublayerImpactMap from "@/components/live/SublayerImpactMap";
+import CubeProjection2D from "@/components/live/CubeProjection2D";
 
 
-interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: string[]; }
+type SubLayer = string | { name: string; impact?: number; who?: string };
+interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: SubLayer[]; }
+interface CubePosition { functions?: string[]; verticals?: string[]; layers?: string[]; }
 
 interface LiveArticle {
   id: string;
@@ -22,6 +26,7 @@ interface LiveArticle {
   published_at: string;
   analysis: {
     layer_scores: LayerScore[];
+    cube_position?: CubePosition;
     why_now?: string;
     structural_take: string;
     second_order_effects?: string;
@@ -189,6 +194,7 @@ const LiveArticleDetail = () => {
                   return (
                     <div key={layer} className="flex flex-col gap-1">
                       {subs.map((sub, i) => {
+                        const name = typeof sub === "string" ? sub : sub.name;
                         const alpha = Math.max(0.08, 0.22 - i * 0.05);
                         return (
                           <div
@@ -200,9 +206,9 @@ const LiveArticleDetail = () => {
                               border: `1px solid hsl(var(${layerVar(layer)}) / 0.18)`,
                               minHeight: 22,
                             }}
-                            title={sub}
+                            title={name}
                           >
-                            {sub}
+                            {name}
                           </div>
                         );
                       })}
@@ -248,6 +254,32 @@ const LiveArticleDetail = () => {
               </div>
             </div>
           </section>
+
+          {/* Sublayer impact map — what specifically is touched and by what magnitude */}
+          {article.analysis.layer_scores.some(s => (s.intensity ?? 0) > 0 && (s.sublayers?.length ?? 0) > 0) && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-2">— Sublayer Impact Map</p>
+              <p className="text-foreground/70 text-[14px] mb-4 italic">
+                Which of the 50 sublayers this move actually touches, the magnitude of impact, and who plays that slice today.
+              </p>
+              <SublayerImpactMap layerScores={article.analysis.layer_scores} />
+            </section>
+          )}
+
+          {/* Intelligence Cube — 2D projection */}
+          {article.analysis.cube_position && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-2">— Intelligence Cube · 2D</p>
+              <p className="text-foreground/70 text-[14px] mb-4 italic">
+                The move's footprint across the three Cube axes — Functions, Verticals, Layers — flattened into two readable 2D projections.
+              </p>
+              <CubeProjection2D
+                functions={article.analysis.cube_position.functions}
+                verticals={article.analysis.cube_position.verticals}
+                layers={article.analysis.cube_position.layers}
+              />
+            </section>
+          )}
 
           {/* Why now */}
           {article.analysis.why_now && (

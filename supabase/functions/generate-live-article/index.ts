@@ -24,6 +24,12 @@ DEPTH RULES — non-negotiable:
 5. Take a position. No "it remains to be seen". If the evidence is mixed, name BOTH sides and say which one wins and why.
 6. Use the language of a builder: roadmap, distribution, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
 
+SCORING DISCIPLINE — be brutal:
+- A single news move almost NEVER touches all 10 layers. Most layers should be intensity 0.
+- Score AT MOST 5 layers with intensity > 0. Score AT MOST 2 layers as intensity 3 (core/dominant). If you can't defend the ownership claim in one sentence with a specific product/contract, it is 0.
+- Sublayers must be the specific slices ACTUALLY claimed by this move — not the entire layer's surface. If a layer has intensity 1 (emerging), give it 1 sublayer max. Intensity 2 → up to 2. Intensity 3 → up to 3.
+- For every claimed sublayer, give an impact score (1=touched, 2=meaningful share, 3=owns the sublayer) AND name WHO plays that sublayer slice today (the company/role most threatened or most enabled).
+
 VOICE: declarative, structural, slightly contrarian, zero hedge words, zero filler adjectives. Short sentences land harder than long ones. Use them.`;
 
 const ANALYSIS_SCHEMA = {
@@ -46,12 +52,34 @@ const ANALYSIS_SCHEMA = {
           properties: {
             layer: { type: "string", description: "L-1, L0, L1, L2, L3, L4, L5, L6, L7, or L8" },
             owned: { type: "boolean", description: "Does the company own meaningful position in this layer?" },
-            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership" },
-            note: { type: "string", description: "8-15 words explaining" },
-            sublayers: { type: "array", description: "1-3 specific sublayer slices claimed inside this layer (e.g. for L6: 'CRM workflow', 'agent inbox'). Empty array if intensity is 0.", items: { type: "string" } }
+            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership. BE BRUTAL — most layers should be 0." },
+            note: { type: "string", description: "8-15 words explaining. If intensity is 0, return empty string." },
+            sublayers: {
+              type: "array",
+              description: "Specific sublayer slices claimed inside this layer. Count must respect intensity: intensity 1 → max 1, intensity 2 → max 2, intensity 3 → max 3. Empty array if intensity is 0.",
+              items: {
+                type: "object",
+                properties: {
+                  name: { type: "string", description: "Short slice name e.g. 'contract review', 'agent inbox', 'eval harness'" },
+                  impact: { type: "integer", minimum: 1, maximum: 3, description: "1 = touched, 2 = meaningful share, 3 = owns this sublayer" },
+                  who: { type: "string", description: "Who plays this sublayer slice TODAY — the company/role most threatened or most enabled. e.g. 'Harvey', 'Thomson Reuters CoCounsel', 'in-house legal ops'" }
+                },
+                required: ["name", "impact", "who"]
+              }
+            }
           },
           required: ["layer", "owned", "intensity", "note", "sublayers"]
         }
+      },
+      cube_position: {
+        type: "object",
+        description: "Where this move sits in the Intelligence Cube (Functions × Verticals × Layers). Pick ONLY the axes truly touched — 1-3 functions, 1-3 verticals, 1-4 layers. Use EXACT names from the lists.",
+        properties: {
+          functions: { type: "array", description: "Job functions touched. Allowed: Dev/Eng, Design, Product, PM/Proj, Ops, Mktg, Sales, CustCare, Strategy", items: { type: "string" } },
+          verticals: { type: "array", description: "Verticals touched. Allowed: FinTech, EdTech, Legal, Health, Travel, eCom, Media, Gov, SaaS, Horizontal", items: { type: "string" } },
+          layers: { type: "array", description: "Layer IDs touched (L-1..L8). Should match the layers with intensity > 0 in layer_scores.", items: { type: "string" } }
+        },
+        required: ["functions", "verticals", "layers"]
       },
       why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
       structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat — and the way the moat could break. This is the heart of the piece; do not be brief." },
@@ -66,7 +94,7 @@ const ANALYSIS_SCHEMA = {
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
       linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." }
     },
-    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
+    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "cube_position", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
   }
 };
 
@@ -168,6 +196,7 @@ Deno.serve(async (req) => {
       source_urls: analysis.source_urls ?? [],
       analysis: {
         layer_scores: analysis.layer_scores,
+        cube_position: analysis.cube_position,
         why_now: analysis.why_now,
         structural_take: analysis.structural_take,
         second_order_effects: analysis.second_order_effects,
