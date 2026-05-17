@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Start Here", path: "/start" },
   { label: "Live Feed", path: "/live" },
   { label: "Framework", path: "/framework" },
   { label: "Market Map", path: "/market-map" },

@@ -74,6 +74,7 @@ if (isCleanTemplate) {
 // Routes to prerender — must match React Router definitions in src/App.tsx.
 const routes: string[] = [
   "/",
+  "/start",
   "/framework",
   ...LAYERS.map(
     (l) =>
