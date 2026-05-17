@@ -297,11 +297,10 @@ const Index = () => {
 
       {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24 space-y-14">
+          {/* Intro */}
           <motion.div {...fadeIn}>
-            <Eyebrow className="mb-4">
-  The New AI Product Trap
-</Eyebrow>
+            <Eyebrow className="mb-4">The New AI Product Trap</Eyebrow>
             <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-5">
               Desirability without Defensibility
             </h2>
@@ -312,98 +311,211 @@ const Index = () => {
               context accumulate, where does trust get verified, where does the workflow live, and
               where does value accrue?</strong>
             </p>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-10">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
               A product can solve a real user job and still be structurally fragile. That is what
               kills most AI products — not lack of users, but a layer that a foundation model,
               cloud platform, or productivity suite can absorb in a quarter.
             </p>
           </motion.div>
 
-          {/* JTBD vs SCoI contrast table */}
+          {/* Magazine-style comparison table */}
           <motion.div {...fadeIn}>
-            <SketchBoard className="p-5 md:p-8 mb-10">
-              <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 mb-2 pb-3 border-b-2 border-border/60">
-                <div />
-                <div className="font-sketch text-base font-bold text-muted-foreground px-3">
-                  Jobs to Be Done
+            <div className="bg-card rounded-2xl shadow-2xl shadow-foreground/5 border border-border overflow-hidden">
+              <div className="p-6 md:p-12">
+                {/* Header row */}
+                <div className="grid grid-cols-12 gap-4 mb-8 border-b border-border/60 pb-6 md:pb-8">
+                  <div className="col-span-12 md:col-span-4">
+                    <h3 className="font-display text-2xl md:text-3xl text-foreground leading-tight">
+                      Desirability{" "}
+                      <span className="italic font-normal text-muted-foreground/70">vs.</span>{" "}
+                      Defensibility
+                    </h3>
+                  </div>
+                  <div className="col-span-6 md:col-span-4 flex flex-col justify-end">
+                    <span className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1.5 font-bold">
+                      The Incumbent Tool
+                    </span>
+                    <span className="font-display text-lg md:text-xl text-foreground">
+                      Jobs To Be Done
+                    </span>
+                  </div>
+                  <div className="col-span-6 md:col-span-4 flex flex-col justify-end">
+                    <span className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-accent mb-1.5 font-bold">
+                      The Structural Tool
+                    </span>
+                    <span className="font-display text-lg md:text-xl text-foreground">
+                      Supply Chain of Intelligence™
+                    </span>
+                  </div>
                 </div>
-                <Eyebrow dash={false} className="px-3">
-  Supply Chain of Intelligence™
-</Eyebrow>
-              </div>
 
-              {JTBD_VS_SCOI.map((row, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-1 md:grid-cols-[1.1fr_1.3fr_1.6fr] gap-0 py-3 border-b border-border/40 last:border-b-0"
-                >
-                  <div className="font-sketch text-sm font-bold text-foreground px-3 py-1">
-                    {row.question}
-                  </div>
-                  <div className="text-sm text-muted-foreground px-3 py-1 leading-relaxed">
-                    {row.jtbd}
-                  </div>
-                  <div className="text-sm text-foreground px-3 py-1 leading-relaxed font-medium">
-                    {row.scoi}
-                  </div>
+                {/* Rows */}
+                <div>
+                  {JTBD_VS_SCOI.map((row, i) => (
+                    <div
+                      key={i}
+                      className="grid grid-cols-12 gap-2 py-5 border-b border-border/40 last:border-b-0 hover:bg-secondary/40 transition-colors"
+                    >
+                      <div className="col-span-12 md:col-span-4 pr-4">
+                        <span className="font-mono-marker text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-muted-foreground/80 font-bold">
+                          {row.question}
+                        </span>
+                      </div>
+                      <div className="col-span-6 md:col-span-4 px-1 md:px-4 text-sm md:text-[15px] text-muted-foreground leading-relaxed">
+                        {row.jtbd}
+                      </div>
+                      <div className="col-span-6 md:col-span-4 px-3 md:px-5 py-1.5 font-medium text-foreground bg-accent/[0.06] rounded-lg leading-relaxed text-sm md:text-[15px]">
+                        {row.scoi}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
 
-              <div className="mt-5 pt-4 border-t border-border/60 text-center">
-                <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
-                  <strong className="text-muted-foreground">JTBD finds demand.</strong>{" "}
-                  <strong className="text-accent">The Supply Chain of Intelligence finds defensibility.</strong>
-                </p>
+                <div className="mt-10 pt-8 border-t border-border/60 text-center">
+                  <p className="font-display text-lg md:text-2xl text-foreground italic leading-snug">
+                    JTBD finds demand.{" "}
+                    <span className="text-accent underline decoration-accent/30 underline-offset-[6px] decoration-[3px] not-italic font-bold">
+                      The Supply Chain finds defensibility.
+                    </span>
+                  </p>
+                </div>
               </div>
-            </SketchBoard>
+            </div>
           </motion.div>
 
-          {/* Two-fate proof: Gamma surface vs Replit deep ownership */}
-          <motion.div {...fadeIn}>
-            <p className="font-sketch text-base text-sketch-muted mb-3 text-center">
-              — Same prompt-to-output category. Different fate. ↓
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div className="rounded-xl p-5 border border-verdict-exposed/30 bg-verdict-exposed/5 sketch-border">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-sketch text-base font-bold text-verdict-exposed">Gamma</span>
-                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-exposed/15 text-verdict-exposed">L7 only</span>
+          {/* Two-fate proof: Gamma vs Replit */}
+          <motion.div {...fadeIn} className="space-y-6">
+            <div className="flex items-center gap-4">
+              <span className="font-mono-marker text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-bold whitespace-nowrap">
+                Same JTBD category → Different fate
+              </span>
+              <div className="h-px w-full bg-border" />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Gamma — Exposed */}
+              <div
+                className="relative rounded-2xl border p-7 md:p-8 shadow-sm hover:shadow-xl transition-all"
+                style={{
+                  background: "hsl(var(--layer-7-bg) / 0.4)",
+                  borderColor: "hsl(var(--layer-7) / 0.25)",
+                }}
+              >
+                <div className="flex justify-between items-start mb-5 gap-3">
+                  <div className="space-y-2">
+                    <h4 className="font-display text-2xl text-foreground">Gamma</h4>
+                    <LayerTag id="L7" />
+                  </div>
+                  <div
+                    className="flex items-center gap-2 px-3 py-1 rounded-full border whitespace-nowrap"
+                    style={{
+                      background: "hsl(var(--verdict-exposed) / 0.08)",
+                      borderColor: "hsl(var(--verdict-exposed) / 0.25)",
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full animate-pulse"
+                      style={{ background: "hsl(var(--verdict-exposed))" }}
+                    />
+                    <span
+                      className="font-mono-marker text-[9px] font-bold uppercase tracking-[0.15em]"
+                      style={{ color: "hsl(var(--verdict-exposed))" }}
+                    >
+                      Exposed
+                    </span>
+                  </div>
                 </div>
-                <p className="text-sm text-foreground leading-relaxed mb-2">
-                  Solves a real JTBD: "help me create a polished deck quickly." Beautiful surface.
+                <p className="text-foreground font-medium leading-relaxed mb-3 text-[15px]">
+                  "Help me create a polished deck quickly." Beautiful surface.
                 </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   But most of the value comes from models and rendering anyone can reproduce.
-                  Brand workflow, design system, and proprietary usage data are thin. The platform
-                  layer below it can absorb the category.
+                  Brand workflow, design system, and proprietary usage data are thin. The
+                  platform layer below can absorb the category.
                 </p>
               </div>
 
-              <div className="rounded-xl p-5 border border-verdict-fortified/30 bg-verdict-fortified/5 sketch-border">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-sketch text-base font-bold text-verdict-fortified">Replit</span>
-                  <span className="font-sketch text-xs px-2 py-0.5 rounded-full bg-verdict-fortified/15 text-verdict-fortified">L4 + L5 + L6 + L8</span>
+              {/* Replit — Fortified */}
+              <div
+                className="relative rounded-2xl border p-7 md:p-8 shadow-sm hover:shadow-xl transition-all"
+                style={{
+                  background: "hsl(var(--layer-5-bg) / 0.4)",
+                  borderColor: "hsl(var(--layer-5) / 0.25)",
+                }}
+              >
+                <div className="flex justify-between items-start mb-5 gap-3 flex-wrap">
+                  <div className="space-y-2">
+                    <h4 className="font-display text-2xl text-foreground">Replit</h4>
+                    <div className="flex gap-1.5 flex-wrap">
+                      <LayerTag id="L4" />
+                      <LayerTag id="L5" />
+                      <LayerTag id="L6" />
+                      <LayerTag id="L8" />
+                    </div>
+                  </div>
+                  <div
+                    className="flex items-center gap-2 px-3 py-1 rounded-full border whitespace-nowrap"
+                    style={{
+                      background: "hsl(var(--verdict-fortified) / 0.08)",
+                      borderColor: "hsl(var(--verdict-fortified) / 0.3)",
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ background: "hsl(var(--verdict-fortified))" }}
+                    />
+                    <span
+                      className="font-mono-marker text-[9px] font-bold uppercase tracking-[0.15em]"
+                      style={{ color: "hsl(var(--verdict-fortified))" }}
+                    >
+                      Fortified
+                    </span>
+                  </div>
                 </div>
-                <p className="text-sm text-foreground leading-relaxed mb-2">
-                  Same prompt-to-output category. But owns the execution chain end-to-end.
+                <p className="text-foreground font-medium leading-relaxed mb-3 text-[15px]">
+                  Owns the execution chain end-to-end. A proprietary stack.
                 </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Agent + code generation + hosting + auth + database + monitoring + integrations
-                  + enterprise controls. Not a UI on top of a model — a system the platform can't
-                  bundle in a sprint.
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Agent + code generation + hosting + auth + database + monitoring +
+                  integrations + enterprise controls. Not a UI on top of a model — a system the
+                  platform can't bundle in a sprint.
                 </p>
               </div>
             </div>
+          </motion.div>
 
-            {/* Quote */}
-            <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl mx-auto mt-10">
-              <p className="text-sm text-foreground leading-relaxed italic">
-                "JTBD answers <strong>why a user will hire your product</strong>. The Supply Chain
-                of Intelligence answers <strong>why OpenAI, Google, Anthropic and other AI
-                juggernauts won't erase it</strong>. You need both — if you do it well, you can
-                ride the wave without getting crushed in it."
-              </p>
-              <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
+          {/* Dark quote slab */}
+          <motion.div {...fadeIn}>
+            <div className="relative bg-foreground rounded-3xl p-10 md:p-16 overflow-hidden">
+              <div
+                className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none"
+                style={{ background: "hsl(var(--accent) / 0.18)" }}
+              />
+              <div
+                className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"
+                style={{ background: "hsl(var(--layer-2) / 0.15)" }}
+              />
+
+              <div className="relative z-10 max-w-3xl mx-auto">
+                <blockquote className="font-display text-xl md:text-3xl text-background leading-snug text-center">
+                  "JTBD answers{" "}
+                  <span className="italic" style={{ color: "hsl(var(--accent))" }}>
+                    why a user will hire your product
+                  </span>
+                  . The Supply Chain of Intelligence answers{" "}
+                  <span className="italic" style={{ color: "hsl(var(--layer-2))" }}>
+                    why OpenAI, Google, Anthropic and other AI juggernauts won't erase it
+                  </span>
+                  . You need both — if you do it well, you can ride the wave without getting
+                  crushed in it."
+                </blockquote>
+                <div className="mt-8 md:mt-10 flex flex-col items-center">
+                  <div className="w-12 h-px bg-background/30 mb-4" />
+                  <cite className="font-mono-marker text-[11px] uppercase tracking-[0.3em] text-background/60 font-bold not-italic">
+                    Anand Arivukkarasu
+                  </cite>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
