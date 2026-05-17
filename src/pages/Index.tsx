@@ -18,6 +18,7 @@ import {
   SketchLabel,
   SketchConnector,
 } from "@/components/sketch/SketchElements";
+import SixtySecondTour from "@/components/SixtySecondTour";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
