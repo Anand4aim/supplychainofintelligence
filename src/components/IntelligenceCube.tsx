@@ -54,7 +54,7 @@ const COMPANIES: CompanyPlot[] = [
 ];
 
 const occupies = (c: CompanyPlot, axis: "layers" | "verticals" | "functions", idx: number) =>
-  idx >= c[axis][0] && idx <= c[axis][1];
+  c[axis].includes(idx);
 
 const ComparisonGrid: React.FC<{
   yAxis: string[];
