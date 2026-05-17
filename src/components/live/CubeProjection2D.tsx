@@ -115,9 +115,92 @@ const Grid: React.FC<{
               });
             })}
           </div>
+          {/* X labels */}
+          <div
+            className="grid gap-[3px] mt-1.5"
+            style={{ gridTemplateColumns: `repeat(${xAxis.length}, minmax(0, 1fr))` }}
+          >
+            {xAxis.map((x, xIdx) => (
+              <div
+                key={x}
+                className="font-mono-marker text-[9px] text-center leading-tight break-words"
+                style={{
+                  color: xHits[xIdx]
+                    ? "hsl(var(--foreground))"
+                    : "hsl(var(--foreground) / 0.45)",
+                  fontWeight: xHits[xIdx] ? 700 : 400,
+                }}
+              >
+                {x}
+              </div>
+            ))}
+          </div>
+          {emptyAxis && (
+            <p className="font-mono-marker text-[10px] text-foreground/50 italic mt-3">
+              Axis-agnostic on {xLabel.toLowerCase()} — this move reshapes the stack itself, not a specific {xLabel.toLowerCase().replace(/s$/, "")}.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], layers = [] }) => {
+  const layerHits = matchIndex(LAYERS, layers);
+  const funcHits = matchIndex(FUNCTIONS, functions);
+  const vertHits = matchIndex(VERTICALS, verticals);
+  const cellColorFor = (layerIdx: number) => `hsl(var(${layerVar(LAYERS[layerIdx])}) / 0.7)`;
+
+  // Dormant footprint — when a position only touches 1–2 layers, faintly project
+  // the two adjacent layers so the cube doesn't look empty for sparse moves.
+  const layerCount = layerHits.filter(Boolean).length;
+  const dormantLayerHits = [...layerHits];
+  if (layerCount > 0 && layerCount <= 2) {
+    layerHits.forEach((hit, i) => {
+      if (!hit) return;
+      if (i - 1 >= 0 && !dormantLayerHits[i - 1]) dormantLayerHits[i - 1] = true;
+      if (i + 1 < dormantLayerHits.length && !dormantLayerHits[i + 1]) dormantLayerHits[i + 1] = true;
+    });
+  }
+  const hasDormant = dormantLayerHits.some((d, i) => d && !layerHits[i]);
+
+  if (!layers.length && !functions.length && !verticals.length) return null;
+
+  return (
+    <div
+      className="rounded-2xl p-5 md:p-6"
+      style={{
+        background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
+        border: "1px solid hsl(35 20% 88%)",
+      }}
+    >
+      <div className="grid md:grid-cols-2 gap-8">
+        <Grid
+          yAxis={LAYERS}
+          xAxis={VERTICALS}
+          yLabel="Layers"
+          xLabel="Verticals"
+          yHits={layerHits}
+          xHits={vertHits}
+          yDormantHits={dormantLayerHits}
+          cellColorFor={cellColorFor}
+        />
+        <Grid
+          yAxis={LAYERS}
+          xAxis={FUNCTIONS}
+          yLabel="Layers"
+          xLabel="Functions"
+          yHits={layerHits}
+          xHits={funcHits}
+          yDormantHits={dormantLayerHits}
+          cellColorFor={cellColorFor}
+        />
+      </div>
 
       <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
         Two 2D projections of the Intelligence Cube (Functions × Verticals × Layers). Filled cells = this move occupies that intersection.
+        {hasDormant && " Dashed cells = adjacent layers a sparse move could pull in next."}
       </p>
     </div>
   );
