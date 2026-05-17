@@ -5,6 +5,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
+import anandPortrait from "@/assets/anand-portrait.png";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
 
@@ -63,17 +64,19 @@ const AboutPage = () => (
         <Eyebrow className="mb-5">About the author</Eyebrow>
 
         <div className="grid md:grid-cols-[180px_1fr] gap-8 items-start">
-          {/* Portrait placeholder — keeps the monogram identity until a real photo is dropped in */}
+          {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative w-[180px] h-[180px] rounded-2xl border-2 border-accent/30 overflow-hidden shrink-0 mx-auto md:mx-0"
-            style={{ background: "linear-gradient(145deg, hsl(var(--accent) / 0.12), hsl(var(--accent) / 0.04))" }}
+            className="relative w-[180px] h-[180px] rounded-2xl border-2 border-accent/30 overflow-hidden shrink-0 mx-auto md:mx-0 shadow-lg"
           >
-            <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-accent text-6xl tracking-tighter">
-              AA
-            </div>
+            <img
+              src={anandPortrait}
+              alt="Anand Arivukkarasu — Ex-Meta product leader, creator of The Supply Chain of Intelligence"
+              className="w-full h-full object-cover"
+              loading="eager"
+            />
             <div className="absolute bottom-0 inset-x-0 bg-background/90 backdrop-blur px-2 py-1 text-[10px] text-center font-mono-marker text-muted-foreground border-t border-border">
               ANAND ARIVUKKARASU
             </div>
