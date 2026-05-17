@@ -18,7 +18,7 @@ const ForProductLeaders = () => (
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-sketch text-lg font-bold text-accent mb-5">
+          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-5">
             — For Product Leaders
           </p>
           <h1 className="font-display text-[28px] md:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
@@ -37,7 +37,7 @@ const ForProductLeaders = () => (
     {/* The Two Axes */}
     <section className="bg-secondary/30">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-sketch text-lg font-bold text-accent mb-4">— The Shift</p>
+        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— The Shift</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           From Y-Axis Thinking to Y+Z Thinking
         </h2>
@@ -80,7 +80,7 @@ const ForProductLeaders = () => (
     {/* How to Use */}
     <section className="bg-background border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-sketch text-lg font-bold text-accent mb-4">— Practical Application</p>
+        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— Practical Application</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           How Product Leaders Use the Framework
         </h2>

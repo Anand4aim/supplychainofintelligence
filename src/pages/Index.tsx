@@ -298,7 +298,7 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — The New AI Product Trap
             </p>
             <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-5">
@@ -412,7 +412,7 @@ const Index = () => {
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — Why We Call It a Supply Chain
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-4">
@@ -515,7 +515,7 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
-            <p className="font-sketch text-lg font-bold text-accent mb-3">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">
               — The Full Map
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
@@ -660,7 +660,7 @@ const Index = () => {
       <section className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — Three Structural Laws
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
@@ -720,7 +720,7 @@ const Index = () => {
       <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — Use the Framework
             </p>
             <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-3">
@@ -742,7 +742,7 @@ const Index = () => {
                     key={i}
                     className="flex items-start gap-3 rounded-lg border border-border bg-card p-3.5 sketch-border"
                   >
-                    <span className="font-sketch text-lg font-bold text-accent shrink-0 leading-none mt-0.5">
+                    <span className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent shrink-0 leading-none mt-0.5">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="min-w-0 flex-1">
@@ -813,7 +813,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="flex items-end justify-between mb-10">
             <div>
-              <p className="font-sketch text-lg font-bold text-accent mb-3">
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">
                 — The Framework in Action
               </p>
               <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground">
@@ -843,7 +843,7 @@ const Index = () => {
       <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — The Intelligence Cube™
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
@@ -864,7 +864,7 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
           <motion.div {...fadeIn}>
-            <p className="font-sketch text-lg font-bold text-accent mb-4">
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
               — The Diagnostic
             </p>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-6">
