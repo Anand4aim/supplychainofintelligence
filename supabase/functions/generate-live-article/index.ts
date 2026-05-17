@@ -164,10 +164,12 @@ Deno.serve(async (req) => {
     }
 
     let topic: string | undefined;
+    let publishedAt: string | undefined;
     try {
       if (req.method === "POST") {
         const body = await req.json();
         topic = typeof body?.topic === "string" ? body.topic : undefined;
+        publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
       }
     } catch (_) { /* no body */ }
 
