@@ -209,30 +209,8 @@ const CaseStudyDetailPage = () => {
               </section>
             )}
 
-            {/* Author block */}
-            <div className="mt-14 pt-8 border-t border-border flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center font-display font-bold text-accent text-lg shrink-0">
-                AA
-              </div>
-              <div>
-                <p className="font-display font-bold text-foreground">Anand Arivukkarasu</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ex-Meta product leader. Creator of The Supply Chain of Intelligence™. Writes about where AI value
-                  accrues — and who can fire your product.{" "}
-                  <a
-                    href="https://www.linkedin.com/in/anandarivu"
-                    target="_blank"
-                    rel="noopener"
-                    className="text-accent hover:underline"
-                  >
-                    LinkedIn
-                  </a>
-                </p>
-              </div>
-            </div>
+            {/* (Author block + CTAs below) */}
 
-
-            {/* Author + CTAs */}
             <ArticleFooterCTA
               source={`case-study:${study.slug}`}
               shareUrl={url}
