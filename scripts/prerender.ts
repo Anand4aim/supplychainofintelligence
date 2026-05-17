@@ -75,6 +75,7 @@ if (isCleanTemplate) {
 const routes: string[] = [
   "/",
   "/start",
+  "/predictions",
   "/framework",
   ...LAYERS.map(
     (l) =>
