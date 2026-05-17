@@ -333,28 +333,79 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "Sierra", logo: logo("sierra.ai"), color: "#6366F1" },
       { name: "Salesforce", logo: logo("salesforce.com"), color: "#00A1E0" },
     ],
-    tag: "DEEP DIVE",
+    tag: "DEEP DIVE · CUSTOMER EXPERIENCE",
     title: "Sierra's Memory Moat: Why L8 Beats Salesforce's Agentforce",
-    verdict: "MEMORY = MOAT",
+    verdict: "L1 + L5 + L8 FORTRESS",
     excerpt:
-      "Sierra learns from every customer resolution. Salesforce Agentforce doesn't. This single architectural difference — compounding memory at L8 — determines who captures the next decade of enterprise CX value.",
-    layers: ["L1", "L5", "L8"],
+      "Sierra and Salesforce Agentforce look like the same product on stage — an AI agent that resolves customer issues. The Cube projection shows they are structurally opposite. Sierra was architected as L1+L5+L8 from day one: every resolution compounds into per-customer memory. Agentforce is L5 bolted onto Salesforce's existing L1, with no compounding loop. Same demo, opposite trajectories.",
+    layers: ["L1", "L4", "L5", "L8"],
     date: "March 2026",
-    readTime: "9 min",
+    readTime: "10 min",
     valuation: {
       label: "Sierra Valuation",
-      before: "—",
-      after: "$4.5B",
+      before: "$0 (2023)",
+      after: "$10B+ (2025)",
       trend: "up",
-      changeLabel: "Rising",
+      changeLabel: "Compounding",
     },
-    content: `Sierra occupies the most structurally durable position in customer experience: L1 (customer data) + L5 (domain execution) + L8 (memory that compounds).
+    content: `Sierra is Bret Taylor's second act and the most architecturally honest AI company of this cycle. The structural read explains the valuation in a way the press release cannot.
 
-**The memory advantage:** Every customer interaction makes Sierra smarter. It remembers resolution patterns, customer preferences, and edge cases. This creates a compounding data moat that grows with usage.
+**What Sierra is.** A customer-experience agent platform. Brands (SiriusXM, Sonos, WeightWatchers, ADT, Casper) deploy a Sierra agent to handle inbound customer issues across chat, voice, email. The agent doesn't just answer — it executes (refunds, plan changes, returns, escalations) inside the brand's existing systems.
 
-**Compare to Salesforce:** Agentforce is impressive, but Salesforce's architecture doesn't compound. It stores data but doesn't learn from it.
+**The four layers Sierra owns simultaneously:**
+- **L1 — proprietary data per customer.** Every conversation, every resolution, every CSAT score, every edge case is logged per-brand and *stays* per-brand. The corpus compounds.
+- **L5 — domain execution.** Real workflows: refund authorization, subscription changes, account merges. Not a chatbot — an agent with execute permissions.
+- **L8 — memory that compounds.** Month 2 is meaningfully better than month 1 on the same brand's queries. This is the structural moat.
+- **Partial L4 — brand-perimeter distribution.** Sierra is the agent *behind your brand's surface*. Once embedded, the switching cost is the cumulative L8 — not just an integration cost.
 
-**The Cube view:** Sierra is TALL — multiple layers, focused verticals, deep functions. This is the fortress pattern.`,
+**Why Salesforce Agentforce looks the same on stage and is not.** Salesforce already owns one of the largest L1 assets in enterprise (the CRM data). Agentforce is Salesforce's L5 layer on top of that L1. That sounds equivalent — and it is, on day one. The architectural difference is the *compounding loop*: Salesforce's data model was built for record-of-truth, not per-conversation learning. Agentforce can be configured to learn, but every Salesforce customer's deployment is bespoke and the cross-tenant memory is constrained by Salesforce's contractual posture.
+
+Sierra's loop is the product. Agentforce's loop is an option you have to architect.
+
+**Law III in action.** As L2 (the underlying LLM) commoditizes, the question is what gets *more* valuable as model capability commoditizes. Three layers do: L1 (your data), L4 (your distribution), and L8 (your memory). Sierra is built on two of those plus the L5 that turns the memory into action. Agentforce is built on Salesforce's existing L1 and a less-compounding L8.
+
+**The Cube projection.** Sierra is TALL (4 layers), focused on a narrow set of high-touch verticals (consumer subscriptions, retail, services), and DEEP into the support function. Textbook fortress: tall, narrow, deep. Agentforce is WIDE (every Salesforce vertical), SHALLOW (one or two layers above the CRM), and broad across functions. Different cube shape, different fate.
+
+**Where this lands by 2027.** Two equally plausible futures: (a) Sierra builds a $1B+ revenue franchise as the default AI-CX layer for premium consumer brands; or (b) Salesforce/Microsoft acquire it to inject a real L8 loop into their existing L1+L5 stacks. Either way the *layer* wins. The standalone-startup outcome is the higher-variance bet on a structurally lower-variance moat.
+
+*Public reporting; valuations as disclosed by Sierra, Salesforce.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "Per-brand proprietary corpus of every resolved conversation. The structural advantage CRMs were never architected to compound.", sublayers: [{ name: "Per-brand conversation log", impact: 3, who: "Sierra" }, { name: "Resolution outcomes & CSAT", impact: 3, who: "Sierra" }] },
+      { layer: "L4", owned: true, intensity: 2, note: "Embedded behind the brand's customer surface across chat, voice, email. Distribution is the brand itself, not a Sierra-owned app.", sublayers: [{ name: "Brand-perimeter integration", impact: 2, who: "Sierra" }] },
+      { layer: "L5", owned: true, intensity: 3, note: "Real execute permissions inside the brand's systems — refunds, returns, plan changes. Not a chatbot, an actor.", sublayers: [{ name: "Refund / subscription / dispute execution", impact: 3, who: "Sierra" }] },
+      { layer: "L8", owned: true, intensity: 3, note: "The decisive moat. Month-over-month accuracy improves per brand — a compounding asset every L7-only competitor structurally cannot reproduce.", sublayers: [{ name: "Per-brand resolution memory", impact: 3, who: "Sierra" }, { name: "Edge-case adaptation", impact: 2, who: "Sierra" }] },
+      { layer: "L2", owned: false, intensity: 2, note: "Rented from frontier labs. Swappable. Not the moat — and Sierra is rightly indifferent to which lab provides it.", sublayers: [{ name: "Foundation model", impact: 2, who: "OpenAI / Anthropic (swappable)" }] },
+    ],
+    cube_position: {
+      functions: ["CustCare", "Sales"],
+      verticals: ["Retail/Ecom", "Health", "FinTech"],
+      layers: ["L1", "L4", "L5", "L8"],
+    },
+    timeline: [
+      { date: "Feb 2024", label: "Sierra emerges from stealth (Bret Taylor + Clay Bavor). Launches with SiriusXM, Sonos, WeightWatchers as design partners.", tone: "up" },
+      { date: "Mid-2024", label: "First disclosed deployments showing measurable cost reduction and CSAT maintenance. ADT, Casper added.", tone: "up" },
+      { date: "Sep 2024", label: "Sierra valued at ~$4.5B in early growth round.", tone: "up" },
+      { date: "Late 2024", label: "Salesforce announces Agentforce — same surface category, structurally different architecture (L5 on existing L1, weaker L8 loop).", tone: "neutral" },
+      { date: "2025", label: "Sierra raises again at ~$10B. Vertical expansion: travel, financial services, consumer health. L8 compounding becomes a referenceable metric in sales motions.", tone: "up" },
+      { date: "2026", label: "Acquisition rumors recur (Microsoft, Salesforce, Adobe). Standalone path remains plausible.", tone: "up" },
+    ],
+    who_wins: [
+      { name: "Sierra", reason: "Owns L1+L5+L8 in a category where the LLM is the cheapest ingredient. The compounding loop is the business." },
+      { name: "Premium consumer brands deploying it", reason: "Get an agent that actually gets better at *their* customers — not a generic model with a wrapper." },
+      { name: "Bret Taylor / Clay Bavor archetype", reason: "Architectural-discipline AI startups beat me-too L7 agents. Sierra will be the case study for a decade." },
+    ],
+    who_loses: [
+      { name: "Pure-play L7 'AI customer service' startups", reason: "Without per-brand L1+L8 compounding, you're a chatbot pricing race-to-the-bottom against Salesforce, Zendesk, Intercom." },
+      { name: "Legacy CX SaaS priced per agent seat", reason: "Sierra's pricing is per-resolution. As agents replace seats, per-seat economics collapse. Era 4 in production." },
+      { name: "Salesforce Agentforce (partially)", reason: "Strong demo, but architecturally the compounding loop is harder to retrofit than to build from day one." },
+    ],
+    counter_thesis: `The counter is that Sierra's L8 is overstated because the underlying LLM keeps getting better fast — and a 'generic' model with a thin per-brand RAG layer (Salesforce Agentforce, Zendesk AI, Intercom Fin) may close 80% of the perceived gap as base capability rises. If that happens, Sierra's $10B valuation rests on premium-brand willingness to pay for the last 20% of resolution quality, which is a much smaller TAM than the bull case requires. The honest read: Sierra is structurally durable in a $500M–$1B revenue band; whether it ever justifies a standalone $30B+ outcome depends on how much of the compounding loop the L4-incumbent CRMs can replicate before the lock-in fully sets.`,
+    for_you: {
+      product_leader: "If you're shipping an AI feature on top of someone else's L1, you do not have a moat — your L4 owner does. Architect L8 (memory that compounds per customer) from day one or accept feature-status.",
+      investor: "AI-agent companies built as L7+rented-L2 are structurally short. AI-agent companies built as L1+L5+L8 are the new fortress archetype. Underwrite the architecture, not the demo.",
+      operator: "When evaluating a CX-AI vendor, ask one question: 'Does month 2 measurably outperform month 1 on the same query mix?' If the answer is no, you are buying a chatbot, not a system.",
+    },
+    pull_quote: "Sierra was architected as L1+L5+L8 from day one. Agentforce is L5 bolted onto Salesforce's existing L1. Same demo, opposite trajectories.",
   },
   {
     slug: "stability-ai-open-model-trap",
