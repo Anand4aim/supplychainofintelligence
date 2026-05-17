@@ -167,16 +167,29 @@ const Index = () => {
               <div className="h-px w-16 bg-accent/70 mb-6" />
 
               {/* Header row */}
-              <div className="grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-center mb-2">
+              <div className="grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-end mb-2">
                 <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                 <div className="grid grid-cols-8 gap-1.5">
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                    <div
-                      key={n}
-                      className="text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
-                      style={{ background: `hsl(var(--layer-${n}))` }}
-                    >
-                      L{n}
+                  {([
+                    { n: 1, name: "Cloud" },
+                    { n: 2, name: "Models" },
+                    { n: 3, name: "Inference" },
+                    { n: 4, name: "Agents" },
+                    { n: 5, name: "Tools" },
+                    { n: 6, name: "Apps" },
+                    { n: 7, name: "Distribution" },
+                    { n: 8, name: "Memory" },
+                  ] as const).map(({ n, name }) => (
+                    <div key={n} className="flex flex-col items-center gap-1">
+                      <span className="font-mono-marker text-[9px] tracking-[0.06em] text-muted-foreground/90 leading-tight text-center truncate w-full">
+                        {name}
+                      </span>
+                      <div
+                        className="w-full text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
+                        style={{ background: `hsl(var(--layer-${n}))` }}
+                      >
+                        L{n}
+                      </div>
                     </div>
                   ))}
                 </div>
