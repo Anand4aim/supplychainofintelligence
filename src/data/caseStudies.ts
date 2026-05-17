@@ -572,11 +572,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     companies: [
       { name: "Harvey AI", logo: logo("harvey.ai"), color: "#1E3A5F" },
     ],
-    tag: "FORTRESS PATTERN",
-    title: "Harvey AI: The Vertical Fortress That Generic AI Can't Touch",
-    verdict: "FORTRESS — SAFE",
+    tag: "FORTRESS PATTERN — NOW CONTESTED",
+    title: "Harvey AI: A Vertical Fortress, Now Under Platform Attack",
+    verdict: "FORTRESS — CONTESTED",
     excerpt:
-      "Harvey occupies L1 (legal data) + L3 (compliance/governance) + L5 (domain execution) + L8 (case memory). Four layers deep in a regulated vertical. Generic AI can't replicate L3. This is the fortress archetype.",
+      "Harvey was built four layers deep — L1 (legal data) + L3 (compliance) + L5 (domain execution) + L8 (case memory) — the textbook Fortress archetype. May 2026 update: Anthropic's Claude for Legal is now attacking from L2 upward, testing whether vertical depth still beats horizontal platform reach.",
     layers: ["L1", "L3", "L5", "L8"],
     date: "March 2026",
     readTime: "7 min",
