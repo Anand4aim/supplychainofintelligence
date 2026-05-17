@@ -104,13 +104,20 @@ function buildHtml(route: string): string {
   // Remove static canonical (Helmet emits its own per-route).
   out = out.replace(/\s*<link rel="canonical"[^>]*\/?>/g, "");
 
-  // Inject Helmet output just before </head>.
+  // Inject Helmet output just before </head>. Helmet already emits its own
+  // canonical link, so don't add a second one (duplicate canonicals are
+  // invalid SEO). If a route's Seo component forgot to set canonical,
+  // fall back to one synthesized from the route's URL.
+  const helmetHasCanonical = /rel="canonical"/.test(head.link);
+  const canonicalFallback = helmetHasCanonical
+    ? ""
+    : `<link rel="canonical" href="${url}" />\n    `;
   const headInjection = [head.meta, head.link, head.script]
     .filter(Boolean)
     .join("\n    ");
   out = out.replace(
     "</head>",
-    `    <link rel="canonical" href="${url}" />\n    ${headInjection}\n  </head>`,
+    `    ${canonicalFallback}${headInjection}\n  </head>`,
   );
 
   // Inject SSR'd body inside #root with a marker so main.tsx knows to remount.
