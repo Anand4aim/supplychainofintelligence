@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,23 +24,21 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/framework" element={<FrameworkPage />} />
-          <Route path="/framework/:layerId" element={<LayerDetailPage />} />
-          <Route path="/analysis" element={<AnalysisPage />} />
-          <Route path="/analysis/:slug" element={<CaseStudyDetailPage />} />
-          <Route path="/for-product-leaders" element={<ForProductLeaders />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/live" element={<LivePage />} />
-          <Route path="/live/:slug" element={<LiveArticleDetail />} />
-          <Route path="/market-map" element={<MarketMap />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route path="/laws/:slug" element={<LawEssayPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/framework" element={<FrameworkPage />} />
+        <Route path="/framework/:layerId" element={<LayerDetailPage />} />
+        <Route path="/analysis" element={<AnalysisPage />} />
+        <Route path="/analysis/:slug" element={<CaseStudyDetailPage />} />
+        <Route path="/for-product-leaders" element={<ForProductLeaders />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/live" element={<LivePage />} />
+        <Route path="/live/:slug" element={<LiveArticleDetail />} />
+        <Route path="/market-map" element={<MarketMap />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/laws/:slug" element={<LawEssayPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </TooltipProvider>
   </QueryClientProvider>
 );
