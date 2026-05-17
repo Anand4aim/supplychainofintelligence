@@ -161,8 +161,7 @@ const Predictions = () => {
           <p className="text-foreground/60 text-sm">No predictions match “{query}”.</p>
         ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
-          {filtered
-            .map((p, i) => {
+          {filtered.map((p, i) => {
               const meta = STATUS_META[p.status];
               const Icon = meta.icon;
               return (
@@ -174,19 +173,6 @@ const Predictions = () => {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: i * 0.04 }}
                   className="relative pl-8 pb-12 scroll-mt-24"
-                >
-                  <span
-              const meta = STATUS_META[p.status];
-              const Icon = meta.icon;
-              return (
-                <motion.li
-                  key={p.id}
-                  id={p.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.04 }}
-                  className="relative pl-8 pb-12"
                 >
                   <span
                     className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full border-2 border-background"
