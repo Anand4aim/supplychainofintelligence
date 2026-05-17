@@ -378,17 +378,17 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </text>
       ))}
 
-      {/* FUNCTIONS tick labels along front-right floor edge (v=0, f=0..N), rotated to match axis */}
+      {/* FUNCTIONS tick labels — pushed OUTSIDE the front-right floor edge (v=0) */}
       {FUNCTIONS_SHORT.map((name, i) => {
-        const tx = isoX(i + 0.5, 0) + 5;
-        const ty = isoY(i + 0.5, 0, 0) + 5;
+        const tx = isoX(i + 0.5, 0) + 14;
+        const ty = isoY(i + 0.5, 0, 0) + 16;
         return (
           <text
             key={`ft-${i}`}
             x={tx}
             y={ty}
             fill="hsl(var(--muted-foreground))"
-            fontSize={8}
+            fontSize={8.5}
             fontFamily="ui-monospace, monospace"
             fontWeight={600}
             textAnchor="start"
@@ -399,17 +399,17 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         );
       })}
 
-      {/* VERTICALS tick labels along front-left floor edge (f=0, v=0..N), rotated to match axis */}
+      {/* VERTICALS tick labels — pushed OUTSIDE the front-left floor edge (f=0) */}
       {VERTICALS_SHORT.map((name, i) => {
-        const tx = isoX(0, i + 0.5) - 5;
-        const ty = isoY(0, i + 0.5, 0) + 5;
+        const tx = isoX(0, i + 0.5) - 14;
+        const ty = isoY(0, i + 0.5, 0) + 16;
         return (
           <text
             key={`vt-${i}`}
             x={tx}
             y={ty}
             fill="hsl(var(--muted-foreground))"
-            fontSize={8}
+            fontSize={8.5}
             fontFamily="ui-monospace, monospace"
             fontWeight={600}
             textAnchor="end"
