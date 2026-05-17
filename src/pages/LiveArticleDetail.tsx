@@ -192,6 +192,7 @@ const LiveArticleDetail = () => {
                   return (
                     <div key={layer} className="flex flex-col gap-1">
                       {subs.map((sub, i) => {
+                        const name = typeof sub === "string" ? sub : sub.name;
                         const alpha = Math.max(0.08, 0.22 - i * 0.05);
                         return (
                           <div
@@ -203,9 +204,9 @@ const LiveArticleDetail = () => {
                               border: `1px solid hsl(var(${layerVar(layer)}) / 0.18)`,
                               minHeight: 22,
                             }}
-                            title={sub}
+                            title={name}
                           >
-                            {sub}
+                            {name}
                           </div>
                         );
                       })}
