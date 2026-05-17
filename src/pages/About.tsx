@@ -37,7 +37,7 @@ const ROLES: { era: string; org: string; role: string }[] = [
 const CRED_CHIPS = [
   { icon: Briefcase, label: "Ex-Meta (Instagram)" },
   { icon: Lightbulb, label: "Angel investor & advisor" },
-  { icon: Mic, label: "Product School instructor" },
+  { icon: Mic, label: "Speaker" },
   { icon: MapPin, label: "San Francisco" },
 ];
 
