@@ -11,7 +11,7 @@ JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
 
 /* FRAMEWORK */
 Name: The Supply Chain of Intelligence™
-Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube™ · AI Defensibility Audit
+Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube · AI Defensibility Audit
 
 The 10 Layers:
   L-1 Resources       — energy, water, fabs, materials, skilled trades

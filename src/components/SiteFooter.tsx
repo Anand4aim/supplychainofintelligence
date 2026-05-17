@@ -24,7 +24,7 @@ const SiteFooter = () => (
           </p>
           <p className="text-sm leading-relaxed max-w-md mb-5">
             A structural framework that maps where AI companies live, compete, and die.
-            10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube™.
+            10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube.
           </p>
           <NewsletterCTA source="footer" variant="footer" />
           <p className="text-xs mt-4 text-muted-foreground">

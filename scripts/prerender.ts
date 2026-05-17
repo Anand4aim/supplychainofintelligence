@@ -215,10 +215,10 @@ routes.push({
   path: "/about",
   title: "About — Anand Arivukkarasu | Supply Chain of Intelligence™",
   description:
-    "Anand Arivukkarasu — Ex-Meta (Instagram) Product Leader and AI Product Architect. Creator of The Supply Chain of Intelligence™ and The Intelligence Cube™. Based in San Francisco.",
+    "Anand Arivukkarasu — Ex-Meta (Instagram) Product Leader and AI Product Architect. Creator of The Supply Chain of Intelligence™ and The Intelligence Cube. Based in San Francisco.",
   body: `
     <h1>About — Anand Arivukkarasu</h1>
-    <p>Anand Arivukkarasu is the creator of The Supply Chain of Intelligence™ and The Intelligence Cube™ — a structural framework for AI value, moats, and SaaS strategy.</p>
+    <p>Anand Arivukkarasu is the creator of The Supply Chain of Intelligence™ and The Intelligence Cube — a structural framework for AI value, moats, and SaaS strategy.</p>
     <p>Ex-Meta (Instagram) Product Leader and AI Product Architect. Previously VP/Head of Product at Ideas2IT, Refersion, and GRIN; Lead PM at Vungle and Pinsight Media. Angel investor and advisor based in San Francisco.</p>
     <p><a href="https://www.linkedin.com/in/anandarivu">LinkedIn: linkedin.com/in/anandarivu</a></p>
   `,

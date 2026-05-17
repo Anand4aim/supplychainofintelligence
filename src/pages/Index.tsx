@@ -978,7 +978,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
             <Eyebrow className="mb-4">
-  The Intelligence Cube™
+  The Intelligence Cube
 </Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               10 Functions × 10 Verticals × 10 Layers
