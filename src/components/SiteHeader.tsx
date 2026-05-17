@@ -24,8 +24,14 @@ const SiteHeader = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
+        <Link to="/" className="flex items-center gap-2 group">
+          <span
+            className="font-display text-[16px] font-bold tracking-tight bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--layer-3)) 45%, hsl(var(--layer-5)) 75%, hsl(var(--accent)) 100%)",
+            }}
+          >
             Supply Chain of Intelligence<span className="text-accent">™</span>
           </span>
         </Link>
