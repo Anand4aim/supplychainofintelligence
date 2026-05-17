@@ -127,10 +127,14 @@ const AboutPage = () => (
           <p>
             After Meta I ran product at <strong className="text-foreground">Vungle</strong>,{" "}
             <strong className="text-foreground">Pinsight Media</strong>,{" "}
-            <strong className="text-foreground">GRIN</strong>, <strong className="text-foreground">Refersion</strong>,
-            and now <strong className="text-foreground">Ideas2IT</strong> — the kind of roadmap work where every
-            quarter someone asked <em>"what does AI mean for this surface?"</em> and the honest answer was usually{" "}
-            <em>"we don't have a framework that explains it."</em>
+            <strong className="text-foreground">GRIN</strong>, and{" "}
+            <strong className="text-foreground">Refersion</strong>. Today I'm at{" "}
+            <strong className="text-foreground">Ideas2IT</strong>, where the work splits two ways: enabling a{" "}
+            <strong className="text-foreground">startup studio</strong> incubating multiple AI-native companies from
+            zero, and partnering on <strong className="text-foreground">client engagements</strong> where established
+            teams need an architect to turn "we should do something with AI" into a defensible roadmap. Both seats keep
+            asking the same question — <em>"what does AI mean for this surface?"</em> — and the honest answer was
+            usually <em>"we don't have a framework that explains it."</em>
           </p>
           <p>
             JTBD told us <strong className="text-foreground">what users want</strong>. It never told us whether a model
