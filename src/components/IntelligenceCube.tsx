@@ -240,7 +240,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
   );
 
   return (
-    <svg viewBox="-20 80 600 540" className="w-full max-w-[680px] mx-auto block">
+    <svg viewBox="-50 80 660 560" className="w-full max-w-[720px] mx-auto block">
       {/* ─── 3 visible cube faces — translucent, drawn back-to-front ─── */}
       {/* Back-left wall (V = N plane) — lightest tint */}
       <polygon
