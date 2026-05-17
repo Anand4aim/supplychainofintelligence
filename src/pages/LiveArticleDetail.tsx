@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Copy, ExternalLink, Loader2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Loader2 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
