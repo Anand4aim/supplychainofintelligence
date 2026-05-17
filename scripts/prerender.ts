@@ -257,7 +257,24 @@ routes.push({
   `,
 });
 
-// Inject content into the template per route.
+// Structural Law essays
+for (const e of LAW_ESSAYS) {
+  routes.push({
+    path: `/laws/${e.slug}`,
+    title: `${e.shortTitle} | Supply Chain of Intelligence™`,
+    description: e.description,
+    body: `
+      <article>
+        <p><em>Structural Law · Essay ${esc(e.num)} of III</em></p>
+        <h1>Law ${esc(e.num)} — ${esc(e.title)}</h1>
+        <p><strong>${esc(e.oneLine)}</strong></p>
+        <p>By Anand Arivukkarasu — Creator of The Supply Chain of Intelligence™.</p>
+        ${e.paragraphs.map((p) => `<p>${esc(plain(p))}</p>`).join("\n        ")}
+        <p><a href="${BASE}/framework">← Back to the full framework</a> · <a href="${BASE}/">Home</a></p>
+      </article>
+    `,
+  });
+}
 function render(route: Route): string {
   let html = template;
   const url = `${BASE}${route.path === "/" ? "" : route.path}`;
