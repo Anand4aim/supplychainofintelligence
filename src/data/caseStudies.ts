@@ -289,4 +289,339 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 **Why generic AI can't compete:** ChatGPT can write a legal memo. But it can't guarantee privilege. It can't audit its reasoning. It can't learn from your firm's specific playbook. The compliance layer (L3) is the moat that no generic model can cross.`,
   },
+  {
+    slug: "mckinsey-openai-lilli",
+    companies: [
+      { name: "McKinsey", logo: logo("mckinsey.com"), color: "#003A70" },
+      { name: "OpenAI", logo: logo("openai.com"), color: "#10A37F" },
+    ],
+    tag: "CONSULTING × MODEL LAYER",
+    title: "McKinsey + OpenAI (Lilli): When the Consulting Firm Owns the Memory, Not the Model",
+    verdict: "L1 + L8 OVER L2",
+    excerpt:
+      "McKinsey didn't build a model. It built Lilli — an internal assistant trained on 100,000+ McKinsey documents, 70 years of proprietary studies, and the firm's named expert network. OpenAI provides L2. McKinsey owns L1 (the IP) and L8 (the firm's institutional memory). The consultant doesn't get disrupted by the model — the consultant rents the model and keeps the moat.",
+    layers: ["L1", "L2", "L6", "L8"],
+    date: "May 2026",
+    readTime: "9 min",
+    valuation: {
+      label: "Lilli Adoption",
+      before: "0 (Jun 2023)",
+      after: "70%+ of firm weekly",
+      trend: "up",
+      changeLabel: "Compounding",
+    },
+    content: `The most misread AI story in professional services. Everyone asked "will ChatGPT kill McKinsey?" The structural answer was always no — and Lilli is the proof.
+
+**The setup.** In mid-2023 McKinsey shipped Lilli, an internal generative AI assistant built on OpenAI's models but grounded in *McKinsey's own corpus*: 100,000+ proprietary documents, 70 years of consulting studies, frameworks, interview notes, expert profiles. Within a year, the majority of the firm uses it weekly.
+
+**The structural read:**
+- L2 (model): rented from OpenAI. Commoditizing fast. McKinsey pays nothing to defend it.
+- L1 (proprietary data): 70 years of client work, expert memos, sector benchmarks. *Cannot be reproduced by any model.* This is the moat.
+- L6 (orchestration): retrieval over the corpus, citation, expert routing. McKinsey-built.
+- L8 (institutional memory): every engagement adds to Lilli. Compounding. Every consultant's output becomes future fuel.
+
+**Law I — intelligence commoditizes downward.** OpenAI's model is now interchangeable with Anthropic's or Google's at this task. McKinsey can swap the L2 underneath Lilli in a weekend. The L1 and L8 above it are untouched.
+
+**Law III — value migrates to the scarcest layer.** The scarce thing is not the ability to write a strategy memo. It's the 70 years of *which strategies worked for which clients in which sector cycles*. That data only exists inside McKinsey.
+
+**The inverted lesson for everyone else.** Most enterprises panicked about "AI eating consulting." The opposite happened: consulting firms became some of the *largest* OpenAI/Anthropic customers, because they had the L1 and L8 to make the model valuable. The model layer is a tool. The data and memory layers are the business.
+
+**What this means for your firm.** If your competitive position is "we know things and we remember things," AI is an amplifier, not a threat — *provided* you own L1 and L8. If your position is "we can write good documents," the model just ate your job.
+
+*Public reporting; figures approximate.*`,
+  },
+  {
+    slug: "bloomberg-gpt-vertical-fortress",
+    companies: [
+      { name: "Bloomberg", logo: logo("bloomberg.com"), color: "#000000" },
+    ],
+    tag: "VERTICAL FORTRESS",
+    title: "BloombergGPT: Why a 50B-Parameter Model Beats GPT-4 in Finance",
+    verdict: "L1 + L2 + L3 STACKED",
+    excerpt:
+      "Bloomberg trained its own 50B-parameter model on 40 years of proprietary financial data. Smaller than GPT-4. Better at finance tasks. The reason isn't the model — it's that Bloomberg owns the terminal (L4), the data (L1), the compliance posture (L3), and now the model (L2). Four layers in one regulated vertical.",
+    layers: ["L1", "L2", "L3", "L4"],
+    date: "April 2026",
+    readTime: "8 min",
+    content: `BloombergGPT is the cleanest example of vertical L1+L2 integration in the market.
+
+**The structural play:**
+- L1: 40 years of curated financial data — filings, news, pricing, transcripts. Proprietary, license-controlled.
+- L2: A 50B-parameter model trained on that corpus + general web. Smaller and cheaper than GPT-4, but tuned to finance.
+- L3: SEC-grade compliance, audit trails, source citation — table stakes for the buy-side.
+- L4: The Bloomberg Terminal — $24K/year, 350,000+ seats, the distribution monopoly no one can replicate.
+
+**Why generic models can't catch up.** GPT-5 may be better at general reasoning. It cannot access Bloomberg's tick data, its analyst transcripts, or its terminal install base. The model layer is necessary but not sufficient. Bloomberg owns the *other three* layers a finance customer actually pays for.
+
+**The Cube projection:** TALL (4 layers), NARROW (finance only), DEEP (every buy-side function). This is the textbook vertical fortress.
+
+*The lesson: in regulated verticals, the model is the cheapest layer to own. The data, the rails, and the compliance are the moat.*`,
+  },
+  {
+    slug: "klarna-customer-service",
+    companies: [
+      { name: "Klarna", logo: logo("klarna.com"), color: "#FFA8CD" },
+      { name: "OpenAI", logo: logo("openai.com"), color: "#10A37F" },
+    ],
+    tag: "L5 + L8 IN PRODUCTION",
+    title: "Klarna: 700 Agents Replaced, $40M Saved — The First Honest Number on Agent Economics",
+    verdict: "L5 EXECUTION + L8 MEMORY",
+    excerpt:
+      "Klarna's AI assistant handled 2.3M conversations in its first month — the workload of 700 human agents — with equal customer satisfaction and faster resolution. The headline is the cost. The structural story is that Klarna owned the customer data (L1), the workflow (L5), and the resolution memory (L8). The model was a commodity input.",
+    layers: ["L1", "L5", "L8"],
+    date: "April 2026",
+    readTime: "8 min",
+    valuation: {
+      label: "Annual Profit Impact",
+      before: "$0",
+      after: "$40M",
+      trend: "up",
+      changeLabel: "Year 1",
+    },
+    content: `When Klarna disclosed that its AI assistant did the work of 700 full-time agents and added ~$40M in projected annual profit, the market read it as "OpenAI is amazing." The structural read is different.
+
+**What Klarna actually owned:**
+- L1: Every customer's transaction history, return pattern, dispute record.
+- L5: The decision tree of refund/dispute/escalate — built over a decade of being a payments company.
+- L8: Every resolution feeds back into the system. Month 2 is smarter than month 1.
+
+**What OpenAI provided:** L2. Rentable. Swappable. Cheap relative to the labor it replaces.
+
+**Law III in production.** The model is the *least* defensible part of the stack. The moat is that Klarna already had the data, the workflows, and the regulated payment context. A pure-play "AI customer service" startup with no L1 cannot reproduce this.
+
+**The era shift.** This is Era 4 (The Workspace) arriving early in one function. AI orchestrates, a small human team supervises. Per-seat economics in support are over. Every CX SaaS priced per agent is structurally short.
+
+*Public reporting; numbers as disclosed by Klarna.*`,
+  },
+  {
+    slug: "devin-cognition-l7-agent",
+    companies: [
+      { name: "Cognition (Devin)", logo: logo("cognition.ai"), color: "#000000" },
+      { name: "Cursor", logo: logo("cursor.com"), color: "#000000" },
+    ],
+    tag: "AGENT SURFACE RISK",
+    title: "Devin at $2B: The Autonomous Coder With No Layer Beneath It",
+    verdict: "L7 AGENT — EXPOSED",
+    excerpt:
+      "Cognition raised at $2B for Devin, the 'autonomous software engineer.' Impressive demo. Structural problem: Devin sits at L7 (agent surface) on top of someone else's L2 (Anthropic/OpenAI), with no L1, no L8, no L4. Meanwhile Cursor owns the IDE — the L4 of where code is actually written.",
+    layers: ["L2", "L7"],
+    date: "April 2026",
+    readTime: "7 min",
+    valuation: {
+      label: "Cognition Valuation",
+      before: "—",
+      after: "$2B",
+      trend: "down",
+      changeLabel: "Fragile",
+    },
+    content: `Devin's launch was the most viral AI demo of 2024. The structural question Cognition has to answer in 2026: *what do you own that Anthropic, OpenAI, and Cursor don't?*
+
+**The stack position:**
+- L2: Rented from frontier labs. Same model anyone else can call.
+- L7: A polished autonomous agent UI. Replicable.
+- Missing L1: no proprietary code corpus. (GitHub belongs to Microsoft.)
+- Missing L4: no IDE distribution. (Cursor and VS Code own it.)
+- Missing L8: no per-developer memory loop that compounds.
+
+**The asymmetric threat — Cursor.** Cursor sits at L4 (the IDE — where the developer already lives) and L6 (agent orchestration inside that IDE). When the agent lives where the work happens, the standalone-agent surface becomes a feature, not a product.
+
+**Law III again.** A pure agent surface with no underlying layer is the new "GPT wrapper." Better polish. Same structural fate.
+
+**What would save Devin.** Acquire or build L1 (a proprietary corpus of fixed bugs, refactor patterns), or get acquired by an L4 owner. Standalone, the math is hard.
+
+*Illustrative — not investment advice.*`,
+  },
+  {
+    slug: "perplexity-vs-google-distribution",
+    companies: [
+      { name: "Perplexity", logo: logo("perplexity.ai"), color: "#20B2AA" },
+      { name: "Google", logo: logo("google.com"), color: "#4285F4" },
+    ],
+    tag: "L4 DISTRIBUTION WAR",
+    title: "Perplexity vs Google: The Answer Engine vs The Default",
+    verdict: "L4 EATS L7",
+    excerpt:
+      "Perplexity built a better answer experience. Google owns Chrome, Android, Safari's default, and the URL bar of the internet. Perplexity raised at $9B. Google shipped AI Overviews to 1.5B users in a quarter. The lesson: when the L4 owner ships your L7, you don't win by being better.",
+    layers: ["L4", "L7"],
+    date: "April 2026",
+    readTime: "8 min",
+    content: `Perplexity is technically excellent. Strategically it is fighting the hardest fight in tech: dislodging a default.
+
+**The asymmetry:**
+- Perplexity: L7 (a search surface) + partial L4 (a browser, ~1% share). Must acquire each user.
+- Google: L4 (Chrome ~65%, Android default, Safari deal, the URL bar) + L7 (Search) + L2 (Gemini) + L1 (the index). Every user is already there.
+
+**What Google did.** Shipped AI Overviews directly into the existing search results page. No download, no behavior change. 1.5B+ monthly users got a Perplexity-like experience inside the surface they were already using.
+
+**Law III with a twist.** Yes, value migrated from the blue links (L7) to the AI answer (L6/L7). But the *L4 owner captured the migration* because the answer appeared inside their distribution. Perplexity caught the wave. Google rode it.
+
+**Perplexity's only winning move.** Become an L4 themselves — Comet browser, partnerships, OEM deals. They know this; the question is whether default-changing friction can be overcome before runway. History says rarely.
+
+*Public reporting; metrics approximate.*`,
+  },
+  {
+    slug: "cursor-ide-consolidation",
+    companies: [
+      { name: "Cursor", logo: logo("cursor.com"), color: "#000000" },
+      { name: "GitHub Copilot", logo: logo("github.com"), color: "#24292E" },
+    ],
+    tag: "L4 + L6 STACK",
+    title: "Cursor at $9B: The IDE That Quietly Became the Most Important L4 in AI",
+    verdict: "L4 + L6 + L8 RISING",
+    excerpt:
+      "Cursor isn't a model. It isn't an agent. It's the editor — the place developers spend 8 hours a day. By owning L4 (IDE distribution) and layering L6 (agent orchestration) and L8 (per-codebase memory) on top, Cursor has become structurally more defensible than the agents that run inside it.",
+    layers: ["L4", "L6", "L8"],
+    date: "April 2026",
+    readTime: "8 min",
+    valuation: {
+      label: "Cursor Valuation",
+      before: "—",
+      after: "~$9B",
+      trend: "up",
+      changeLabel: "Compounding",
+    },
+    content: `Cursor's rise is the inverse of Devin's. Both build for developers. One owns the surface where work happens. The other doesn't.
+
+**Cursor's structural position:**
+- L4: The IDE itself. Forked from VS Code, but Cursor owns the relationship with the developer.
+- L6: Multi-step orchestration — Composer, agents, multi-file edits.
+- L8: Per-codebase memory and indexing — the more you use Cursor on your repo, the better it gets at your repo.
+
+**Why this beats Copilot.** GitHub Copilot lives inside VS Code/JetBrains as a plugin. Cursor *is* the editor. When the L4 owner integrates orchestration and memory natively, plugins become features. Microsoft will respond (they own GitHub), but Cursor's velocity has bought it a real position.
+
+**Why this beats Devin.** Devin runs in a browser tab no developer keeps open. Cursor runs in the window every developer keeps open all day. Distribution decides.
+
+**The watch.** Cursor's risk is the same one Grammarly faces: a bigger L4 owner (Microsoft via GitHub + VS Code) deciding to integrate the same capabilities natively into the free editor. The race is whether Cursor compounds L8 fast enough to make that switch painful.
+
+*Public reporting; numbers approximate.*`,
+  },
+  {
+    slug: "anthropic-claude-enterprise-l3",
+    companies: [
+      { name: "Anthropic", logo: logo("anthropic.com"), color: "#D97757" },
+    ],
+    tag: "L3 TRUST PLAY",
+    title: "Anthropic's Enterprise Wedge: Selling L3 When Everyone Else Sells L2",
+    verdict: "L2 + L3 DIFFERENTIATED",
+    excerpt:
+      "OpenAI sells the smartest model. Anthropic sells the most *governable* one. Constitutional AI, transparency, conservative refusals, SOC 2, FedRAMP, BAAs — Claude's enterprise pitch is L3 (compliance and trust) bundled with competitive L2. In regulated buyers' procurement, L3 is the decisive layer.",
+    layers: ["L2", "L3"],
+    date: "April 2026",
+    readTime: "7 min",
+    content: `In a market where every frontier lab's L2 is roughly comparable on any given month, Anthropic has made a structural bet: differentiate on L3.
+
+**The L3 stack:**
+- Constitutional AI training methodology (a publishable, auditable approach to alignment)
+- Conservative refusal posture — costs them some consumer share, wins them regulated enterprise
+- SOC 2 Type II, ISO 27001, HIPAA BAA, FedRAMP in progress
+- AWS Bedrock + Google Cloud integration — buyer's existing compliance perimeter
+
+**Why this works structurally.** Enterprise procurement in banking, healthcare, and government does not buy the smartest model. It buys the model that *passes review*. L3 is where the contract is signed.
+
+**Law II — every layer that handles intelligence is regulated by default.** Anthropic priced this in early and built the brand around it. OpenAI is now catching up (GovCloud, Enterprise tier) but lost the first-mover position in trust-led buyers.
+
+**The bigger pattern.** L2 alone is becoming a price-war layer. L2 + L3 is a *contract-signing* layer. The premium is on governance, not raw capability.
+
+*Public reporting.*`,
+  },
+  {
+    slug: "adobe-firefly-licensed-data",
+    companies: [
+      { name: "Adobe", logo: logo("adobe.com"), color: "#FF0000" },
+    ],
+    tag: "L1 + L4 STACK",
+    title: "Adobe Firefly: The Only Image Model an Enterprise Can Legally Use",
+    verdict: "L1 + L4 DEFENSIBLE",
+    excerpt:
+      "Midjourney is more aesthetic. Stable Diffusion is more open. Firefly wins enterprise because Adobe trained on licensed stock — and indemnifies customers against IP lawsuits. L1 (licensed data) + L3 (legal indemnity) + L4 (Creative Cloud distribution) is the only stack that survives an enterprise legal review.",
+    layers: ["L1", "L3", "L4"],
+    date: "April 2026",
+    readTime: "7 min",
+    content: `The image-generation race looks like a model-quality race. For enterprise it is not — it is a *legal exposure* race, and Adobe is the only player who built for that.
+
+**Adobe's structural stack:**
+- L1: Adobe Stock — fully licensed, rights-cleared training data.
+- L3: Customer indemnification against IP claims. Adobe pays if you get sued.
+- L4: Creative Cloud — embedded in Photoshop, Illustrator, Express, where designers already work.
+- L2: A model that is *good enough*, not best-in-class.
+
+**Why "good enough" wins here.** A Fortune 500 marketing team cannot ship a campaign generated by a model trained on scraped art. Legal kills it. Firefly clears legal. Midjourney does not.
+
+**Law II — regulation is a layer, not an afterthought.** The IP liability is a real layer of the supply chain. Whoever owns it owns the enterprise.
+
+**The pattern beyond Adobe.** Getty Images is running the same play in stock. Shutterstock licensed its corpus to OpenAI. The "clean data" subset of L1 is becoming its own scarce asset.
+
+*Public reporting.*`,
+  },
+  {
+    slug: "character-ai-memory-orphan",
+    companies: [
+      { name: "Character.AI", logo: logo("character.ai"), color: "#3B82F6" },
+      { name: "Google", logo: logo("google.com"), color: "#4285F4" },
+    ],
+    tag: "L8 WITHOUT L2",
+    title: "Character.AI: The L8 Memory Moat That Couldn't Stand Without L2",
+    verdict: "ACQUIHIRED — STRUCTURAL CAUSE",
+    excerpt:
+      "Character.AI had real L8 — billions of personalized conversations, deep user attachment, the largest companion-AI user base. What it didn't have: an L2 it could afford. Compute costs ate the unit economics, and Google licensed the team and tech for ~$2.7B. A clean lesson in why L8 alone, without owned L2 or a profitable L4, is a vulnerable position.",
+    layers: ["L2", "L7", "L8"],
+    date: "April 2026",
+    readTime: "8 min",
+    valuation: {
+      label: "Google Deal",
+      before: "$5B (last round)",
+      after: "~$2.7B (license)",
+      trend: "down",
+      changeLabel: "Acquihire",
+    },
+    content: `Character.AI is the most interesting structural failure of the cycle: a real L8 moat, undone by inability to control L2 cost.
+
+**What Character.AI built.**
+- L8: Billions of conversations, persistent character memory, parasocial attachment data. Genuinely scarce.
+- L7: A category-defining companion surface. Massive Gen Z DAU.
+- Missing: an L2 they could run cheaply at scale. Every conversation cost real GPU money.
+
+**Why L8 alone wasn't enough.** Without owned L2, every interaction was a cost center. Without an L4 (distribution into someone else's surface) or premium L3 (regulated B2B), monetization couldn't catch unit cost. The moat existed; the business model didn't.
+
+**The Google outcome.** Google licensed the model and re-hired the founders. The L8 *data* — the actual memory of users' relationships with characters — largely orphaned. Users moved on.
+
+**The lesson for L8-led plays.** Memory is the most durable layer in theory. In practice it requires either (a) owned cheap L2, (b) an L4 that subsidizes it, or (c) L3-regulated B2B pricing. Pick one before you scale.
+
+*Public reporting; figures approximate.*`,
+  },
+  {
+    slug: "glean-enterprise-search-fortress",
+    companies: [
+      { name: "Glean", logo: logo("glean.com"), color: "#9333EA" },
+    ],
+    tag: "L1 + L6 ENTERPRISE STACK",
+    title: "Glean at $7.2B: The Enterprise Memory Layer Microsoft Was Supposed to Own",
+    verdict: "L1 + L6 + L8 FORTRESS",
+    excerpt:
+      "Glean indexes every document, message, ticket, and meeting inside a company — then makes it queryable by AI. That index is L1 (proprietary to each customer), the orchestration is L6, and the cross-app memory is L8. Microsoft 'should' own this with Copilot. They don't, and Glean's $7.2B valuation says the market noticed.",
+    layers: ["L1", "L6", "L8"],
+    date: "April 2026",
+    readTime: "8 min",
+    valuation: {
+      label: "Glean Valuation",
+      before: "$2.2B (2024)",
+      after: "$7.2B (2025)",
+      trend: "up",
+      changeLabel: "+227%",
+    },
+    content: `Enterprise search has been a graveyard for two decades. Glean is winning because it stopped selling search and started selling the enterprise's *L8 memory layer*.
+
+**The structural stack:**
+- L1: Per-customer, per-tenant index of every connected app — Slack, Gmail, Notion, Jira, Salesforce, Drive, Confluence, GitHub. Proprietary to each customer; not reproducible by a vendor.
+- L6: Permission-aware orchestration that respects every source system's ACLs. Hard. Defensible.
+- L8: A live memory of how this specific organization works — who knows what, what was decided when, what's the latest version.
+
+**Why Microsoft Copilot hasn't crushed this.** Copilot is excellent inside the Microsoft 365 perimeter. Most enterprises live in 50+ apps, most of which are not Microsoft. Glean's neutrality across SaaS is itself a moat.
+
+**Law III — value migrates to the scarcest layer.** A general LLM is cheap. The org's *answer* to "what did we decide about X last quarter" lives in nine systems, behind seven permission models, and nowhere else. Whoever assembles that into a single L8 wins the enterprise assistant market.
+
+**The Cube projection:** TALL (3 layers), WIDE (cross-vertical), DEEP (every knowledge-worker function). Fortress archetype, software flavor.
+
+*Public reporting; valuations as disclosed.*`,
+  },
 ];
