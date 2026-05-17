@@ -64,6 +64,34 @@ const Predictions = () => {
   const confirmed = PREDICTIONS_BY_STATUS.confirmed.length;
   const playing = PREDICTIONS_BY_STATUS["playing-out"].length;
 
+  const [query, setQuery] = useState("");
+
+  const sorted = useMemo<Prediction[]>(
+    () => [...PREDICTIONS].sort((a, b) => (a.date < b.date ? 1 : -1)),
+    [],
+  );
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return sorted;
+    return sorted.filter((p) =>
+      [p.subject, p.call, p.outcome, ...p.layers, p.status]
+        .join(" ")
+        .toLowerCase()
+        .includes(q),
+    );
+  }, [query, sorted]);
+
+  // Quick-jump anchors — one chip per company, scrolls to that prediction.
+  const jumpTo = (id: string) => {
+    setQuery("");
+    // Defer so the filter reset paints before scrolling.
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   return (
     <SiteLayout>
       <Seo
@@ -93,13 +121,61 @@ const Predictions = () => {
           <Stat label="Confirmed" value={confirmed} color="hsl(var(--layer-1))" />
           <Stat label="Playing out" value={playing} color="hsl(var(--layer-4))" />
         </div>
+
+        {/* Search + quick-jump */}
+        <div className="mt-10 space-y-4">
+          <label className="relative block max-w-xl">
+            <Search
+              size={16}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/40 pointer-events-none"
+              aria-hidden
+            />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search predictions — company, layer, outcome…"
+              className="w-full pl-9 pr-3 py-2.5 bg-background border border-foreground/15 rounded-md text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent transition-colors"
+              aria-label="Search predictions"
+            />
+          </label>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/50 mr-1">
+              Jump to
+            </span>
+            {sorted.map((p) => (
+              <button
+                key={p.id}
+                onClick={() => jumpTo(p.id)}
+                className="px-2.5 py-1 rounded border border-foreground/15 text-xs font-medium text-foreground/80 hover:text-accent hover:border-accent transition-colors"
+              >
+                {p.subject}
+              </button>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-24">
+        {filtered.length === 0 ? (
+          <p className="text-foreground/60 text-sm">No predictions match “{query}”.</p>
+        ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
-          {[...PREDICTIONS]
-            .sort((a, b) => (a.date < b.date ? 1 : -1))
+          {filtered
             .map((p, i) => {
+              const meta = STATUS_META[p.status];
+              const Icon = meta.icon;
+              return (
+                <motion.li
+                  key={p.id}
+                  id={p.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.04 }}
+                  className="relative pl-8 pb-12 scroll-mt-24"
+                >
+                  <span
               const meta = STATUS_META[p.status];
               const Icon = meta.icon;
               return (
