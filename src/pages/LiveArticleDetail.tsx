@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Copy, ExternalLink, Loader2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Loader2 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
+
 
 interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: string[]; }
 
@@ -28,6 +28,8 @@ interface LiveArticle {
     who_wins?: { name: string; reason: string }[];
     who_loses?: { name: string; reason: string }[];
     vertical_lens: string;
+    deep_product_lens?: string;
+    deep_strategy_lens?: string;
     counter_thesis?: string;
     what_to_watch?: string[];
     new_law_candidate: string;
@@ -59,7 +61,6 @@ const LiveArticleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<LiveArticle | null>(null);
   const [loading, setLoading] = useState(true);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!slug) return;
@@ -69,14 +70,6 @@ const LiveArticleDetail = () => {
       setLoading(false);
     })();
   }, [slug]);
-
-  const copyLinkedIn = async () => {
-    if (!article) return;
-    await navigator.clipboard.writeText(article.linkedin_post);
-    setCopied(true);
-    toast.success("LinkedIn post copied — paste anywhere");
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   if (loading) {
     return <SiteLayout><div className="max-w-3xl mx-auto py-32 text-center text-muted-foreground"><Loader2 className="animate-spin inline mr-2" size={18}/>Loading…</div></SiteLayout>;
@@ -296,6 +289,22 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
+          {/* Deep Product Lens */}
+          {article.analysis.deep_product_lens && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Product Lens</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_product_lens}</p>
+            </section>
+          )}
+
+          {/* Deep Strategy Lens */}
+          {article.analysis.deep_strategy_lens && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Strategy Lens</p>
+              <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_strategy_lens}</p>
+            </section>
+          )}
+
           {/* Vertical lens */}
           {article.vertical && (
             <section className="mb-12">
@@ -338,22 +347,6 @@ const LiveArticleDetail = () => {
               </p>
             </section>
           )}
-
-          {/* LinkedIn post */}
-          <section className="mb-12 bg-foreground text-background p-6 md:p-8">
-            <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-              <p className="font-sketch text-base font-bold text-accent">— Ready for LinkedIn</p>
-              <button
-                onClick={copyLinkedIn}
-                className="inline-flex items-center gap-1.5 bg-accent text-accent-foreground px-3 py-1.5 font-mono-marker text-[11px] hover:opacity-90"
-              >
-                {copied ? <><Check size={12}/> Copied</> : <><Copy size={12}/> Copy post</>}
-              </button>
-            </div>
-            <p className="whitespace-pre-line text-[15px] leading-relaxed text-background/90">
-              {article.linkedin_post}
-            </p>
-          </section>
 
           <div className="border-t border-foreground/10 pt-8">
             <p className="text-sm text-muted-foreground">
