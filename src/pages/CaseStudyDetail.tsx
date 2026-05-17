@@ -191,18 +191,6 @@ const CaseStudyDetailPage = () => {
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="mt-10 p-6 rounded-2xl bg-accent/5 border border-accent/20 sketch-border">
-              <p className="font-display text-xl font-bold text-foreground mb-2">
-                Score your own product the same way.
-              </p>
-              <p className="text-sm text-muted-foreground mb-4">
-                Eight questions. Five minutes. Get the same verdict every case study above received.
-              </p>
-              <Link to="/audit" className="btn-sketch inline-flex items-center gap-2">
-                Run the Defensibility Audit <ArrowRight size={15} />
-              </Link>
-            </div>
 
             {/* Next */}
             <div className="mt-12 pt-8 border-t border-border">

@@ -26,10 +26,8 @@ Every AI product sits somewhere on a 10-layer supply chain: **L-1 Resources, L0 
 - [Case Studies](https://supplychainofai.com/analysis): Structural analysis of Jasper, Chegg, Sierra, Harvey, Grammarly, Stack Overflow, Gamma, Apollo vs ZoomInfo, Stability AI, Five Eras of Software, McKinsey + OpenAI (Lilli), BloombergGPT, Klarna, Devin (Cognition), Perplexity vs Google, Cursor, Anthropic Claude, Adobe Firefly, Character.AI, Glean.
 - [The Live Feed](https://supplychainofai.com/live): Always-on coverage by Anand Arivukkarasu — every consequential AI launch, funding round, and structural shift scored on the 10-layer framework.
 - [Market Map](https://supplychainofai.com/market-map): Visual directory plotting every major AI company on the 10 layers, with archetypes (Fortress, Refinery, Railroad, Memory, Surface, Agent, Graveyard).
-- [AI Defensibility Audit](https://supplychainofai.com/audit): The 8-question scorecard — score any product 1–5 across model dependency, data ownership, workflow depth, trust, distribution, memory, switching cost, platform exposure.
 - [For Product Leaders](https://supplychainofai.com/for-product-leaders): Adding the Z-axis (depth in the stack) to JTBD-driven product thinking.
 - [About Anand](https://supplychainofai.com/about): Ex-Meta & Google product leader, creator of the framework.
-- [Work with Anand](https://supplychainofai.com/work-with-me): Advisory, audits, and portfolio reviews using the framework.
 
 ## Author
 
