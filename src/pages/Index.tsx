@@ -326,7 +326,7 @@ const Index = () => {
                 <div className="font-sketch text-base font-bold text-muted-foreground px-3">
                   Jobs to Be Done
                 </div>
-                <div className="font-sketch text-base font-bold text-accent px-3">
+                <div className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent px-3">
                   Supply Chain of Intelligence™
                 </div>
               </div>

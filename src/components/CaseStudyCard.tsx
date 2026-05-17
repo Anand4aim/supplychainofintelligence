@@ -84,7 +84,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       >
         <Link to={`/analysis/${study.slug}`} className="block p-8 md:p-10" aria-label={`Read case study: ${study.title}`}>
           <div className="flex items-center gap-3 mb-5 flex-wrap">
-            <span className="font-sketch text-base font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
+            <span className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent bg-accent/10 px-3 py-1 rounded-full">
               {study.tag}
             </span>
             <span className="text-sm text-muted-foreground">{study.date}</span>
@@ -172,7 +172,7 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
     >
       <Link to={`/analysis/${study.slug}`} className="block p-6" aria-label={`Read case study: ${study.title}`}>
       <div className="flex items-center gap-3 mb-4 flex-wrap">
-        <span className="font-sketch text-sm font-bold text-accent">{study.tag}</span>
+        <span className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent">{study.tag}</span>
         <span className="text-sm text-muted-foreground">{study.readTime}</span>
         {study.brief && (
           <span className="font-mono-marker text-[9px] uppercase tracking-wider text-foreground/60 border border-foreground/20 px-1.5 py-0.5 rounded">

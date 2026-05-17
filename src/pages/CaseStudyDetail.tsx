@@ -98,7 +98,7 @@ const CaseStudyDetailPage = () => {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="font-sketch text-sm font-bold text-accent bg-accent/10 px-3 py-1 rounded-full">
+              <span className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent bg-accent/10 px-3 py-1 rounded-full">
                 {study.tag}
               </span>
               <span className="text-sm text-muted-foreground">{study.date}</span>
@@ -189,7 +189,7 @@ const CaseStudyDetailPage = () => {
 
             {study.sources && study.sources.length > 0 && (
               <section className="mt-10">
-                <p className="font-sketch text-base font-bold text-accent mb-3">— Sources</p>
+                <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Sources</p>
                 <ul className="space-y-1.5">
                   {study.sources.map((s, i) => (
                     <li key={i}>

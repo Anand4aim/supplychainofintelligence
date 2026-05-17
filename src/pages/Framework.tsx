@@ -219,7 +219,7 @@ const FrameworkPage = () => (
           </div>
 
           <div className="rounded-xl p-6 bg-secondary/40 border border-border">
-            <p className="font-sketch text-sm font-bold text-accent mb-3">— The Decoder</p>
+            <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— The Decoder</p>
             <ul className="space-y-2.5 text-[15px] text-foreground/85 leading-relaxed">
               <li>
                 <strong className="text-foreground">Agent + L1 Proprietary Data</strong> → fortress.
@@ -371,7 +371,7 @@ const FrameworkPage = () => (
               <div className="text-xs text-muted-foreground/80 italic mb-3 pl-3 border-l-2 border-border">
                 {law.example}
               </div>
-              <p className="font-sketch text-sm font-bold text-accent">{law.prediction}</p>
+              <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent">{law.prediction}</p>
             </motion.div>
           ))}
         </div>

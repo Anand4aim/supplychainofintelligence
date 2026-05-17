@@ -59,7 +59,7 @@ const AboutPage = () => (
     {/* HERO */}
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 pt-20 pb-12">
-        <p className="font-sketch text-base font-bold text-accent mb-5">— About the author</p>
+        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-5">— About the author</p>
 
         <div className="grid md:grid-cols-[180px_1fr] gap-8 items-start">
           {/* Portrait placeholder — keeps the monogram identity until a real photo is dropped in */}
@@ -152,7 +152,7 @@ const AboutPage = () => (
     {/* CAREER ARC */}
     <section className="bg-secondary/40 border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-14">
-        <p className="font-sketch text-base font-bold text-accent mb-2">— Career arc</p>
+        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Career arc</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           A decade shipping product. The framework comes from the receipts.
         </h2>
@@ -185,7 +185,7 @@ const AboutPage = () => (
     {/* TALKS / EXTERNAL */}
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-14">
-        <p className="font-sketch text-base font-bold text-accent mb-2">— Talks & teaching</p>
+        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Talks & teaching</p>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           The work, in other people's rooms.
         </h2>
@@ -211,7 +211,7 @@ const AboutPage = () => (
     <section className="bg-foreground text-background">
       <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
         <div>
-          <p className="font-sketch text-sm font-bold text-accent mb-2">— Work with the framework</p>
+          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Work with the framework</p>
           <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
             Diagnose your stack. Stress-test a portfolio. Sharpen a roadmap.
           </h3>

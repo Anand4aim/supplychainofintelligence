@@ -130,7 +130,7 @@ const LiveArticleDetail = () => {
 
           {/* The news */}
           <section className="mb-12">
-            <p className="font-sketch text-base font-bold text-accent mb-3">— The News</p>
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— The News</p>
             <p className="text-foreground leading-relaxed text-[17px]">{article.news_summary}</p>
             {article.source_urls?.length > 0 && (
               <div className="mt-4 space-y-1">
@@ -145,7 +145,7 @@ const LiveArticleDetail = () => {
 
           {/* Layer scoring — chip + dot intensity matrix */}
           <section className="mb-12">
-            <p className="font-sketch text-base font-bold text-accent mb-4">— Layer Scoring</p>
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— Layer Scoring</p>
 
             <div
               className="rounded-2xl p-5 md:p-6"
@@ -265,7 +265,7 @@ const LiveArticleDetail = () => {
           {/* Sublayer impact map — what specifically is touched and by what magnitude */}
           {article.analysis.layer_scores.some(s => (s.intensity ?? 0) > 0 && (s.sublayers?.length ?? 0) > 0) && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-2">— Sublayer Impact Map</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Sublayer Impact Map</p>
               <p className="text-foreground/70 text-[14px] mb-4 italic">
                 Which of the 50 sublayers this move actually touches, the magnitude of impact, and who plays that slice today.
               </p>
@@ -276,7 +276,7 @@ const LiveArticleDetail = () => {
           {/* Intelligence Cube — 2D projection */}
           {article.analysis.cube_position && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-2">— Intelligence Cube · 2D</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Intelligence Cube · 2D</p>
               <p className="text-foreground/70 text-[14px] mb-4 italic">
                 The move's footprint across the three Cube axes — Functions, Verticals, Layers — flattened into two readable 2D projections.
               </p>
@@ -291,21 +291,21 @@ const LiveArticleDetail = () => {
           {/* Why now */}
           {article.analysis.why_now && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— Why Now</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Why Now</p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.why_now}</p>
             </section>
           )}
 
           {/* Structural take */}
           <section className="mb-12">
-            <p className="font-sketch text-base font-bold text-accent mb-3">— The Structural Take</p>
+            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— The Structural Take</p>
             <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.structural_take}</p>
           </section>
 
           {/* Second order */}
           {article.analysis.second_order_effects && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— Second-Order Effects</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Second-Order Effects</p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.second_order_effects}</p>
             </section>
           )}
@@ -345,7 +345,7 @@ const LiveArticleDetail = () => {
           {/* Deep Product Lens */}
           {article.analysis.deep_product_lens && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Product Lens</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Deep Product Lens</p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_product_lens}</p>
             </section>
           )}
@@ -353,7 +353,7 @@ const LiveArticleDetail = () => {
           {/* Deep Strategy Lens */}
           {article.analysis.deep_strategy_lens && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— Deep Strategy Lens</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Deep Strategy Lens</p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.deep_strategy_lens}</p>
             </section>
           )}
@@ -361,7 +361,7 @@ const LiveArticleDetail = () => {
           {/* Vertical lens */}
           {article.vertical && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">
                 — The {article.vertical} Lens
               </p>
               <p className="text-foreground leading-relaxed text-[17px] whitespace-pre-line">{article.analysis.vertical_lens}</p>
@@ -379,7 +379,7 @@ const LiveArticleDetail = () => {
           {/* What to watch */}
           {(article.analysis.what_to_watch?.length ?? 0) > 0 && (
             <section className="mb-12">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— What to Watch (Next 90 Days)</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— What to Watch (Next 90 Days)</p>
               <ul className="space-y-2">
                 {article.analysis.what_to_watch!.map((s, i) => (
                   <li key={i} className="flex gap-3 text-[15px] leading-snug">
@@ -403,7 +403,7 @@ const LiveArticleDetail = () => {
           {/* New law candidate */}
           {article.analysis.new_law_candidate && article.analysis.new_law_candidate.trim() && (
             <section className="mb-12 bg-card border-l-4 border-accent p-5">
-              <p className="font-sketch text-base font-bold text-accent mb-2">— Candidate Law</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Candidate Law</p>
               <p className="font-display text-lg text-foreground italic leading-snug">
                 "{article.analysis.new_law_candidate}"
               </p>
@@ -412,7 +412,7 @@ const LiveArticleDetail = () => {
 
           {article.source_urls?.length > 0 && (
             <section className="mb-10">
-              <p className="font-sketch text-base font-bold text-accent mb-3">— Sources</p>
+              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Sources</p>
               <ul className="space-y-1.5">
                 {article.source_urls.map((u, i) => (
                   <li key={i}>

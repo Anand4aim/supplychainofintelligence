@@ -60,7 +60,7 @@ const ForProductLeaders = () => (
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Infrastructure depth. Which layer do you own? Which sublayers are defensible?
             </p>
-            <p className="font-sketch text-sm font-bold text-accent italic">
+            <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent italic">
               This determines whether your product survives the next 3 years.
             </p>
           </div>
