@@ -23,41 +23,24 @@ const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
 const SSR_ENTRY = resolve("dist-ssr/entry-server.js");
 
-// Polyfill browser globals that module-level code (e.g. Supabase client) touches
-// during import. These never get called during renderToString.
-const memStore = new Map<string, string>();
-const fakeStorage = {
-  getItem: (k: string) => memStore.get(k) ?? null,
-  setItem: (k: string, v: string) => void memStore.set(k, String(v)),
-  removeItem: (k: string) => void memStore.delete(k),
-  clear: () => memStore.clear(),
-  key: (i: number) => Array.from(memStore.keys())[i] ?? null,
-  get length() {
-    return memStore.size;
-  },
-};
-// @ts-expect-error - patching node globals for SSR import compatibility
-globalThis.localStorage = fakeStorage;
-// @ts-expect-error
-globalThis.sessionStorage = fakeStorage;
-// @ts-expect-error
-globalThis.window = globalThis.window ?? { location: { href: BASE }, addEventListener() {}, removeEventListener() {} };
-const fakeNode: any = { appendChild() {}, removeChild() {}, insertBefore() {}, setAttribute() {}, style: {}, sheet: { insertRule() {} } };
-// @ts-expect-error
-globalThis.document = globalThis.document ?? {
-  cookie: "",
-  head: fakeNode,
-  body: fakeNode,
-  documentElement: fakeNode,
-  createElement: () => ({ ...fakeNode }),
-  createTextNode: () => ({}),
-  getElementsByTagName: () => [fakeNode],
-  getElementById: () => null,
-  querySelector: () => null,
-  querySelectorAll: () => [],
-  addEventListener() {},
-  removeEventListener() {},
-};
+// Set up a full jsdom environment before importing the SSR bundle, because
+// some application + UI deps (Supabase auth, Sonner toasts) read window /
+// document at module load. None of these run during renderToString output,
+// but Node needs real-enough shims for the imports to succeed.
+const { JSDOM } = await import("jsdom");
+const dom = new JSDOM("<!doctype html><html><head></head><body></body></html>", {
+  url: BASE,
+});
+const g = globalThis as any;
+g.window = dom.window;
+g.document = dom.window.document;
+g.navigator = dom.window.navigator;
+g.localStorage = dom.window.localStorage;
+g.sessionStorage = dom.window.sessionStorage;
+g.HTMLElement = dom.window.HTMLElement;
+g.Element = dom.window.Element;
+g.Node = dom.window.Node;
+g.getComputedStyle = dom.window.getComputedStyle;
 
 if (!existsSync(SSR_ENTRY)) {
   console.error(`prerender: SSR bundle missing at ${SSR_ENTRY}.`);
