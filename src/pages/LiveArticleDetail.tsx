@@ -5,7 +5,7 @@ import { ArrowLeft, ExternalLink, Loader2 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
+
 
 interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: string[]; }
 
