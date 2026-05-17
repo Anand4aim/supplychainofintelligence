@@ -92,9 +92,10 @@ const ANALYSIS_SCHEMA = {
       counter_thesis: { type: "string", description: "3-5 sentences. The strongest argument the analysis is WRONG. Steelman it. Then in one sentence, say why you still hold your position (or concede)." },
       what_to_watch: { type: "array", description: "3-5 specific signals to track in the next 90 days that would confirm or break the thesis. Each is a one-liner.", items: { type: "string" } },
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
-      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." }
+      linkedin_post: { type: "string", description: "Ready-to-post LinkedIn version: 180-260 words, opens with a sharp 1-line hook (no 'Excited to share'), names the structural mechanic, includes 1 contrarian beat, ends with a question or sharp call. Generous line breaks. Max 3 hashtags." },
+      news_date: { type: "string", description: "ISO date (YYYY-MM-DD) of when the actual news broke / the announcement was made. Extract from the source material. If multiple dates, pick the primary announcement date. If genuinely unknown, return today's date." }
     },
-    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "cube_position", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post"]
+    required: ["headline", "subheadline", "slug", "news_summary", "source_urls", "verdict", "vertical", "layer_scores", "cube_position", "why_now", "structural_take", "second_order_effects", "who_wins", "who_loses", "vertical_lens", "deep_product_lens", "deep_strategy_lens", "counter_thesis", "what_to_watch", "new_law_candidate", "linkedin_post", "news_date"]
   }
 };
 
