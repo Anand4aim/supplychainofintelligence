@@ -982,6 +982,67 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ PROOF RAIL — ALL 19 WORKED EXAMPLES ═══════════ */}
+      <section id="proof-rail" className="bg-background border-y border-border">
+        <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
+          <motion.div {...fadeIn} className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
+            <div>
+              <Eyebrow className="mb-2">The Corpus</Eyebrow>
+              <h2 className="font-display text-[22px] md:text-[28px] font-bold text-foreground leading-tight">
+                All {CASE_STUDIES.length} worked examples, in one rail
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+                Every analysis applies the same 10-layer lens to a real company or category — same framework, different verdicts. Scroll to scan; click any to read.
+              </p>
+            </div>
+            <Link to="/analysis" className="shrink-0 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all">
+              Open the analysis index <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+
+          <motion.div {...fadeIn}>
+            <div className="relative -mx-6 px-6">
+              <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-border">
+                {CASE_STUDIES.map((study) => (
+                  <Link
+                    key={study.slug}
+                    to={`/analysis/${study.slug}`}
+                    className="snap-start shrink-0 w-[280px] md:w-[300px] p-4 rounded-xl border border-border bg-card hover:border-accent/60 hover:shadow-md transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      {study.companies.slice(0, 3).map((c) => (
+                        <img
+                          key={c.name}
+                          src={c.logo}
+                          alt={c.name}
+                          className="w-7 h-7 rounded-full bg-white object-contain border border-border"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = "none";
+                          }}
+                        />
+                      ))}
+                      <span className="font-mono-marker text-[9px] tracking-[0.14em] text-muted-foreground ml-auto truncate max-w-[110px]">
+                        {study.layers.join(" · ")}
+                      </span>
+                    </div>
+                    <p className="font-mono-marker text-[9px] tracking-[0.16em] text-accent mb-1.5">
+                      {study.tag}
+                    </p>
+                    <h3 className="font-display text-[14px] font-bold text-foreground leading-snug line-clamp-3 group-hover:text-accent transition-colors min-h-[3.5em]">
+                      {study.title}
+                    </h3>
+                    <p className="mt-3 pt-3 border-t border-border/60 font-mono-marker text-[10px] text-muted-foreground">
+                      Verdict: <span className="text-foreground/80">{study.verdict}</span>
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════════ THE INTELLIGENCE CUBE™ ═══════════ */}
       <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
