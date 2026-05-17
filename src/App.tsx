@@ -16,6 +16,7 @@ import MarketMap from "./pages/MarketMap";
 import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
 import Start from "./pages/Start";
+import Predictions from "./pages/Predictions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
