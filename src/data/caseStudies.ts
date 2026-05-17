@@ -152,28 +152,67 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
     verdict: "GRAVEYARD CANDIDATE",
     excerpt:
-      "Presentation generation sits at L7b — a thin slice of the stack. Claude, Copilot, and Gemini now do it for free. The Intelligence Cube™ predicted this before the market priced it in. When your entire product is one prompt away from being free, you're already dead.",
-    layers: ["L7"],
+      "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube™ predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
+    layers: ["L2", "L4", "L7"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
       label: "Gamma Valuation",
-      before: "$2.1B",
-      after: "At risk",
+      before: "$2.1B (2024)",
+      after: "Structurally exposed",
       trend: "down",
       changeLabel: "Fragile",
     },
-    content: `When Gamma raised at a $2.1B valuation, the market saw a hot AI startup. The Supply Chain of Intelligence™ saw a company occupying a single thin layer.
+    content: `Gamma is genuinely well-built. The product is elegant, the demos are crisp, the team is strong. None of that resolves the structural question: *what does Gamma own that Microsoft, Google, and Anthropic don't?*
 
-**The Cube Analysis:**
-- Functions: Product + PM only (2/9)
-- Verticals: Cross-industry (generic)
-- Layers: L7 surface only (1/10)
-- Volume: Minimal. Structurally fragile.
+**The stack position.** Gamma sits at L7b — the slide-generation surface. There is no L1 (no proprietary corpus of decks the user couldn't get elsewhere). There is no L4 (no distribution into Office, Google Workspace, Notion, or the browser). There is no L8 (no compounding memory of *your* brand voice, your team's decks, your prior narratives). One layer, one slice, on rented L2.
 
-**What happened:** Claude added artifact generation. Copilot added presentation creation. Gemini added slide generation. All FREE with existing subscriptions.
+**What the L4 owners did.** Microsoft shipped Copilot in PowerPoint — bundled into 365, no extra SKU, no behavior change. Google shipped Gemini in Slides — same play. Anthropic shipped Artifacts — which generates a usable deck inside the same chat where you wrote the brief. Three different L4s, each integrating L7b natively. Gamma now competes by asking users to *change tools* for a feature that exists where they already work.
 
-**Law III in action:** Value migrated from the surface layer (L7) to the model layer (L2) and memory layer (L8). Gamma owned neither.`,
+**Law I — intelligence commoditized downward.** L2 capability for "turn this outline into 12 slides" is now interchangeable across frontier models. The model is no longer the moat — and Gamma never owned one anyway.
+
+**Law III — value migrates to the scarcest layer.** In presentations the scarce thing is *not* layout intelligence. It is the brand-voice memory, the deck-history archive, the per-team narrative templates that compound over years. None of that is Gamma's today.
+
+**What would save Gamma.** Three options, in order of plausibility: (1) become an L1 play — build the proprietary deck corpus from every customer, so the system gets dramatically smarter at *your* brand than any general model could; (2) get acquired by an L4 owner who needs a presentation surface (Notion, Canva, Figma all plausible); (3) collapse the price and pivot to a true vertical (sales decks, board decks, investor updates) where L5+L8 can compound.
+
+**The valuation math.** $2.1B requires either a multi-billion-revenue path or a strategic acquisition price. The first is structurally hard at L7-only. The second is realistic — but the acquirer dictates terms.
+
+*Illustrative — not investment advice. Public reporting; figures approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "Rented from frontier labs. Same model every competitor calls. Now embedded inside Office and Workspace for free.", sublayers: [{ name: "Foundation models", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "The decisive missing layer. Microsoft owns PowerPoint, Google owns Slides, Canva owns the design surface. Gamma must acquire each user.", sublayers: [{ name: "PowerPoint", impact: 3, who: "Microsoft" }, { name: "Slides", impact: 3, who: "Google" }, { name: "Canva/Figma", impact: 2, who: "Adjacent owners" }] },
+      { layer: "L7", owned: true, intensity: 3, note: "Gamma's entire product. Polished, elegant — and the most replicable layer in the stack.", sublayers: [{ name: "Slide generation surface", impact: 3, who: "Gamma + every L4 owner" }] },
+      { layer: "L8", owned: false, intensity: 1, note: "Faint per-user theme memory, but no real cross-deck or cross-team compounding loop. The layer that could have been the moat.", sublayers: [{ name: "Brand-voice memory", impact: 1, who: "Up for grabs" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product", "Sales"],
+      verticals: ["Horizontal"],
+      layers: ["L7"],
+    },
+    timeline: [
+      { date: "2022", label: "Gamma launches — fast, beautiful AI-first deck builder. Genuine product-market fit with founders and marketers.", tone: "up" },
+      { date: "2024", label: "Reported $2.1B valuation. Headline-grabbing growth.", tone: "up" },
+      { date: "Mar 2024", label: "Microsoft Copilot ships in PowerPoint with deck-from-prompt — bundled into 365.", tone: "down" },
+      { date: "Late 2024", label: "Anthropic Artifacts and Google Gemini in Slides ship comparable generation natively inside their L4s.", tone: "down" },
+      { date: "2025–26", label: "Competitive pressure compounds: Gamma must justify a separate tool for a feature now native to Office, Workspace, and chat. Growth efficiency degrades.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "Microsoft (PowerPoint + Copilot)", reason: "Owns the L4 every enterprise already pays for. Marginal cost of adding L7 generation: zero." },
+      { name: "Google (Slides + Gemini)", reason: "Same play in the Workspace install base." },
+      { name: "Canva", reason: "Owns the L4 of non-enterprise design. Different distribution, same dynamic — already shipping AI deck generation native." },
+    ],
+    who_loses: [
+      { name: "Gamma", reason: "L7-only, no L1, no L4, no L8. Classic thin-layer position — and the L4 owners just shipped its product as a feature." },
+      { name: "Tome, Beautiful.AI, every standalone AI deck tool", reason: "Same archetype, same fate. The category is becoming a feature of every L4." },
+      { name: "Late-stage investors at the $2B+ mark", reason: "The structural read says the next round is either flat, down, or a strategic acquisition — not a fresh markup." },
+    ],
+    counter_thesis: `Bull case: Gamma's design taste and product velocity are real. If they (a) build a true L1 by ingesting every user's prior decks, brand assets, and approved narratives, (b) compound L8 so the tool genuinely knows *your* voice better than any generalist could, and (c) move upmarket into vertical wedges (PE deal teams, investor relations, board decks) where the L5 workflow is non-trivial — they can carve out a real $500M-$1B revenue business. That doesn't justify $2.1B easily, but it doesn't have to end in zero. The honest read: 30% probability path, requires a sharp strategic pivot in the next 18 months.`,
+    for_you: {
+      product_leader: "Audit every 'AI tool for X' in your stack. If the product owns only L7, plan to retire it the quarter your L4 vendor (Microsoft, Google, Adobe, Salesforce) ships the same feature native.",
+      investor: "Single-layer L7 plays at $2B+ are structurally short unless an L1 or L8 thesis is plausible within 18 months. Underwrite the next-round mark, not last round's headline.",
+      operator: "If your AI-tool budget is fragmenting into 8 single-feature SaaS subscriptions, the consolidation play is the L4 owner's bundle — not the standalone tool.",
+    },
+    pull_quote: "When your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
   },
   {
     slug: "stack-overflow-decline",
