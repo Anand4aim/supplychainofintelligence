@@ -58,11 +58,9 @@ const SiteFooter = () => (
         </div>
       </div>
 
-      <div className="border-t border-foreground/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px]">
-        <p>© {new Date().getFullYear()} Anand Arivukkarasu · All rights reserved</p>
-        <p className="text-foreground/50">
-          The Supply Chain of Intelligence™ &amp; The Intelligence Cube™ — trademarks of Anand Arivukkarasu
-        </p>
+      <div className="border-t border-foreground/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px] text-foreground/50">
+        <p>© {new Date().getFullYear()} Anand Arivukkarasu</p>
+        <p>Use it, cite it, build on it — credit appreciated.</p>
       </div>
     </div>
   </footer>
