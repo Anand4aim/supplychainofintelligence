@@ -76,7 +76,7 @@ const CaseStudyDetailPage = () => {
 
   return (
     <SiteLayout>
-      <Seo title={`${study.title} — Case Study`} description={description} path={`/analysis/${study.slug}`} />
+      <Seo title={`${study.title} — Case Study by Anand Arivukkarasu`} description={description} path={`/analysis/${study.slug}`} article />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>

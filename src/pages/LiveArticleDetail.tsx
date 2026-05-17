@@ -84,9 +84,11 @@ const LiveArticleDetail = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${article.headline} — Live Analysis`}
+        title={`${article.headline} — Live Analysis by Anand Arivukkarasu`}
         description={article.subheadline ?? article.news_summary.slice(0, 155)}
         path={`/live/${article.slug}`}
+        article
+        datePublished={article.published_at}
       />
 
       <article className="bg-background">
