@@ -27,11 +27,18 @@ const Grid: React.FC<{
   xHits: boolean[];
   cellColorFor: (yIdx: number) => string;
 }> = ({ yAxis, xAxis, yLabel, xLabel, yHits, xHits, cellColorFor }) => {
+  const yCount = yHits.filter(Boolean).length;
+  const xCount = xHits.filter(Boolean).length;
+  const cellCount = yCount * xCount;
+  const emptyAxis = xCount === 0;
   return (
     <div>
-      <div className="flex items-baseline justify-between mb-2">
+      <div className="flex items-baseline justify-between mb-2 gap-3">
         <p className="font-mono-marker text-[10px] text-muted-foreground uppercase tracking-wider">
           {yLabel} × {xLabel}
+        </p>
+        <p className="font-mono-marker text-[10px] text-foreground/60 uppercase tracking-wider whitespace-nowrap">
+          {emptyAxis ? "no footprint" : `${cellCount} cell${cellCount === 1 ? "" : "s"} · ${yCount}×${xCount}`}
         </p>
       </div>
       <div className="flex gap-2">
