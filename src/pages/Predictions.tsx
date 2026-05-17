@@ -134,7 +134,7 @@ const Predictions = () => {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search predictions — company, layer, outcome…"
+              placeholder="Search by company, layer, outcome…"
               className="w-full pl-9 pr-3 py-2.5 bg-background border border-foreground/15 rounded-md text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-accent transition-colors"
               aria-label="Search predictions"
             />
