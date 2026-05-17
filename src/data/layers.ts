@@ -210,6 +210,15 @@ export const SUBLAYER_LABEL: Record<string, string> = Object.fromEntries(
   LAYERS.flatMap((l) => l.sublayers.map((s) => [s.id, s.name]))
 );
 
+// CSS variable name for a layer's color, e.g. "L-1" -> "--layer-neg1", "L7" -> "--layer-7".
+// Accepts layer or sublayer IDs (sublayer is mapped to parent layer color).
+export const layerVar = (id: string): string => {
+  const layerId = id.replace(/[a-z]$/, ""); // strip sublayer suffix: "L8c" -> "L8"
+  const key = layerId === "L-1" ? "neg1" : layerId.replace("L", "");
+  return `--layer-${key}`;
+};
+export const layerColor = (id: string): string => `hsl(var(${layerVar(id)}))`;
+
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
 // ─── The Three Structural Laws ──────────────────────────────────────

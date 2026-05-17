@@ -7,7 +7,7 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
-import { LAYER_LABEL } from "@/data/layers";
+import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
@@ -145,15 +145,17 @@ const LiveArticleDetail = () => {
                 border: "1px solid hsl(35 20% 88%)",
               }}
             >
-              {/* Chip header row */}
+              {/* Chip header row — canonical "L# Short" */}
               <div className="grid grid-cols-10 gap-1.5 mb-3">
                 {LAYER_ORDER.map((layer) => (
                   <div
                     key={layer}
-                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
+                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 px-0.5 rounded-sm text-white leading-[1.15]"
                     style={{ background: `hsl(var(${layerVar(layer)}))` }}
+                    title={LAYER_LABEL[layer]}
                   >
-                    {layer}
+                    <div>{layer}</div>
+                    <div className="text-[9px] opacity-95 mt-0.5">{LAYER_SHORT_LABEL[layer]}</div>
                   </div>
                 ))}
               </div>
@@ -222,10 +224,10 @@ const LiveArticleDetail = () => {
                   return (
                     <div key={layer} className="flex gap-3 items-start">
                       <span
-                        className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 min-w-[34px] text-center shrink-0 mt-0.5"
+                        className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 text-center shrink-0 mt-0.5 whitespace-nowrap"
                         style={{ background: `hsl(var(${layerVar(layer)}))` }}
                       >
-                        {layer}
+                        {layer} {LAYER_SHORT_LABEL[layer]}
                       </span>
                       <div className="flex-1 text-[14px] leading-snug text-foreground">
                         {s?.note}
