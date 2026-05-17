@@ -14,6 +14,7 @@ import AboutPage from "./pages/About";
 import WorkWithMePage from "./pages/WorkWithMe";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
+import MarketMap from "./pages/MarketMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/work-with-me" element={<WorkWithMePage />} />
           <Route path="/live" element={<LivePage />} />
           <Route path="/live/:slug" element={<LiveArticleDetail />} />
+          <Route path="/market-map" element={<MarketMap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
