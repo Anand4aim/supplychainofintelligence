@@ -216,18 +216,22 @@ const Index = () => {
                 const gridCols = `grid-cols-${LAYERS.length}`;
 
                 return (
-                  <div className="-mx-5 md:mx-0 overflow-x-auto">
-                    <div className="min-w-[640px] md:min-w-0 px-5 md:px-0">
-                    <div className="grid grid-cols-[140px_1fr_96px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
+                  <div className="-mx-5 md:mx-0 overflow-x-auto md:overflow-visible scrollbar-thin scrollbar-thumb-border">
+                    <div className="md:hidden px-5 pb-2 font-mono-marker text-[9px] tracking-[0.18em] text-muted-foreground/70 flex items-center gap-1.5">
+                      <span>SWIPE</span>
+                      <span aria-hidden>→</span>
+                    </div>
+                    <div className="min-w-[760px] md:min-w-0 px-5 md:px-0">
+                    <div className="grid grid-cols-[150px_1fr_104px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
                       <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
                         {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
                           <div key={id} className="flex flex-col items-center gap-1 min-w-0">
-                            <span className="font-mono-marker text-[8px] md:text-[9px] tracking-[0.04em] text-muted-foreground/90 leading-tight text-center truncate w-full">
+                            <span className="font-mono-marker text-[9px] md:text-[9px] tracking-[0.02em] text-muted-foreground/90 leading-[1.1] text-center w-full break-words hyphens-auto">
                               {name}
                             </span>
                             <div
-                              className="w-full text-center font-mono-marker text-[9px] md:text-[10px] font-bold py-1.5 rounded-sm text-white"
+                              className="w-full text-center font-mono-marker text-[10px] md:text-[10px] font-bold py-1.5 rounded-sm text-white"
                               style={{ background: `hsl(var(${cssVar}))` }}
                             >
                               {label}
@@ -241,7 +245,7 @@ const Index = () => {
                     {rows.map((row, i) => (
                       <div
                         key={row.name}
-                        className={`grid grid-cols-[140px_1fr_96px] md:grid-cols-[180px_1fr_110px] gap-3 items-center py-3 ${
+                        className={`grid grid-cols-[150px_1fr_104px] md:grid-cols-[180px_1fr_110px] gap-3 items-center py-3 ${
                           i % 2 === 0 ? "bg-foreground/[0.025]" : ""
                         } border-t border-foreground/10`}
                       >
@@ -259,7 +263,7 @@ const Index = () => {
                                     key={d}
                                     className="rounded-full"
                                     style={{
-                                      width: 5, height: 5,
+                                      width: 6, height: 6,
                                       background: d <= intensity ? `hsl(var(${cssVar}))` : "transparent",
                                     }}
                                   />
