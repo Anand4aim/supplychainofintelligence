@@ -46,7 +46,7 @@ const DepthModules: React.FC<Props> = ({
     <div className="space-y-12 my-12">
       {hasAnyScore && (
         <section>
-          <p className="font-sketch text-base font-bold text-accent mb-4">— Layer Scoring</p>
+          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— Layer Scoring</p>
           <div
             className="rounded-2xl p-3 sm:p-5 md:p-6 overflow-x-auto"
             style={{
@@ -115,7 +115,7 @@ const DepthModules: React.FC<Props> = ({
 
       {hasSublayers && (
         <section>
-          <p className="font-sketch text-base font-bold text-accent mb-2">— Sublayer Impact Map</p>
+          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Sublayer Impact Map</p>
           <p className="text-foreground/70 text-[14px] mb-4 italic">
             Which of the 50 sublayers this case actually touches, and at what magnitude.
           </p>
@@ -125,7 +125,7 @@ const DepthModules: React.FC<Props> = ({
 
       {hasCube && (
         <section>
-          <p className="font-sketch text-base font-bold text-accent mb-2">— Intelligence Cube · 2D</p>
+          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Intelligence Cube · 2D</p>
           <p className="text-foreground/70 text-[14px] mb-4 italic">
             Footprint across Functions × Verticals × Layers — the three axes that determine structural fate.
           </p>
@@ -139,7 +139,7 @@ const DepthModules: React.FC<Props> = ({
 
       {hasTimeline && (
         <section>
-          <p className="font-sketch text-base font-bold text-accent mb-4">— Timeline</p>
+          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— Timeline</p>
           <div className="relative pl-6 border-l-2 border-foreground/15 space-y-5">
             {timeline!.map((t, i) => {
               const dotColor =
