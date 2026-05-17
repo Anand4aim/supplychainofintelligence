@@ -85,10 +85,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "L7 EXPOSURE",
     title: "Chegg: From $12B to 99% Collapse — The Fastest Value Destruction in EdTech",
-    verdict: "L7-only, no L1/L3/L8",
+    verdict: "L7b only, no L1b/L3a/L8b",
     excerpt:
       "Chegg sat at L7b — generic educational content with no proprietary data, no memory loops, no compliance moat. When ChatGPT arrived, it didn't compete with Chegg — it made Chegg's entire layer free. The stock dropped 99%. Law III predicted it.",
     layers: ["L7"],
+    sublayers: ["L7b"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
@@ -151,10 +152,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "ARCHETYPE ANALYSIS",
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
-    verdict: "L7 on rented L2",
+    verdict: "L7b on rented L2a",
     excerpt:
       "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
     layers: ["L2", "L4", "L7"],
+    sublayers: ["L2a", "L7b"],
     date: "March 2026",
     readTime: "9 min",
     valuation: {
@@ -224,10 +226,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "L1 MIS-PACKAGED AS L7",
     title: "Stack Overflow: When Your Community Becomes Training Data",
-    verdict: "L1 mis-packaged as L7",
+    verdict: "L1b mis-packaged as L7b",
     excerpt:
       "Stack Overflow's traffic dropped roughly 35–50% after ChatGPT shipped. Fifteen years of community-built knowledge — packaged as L7b content and scraped into L2 training sets. The community that built the data captured none of the value; the model layer captured all of it. A textbook case of L1 data mis-packaged as L7 content.",
     layers: ["L1", "L2", "L7"],
+    sublayers: ["L1b", "L7b"],
     date: "March 2026",
     readTime: "9 min",
     valuation: {
@@ -307,10 +310,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "STRUCTURAL DIVERGENCE",
     title: "Apollo vs ZoomInfo: Same Layer, Opposite Strategies, Different Fates",
-    verdict: "L1 headless vs L1 + UI tax",
+    verdict: "L1b headless vs L1b + L7b tax",
     excerpt:
-      "Both sit at L1 — proprietary data. But Apollo went API-first and headless. ZoomInfo charges premium for a UI wrapper. In an agent-first world, the UI tax is a liability. The data refinery wins.",
+      "Both sit at L1b — proprietary data. But Apollo went API-first and headless. ZoomInfo charges premium for an L7b UI wrapper. In an agent-first world, the UI tax is a liability. The data refinery wins.",
     layers: ["L1", "L7"],
+    sublayers: ["L1b", "L7b"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
@@ -417,10 +421,11 @@ Sierra's loop is the product. Agentforce's loop is an option you have to archite
     ],
     tag: "MODEL LAYER TRAP",
     title: "Stability AI vs Midjourney: Why Open-Source L2 Couldn't Monetize",
-    verdict: "L2 without L1/L4",
+    verdict: "L2a without L1b/L4a/L8c",
     excerpt:
-      "Stability AI open-sourced Stable Diffusion and watched the L2 it created become free infrastructure for everyone *except* Stability. Midjourney kept the model closed, built an obsessive Discord community, and compounded aesthetic memory at L8. Same underlying technology, opposite layer architecture, 100× valuation gap. The cleanest L2-vs-L8 lesson in the open-vs-closed model debate.",
+      "Stability AI open-sourced Stable Diffusion and watched the L2a it created become free infrastructure for everyone *except* Stability. Midjourney kept the model closed, built an obsessive Discord community, and compounded aesthetic memory at L8c. Same underlying technology, opposite layer architecture, 100× valuation gap. The cleanest L2-vs-L8 lesson in the open-vs-closed model debate.",
     layers: ["L2", "L7", "L8"],
+    sublayers: ["L2a", "L7a", "L8c"],
     date: "March 2026",
     readTime: "9 min",
     valuation: {
@@ -709,10 +714,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L5 + L8 IN PRODUCTION",
     title: "Klarna: 700 Agents Replaced, $40M Saved — The First Honest Number on Agent Economics",
-    verdict: "L1 + L5 + L8",
+    verdict: "L1c + L5a + L8c stack",
     excerpt:
-      "Klarna's AI assistant handled 2.3M conversations in its first month — the workload of 700 human agents — with equal customer satisfaction and faster resolution. The headline is the cost. The structural story is that Klarna owned the customer data (L1), the workflow (L5), and the resolution memory (L8). The model was a commodity input.",
+      "Klarna's AI assistant handled 2.3M conversations in its first month — the workload of 700 human agents — with equal customer satisfaction and faster resolution. The headline is the cost. The structural story is that Klarna owned the customer data (L1c), the workflow (L5a), and the resolution memory (L8c). The model was a commodity input.",
     layers: ["L1", "L5", "L8"],
+    sublayers: ["L1c", "L5a", "L8c"],
     date: "April 2026",
     readTime: "8 min",
     valuation: {
@@ -784,10 +790,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L4 DISTRIBUTION",
     title: "Perplexity vs Google: The Answer Engine vs The Default",
-    verdict: "L4 absorbs L7",
+    verdict: "L4a absorbs L7a",
     excerpt:
-      "Perplexity built a better answer experience. Google owns Chrome, Android, Safari's default, and the URL bar of the internet. Perplexity raised at $9B. Google shipped AI Overviews to 1.5B users in a quarter. The lesson: when the L4 owner ships your L7, you don't win by being better.",
+      "Perplexity built a better answer experience. Google owns Chrome, Android, Safari's default, and the URL bar of the internet. Perplexity raised at $9B. Google shipped AI Overviews to 1.5B users in a quarter. The lesson: when the L4a owner ships your L7a, you don't win by being better.",
     layers: ["L4", "L7"],
+    sublayers: ["L4a", "L7a"],
     date: "April 2026",
     readTime: "8 min",
     content: `Perplexity is technically excellent. Strategically it is fighting the hardest fight in tech: dislodging a default.
@@ -812,10 +819,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L4 + L6 STACK",
     title: "Cursor at $9B: The IDE That Quietly Became the Most Important L4 in AI",
-    verdict: "L4 + L6 + L8 stack",
+    verdict: "L4a + L6c + L8d stack",
     excerpt:
-      "Cursor isn't a model. It isn't an agent. It's the editor — the place developers spend 8 hours a day. By owning L4 (IDE distribution) and layering L6 (agent orchestration) and L8 (per-codebase memory) on top, Cursor has become structurally more defensible than the agents that run inside it.",
+      "Cursor isn't a model. It isn't an agent. It's the editor — the place developers spend 8 hours a day. By owning L4a (IDE distribution) and layering L6c (agent orchestration) and L8d (per-codebase memory) on top, Cursor has become structurally more defensible than the agents that run inside it.",
     layers: ["L4", "L6", "L8"],
+    sublayers: ["L4a", "L6c", "L8d"],
     date: "April 2026",
     readTime: "8 min",
     valuation: {
@@ -847,10 +855,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L3 TRUST PLAY",
     title: "Anthropic's Enterprise Wedge: Selling L3 When Everyone Else Sells L2",
-    verdict: "L2 + L3 wedge",
+    verdict: "L2a + L3a + L3c wedge",
     excerpt:
-      "OpenAI sells the smartest model. Anthropic sells the most *governable* one. Constitutional AI, transparency, conservative refusals, SOC 2, FedRAMP, BAAs — Claude's enterprise pitch is L3 (compliance and trust) bundled with competitive L2. In regulated buyers' procurement, L3 is the decisive layer.",
+      "OpenAI sells the smartest model. Anthropic sells the most *governable* one. Constitutional AI, transparency, conservative refusals, SOC 2, FedRAMP, BAAs — Claude's enterprise pitch is L3a compliance + L3c safety bundled with competitive L2a. In regulated buyers' procurement, L3 is the decisive layer.",
     layers: ["L2", "L3"],
+    sublayers: ["L2a", "L3a", "L3c"],
     date: "April 2026",
     readTime: "7 min",
     content: `In a market where every frontier lab's L2 is roughly comparable on any given month, Anthropic has made a structural bet: differentiate on L3.
@@ -876,10 +885,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L1 + L4 STACK",
     title: "Adobe Firefly: The Only Image Model an Enterprise Can Legally Use",
-    verdict: "L1 + L3 + L4 stack",
+    verdict: "L1b + L3a + L4a stack",
     excerpt:
-      "Midjourney is more aesthetic. Stable Diffusion is more open. Firefly wins enterprise because Adobe trained on licensed stock — and indemnifies customers against IP lawsuits. L1 (licensed data) + L3 (legal indemnity) + L4 (Creative Cloud distribution) is the only stack that survives an enterprise legal review.",
+      "Midjourney is more aesthetic. Stable Diffusion is more open. Firefly wins enterprise because Adobe trained on licensed stock — and indemnifies customers against IP lawsuits. L1b (licensed data) + L3a (legal indemnity) + L4a (Creative Cloud distribution) is the only stack that survives an enterprise legal review.",
     layers: ["L1", "L3", "L4"],
+    sublayers: ["L1b", "L3a", "L4a"],
     date: "April 2026",
     readTime: "7 min",
     content: `The image-generation race looks like a model-quality race. For enterprise it is not — it is a *legal exposure* race, and Adobe is the only player who built for that.
@@ -906,10 +916,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L8 WITHOUT L2",
     title: "Character.AI: The L8 Memory Moat That Couldn't Stand Without L2",
-    verdict: "L8 without owned L2",
+    verdict: "L8b without owned L2a",
     excerpt:
-      "Character.AI had real L8 — billions of personalized conversations, deep user attachment, the largest companion-AI user base. What it didn't have: an L2 it could afford. Compute costs ate the unit economics, and Google licensed the team and tech for ~$2.7B. A clean lesson in why L8 alone, without owned L2 or a profitable L4, is a vulnerable position.",
+      "Character.AI had real L8b memory — billions of personalized conversations, deep user attachment, the largest companion-AI user base. What it didn't have: an L2a it could afford. Compute costs ate the unit economics, and Google licensed the team and tech for ~$2.7B. A clean lesson in why L8b alone, without owned L2a or a profitable L4, is a vulnerable position.",
     layers: ["L2", "L7", "L8"],
+    sublayers: ["L2a", "L7a", "L8b"],
     date: "April 2026",
     readTime: "8 min",
     valuation: {
@@ -978,10 +989,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "VERTICAL & REGULATED · MEDTECH",
     title: "Tempus AI: When the Data Layer Sits Inside the Clinic",
-    verdict: "L1 + L3 + L8",
+    verdict: "L1b + L3a + L8d stack",
     excerpt:
-      "Tempus stitched together oncology-grade clinical and molecular data (L1), trained vertical models on top (L3), and embedded the output into oncologist workflow (L8). The structural read: in regulated medicine, L8 (the clinical workflow + reimbursement path) sits above the model and slows commoditization meaningfully.",
+      "Tempus stitched together oncology-grade clinical and molecular data (L1b), trained vertical models on top (L2b/L3a), and embedded the output into oncologist workflow (L8d). The structural read: in regulated medicine, L8d (the clinical workflow + reimbursement path) sits above the model and slows commoditization meaningfully.",
     layers: ["L1", "L3", "L8"],
+    sublayers: ["L1b", "L3a", "L8d"],
     date: "May 2026",
     readTime: "8 min",
     valuation: {
@@ -1020,10 +1032,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "PHYSICAL & INDUSTRIAL · AGROTECH",
     title: "John Deere: Why the Tractor Is the L-1 Moat",
-    verdict: "L-1 + L1 + L8",
+    verdict: "L0e + L1d + L8d stack",
     excerpt:
-      "See & Spray puts vision models on the boom of a sprayer to herbicide weeds, not crops. The model is the easy part. The fleet of instrumented tractors with edge compute, the agronomic data flywheel, and the dealer-financed install base — those are the layers no AI-only entrant can replicate.",
+      "See & Spray puts vision models on the boom of a sprayer to herbicide weeds, not crops. The model is the easy part. The fleet of instrumented tractors with L0e edge compute, the L1d outcome-data flywheel, and the L8d dealer-financed install base — those are the layers no AI-only entrant can replicate.",
     layers: ["L-1", "L1", "L8"],
+    sublayers: ["L0e", "L1d", "L8d"],
     date: "May 2026",
     readTime: "9 min",
     valuation: {
@@ -1063,10 +1076,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "PHYSICAL & INDUSTRIAL · AUTONOMY",
     title: "Tesla vs Waymo: Two Bets on Which Layer Wins Autonomy",
-    verdict: "L-1 + L1 vs L1 + L8",
+    verdict: "L0e + L1c vs L1b + L8d",
     excerpt:
-      "Same end-state — robotaxis — two opposite structural bets. Tesla bets fleet-scale L-1 (cameras on millions of cars) plus emergent L3 wins. Waymo bets dense L1 (HD maps + lidar-grade sensing in geo-fenced cities) plus L8 (operations + regulatory permits) wins. The framework reads them as different layer ownership, not different products.",
+      "Same end-state — robotaxis — two opposite structural bets. Tesla bets fleet-scale L0e edge compute (cameras + custom silicon on millions of cars) plus L1c behavioral data wins. Waymo bets dense L1b (HD maps + lidar-grade sensing in geo-fenced cities) plus L8d (operations + regulatory permits) wins. The framework reads them as different layer ownership, not different products.",
     layers: ["L-1", "L1", "L8"],
+    sublayers: ["L0e", "L1b", "L1c", "L8d"],
     date: "May 2026",
     readTime: "10 min",
     valuation: {
