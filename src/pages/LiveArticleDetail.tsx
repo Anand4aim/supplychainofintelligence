@@ -43,9 +43,9 @@ interface LiveArticle {
 
 const LAYER_ORDER = ["L-1","L0","L1","L2","L3","L4","L5","L6","L7","L8"];
 const LAYER_LABEL: Record<string,string> = {
-  "L-1":"Energy & Power","L0":"Compute & Silicon","L1":"Cloud Infra","L2":"Foundation Models",
-  "L3":"Inference & Serving","L4":"Agents & Orchestration","L5":"Tools & APIs","L6":"Applications",
-  "L7":"Distribution & Trust","L8":"Memory & Continuity"
+  "L-1":"Resources","L0":"Infrastructure","L1":"Data","L2":"Models",
+  "L3":"Gatekeeping & Trust","L4":"Access & Distribution","L5":"Execution","L6":"Orchestration",
+  "L7":"Surface","L8":"Memory & Record-Keeping"
 };
 const layerVar = (l: string) => {
   const key = l === "L-1" ? "neg1" : l.replace("L", "");
