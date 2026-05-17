@@ -788,7 +788,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════ THREE STRUCTURAL LAWS ═══════════ */}
-      <section className="bg-background">
+      <section id="three-laws" className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
             <Eyebrow className="mb-4">
