@@ -209,14 +209,7 @@ const CaseStudyDetailPage = () => {
               </section>
             )}
 
-            {/* (Author block + CTAs below) */}
-
-            <ArticleFooterCTA
-              source={`case-study:${study.slug}`}
-              shareUrl={url}
-              shareText={study.pull_quote ?? study.verdict}
-            />
-
+            {/* Author */}
             <div className="mt-10 pt-8 border-t border-border flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center font-display font-bold text-accent text-lg shrink-0">
                 AA
@@ -248,6 +241,13 @@ const CaseStudyDetailPage = () => {
                 {next.title} <ArrowRight size={16} />
               </Link>
             </div>
+
+            {/* Inbox capture — last */}
+            <ArticleFooterCTA
+              source={`case-study:${study.slug}`}
+              shareUrl={url}
+              shareText={study.pull_quote ?? study.verdict}
+            />
           </motion.div>
         </div>
       </article>
