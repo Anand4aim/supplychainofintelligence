@@ -168,6 +168,16 @@ const CaseStudyDetailPage = () => {
               </div>
             )}
 
+            <DepthModules
+              layer_scores={study.layer_scores}
+              fallback_layers={study.layers}
+              cube_position={study.cube_position}
+              timeline={study.timeline}
+              who_wins={study.who_wins}
+              who_loses={study.who_loses}
+              counter_thesis={study.counter_thesis}
+            />
+
             <div className="prose prose-lg max-w-none">{renderMarkdown(study.content)}</div>
 
             {/* Author block */}
