@@ -14,6 +14,7 @@ import AboutPage from "./pages/About";
 import WorkWithMePage from "./pages/WorkWithMe";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
+import MarketMap from "./pages/MarketMap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
