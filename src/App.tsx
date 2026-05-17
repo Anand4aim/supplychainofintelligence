@@ -13,6 +13,7 @@ import AboutPage from "./pages/About";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
+import FaqPage from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/live" element={<LivePage />} />
           <Route path="/live/:slug" element={<LiveArticleDetail />} />
           <Route path="/market-map" element={<MarketMap />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
