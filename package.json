@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "tsx scripts/prerender.ts",
+    "postbuild": "vite build --ssr src/entry-server.tsx --outDir dist-ssr --ssrEmitAssets false && tsx scripts/prerender.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
