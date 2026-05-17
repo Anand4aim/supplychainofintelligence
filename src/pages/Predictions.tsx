@@ -116,13 +116,25 @@ const fmtDate = (iso: string) =>
     day: "numeric",
   });
 
+type StructuralFilter = "all" | StructuralStatus;
+
+const STRUCTURAL_FILTERS: { id: StructuralFilter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "confirmed", label: "Confirmed" },
+  { id: "playing-out", label: "Playing out" },
+  { id: "wrong", label: "Wrong" },
+  { id: "pending", label: "Pending" },
+];
+
 const Predictions = () => {
   const total = PREDICTIONS.length;
   const confirmed = PREDICTIONS_BY_STRUCTURAL.confirmed.length;
   const playing = PREDICTIONS_BY_STRUCTURAL["playing-out"].length;
+  const wrong = PREDICTIONS_BY_STRUCTURAL.wrong.length;
   const fasterThanExpected = PREDICTIONS.filter((p) => p.timing === "faster").length;
 
   const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState<StructuralFilter>("all");
 
   const sorted = useMemo<Prediction[]>(
     () => [...PREDICTIONS].sort((a, b) => (a.date < b.date ? 1 : -1)),
@@ -131,31 +143,63 @@ const Predictions = () => {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return sorted;
-    return sorted.filter((p) =>
-      [p.subject, p.call, p.outcome, ...p.layers, p.structural, p.timing]
+    return sorted.filter((p) => {
+      if (filter !== "all" && p.structural !== filter) return false;
+      if (!q) return true;
+      return [p.subject, p.call, p.outcome, ...p.layers, p.structural, p.timing]
         .join(" ")
         .toLowerCase()
-        .includes(q),
-    );
-  }, [query, sorted]);
+        .includes(q);
+    });
+  }, [query, filter, sorted]);
 
   // Quick-jump anchors — one chip per company, scrolls to that prediction.
   const jumpTo = (id: string) => {
     setQuery("");
-    // Defer so the filter reset paints before scrolling.
+    setFilter("all");
     requestAnimationFrame(() => {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
 
+  // ItemList JSON-LD so LLMs can cite individual predictions.
+  const itemListLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Predictions — The Supply Chain of Intelligence™ track record",
+    description:
+      "Dated, layer-tagged structural calls made through the 10-layer generative AI framework, each scored on structural accuracy and timing.",
+    numberOfItems: PREDICTIONS.length,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    itemListElement: sorted.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `https://supplychainofai.com/predictions#${p.id}`,
+      name: `${p.subject} — ${STRUCTURAL_META[p.structural].label.replace("Structural · ", "")} · ${TIMING_META[p.timing].label.replace("Timing · ", "")}`,
+      item: {
+        "@type": "CreativeWork",
+        name: p.subject,
+        url: `https://supplychainofai.com/predictions#${p.id}`,
+        datePublished: p.date,
+        about: p.layers.join(", "),
+        description: p.call,
+        text: p.outcome,
+      },
+    })),
+  };
+
   return (
     <SiteLayout>
       <Seo
         title="Predictions — The Supply Chain of Intelligence™ track record"
-        description="Public, dated, layer-tagged calls made through the 10-layer generative AI framework — Jasper, Chegg, Sierra, Glean, Devin, Stability — with outcomes and sources."
+        description="Public, dated, layer-tagged calls made through the 10-layer generative AI framework — Jasper, Chegg, Harvey, Sierra, Glean, Cursor, Perplexity, Klarna, Tesla/Waymo, BloombergGPT and more — scored on structural accuracy and timing."
         path="/predictions"
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
       />
 
       <section className="max-w-5xl mx-auto px-6 pt-20 pb-12">
@@ -178,14 +222,15 @@ const Predictions = () => {
           lose credibility. Separating them is how this one earns it.
         </p>
 
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl">
           <Stat label="Total calls" value={total} />
           <Stat label="Structural confirmed" value={confirmed} color="hsl(var(--layer-1))" />
           <Stat label="Structural playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Structural wrong" value={wrong} color="hsl(var(--destructive))" />
           <Stat label="Faster than expected" value={fasterThanExpected} color="hsl(var(--layer-7))" />
         </div>
 
-        {/* Search + quick-jump */}
+        {/* Search + filter chips + quick-jump */}
         <div className="mt-10 space-y-4">
           <label className="relative block max-w-xl">
             <Search
@@ -202,6 +247,34 @@ const Predictions = () => {
               aria-label="Search predictions"
             />
           </label>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/50 mr-1">
+              Filter
+            </span>
+            {STRUCTURAL_FILTERS.map((f) => {
+              const active = filter === f.id;
+              const count =
+                f.id === "all"
+                  ? PREDICTIONS.length
+                  : PREDICTIONS_BY_STRUCTURAL[f.id].length;
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  className={`px-2.5 py-1 rounded text-xs font-medium transition-colors border ${
+                    active
+                      ? "bg-accent text-accent-foreground border-accent"
+                      : "border-foreground/15 text-foreground/70 hover:text-foreground hover:border-foreground/40"
+                  }`}
+                  aria-pressed={active}
+                >
+                  {f.label} <span className="opacity-60 ml-0.5">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/50 mr-1">
               Jump to
@@ -221,7 +294,7 @@ const Predictions = () => {
 
       <section className="max-w-5xl mx-auto px-6 pb-24">
         {filtered.length === 0 ? (
-          <p className="text-foreground/60 text-sm">No predictions match “{query}”.</p>
+          <p className="text-foreground/60 text-sm">No predictions match the current filter{query ? ` and search “${query}”` : ""}.</p>
         ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
           {filtered.map((p, i) => {

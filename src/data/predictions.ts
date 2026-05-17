@@ -161,6 +161,106 @@ export const PREDICTIONS: Prediction[] = [
     timing: "on-pace",
     caseStudySlug: "stability-ai-open-model-trap",
   },
+  {
+    id: "perplexity-vs-google",
+    subject: "Perplexity (vs. Google)",
+    date: "2024-01-20",
+    call:
+      "Perplexity is a beautifully executed L7 answer-engine, but the framework's distribution law says L7 without L4 (default-channel placement) loses to whoever owns the query box. Google owns Chrome, Android, Safari-default, and the search slot — Perplexity has to fight for every install.",
+    layers: ["L7", "L4"],
+    outcome:
+      "Through 2024–2026 Perplexity grew query volume meaningfully and raised at progressively higher valuations, but Google's AI Overviews + Gemini integration into Chrome/Android kept Perplexity's share of total AI-assisted search structurally capped. The framework's L4 distribution call held — owning the surface without owning the channel is a permanent ceiling, not a death sentence.",
+    structural: "confirmed",
+    timing: "on-pace",
+    caseStudySlug: "perplexity-vs-google-distribution",
+  },
+  {
+    id: "cursor-ide-consolidation",
+    subject: "Cursor",
+    date: "2024-03-10",
+    call:
+      "Cursor owns L5 (the IDE workflow) and L8 (per-developer context / accepted-edit memory) in a way Copilot's bolt-on extension model structurally cannot match — the editor IS the workflow, and the workflow is where the agent loop accrues. The L5 + L8 stack consolidates the coding-agent category to whoever controls the IDE surface, not the model underneath.",
+    layers: ["L5", "L8"],
+    outcome:
+      "Cursor's ARR scaled past $500M through 2024–2025 with developer adoption at the major AI labs themselves. Copilot Workspace, Claude Code, and Codex all repositioned around IDE-native or terminal-native workflows — explicitly conceding the L5 framing. The category consolidated exactly along the L5/L8 axis the framework predicted.",
+    structural: "confirmed",
+    timing: "faster",
+    timingNote: "IDE consolidation arrived inside ~12 months of the call.",
+    caseStudySlug: "cursor-ide-consolidation",
+  },
+  {
+    id: "character-ai-memory-orphan",
+    subject: "Character.AI",
+    date: "2024-02-01",
+    call:
+      "A consumer companion product whose entire value is L8 (per-user memory + relationship state) but whose L2 model is rented and whose L4 distribution is mobile-app store-dependent is structurally a 'memory orphan' — the L8 asset is real but un-monetizable inside the cap-table constraints of a foundation-model-grade burn rate.",
+    layers: ["L8", "L2", "L4"],
+    outcome:
+      "Google effectively acqui-hired the founding team in August 2024 in a structure that paid out the cap table without buying the company — the textbook outcome for an L8-rich asset trapped inside an L2-dependent cost structure. The L8 memory survived; the company did not.",
+    structural: "confirmed",
+    timing: "on-pace",
+    caseStudySlug: "character-ai-memory-orphan",
+    source: {
+      label: "The Information — Google's Character.AI deal",
+      url: "https://www.theinformation.com/articles/why-googles-character-ai-deal-is-a-template-for-the-ai-talent-wars",
+    },
+  },
+  {
+    id: "klarna-l5-l8-customer-service",
+    subject: "Klarna",
+    date: "2024-02-28",
+    call:
+      "Klarna's AI customer-service rollout is an L5 (workflow replacement) + L8 (per-resolution learning loop) move that could compress the L7 human-agent surface by ~700 FTEs without quality regression, validating in-house vertical-agent economics over horizontal Salesforce/Zendesk stacks.",
+    layers: ["L5", "L8"],
+    outcome:
+      "Klarna's initial 2024 announcement claimed the cost win. In 2025 the company publicly walked it back, citing quality drift and CSAT issues, and began re-hiring human agents for higher-value tiers. The L5 compression was real; the L8 quality loop did not close fast enough to defend the all-AI tier. The framework's read on the economics was directionally right, the read on the quality-loop maturity was optimistic.",
+    structural: "playing-out",
+    timing: "slower",
+    timingNote:
+      "L8 quality loop matured slower than the L5 cost story. The two diverged in public.",
+    caseStudySlug: "klarna-customer-service",
+  },
+  {
+    id: "tesla-vs-waymo-stack",
+    subject: "Tesla vs. Waymo",
+    date: "2024-06-15",
+    call:
+      "Autonomy is decided at L1 (real-world driving data) + L8 (fleet learning loop), not at L2 (model architecture). Tesla's data + fleet asymmetry compounds faster than Waymo's superior sensor stack + geofenced operational data, even though Waymo ships the safer product today. The framework's call: whoever owns the largest L1 + L8 loop wins the decade, regardless of who's ahead this quarter.",
+    layers: ["L1", "L8"],
+    outcome:
+      "Through 2024–2026 Waymo expanded geographically with the better short-term safety record while Tesla's FSD v12/v13 made step-function progress on the back of fleet-scale data. The contest is unresolved and probably will remain so for years — exactly the multi-year horizon the L1/L8 call implied.",
+    structural: "playing-out",
+    timing: "too-early",
+    caseStudySlug: "tesla-vs-waymo-autonomy-stack",
+  },
+  {
+    id: "adobe-firefly-licensed-data",
+    subject: "Adobe Firefly",
+    date: "2023-10-01",
+    call:
+      "Adobe's licensed-data L1 + Creative-Cloud L5 distribution gives it a structural moat against Midjourney and Stable Diffusion in the enterprise creative segment, even if the model quality (L2) is behind. Enterprises will pay for indemnification, not for the best raw model.",
+    layers: ["L1", "L5"],
+    outcome:
+      "Through 2024–2026 Firefly became the default enterprise-safe image surface for Fortune 500 marketing teams, with the indemnification clause driving procurement decisions away from Midjourney despite Midjourney's quality lead. The L1 (licensed data) + L5 (Creative Cloud workflow) call held.",
+    structural: "confirmed",
+    timing: "on-pace",
+    caseStudySlug: "adobe-firefly-licensed-data",
+  },
+  {
+    id: "bloomberg-gpt-l2-fortress",
+    subject: "BloombergGPT",
+    date: "2023-04-15",
+    call:
+      "Bloomberg's L1 (terminal proprietary corpus) + L2 (in-house trained 50B financial model) is the textbook vertical-fortress play: own the data AND own the model, and the L2 stays defensible against frontier-lab generalists in finance.",
+    layers: ["L1", "L2"],
+    outcome:
+      "Bloomberg shifted its internal AI strategy toward using frontier models (GPT-4, Claude) over the proprietary BloombergGPT model through 2024. The L1 corpus remained the moat; the L2 ownership thesis did not — frontier-model rate-of-improvement made bespoke 50B-parameter vertical models economically and qualitatively obsolete inside ~18 months.",
+    structural: "wrong",
+    timing: "faster",
+    timingNote:
+      "The 'own L2' part of the call aged poorly. The 'L1 corpus is the moat' part survived. Logged honestly: the framework over-weighted L2 ownership against frontier-model improvement curves. This is the kind of call the lens has to get sharper on.",
+    caseStudySlug: "bloomberg-gpt-vertical-fortress",
+  },
 ];
 
 export const PREDICTIONS_BY_STRUCTURAL: Record<StructuralStatus, Prediction[]> =
