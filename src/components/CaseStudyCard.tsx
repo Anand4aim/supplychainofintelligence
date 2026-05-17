@@ -34,6 +34,7 @@ export interface CaseStudy {
   date: string;
   readTime: string;
   brief?: boolean; // visually tag as a short take vs full teardown
+  track?: "software" | "vertical" | "physical"; // which analysis track this case belongs to (default: software)
   valuation?: {
     label: string;
     before: string;
