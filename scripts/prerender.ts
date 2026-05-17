@@ -48,7 +48,28 @@ if (!existsSync(SSR_ENTRY)) {
   process.exit(1);
 }
 
-const template = readFileSync(resolve(DIST, "index.html"), "utf8");
+// Read the template. After the first prerender run, dist/index.html holds
+// fully prerendered home content — that would poison every subsequent route.
+// We cache a clean copy at dist/.prerender-template.html on the first build
+// when vite's output still has an empty <div id="root"></div>, and prefer
+// that cached copy on later runs.
+const TEMPLATE_CACHE = resolve(DIST, ".prerender-template.html");
+const rawDistIndex = readFileSync(resolve(DIST, "index.html"), "utf8");
+const isCleanTemplate = /<div id="root">\s*<\/div>/.test(rawDistIndex);
+let template: string;
+if (isCleanTemplate) {
+  writeFileSync(TEMPLATE_CACHE, rawDistIndex);
+  template = rawDistIndex;
+} else if (existsSync(TEMPLATE_CACHE)) {
+  template = readFileSync(TEMPLATE_CACHE, "utf8");
+} else {
+  // No cached template AND dist/index.html is already polluted — fall back to
+  // the project's source index.html. This still works because we replace the
+  // <div id="root"></div> with our prerendered content.
+  const srcIndex = readFileSync(resolve("index.html"), "utf8");
+  template = srcIndex;
+  writeFileSync(TEMPLATE_CACHE, srcIndex);
+}
 
 // Routes to prerender — must match React Router definitions in src/App.tsx.
 const routes: string[] = [
