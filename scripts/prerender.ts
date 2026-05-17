@@ -23,24 +23,24 @@ const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
 const SSR_ENTRY = resolve("dist-ssr/entry-server.js");
 
-// Set up a full jsdom environment before importing the SSR bundle, because
-// some application + UI deps (Supabase auth, Sonner toasts) read window /
-// document at module load. None of these run during renderToString output,
-// but Node needs real-enough shims for the imports to succeed.
+// Set up just enough browser-shaped globals so the SSR bundle can be IMPORTED
+// (Supabase reads localStorage; Sonner reads document at module load).
+// IMPORTANT: do NOT set `window` — react-helmet-async checks
+// `typeof window !== 'undefined' && window.document` to decide whether it's
+// on the client. If true, it tries to mutate document.head via
+// requestAnimationFrame, which crashes in Node. Keeping window undefined
+// forces Helmet into server-mode and our helmetContext gets populated.
 const { JSDOM } = await import("jsdom");
 const dom = new JSDOM("<!doctype html><html><head></head><body></body></html>", {
   url: BASE,
 });
 const g = globalThis as any;
-g.window = dom.window;
 g.document = dom.window.document;
-Object.defineProperty(g, "navigator", { value: dom.window.navigator, configurable: true });
 g.localStorage = dom.window.localStorage;
 g.sessionStorage = dom.window.sessionStorage;
 g.HTMLElement = dom.window.HTMLElement;
 g.Element = dom.window.Element;
 g.Node = dom.window.Node;
-g.getComputedStyle = dom.window.getComputedStyle;
 
 if (!existsSync(SSR_ENTRY)) {
   console.error(`prerender: SSR bundle missing at ${SSR_ENTRY}.`);
