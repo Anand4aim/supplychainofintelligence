@@ -31,6 +31,12 @@ export interface CaseStudy {
   verdict: string;
   excerpt: string;
   layers: string[];
+  /**
+   * Canonical sublayer ids (e.g. ["L1b","L5d","L8c"]) — drives sublayer-precision
+   * chips and verdicts. Optional for back-compat with case studies that
+   * haven't been upgraded from layer-level yet. See src/data/sublayerIndex.ts.
+   */
+  sublayers?: string[];
   date: string;
   readTime: string;
   brief?: boolean; // visually tag as a short take vs full teardown

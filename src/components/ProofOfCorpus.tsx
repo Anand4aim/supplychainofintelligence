@@ -14,12 +14,12 @@ const LAYER_PAGE_COUNT = LAYERS.length; // L-1 → L8
 // case-study corpus. Order chosen to span Fortress / Wrapper / Ambiguous so
 // readers immediately see the framework producing different verdicts.
 const FEATURED: Array<{ slug: string; company: string; verdict: string; tier: "fortress" | "exposed" | "mixed" }> = [
-  { slug: "sierra-vs-salesforce", company: "Sierra", verdict: "Fortress · L1b + L5 + L8", tier: "fortress" },
-  { slug: "jasper-vs-grammarly-copilot", company: "Jasper", verdict: "Exposed · L7 only", tier: "exposed" },
-  { slug: "harvey-vs-generic-legal", company: "Harvey", verdict: "Fortress · L1b + L5b", tier: "fortress" },
-  { slug: "devin-cognition-l7-agent", company: "Devin", verdict: "Wrapper-at-risk · L5+L7", tier: "exposed" },
-  { slug: "glean-enterprise-search-fortress", company: "Glean", verdict: "Memory moat · L8 + L1b", tier: "fortress" },
-  { slug: "bloomberg-gpt-vertical-fortress", company: "Bloomberg", verdict: "Vertical fortress · L1b + L2", tier: "fortress" },
+  { slug: "sierra-vs-salesforce", company: "Sierra", verdict: "Fortress · L1c + L5d + L8c", tier: "fortress" },
+  { slug: "jasper-vs-grammarly-copilot", company: "Jasper", verdict: "Exposed · L7c only", tier: "exposed" },
+  { slug: "harvey-vs-generic-legal", company: "Harvey", verdict: "Fortress · L1b + L5b + L8d", tier: "fortress" },
+  { slug: "devin-cognition-l7-agent", company: "Devin", verdict: "Wrapper-at-risk · L7c on L2a", tier: "exposed" },
+  { slug: "glean-enterprise-search-fortress", company: "Glean", verdict: "Memory moat · L8d + L1c", tier: "fortress" },
+  { slug: "bloomberg-gpt-vertical-fortress", company: "Bloomberg", verdict: "Vertical fortress · L1b + L2b", tier: "fortress" },
 ];
 
 const tierClasses: Record<typeof FEATURED[number]["tier"], string> = {
