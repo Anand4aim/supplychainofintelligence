@@ -225,27 +225,78 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "Stack Overflow: When Your Community Becomes Training Data",
     verdict: "L7b COMMODITY",
     excerpt:
-      "Stack Overflow's traffic dropped 35%+ after ChatGPT launched. 15 years of community-built knowledge packaged as L7b content — consumed by models at L2. The community that built the data got none of the value. The model layer captured it all.",
-    layers: ["L1", "L7"],
+      "Stack Overflow's traffic dropped roughly 35–50% after ChatGPT shipped. Fifteen years of community-built knowledge — packaged as L7b content and scraped into L2 training sets. The community that built the data captured none of the value; the model layer captured all of it. A textbook case of L1 data mis-packaged as L7 content.",
+    layers: ["L1", "L2", "L7"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
-      label: "Traffic Impact",
-      before: "100M+/mo",
-      after: "~55M/mo",
+      label: "Monthly Traffic",
+      before: "~100M (2022)",
+      after: "~55M (2025)",
       trend: "down",
-      changeLabel: "-45%",
+      changeLabel: "≈-45%",
     },
-    content: `Stack Overflow is a fascinating structural case: they had L1 data (community knowledge) but packaged it as L7b (generic content access).
+    content: `Stack Overflow is the most important structural cautionary tale of the LLM era: a genuine L1 asset that was operated as L7b, and therefore captured by the layer above it.
 
-**The irony:** Stack Overflow's data trained the very models that now replace it. Their 15+ years of developer Q&A became fuel for ChatGPT and Copilot.
+**What Stack Overflow actually had.** Fifteen years of human-curated developer Q&A. Tens of millions of accepted answers. Reputation scores, edit history, voting signal — every datum a model could want to learn *how* a good developer answers a question. This is L1b in its purest form: proprietary, high-quality, hard to reproduce.
 
-**The structural mistake:** Stack Overflow treated its data as content (L7b) rather than proprietary fuel (L1b). They could have:
-- Licensed data at premium rates (L1b monetization)
-- Built developer memory (L8) — personalized to each dev's stack
-- Created compliance layers (L3) — verified, auditable answers for enterprise
+**What Stack Overflow packaged it as.** A free, ad-supported content site. Open license on the corpus (CC BY-SA). Every word indexed by Google, crawled by every model lab, baked into GPT-3, GPT-4, Claude, Gemini, Llama, every code model on the planet. The L1 was given away; the surface (L7) was monetized via ads.
 
-**Instead:** They sold ads on a content site. When the content became free via LLMs, the ads lost their audience.`,
+**What happened.** The trained models can now answer most developer questions directly — inside ChatGPT, inside GitHub Copilot (irony: GitHub owns the platform that *replaced* Stack Overflow, and Microsoft owns both), inside Cursor, inside the IDE. Traffic to stackoverflow.com collapsed. Question volume on the site dropped sharply. The community-incentive loop (rep, badges, status) weakened. Less new content → fewer reasons to visit → less new content.
+
+**Law I.** Intelligence commoditized downward: L2 absorbed the human Q&A pattern and now serves it at zero marginal cost, in-context, with code completion.
+
+**Law III.** Value migrated to the scarcest layer. The scarce thing turned out to be *integrated answers inside the developer's IDE*, not access to a Q&A website. Stack Overflow owned the data; Microsoft owned the surface where that data was now needed.
+
+**The structural mistakes — and what would have been right.**
+- L1 mis-pricing: an open license on the corpus made commercial L2 capture inevitable. Reddit's pivot to charging $60M+/year for API/training access is what L1 owners should do.
+- No L8: per-developer memory of *your* stack, *your* code, *your* past questions — never built. Cursor and Copilot built it instead.
+- No L4: Stack Overflow had a website, not an IDE plugin. The L4 owners (Microsoft, JetBrains) had the developer's actual workspace.
+- No L3: no enterprise-grade "verified, auditable answers for compliance-sensitive code" product. A real wedge that Stack Overflow for Teams gestured at but never executed.
+
+**The 2024 pivots.** Licensing deals with OpenAI and Google (correctly repricing L1), Stack Overflow for Teams (a real L1+L8 enterprise play, but too late and under-resourced), an AI assistant of their own (built on rented L2, with no L4 advantage). The structural read: salvageable as a smaller B2B knowledge business; the consumer-Q&A surface is structurally over.
+
+**The generalizable lesson.** Every community-content site sitting on real L1 — Reddit, Quora, Wikipedia, Genius, Discogs, GitHub Discussions — is now making the same decision Stack Overflow made too late: license the corpus, build the memory layer, or watch the model layer absorb the value.
+
+*Public reporting; traffic figures approximate, sourced from Similarweb and third-party trackers.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "15 years of human-curated developer Q&A — a genuinely scarce L1b asset, but operated under open license rather than monetized as proprietary fuel.", sublayers: [{ name: "Developer Q&A corpus", impact: 3, who: "Stack Overflow → every model lab" }, { name: "Reputation & voting signal", impact: 2, who: "Stack Overflow" }] },
+      { layer: "L2", owned: false, intensity: 3, note: "Every frontier model trained on the Stack Overflow corpus. The L1 owner created the L2 that replaced it.", sublayers: [{ name: "Foundation code models", impact: 3, who: "OpenAI, Anthropic, Google, Meta" }] },
+      { layer: "L3", owned: false, intensity: 1, note: "Stack Overflow for Teams gestured at enterprise governance but never built a real L3 wedge (verified-answer SLA, audit trail, compliance).", sublayers: [{ name: "Verified-answer enterprise SKU", impact: 1, who: "Underbuilt" }] },
+      { layer: "L4", owned: false, intensity: 0, note: "The decisive missing layer. A website is not where developers work. The IDE is — and Microsoft and JetBrains own that.", sublayers: [{ name: "IDE distribution", impact: 0, who: "Microsoft, JetBrains" }] },
+      { layer: "L7", owned: true, intensity: 3, note: "The Q&A surface — where Stack Overflow lived for 15 years, and where ChatGPT and Copilot now answer in-context.", sublayers: [{ name: "Q&A website", impact: 3, who: "Stack Overflow (declining)" }] },
+      { layer: "L8", owned: false, intensity: 0, note: "Per-developer memory of *your* stack and *your* past questions was never built. Cursor and Copilot are building it now." },
+    ],
+    cube_position: {
+      functions: ["Eng"],
+      verticals: ["Horizontal"],
+      layers: ["L1", "L7"],
+    },
+    timeline: [
+      { date: "2008–2020", label: "Stack Overflow becomes the default developer Q&A site. ~100M+ monthly visitors at peak.", tone: "up" },
+      { date: "2021", label: "Prosus acquires Stack Overflow for $1.8B — peak valuation of the consumer Q&A surface.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Trained on Stack Overflow's corpus. Answers most dev questions for free, in context.", tone: "down" },
+      { date: "Mid-2023", label: "Traffic drop becomes public — Similarweb shows 35%+ year-over-year decline. Layoffs follow.", tone: "down" },
+      { date: "2024", label: "Stack Overflow signs paid licensing deals with OpenAI and Google — repricing L1, but the L2 already trained on the open corpus.", tone: "neutral" },
+      { date: "2025", label: "Traffic stabilizes at roughly half of 2022. Strategy pivots to Teams (B2B knowledge) + their own AI assistant. Consumer surface is structurally over.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "Microsoft (GitHub + Copilot + VS Code)", reason: "Owns the L4 (IDE) where developer questions are now answered — built on L2 trained partly on Stack Overflow's L1." },
+      { name: "Cursor", reason: "L4 + L8 — answers live inside the editor with per-codebase memory. The product Stack Overflow could have built but didn't." },
+      { name: "Reddit (the contrarian)", reason: "Watched the Stack Overflow movie and immediately repriced L1 — $60M+/year API/training licensing deals before giving the corpus away." },
+    ],
+    who_loses: [
+      { name: "Stack Overflow", reason: "Owned real L1 but gave it away under open license and operated only L7. The model layer captured the value." },
+      { name: "Every contributor", reason: "15 years of free expert labor trained the models that replaced the platform. Zero economic capture for the people who built the corpus." },
+      { name: "Every community-content site that hasn't repriced its L1", reason: "Quora, Genius, niche Stack Exchanges, forums — same archetype. Same fate unless the licensing pivot is made early." },
+    ],
+    counter_thesis: `Bull case: Stack Overflow's consumer surface dies, but the L1 corpus + the brand + Teams becomes a credible $200–400M ARR B2B knowledge product — "the verified, source-of-truth developer Q&A inside your enterprise." That's a real business, just a much smaller one than the consumer ad model implied. The honest read: the company survives, the *category* of "free public developer Q&A site" does not. Anyone betting on traffic recovery is fighting Law III.`,
+    for_you: {
+      product_leader: "If your product is community-generated content monetized by ads, the corpus is L1 and the surface is L7. Reprice L1 (licensing, exclusivity, contracts) before a model trains on the open version, or accept that L2 will capture you.",
+      investor: "Any consumer-Q&A or community-knowledge asset that hasn't signed paid LLM-training deals by now is structurally exposed. The Reddit move is the floor, not the ceiling.",
+      operator: "Stack Overflow for Teams remains the cheapest 'verified institutional Q&A' you can buy. The consumer site is a search fallback, not a primary tool — plan the team workflow accordingly.",
+    },
+    pull_quote: "Stack Overflow had genuine L1 and operated it as L7. The L2 layer that trained on the corpus is what captured the value.",
   },
   {
     slug: "apollo-vs-zoominfo",
