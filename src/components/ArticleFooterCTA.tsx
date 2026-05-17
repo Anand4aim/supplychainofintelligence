@@ -11,6 +11,7 @@ const ArticleFooterCTA = ({ shareText, shareUrl, source = "article" }: Props) =>
   const shareHref = shareUrl
     ? `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
     : "https://www.linkedin.com/in/anandarivu";
+  const rssHref = "https://pjococttuifybrwsxscy.supabase.co/functions/v1/rss-feed";
 
   return (
     <div className="mt-14 pt-10 border-t border-foreground/10 space-y-6">
@@ -35,7 +36,9 @@ const ArticleFooterCTA = ({ shareText, shareUrl, source = "article" }: Props) =>
           </a>
         )}
         <a
-          href="/rss.xml"
+          href={rssHref}
+          target="_blank"
+          rel="noopener"
           className="inline-flex items-center gap-2 text-sm font-semibold text-foreground border border-foreground/20 rounded-md px-3 py-1.5 hover:bg-foreground hover:text-background transition-colors"
         >
           <Rss size={14} /> RSS
