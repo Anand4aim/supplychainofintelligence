@@ -2,6 +2,26 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { TrendingDown, TrendingUp, ArrowRight, Minus } from "lucide-react";
 
+type SubLayer = string | { name: string; impact?: number; who?: string };
+export interface LayerScore {
+  layer: string;
+  owned?: boolean;
+  intensity?: number;
+  note?: string;
+  sublayers?: SubLayer[];
+}
+export interface CubePosition {
+  functions?: string[];
+  verticals?: string[];
+  layers?: string[];
+}
+export interface TimelinePoint {
+  date: string;
+  label: string;
+  tone?: "up" | "down" | "neutral";
+}
+export interface WinnerLoser { name: string; reason: string; }
+
 export interface CaseStudy {
   slug: string;
   companies: { name: string; logo: string; color: string }[];
@@ -20,6 +40,13 @@ export interface CaseStudy {
     changeLabel: string;
   };
   content: string;
+  // Optional depth modules (live-article parity)
+  layer_scores?: LayerScore[];
+  cube_position?: CubePosition;
+  timeline?: TimelinePoint[];
+  counter_thesis?: string;
+  who_wins?: WinnerLoser[];
+  who_loses?: WinnerLoser[];
 }
 
 interface Props {

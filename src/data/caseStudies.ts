@@ -44,6 +44,37 @@ export const CASE_STUDIES: CaseStudy[] = [
 **Law III — the surface captures attention; the chain captures power.** Same category does not equal same future. The market is repricing *layer ownership*, not feature quality. And when a bigger owner of your moat layer arrives, owning that layer is no longer enough — you need a layer they don't own. For Grammarly, that question now becomes: where is the L8 (memory of *your* writing voice across years and teams) that Microsoft can't easily replicate?
 
 *Illustrative strategic patterns only — not investment recommendations. Public reporting; numbers approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "The L2 commoditization (ChatGPT free) is what triggered the cascade — Jasper's surface lost its model scarcity overnight.", sublayers: [{ name: "Foundation models", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "Grammarly built L4 (browser/editor extensions) — defensible until Microsoft brought a bigger L4 (Office, Teams, 365 install base) to the same fight.", sublayers: [{ name: "Browser extension", impact: 3, who: "Grammarly" }, { name: "Editor integration", impact: 3, who: "Microsoft 365" }] },
+      { layer: "L6", owned: false, intensity: 2, note: "Tone, style, voice orchestration — Grammarly's deeper layer, but increasingly replicable inside any L4 owner's stack.", sublayers: [{ name: "Tone & style", impact: 2, who: "Grammarly, Copilot" }] },
+      { layer: "L7", owned: false, intensity: 3, note: "Jasper lived here alone — prompt templates and brand voice presets. Absorbed when the model itself became conversational.", sublayers: [{ name: "Prompt templates", impact: 3, who: "Jasper" }, { name: "Writing surface", impact: 3, who: "All three" }] },
+      { layer: "L8", owned: false, intensity: 1, note: "The unclaimed layer. Whoever owns the memory of *your* writing voice across years and teams wins the next decade. No one owns it yet.", sublayers: [{ name: "Voice memory", impact: 1, who: "Up for grabs" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product", "PM/Proj", "Sales"],
+      verticals: ["Horizontal", "SaaS"],
+      layers: ["L2", "L4", "L6", "L7"],
+    },
+    timeline: [
+      { date: "Nov 2021", label: "Grammarly hits $13B valuation at peak — owns browser + editor extensions.", tone: "up" },
+      { date: "Oct 2022", label: "Jasper raises $125M at $1.5B — pure L7 prompt-template moat.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Free, conversational, GPT-3.5. Jasper's L7 moat begins evaporating in weeks.", tone: "down" },
+      { date: "Mar 2023", label: "Microsoft announces Copilot in Word, Outlook, Teams — bundled into 365.", tone: "down" },
+      { date: "2024", label: "Jasper reportedly trading at ~$300M — 80% mark-down.", tone: "down" },
+      { date: "2025–26", label: "Grammarly squeezed: same moat layer, but Microsoft owns more of it. Pivots toward team-voice memory (L8).", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Microsoft", reason: "Already owned the bigger L4. Added L2 inside it. Bundled at no marginal price." },
+      { name: "OpenAI / Anthropic / Google", reason: "L2 is now the price-setting layer — every L7 wrapper pays them rent." },
+      { name: "Any future L8 owner", reason: "The memory of your voice, across every doc you've ever written, is the only layer still unclaimed in writing." },
+    ],
+    who_loses: [
+      { name: "Jasper", reason: "L7-only is the new GPT-wrapper graveyard. 80% mark-down is the structural verdict." },
+      { name: "Pure-play AI writing startups", reason: "Same fate as Jasper unless they own L1 (voice data) or L8 (cross-doc memory)." },
+      { name: "Grammarly (partially)", reason: "Still defensible in the browser, but squeezed inside Office. Needs an L8 sprint." },
+    ],
+    counter_thesis: `The counter is that Grammarly has built genuine L8 over a decade — billions of corrections per user, tone profiles, team style enforcement. Microsoft has the bigger L4 but no equivalent depth on *individual voice memory* across non-Microsoft surfaces (Slack, Gmail, browser, mobile keyboards). If Grammarly converts its corrections corpus into a true cross-surface voice memory product — and if enterprises actually pay for "the AI that knows how your VP of Marketing writes" — then L8 + multi-L4 distribution beats single-L4 dominance. The honest read: that's a 30% probability bet, not a base case.`,
   },
   {
     slug: "chegg-collapse",
@@ -79,6 +110,36 @@ export const CASE_STUDIES: CaseStudy[] = [
 **What Chegg should have done:** Migrate value to L8 (Memory & Learning) — personalized tutoring that remembers each student's progress, weaknesses, and learning style. That's scarce. That's defensible.
 
 **The law is clear:** If your layer isn't scarce, your value will migrate to whoever's layer is.`,
+    layer_scores: [
+      { layer: "L1", owned: false, intensity: 1, note: "Chegg had a corpus but never treated it as proprietary fuel — it was generic content scraped by any LLM in training.", sublayers: [{ name: "Q&A corpus", impact: 1, who: "Chegg (now in every model's training set)" }] },
+      { layer: "L2", owned: false, intensity: 3, note: "ChatGPT collapsed L7b pricing to zero. Chegg's content layer became free to reproduce.", sublayers: [{ name: "General-purpose LLMs", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L3", owned: false, intensity: 0, note: "No compliance moat — homework help is unregulated, so no L3 friction protected the incumbent." },
+      { layer: "L7", owned: true, intensity: 3, note: "Chegg's entire stack lived here: a content-access surface. The most-fragile layer in any AI cycle.", sublayers: [{ name: "Homework answers", impact: 3, who: "Chegg → ChatGPT" }, { name: "Textbook solutions", impact: 3, who: "Chegg → ChatGPT" }] },
+      { layer: "L8", owned: false, intensity: 0, note: "The unbuilt layer that could have saved them: per-student memory, learning-style adaptation, weakness tracking." },
+    ],
+    cube_position: {
+      functions: ["CustCare", "Product"],
+      verticals: ["EdTech"],
+      layers: ["L7"],
+    },
+    timeline: [
+      { date: "Feb 2021", label: "Chegg hits all-time high — $113/share, ~$12B market cap. Pandemic education boom.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Free homework answers, infinite scale, no subscription.", tone: "down" },
+      { date: "May 2023", label: "CEO admits ChatGPT impact on growth call. Stock drops 48% in a single day.", tone: "down" },
+      { date: "2024", label: "Revenue down 50%+. Layoffs. Chegg announces its own AI product — too late, no proprietary edge.", tone: "down" },
+      { date: "2025", label: "Market cap under $200M. ~99% destruction from peak.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "OpenAI", reason: "Absorbed the entire homework-help category as a side effect of being a general assistant." },
+      { name: "Khan Academy (Khanmigo)", reason: "Built L8 (per-student memory + Socratic tutoring) on top of GPT — the layer Chegg never built." },
+      { name: "Duolingo", reason: "Owned L8 (spaced-repetition memory of every learner) before AI hit. The moat held." },
+    ],
+    who_loses: [
+      { name: "Chegg", reason: "Pure L7b with no L1, L3, or L8 underneath. Structural inevitability." },
+      { name: "Course Hero, Quizlet (legacy mode)", reason: "Same L7b position. Same vulnerability. Both scrambling to bolt on L8." },
+      { name: "Every ed-content reseller", reason: "If your business is 'access to answers,' the answers are now free." },
+    ],
+    counter_thesis: `Bull case: Chegg pivots into tutoring services + per-student L8 memory + verified-human-expert L3, and re-emerges as a smaller but durable $1–2B business. The pieces exist — 8M+ subscribers, brand recognition with students, a corpus of decade-old questions. But the cultural and capital constraints (public-company quarterly pressure, debt, demoralized team) make this unlikely. More probable outcome: take-private, asset stripped, brand absorbed by a tutoring marketplace. The 99% drop is the market pricing that path correctly.`,
   },
   {
     slug: "gamma-thin-layer-graveyard",
@@ -329,6 +390,36 @@ export const CASE_STUDIES: CaseStudy[] = [
 **What this means for your firm.** If your competitive position is "we know things and we remember things," AI is an amplifier, not a threat — *provided* you own L1 and L8. If your position is "we can write good documents," the model just ate your job.
 
 *Public reporting; figures approximate.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "70 years of proprietary studies, expert memos, sector benchmarks. The moat that no model can reproduce.", sublayers: [{ name: "Client engagement archive", impact: 3, who: "McKinsey" }, { name: "Expert profiles & frameworks", impact: 3, who: "McKinsey" }] },
+      { layer: "L2", owned: false, intensity: 2, note: "Rented from OpenAI. Swappable in a weekend. McKinsey pays nothing to defend it.", sublayers: [{ name: "Foundation model", impact: 2, who: "OpenAI (swappable)" }] },
+      { layer: "L3", owned: true, intensity: 2, note: "Client confidentiality, audit trails, citation back to source memos — table stakes for a consulting firm and a real barrier for AI-native competitors.", sublayers: [{ name: "Confidentiality + audit", impact: 2, who: "McKinsey-built" }] },
+      { layer: "L6", owned: true, intensity: 3, note: "Retrieval over the proprietary corpus, citation, expert routing — McKinsey-built orchestration on top of a rented model.", sublayers: [{ name: "Corpus retrieval & routing", impact: 3, who: "McKinsey" }] },
+      { layer: "L8", owned: true, intensity: 3, note: "Every engagement adds to Lilli. Compounding institutional memory — the second moat layer.", sublayers: [{ name: "Institutional memory", impact: 3, who: "McKinsey" }, { name: "Per-engagement feedback", impact: 2, who: "McKinsey" }] },
+    ],
+    cube_position: {
+      functions: ["Strategy", "PM/Proj", "Product", "Sales"],
+      verticals: ["Horizontal", "FinTech", "Health"],
+      layers: ["L1", "L2", "L3", "L6", "L8"],
+    },
+    timeline: [
+      { date: "Mid-2023", label: "Lilli launches internally — built on OpenAI, grounded in McKinsey's corpus.", tone: "up" },
+      { date: "Late 2023", label: "Adoption ramps. Partners start citing Lilli output in client decks.", tone: "up" },
+      { date: "Mid-2024", label: "70%+ of the firm uses Lilli weekly. Becomes standard tooling.", tone: "up" },
+      { date: "2025", label: "Consulting firms emerge as some of the largest enterprise LLM customers — opposite of the predicted disruption.", tone: "up" },
+      { date: "2026", label: "The model layer keeps commoditizing. McKinsey's L1+L8 advantage compounds. Pure-play AI strategy startups struggle to find buyers.", tone: "up" },
+    ],
+    who_wins: [
+      { name: "McKinsey, BCG, Bain", reason: "L1 (decades of proprietary client work) and L8 (compounding institutional memory) — the two layers AI can't reproduce." },
+      { name: "OpenAI / Anthropic", reason: "Consulting firms became some of their largest enterprise customers, not their competitors." },
+      { name: "Any firm with deep proprietary archives", reason: "Law firms, accounting firms, hospitals, banks — the L1+L8 pattern generalizes." },
+    ],
+    who_loses: [
+      { name: "Pure-play AI strategy startups", reason: "No L1, no L8, no client trust. The model is the cheapest layer to own — the others are the business." },
+      { name: "Junior consulting headcount (slower growth)", reason: "Drafting work compresses. The pyramid narrows. Entry-level path changes shape." },
+      { name: "The 'AI will kill consulting' thesis", reason: "Falsified in real time. The opposite happened — consulting became one of the biggest beneficiaries." },
+    ],
+    counter_thesis: `The counter is that Lilli's moat is overstated because the *actual* output of consulting (the synthesized 60-page deck, the executive narrative, the client-relationship judgment) was always the value — not the underlying corpus. If frontier models continue to improve at long-form reasoning and synthesis, a well-prompted GPT-6 with public data may produce a McKinsey-grade strategy doc for a tenth the cost. McKinsey's corpus is large, but most of it is dated or sector-specific in ways that a generalist model can fluently approximate. The honest read: L1 protects them for 3–5 years; the open question is whether L8 (the compounding loop) can build a durable advantage before model capability closes the gap on the synthesis layer itself.`,
   },
   {
     slug: "bloomberg-gpt-vertical-fortress",

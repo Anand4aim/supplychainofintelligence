@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import DepthModules from "@/components/live/DepthModules";
 import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus } from "lucide-react";
 
 const SITE = "https://supplychainofai.com";
@@ -166,6 +167,16 @@ const CaseStudyDetailPage = () => {
                 </div>
               </div>
             )}
+
+            <DepthModules
+              layer_scores={study.layer_scores}
+              fallback_layers={study.layers}
+              cube_position={study.cube_position}
+              timeline={study.timeline}
+              who_wins={study.who_wins}
+              who_loses={study.who_loses}
+              counter_thesis={study.counter_thesis}
+            />
 
             <div className="prose prose-lg max-w-none">{renderMarkdown(study.content)}</div>
 
