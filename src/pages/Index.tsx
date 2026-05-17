@@ -58,8 +58,8 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <p className="font-sketch text-base text-muted-foreground mb-4">
-                A structural framework by Anand Arivukkarasu · Ex-Meta Product Leader
+              <p className="font-mono-marker text-[12px] md:text-[13px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
+                By Anand Arivukkarasu · Ex-Meta Product Leader
               </p>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold leading-[1.15] mb-5">
                 <SketchUnderline color="hsl(var(--accent))">
