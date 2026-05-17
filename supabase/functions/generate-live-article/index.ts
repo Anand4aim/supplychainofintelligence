@@ -114,7 +114,7 @@ async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<s
         { role: "system", content: systemMsg },
         { role: "user", content: userMsg }
       ],
-      search_recency_filter: topic ? "month" : "week",
+      search_recency_filter: topic ? "year" : "week",
       max_tokens: 1000,
     }),
   });
@@ -164,10 +164,12 @@ Deno.serve(async (req) => {
     }
 
     let topic: string | undefined;
+    let publishedAt: string | undefined;
     try {
       if (req.method === "POST") {
         const body = await req.json();
         topic = typeof body?.topic === "string" ? body.topic : undefined;
+        publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
       }
     } catch (_) { /* no body */ }
 
@@ -188,7 +190,7 @@ Deno.serve(async (req) => {
     const { data: existing } = await supabase.from("live_articles").select("slug").eq("slug", slug).maybeSingle();
     if (existing) slug = `${slug}-${Date.now().toString(36).slice(-4)}`;
 
-    const { data: inserted, error } = await supabase.from("live_articles").insert({
+    const insertRow: Record<string, unknown> = {
       slug,
       headline: analysis.headline,
       subheadline: analysis.subheadline,
@@ -212,7 +214,9 @@ Deno.serve(async (req) => {
       linkedin_post: analysis.linkedin_post,
       verdict: analysis.verdict,
       vertical: analysis.vertical,
-    }).select().single();
+    };
+    if (publishedAt) insertRow.published_at = publishedAt;
+    const { data: inserted, error } = await supabase.from("live_articles").insert(insertRow).select().single();
 
     if (error) throw error;
     console.log("[live-article] published:", inserted.slug);
