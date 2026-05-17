@@ -6,7 +6,6 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { LAYERS, LAYER_SHORT_LABEL, layerColor } from "@/data/layers";
 import {
-import Eyebrow from "@/components/Eyebrow";
   MAP_COMPANIES,
   VERTICAL_LABEL,
   ARCHETYPE_LABEL,
@@ -15,6 +14,7 @@ import Eyebrow from "@/components/Eyebrow";
   type Archetype,
   type MapCompany,
 } from "@/data/marketMap";
+import Eyebrow from "@/components/Eyebrow";
 
 const VERTICALS: ("all" | Vertical)[] = [
   "all", "horizontal", "code", "finance", "legal", "health", "cx", "creative", "sales", "edu", "infra",
