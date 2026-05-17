@@ -5,7 +5,9 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import DepthModules from "@/components/live/DepthModules";
-import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus } from "lucide-react";
+import WhatThisMeans from "@/components/WhatThisMeans";
+import ArticleFooterCTA from "@/components/ArticleFooterCTA";
+import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus, ExternalLink } from "lucide-react";
 
 const SITE = "https://supplychainofai.com";
 
@@ -180,8 +182,42 @@ const CaseStudyDetailPage = () => {
 
             <div className="prose prose-lg max-w-none">{renderMarkdown(study.content)}</div>
 
-            {/* Author block */}
-            <div className="mt-14 pt-8 border-t border-border flex items-start gap-4">
+            <WhatThisMeans
+              for_you={study.for_you}
+              fallback={{ verdict: study.verdict, layers: study.layers }}
+            />
+
+            {study.sources && study.sources.length > 0 && (
+              <section className="mt-10">
+                <p className="font-sketch text-base font-bold text-accent mb-3">— Sources</p>
+                <ul className="space-y-1.5">
+                  {study.sources.map((s, i) => (
+                    <li key={i}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-start gap-1.5 text-[13px] text-foreground/75 hover:text-accent break-all"
+                      >
+                        <ExternalLink size={11} className="mt-1 shrink-0" />
+                        {s.outlet ? <span className="font-semibold text-foreground">{s.outlet}</span> : null}
+                        <span className="text-muted-foreground">{s.url}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* (Author block + CTAs below) */}
+
+            <ArticleFooterCTA
+              source={`case-study:${study.slug}`}
+              shareUrl={url}
+              shareText={study.pull_quote ?? study.verdict}
+            />
+
+            <div className="mt-10 pt-8 border-t border-border flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center font-display font-bold text-accent text-lg shrink-0">
                 AA
               </div>
@@ -201,7 +237,6 @@ const CaseStudyDetailPage = () => {
                 </p>
               </div>
             </div>
-
 
             {/* Next */}
             <div className="mt-12 pt-8 border-t border-border">

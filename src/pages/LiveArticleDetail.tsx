@@ -7,6 +7,8 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
+import WhatThisMeans from "@/components/WhatThisMeans";
+import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 
 
@@ -39,6 +41,11 @@ interface LiveArticle {
     counter_thesis?: string;
     what_to_watch?: string[];
     new_law_candidate: string;
+    for_you?: {
+      product_leader?: string;
+      investor?: string;
+      operator?: string;
+    };
   };
 }
 
@@ -384,6 +391,15 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
+          {/* What this means for you */}
+          <WhatThisMeans
+            for_you={article.analysis.for_you}
+            fallback={{
+              verdict: article.verdict,
+              layers: article.analysis.layer_scores?.filter((s) => s.owned || (s.intensity ?? 0) >= 2).map((s) => s.layer) ?? [],
+            }}
+          />
+
           {/* New law candidate */}
           {article.analysis.new_law_candidate && article.analysis.new_law_candidate.trim() && (
             <section className="mb-12 bg-card border-l-4 border-accent p-5">
@@ -409,7 +425,13 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
-          <div className="border-t border-foreground/10 pt-8">
+          <ArticleFooterCTA
+            source={`live:${article.slug}`}
+            shareUrl={`https://supplychainofai.com/live/${article.slug}`}
+            shareText={article.subheadline ?? article.verdict}
+          />
+
+          <div className="border-t border-foreground/10 mt-10 pt-8">
             <p className="text-sm text-muted-foreground">
               Written by the Supply Chain of Intelligence™ analysis engine, reviewed weekly.
               By <Link to="/about" className="text-accent underline">Anand Arivukkarasu</Link> · Ex-Meta Product Leader.

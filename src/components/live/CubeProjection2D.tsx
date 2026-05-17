@@ -25,8 +25,9 @@ const Grid: React.FC<{
   xLabel: string;
   yHits: boolean[];
   xHits: boolean[];
+  yDormantHits?: boolean[];
   cellColorFor: (yIdx: number) => string;
-}> = ({ yAxis, xAxis, yLabel, xLabel, yHits, xHits, cellColorFor }) => {
+}> = ({ yAxis, xAxis, yLabel, xLabel, yHits, xHits, yDormantHits, cellColorFor }) => {
   const yCount = yHits.filter(Boolean).length;
   const xCount = xHits.filter(Boolean).length;
   const cellCount = yCount * xCount;
@@ -50,7 +51,11 @@ const Grid: React.FC<{
               className="font-mono-marker text-[9px] text-right pr-1 leading-none flex items-center justify-end"
               style={{
                 height: 22,
-                color: yHits[i] ? `hsl(var(${layerVar(y)}))` : "hsl(var(--foreground) / 0.4)",
+                color: yHits[i]
+                  ? `hsl(var(${layerVar(y)}))`
+                  : yDormantHits?.[i]
+                  ? `hsl(var(${layerVar(y)}) / 0.55)`
+                  : "hsl(var(--foreground) / 0.4)",
                 fontWeight: yHits[i] ? 700 : 400,
               }}
             >
@@ -67,9 +72,11 @@ const Grid: React.FC<{
             {[...yAxis].reverse().map((y, rowFromTop) => {
               const yIdx = yAxis.length - 1 - rowFromTop;
               const yHit = yHits[yIdx];
+              const yDormant = !yHit && yDormantHits?.[yIdx];
               return xAxis.map((x, xIdx) => {
                 const xHit = xHits[xIdx];
                 const filled = yHit && xHit;
+                const dormantFilled = yDormant && xHit;
                 return (
                   <div
                     key={`${y}-${x}`}
@@ -78,6 +85,8 @@ const Grid: React.FC<{
                       height: 22,
                       background: filled
                         ? cellColorFor(yIdx)
+                        : dormantFilled
+                        ? `hsl(var(${layerVar(y)}) / 0.22)`
                         : yHit && xHit === false
                         ? `hsl(var(${layerVar(y)}) / 0.10)`
                         : xHit && !yHit
@@ -85,6 +94,8 @@ const Grid: React.FC<{
                         : "hsl(var(--foreground) / 0.025)",
                       border: filled
                         ? `1px solid ${cellColorFor(yIdx)}`
+                        : dormantFilled
+                        ? `1px dashed hsl(var(${layerVar(y)}) / 0.35)`
                         : yHit || xHit
                         ? "1px solid hsl(var(--foreground) / 0.12)"
                         : "1px solid hsl(var(--foreground) / 0.06)",
@@ -92,7 +103,13 @@ const Grid: React.FC<{
                         ? `0 0 0 1px hsl(var(${layerVar(y)}) / 0.25), 0 2px 8px -2px hsl(var(${layerVar(y)}) / 0.45)`
                         : "none",
                     }}
-                    title={filled ? `${y} × ${x}` : undefined}
+                    title={
+                      filled
+                        ? `${y} × ${x}`
+                        : dormantFilled
+                        ? `${y} × ${x} — dormant / adjacent`
+                        : undefined
+                    }
                   />
                 );
               });
@@ -135,6 +152,19 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
   const vertHits = matchIndex(VERTICALS, verticals);
   const cellColorFor = (layerIdx: number) => `hsl(var(${layerVar(LAYERS[layerIdx])}) / 0.7)`;
 
+  // Dormant footprint — when a position only touches 1–2 layers, faintly project
+  // the two adjacent layers so the cube doesn't look empty for sparse moves.
+  const layerCount = layerHits.filter(Boolean).length;
+  const dormantLayerHits = [...layerHits];
+  if (layerCount > 0 && layerCount <= 2) {
+    layerHits.forEach((hit, i) => {
+      if (!hit) return;
+      if (i - 1 >= 0 && !dormantLayerHits[i - 1]) dormantLayerHits[i - 1] = true;
+      if (i + 1 < dormantLayerHits.length && !dormantLayerHits[i + 1]) dormantLayerHits[i + 1] = true;
+    });
+  }
+  const hasDormant = dormantLayerHits.some((d, i) => d && !layerHits[i]);
+
   if (!layers.length && !functions.length && !verticals.length) return null;
 
   return (
@@ -153,6 +183,7 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
           xLabel="Verticals"
           yHits={layerHits}
           xHits={vertHits}
+          yDormantHits={dormantLayerHits}
           cellColorFor={cellColorFor}
         />
         <Grid
@@ -162,12 +193,14 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
           xLabel="Functions"
           yHits={layerHits}
           xHits={funcHits}
+          yDormantHits={dormantLayerHits}
           cellColorFor={cellColorFor}
         />
       </div>
 
       <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
         Two 2D projections of the Intelligence Cube (Functions × Verticals × Layers). Filled cells = this move occupies that intersection.
+        {hasDormant && " Dashed cells = adjacent layers a sparse move could pull in next."}
       </p>
     </div>
   );

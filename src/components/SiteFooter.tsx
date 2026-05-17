@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { Linkedin, Rss } from "lucide-react";
+import NewsletterCTA from "./NewsletterCTA";
+
+const PROJECT_ID = "pjococttuifybrwsxscy";
+const RSS_URL = `https://${PROJECT_ID}.supabase.co/functions/v1/rss-feed`;
 
 const SiteFooter = () => (
   <footer className="bg-background border-t border-foreground/10 text-muted-foreground">
@@ -14,11 +19,12 @@ const SiteFooter = () => (
           <h3 className="font-display text-lg font-bold text-foreground mb-3">
             The Supply Chain of Intelligence<span className="text-accent">™</span>
           </h3>
-          <p className="text-sm leading-relaxed max-w-md">
+          <p className="text-sm leading-relaxed max-w-md mb-5">
             A structural framework that maps where AI companies live, compete, and die.
             10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube™.
           </p>
-          <p className="text-xs mt-3 text-muted-foreground">
+          <NewsletterCTA source="footer" variant="footer" />
+          <p className="text-xs mt-4 text-muted-foreground">
             By Anand Arivukkarasu · Ex-Meta Product Leader
           </p>
         </div>
@@ -38,7 +44,12 @@ const SiteFooter = () => (
           <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
           <div className="space-y-2.5">
             <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
-            <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="block text-sm hover:text-foreground transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-sm hover:text-foreground transition-colors">
+              <Linkedin size={13} /> LinkedIn
+            </a>
+            <a href={RSS_URL} target="_blank" rel="noopener" className="flex items-center gap-1.5 text-sm hover:text-foreground transition-colors">
+              <Rss size={13} /> RSS feed
+            </a>
           </div>
         </div>
       </div>
