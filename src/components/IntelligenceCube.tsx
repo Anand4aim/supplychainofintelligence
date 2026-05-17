@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy", "Finance"];
+const FUNCTIONS_SHORT = ["Dev", "Des", "Prod", "PM", "Ops", "Mkt", "Sale", "CX", "Strat", "Fin"];
 const VERTICALS = ["FinTech", "EdTech", "Legal", "Health", "Travel", "eCom", "Media", "Gov", "SaaS", "Horizontal"];
+const VERTICALS_SHORT = ["Fin", "Edu", "Law", "Hlth", "Trvl", "eCom", "Med", "Gov", "SaaS", "Horiz"];
 const LAYERS = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"];
 
 const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L", "")}`;
