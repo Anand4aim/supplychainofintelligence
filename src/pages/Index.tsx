@@ -223,7 +223,7 @@ const Index = () => {
                     </div>
                     <div className="min-w-[760px] md:min-w-0 px-5 md:px-0">
                     <div className="grid grid-cols-[150px_1fr_104px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
-                      <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
+                      <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground sticky left-0 z-20 bg-background md:bg-transparent md:static pl-5 md:pl-0 pr-3 md:pr-0 shadow-[1px_0_0_0_hsl(var(--border))] md:shadow-none self-end pb-1">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
                         {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
                           <div key={id} className="flex flex-col items-center gap-1 min-w-0">
@@ -249,7 +249,9 @@ const Index = () => {
                           i % 2 === 0 ? "bg-foreground/[0.025]" : ""
                         } border-t border-foreground/10`}
                       >
-                        <div>
+                        <div className={`sticky left-0 z-10 md:static md:bg-transparent pl-5 md:pl-0 pr-3 md:pr-0 -my-3 py-3 shadow-[1px_0_0_0_hsl(var(--border))] md:shadow-none ${
+                          i % 2 === 0 ? "bg-[hsl(var(--background))]" : "bg-background"
+                        }`}>
                           <div className="font-display text-[15px] font-bold text-foreground leading-tight">{row.name}</div>
                           <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
                         </div>
