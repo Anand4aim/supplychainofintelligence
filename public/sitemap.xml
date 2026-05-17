@@ -3,9 +3,11 @@
   <url><loc>https://supplychainofai.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://supplychainofai.com/framework</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://supplychainofai.com/analysis</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://supplychainofai.com/live</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://supplychainofai.com/market-map</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://supplychainofai.com/for-product-leaders</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/audit</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://supplychainofai.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/work-with-me</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Framework: per-layer pages -->
@@ -30,4 +32,14 @@
   <url><loc>https://supplychainofai.com/analysis/stability-ai-open-model-trap</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/analysis/five-eras-of-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/analysis/harvey-vs-generic-legal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/mckinsey-openai-lilli</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/bloomberg-gpt-vertical-fortress</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/klarna-customer-service</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/devin-cognition-l7-agent</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/perplexity-vs-google-distribution</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/cursor-ide-consolidation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/anthropic-claude-enterprise-l3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/adobe-firefly-licensed-data</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/character-ai-memory-orphan</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/analysis/glean-enterprise-search-fortress</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
