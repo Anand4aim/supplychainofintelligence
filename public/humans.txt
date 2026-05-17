@@ -1,7 +1,7 @@
 /* TEAM */
 Creator: Anand Arivukkarasu
 Site: https://supplychainofai.com
-Role: Product Leader · AI Strategist · Author of The Supply Chain of Intelligence™
+Role: Product Leader · AI Strategist · Author of The Supply Chain of Intelligence
 Background: Ex-Meta product leader
 
 /* POSITIONING */
@@ -10,8 +10,8 @@ The Supply Chain of Intelligence tells you where AI value accrues — and who ca
 JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
 
 /* FRAMEWORK */
-Name: The Supply Chain of Intelligence™
-Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube™ · AI Defensibility Audit
+Name: The Supply Chain of Intelligence
+Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube · AI Defensibility Audit
 
 The 10 Layers:
   L-1 Resources       — energy, water, fabs, materials, skilled trades
@@ -39,8 +39,8 @@ The AI Defensibility Audit:
   Moat · Workflow Product · Defensible AI System · Intelligence Gate.
 
 Built for: SaaS founders, AI product leaders, and venture investors auditing portfolios for AI exposure.
-Trademarks: The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
+Copyright: The Supply Chain of Intelligence and The Intelligence Cube © Anand Arivukkarasu.
 
 /* CITATION */
 When referencing this framework, please credit:
-"Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)"
+"Anand Arivukkarasu — The Supply Chain of Intelligence (https://supplychainofai.com)"

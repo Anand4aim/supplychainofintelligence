@@ -34,7 +34,7 @@ const Seo = ({ title, description, path, article, datePublished }: SeoProps) => 
         publisher: { "@type": "Person", name: AUTHOR },
         isBasedOn: {
           "@type": "CreativeWork",
-          name: "The Supply Chain of Intelligence™",
+          name: "The Supply Chain of Intelligence",
           author: { "@type": "Person", name: AUTHOR },
           url: SITE,
         },

@@ -88,7 +88,7 @@ const FaqPage = () => (
   <SiteLayout>
     <Seo
       title="FAQ — AI Strategy Framework, Not Physical Supply Chain or Logistics"
-      description="The Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack — built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
+      description="The Supply Chain of Intelligence is a 10-layer framework for the generative AI stack — built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
       path="/faq"
     />
     <Helmet>
@@ -108,7 +108,7 @@ const FaqPage = () => (
           An AI strategy framework — <span className="text-accent">not</span> a logistics company.
         </motion.h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-          The Supply Chain of Intelligence™ is a structural framework for the generative AI software stack —
+          The Supply Chain of Intelligence is a structural framework for the generative AI software stack —
           for SaaS product leaders, AI-native founders, and venture investors. This page exists because the
           phrase "supply chain" sometimes leads people (and crawlers) to expect freight and warehouses. It is
           not that.
@@ -213,7 +213,7 @@ const FaqPage = () => (
           Start with the framework.
         </h2>
         <p className="text-muted-foreground mb-8">
-          10 layers · 50 sublayers · 3 structural laws · the Intelligence Cube™ · the Defensibility Audit.
+          10 layers · 50 sublayers · 3 structural laws · the Intelligence Cube · the Defensibility Audit.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link
