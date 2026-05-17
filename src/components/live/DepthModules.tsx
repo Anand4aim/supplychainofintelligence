@@ -48,46 +48,48 @@ const DepthModules: React.FC<Props> = ({
         <section>
           <p className="font-sketch text-base font-bold text-accent mb-4">— Layer Scoring</p>
           <div
-            className="rounded-2xl p-5 md:p-6"
+            className="rounded-2xl p-3 sm:p-5 md:p-6 overflow-x-auto"
             style={{
               background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
               border: "1px solid hsl(35 20% 88%)",
             }}
           >
-            <div className="grid grid-cols-10 gap-1.5 mb-3">
-              {LAYER_ORDER.map((layer) => (
-                <div
-                  key={layer}
-                  className="text-center font-mono-marker text-[10px] font-bold py-1.5 px-0.5 rounded-sm text-white leading-[1.15]"
-                  style={{ background: `hsl(var(${layerVar(layer)}))` }}
-                  title={LAYER_LABEL[layer]}
-                >
-                  <div>{layer}</div>
-                  <div className="text-[9px] opacity-95 mt-0.5">{LAYER_SHORT_LABEL[layer]}</div>
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-10 gap-1.5">
-              {LAYER_ORDER.map((layer) => {
-                const s = scoreMap.get(layer);
-                const intensity = s?.intensity ?? (s?.owned ? 2 : 0);
-                return (
-                  <div key={layer} className="flex justify-center items-center gap-[3px] h-7">
-                    {[1, 2, 3].map((d) => (
-                      <span
-                        key={d}
-                        className="rounded-full"
-                        style={{
-                          width: 7,
-                          height: 7,
-                          background: d <= intensity ? `hsl(var(${layerVar(layer)}))` : "transparent",
-                          border: d <= intensity ? "none" : "1px solid hsl(var(--foreground) / 0.12)",
-                        }}
-                      />
-                    ))}
+            <div className="min-w-[520px]">
+              <div className="grid grid-cols-10 gap-1.5 mb-3">
+                {LAYER_ORDER.map((layer) => (
+                  <div
+                    key={layer}
+                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 px-0.5 rounded-sm text-white leading-[1.15]"
+                    style={{ background: `hsl(var(${layerVar(layer)}))` }}
+                    title={LAYER_LABEL[layer]}
+                  >
+                    <div>{layer}</div>
+                    <div className="text-[9px] opacity-95 mt-0.5">{LAYER_SHORT_LABEL[layer]}</div>
                   </div>
-                );
-              })}
+                ))}
+              </div>
+              <div className="grid grid-cols-10 gap-1.5">
+                {LAYER_ORDER.map((layer) => {
+                  const s = scoreMap.get(layer);
+                  const intensity = s?.intensity ?? (s?.owned ? 2 : 0);
+                  return (
+                    <div key={layer} className="flex justify-center items-center gap-[3px] h-7">
+                      {[1, 2, 3].map((d) => (
+                        <span
+                          key={d}
+                          className="rounded-full"
+                          style={{
+                            width: 7,
+                            height: 7,
+                            background: d <= intensity ? `hsl(var(${layerVar(layer)}))` : "transparent",
+                            border: d <= intensity ? "none" : "1px solid hsl(var(--foreground) / 0.12)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className="mt-4 space-y-2.5">
               {LAYER_ORDER.map((layer) => {

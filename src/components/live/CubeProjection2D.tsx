@@ -135,6 +135,18 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
   const vertHits = matchIndex(VERTICALS, verticals);
   const cellColorFor = (layerIdx: number) => `hsl(var(${layerVar(LAYERS[layerIdx])}) / 0.7)`;
 
+  // Dormant footprint — when a position only touches 1–2 layers, faintly project
+  // the two adjacent layers so the cube doesn't look empty for sparse moves.
+  const layerCount = layerHits.filter(Boolean).length;
+  const dormantLayerHits = [...layerHits];
+  if (layerCount > 0 && layerCount <= 2) {
+    layerHits.forEach((hit, i) => {
+      if (!hit) return;
+      if (i - 1 >= 0 && !dormantLayerHits[i - 1]) dormantLayerHits[i - 1] = true;
+      if (i + 1 < dormantLayerHits.length && !dormantLayerHits[i + 1]) dormantLayerHits[i + 1] = true;
+    });
+  }
+
   if (!layers.length && !functions.length && !verticals.length) return null;
 
   return (
