@@ -169,15 +169,20 @@ const Predictions = () => {
           Predictions.
         </motion.h1>
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
-          Every structural call this framework has made, dated, tagged to the layer
-          exposure that drove it, with what has happened since and a link to the
-          full analysis. A framework without a scorecard is a guess.
+          Every structural call this framework has made, dated, tagged to the
+          layer exposure that drove it, and scored on two independent axes:
+          <strong className="text-foreground"> Structural</strong> (did the lens
+          identify the right moat or exposure?) and
+          <strong className="text-foreground"> Timing</strong> (did it arrive
+          on the expected horizon?). Conflating those two is how frameworks
+          lose credibility. Separating them is how this one earns it.
         </p>
 
-        <div className="mt-8 grid grid-cols-3 gap-4 max-w-xl">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
           <Stat label="Total calls" value={total} />
-          <Stat label="Confirmed" value={confirmed} color="hsl(var(--layer-1))" />
-          <Stat label="Playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Structural confirmed" value={confirmed} color="hsl(var(--layer-1))" />
+          <Stat label="Structural playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Faster than expected" value={fasterThanExpected} color="hsl(var(--layer-7))" />
         </div>
 
         {/* Search + quick-jump */}
