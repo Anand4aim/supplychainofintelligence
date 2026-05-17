@@ -228,6 +228,9 @@ Deno.serve(async (req) => {
     console.log("[live-article] running framework analysis");
     const analysis = await analyzeWithFramework(lovableKey, newsContext);
 
+    // GUARDRAIL: reject garbage analyses before they hit the DB.
+    validateAnalysis(analysis);
+
     const supabase = createClient(supabaseUrl, serviceKey);
 
     // Ensure unique slug
