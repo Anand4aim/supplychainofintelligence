@@ -172,6 +172,83 @@ const FrameworkPage = () => (
       </div>
     </section>
 
+    {/* AGENT DECODER */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <p className="font-sketch text-lg font-bold text-accent mb-4">— On the Word "Agent"</p>
+          <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground mb-5 leading-[1.15]">
+            "Agent" is not a layer. It's a costume worn by L5.
+          </h2>
+          <p className="text-base md:text-[17px] text-muted-foreground leading-relaxed mb-6">
+            Every company shipping "an agent" in 2025 is selling the same structural package:{" "}
+            <strong className="text-foreground">L5 Execution</strong> wrapped in an{" "}
+            <strong className="text-foreground">L7 Surface</strong>, sometimes with a thin layer of{" "}
+            <strong className="text-foreground">L8 Memory</strong>. That's it. The word "agent" is
+            marketing for an L5-heavy stack. The structural question is never{" "}
+            <em>"is it an agent?"</em> — it's <em>"what else does it own?"</em>
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-7">
+            {[
+              { id: "L5", short: "Execution", role: "The core. The action-taking loop.", n: 5 },
+              { id: "L7", short: "Surface", role: "The chat / inbox / IDE wrapper users see.", n: 7 },
+              { id: "L8", short: "Memory", role: "State across turns. Often missing.", n: 8 },
+            ].map((p) => (
+              <div
+                key={p.id}
+                className="rounded-xl p-5 sketch-border border bg-card"
+                style={{ borderTop: `3px solid hsl(var(--layer-${p.n}))` }}
+              >
+                <span
+                  className="font-sketch text-sm font-bold px-2.5 py-1 rounded inline-block mb-2"
+                  style={{
+                    color: `hsl(var(--layer-${p.n}))`,
+                    background: `hsl(var(--layer-${p.n}-bg))`,
+                  }}
+                >
+                  {p.id} {p.short}
+                </span>
+                <p className="text-sm text-muted-foreground leading-relaxed">{p.role}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-xl p-6 bg-secondary/40 border border-border">
+            <p className="font-sketch text-sm font-bold text-accent mb-3">— The Decoder</p>
+            <ul className="space-y-2.5 text-[15px] text-foreground/85 leading-relaxed">
+              <li>
+                <strong className="text-foreground">Agent + L1 Proprietary Data</strong> → fortress.
+                (Sierra, Harvey, Klarna's internal stack.)
+              </li>
+              <li>
+                <strong className="text-foreground">Agent + L4 Distribution</strong> → railroad.
+                (Salesforce Agentforce, Microsoft Copilot agents.)
+              </li>
+              <li>
+                <strong className="text-foreground">Agent + L8 Compounding Memory</strong> → memory
+                moat. (Glean, Cresta, Decagon.)
+              </li>
+              <li>
+                <strong className="text-foreground">Agent + nothing else</strong> → exposed L7
+                wrapper. Commoditizes the moment the underlying L2 ships the same loop.
+                (Most "AI SDR" startups, Devin-as-pitched.)
+              </li>
+            </ul>
+          </div>
+
+          <p className="font-sketch text-base text-muted-foreground mt-6 italic max-w-2xl">
+            When you read "we launched an agent," translate it: <strong>they shipped L5 + L7.</strong>{" "}
+            Then ask which other layers they own. The answer is the structural verdict.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+
     {/* DEFENSIBLE TRIANGLE */}
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
