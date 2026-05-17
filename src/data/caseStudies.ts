@@ -390,6 +390,36 @@ export const CASE_STUDIES: CaseStudy[] = [
 **What this means for your firm.** If your competitive position is "we know things and we remember things," AI is an amplifier, not a threat — *provided* you own L1 and L8. If your position is "we can write good documents," the model just ate your job.
 
 *Public reporting; figures approximate.*`,
+    layer_scores: [
+      { layer: "L1", owned: true, intensity: 3, note: "70 years of proprietary studies, expert memos, sector benchmarks. The moat that no model can reproduce.", sublayers: [{ name: "Client engagement archive", impact: 3, who: "McKinsey" }, { name: "Expert profiles & frameworks", impact: 3, who: "McKinsey" }] },
+      { layer: "L2", owned: false, intensity: 2, note: "Rented from OpenAI. Swappable in a weekend. McKinsey pays nothing to defend it.", sublayers: [{ name: "Foundation model", impact: 2, who: "OpenAI (swappable)" }] },
+      { layer: "L3", owned: true, intensity: 2, note: "Client confidentiality, audit trails, citation back to source memos — table stakes for a consulting firm and a real barrier for AI-native competitors.", sublayers: [{ name: "Confidentiality + audit", impact: 2, who: "McKinsey-built" }] },
+      { layer: "L6", owned: true, intensity: 3, note: "Retrieval over the proprietary corpus, citation, expert routing — McKinsey-built orchestration on top of a rented model.", sublayers: [{ name: "Corpus retrieval & routing", impact: 3, who: "McKinsey" }] },
+      { layer: "L8", owned: true, intensity: 3, note: "Every engagement adds to Lilli. Compounding institutional memory — the second moat layer.", sublayers: [{ name: "Institutional memory", impact: 3, who: "McKinsey" }, { name: "Per-engagement feedback", impact: 2, who: "McKinsey" }] },
+    ],
+    cube_position: {
+      functions: ["Strategy", "PM/Proj", "Product", "Sales"],
+      verticals: ["Horizontal", "FinTech", "Health"],
+      layers: ["L1", "L2", "L3", "L6", "L8"],
+    },
+    timeline: [
+      { date: "Mid-2023", label: "Lilli launches internally — built on OpenAI, grounded in McKinsey's corpus.", tone: "up" },
+      { date: "Late 2023", label: "Adoption ramps. Partners start citing Lilli output in client decks.", tone: "up" },
+      { date: "Mid-2024", label: "70%+ of the firm uses Lilli weekly. Becomes standard tooling.", tone: "up" },
+      { date: "2025", label: "Consulting firms emerge as some of the largest enterprise LLM customers — opposite of the predicted disruption.", tone: "up" },
+      { date: "2026", label: "The model layer keeps commoditizing. McKinsey's L1+L8 advantage compounds. Pure-play AI strategy startups struggle to find buyers.", tone: "up" },
+    ],
+    who_wins: [
+      { name: "McKinsey, BCG, Bain", reason: "L1 (decades of proprietary client work) and L8 (compounding institutional memory) — the two layers AI can't reproduce." },
+      { name: "OpenAI / Anthropic", reason: "Consulting firms became some of their largest enterprise customers, not their competitors." },
+      { name: "Any firm with deep proprietary archives", reason: "Law firms, accounting firms, hospitals, banks — the L1+L8 pattern generalizes." },
+    ],
+    who_loses: [
+      { name: "Pure-play AI strategy startups", reason: "No L1, no L8, no client trust. The model is the cheapest layer to own — the others are the business." },
+      { name: "Junior consulting headcount (slower growth)", reason: "Drafting work compresses. The pyramid narrows. Entry-level path changes shape." },
+      { name: "The 'AI will kill consulting' thesis", reason: "Falsified in real time. The opposite happened — consulting became one of the biggest beneficiaries." },
+    ],
+    counter_thesis: `The counter is that Lilli's moat is overstated because the *actual* output of consulting (the synthesized 60-page deck, the executive narrative, the client-relationship judgment) was always the value — not the underlying corpus. If frontier models continue to improve at long-form reasoning and synthesis, a well-prompted GPT-6 with public data may produce a McKinsey-grade strategy doc for a tenth the cost. McKinsey's corpus is large, but most of it is dated or sector-specific in ways that a generalist model can fluently approximate. The honest read: L1 protects them for 3–5 years; the open question is whether L8 (the compounding loop) can build a durable advantage before model capability closes the gap on the synthesis layer itself.`,
   },
   {
     slug: "bloomberg-gpt-vertical-fortress",
