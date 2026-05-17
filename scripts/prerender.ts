@@ -298,7 +298,7 @@ function render(route: Route): string {
   // Inject prerendered body inside <div id="root">. React mounts and replaces it for live users.
   html = html.replace(
     /<div id="root"><\/div>/,
-    `<div id="root"><div data-prerendered="true" style="position:absolute;left:-99999px;top:0;width:1px;height:1px;overflow:hidden;">${route.body}</div></div>`,
+    `<div id="root"><div data-prerendered="true" style="max-width:760px;margin:0 auto;padding:40px 24px;font-family:Inter,system-ui,sans-serif;color:#0F172A;line-height:1.6;">${route.body}</div></div>`,
   );
   return html;
 }
