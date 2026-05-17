@@ -32,6 +32,7 @@ export interface CaseStudy {
   layers: string[];
   date: string;
   readTime: string;
+  brief?: boolean; // visually tag as a short take vs full teardown
   valuation?: {
     label: string;
     before: string;
@@ -47,6 +48,13 @@ export interface CaseStudy {
   counter_thesis?: string;
   who_wins?: WinnerLoser[];
   who_loses?: WinnerLoser[];
+  for_you?: {
+    product_leader?: string;
+    investor?: string;
+    operator?: string;
+  };
+  pull_quote?: string;
+  sources?: { url: string; outlet?: string }[];
 }
 
 interface Props {
