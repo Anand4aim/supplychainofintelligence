@@ -41,9 +41,23 @@ globalThis.localStorage = fakeStorage;
 // @ts-expect-error
 globalThis.sessionStorage = fakeStorage;
 // @ts-expect-error
-globalThis.window = globalThis.window ?? { location: { href: BASE } };
+globalThis.window = globalThis.window ?? { location: { href: BASE }, addEventListener() {}, removeEventListener() {} };
+const fakeNode: any = { appendChild() {}, removeChild() {}, insertBefore() {}, setAttribute() {}, style: {}, sheet: { insertRule() {} } };
 // @ts-expect-error
-globalThis.document = globalThis.document ?? { cookie: "" };
+globalThis.document = globalThis.document ?? {
+  cookie: "",
+  head: fakeNode,
+  body: fakeNode,
+  documentElement: fakeNode,
+  createElement: () => ({ ...fakeNode }),
+  createTextNode: () => ({}),
+  getElementsByTagName: () => [fakeNode],
+  getElementById: () => null,
+  querySelector: () => null,
+  querySelectorAll: () => [],
+  addEventListener() {},
+  removeEventListener() {},
+};
 
 if (!existsSync(SSR_ENTRY)) {
   console.error(`prerender: SSR bundle missing at ${SSR_ENTRY}.`);
