@@ -24,6 +24,12 @@ DEPTH RULES — non-negotiable:
 5. Take a position. No "it remains to be seen". If the evidence is mixed, name BOTH sides and say which one wins and why.
 6. Use the language of a builder: roadmap, distribution, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
 
+SCORING DISCIPLINE — be brutal:
+- A single news move almost NEVER touches all 10 layers. Most layers should be intensity 0.
+- Score AT MOST 5 layers with intensity > 0. Score AT MOST 2 layers as intensity 3 (core/dominant). If you can't defend the ownership claim in one sentence with a specific product/contract, it is 0.
+- Sublayers must be the specific slices ACTUALLY claimed by this move — not the entire layer's surface. If a layer has intensity 1 (emerging), give it 1 sublayer max. Intensity 2 → up to 2. Intensity 3 → up to 3.
+- For every claimed sublayer, give an impact score (1=touched, 2=meaningful share, 3=owns the sublayer) AND name WHO plays that sublayer slice today (the company/role most threatened or most enabled).
+
 VOICE: declarative, structural, slightly contrarian, zero hedge words, zero filler adjectives. Short sentences land harder than long ones. Use them.`;
 
 const ANALYSIS_SCHEMA = {
