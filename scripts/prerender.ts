@@ -6,6 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, resolve } from "path";
 import { CASE_STUDIES } from "../src/data/caseStudies";
 import { LAYERS, LAWS, AUDIT_QUESTIONS, GOLD_KEY_INSIGHT } from "../src/data/layers";
+import { LAW_ESSAYS } from "../src/data/lawEssays";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
@@ -215,10 +216,10 @@ routes.push({
   path: "/about",
   title: "About — Anand Arivukkarasu | Supply Chain of Intelligence™",
   description:
-    "Anand Arivukkarasu — Ex-Meta (Instagram) Product Leader and AI Product Architect. Creator of The Supply Chain of Intelligence™ and The Intelligence Cube™. Based in San Francisco.",
+    "Anand Arivukkarasu — Ex-Meta (Instagram) Product Leader and AI Product Architect. Creator of The Supply Chain of Intelligence™ and The Intelligence Cube. Based in San Francisco.",
   body: `
     <h1>About — Anand Arivukkarasu</h1>
-    <p>Anand Arivukkarasu is the creator of The Supply Chain of Intelligence™ and The Intelligence Cube™ — a structural framework for AI value, moats, and SaaS strategy.</p>
+    <p>Anand Arivukkarasu is the creator of The Supply Chain of Intelligence™ and The Intelligence Cube — a structural framework for AI value, moats, and SaaS strategy.</p>
     <p>Ex-Meta (Instagram) Product Leader and AI Product Architect. Previously VP/Head of Product at Ideas2IT, Refersion, and GRIN; Lead PM at Vungle and Pinsight Media. Angel investor and advisor based in San Francisco.</p>
     <p><a href="https://www.linkedin.com/in/anandarivu">LinkedIn: linkedin.com/in/anandarivu</a></p>
   `,
@@ -256,7 +257,24 @@ routes.push({
   `,
 });
 
-// Inject content into the template per route.
+// Structural Law essays
+for (const e of LAW_ESSAYS) {
+  routes.push({
+    path: `/laws/${e.slug}`,
+    title: `${e.shortTitle} | Supply Chain of Intelligence™`,
+    description: e.description,
+    body: `
+      <article>
+        <p><em>Structural Law · Essay ${esc(e.num)} of III</em></p>
+        <h1>Law ${esc(e.num)} — ${esc(e.title)}</h1>
+        <p><strong>${esc(e.oneLine)}</strong></p>
+        <p>By Anand Arivukkarasu — Creator of The Supply Chain of Intelligence™.</p>
+        ${e.paragraphs.map((p) => `<p>${esc(plain(p))}</p>`).join("\n        ")}
+        <p><a href="${BASE}/framework">← Back to the full framework</a> · <a href="${BASE}/">Home</a></p>
+      </article>
+    `,
+  });
+}
 function render(route: Route): string {
   let html = template;
   const url = `${BASE}${route.path === "/" ? "" : route.path}`;

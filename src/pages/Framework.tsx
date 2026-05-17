@@ -326,7 +326,7 @@ const FrameworkPage = () => (
     <section id="cube" className="bg-secondary/30 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-20">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <Eyebrow className="mb-4">The Intelligence Cube™</Eyebrow>
+          <Eyebrow className="mb-4">The Intelligence Cube</Eyebrow>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground mb-6">
             10 Functions × 10 Verticals × 10 Layers
           </h2>

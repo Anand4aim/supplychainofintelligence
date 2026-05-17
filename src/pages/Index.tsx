@@ -5,6 +5,7 @@ import { ArrowRight, BookOpen, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
 import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS, JTBD_VS_SCOI } from "@/data/layers";
+import { LAW_ESSAY_BY_NUM } from "@/data/lawEssays";
 import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
@@ -788,7 +789,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════ THREE STRUCTURAL LAWS ═══════════ */}
-      <section className="bg-background">
+      <section id="three-laws" className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
             <Eyebrow className="mb-4">
@@ -823,12 +824,20 @@ const Index = () => {
                         <span className="text-xs text-foreground/70 italic block mb-2 pl-3 border-l-2 border-border">
                           {law.example}
                         </span>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 mb-3">
                           <SketchArrow direction="right" size={24} />
                           <span className="font-sketch text-sm font-bold text-sketch-red">
                             {law.prediction}
                           </span>
                         </div>
+                        {LAW_ESSAY_BY_NUM[law.num] && (
+                          <Link
+                            to={`/laws/${LAW_ESSAY_BY_NUM[law.num].slug}`}
+                            className="inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all"
+                          >
+                            Read the full essay <ArrowRight size={13} />
+                          </Link>
+                        )}
                       </SketchBox>
                     </div>
                   </div>
@@ -973,19 +982,86 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ PROOF RAIL — ALL 19 WORKED EXAMPLES ═══════════ */}
+      <section id="proof-rail" className="bg-background border-y border-border">
+        <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
+          <motion.div {...fadeIn} className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
+            <div>
+              <Eyebrow className="mb-2">The Corpus</Eyebrow>
+              <h2 className="font-display text-[22px] md:text-[28px] font-bold text-foreground leading-tight">
+                All {CASE_STUDIES.length} worked examples, in one rail
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+                Every analysis applies the same 10-layer lens to a real company or category — same framework, different verdicts. Scroll to scan; click any to read.
+              </p>
+            </div>
+            <Link to="/analysis" className="shrink-0 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all">
+              Open the analysis index <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+
+          <motion.div {...fadeIn}>
+            <div className="relative -mx-6 px-6">
+              <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-border">
+                {CASE_STUDIES.map((study) => (
+                  <Link
+                    key={study.slug}
+                    to={`/analysis/${study.slug}`}
+                    className="snap-start shrink-0 w-[280px] md:w-[300px] p-4 rounded-xl border border-border bg-card hover:border-accent/60 hover:shadow-md transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      {study.companies.slice(0, 3).map((c) => (
+                        <img
+                          key={c.name}
+                          src={c.logo}
+                          alt={c.name}
+                          className="w-7 h-7 rounded-full bg-white object-contain border border-border"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = "none";
+                          }}
+                        />
+                      ))}
+                      <span className="font-mono-marker text-[9px] tracking-[0.14em] text-muted-foreground ml-auto truncate max-w-[110px]">
+                        {study.layers.join(" · ")}
+                      </span>
+                    </div>
+                    <p className="font-mono-marker text-[9px] tracking-[0.16em] text-accent mb-1.5">
+                      {study.tag}
+                    </p>
+                    <h3 className="font-display text-[14px] font-bold text-foreground leading-snug line-clamp-3 group-hover:text-accent transition-colors min-h-[3.5em]">
+                      {study.title}
+                    </h3>
+                    <p className="mt-3 pt-3 border-t border-border/60 font-mono-marker text-[10px] text-muted-foreground">
+                      Verdict: <span className="text-foreground/80">{study.verdict}</span>
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════════ THE INTELLIGENCE CUBE™ ═══════════ */}
       <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
             <Eyebrow className="mb-4">
-  The Intelligence Cube™
+  The Intelligence Cube
 </Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               10 Functions × 10 Verticals × 10 Layers
             </h2>
-            <p className="text-base text-muted-foreground max-w-xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-xl mx-auto mb-4">
               Volume = structural durability. Companies that occupy thin slivers get dissolved.
               Companies that fill the cube become fortresses.
+            </p>
+            <p className="font-mono-marker text-[11px] tracking-[0.18em] text-muted-foreground/80">
+              CURRENTLY PLOTTED ·{" "}
+              <span className="text-emerald-600">Sierra (fortress)</span> ·{" "}
+              <span className="text-indigo-600">Harvey (vertical spike)</span> ·{" "}
+              <span className="text-muted-foreground">Gamma (thin slice)</span>
             </p>
           </motion.div>
           <motion.div {...fadeIn}>
