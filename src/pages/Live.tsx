@@ -62,8 +62,8 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Live Feed — Weekly AI Launches Scored on the 10 Layers"
-        description="Every Monday: one major AI product launch analyzed through the Supply Chain of Intelligence framework. Structural take + vertical lens + LinkedIn-ready post."
+        title="The Live Feed — Every Important AI Move, Tracked & Scored by Anand Arivukkarasu"
+        description="Always-on analysis of every consequential AI launch, funding round, and structural shift — scored on the Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
 
