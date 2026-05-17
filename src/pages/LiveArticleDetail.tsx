@@ -92,7 +92,7 @@ const LiveArticleDetail = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${article.headline} — Live Analysis by Anand Arivukkarasu`}
+        title={`${article.headline} — Live Analysis`}
         description={article.subheadline ?? article.news_summary.slice(0, 155)}
         path={`/live/${article.slug}`}
         article
