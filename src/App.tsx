@@ -37,6 +37,7 @@ const App = () => (
           <Route path="/work-with-me" element={<WorkWithMePage />} />
           <Route path="/live" element={<LivePage />} />
           <Route path="/live/:slug" element={<LiveArticleDetail />} />
+          <Route path="/market-map" element={<MarketMap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
