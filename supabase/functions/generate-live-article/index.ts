@@ -135,8 +135,16 @@ Deno.serve(async (req) => {
       throw new Error("Missing required environment variables");
     }
 
-    console.log("[live-article] fetching latest news via Perplexity");
-    const newsContext = await fetchLatestNews(perplexityKey);
+    let topic: string | undefined;
+    try {
+      if (req.method === "POST") {
+        const body = await req.json();
+        topic = typeof body?.topic === "string" ? body.topic : undefined;
+      }
+    } catch (_) { /* no body */ }
+
+    console.log("[live-article] fetching news via Perplexity", topic ? `(topic: ${topic})` : "(weekly auto)");
+    const newsContext = await fetchLatestNews(perplexityKey, topic);
 
     console.log("[live-article] running framework analysis");
     const analysis = await analyzeWithFramework(lovableKey, newsContext);
@@ -166,6 +174,8 @@ Deno.serve(async (req) => {
         who_wins: analysis.who_wins ?? [],
         who_loses: analysis.who_loses ?? [],
         vertical_lens: analysis.vertical_lens,
+        deep_product_lens: analysis.deep_product_lens,
+        deep_strategy_lens: analysis.deep_strategy_lens,
         counter_thesis: analysis.counter_thesis,
         what_to_watch: analysis.what_to_watch ?? [],
         new_law_candidate: analysis.new_law_candidate,
