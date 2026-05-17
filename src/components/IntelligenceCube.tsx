@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy", "Finance"];
+const FUNCTIONS_SHORT = ["Dev", "Des", "Prod", "PM", "Ops", "Mkt", "Sale", "CX", "Strat", "Fin"];
 const VERTICALS = ["FinTech", "EdTech", "Legal", "Health", "Travel", "eCom", "Media", "Gov", "SaaS", "Horizontal"];
+const VERTICALS_SHORT = ["Fin", "Edu", "Law", "Hlth", "Trvl", "eCom", "Med", "Gov", "SaaS", "Horiz"];
 const LAYERS = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"];
 
 const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L", "")}`;
@@ -238,7 +240,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
   );
 
   return (
-    <svg viewBox="0 80 560 500" className="w-full max-w-[640px] mx-auto block">
+    <svg viewBox="-50 80 660 560" className="w-full max-w-[720px] mx-auto block">
       {/* ─── 3 visible cube faces — translucent, drawn back-to-front ─── */}
       {/* Back-left wall (V = N plane) — lightest tint */}
       <polygon
@@ -327,8 +329,8 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
 
       {/* Axis labels — OUTSIDE the cube */}
       <text
-        x={isoX(N, 0)}
-        y={isoY(N, 0, 0) + 22}
+        x={isoX(N, 0) + 30}
+        y={isoY(N, 0, 0) + 48}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
@@ -338,8 +340,8 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         FUNCTIONS →
       </text>
       <text
-        x={isoX(0, N)}
-        y={isoY(0, N, 0) + 22}
+        x={isoX(0, N) - 30}
+        y={isoY(0, N, 0) + 48}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
@@ -375,6 +377,48 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
           {l}
         </text>
       ))}
+
+      {/* FUNCTIONS tick labels — sit on the front-right floor edge, rotated +60° down-right */}
+      {FUNCTIONS_SHORT.map((name, i) => {
+        const tx = isoX(i + 0.5, 0) + 2;
+        const ty = isoY(i + 0.5, 0, 0) + 6;
+        return (
+          <text
+            key={`ft-${i}`}
+            x={tx}
+            y={ty}
+            fill="hsl(var(--muted-foreground))"
+            fontSize={8.5}
+            fontFamily="ui-monospace, monospace"
+            fontWeight={600}
+            textAnchor="start"
+            transform={`rotate(60 ${tx} ${ty})`}
+          >
+            {name}
+          </text>
+        );
+      })}
+
+      {/* VERTICALS tick labels — sit on the front-left floor edge, rotated -60° down-left */}
+      {VERTICALS_SHORT.map((name, i) => {
+        const tx = isoX(0, i + 0.5) - 2;
+        const ty = isoY(0, i + 0.5, 0) + 6;
+        return (
+          <text
+            key={`vt-${i}`}
+            x={tx}
+            y={ty}
+            fill="hsl(var(--muted-foreground))"
+            fontSize={8.5}
+            fontFamily="ui-monospace, monospace"
+            fontWeight={600}
+            textAnchor="end"
+            transform={`rotate(-60 ${tx} ${ty})`}
+          >
+            {name}
+          </text>
+        );
+      })}
 
       {/* The dots — depth-sorted, with drop lines to floor for spatial anchor */}
       {dots.map((d, idx) => {
