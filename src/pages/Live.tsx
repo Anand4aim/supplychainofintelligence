@@ -214,7 +214,7 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Live Feed — Every Important AI Move, Tracked & Scored by Anand Arivukkarasu"
+        title="The Live Feed — Every Important AI Move, Tracked & Scored"
         description="Always-on analysis of every consequential AI launch, funding round, and structural shift — scored on the Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
@@ -230,8 +230,7 @@ const LivePage = () => {
               Every important AI move — <br />watched, tracked, analyzed, and scored.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              An always-on read of the AI market by <span className="text-foreground font-semibold">Anand Arivukkarasu</span> —
-              every consequential launch, funding round, and structural shift run through the
+              An always-on read of the AI market — every consequential launch, funding round, and structural shift run through the
               Supply Chain of Intelligence™ framework, the three laws, and the vertical lens that matters.
             </p>
             <p className="text-sm text-muted-foreground/80 italic mb-6">
