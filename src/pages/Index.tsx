@@ -1053,9 +1053,15 @@ const Index = () => {
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               10 Functions × 10 Verticals × 10 Layers
             </h2>
-            <p className="text-base text-muted-foreground max-w-xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-xl mx-auto mb-4">
               Volume = structural durability. Companies that occupy thin slivers get dissolved.
               Companies that fill the cube become fortresses.
+            </p>
+            <p className="font-mono-marker text-[11px] tracking-[0.18em] text-muted-foreground/80">
+              CURRENTLY PLOTTED ·{" "}
+              <span className="text-emerald-600">Sierra (fortress)</span> ·{" "}
+              <span className="text-indigo-600">Harvey (vertical spike)</span> ·{" "}
+              <span className="text-muted-foreground">Gamma (thin slice)</span>
             </p>
           </motion.div>
           <motion.div {...fadeIn}>
