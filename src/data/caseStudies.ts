@@ -44,6 +44,37 @@ export const CASE_STUDIES: CaseStudy[] = [
 **Law III — the surface captures attention; the chain captures power.** Same category does not equal same future. The market is repricing *layer ownership*, not feature quality. And when a bigger owner of your moat layer arrives, owning that layer is no longer enough — you need a layer they don't own. For Grammarly, that question now becomes: where is the L8 (memory of *your* writing voice across years and teams) that Microsoft can't easily replicate?
 
 *Illustrative strategic patterns only — not investment recommendations. Public reporting; numbers approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "The L2 commoditization (ChatGPT free) is what triggered the cascade — Jasper's surface lost its model scarcity overnight.", sublayers: [{ name: "Foundation models", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L4", owned: false, intensity: 3, note: "Grammarly built L4 (browser/editor extensions) — defensible until Microsoft brought a bigger L4 (Office, Teams, 365 install base) to the same fight.", sublayers: [{ name: "Browser extension", impact: 3, who: "Grammarly" }, { name: "Editor integration", impact: 3, who: "Microsoft 365" }] },
+      { layer: "L6", owned: false, intensity: 2, note: "Tone, style, voice orchestration — Grammarly's deeper layer, but increasingly replicable inside any L4 owner's stack.", sublayers: [{ name: "Tone & style", impact: 2, who: "Grammarly, Copilot" }] },
+      { layer: "L7", owned: false, intensity: 3, note: "Jasper lived here alone — prompt templates and brand voice presets. Absorbed when the model itself became conversational.", sublayers: [{ name: "Prompt templates", impact: 3, who: "Jasper" }, { name: "Writing surface", impact: 3, who: "All three" }] },
+      { layer: "L8", owned: false, intensity: 1, note: "The unclaimed layer. Whoever owns the memory of *your* writing voice across years and teams wins the next decade. No one owns it yet.", sublayers: [{ name: "Voice memory", impact: 1, who: "Up for grabs" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product", "PM/Proj", "Sales"],
+      verticals: ["Horizontal", "SaaS"],
+      layers: ["L2", "L4", "L6", "L7"],
+    },
+    timeline: [
+      { date: "Nov 2021", label: "Grammarly hits $13B valuation at peak — owns browser + editor extensions.", tone: "up" },
+      { date: "Oct 2022", label: "Jasper raises $125M at $1.5B — pure L7 prompt-template moat.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Free, conversational, GPT-3.5. Jasper's L7 moat begins evaporating in weeks.", tone: "down" },
+      { date: "Mar 2023", label: "Microsoft announces Copilot in Word, Outlook, Teams — bundled into 365.", tone: "down" },
+      { date: "2024", label: "Jasper reportedly trading at ~$300M — 80% mark-down.", tone: "down" },
+      { date: "2025–26", label: "Grammarly squeezed: same moat layer, but Microsoft owns more of it. Pivots toward team-voice memory (L8).", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Microsoft", reason: "Already owned the bigger L4. Added L2 inside it. Bundled at no marginal price." },
+      { name: "OpenAI / Anthropic / Google", reason: "L2 is now the price-setting layer — every L7 wrapper pays them rent." },
+      { name: "Any future L8 owner", reason: "The memory of your voice, across every doc you've ever written, is the only layer still unclaimed in writing." },
+    ],
+    who_loses: [
+      { name: "Jasper", reason: "L7-only is the new GPT-wrapper graveyard. 80% mark-down is the structural verdict." },
+      { name: "Pure-play AI writing startups", reason: "Same fate as Jasper unless they own L1 (voice data) or L8 (cross-doc memory)." },
+      { name: "Grammarly (partially)", reason: "Still defensible in the browser, but squeezed inside Office. Needs an L8 sprint." },
+    ],
+    counter_thesis: `The counter is that Grammarly has built genuine L8 over a decade — billions of corrections per user, tone profiles, team style enforcement. Microsoft has the bigger L4 but no equivalent depth on *individual voice memory* across non-Microsoft surfaces (Slack, Gmail, browser, mobile keyboards). If Grammarly converts its corrections corpus into a true cross-surface voice memory product — and if enterprises actually pay for "the AI that knows how your VP of Marketing writes" — then L8 + multi-L4 distribution beats single-L4 dominance. The honest read: that's a 30% probability bet, not a base case.`,
   },
   {
     slug: "chegg-collapse",
