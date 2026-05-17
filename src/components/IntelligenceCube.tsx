@@ -176,19 +176,21 @@ const ComparisonGrid: React.FC<{
 
 /* ─────────────────────────  Isometric 3D Cube view  ───────────────────────── */
 
-const ISO_STEP = 30; // pixel size of one cell along F / V axes
-const ISO_Z = 24; // pixel size of one cell along L axis (up)
+const ISO_STEP = 22; // pixel size of one cell along F / V axes
+const ISO_Z = 18; // pixel size of one cell along L axis (up)
 const ISO_COS = Math.cos(Math.PI / 6); // 0.866
 const ISO_SIN = Math.sin(Math.PI / 6); // 0.5
 const N = 10;
 
-// Origin chosen so cube fits viewBox 0 0 620 460
-const ORIGIN_X = 280;
-const ORIGIN_Y = 420;
+// viewBox 460×480; cube fully centered
+const ORIGIN_X = 230;
+const ORIGIN_Y = 250;
 
 const isoX = (f: number, v: number) => ORIGIN_X + (f - v) * ISO_STEP * ISO_COS;
 const isoY = (f: number, v: number, l: number) =>
   ORIGIN_Y + (f + v) * ISO_STEP * ISO_SIN - l * ISO_Z;
+
+const point = (f: number, v: number, l: number) => `${isoX(f, v)},${isoY(f, v, l)}`;
 
 const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) => {
   // Collect all occupied cells from all visible companies, then depth-sort.
