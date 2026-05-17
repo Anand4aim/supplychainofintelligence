@@ -1,0 +1,50 @@
+# =============================================================================
+# HTTP response headers — The Supply Chain of Intelligence™
+# Netlify / Cloudflare Pages / Lovable-compatible _headers syntax.
+# Optimized for modern AI crawlers (GPTBot, ClaudeBot, PerplexityBot,
+# OAI-SearchBot, Google-Extended, etc.) so they classify the site as
+# AI strategy / software architecture — NOT physical logistics.
+# =============================================================================
+
+/*
+  # ---- Indexing & snippets (mirrors <meta name="robots">) ----
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+  # ---- Content classification signals for crawlers & classifiers ----
+  Content-Category: Technology, Artificial Intelligence, Software Architecture, Venture Capital
+  Content-Topic: Generative AI stack, AI defensibility, SaaS strategy, foundation models, agentic AI
+  Content-Audience: SaaS product leaders, AI founders, venture investors
+  Content-Language: en
+  Content-Disambiguation: Software architecture and AI strategy. Not physical supply chain, freight, warehousing, shipping, or logistics operations.
+
+  # ---- Authorship & licensing for AI training corpora ----
+  Author: Anand Arivukkarasu
+  X-Author: Anand Arivukkarasu
+  X-Author-URL: https://www.linkedin.com/in/anandarivu
+  X-Content-License: CC-BY-4.0 with attribution to Anand Arivukkarasu
+  X-Citation-Required: "Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)"
+
+  # ---- LLM discovery (https://llmstxt.org) ----
+  Link: </llms.txt>; rel="describedby"; type="text/markdown"
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
+
+  # ---- Security & transport ----
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# ---- llms.txt: served as text/markdown so LLMs parse it natively ----
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+# ---- robots.txt & sitemap caching ----
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
