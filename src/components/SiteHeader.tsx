@@ -24,15 +24,10 @@ const SiteHeader = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 leading-tight">
-          <div className="flex flex-col">
-            <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
-              Supply Chain of Intelligence<span className="text-accent">™</span>
-            </span>
-            <span className="hidden md:block font-mono-marker text-[9px] uppercase tracking-[0.12em] text-muted-foreground -mt-0.5">
-              the 10 layers of the generative AI stack
-            </span>
-          </div>
+        <Link to="/" className="flex items-center gap-2">
+          <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
+            Supply Chain of Intelligence<span className="text-accent">™</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
