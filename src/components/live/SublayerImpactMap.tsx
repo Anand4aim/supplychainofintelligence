@@ -1,4 +1,5 @@
 import React from "react";
+import { LAYER_LABEL } from "@/data/layers";
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
 export interface LayerScore {
@@ -10,11 +11,6 @@ export interface LayerScore {
 }
 
 const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L", "")}`;
-const LAYER_LABEL: Record<string, string> = {
-  "L-1": "Resources", L0: "Infrastructure", L1: "Data", L2: "Models",
-  L3: "Gatekeeping & Trust", L4: "Access & Distribution", L5: "Execution", L6: "Orchestration",
-  L7: "Surface", L8: "Memory & Record-Keeping",
-};
 
 interface Props { layerScores: LayerScore[]; }
 
