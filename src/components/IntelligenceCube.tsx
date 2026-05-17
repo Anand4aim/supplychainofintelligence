@@ -329,8 +329,8 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
 
       {/* Axis labels — OUTSIDE the cube */}
       <text
-        x={isoX(N, 0)}
-        y={isoY(N, 0, 0) + 22}
+        x={isoX(N, 0) + 30}
+        y={isoY(N, 0, 0) + 48}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
@@ -340,8 +340,8 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         FUNCTIONS →
       </text>
       <text
-        x={isoX(0, N)}
-        y={isoY(0, N, 0) + 22}
+        x={isoX(0, N) - 30}
+        y={isoY(0, N, 0) + 48}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
