@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { LAYERS } from "@/data/layers";
+import { LAYERS, LAYER_ID_LABEL } from "@/data/layers";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy"];
 const VERTICALS = ["FinTech", "EdTech", "Legal", "Health", "Travel", "eCom", "Media", "Gov", "SaaS"];
-const LAYER_LABELS = ["L-1 Resources", "L0 Infra", "L1 Data", "L2 Models", "L3 Gates", "L4 Access", "L5 Execution", "L6 Orch", "L7 Surface", "L8 Memory"];
+const LAYER_LABELS = LAYERS.map((l) => LAYER_ID_LABEL[l.id]);
 
 interface CompanyPlot {
   name: string; color: string; opacity: number;
