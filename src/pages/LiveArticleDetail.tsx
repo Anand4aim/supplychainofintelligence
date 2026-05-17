@@ -255,6 +255,32 @@ const LiveArticleDetail = () => {
             </div>
           </section>
 
+          {/* Sublayer impact map — what specifically is touched and by what magnitude */}
+          {article.analysis.layer_scores.some(s => (s.intensity ?? 0) > 0 && (s.sublayers?.length ?? 0) > 0) && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-2">— Sublayer Impact Map</p>
+              <p className="text-foreground/70 text-[14px] mb-4 italic">
+                Which of the 50 sublayers this move actually touches, the magnitude of impact, and who plays that slice today.
+              </p>
+              <SublayerImpactMap layerScores={article.analysis.layer_scores} />
+            </section>
+          )}
+
+          {/* Intelligence Cube — 2D projection */}
+          {article.analysis.cube_position && (
+            <section className="mb-12">
+              <p className="font-sketch text-base font-bold text-accent mb-2">— Intelligence Cube · 2D</p>
+              <p className="text-foreground/70 text-[14px] mb-4 italic">
+                The move's footprint across the three Cube axes — Functions, Verticals, Layers — flattened into two readable 2D projections.
+              </p>
+              <CubeProjection2D
+                functions={article.analysis.cube_position.functions}
+                verticals={article.analysis.cube_position.verticals}
+                layers={article.analysis.cube_position.layers}
+              />
+            </section>
+          )}
+
           {/* Why now */}
           {article.analysis.why_now && (
             <section className="mb-12">
