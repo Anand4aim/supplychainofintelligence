@@ -41,4 +41,9 @@
   <url><loc>https://supplychainofai.com/analysis/adobe-firefly-licensed-data</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/analysis/character-ai-memory-orphan</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://supplychainofai.com/analysis/glean-enterprise-search-fortress</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Structural Law essays -->
+  <url><loc>https://supplychainofai.com/laws/intelligence-commoditizes-downward</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://supplychainofai.com/laws/value-accrues-at-bottlenecks</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://supplychainofai.com/laws/surface-captures-attention-chain-captures-power</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
 </urlset>
