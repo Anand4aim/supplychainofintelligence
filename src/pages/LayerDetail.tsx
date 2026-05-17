@@ -136,7 +136,8 @@ const LayerDetailPage = () => {
                   {layer.sublayers.map((s) => (
                     <div
                       key={s.id}
-                      className="bg-card border border-border rounded-xl p-4 sketch-border flex items-start gap-3"
+                      id={s.id.toLowerCase()}
+                      className="bg-card border border-border rounded-xl p-4 sketch-border flex items-start gap-3 scroll-mt-24 target:ring-2 target:ring-accent/60"
                     >
                       <span
                         className="font-sketch text-sm font-bold px-2 py-0.5 rounded-md shrink-0 mt-0.5"
