@@ -378,10 +378,10 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </text>
       ))}
 
-      {/* FUNCTIONS tick labels — pushed OUTSIDE the front-right floor edge (v=0) */}
+      {/* FUNCTIONS tick labels — sit on the front-right floor edge, rotated +60° down-right */}
       {FUNCTIONS_SHORT.map((name, i) => {
-        const tx = isoX(i + 0.5, 0) + 14;
-        const ty = isoY(i + 0.5, 0, 0) + 16;
+        const tx = isoX(i + 0.5, 0) + 2;
+        const ty = isoY(i + 0.5, 0, 0) + 6;
         return (
           <text
             key={`ft-${i}`}
@@ -392,17 +392,17 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
             fontFamily="ui-monospace, monospace"
             fontWeight={600}
             textAnchor="start"
-            transform={`rotate(30 ${tx} ${ty})`}
+            transform={`rotate(60 ${tx} ${ty})`}
           >
             {name}
           </text>
         );
       })}
 
-      {/* VERTICALS tick labels — pushed OUTSIDE the front-left floor edge (f=0) */}
+      {/* VERTICALS tick labels — sit on the front-left floor edge, rotated -60° down-left */}
       {VERTICALS_SHORT.map((name, i) => {
-        const tx = isoX(0, i + 0.5) - 14;
-        const ty = isoY(0, i + 0.5, 0) + 16;
+        const tx = isoX(0, i + 0.5) - 2;
+        const ty = isoY(0, i + 0.5, 0) + 6;
         return (
           <text
             key={`vt-${i}`}
@@ -413,7 +413,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
             fontFamily="ui-monospace, monospace"
             fontWeight={600}
             textAnchor="end"
-            transform={`rotate(-30 ${tx} ${ty})`}
+            transform={`rotate(-60 ${tx} ${ty})`}
           >
             {name}
           </text>
