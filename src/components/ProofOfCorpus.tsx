@@ -41,7 +41,7 @@ const ProofOfCorpus = () => (
         <div>
           <Eyebrow className="mb-2">The Framework, Applied</Eyebrow>
           <h2 className="font-display text-2xl md:text-[28px] font-bold text-foreground leading-tight">
-            Not a one-pager. A working corpus.
+            A working corpus.
           </h2>
         </div>
         <div className="flex flex-wrap gap-6 md:gap-8">
