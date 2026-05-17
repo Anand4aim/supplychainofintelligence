@@ -114,7 +114,7 @@ async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<s
         { role: "system", content: systemMsg },
         { role: "user", content: userMsg }
       ],
-      search_recency_filter: topic ? "year" : "week",
+      search_recency_filter: topic ? "year" : "day",
       max_tokens: 1000,
     }),
   });
