@@ -252,6 +252,7 @@ const Predictions = () => {
               );
             })}
         </ol>
+        )}
 
         <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02]">
           <h3 className="font-display text-xl font-semibold text-foreground">
