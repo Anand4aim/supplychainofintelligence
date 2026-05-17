@@ -1,0 +1,1 @@
+DELETE FROM public.live_articles WHERE id = '0f34032f-f562-4204-85cd-bf31888587cb';
