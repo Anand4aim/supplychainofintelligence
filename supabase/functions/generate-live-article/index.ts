@@ -190,7 +190,7 @@ Deno.serve(async (req) => {
     const { data: existing } = await supabase.from("live_articles").select("slug").eq("slug", slug).maybeSingle();
     if (existing) slug = `${slug}-${Date.now().toString(36).slice(-4)}`;
 
-    const { data: inserted, error } = await supabase.from("live_articles").insert({
+    const insertRow: Record<string, unknown> = {
       slug,
       headline: analysis.headline,
       subheadline: analysis.subheadline,
@@ -214,7 +214,9 @@ Deno.serve(async (req) => {
       linkedin_post: analysis.linkedin_post,
       verdict: analysis.verdict,
       vertical: analysis.vertical,
-    }).select().single();
+    };
+    if (publishedAt) insertRow.published_at = publishedAt;
+    const { data: inserted, error } = await supabase.from("live_articles").insert(insertRow).select().single();
 
     if (error) throw error;
     console.log("[live-article] published:", inserted.slug);
