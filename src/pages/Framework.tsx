@@ -259,8 +259,9 @@ const FrameworkPage = () => (
             One Common Pattern — Not the Only Way to Win
           </h2>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            The Triangle (L1b + L5a/b/d + L8c/d/e) is the most common fortress pattern for
-            application-layer companies. But it isn't the only way to survive. A pure
+            The Triangle (L1b + L5a/b/d + L8c/d/e) is a <em>recurring</em> fortress pattern we
+            see across application-layer companies — Sierra, Harvey, Glean, BloombergGPT, Tempus
+            all exhibit some version of it. It is not the only way to survive. A pure
             gatekeeper like <span className="font-semibold text-foreground">Vanta</span> wins
             on L3 alone. A shovel-seller like <span className="font-semibold text-foreground">NVIDIA</span> wins
             on L0. A pipes-owner like <span className="font-semibold text-foreground">Snowflake</span> wins

@@ -8,6 +8,8 @@ import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS, JTBD_VS_S
 import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import ProofOfCorpus from "@/components/ProofOfCorpus";
+import FrameworkApplied from "@/components/FrameworkApplied";
 import {
   SketchFilters,
   SketchBoard,
@@ -295,6 +297,9 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ═══════════ PROOF OF CORPUS ═══════════ */}
+      <ProofOfCorpus />
 
       {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
@@ -710,11 +715,16 @@ const Index = () => {
           <motion.div {...fadeIn} className="mt-10">
             <SketchBoard className="p-6 md:p-8">
               <p className="font-sketch text-xl font-bold text-sketch-red mb-2">
-                The Defensible Triangle — one common path to survival
+                The Defensible Triangle — a recurring fortress pattern
               </p>
               <p className="text-sm text-muted-foreground mb-5 max-w-2xl">
-                The most common fortress pattern for app-layer companies. Not the only way to win —
-                a pure gatekeeper like <span className="font-semibold text-foreground">Vanta</span> survives on L3 alone,
+                A pattern we keep seeing in app-layer fortresses —{" "}
+                <Link to="/analysis/sierra-vs-salesforce" className="text-foreground underline-offset-2 hover:underline">Sierra</Link>,{" "}
+                <Link to="/analysis/harvey-vs-generic-legal" className="text-foreground underline-offset-2 hover:underline">Harvey</Link>,{" "}
+                <Link to="/analysis/glean-enterprise-search-fortress" className="text-foreground underline-offset-2 hover:underline">Glean</Link>,{" "}
+                <Link to="/analysis/bloomberg-gpt-vertical-fortress" className="text-foreground underline-offset-2 hover:underline">BloombergGPT</Link>,{" "}
+                <Link to="/analysis/tempus-ai-clinical-data-stack" className="text-foreground underline-offset-2 hover:underline">Tempus</Link>{" "}
+                — not the only way to win. A pure gatekeeper like <span className="font-semibold text-foreground">Vanta</span> survives on L3 alone,
                 NVIDIA on L0, Snowflake on L4. Owning one layer <em>deeply</em> can be enough.
               </p>
 
@@ -928,6 +938,9 @@ const Index = () => {
         </div>
       </section>
 
+
+      {/* ═══════════ FRAMEWORK APPLIED — three worked audits ═══════════ */}
+      <FrameworkApplied />
 
       {/* ═══════════ CASE STUDIES ═══════════ */}
       <section className="bg-secondary/40">
