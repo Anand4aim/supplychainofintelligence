@@ -196,6 +196,7 @@ Deno.serve(async (req) => {
       source_urls: analysis.source_urls ?? [],
       analysis: {
         layer_scores: analysis.layer_scores,
+        cube_position: analysis.cube_position,
         why_now: analysis.why_now,
         structural_take: analysis.structural_take,
         second_order_effects: analysis.second_order_effects,
