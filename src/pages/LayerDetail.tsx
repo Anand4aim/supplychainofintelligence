@@ -179,17 +179,6 @@ const LayerDetailPage = () => {
                 </section>
               )}
 
-              <section className="p-6 rounded-2xl bg-accent/5 border border-accent/20 sketch-border">
-                <p className="font-display text-xl font-bold text-foreground mb-2">
-                  Where does your product sit on {layer.id}?
-                </p>
-                <p className="text-sm text-muted-foreground mb-4">
-                  The Defensibility Audit scores it in 5 minutes.
-                </p>
-                <Link to="/audit" className="btn-sketch inline-flex items-center gap-2">
-                  Run the Audit <ArrowRight size={14} />
-                </Link>
-              </section>
             </div>
 
             <div className="mt-12 pt-8 border-t border-border flex items-center justify-between">

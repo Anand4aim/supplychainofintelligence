@@ -82,11 +82,8 @@ const AboutPage = () => (
             >
               LinkedIn
             </a>
-            <Link to="/audit" className="btn-sketch inline-flex items-center gap-2">
-              Run the Audit <ArrowRight size={14} />
-            </Link>
-            <Link to="/work-with-me" className="btn-sketch-outline">
-              Work with me
+            <Link to="/framework" className="btn-sketch inline-flex items-center gap-2">
+              Read the Framework <ArrowRight size={14} />
             </Link>
           </div>
         </div>

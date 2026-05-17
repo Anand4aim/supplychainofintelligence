@@ -9,9 +9,7 @@ import LayerDetailPage from "./pages/LayerDetail";
 import AnalysisPage from "./pages/Analysis";
 import CaseStudyDetailPage from "./pages/CaseStudyDetail";
 import ForProductLeaders from "./pages/ForProductLeaders";
-import AuditPage from "./pages/Audit";
 import AboutPage from "./pages/About";
-import WorkWithMePage from "./pages/WorkWithMe";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
@@ -32,9 +30,7 @@ const App = () => (
           <Route path="/analysis" element={<AnalysisPage />} />
           <Route path="/analysis/:slug" element={<CaseStudyDetailPage />} />
           <Route path="/for-product-leaders" element={<ForProductLeaders />} />
-          <Route path="/audit" element={<AuditPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/work-with-me" element={<WorkWithMePage />} />
           <Route path="/live" element={<LivePage />} />
           <Route path="/live/:slug" element={<LiveArticleDetail />} />
           <Route path="/market-map" element={<MarketMap />} />
