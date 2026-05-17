@@ -336,10 +336,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "DEEP DIVE · CUSTOMER EXPERIENCE",
     title: "Sierra's Memory Moat: Why L8 Beats Salesforce's Agentforce",
-    verdict: "L1 + L5 + L8 stack",
+    verdict: "L1c + L5d + L8c stack",
     excerpt:
-      "Sierra and Salesforce Agentforce look like the same product on stage — an AI agent that resolves customer issues. The Cube projection shows they are structurally opposite. Sierra was architected as L1+L5+L8 from day one: every resolution compounds into per-customer memory. Agentforce is L5 bolted onto Salesforce's existing L1, with no compounding loop. Same demo, opposite trajectories.",
+      "Sierra and Salesforce Agentforce look like the same product on stage — an AI agent that resolves customer issues. The Cube projection shows they are structurally opposite. Sierra was architected as L1c behavioral data + L5d operating playbooks + L8c network learning from day one: every resolution compounds into per-customer memory. Agentforce is L5 bolted onto Salesforce's existing L1, with no compounding loop. Same demo, opposite trajectories.",
     layers: ["L1", "L4", "L5", "L8"],
+    sublayers: ["L1c", "L5d", "L8c"],
     date: "March 2026",
     readTime: "10 min",
     valuation: {
@@ -575,10 +576,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "VERTICAL STACK",
     title: "Harvey AI Through the Layers",
-    verdict: "L1 + L3 + L5 + L8",
+    verdict: "L1b + L3a + L5b + L8d",
     excerpt:
-      "Harvey is built across four layers — L1 (legal data), L3 (compliance), L5 (domain execution), L8 (case memory). A useful case for mapping how a vertical-AI company actually stacks up, and where horizontal platforms can and can't reach.",
+      "Harvey is built across four sublayers — L1b (licensed case law), L3a (compliance gates), L5b (legal reasoning scaffolds), L8d (institutional memory of matters). A useful case for mapping how a vertical-AI company actually stacks up, and where horizontal platforms can and can't reach.",
     layers: ["L1", "L3", "L5", "L8"],
+    sublayers: ["L1b", "L3a", "L5b", "L8d"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
@@ -678,10 +680,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "VERTICAL STACK",
     title: "BloombergGPT: Why a 50B-Parameter Model Beats GPT-4 in Finance",
-    verdict: "L1 + L2 + L3 + L4",
+    verdict: "L1b + L2b + L3a + L4a stack",
     excerpt:
-      "Bloomberg trained its own 50B-parameter model on 40 years of proprietary financial data. Smaller than GPT-4. Better at finance tasks. The reason isn't the model — it's that Bloomberg owns the terminal (L4), the data (L1), the compliance posture (L3), and now the model (L2). Four layers in one regulated vertical.",
+      "Bloomberg trained its own 50B-parameter model on 40 years of proprietary financial data. Smaller than GPT-4. Better at finance tasks. The reason isn't the model — it's that Bloomberg owns the terminal (L4a API + L7c embedded), the data (L1b proprietary), the compliance posture (L3a regulated), and now the model (L2b specialized). Four sublayers in one regulated vertical.",
     layers: ["L1", "L2", "L3", "L4"],
+    sublayers: ["L1b", "L2b", "L3a", "L4a"],
     date: "April 2026",
     readTime: "8 min",
     content: `BloombergGPT is the cleanest example of vertical L1+L2 integration in the market.
@@ -742,10 +745,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L7 ON RENTED L2",
     title: "Devin at $2B: The Autonomous Coder With No Layer Beneath It",
-    verdict: "L7 agent on rented L2",
+    verdict: "L7c agent on rented L2a",
     excerpt:
-      "Cognition raised at $2B for Devin, the 'autonomous software engineer.' Impressive demo. Structural problem: Devin sits at L7 (agent surface) on top of someone else's L2 (Anthropic/OpenAI), with no L1, no L8, no L4. Meanwhile Cursor owns the IDE — the L4 of where code is actually written.",
+      "Cognition raised at $2B for Devin, the 'autonomous software engineer.' Impressive demo. Structural problem: Devin sits at L7c (embedded copilot surface) on top of someone else's L2a (Anthropic/OpenAI foundation models), with no L1, no L8, no L4. Meanwhile Cursor owns the IDE — the L4a railroad of where code is actually written.",
     layers: ["L2", "L7"],
+    sublayers: ["L2a", "L7c"],
     date: "April 2026",
     readTime: "7 min",
     valuation: {
@@ -937,10 +941,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L1 + L6 ENTERPRISE STACK",
     title: "Glean at $7.2B: The Enterprise Memory Layer Microsoft Was Supposed to Own",
-    verdict: "L1 + L6 + L8 stack",
+    verdict: "L1c + L6d + L8d stack",
     excerpt:
-      "Glean indexes every document, message, ticket, and meeting inside a company — then makes it queryable by AI. That index is L1 (proprietary to each customer), the orchestration is L6, and the cross-app memory is L8. Microsoft 'should' own this with Copilot. They don't, and Glean's $7.2B valuation says the market noticed.",
+      "Glean indexes every document, message, ticket, and meeting inside a company — then makes it queryable by AI. That index is L1c behavioral data (proprietary to each customer), the orchestration is L6d context management across apps, and the cross-app memory is L8d institutional knowledge. Microsoft 'should' own this with Copilot. They don't, and Glean's $7.2B valuation says the market noticed.",
     layers: ["L1", "L6", "L8"],
+    sublayers: ["L1c", "L6d", "L8d"],
     date: "April 2026",
     readTime: "8 min",
     valuation: {
