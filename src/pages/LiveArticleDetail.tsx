@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
+import { LAYER_LABEL } from "@/data/layers";
 
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
