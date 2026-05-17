@@ -179,7 +179,7 @@ const LivePage = () => {
   const load = async () => {
     const { data } = await supabase
       .from("live_articles")
-      .select("id, slug, headline, subheadline, news_summary, verdict, vertical, published_at, source_urls")
+      .select("id, slug, headline, subheadline, news_summary, verdict, vertical, published_at, source_urls, analysis")
       .eq("status", "published")
       .order("published_at", { ascending: false });
     setArticles((data ?? []) as LiveArticle[]);
