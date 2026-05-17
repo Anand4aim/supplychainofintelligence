@@ -46,6 +46,7 @@ const Index = () => {
         path="/"
       />
       <SketchFilters />
+      <SixtySecondTour />
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative bg-background overflow-hidden">
