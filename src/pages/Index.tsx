@@ -171,13 +171,13 @@ const Index = () => {
                 <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                 <div className="grid grid-cols-8 gap-1.5">
                   {([
-                    { n: 1, name: "Cloud" },
+                    { n: 1, name: "Data" },
                     { n: 2, name: "Models" },
-                    { n: 3, name: "Inference" },
-                    { n: 4, name: "Agents" },
-                    { n: 5, name: "Tools" },
-                    { n: 6, name: "Apps" },
-                    { n: 7, name: "Distribution" },
+                    { n: 3, name: "Trust" },
+                    { n: 4, name: "Infra" },
+                    { n: 5, name: "Orchestration" },
+                    { n: 6, name: "Domain" },
+                    { n: 7, name: "Surfaces" },
                     { n: 8, name: "Memory" },
                   ] as const).map(({ n, name }) => (
                     <div key={n} className="flex flex-col items-center gap-1">
