@@ -186,7 +186,7 @@ const LivePage = () => {
             <p className="text-sm text-muted-foreground/80 italic mb-6">
               New analysis published as the news breaks · Weekly issue cadence · Free to read, copy, and repost anywhere.
             </p>
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={RSS_URL}
                 target="_blank"
@@ -195,9 +195,6 @@ const LivePage = () => {
               >
                 <Rss size={13} /> RSS feed
               </a>
-            </div>
-            <div className="max-w-xl">
-              <NewsletterCTA source="live-hero" compact />
             </div>
           </motion.div>
         </div>
