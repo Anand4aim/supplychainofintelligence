@@ -168,18 +168,10 @@ const Index = () => {
 
               {/* Header row */}
               {(() => {
-                const LAYERS = [
-                  { id: "L-1", label: "L-1", name: "Resources", cssVar: "--layer-neg1" },
-                  { id: "L0",  label: "L0",  name: "Infra",     cssVar: "--layer-0" },
-                  { id: "L1",  label: "L1",  name: "Data",      cssVar: "--layer-1" },
-                  { id: "L2",  label: "L2",  name: "Models",    cssVar: "--layer-2" },
-                  { id: "L3",  label: "L3",  name: "Gates",     cssVar: "--layer-3" },
-                  { id: "L4",  label: "L4",  name: "Access",    cssVar: "--layer-4" },
-                  { id: "L5",  label: "L5",  name: "Execution", cssVar: "--layer-5" },
-                  { id: "L6",  label: "L6",  name: "Orch",      cssVar: "--layer-6" },
-                  { id: "L7",  label: "L7",  name: "Surface",   cssVar: "--layer-7" },
-                  { id: "L8",  label: "L8",  name: "Memory",    cssVar: "--layer-8" },
-                ] as const;
+                const TABLE_LAYERS = LAYERS.map((l) => {
+                  const num = l.id === "L-1" ? "neg1" : l.id.replace("L", "");
+                  return { id: l.id, label: l.id, name: l.shortName, cssVar: `--layer-${num}` };
+                });
 
                 const rows = [
                   {
