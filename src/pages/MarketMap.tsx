@@ -163,7 +163,7 @@ const MarketMap = () => {
                 style={{ borderColor: color }}
               >
                 <Link
-                  to={`/framework/${layer.id.toLowerCase().replace("l-1", "l-1").replace("l", "l")}`}
+                  to={`/framework/${layer.id.toLowerCase()}`}
                   className="block group"
                 >
                   <div
