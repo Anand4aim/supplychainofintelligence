@@ -167,97 +167,115 @@ const Index = () => {
               <div className="h-px w-16 bg-accent/70 mb-6" />
 
               {/* Header row */}
-              <div className="grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-end mb-2">
-                <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
-                <div className="grid grid-cols-8 gap-1.5">
-                  {([
-                    { n: 1, name: "Data" },
-                    { n: 2, name: "Models" },
-                    { n: 3, name: "Trust" },
-                    { n: 4, name: "Infra" },
-                    { n: 5, name: "Orchestration" },
-                    { n: 6, name: "Domain" },
-                    { n: 7, name: "Surfaces" },
-                    { n: 8, name: "Memory" },
-                  ] as const).map(({ n, name }) => (
-                    <div key={n} className="flex flex-col items-center gap-1">
-                      <span className="font-mono-marker text-[9px] tracking-[0.06em] text-muted-foreground/90 leading-tight text-center truncate w-full">
-                        {name}
-                      </span>
-                      <div
-                        className="w-full text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
-                        style={{ background: `hsl(var(--layer-${n}))` }}
-                      >
-                        L{n}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <span />
-              </div>
+              {(() => {
+                const LAYERS = [
+                  { id: "L-1", label: "L-1", name: "Resources", cssVar: "--layer-neg1" },
+                  { id: "L0",  label: "L0",  name: "Infra",     cssVar: "--layer-0" },
+                  { id: "L1",  label: "L1",  name: "Data",      cssVar: "--layer-1" },
+                  { id: "L2",  label: "L2",  name: "Models",    cssVar: "--layer-2" },
+                  { id: "L3",  label: "L3",  name: "Gatekeeping", cssVar: "--layer-3" },
+                  { id: "L4",  label: "L4",  name: "Access",    cssVar: "--layer-4" },
+                  { id: "L5",  label: "L5",  name: "Execution", cssVar: "--layer-5" },
+                  { id: "L6",  label: "L6",  name: "Orchestration", cssVar: "--layer-6" },
+                  { id: "L7",  label: "L7",  name: "Surface",   cssVar: "--layer-7" },
+                  { id: "L8",  label: "L8",  name: "Memory",    cssVar: "--layer-8" },
+                ] as const;
 
-              {/* Rows */}
-              {([
-                {
-                  name: "Claude / Anthropic", sub: "L2 giant",
-                  cells: { 2: 3, 3: 2, 4: 2, 5: 1, 6: 1 },
-                  verdict: "EXPANDING ↑", verdictClass: "text-emerald-600",
-                },
-                {
-                  name: "Clay", sub: "$3B · data + workflow",
-                  cells: { 1: 3, 4: 1, 6: 3, 8: 1 },
-                  verdict: "FORTIFIED", verdictClass: "text-emerald-600",
-                },
-                {
-                  name: "Sierra", sub: "$15B · agent infra",
-                  cells: { 1: 2, 5: 3, 6: 3, 8: 2 },
-                  verdict: "FORTIFIED", verdictClass: "text-emerald-600",
-                },
-                {
-                  name: "Apollo", sub: "GTM platform",
-                  cells: { 1: 2, 6: 3, 7: 1 },
-                  verdict: "THINNING ↓", verdictClass: "text-orange-600",
-                },
-                {
-                  name: "Outreach", sub: "Sales Engagement",
-                  cells: { 6: 3 },
-                  verdict: "COMPRESSES", verdictClass: "text-orange-600",
-                },
-              ] as const).map((row, i) => (
-                <div
-                  key={row.name}
-                  className={`grid grid-cols-[180px_1fr_110px] md:grid-cols-[200px_1fr_120px] gap-3 items-center py-3 ${
-                    i % 2 === 0 ? "bg-foreground/[0.025]" : ""
-                  } border-t border-foreground/10`}
-                >
-                  <div>
-                    <div className="font-display text-[15px] font-bold text-foreground leading-tight">{row.name}</div>
-                    <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
-                  </div>
-                  <div className="grid grid-cols-8 gap-1.5">
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => {
-                      const intensity = (row.cells as Record<number, number>)[n] ?? 0;
-                      return (
-                        <div key={n} className="flex justify-center items-center gap-[3px] h-6">
-                          {[1, 2, 3].map((d) => (
-                            <span
-                              key={d}
-                              className="rounded-full"
-                              style={{
-                                width: 6, height: 6,
-                                background: d <= intensity ? `hsl(var(--layer-${n}))` : "transparent",
-                              }}
-                            />
-                          ))}
+                const rows = [
+                  {
+                    name: "Claude / Anthropic", sub: "L2 giant",
+                    cells: { L2: 3, L3: 2, L4: 2, L5: 1, L6: 1 } as Record<string, number>,
+                    verdict: "EXPANDING ↑", verdictClass: "text-emerald-600",
+                  },
+                  {
+                    name: "NVIDIA", sub: "L0 monopolist",
+                    cells: { "L-1": 1, L0: 3, L4: 1 } as Record<string, number>,
+                    verdict: "DOMINANT", verdictClass: "text-emerald-600",
+                  },
+                  {
+                    name: "Clay", sub: "$3B · data + workflow",
+                    cells: { L1: 3, L5: 1, L6: 3, L8: 1 } as Record<string, number>,
+                    verdict: "FORTIFIED", verdictClass: "text-emerald-600",
+                  },
+                  {
+                    name: "Sierra", sub: "$15B · agent infra",
+                    cells: { L4: 2, L5: 3, L6: 3, L8: 2 } as Record<string, number>,
+                    verdict: "FORTIFIED", verdictClass: "text-emerald-600",
+                  },
+                  {
+                    name: "Apollo", sub: "GTM platform",
+                    cells: { L1: 2, L6: 3, L7: 1 } as Record<string, number>,
+                    verdict: "THINNING ↓", verdictClass: "text-orange-600",
+                  },
+                  {
+                    name: "Outreach", sub: "Sales Engagement",
+                    cells: { L6: 3 } as Record<string, number>,
+                    verdict: "COMPRESSES", verdictClass: "text-orange-600",
+                  },
+                ];
+
+                const gridCols = `grid-cols-${LAYERS.length}`;
+
+                return (
+                  <>
+                    <div className="grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
+                      <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
+                      <div className="grid grid-cols-10 gap-1">
+                        {LAYERS.map(({ id, label, name, cssVar }) => (
+                          <div key={id} className="flex flex-col items-center gap-1 min-w-0">
+                            <span className="font-mono-marker text-[8px] md:text-[9px] tracking-[0.04em] text-muted-foreground/90 leading-tight text-center truncate w-full">
+                              {name}
+                            </span>
+                            <div
+                              className="w-full text-center font-mono-marker text-[9px] md:text-[10px] font-bold py-1.5 rounded-sm text-white"
+                              style={{ background: `hsl(var(${cssVar}))` }}
+                            >
+                              {label}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <span />
+                    </div>
+
+                    {rows.map((row, i) => (
+                      <div
+                        key={row.name}
+                        className={`grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-center py-3 ${
+                          i % 2 === 0 ? "bg-foreground/[0.025]" : ""
+                        } border-t border-foreground/10`}
+                      >
+                        <div>
+                          <div className="font-display text-[15px] font-bold text-foreground leading-tight">{row.name}</div>
+                          <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
                         </div>
-                      );
-                    })}
-                  </div>
-                  <span className={`font-mono-marker text-[10px] font-bold tracking-[0.12em] text-right ${row.verdictClass}`}>
-                    {row.verdict}
-                  </span>
-                </div>
-              ))}
+                        <div className="grid grid-cols-10 gap-1">
+                          {LAYERS.map(({ id, cssVar }) => {
+                            const intensity = row.cells[id] ?? 0;
+                            return (
+                              <div key={id} className="flex justify-center items-center gap-[2px] h-6">
+                                {[1, 2, 3].map((d) => (
+                                  <span
+                                    key={d}
+                                    className="rounded-full"
+                                    style={{
+                                      width: 5, height: 5,
+                                      background: d <= intensity ? `hsl(var(${cssVar}))` : "transparent",
+                                    }}
+                                  />
+                                ))}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <span className={`font-mono-marker text-[10px] font-bold tracking-[0.12em] text-right ${row.verdictClass}`}>
+                          {row.verdict}
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                );
+              })()}
 
               {/* Legend */}
               <div className="flex flex-wrap items-center justify-center gap-5 mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
