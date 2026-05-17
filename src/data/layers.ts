@@ -194,6 +194,22 @@ export const LAYERS: Layer[] = [
   },
 ];
 
+// ─── Canonical label maps ───────────────────────────────────────────
+// SINGLE SOURCE OF TRUTH for layer names across the entire app.
+// Never hardcode layer labels — always import from here.
+export const LAYER_LABEL: Record<string, string> = Object.fromEntries(
+  LAYERS.map((l) => [l.id, l.name])
+);
+export const LAYER_SHORT_LABEL: Record<string, string> = Object.fromEntries(
+  LAYERS.map((l) => [l.id, l.shortName])
+);
+export const LAYER_ID_LABEL: Record<string, string> = Object.fromEntries(
+  LAYERS.map((l) => [l.id, `${l.id} ${l.shortName}`])
+);
+export const SUBLAYER_LABEL: Record<string, string> = Object.fromEntries(
+  LAYERS.flatMap((l) => l.sublayers.map((s) => [s.id, s.name]))
+);
+
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
 // ─── The Three Structural Laws ──────────────────────────────────────
