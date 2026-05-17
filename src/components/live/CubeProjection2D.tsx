@@ -73,17 +73,24 @@ const Grid: React.FC<{
                 return (
                   <div
                     key={`${y}-${x}`}
-                    className="rounded-[2px]"
+                    className="rounded-[3px] transition-all"
                     style={{
                       height: 22,
                       background: filled
                         ? cellColorFor(yIdx)
-                        : yHit || xHit
-                        ? "hsl(var(--foreground) / 0.05)"
-                        : "hsl(var(--foreground) / 0.03)",
+                        : yHit && xHit === false
+                        ? `hsl(var(${layerVar(y)}) / 0.10)`
+                        : xHit && !yHit
+                        ? "hsl(var(--foreground) / 0.07)"
+                        : "hsl(var(--foreground) / 0.025)",
                       border: filled
                         ? `1px solid ${cellColorFor(yIdx)}`
-                        : "1px solid hsl(var(--foreground) / 0.08)",
+                        : yHit || xHit
+                        ? "1px solid hsl(var(--foreground) / 0.12)"
+                        : "1px solid hsl(var(--foreground) / 0.06)",
+                      boxShadow: filled
+                        ? `0 0 0 1px hsl(var(${layerVar(y)}) / 0.25), 0 2px 8px -2px hsl(var(${layerVar(y)}) / 0.45)`
+                        : "none",
                     }}
                     title={filled ? `${y} × ${x}` : undefined}
                   />
