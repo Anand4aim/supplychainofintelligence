@@ -964,4 +964,139 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 *Public reporting; valuations as disclosed.*`,
   },
+  {
+    slug: "tempus-ai-clinical-data-stack",
+    track: "vertical",
+    companies: [
+      { name: "Tempus AI", logo: logo("tempus.com"), color: "#1A6FE3" },
+    ],
+    tag: "VERTICAL & REGULATED · MEDTECH",
+    title: "Tempus AI: When the Data Layer Sits Inside the Clinic",
+    verdict: "L1 + L3 + L8",
+    excerpt:
+      "Tempus stitched together oncology-grade clinical and molecular data (L1), trained vertical models on top (L3), and embedded the output into oncologist workflow (L8). The structural read: in regulated medicine, L8 (the clinical workflow + reimbursement path) sits above the model and slows commoditization meaningfully.",
+    layers: ["L1", "L3", "L8"],
+    date: "May 2026",
+    readTime: "8 min",
+    valuation: {
+      label: "Tempus Market Cap",
+      before: "$8B (IPO Jun 2024)",
+      after: "~$6B (May 2026)",
+      trend: "flat",
+      changeLabel: "Range-bound",
+    },
+    content: `*Structural read, not clinical or investment advice. The author is a product strategist applying the 10-layer framework — not a domain expert in oncology, pathology, or healthcare regulation.*
+
+**The setup.** Tempus AI went public in June 2024 as one of the first AI-native medical companies at scale. The story is usually told as "AI in oncology." Through the layers it's something more specific.
+
+**L1 — clinical & molecular data.** Tempus's structural asset is a multi-modal oncology dataset: sequencing, imaging, clinical records, outcomes — assembled through hospital partnerships over a decade. This is L1 in its hardest form: not scraped, not synthetic, not easily replicable. Every new hospital integration deepens it.
+
+**L3 — vertical foundation models.** On top of the data, Tempus trains oncology-specific models (genomic interpretation, treatment response prediction). General foundation models from OpenAI or Anthropic cannot reach this layer without the L1 underneath — which is the structural point.
+
+**L8 — clinical workflow & reimbursement.** This is the layer most outside observers underweight. The output has to land inside an oncologist's decision moment, with billing codes, regulatory clearance, and liability assigned. L8 in regulated medicine is *slow*, *expensive to build*, and *durable once built*. It is also the layer that protects the stack against L2/L3 commoditization from above — a frontier model can match the prediction, but cannot ship it into the clinic without re-doing the L8 work.
+
+**How the layers behave differently here.**
+- **L-1 and L1 matter more than in software.** Sequencing instruments, imaging hardware, and patient-consented data flows are the real moats. Compute is not where the scarcity sits.
+- **L2/L3 compress more slowly.** Regulatory clearance ties a model version to a specific use case. You can't ship a new model weekly the way a SaaS company can.
+- **L8 is the moat, not the wrapper.** In software, L8 is often the unbuilt layer everyone is racing toward. In regulated medicine, L8 is the layer that takes a decade to build and is hardest to replicate.
+
+**The structural read:** Tempus owns a defensible L1 + L3 + L8 stack inside oncology. The contested question is whether the stack expands horizontally (other disease areas) faster than newer entrants (PathAI, Paige.AI, generalist labs partnering with foundation-model providers) can assemble comparable data + workflow in adjacent verticals.
+
+**What to watch.** Whether Anthropic or Google's medical-LLM efforts pair with hospital systems directly — which would attack L3 from above — and whether Tempus's L8 workflow density holds when that happens.
+
+*Public filings (Tempus S-1, post-IPO reports). Numbers approximate as of May 2026.*`,
+  },
+  {
+    slug: "john-deere-see-and-spray",
+    track: "physical",
+    companies: [
+      { name: "John Deere", logo: logo("deere.com"), color: "#367C2B" },
+    ],
+    tag: "PHYSICAL & INDUSTRIAL · AGROTECH",
+    title: "John Deere: Why the Tractor Is the L-1 Moat",
+    verdict: "L-1 + L1 + L8",
+    excerpt:
+      "See & Spray puts vision models on the boom of a sprayer to herbicide weeds, not crops. The model is the easy part. The fleet of instrumented tractors with edge compute, the agronomic data flywheel, and the dealer-financed install base — those are the layers no AI-only entrant can replicate.",
+    layers: ["L-1", "L1", "L8"],
+    date: "May 2026",
+    readTime: "9 min",
+    valuation: {
+      label: "Deere Market Cap",
+      before: "$130B (early 2024)",
+      after: "~$140B (May 2026)",
+      trend: "up",
+      changeLabel: "Stable / up",
+    },
+    content: `*Structural read, not agronomy or investment advice. The author is applying the 10-layer framework — not a domain expert in farm machinery or precision agriculture.*
+
+**The setup.** John Deere's See & Spray uses vision models to identify weeds in real time and selectively spray only those plants, cutting herbicide use by a large margin. It is one of the clearest examples of "AI in the physical world" actually shipping at industrial scale.
+
+**Through the layers.**
+- **L-1 — physical fleet & edge compute.** Cameras on the spray boom, GPUs in the cab, the tractor itself. Deere has decades of fleet density and a dealer network that finances the install base. This is the layer that does not commoditize when a new foundation model ships.
+- **L1 — agronomic data.** Every pass of every machine generates weed maps, yield data, soil response. Tied to specific fields, specific farmers, multi-season. A new entrant cannot scrape this.
+- **L3 — vision models.** Required, but not the moat. The model is the layer where the *competition* lives, not where the value sits.
+- **L8 — workflow & financing.** The integration into planting, spraying, harvesting decisions — plus Deere Financial — is what makes the customer renew. Software-only entrants don't own this.
+
+**Why this case matters for the framework.** Most AI analysis treats the model as the center of gravity. In physical-world AI, the model is the *easy* layer. The hard layers — L-1 (the physical asset and the edge silicon inside it) and L8 (the operating workflow and capital structure around it) — are where the durable value sits. A foundation model from any frontier lab cannot run See & Spray without a Deere tractor underneath it.
+
+**How the layers behave differently here.**
+- **L-1 takes years and capital to build.** Software companies treat L-1 as a rounding error. In agriculture, robotics, energy, and manufacturing, L-1 is the dominant layer.
+- **Cycles are slower.** Farmers don't refresh tractors yearly. Layer compression that takes 18 months in software takes 5–10 years here.
+- **L8 includes financing.** In SaaS, L8 is the workflow. In industrial, L8 also includes the multi-year financing structure that locks in the install base.
+
+**Worth watching.** Whether a software-native entrant (e.g. Carbon Robotics, or a startup pairing with Kubota or AGCO) can assemble enough L-1 to start eating Deere's data flywheel, and whether open vision models commoditize L3 fast enough to make the L-1 advantage less defensible over a decade horizon.
+
+*Public reporting from Deere investor materials; rollout figures approximate as of May 2026.*`,
+  },
+  {
+    slug: "tesla-vs-waymo-autonomy-stack",
+    track: "physical",
+    companies: [
+      { name: "Tesla", logo: logo("tesla.com"), color: "#E31937" },
+      { name: "Waymo", logo: logo("waymo.com"), color: "#5AB4E8" },
+    ],
+    tag: "PHYSICAL & INDUSTRIAL · AUTONOMY",
+    title: "Tesla vs Waymo: Two Bets on Which Layer Wins Autonomy",
+    verdict: "L-1 + L1 vs L1 + L8",
+    excerpt:
+      "Same end-state — robotaxis — two opposite structural bets. Tesla bets fleet-scale L-1 (cameras on millions of cars) plus emergent L3 wins. Waymo bets dense L1 (HD maps + lidar-grade sensing in geo-fenced cities) plus L8 (operations + regulatory permits) wins. The framework reads them as different layer ownership, not different products.",
+    layers: ["L-1", "L1", "L8"],
+    date: "May 2026",
+    readTime: "10 min",
+    valuation: {
+      label: "Coverage (May 2026)",
+      before: "Tesla: millions of FSD-enabled vehicles",
+      after: "Waymo: paid driverless in ~5 cities",
+      trend: "flat",
+      changeLabel: "Different bets",
+    },
+    content: `*Structural read, not autonomy engineering or investment advice. The author is applying the 10-layer framework, not claiming domain expertise in robotics or AV safety.*
+
+**The setup.** Two of the largest bets in physical AI are converging on the same outcome (autonomous ride-hail) from opposite ends of the layer stack. Reading them through the framework is more useful than the usual "vision-only vs lidar" debate.
+
+**Tesla — the L-1 / emergent-L3 bet.**
+- **L-1 (physical fleet):** millions of cars on roads worldwide, each one a sensor platform with custom inference silicon (HW3, HW4). Fleet density unmatched.
+- **L1 (data):** every mile driven contributes to a centralized training corpus. The L1 is *derived from* the L-1, which is the structural point.
+- **L3 (models):** end-to-end neural nets trained on the fleet's data. The thesis: scale of L-1 forces L3 to emergently solve driving without hand-coded maps.
+- **L8 (workflow):** thinner today — no large-scale paid driverless operations yet.
+
+**Waymo — the L1 / L8 bet.**
+- **L-1:** smaller fleet, but with lidar-grade sensing per vehicle.
+- **L1 (data):** HD maps of geo-fenced cities, extremely dense and labeled. Narrow but deep.
+- **L3 (models):** modular stack (perception, prediction, planning) rather than end-to-end.
+- **L8 (workflow + regulation):** the layer Waymo most clearly leads — operating permits, depots, remote assistance, rider ops, insurance posture. Already running paid driverless service in multiple cities.
+
+**The framework read.** This is not "two approaches to one problem." It is two different *layer ownership strategies* for the same vertical.
+- Tesla is betting that L-1 fleet scale forces L3 to converge, and that L8 can be built last and quickly.
+- Waymo is betting that L1 density plus L8 permits compounds faster than Tesla can build L8 from zero, even with a larger L-1.
+
+**How physical-world layers behave.**
+- **L8 in autonomy is regulatory.** It is the slowest, most expensive, hardest-to-skip layer. Whichever side hits scaled L8 first changes the public narrative regardless of L-1 size.
+- **L-1 is not interchangeable with L1.** Sensors on millions of cars are not the same asset as HD maps of one city. They compound at different rates and protect against different attacks.
+- **No L2/L3 commoditization shortcut.** A frontier-lab LLM does not help here. The scarce layers are the physical and operational ones.
+
+**Worth watching.** Whether Waymo expands geographies faster than Tesla converts FSD miles into paid driverless service in any single market. The first side to compound L8 (revenue-bearing operations at scale) reframes the rest of the stack.
+
+*Public reporting; coverage and fleet figures approximate as of May 2026.*`,
+  },
 ];
