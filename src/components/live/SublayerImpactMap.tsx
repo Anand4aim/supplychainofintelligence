@@ -1,5 +1,5 @@
 import React from "react";
-import { LAYER_LABEL } from "@/data/layers";
+import { LAYER_LABEL, LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
 export interface LayerScore {
@@ -9,8 +9,6 @@ export interface LayerScore {
   note?: string;
   sublayers?: SubLayer[];
 }
-
-const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L", "")}`;
 
 interface Props { layerScores: LayerScore[]; }
 
