@@ -572,20 +572,20 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     companies: [
       { name: "Harvey AI", logo: logo("harvey.ai"), color: "#1E3A5F" },
     ],
-    tag: "FORTRESS PATTERN",
-    title: "Harvey AI: The Vertical Fortress That Generic AI Can't Touch",
-    verdict: "FORTRESS — SAFE",
+    tag: "FORTRESS PATTERN — NOW CONTESTED",
+    title: "Harvey AI: A Vertical Fortress, Now Under Platform Attack",
+    verdict: "FORTRESS — CONTESTED",
     excerpt:
-      "Harvey occupies L1 (legal data) + L3 (compliance/governance) + L5 (domain execution) + L8 (case memory). Four layers deep in a regulated vertical. Generic AI can't replicate L3. This is the fortress archetype.",
+      "Harvey was built four layers deep — L1 (legal data) + L3 (compliance) + L5 (domain execution) + L8 (case memory) — the textbook Fortress archetype. May 2026 update: Anthropic's Claude for Legal is now attacking from L2 upward, testing whether vertical depth still beats horizontal platform reach.",
     layers: ["L1", "L3", "L5", "L8"],
     date: "March 2026",
     readTime: "7 min",
     valuation: {
       label: "Harvey Valuation",
-      before: "—",
-      after: "$1.5B",
-      trend: "up",
-      changeLabel: "Rising",
+      before: "$1.5B (Mar 2026)",
+      after: "Contested (May 2026)",
+      trend: "down",
+      changeLabel: "Platform pressure",
     },
     content: `Harvey AI is the textbook example of the Fortress archetype — multiple structural layers in a regulated vertical.
 
@@ -595,7 +595,11 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 - L5: Deep legal execution — contract analysis, case research, regulatory interpretation
 - L8: Case memory — learns from each firm's precedents and preferences
 
-**Why generic AI can't compete:** ChatGPT can write a legal memo. But it can't guarantee privilege. It can't audit its reasoning. It can't learn from your firm's specific playbook. The compliance layer (L3) is the moat that no generic model can cross.`,
+**Why generic AI couldn't compete (March 2026 read):** ChatGPT can write a legal memo. But it can't guarantee privilege. It can't audit its reasoning. It can't learn from your firm's specific playbook. The compliance layer (L3) is the moat that no generic model can cross.
+
+---
+
+**Update — May 17, 2026: The fortress is being tested.** Anthropic released Claude for Legal, open-sourcing legal workflow tools and pushing the L2 platform up into L5/L6 territory. Harvey's L1 + L8 advantages still stand — proprietary firm data and accumulated case memory don't transfer to a horizontal platform overnight — but the L5 execution layer (contract analysis, research workflows) is exactly what Anthropic is commoditizing. The fortress thesis isn't dead; it's now a live test of Law II: does the scarce layer (firm-specific data + memory) hold when a deep-pocketed platform owns the layers above and below it? See the [live analysis](/live/anthropic-legal-stack-commoditizes-vertical-saas) for the full read.`,
   },
   {
     slug: "mckinsey-openai-lilli",
