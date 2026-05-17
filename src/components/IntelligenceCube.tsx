@@ -414,8 +414,28 @@ const IntelligenceCube = () => {
         })}
       </div>
 
-      {/* Two overlay grids */}
+      {/* View toggle */}
+      <div className="flex justify-center">
+        <div className="inline-flex rounded-full border border-border bg-card p-0.5">
+          {(["cube", "grids"] as const).map((v) => (
+            <button
+              key={v}
+              onClick={() => setView(v)}
+              className={`px-4 py-1.5 rounded-full text-[12px] font-display font-bold transition-all ${
+                view === v
+                  ? "bg-foreground text-background"
+                  : "text-foreground/60 hover:text-foreground"
+              }`}
+            >
+              {v === "cube" ? "3D Cube" : "Flat Grids"}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Visualization panel */}
       <motion.div
+        key={view}
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.25 }}
@@ -426,27 +446,33 @@ const IntelligenceCube = () => {
           border: "1px solid hsl(35 20% 88%)",
         }}
       >
-        <div className="grid md:grid-cols-2 gap-8">
-          <ComparisonGrid
-            yAxis={LAYERS}
-            xAxis={VERTICALS}
-            xAxisKey="verticals"
-            yLabel="Layers"
-            xLabel="Verticals"
-            visible={visible}
-          />
-          <ComparisonGrid
-            yAxis={LAYERS}
-            xAxis={FUNCTIONS}
-            xAxisKey="functions"
-            yLabel="Layers"
-            xLabel="Functions"
-            visible={visible}
-          />
-        </div>
+        {view === "cube" ? (
+          <IsoCube visible={visible} />
+        ) : (
+          <div className="grid md:grid-cols-2 gap-8">
+            <ComparisonGrid
+              yAxis={LAYERS}
+              xAxis={VERTICALS}
+              xAxisKey="verticals"
+              yLabel="Layers"
+              xLabel="Verticals"
+              visible={visible}
+            />
+            <ComparisonGrid
+              yAxis={LAYERS}
+              xAxis={FUNCTIONS}
+              xAxisKey="functions"
+              yLabel="Layers"
+              xLabel="Functions"
+              visible={visible}
+            />
+          </div>
+        )}
 
         <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
-          Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint.
+          {view === "cube"
+            ? "Each dot = one company occupies one (Function × Vertical × Layer) cell. Stacked dots = contested cells. Toggle a name above to isolate its footprint."
+            : "Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint."}
         </p>
       </motion.div>
 
