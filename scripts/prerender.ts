@@ -34,7 +34,7 @@ const dom = new JSDOM("<!doctype html><html><head></head><body></body></html>", 
 const g = globalThis as any;
 g.window = dom.window;
 g.document = dom.window.document;
-g.navigator = dom.window.navigator;
+Object.defineProperty(g, "navigator", { value: dom.window.navigator, configurable: true });
 g.localStorage = dom.window.localStorage;
 g.sessionStorage = dom.window.sessionStorage;
 g.HTMLElement = dom.window.HTMLElement;
