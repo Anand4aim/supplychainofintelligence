@@ -6,6 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import { dirname, resolve } from "path";
 import { CASE_STUDIES } from "../src/data/caseStudies";
 import { LAYERS, LAWS, AUDIT_QUESTIONS, GOLD_KEY_INSIGHT } from "../src/data/layers";
+import { LAW_ESSAYS } from "../src/data/lawEssays";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
