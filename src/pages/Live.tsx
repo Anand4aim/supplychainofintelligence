@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import { supabase } from "@/integrations/supabase/client";
 import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
+import Eyebrow from "@/components/Eyebrow";
 
 interface LiveArticle {
   id: string;
@@ -223,7 +224,7 @@ const LivePage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-2 mb-6">
               <Rss size={16} className="text-accent" />
-              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent">— The Live Feed</p>
+              <Eyebrow>The Live Feed</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
               Every important AI move — <br />watched, tracked, analyzed, and scored.

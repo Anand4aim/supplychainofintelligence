@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
 
@@ -59,7 +60,7 @@ const AboutPage = () => (
     {/* HERO */}
     <section className="bg-background border-b border-border">
       <div className="max-w-4xl mx-auto px-6 pt-20 pb-12">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-5">— About the author</p>
+        <Eyebrow className="mb-5">About the author</Eyebrow>
 
         <div className="grid md:grid-cols-[180px_1fr] gap-8 items-start">
           {/* Portrait placeholder — keeps the monogram identity until a real photo is dropped in */}
@@ -152,7 +153,7 @@ const AboutPage = () => (
     {/* CAREER ARC */}
     <section className="bg-secondary/40 border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-14">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Career arc</p>
+        <Eyebrow className="mb-2">Career arc</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           A decade shipping product. The framework comes from the receipts.
         </h2>
@@ -185,7 +186,7 @@ const AboutPage = () => (
     {/* TALKS / EXTERNAL */}
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-14">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Talks & teaching</p>
+        <Eyebrow className="mb-2">Talks & teaching</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           The work, in other people's rooms.
         </h2>

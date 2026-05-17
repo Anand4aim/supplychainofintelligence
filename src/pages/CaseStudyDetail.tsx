@@ -8,6 +8,7 @@ import DepthModules from "@/components/live/DepthModules";
 import WhatThisMeans from "@/components/WhatThisMeans";
 import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus, ExternalLink } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 const SITE = "https://supplychainofai.com";
 
@@ -189,7 +190,7 @@ const CaseStudyDetailPage = () => {
 
             {study.sources && study.sources.length > 0 && (
               <section className="mt-10">
-                <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">— Sources</p>
+                <Eyebrow className="mb-3">Sources</Eyebrow>
                 <ul className="space-y-1.5">
                   {study.sources.map((s, i) => (
                     <li key={i}>

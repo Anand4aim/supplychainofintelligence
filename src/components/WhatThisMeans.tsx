@@ -1,4 +1,5 @@
 import { Briefcase, TrendingUp, Wrench } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 export interface ForYou {
   product_leader?: string;
@@ -57,7 +58,7 @@ const WhatThisMeans = ({ for_you, fallback }: Props) => {
   ];
   return (
     <section className="my-12">
-      <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— What This Means for You</p>
+      <Eyebrow className="mb-4">What This Means for You</Eyebrow>
       <div className="grid md:grid-cols-3 gap-3">
         {items.map(({ label, text, Icon, color }) => (
           <div

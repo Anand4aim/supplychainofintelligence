@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { TrendingDown, TrendingUp, ArrowRight, Minus } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
 export interface LayerScore {
@@ -84,9 +85,9 @@ const CaseStudyCard = ({ study, index, featured = false }: Props) => {
       >
         <Link to={`/analysis/${study.slug}`} className="block p-8 md:p-10" aria-label={`Read case study: ${study.title}`}>
           <div className="flex items-center gap-3 mb-5 flex-wrap">
-            <span className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent bg-accent/10 px-3 py-1 rounded-full">
-              {study.tag}
-            </span>
+            <Eyebrow dash={false} className="bg-accent/10 px-3 py-1 rounded-full">
+  {study.tag}
+</Eyebrow>
             <span className="text-sm text-muted-foreground">{study.date}</span>
             <span className="text-sm text-muted-foreground">· {study.readTime}</span>
             {study.brief && (
