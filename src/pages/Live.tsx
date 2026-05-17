@@ -174,7 +174,6 @@ const summarizeSources = (urls: string[] | null | undefined): { count: number; o
 const LivePage = () => {
   const [articles, setArticles] = useState<LiveArticle[]>([]);
   const [loading, setLoading] = useState(true);
-  const [generating, setGenerating] = useState(false);
 
   const load = async () => {
     const { data } = await supabase
@@ -187,21 +186,6 @@ const LivePage = () => {
   };
 
   useEffect(() => { load(); }, []);
-
-  const triggerNow = async () => {
-    setGenerating(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("generate-live-article");
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error ?? "Failed");
-      await load();
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      alert(`Generation failed: ${msg}`);
-    } finally {
-      setGenerating(false);
-    }
-  };
 
   // Group by ISO week
   const grouped = useMemo(() => {
