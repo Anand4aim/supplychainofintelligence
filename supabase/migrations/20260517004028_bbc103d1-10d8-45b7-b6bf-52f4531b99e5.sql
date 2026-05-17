@@ -1,0 +1,1 @@
+UPDATE public.live_articles SET headline = 'Anthropic Releases Claude for Legal' WHERE slug = 'anthropic-legal-stack-commoditizes-vertical-saas';
