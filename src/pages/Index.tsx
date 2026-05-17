@@ -222,8 +222,8 @@ const Index = () => {
                       <span aria-hidden>→</span>
                     </div>
                     <div className="min-w-[760px] md:min-w-0 pr-5 md:px-0">
-                    <div className="grid grid-cols-[150px_1fr_104px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
-                      <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground sticky left-0 z-20 bg-background md:bg-transparent md:static pl-5 md:pl-0 pr-3 md:pr-0 shadow-[1px_0_0_0_hsl(var(--border))] md:shadow-none self-end pb-1">COMPANY</span>
+                    <div className="grid grid-cols-[150px_1fr_104px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2 sticky top-0 z-30 bg-background md:static md:bg-transparent pt-2 pb-2 -mt-2 shadow-[0_1px_0_0_hsl(var(--border))] md:shadow-none">
+                      <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground sticky left-0 z-40 bg-background md:bg-transparent md:static pl-5 md:pl-0 pr-3 md:pr-0 shadow-[1px_0_0_0_hsl(var(--border))] md:shadow-none self-end pb-1">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
                         {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
                           <div key={id} className="flex flex-col items-center gap-1 min-w-0">
