@@ -110,6 +110,36 @@ export const CASE_STUDIES: CaseStudy[] = [
 **What Chegg should have done:** Migrate value to L8 (Memory & Learning) — personalized tutoring that remembers each student's progress, weaknesses, and learning style. That's scarce. That's defensible.
 
 **The law is clear:** If your layer isn't scarce, your value will migrate to whoever's layer is.`,
+    layer_scores: [
+      { layer: "L1", owned: false, intensity: 1, note: "Chegg had a corpus but never treated it as proprietary fuel — it was generic content scraped by any LLM in training.", sublayers: [{ name: "Q&A corpus", impact: 1, who: "Chegg (now in every model's training set)" }] },
+      { layer: "L2", owned: false, intensity: 3, note: "ChatGPT collapsed L7b pricing to zero. Chegg's content layer became free to reproduce.", sublayers: [{ name: "General-purpose LLMs", impact: 3, who: "OpenAI, Anthropic, Google" }] },
+      { layer: "L3", owned: false, intensity: 0, note: "No compliance moat — homework help is unregulated, so no L3 friction protected the incumbent." },
+      { layer: "L7", owned: true, intensity: 3, note: "Chegg's entire stack lived here: a content-access surface. The most-fragile layer in any AI cycle.", sublayers: [{ name: "Homework answers", impact: 3, who: "Chegg → ChatGPT" }, { name: "Textbook solutions", impact: 3, who: "Chegg → ChatGPT" }] },
+      { layer: "L8", owned: false, intensity: 0, note: "The unbuilt layer that could have saved them: per-student memory, learning-style adaptation, weakness tracking." },
+    ],
+    cube_position: {
+      functions: ["CustCare", "Product"],
+      verticals: ["EdTech"],
+      layers: ["L7"],
+    },
+    timeline: [
+      { date: "Feb 2021", label: "Chegg hits all-time high — $113/share, ~$12B market cap. Pandemic education boom.", tone: "up" },
+      { date: "Nov 2022", label: "ChatGPT launches. Free homework answers, infinite scale, no subscription.", tone: "down" },
+      { date: "May 2023", label: "CEO admits ChatGPT impact on growth call. Stock drops 48% in a single day.", tone: "down" },
+      { date: "2024", label: "Revenue down 50%+. Layoffs. Chegg announces its own AI product — too late, no proprietary edge.", tone: "down" },
+      { date: "2025", label: "Market cap under $200M. ~99% destruction from peak.", tone: "down" },
+    ],
+    who_wins: [
+      { name: "OpenAI", reason: "Absorbed the entire homework-help category as a side effect of being a general assistant." },
+      { name: "Khan Academy (Khanmigo)", reason: "Built L8 (per-student memory + Socratic tutoring) on top of GPT — the layer Chegg never built." },
+      { name: "Duolingo", reason: "Owned L8 (spaced-repetition memory of every learner) before AI hit. The moat held." },
+    ],
+    who_loses: [
+      { name: "Chegg", reason: "Pure L7b with no L1, L3, or L8 underneath. Structural inevitability." },
+      { name: "Course Hero, Quizlet (legacy mode)", reason: "Same L7b position. Same vulnerability. Both scrambling to bolt on L8." },
+      { name: "Every ed-content reseller", reason: "If your business is 'access to answers,' the answers are now free." },
+    ],
+    counter_thesis: `Bull case: Chegg pivots into tutoring services + per-student L8 memory + verified-human-expert L3, and re-emerges as a smaller but durable $1–2B business. The pieces exist — 8M+ subscribers, brand recognition with students, a corpus of decade-old questions. But the cultural and capital constraints (public-company quarterly pressure, debt, demoralized team) make this unlikely. More probable outcome: take-private, asset stripped, brand absorbed by a tutoring marketplace. The 99% drop is the market pricing that path correctly.`,
   },
   {
     slug: "gamma-thin-layer-graveyard",
