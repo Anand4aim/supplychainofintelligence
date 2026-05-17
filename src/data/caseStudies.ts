@@ -13,7 +13,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "WORKED EXAMPLE · WRITING TOOLS",
     title: "Jasper, Grammarly, Copilot in Word: Same Category, Three Structural Fates",
-    verdict: "L4 EATS L4",
+    verdict: "L4 vs bigger L4",
     excerpt:
       "All three help you write. Jasper owned only the surface (L7) and dissolved when the model went free. Grammarly owned distribution (L4) into every browser and editor — until a bigger L4 owner, Microsoft, integrated the model directly into Word, Outlook, and Teams. Same layer. Bigger railroad. The market is repricing layer ownership, not ARR.",
     layers: ["L4", "L7"],
@@ -37,7 +37,7 @@ export const CASE_STUDIES: CaseStudy[] = [
 **Why this is the right triad to study.** Most decks compare Jasper to ChatGPT. That's a category mismatch — ChatGPT is a general assistant. The honest comparison is Jasper, Grammarly, and Microsoft Copilot in Word: all three are *literally* writing-assistance products embedded in the prose-creation moment. The three fates are then driven entirely by structural depth.
 
 **The structural read:**
-- Jasper (L7 only) — exposed; absorbed by L2 commoditization
+- Jasper (L7 only) — exposed; displaced as L2 commoditized
 - Grammarly (L4 + L6) — defended for years; now squeezed by a bigger L4 owner above it
 - Copilot in Word (L0 + L2 + L4 + L7) — vertically integrated from compute to surface, bundled into existing distribution
 
@@ -70,7 +70,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "Any future L8 owner", reason: "The memory of your voice, across every doc you've ever written, is the only layer still unclaimed in writing." },
     ],
     who_loses: [
-      { name: "Jasper", reason: "L7-only is the new GPT-wrapper graveyard. 80% mark-down is the structural verdict." },
+      { name: "Jasper", reason: "L7-only is the new GPT-wrapper exposure pattern. 80% mark-down reflects the structural exposure." },
       { name: "Pure-play AI writing startups", reason: "Same fate as Jasper unless they own L1 (voice data) or L8 (cross-doc memory)." },
       { name: "Grammarly (partially)", reason: "Still defensible in the browser, but squeezed inside Office. Needs an L8 sprint." },
     ],
@@ -82,9 +82,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "Chegg", logo: logo("chegg.com"), color: "#F5A623" },
       { name: "ChatGPT", logo: logo("openai.com"), color: "#10A37F" },
     ],
-    tag: "CASUALTY REPORT",
+    tag: "L7 EXPOSURE",
     title: "Chegg: From $12B to 99% Collapse — The Fastest Value Destruction in EdTech",
-    verdict: "STRUCTURAL INEVITABILITY",
+    verdict: "L7-only, no L1/L3/L8",
     excerpt:
       "Chegg sat at L7b — generic educational content with no proprietary data, no memory loops, no compliance moat. When ChatGPT arrived, it didn't compete with Chegg — it made Chegg's entire layer free. The stock dropped 99%. Law III predicted it.",
     layers: ["L7"],
@@ -103,7 +103,7 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 **The timeline:**
 - 2021: $12B market cap, dominant in homework help
-- May 2023: CEO admits ChatGPT is hurting growth. Stock drops 48% in one day.
+- May 2023: CEO admits ChatGPT is pressuring growth. Stock drops 48% in one day.
 - 2024: Revenue down 50%+. Layoffs. Restructuring.
 - 2025: Market cap under $200M. 99% destruction.
 
@@ -150,7 +150,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "ARCHETYPE ANALYSIS",
     title: "Gamma at $2.1B: The Thin-Layer Graveyard in Real Time",
-    verdict: "GRAVEYARD CANDIDATE",
+    verdict: "L7 on rented L2",
     excerpt:
       "Presentation generation lives at L7b — a single thin slice of the stack. Claude, Copilot, and Gemini now do it for free inside surfaces 100× larger than Gamma's. The Intelligence Cube™ predicted this before the market priced it in: when your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
     layers: ["L2", "L4", "L7"],
@@ -203,13 +203,13 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     who_loses: [
       { name: "Gamma", reason: "L7-only, no L1, no L4, no L8. Classic thin-layer position — and the L4 owners just shipped its product as a feature." },
-      { name: "Tome, Beautiful.AI, every standalone AI deck tool", reason: "Same archetype, same fate. The category is becoming a feature of every L4." },
+      { name: "Tome, Beautiful.AI, every standalone AI deck tool", reason: "Same archetype, same structural exposure. The category is becoming a feature of every L4." },
       { name: "Late-stage investors at the $2B+ mark", reason: "The structural read says the next round is either flat, down, or a strategic acquisition — not a fresh markup." },
     ],
     counter_thesis: `Bull case: Gamma's design taste and product velocity are real. If they (a) build a true L1 by ingesting every user's prior decks, brand assets, and approved narratives, (b) compound L8 so the tool genuinely knows *your* voice better than any generalist could, and (c) move upmarket into vertical wedges (PE deal teams, investor relations, board decks) where the L5 workflow is non-trivial — they can carve out a real $500M-$1B revenue business. That doesn't justify $2.1B easily, but it doesn't have to end in zero. The honest read: 30% probability path, requires a sharp strategic pivot in the next 18 months.`,
     for_you: {
       product_leader: "Audit every 'AI tool for X' in your stack. If the product owns only L7, plan to retire it the quarter your L4 vendor (Microsoft, Google, Adobe, Salesforce) ships the same feature native.",
-      investor: "Single-layer L7 plays at $2B+ are structurally short unless an L1 or L8 thesis is plausible within 18 months. Underwrite the next-round mark, not last round's headline.",
+      investor: "Single-layer L7 plays at $2B+ are structurally exposed unless an L1 or L8 thesis is plausible within 18 months. Underwrite the next-round mark, not last round's headline.",
       operator: "If your AI-tool budget is fragmenting into 8 single-feature SaaS subscriptions, the consolidation play is the L4 owner's bundle — not the standalone tool.",
     },
     pull_quote: "When your entire product is one prompt away from being free inside an L4 you don't own, the valuation is a liability, not a moat.",
@@ -221,9 +221,9 @@ export const CASE_STUDIES: CaseStudy[] = [
       { name: "ChatGPT", logo: logo("openai.com"), color: "#10A37F" },
       { name: "GitHub Copilot", logo: logo("github.com"), color: "#24292E" },
     ],
-    tag: "TRAFFIC COLLAPSE",
+    tag: "L1 MIS-PACKAGED AS L7",
     title: "Stack Overflow: When Your Community Becomes Training Data",
-    verdict: "L7b COMMODITY",
+    verdict: "L1 mis-packaged as L7",
     excerpt:
       "Stack Overflow's traffic dropped roughly 35–50% after ChatGPT shipped. Fifteen years of community-built knowledge — packaged as L7b content and scraped into L2 training sets. The community that built the data captured none of the value; the model layer captured all of it. A textbook case of L1 data mis-packaged as L7 content.",
     layers: ["L1", "L2", "L7"],
@@ -306,7 +306,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "STRUCTURAL DIVERGENCE",
     title: "Apollo vs ZoomInfo: Same Layer, Opposite Strategies, Different Fates",
-    verdict: "DATA REFINERY WINS",
+    verdict: "L1 headless vs L1 + UI tax",
     excerpt:
       "Both sit at L1 — proprietary data. But Apollo went API-first and headless. ZoomInfo charges premium for a UI wrapper. In an agent-first world, the UI tax is a liability. The data refinery wins.",
     layers: ["L1", "L7"],
@@ -335,7 +335,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "DEEP DIVE · CUSTOMER EXPERIENCE",
     title: "Sierra's Memory Moat: Why L8 Beats Salesforce's Agentforce",
-    verdict: "L1 + L5 + L8 FORTRESS",
+    verdict: "L1 + L5 + L8 stack",
     excerpt:
       "Sierra and Salesforce Agentforce look like the same product on stage — an AI agent that resolves customer issues. The Cube projection shows they are structurally opposite. Sierra was architected as L1+L5+L8 from day one: every resolution compounds into per-customer memory. Agentforce is L5 bolted onto Salesforce's existing L1, with no compounding loop. Same demo, opposite trajectories.",
     layers: ["L1", "L4", "L5", "L8"],
@@ -402,7 +402,7 @@ Sierra's loop is the product. Agentforce's loop is an option you have to archite
     counter_thesis: `The counter is that Sierra's L8 is overstated because the underlying LLM keeps getting better fast — and a 'generic' model with a thin per-brand RAG layer (Salesforce Agentforce, Zendesk AI, Intercom Fin) may close 80% of the perceived gap as base capability rises. If that happens, Sierra's $10B valuation rests on premium-brand willingness to pay for the last 20% of resolution quality, which is a much smaller TAM than the bull case requires. The honest read: Sierra is structurally durable in a $500M–$1B revenue band; whether it ever justifies a standalone $30B+ outcome depends on how much of the compounding loop the L4-incumbent CRMs can replicate before the lock-in fully sets.`,
     for_you: {
       product_leader: "If you're shipping an AI feature on top of someone else's L1, you do not have a moat — your L4 owner does. Architect L8 (memory that compounds per customer) from day one or accept feature-status.",
-      investor: "AI-agent companies built as L7+rented-L2 are structurally short. AI-agent companies built as L1+L5+L8 are the new fortress archetype. Underwrite the architecture, not the demo.",
+      investor: "AI-agent companies built as L7+rented-L2 are structurally exposed. AI-agent companies built as L1+L5+L8 are the new stacked archetype. Underwrite the architecture, not the demo.",
       operator: "When evaluating a CX-AI vendor, ask one question: 'Does month 2 measurably outperform month 1 on the same query mix?' If the answer is no, you are buying a chatbot, not a system.",
     },
     pull_quote: "Sierra was architected as L1+L5+L8 from day one. Agentforce is L5 bolted onto Salesforce's existing L1. Same demo, opposite trajectories.",
@@ -415,7 +415,7 @@ Sierra's loop is the product. Agentforce's loop is an option you have to archite
     ],
     tag: "MODEL LAYER TRAP",
     title: "Stability AI vs Midjourney: Why Open-Source L2 Couldn't Monetize",
-    verdict: "OPEN L2 = NO MOAT",
+    verdict: "L2 without L1/L4",
     excerpt:
       "Stability AI open-sourced Stable Diffusion and watched the L2 it created become free infrastructure for everyone *except* Stability. Midjourney kept the model closed, built an obsessive Discord community, and compounded aesthetic memory at L8. Same underlying technology, opposite layer architecture, 100× valuation gap. The cleanest L2-vs-L8 lesson in the open-vs-closed model debate.",
     layers: ["L2", "L7", "L8"],
@@ -478,10 +478,10 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
       { name: "L2-only startups generally", reason: "Without an adjacent layer to capture value, your model is either a science project (open) or a vendor in a price war (closed)." },
       { name: "The 'open source is automatically a moat' thesis", reason: "Open source is a *distribution* strategy, not a moat. You still need to own one of the other nine layers, or you'll watch the value flow past you." },
     ],
-    counter_thesis: `The counter is that Stability's contribution is best understood as a *strategic* gift to the open ecosystem, not a failed business — and that the post-restructuring company can re-emerge as a focused enterprise vendor (fine-tunes, custom models, licensed weights) for buyers who specifically want non-OpenAI/non-Anthropic optionality. There is a real niche there, plausibly a $50–150M ARR business over time. But that's a 5–10× smaller outcome than the $1B valuation implied — which is the structural verdict the market has already delivered.`,
+    counter_thesis: `The counter is that Stability's contribution is best understood as a *strategic* gift to the open ecosystem, not a failed business — and that the post-restructuring company can re-emerge as a focused enterprise vendor (fine-tunes, custom models, licensed weights) for buyers who specifically want non-OpenAI/non-Anthropic optionality. There is a real niche there, plausibly a $50–150M ARR business over time. But that's a 5–10× smaller outcome than the $1B valuation implied — which is the structural read the market has priced in.`,
     for_you: {
       product_leader: "If your roadmap depends on 'we'll open-source our model and capture downstream value,' name the L1, L4, or L8 layer you own that the open model funnels users into. If none exist, you are not Meta — you are Stability.",
-      investor: "L2-only startups (closed or open) without an adjacent moat layer are structurally short. The closed-vs-open debate is a distraction; the layer-architecture question is the actual decision.",
+      investor: "L2-only startups (closed or open) without an adjacent moat layer are structurally exposed. The closed-vs-open debate is a distraction; the layer-architecture question is the actual decision.",
       operator: "For image generation, Midjourney is the L8 play (long-term consistency for a brand's aesthetic) and Stable Diffusion is the L0 play (cheap, owned, on-prem when you need it). They solve different problems — don't conflate them.",
     },
     pull_quote: "Open-source L2 is a defensible strategy *only if* you own one of the other nine layers. Stability owned none.",
@@ -495,7 +495,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "THE FIVE ERAS · STRUCTURAL THESIS",
     title: "From Dashboard to Skill Hire: The Death of Per-Seat Software",
-    verdict: "ERA 3 → ERA 5",
+    verdict: "Era 3 → Era 5 transition",
     excerpt:
       "Software has moved through five distinct eras of human–machine division of labor. We are mid-transition between Era 3 (The Dialogue — human directs, AI builds) and Era 4 (The Workspace — AI orchestrates, human supervises). Era 5 (The Skill Hire — the agent IS the worker) arrives by 2028. Per-seat pricing is structurally dead in Eras 4–5 because the seat itself goes away. Every product roadmap needs to be re-priced and re-architected along both the customer axis and the depth axis.",
     layers: ["L5", "L6", "L7", "L8"],
@@ -515,7 +515,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 **Era 5 (2028+) — The Skill Hire.** The agent IS the worker. You "hire" an agent for a role the way you hire a contractor — with a job spec, an outcome, an SLA. The human role moves up: strategy, governance, edge-case judgment, supervision of a fleet of agents. L1 + L5 + L8 dominate (proprietary data, real execution, compounding memory). Per-seat pricing is structurally over. The Skill Hire is priced like labor — by output, by retainer, by guaranteed result.
 
-**Why per-seat is dead.** The math is brutal and simple. Per-seat economics assume *more humans use the product → more revenue*. AI makes the inverse true: *better AI → fewer humans needed → fewer seats → less revenue*. Every SaaS that's "AI-powered" with per-seat pricing is structurally short its own roadmap. The harder the AI works, the faster the customer's seat count falls. Pricing has to migrate to per-action, per-outcome, or per-deployment — any unit that *grows* with usage instead of compressing with productivity.
+**Why per-seat is dead.** The math is brutal and simple. Per-seat economics assume *more humans use the product → more revenue*. AI makes the inverse true: *better AI → fewer humans needed → fewer seats → less revenue*. Every SaaS that's "AI-powered" with per-seat pricing is structurally exposed its own roadmap. The harder the AI works, the faster the customer's seat count falls. Pricing has to migrate to per-action, per-outcome, or per-deployment — any unit that *grows* with usage instead of compressing with productivity.
 
 **Why both axes matter.** The Cube projection is the right lens here. The *customer axis* (which functions × which verticals you serve) determines TAM. The *depth axis* (which layers you own — L1, L4, L5, L6, L8) determines defensibility as the era shifts. Era 3–5 products that own only L7 + a rented L2 are surface plays — they will be absorbed by L4 owners. Era 3–5 products that own L1+L5+L8 are durable across the transition.
 
@@ -552,7 +552,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     who_wins: [
       { name: "Outcome-priced AI-native vendors", reason: "Per-resolution (Sierra), per-action (Klarna's internal model), per-deployment (Glean) — pricing units that grow with usage as humans compress." },
       { name: "L4 incumbents that re-price aggressively", reason: "Microsoft moving Copilot to per-message and per-agent rather than per-seat 365 add-ons. Adapting the pricing model is the harder act than building the product." },
-      { name: "Vertical fortresses with L1+L5+L8", reason: "Harvey, Bloomberg, Sierra, Glean — the architecture is exactly what Era 4 and 5 buyers want to pay for." },
+      { name: "Vertically-stacked plays with L1+L5+L8", reason: "Harvey, Bloomberg, Sierra, Glean — the architecture is exactly what Era 4 and 5 buyers want to pay for." },
     ],
     who_loses: [
       { name: "Pure per-seat SaaS with bolt-on AI", reason: "Pricing model self-defeats. The harder the AI works, the faster seat count falls. Every 2015-vintage workflow SaaS faces this." },
@@ -562,17 +562,17 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     counter_thesis: `The strongest counter is that AI capability gains will plateau or hit a regulatory ceiling before Era 4 truly arrives, leaving the world in an extended Era 3 — humans clearly augmented but still in the loop, per-seat pricing still working because seat counts compress slowly rather than collapse. There is real evidence for this: model improvement is becoming more incremental, regulated industries (healthcare, legal, finance) require human-in-the-loop by law, and most enterprises have integration constraints that make full agent deployment a multi-year program. Honest read: Era 4 arrives unevenly. Customer support, software engineering, and L&D land in Era 4 by 2027. Legal, healthcare, and most regulated B2B remain in Era 3 well into the 2030s. The era thesis is directionally right; the dates are illustrative.`,
     for_you: {
       product_leader: "Audit your pricing today against the era you're actually building for. If your roadmap is Era 4 (AI orchestrates) and your pricing is Era 2 (per seat), you're pricing your own decline.",
-      investor: "The SaaS multiple compression is structural, not sentiment. Underwrite which era a company is *architected* for, not which era they market in. Per-seat AI is structurally short.",
+      investor: "The SaaS multiple compression is structural, not sentiment. Underwrite which era a company is *architected* for, not which era they market in. Per-seat AI is structurally exposed.",
       operator: "When negotiating an AI vendor contract, push for per-outcome or per-resolution pricing. If they refuse, ask why — the answer reveals whether they are Era 3 or Era 4 architecture.",
     },
-    pull_quote: "Per-seat pricing assumes more humans means more revenue. AI makes the inverse true. Every per-seat SaaS with AI features is structurally short its own roadmap.",
+    pull_quote: "Per-seat pricing assumes more humans means more revenue. AI makes the inverse true. Every per-seat SaaS with AI features is structurally exposed its own roadmap.",
   },
   {
     slug: "harvey-vs-generic-legal",
     companies: [
       { name: "Harvey AI", logo: logo("harvey.ai"), color: "#1E3A5F" },
     ],
-    tag: "FORTRESS PATTERN",
+    tag: "VERTICAL STACK",
     title: "Harvey AI Through the Layers",
     verdict: "L1 + L3 + L5 + L8",
     excerpt:
@@ -634,9 +634,9 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 **Law III — value migrates to the scarcest layer.** The scarce thing is not the ability to write a strategy memo. It's the 70 years of *which strategies worked for which clients in which sector cycles*. That data only exists inside McKinsey.
 
-**The inverted lesson for everyone else.** Most enterprises panicked about "AI eating consulting." The opposite happened: consulting firms became some of the *largest* OpenAI/Anthropic customers, because they had the L1 and L8 to make the model valuable. The model layer is a tool. The data and memory layers are the business.
+**The inverted lesson for everyone else.** Most enterprises panicked about "AI displacing consulting." The opposite happened: consulting firms became some of the *largest* OpenAI/Anthropic customers, because they had the L1 and L8 to make the model valuable. The model layer is a tool. The data and memory layers are the business.
 
-**What this means for your firm.** If your competitive position is "we know things and we remember things," AI is an amplifier, not a threat — *provided* you own L1 and L8. If your position is "we can write good documents," the model just ate your job.
+**What this means for your firm.** If your competitive position is "we know things and we remember things," AI is an amplifier, not a threat — *provided* you own L1 and L8. If your position is "we can write good documents," the model now reproduces most of that work.
 
 *Public reporting; figures approximate.*`,
     layer_scores: [
@@ -675,9 +675,9 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     companies: [
       { name: "Bloomberg", logo: logo("bloomberg.com"), color: "#000000" },
     ],
-    tag: "VERTICAL FORTRESS",
+    tag: "VERTICAL STACK",
     title: "BloombergGPT: Why a 50B-Parameter Model Beats GPT-4 in Finance",
-    verdict: "L1 + L2 + L3 STACKED",
+    verdict: "L1 + L2 + L3 + L4",
     excerpt:
       "Bloomberg trained its own 50B-parameter model on 40 years of proprietary financial data. Smaller than GPT-4. Better at finance tasks. The reason isn't the model — it's that Bloomberg owns the terminal (L4), the data (L1), the compliance posture (L3), and now the model (L2). Four layers in one regulated vertical.",
     layers: ["L1", "L2", "L3", "L4"],
@@ -693,7 +693,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 **Why generic models can't catch up.** GPT-5 may be better at general reasoning. It cannot access Bloomberg's tick data, its analyst transcripts, or its terminal install base. The model layer is necessary but not sufficient. Bloomberg owns the *other three* layers a finance customer actually pays for.
 
-**The Cube projection:** TALL (4 layers), NARROW (finance only), DEEP (every buy-side function). This is the textbook vertical fortress.
+**The Cube projection:** TALL (4 layers), NARROW (finance only), DEEP (every buy-side function). This is the tall, narrow, deep vertical stack.
 
 *The lesson: in regulated verticals, the model is the cheapest layer to own. The data, the rails, and the compliance are the moat.*`,
   },
@@ -705,7 +705,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L5 + L8 IN PRODUCTION",
     title: "Klarna: 700 Agents Replaced, $40M Saved — The First Honest Number on Agent Economics",
-    verdict: "L5 EXECUTION + L8 MEMORY",
+    verdict: "L1 + L5 + L8",
     excerpt:
       "Klarna's AI assistant handled 2.3M conversations in its first month — the workload of 700 human agents — with equal customer satisfaction and faster resolution. The headline is the cost. The structural story is that Klarna owned the customer data (L1), the workflow (L5), and the resolution memory (L8). The model was a commodity input.",
     layers: ["L1", "L5", "L8"],
@@ -729,7 +729,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 **Law III in production.** The model is the *least* defensible part of the stack. The moat is that Klarna already had the data, the workflows, and the regulated payment context. A pure-play "AI customer service" startup with no L1 cannot reproduce this.
 
-**The era shift.** This is Era 4 (The Workspace) arriving early in one function. AI orchestrates, a small human team supervises. Per-seat economics in support are over. Every CX SaaS priced per agent is structurally short.
+**The era shift.** This is Era 4 (The Workspace) arriving early in one function. AI orchestrates, a small human team supervises. Per-seat economics in support are over. Every CX SaaS priced per agent is structurally exposed.
 
 *Public reporting; numbers as disclosed by Klarna.*`,
   },
@@ -739,9 +739,9 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
       { name: "Cognition (Devin)", logo: logo("cognition.ai"), color: "#000000" },
       { name: "Cursor", logo: logo("cursor.com"), color: "#000000" },
     ],
-    tag: "AGENT SURFACE RISK",
+    tag: "L7 ON RENTED L2",
     title: "Devin at $2B: The Autonomous Coder With No Layer Beneath It",
-    verdict: "L7 AGENT — EXPOSED",
+    verdict: "L7 agent on rented L2",
     excerpt:
       "Cognition raised at $2B for Devin, the 'autonomous software engineer.' Impressive demo. Structural problem: Devin sits at L7 (agent surface) on top of someone else's L2 (Anthropic/OpenAI), with no L1, no L8, no L4. Meanwhile Cursor owns the IDE — the L4 of where code is actually written.",
     layers: ["L2", "L7"],
@@ -765,7 +765,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
 
 **The asymmetric threat — Cursor.** Cursor sits at L4 (the IDE — where the developer already lives) and L6 (agent orchestration inside that IDE). When the agent lives where the work happens, the standalone-agent surface becomes a feature, not a product.
 
-**Law III again.** A pure agent surface with no underlying layer is the new "GPT wrapper." Better polish. Same structural fate.
+**Law III again.** A pure agent surface with no underlying layer is the new "GPT wrapper" pattern — polished surface on rented L2 with no defensible layer underneath.
 
 **What would save Devin.** Acquire or build L1 (a proprietary corpus of fixed bugs, refactor patterns), or get acquired by an L4 owner. Standalone, the math is hard.
 
@@ -777,9 +777,9 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
       { name: "Perplexity", logo: logo("perplexity.ai"), color: "#20B2AA" },
       { name: "Google", logo: logo("google.com"), color: "#4285F4" },
     ],
-    tag: "L4 DISTRIBUTION WAR",
+    tag: "L4 DISTRIBUTION",
     title: "Perplexity vs Google: The Answer Engine vs The Default",
-    verdict: "L4 EATS L7",
+    verdict: "L4 absorbs L7",
     excerpt:
       "Perplexity built a better answer experience. Google owns Chrome, Android, Safari's default, and the URL bar of the internet. Perplexity raised at $9B. Google shipped AI Overviews to 1.5B users in a quarter. The lesson: when the L4 owner ships your L7, you don't win by being better.",
     layers: ["L4", "L7"],
@@ -807,7 +807,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L4 + L6 STACK",
     title: "Cursor at $9B: The IDE That Quietly Became the Most Important L4 in AI",
-    verdict: "L4 + L6 + L8 RISING",
+    verdict: "L4 + L6 + L8 stack",
     excerpt:
       "Cursor isn't a model. It isn't an agent. It's the editor — the place developers spend 8 hours a day. By owning L4 (IDE distribution) and layering L6 (agent orchestration) and L8 (per-codebase memory) on top, Cursor has become structurally more defensible than the agents that run inside it.",
     layers: ["L4", "L6", "L8"],
@@ -842,7 +842,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L3 TRUST PLAY",
     title: "Anthropic's Enterprise Wedge: Selling L3 When Everyone Else Sells L2",
-    verdict: "L2 + L3 DIFFERENTIATED",
+    verdict: "L2 + L3 wedge",
     excerpt:
       "OpenAI sells the smartest model. Anthropic sells the most *governable* one. Constitutional AI, transparency, conservative refusals, SOC 2, FedRAMP, BAAs — Claude's enterprise pitch is L3 (compliance and trust) bundled with competitive L2. In regulated buyers' procurement, L3 is the decisive layer.",
     layers: ["L2", "L3"],
@@ -871,7 +871,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L1 + L4 STACK",
     title: "Adobe Firefly: The Only Image Model an Enterprise Can Legally Use",
-    verdict: "L1 + L4 DEFENSIBLE",
+    verdict: "L1 + L3 + L4 stack",
     excerpt:
       "Midjourney is more aesthetic. Stable Diffusion is more open. Firefly wins enterprise because Adobe trained on licensed stock — and indemnifies customers against IP lawsuits. L1 (licensed data) + L3 (legal indemnity) + L4 (Creative Cloud distribution) is the only stack that survives an enterprise legal review.",
     layers: ["L1", "L3", "L4"],
@@ -901,7 +901,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L8 WITHOUT L2",
     title: "Character.AI: The L8 Memory Moat That Couldn't Stand Without L2",
-    verdict: "ACQUIHIRED — STRUCTURAL CAUSE",
+    verdict: "L8 without owned L2",
     excerpt:
       "Character.AI had real L8 — billions of personalized conversations, deep user attachment, the largest companion-AI user base. What it didn't have: an L2 it could afford. Compute costs ate the unit economics, and Google licensed the team and tech for ~$2.7B. A clean lesson in why L8 alone, without owned L2 or a profitable L4, is a vulnerable position.",
     layers: ["L2", "L7", "L8"],
@@ -936,7 +936,7 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
     ],
     tag: "L1 + L6 ENTERPRISE STACK",
     title: "Glean at $7.2B: The Enterprise Memory Layer Microsoft Was Supposed to Own",
-    verdict: "L1 + L6 + L8 FORTRESS",
+    verdict: "L1 + L6 + L8 stack",
     excerpt:
       "Glean indexes every document, message, ticket, and meeting inside a company — then makes it queryable by AI. That index is L1 (proprietary to each customer), the orchestration is L6, and the cross-app memory is L8. Microsoft 'should' own this with Copilot. They don't, and Glean's $7.2B valuation says the market noticed.",
     layers: ["L1", "L6", "L8"],
@@ -949,18 +949,18 @@ Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuat
       trend: "up",
       changeLabel: "+227%",
     },
-    content: `Enterprise search has been a graveyard for two decades. Glean is winning because it stopped selling search and started selling the enterprise's *L8 memory layer*.
+    content: `Enterprise search has been a difficult category for two decades. Glean is winning because it stopped selling search and started selling the enterprise's *L8 memory layer*.
 
 **The structural stack:**
 - L1: Per-customer, per-tenant index of every connected app — Slack, Gmail, Notion, Jira, Salesforce, Drive, Confluence, GitHub. Proprietary to each customer; not reproducible by a vendor.
 - L6: Permission-aware orchestration that respects every source system's ACLs. Hard. Defensible.
 - L8: A live memory of how this specific organization works — who knows what, what was decided when, what's the latest version.
 
-**Why Microsoft Copilot hasn't crushed this.** Copilot is excellent inside the Microsoft 365 perimeter. Most enterprises live in 50+ apps, most of which are not Microsoft. Glean's neutrality across SaaS is itself a moat.
+**Why Microsoft Copilot hasn't displaced this.** Copilot is excellent inside the Microsoft 365 perimeter. Most enterprises live in 50+ apps, most of which are not Microsoft. Glean's neutrality across SaaS is itself a moat.
 
 **Law III — value migrates to the scarcest layer.** A general LLM is cheap. The org's *answer* to "what did we decide about X last quarter" lives in nine systems, behind seven permission models, and nowhere else. Whoever assembles that into a single L8 wins the enterprise assistant market.
 
-**The Cube projection:** TALL (3 layers), WIDE (cross-vertical), DEEP (every knowledge-worker function). Fortress archetype, software flavor.
+**The Cube projection:** TALL (3 layers), WIDE (cross-vertical), DEEP (every knowledge-worker function). Vertically-stacked archetype, software flavor.
 
 *Public reporting; valuations as disclosed.*`,
   },
