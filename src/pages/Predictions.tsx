@@ -222,14 +222,15 @@ const Predictions = () => {
           lose credibility. Separating them is how this one earns it.
         </p>
 
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl">
           <Stat label="Total calls" value={total} />
           <Stat label="Structural confirmed" value={confirmed} color="hsl(var(--layer-1))" />
           <Stat label="Structural playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Structural wrong" value={wrong} color="hsl(var(--destructive))" />
           <Stat label="Faster than expected" value={fasterThanExpected} color="hsl(var(--layer-7))" />
         </div>
 
-        {/* Search + quick-jump */}
+        {/* Search + filter chips + quick-jump */}
         <div className="mt-10 space-y-4">
           <label className="relative block max-w-xl">
             <Search
@@ -246,6 +247,34 @@ const Predictions = () => {
               aria-label="Search predictions"
             />
           </label>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/50 mr-1">
+              Filter
+            </span>
+            {STRUCTURAL_FILTERS.map((f) => {
+              const active = filter === f.id;
+              const count =
+                f.id === "all"
+                  ? PREDICTIONS.length
+                  : PREDICTIONS_BY_STRUCTURAL[f.id].length;
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  className={`px-2.5 py-1 rounded text-xs font-medium transition-colors border ${
+                    active
+                      ? "bg-accent text-accent-foreground border-accent"
+                      : "border-foreground/15 text-foreground/70 hover:text-foreground hover:border-foreground/40"
+                  }`}
+                  aria-pressed={active}
+                >
+                  {f.label} <span className="opacity-60 ml-0.5">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/50 mr-1">
               Jump to
