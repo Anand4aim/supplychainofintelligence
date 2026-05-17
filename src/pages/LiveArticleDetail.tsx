@@ -145,15 +145,17 @@ const LiveArticleDetail = () => {
                 border: "1px solid hsl(35 20% 88%)",
               }}
             >
-              {/* Chip header row */}
+              {/* Chip header row — canonical "L# Short" */}
               <div className="grid grid-cols-10 gap-1.5 mb-3">
                 {LAYER_ORDER.map((layer) => (
                   <div
                     key={layer}
-                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 rounded-sm text-white"
+                    className="text-center font-mono-marker text-[10px] font-bold py-1.5 px-0.5 rounded-sm text-white leading-[1.15]"
                     style={{ background: `hsl(var(${layerVar(layer)}))` }}
+                    title={LAYER_LABEL[layer]}
                   >
-                    {layer}
+                    <div>{layer}</div>
+                    <div className="text-[9px] opacity-95 mt-0.5">{LAYER_SHORT_LABEL[layer]}</div>
                   </div>
                 ))}
               </div>
