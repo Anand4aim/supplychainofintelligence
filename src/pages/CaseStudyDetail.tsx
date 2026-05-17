@@ -191,7 +191,7 @@ const CaseStudyDetailPage = () => {
                   Ex-Meta product leader. Creator of The Supply Chain of Intelligence™. Writes about where AI value
                   accrues — and who can fire your product.{" "}
                   <a
-                    href="https://www.linkedin.com/in/anandarivukkarasu"
+                    href="https://www.linkedin.com/in/anandarivu"
                     target="_blank"
                     rel="noopener"
                     className="text-accent hover:underline"

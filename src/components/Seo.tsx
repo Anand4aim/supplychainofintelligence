@@ -28,7 +28,7 @@ const Seo = ({ title, description, path, article, datePublished }: SeoProps) => 
           "@type": "Person",
           name: AUTHOR,
           url: SITE,
-          sameAs: ["https://www.linkedin.com/in/anandarivukkarasu"],
+          sameAs: ["https://www.linkedin.com/in/anandarivu"],
         },
         creator: { "@type": "Person", name: AUTHOR },
         publisher: { "@type": "Person", name: AUTHOR },

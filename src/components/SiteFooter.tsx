@@ -38,7 +38,7 @@ const SiteFooter = () => (
           <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
           <div className="space-y-2.5">
             <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
-            <a href="https://www.linkedin.com/in/anandarivukkarasu" target="_blank" rel="noopener" className="block text-sm hover:text-foreground transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="block text-sm hover:text-foreground transition-colors">LinkedIn</a>
           </div>
         </div>
       </div>
