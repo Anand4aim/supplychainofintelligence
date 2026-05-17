@@ -13,10 +13,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     ],
     tag: "WORKED EXAMPLE · WRITING TOOLS",
     title: "Jasper, Grammarly, Copilot in Word: Same Category, Three Structural Fates",
-    verdict: "L4 vs bigger L4",
+    verdict: "L7c surface vs L4a railroad",
     excerpt:
-      "All three help you write. Jasper owned only the surface (L7) and dissolved when the model went free. Grammarly owned distribution (L4) into every browser and editor — until a bigger L4 owner, Microsoft, integrated the model directly into Word, Outlook, and Teams. Same layer. Bigger railroad. The market is repricing layer ownership, not ARR.",
+      "All three help you write. Jasper owned only the surface (L7c) and dissolved when the model went free. Grammarly owned distribution (L4a + L7c embedded copilot) into every browser and editor — until a bigger L4a owner, Microsoft, integrated the model directly into Word, Outlook, and Teams. Same layer. Bigger railroad. The market is repricing layer ownership, not ARR.",
     layers: ["L4", "L7"],
+    sublayers: ["L2a", "L4a", "L7c"],
     date: "May 2026",
     readTime: "10 min",
     valuation: {
