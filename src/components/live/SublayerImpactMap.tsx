@@ -11,9 +11,9 @@ export interface LayerScore {
 
 const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L", "")}`;
 const LAYER_LABEL: Record<string, string> = {
-  "L-1": "Energy & Power", L0: "Compute & Silicon", L1: "Cloud Infra", L2: "Foundation Models",
-  L3: "Inference & Serving", L4: "Agents & Orchestration", L5: "Tools & APIs", L6: "Applications",
-  L7: "Distribution & Trust", L8: "Memory & Continuity",
+  "L-1": "Resources", L0: "Infrastructure", L1: "Data", L2: "Models",
+  L3: "Gatekeeping & Trust", L4: "Access & Distribution", L5: "Execution", L6: "Orchestration",
+  L7: "Surface", L8: "Memory & Record-Keeping",
 };
 
 interface Props { layerScores: LayerScore[]; }
