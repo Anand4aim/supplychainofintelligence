@@ -6,6 +6,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import { supabase } from "@/integrations/supabase/client";
+import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
 
 interface LiveArticle {
   id: string;
@@ -17,7 +18,72 @@ interface LiveArticle {
   vertical: string | null;
   published_at: string;
   source_urls: string[] | null;
+  analysis: { cube_position?: { layers?: string[]; functions?: string[]; verticals?: string[] } } | null;
 }
+
+const LAYER_ORDER = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"];
+
+const FeaturedLayerStrip: React.FC<{ layers: string[]; functions?: string[]; verticals?: string[] }> = ({ layers, functions = [], verticals = [] }) => {
+  const norm = (s: string) => s.trim().toLowerCase();
+  const hitSet = new Set(layers.map(norm));
+  return (
+    <div className="border border-foreground/15 bg-background/60 backdrop-blur-sm p-4 md:p-5 rounded-sm">
+      <div className="flex items-center justify-between mb-3 gap-3">
+        <p className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-foreground/70">
+          Layer footprint
+        </p>
+        <p className="font-mono-marker text-[10px] text-foreground/50">
+          {layers.length}/10 layers touched
+        </p>
+      </div>
+      <div className="grid grid-cols-10 gap-1 mb-3">
+        {LAYER_ORDER.map((id) => {
+          const hit = hitSet.has(id.toLowerCase());
+          const cssVar = layerVar(id);
+          return (
+            <div key={id} className="flex flex-col items-center gap-1">
+              <div
+                className="w-full rounded-[3px] transition-all"
+                style={{
+                  height: 38,
+                  background: hit ? `hsl(var(${cssVar}) / 0.85)` : `hsl(var(${cssVar}) / 0.08)`,
+                  border: hit ? `1px solid hsl(var(${cssVar}))` : `1px solid hsl(var(${cssVar}) / 0.18)`,
+                  boxShadow: hit ? `0 2px 10px -3px hsl(var(${cssVar}) / 0.6)` : "none",
+                }}
+                title={`${id} ${LAYER_SHORT_LABEL[id] ?? ""}${hit ? " — touched" : ""}`}
+              />
+              <span
+                className="font-mono-marker text-[8px] leading-none"
+                style={{
+                  color: hit ? `hsl(var(${cssVar}))` : "hsl(var(--foreground) / 0.4)",
+                  fontWeight: hit ? 700 : 400,
+                }}
+              >
+                {id}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      {(verticals.length > 0 || functions.length > 0) && (
+        <div className="flex flex-wrap gap-x-4 gap-y-1 pt-3 border-t border-foreground/10">
+          {verticals.length > 0 && (
+            <div className="flex items-baseline gap-2">
+              <span className="font-mono-marker text-[9px] uppercase tracking-wider text-foreground/50">Verticals</span>
+              <span className="font-mono-marker text-[10px] text-foreground/80">{verticals.join(" · ")}</span>
+            </div>
+          )}
+          {functions.length > 0 && (
+            <div className="flex items-baseline gap-2">
+              <span className="font-mono-marker text-[9px] uppercase tracking-wider text-foreground/50">Functions</span>
+              <span className="font-mono-marker text-[10px] text-foreground/80">{functions.join(" · ")}</span>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const RSS_URL = "https://pjococttuifybrwsxscy.supabase.co/functions/v1/rss-feed";
 
