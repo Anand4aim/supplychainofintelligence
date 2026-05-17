@@ -417,24 +417,74 @@ Sierra's loop is the product. Agentforce's loop is an option you have to archite
     title: "Stability AI vs Midjourney: Why Open-Source L2 Couldn't Monetize",
     verdict: "OPEN L2 = NO MOAT",
     excerpt:
-      "Stability AI open-sourced its model (L2) and couldn't build a business. Midjourney kept its model closed and built a $10B+ community. Same technology, opposite monetization strategies, dramatically different outcomes.",
-    layers: ["L2", "L7"],
+      "Stability AI open-sourced Stable Diffusion and watched the L2 it created become free infrastructure for everyone *except* Stability. Midjourney kept the model closed, built an obsessive Discord community, and compounded aesthetic memory at L8. Same underlying technology, opposite layer architecture, 100× valuation gap. The cleanest L2-vs-L8 lesson in the open-vs-closed model debate.",
+    layers: ["L2", "L7", "L8"],
     date: "March 2026",
-    readTime: "8 min",
+    readTime: "9 min",
     valuation: {
       label: "Stability AI",
-      before: "$1B",
-      after: "~$80M",
+      before: "$1B (2022)",
+      after: "Restructured (2024)",
       trend: "down",
-      changeLabel: "-92%",
+      changeLabel: "≈-90%",
     },
-    content: `Stability AI raised at $1B by open-sourcing Stable Diffusion. The model was revolutionary. The business was not.
+    content: `Stability AI is the most important structural cautionary tale about open-sourcing L2 without owning anything above or below it.
 
-**The structural problem:** Open-sourcing L2 (model) means anyone can replicate your core value. Stability had no L1 (proprietary data), no L8 (memory), no L3 (governance). Just an open model.
+**What Stability built.** Stable Diffusion — a genuinely revolutionary text-to-image model, open-sourced under a permissive license in mid-2022. Within months it was running on consumer GPUs, in ComfyUI, in Automatic1111, in every AI-image startup's backend, and inside every other company's product. Stability's L2 became infrastructure for an entire industry.
 
-**Midjourney's approach:** Kept the model closed. Built community (L7e surface). Created aesthetic memory (proto-L8). Result: $10B+ valuation, profitable from day one.
+**What Stability captured.** Almost none of the value the model created. Compute costs grew with usage they didn't monetize. Enterprise revenue stayed thin. There was no L1 (no proprietary training-data advantage), no L4 (no distribution surface of their own), no L8 (no per-user memory), and the L2 itself was, by design, available to every competitor for free. By 2024 the company had restructured, the founder had departed, and the valuation collapsed roughly 90% from the $1B peak.
 
-**The lesson:** L2 (models) are structurally fragile when open. The value migrates to whoever wraps them in scarce layers.`,
+**What Midjourney did instead.**
+- L2 — kept the model fully closed. No weights, no API for years, no fine-tuning leakage.
+- L7 — chose Discord as the surface. Eccentric, sticky, community-native. Every generation is visible by default — a public aesthetic feed that made every user a marketer.
+- L8 — *the decisive layer*. Style references, character references, mood boards, personalization tokens — Midjourney built a memory of *your* aesthetic that no other model can replicate without your usage history.
+- Pricing — subscription, not API. Captured value at the surface where the user actually was.
+
+Result: $200M+ annual revenue, profitable from year one, $10B+ in implied valuation, and a model that competitors cannot fully replicate even when their underlying L2 is technically comparable. Because the moat is no longer the model — it's the L8 wrapper around it.
+
+**Law I — intelligence commoditizes downward.** Stability accelerated this on themselves by open-sourcing their own L2. Midjourney accepted that L2 would commoditize *eventually* and built L7+L8 as the durable layers from day one.
+
+**Law III — value migrates to the scarcest layer.** Once Stable Diffusion was open, the scarce layer in AI image generation was not the model — it was the *taste-and-memory* layer that knew what looked good and remembered your prior work. Midjourney owns that. Stability gave it away.
+
+**The generalizable lesson.** Open-sourcing L2 is a defensible strategy *only if you own one of the other nine layers*. Meta open-sources Llama because they own L4 (Facebook, Instagram, WhatsApp distribution at 3B+ users). DeepSeek open-sources because they own L0 (a national-strategy compute relationship). Stability open-sourced and owned nothing else — which is why the open model became the entire industry's gain and Stability's structural loss.
+
+*Public reporting; valuations approximate.*`,
+    layer_scores: [
+      { layer: "L2", owned: false, intensity: 3, note: "Stability gave away its only asset. Midjourney kept it closed. The L2 layer is fragile when open *and* unprotected by adjacent layers.", sublayers: [{ name: "Stable Diffusion (open)", impact: 3, who: "Stability → everyone" }, { name: "Midjourney v6+ (closed)", impact: 3, who: "Midjourney" }] },
+      { layer: "L4", owned: false, intensity: 1, note: "Stability had no real distribution surface. Midjourney chose Discord — eccentric, sticky, and a real L4 in its own right.", sublayers: [{ name: "Discord community", impact: 3, who: "Midjourney" }] },
+      { layer: "L7", owned: false, intensity: 2, note: "Stability shipped Clipdrop and Dreamstudio late. Midjourney made the surface itself a moat — every generation public, every user a marketer.", sublayers: [{ name: "Dreamstudio/Clipdrop", impact: 1, who: "Stability (sub-scale)" }, { name: "Discord generation feed", impact: 3, who: "Midjourney" }] },
+      { layer: "L8", owned: false, intensity: 3, note: "The decisive layer. Midjourney's style refs, character refs, and mood-board memory of *your* taste are unreplicable. Stability never built it.", sublayers: [{ name: "Aesthetic memory / style refs", impact: 3, who: "Midjourney" }] },
+    ],
+    cube_position: {
+      functions: ["Mktg", "Product"],
+      verticals: ["Horizontal", "Media"],
+      layers: ["L2", "L7", "L8"],
+    },
+    timeline: [
+      { date: "Aug 2022", label: "Stability releases Stable Diffusion as open source. Genuinely revolutionary, immediately ubiquitous.", tone: "neutral" },
+      { date: "Oct 2022", label: "Stability raises at ~$1B. Midjourney quietly profitable on subscription, no funding round.", tone: "neutral" },
+      { date: "2023", label: "Stable Diffusion becomes the de facto open model. Stability sees almost none of the resulting commercial value.", tone: "down" },
+      { date: "Late 2023", label: "Midjourney v6 ships with style references and character consistency — the L8 wedge widens.", tone: "up" },
+      { date: "2024", label: "Stability AI restructures. Founder departs. Sean Parker-led group invests on heavily revised terms. Valuation reported at a fraction of peak.", tone: "down" },
+      { date: "2025–26", label: "Midjourney crosses $200M+ ARR, remains profitable. Stable Diffusion lineage continues open-source — but the company that birthed it is no longer the commercial vehicle.", tone: "neutral" },
+    ],
+    who_wins: [
+      { name: "Midjourney", reason: "Closed L2 + Discord L4 + compounding L8 aesthetic memory. The textbook closed-model + memory-moat play." },
+      { name: "Every downstream product built on Stable Diffusion", reason: "Got a free industrial L2. Captured the commercial surface that Stability didn't." },
+      { name: "Open-source as an ecosystem (vs. Stability the company)", reason: "Stable Diffusion + ComfyUI + LoRA culture is one of the most generative open ecosystems in tech. The ecosystem won; the foundry didn't." },
+    ],
+    who_loses: [
+      { name: "Stability AI (the company)", reason: "Open L2, no L1, no L4, no L8, no L3. The cleanest example of layer-architecture failure in the AI cycle." },
+      { name: "L2-only startups generally", reason: "Without an adjacent layer to capture value, your model is either a science project (open) or a vendor in a price war (closed)." },
+      { name: "The 'open source is automatically a moat' thesis", reason: "Open source is a *distribution* strategy, not a moat. You still need to own one of the other nine layers, or you'll watch the value flow past you." },
+    ],
+    counter_thesis: `The counter is that Stability's contribution is best understood as a *strategic* gift to the open ecosystem, not a failed business — and that the post-restructuring company can re-emerge as a focused enterprise vendor (fine-tunes, custom models, licensed weights) for buyers who specifically want non-OpenAI/non-Anthropic optionality. There is a real niche there, plausibly a $50–150M ARR business over time. But that's a 5–10× smaller outcome than the $1B valuation implied — which is the structural verdict the market has already delivered.`,
+    for_you: {
+      product_leader: "If your roadmap depends on 'we'll open-source our model and capture downstream value,' name the L1, L4, or L8 layer you own that the open model funnels users into. If none exist, you are not Meta — you are Stability.",
+      investor: "L2-only startups (closed or open) without an adjacent moat layer are structurally short. The closed-vs-open debate is a distraction; the layer-architecture question is the actual decision.",
+      operator: "For image generation, Midjourney is the L8 play (long-term consistency for a brand's aesthetic) and Stable Diffusion is the L0 play (cheap, owned, on-prem when you need it). They solve different problems — don't conflate them.",
+    },
+    pull_quote: "Open-source L2 is a defensible strategy *only if* you own one of the other nine layers. Stability owned none.",
   },
   {
     slug: "five-eras-of-software",
