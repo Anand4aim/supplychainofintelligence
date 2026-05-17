@@ -188,10 +188,7 @@ const IntelligenceCube = () => {
       <div className="flex flex-wrap gap-2 justify-center">
         {COMPANIES.map((c) => {
           const on = visible[c.name];
-          const vol =
-            (c.functions[1] - c.functions[0] + 1) *
-            (c.verticals[1] - c.verticals[0] + 1) *
-            (c.layers[1] - c.layers[0] + 1);
+          const vol = c.functions.length * c.verticals.length * c.layers.length;
           return (
             <button
               key={c.name}
