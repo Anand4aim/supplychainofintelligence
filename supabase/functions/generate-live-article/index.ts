@@ -52,12 +52,34 @@ const ANALYSIS_SCHEMA = {
           properties: {
             layer: { type: "string", description: "L-1, L0, L1, L2, L3, L4, L5, L6, L7, or L8" },
             owned: { type: "boolean", description: "Does the company own meaningful position in this layer?" },
-            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership" },
-            note: { type: "string", description: "8-15 words explaining" },
-            sublayers: { type: "array", description: "1-3 specific sublayer slices claimed inside this layer (e.g. for L6: 'CRM workflow', 'agent inbox'). Empty array if intensity is 0.", items: { type: "string" } }
+            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership. BE BRUTAL — most layers should be 0." },
+            note: { type: "string", description: "8-15 words explaining. If intensity is 0, return empty string." },
+            sublayers: {
+              type: "array",
+              description: "Specific sublayer slices claimed inside this layer. Count must respect intensity: intensity 1 → max 1, intensity 2 → max 2, intensity 3 → max 3. Empty array if intensity is 0.",
+              items: {
+                type: "object",
+                properties: {
+                  name: { type: "string", description: "Short slice name e.g. 'contract review', 'agent inbox', 'eval harness'" },
+                  impact: { type: "integer", minimum: 1, maximum: 3, description: "1 = touched, 2 = meaningful share, 3 = owns this sublayer" },
+                  who: { type: "string", description: "Who plays this sublayer slice TODAY — the company/role most threatened or most enabled. e.g. 'Harvey', 'Thomson Reuters CoCounsel', 'in-house legal ops'" }
+                },
+                required: ["name", "impact", "who"]
+              }
+            }
           },
           required: ["layer", "owned", "intensity", "note", "sublayers"]
         }
+      },
+      cube_position: {
+        type: "object",
+        description: "Where this move sits in the Intelligence Cube (Functions × Verticals × Layers). Pick ONLY the axes truly touched — 1-3 functions, 1-3 verticals, 1-4 layers. Use EXACT names from the lists.",
+        properties: {
+          functions: { type: "array", description: "Job functions touched. Allowed: Dev/Eng, Design, Product, PM/Proj, Ops, Mktg, Sales, CustCare, Strategy", items: { type: "string" } },
+          verticals: { type: "array", description: "Verticals touched. Allowed: FinTech, EdTech, Legal, Health, Travel, eCom, Media, Gov, SaaS, Horizontal", items: { type: "string" } },
+          layers: { type: "array", description: "Layer IDs touched (L-1..L8). Should match the layers with intensity > 0 in layer_scores.", items: { type: "string" } }
+        },
+        required: ["functions", "verticals", "layers"]
       },
       why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
       structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat — and the way the moat could break. This is the heart of the piece; do not be brief." },
