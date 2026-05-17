@@ -16,6 +16,7 @@ import MarketMap from "./pages/MarketMap";
 import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
 import Start from "./pages/Start";
+import Predictions from "./pages/Predictions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/start" element={<Start />} />
+        <Route path="/predictions" element={<Predictions />} />
         <Route path="/framework" element={<FrameworkPage />} />
         <Route path="/framework/:layerId" element={<LayerDetailPage />} />
         <Route path="/analysis" element={<AnalysisPage />} />

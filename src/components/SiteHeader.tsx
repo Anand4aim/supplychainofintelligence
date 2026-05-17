@@ -8,6 +8,7 @@ const navItems = [
   { label: "Framework", path: "/framework" },
   { label: "Market Map", path: "/market-map" },
   { label: "Case Studies", path: "/analysis" },
+  { label: "Predictions", path: "/predictions" },
   { label: "About", path: "/about" },
 ];
 
