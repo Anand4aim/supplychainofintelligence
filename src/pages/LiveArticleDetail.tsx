@@ -224,10 +224,10 @@ const LiveArticleDetail = () => {
                   return (
                     <div key={layer} className="flex gap-3 items-start">
                       <span
-                        className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 min-w-[34px] text-center shrink-0 mt-0.5"
+                        className="font-mono-marker text-[10px] font-bold text-white px-2 py-0.5 text-center shrink-0 mt-0.5 whitespace-nowrap"
                         style={{ background: `hsl(var(${layerVar(layer)}))` }}
                       >
-                        {layer}
+                        {layer} {LAYER_SHORT_LABEL[layer]}
                       </span>
                       <div className="flex-1 text-[14px] leading-snug text-foreground">
                         {s?.note}
