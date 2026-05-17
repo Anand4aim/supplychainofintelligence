@@ -176,19 +176,21 @@ const ComparisonGrid: React.FC<{
 
 /* ─────────────────────────  Isometric 3D Cube view  ───────────────────────── */
 
-const ISO_STEP = 30; // pixel size of one cell along F / V axes
-const ISO_Z = 24; // pixel size of one cell along L axis (up)
+const ISO_STEP = 22; // pixel size of one cell along F / V axes
+const ISO_Z = 18; // pixel size of one cell along L axis (up)
 const ISO_COS = Math.cos(Math.PI / 6); // 0.866
 const ISO_SIN = Math.sin(Math.PI / 6); // 0.5
 const N = 10;
 
-// Origin chosen so cube fits viewBox 0 0 620 460
-const ORIGIN_X = 280;
-const ORIGIN_Y = 420;
+// viewBox 460×480; cube fully centered
+const ORIGIN_X = 230;
+const ORIGIN_Y = 250;
 
 const isoX = (f: number, v: number) => ORIGIN_X + (f - v) * ISO_STEP * ISO_COS;
 const isoY = (f: number, v: number, l: number) =>
   ORIGIN_Y + (f + v) * ISO_STEP * ISO_SIN - l * ISO_Z;
+
+const point = (f: number, v: number, l: number) => `${isoX(f, v)},${isoY(f, v, l)}`;
 
 const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) => {
   // Collect all occupied cells from all visible companies, then depth-sort.
@@ -236,7 +238,30 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
   );
 
   return (
-    <svg viewBox="0 0 620 460" className="w-full max-w-[640px] mx-auto block">
+    <svg viewBox="0 0 460 480" className="w-full max-w-[560px] mx-auto block">
+      {/* ─── 3 visible cube faces — translucent, drawn back-to-front ─── */}
+      {/* Back-left wall (F = N plane, behind) — lightest tint */}
+      <polygon
+        points={`${point(N, 0, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(N, 0, N)}`}
+        fill="hsl(40 30% 99% / 0.55)"
+        stroke="hsl(var(--foreground) / 0.08)"
+        strokeWidth={0.5}
+      />
+      {/* Back-right wall (V = N plane, behind) */}
+      <polygon
+        points={`${point(0, N, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(0, N, N)}`}
+        fill="hsl(40 28% 96% / 0.55)"
+        stroke="hsl(var(--foreground) / 0.08)"
+        strokeWidth={0.5}
+      />
+      {/* Floor (L = 0 plane) — soft cream */}
+      <polygon
+        points={`${point(0, 0, 0)} ${point(N, 0, 0)} ${point(N, N, 0)} ${point(0, N, 0)}`}
+        fill="hsl(38 32% 93% / 0.7)"
+        stroke="hsl(var(--foreground) / 0.1)"
+        strokeWidth={0.5}
+      />
+
       {/* Floor grid (L = 0 plane) — faint */}
       {Array.from({ length: N + 1 }).map((_, i) => (
         <React.Fragment key={`fl-${i}`}>
@@ -245,7 +270,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
             y1={isoY(i, 0, 0)}
             x2={isoX(i, N)}
             y2={isoY(i, N, 0)}
-            stroke="hsl(var(--foreground) / 0.06)"
+            stroke="hsl(var(--foreground) / 0.08)"
             strokeWidth={0.5}
           />
           <line
@@ -253,7 +278,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
             y1={isoY(0, i, 0)}
             x2={isoX(N, i)}
             y2={isoY(N, i, 0)}
-            stroke="hsl(var(--foreground) / 0.06)"
+            stroke="hsl(var(--foreground) / 0.08)"
             strokeWidth={0.5}
           />
         </React.Fragment>
