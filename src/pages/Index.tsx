@@ -373,8 +373,9 @@ const Index = () => {
             <div className="verdict-dominant bg-accent/5 rounded-xl p-5 max-w-2xl mx-auto mt-10">
               <p className="text-sm text-foreground leading-relaxed italic">
                 "JTBD answers <strong>why a user will hire your product</strong>. The Supply Chain
-                of Intelligence answers <strong>why OpenAI, Google, Anthropic, Microsoft, or
-                Salesforce won't erase it</strong>. You need both."
+                of Intelligence answers <strong>why OpenAI, Google, Anthropic and other AI
+                juggernauts won't erase it</strong>. You need both — if you do it well, you can
+                ride the wave without getting crushed in it."
               </p>
               <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
             </div>
