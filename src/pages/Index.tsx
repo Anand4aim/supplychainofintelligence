@@ -92,7 +92,7 @@ const Index = () => {
               </p>
               <div className="sketch-paper rounded-2xl p-4 space-y-1.5 relative">
                 <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
-                {LAYERS.map((layer, i) => {
+                {TABLE_LAYERS.map((layer, i) => {
                   const defCount = layer.sublayers.filter((s) => s.defensible).length;
                   return (
                     <motion.div
@@ -213,7 +213,7 @@ const Index = () => {
                     <div className="grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
                       <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
-                        {LAYERS.map(({ id, label, name, cssVar }) => (
+                        {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
                           <div key={id} className="flex flex-col items-center gap-1 min-w-0">
                             <span className="font-mono-marker text-[8px] md:text-[9px] tracking-[0.04em] text-muted-foreground/90 leading-tight text-center truncate w-full">
                               {name}
@@ -242,7 +242,7 @@ const Index = () => {
                           <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
                         </div>
                         <div className="grid grid-cols-10 gap-1">
-                          {LAYERS.map(({ id, cssVar }) => {
+                          {TABLE_LAYERS.map(({ id, cssVar }) => {
                             const intensity = row.cells[id] ?? 0;
                             return (
                               <div key={id} className="flex justify-center items-center gap-[2px] h-6">
@@ -448,7 +448,7 @@ const Index = () => {
 
               {/* Rows */}
               <div className="space-y-0">
-                {LAYERS.map((layer, i) => (
+                {TABLE_LAYERS.map((layer, i) => (
                   <div key={layer.id}>
                     <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] items-center gap-0">
                       <div className="text-right pr-2 md:pr-4 py-2">
@@ -525,7 +525,7 @@ const Index = () => {
           </motion.div>
 
           <div className="space-y-2">
-            {LAYERS.map((layer, i) => (
+            {TABLE_LAYERS.map((layer, i) => (
               <motion.div
                 key={layer.id}
                 initial={{ opacity: 0, x: -16 }}
