@@ -27,11 +27,18 @@ const Grid: React.FC<{
   xHits: boolean[];
   cellColorFor: (yIdx: number) => string;
 }> = ({ yAxis, xAxis, yLabel, xLabel, yHits, xHits, cellColorFor }) => {
+  const yCount = yHits.filter(Boolean).length;
+  const xCount = xHits.filter(Boolean).length;
+  const cellCount = yCount * xCount;
+  const emptyAxis = xCount === 0;
   return (
     <div>
-      <div className="flex items-baseline justify-between mb-2">
+      <div className="flex items-baseline justify-between mb-2 gap-3">
         <p className="font-mono-marker text-[10px] text-muted-foreground uppercase tracking-wider">
           {yLabel} × {xLabel}
+        </p>
+        <p className="font-mono-marker text-[10px] text-foreground/60 uppercase tracking-wider whitespace-nowrap">
+          {emptyAxis ? "no footprint" : `${cellCount} cell${cellCount === 1 ? "" : "s"} · ${yCount}×${xCount}`}
         </p>
       </div>
       <div className="flex gap-2">
@@ -66,17 +73,24 @@ const Grid: React.FC<{
                 return (
                   <div
                     key={`${y}-${x}`}
-                    className="rounded-[2px]"
+                    className="rounded-[3px] transition-all"
                     style={{
                       height: 22,
                       background: filled
                         ? cellColorFor(yIdx)
-                        : yHit || xHit
-                        ? "hsl(var(--foreground) / 0.05)"
-                        : "hsl(var(--foreground) / 0.03)",
+                        : yHit && xHit === false
+                        ? `hsl(var(${layerVar(y)}) / 0.10)`
+                        : xHit && !yHit
+                        ? "hsl(var(--foreground) / 0.07)"
+                        : "hsl(var(--foreground) / 0.025)",
                       border: filled
                         ? `1px solid ${cellColorFor(yIdx)}`
-                        : "1px solid hsl(var(--foreground) / 0.08)",
+                        : yHit || xHit
+                        ? "1px solid hsl(var(--foreground) / 0.12)"
+                        : "1px solid hsl(var(--foreground) / 0.06)",
+                      boxShadow: filled
+                        ? `0 0 0 1px hsl(var(${layerVar(y)}) / 0.25), 0 2px 8px -2px hsl(var(${layerVar(y)}) / 0.45)`
+                        : "none",
                     }}
                     title={filled ? `${y} × ${x}` : undefined}
                   />
@@ -104,6 +118,11 @@ const Grid: React.FC<{
               </div>
             ))}
           </div>
+          {emptyAxis && (
+            <p className="font-mono-marker text-[10px] text-foreground/50 italic mt-3">
+              Axis-agnostic on {xLabel.toLowerCase()} — this move reshapes the stack itself, not a specific {xLabel.toLowerCase().replace(/s$/, "")}.
+            </p>
+          )}
         </div>
       </div>
     </div>
