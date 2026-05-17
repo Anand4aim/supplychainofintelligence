@@ -13,7 +13,7 @@ const personSchema = {
   description:
     "Ex-Meta product leader. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era.",
   alumniOf: [{ "@type": "Organization", name: "Meta" }],
-  sameAs: ["https://www.linkedin.com/in/anandarivukkarasu"],
+  sameAs: ["https://www.linkedin.com/in/anandarivu"],
 };
 
 const AboutPage = () => (
@@ -75,7 +75,7 @@ const AboutPage = () => (
           <p className="font-sketch text-sm font-bold text-muted-foreground mb-3">Elsewhere</p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://www.linkedin.com/in/anandarivukkarasu"
+              href="https://www.linkedin.com/in/anandarivu"
               target="_blank"
               rel="noopener"
               className="btn-sketch-outline"
