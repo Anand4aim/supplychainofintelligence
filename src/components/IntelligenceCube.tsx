@@ -238,28 +238,28 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
   );
 
   return (
-    <svg viewBox="0 0 460 480" className="w-full max-w-[560px] mx-auto block">
+    <svg viewBox="0 80 560 500" className="w-full max-w-[640px] mx-auto block">
       {/* ─── 3 visible cube faces — translucent, drawn back-to-front ─── */}
-      {/* Back-left wall (F = N plane, behind) — lightest tint */}
-      <polygon
-        points={`${point(N, 0, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(N, 0, N)}`}
-        fill="hsl(40 30% 99% / 0.55)"
-        stroke="hsl(var(--foreground) / 0.08)"
-        strokeWidth={0.5}
-      />
-      {/* Back-right wall (V = N plane, behind) */}
+      {/* Back-left wall (V = N plane) — lightest tint */}
       <polygon
         points={`${point(0, N, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(0, N, N)}`}
-        fill="hsl(40 28% 96% / 0.55)"
-        stroke="hsl(var(--foreground) / 0.08)"
-        strokeWidth={0.5}
+        fill="hsl(40 30% 99% / 0.65)"
+        stroke="hsl(var(--foreground) / 0.1)"
+        strokeWidth={0.6}
+      />
+      {/* Back-right wall (F = N plane) */}
+      <polygon
+        points={`${point(N, 0, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(N, 0, N)}`}
+        fill="hsl(40 28% 96% / 0.65)"
+        stroke="hsl(var(--foreground) / 0.1)"
+        strokeWidth={0.6}
       />
       {/* Floor (L = 0 plane) — soft cream */}
       <polygon
         points={`${point(0, 0, 0)} ${point(N, 0, 0)} ${point(N, N, 0)} ${point(0, N, 0)}`}
-        fill="hsl(38 32% 93% / 0.7)"
-        stroke="hsl(var(--foreground) / 0.1)"
-        strokeWidth={0.5}
+        fill="hsl(38 32% 93% / 0.8)"
+        stroke="hsl(var(--foreground) / 0.15)"
+        strokeWidth={0.6}
       />
 
       {/* Floor grid (L = 0 plane) — faint */}
@@ -284,26 +284,37 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </React.Fragment>
       ))}
 
-      {/* Layer "shelves" — faint horizontal planes at each L tick on the back wall */}
+      {/* Layer "shelves" — colored horizontal stripes across BOTH back walls */}
       {LAYERS.map((l, i) => (
-        <line
-          key={`shelf-${l}`}
-          x1={isoX(0, N)}
-          y1={isoY(0, N, i)}
-          x2={isoX(N, N)}
-          y2={isoY(N, N, i)}
-          stroke={`hsl(var(${layerVar(l)}) / 0.25)`}
-          strokeWidth={1}
-        />
+        <React.Fragment key={`shelf-${l}`}>
+          {/* on V=N back wall */}
+          <line
+            x1={isoX(0, N)}
+            y1={isoY(0, N, i)}
+            x2={isoX(N, N)}
+            y2={isoY(N, N, i)}
+            stroke={`hsl(var(${layerVar(l)}) / 0.35)`}
+            strokeWidth={1.2}
+          />
+          {/* on F=N back wall */}
+          <line
+            x1={isoX(N, 0)}
+            y1={isoY(N, 0, i)}
+            x2={isoX(N, N)}
+            y2={isoY(N, N, i)}
+            stroke={`hsl(var(${layerVar(l)}) / 0.22)`}
+            strokeWidth={1}
+          />
+        </React.Fragment>
       ))}
 
-      {/* Cube wireframe — 12 edges */}
-      {/* bottom rectangle */}
-      {edge(0, 0, 0, N, 0, 0, true)}
-      {edge(0, 0, 0, 0, N, 0, true)}
+      {/* Cube wireframe — 12 edges. Dashed = hidden behind. */}
+      {/* bottom rectangle — front 2 edges solid, back 2 dashed-ish but visible since floor is faint */}
+      {edge(0, 0, 0, N, 0, 0)}
+      {edge(0, 0, 0, 0, N, 0)}
       {edge(N, 0, 0, N, N, 0)}
       {edge(0, N, 0, N, N, 0)}
-      {/* verticals */}
+      {/* verticals — front-most is dashed (it's the hidden corner closest in iso) */}
       {edge(0, 0, 0, 0, 0, N, true)}
       {edge(N, 0, 0, N, 0, N)}
       {edge(0, N, 0, 0, N, N)}
@@ -314,32 +325,32 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
       {edge(N, 0, N, N, N, N)}
       {edge(0, N, N, N, N, N)}
 
-      {/* Axis labels */}
+      {/* Axis labels — OUTSIDE the cube */}
       <text
-        x={isoX(N, 0) + 8}
-        y={isoY(N, 0, 0) + 14}
+        x={isoX(N, 0)}
+        y={isoY(N, 0, 0) + 22}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
         fontWeight={700}
-        textAnchor="start"
+        textAnchor="middle"
       >
         FUNCTIONS →
       </text>
       <text
-        x={isoX(0, N) - 8}
-        y={isoY(0, N, 0) + 14}
+        x={isoX(0, N)}
+        y={isoY(0, N, 0) + 22}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
         fontWeight={700}
-        textAnchor="end"
+        textAnchor="middle"
       >
         ← VERTICALS
       </text>
       <text
-        x={isoX(0, 0) - 14}
-        y={isoY(0, 0, N) - 4}
+        x={isoX(0, N) - 6}
+        y={isoY(0, N, N) - 10}
         fill="hsl(var(--muted-foreground))"
         fontSize={10}
         fontFamily="ui-monospace, monospace"
@@ -349,14 +360,14 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         LAYERS ↑
       </text>
 
-      {/* Layer ticks on the L axis (back-left edge) */}
+      {/* Layer ticks on the back-LEFT vertical edge (f=0, v=N) */}
       {LAYERS.map((l, i) => (
         <text
           key={`lt-${l}`}
-          x={isoX(0, 0) - 6}
-          y={isoY(0, 0, i) + 3}
+          x={isoX(0, N) - 6}
+          y={isoY(0, N, i) + 3}
           fill={`hsl(var(${layerVar(l)}))`}
-          fontSize={8}
+          fontSize={9}
           fontFamily="ui-monospace, monospace"
           fontWeight={700}
           textAnchor="end"
@@ -365,14 +376,38 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </text>
       ))}
 
-      {/* The dots — depth-sorted */}
+      {/* The dots — depth-sorted, with drop lines to floor for spatial anchor */}
       {dots.map((d, idx) => {
         const key = `${d.f}-${d.v}-${d.l}`;
         const stackIdx = offsetFor(key);
         const cx = isoX(d.f + 0.5, d.v + 0.5) + stackIdx * 3.5 - 3;
         const cy = isoY(d.f + 0.5, d.v + 0.5, d.l + 0.5) - stackIdx * 3.5;
+        const floorY = isoY(d.f + 0.5, d.v + 0.5, 0);
         return (
           <g key={idx}>
+            {/* drop line to floor — only for first occupant of a cell */}
+            {stackIdx === 0 && (
+              <line
+                x1={cx}
+                y1={cy}
+                x2={cx}
+                y2={floorY}
+                stroke={d.company.color}
+                strokeOpacity={0.25}
+                strokeWidth={0.8}
+                strokeDasharray="2 2"
+              />
+            )}
+            {/* floor footprint dot */}
+            {stackIdx === 0 && (
+              <circle
+                cx={cx}
+                cy={floorY}
+                r={1.5}
+                fill={d.company.color}
+                opacity={0.5}
+              />
+            )}
             <circle
               cx={cx}
               cy={cy + 1.5}
