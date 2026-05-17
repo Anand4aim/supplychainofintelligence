@@ -5,6 +5,8 @@ import { ArrowLeft, ExternalLink, Loader2 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
+import SublayerImpactMap from "@/components/live/SublayerImpactMap";
+import CubeProjection2D from "@/components/live/CubeProjection2D";
 
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
