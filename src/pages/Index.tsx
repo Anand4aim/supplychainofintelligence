@@ -168,18 +168,10 @@ const Index = () => {
 
               {/* Header row */}
               {(() => {
-                const LAYERS = [
-                  { id: "L-1", label: "L-1", name: "Resources", cssVar: "--layer-neg1" },
-                  { id: "L0",  label: "L0",  name: "Infra",     cssVar: "--layer-0" },
-                  { id: "L1",  label: "L1",  name: "Data",      cssVar: "--layer-1" },
-                  { id: "L2",  label: "L2",  name: "Models",    cssVar: "--layer-2" },
-                  { id: "L3",  label: "L3",  name: "Gates",     cssVar: "--layer-3" },
-                  { id: "L4",  label: "L4",  name: "Access",    cssVar: "--layer-4" },
-                  { id: "L5",  label: "L5",  name: "Execution", cssVar: "--layer-5" },
-                  { id: "L6",  label: "L6",  name: "Orch",      cssVar: "--layer-6" },
-                  { id: "L7",  label: "L7",  name: "Surface",   cssVar: "--layer-7" },
-                  { id: "L8",  label: "L8",  name: "Memory",    cssVar: "--layer-8" },
-                ] as const;
+                const TABLE_LAYERS = LAYERS.map((l) => {
+                  const num = l.id === "L-1" ? "neg1" : l.id.replace("L", "");
+                  return { id: l.id, label: l.id, name: l.shortName, cssVar: `--layer-${num}` };
+                });
 
                 const rows = [
                   {
@@ -221,7 +213,7 @@ const Index = () => {
                     <div className="grid grid-cols-[160px_1fr_100px] md:grid-cols-[180px_1fr_110px] gap-3 items-end mb-2">
                       <span className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground">COMPANY</span>
                       <div className="grid grid-cols-10 gap-1">
-                        {LAYERS.map(({ id, label, name, cssVar }) => (
+                        {TABLE_LAYERS.map(({ id, label, name, cssVar }) => (
                           <div key={id} className="flex flex-col items-center gap-1 min-w-0">
                             <span className="font-mono-marker text-[8px] md:text-[9px] tracking-[0.04em] text-muted-foreground/90 leading-tight text-center truncate w-full">
                               {name}
@@ -250,7 +242,7 @@ const Index = () => {
                           <div className="font-mono-marker text-[10px] text-muted-foreground/80 mt-0.5">{row.sub}</div>
                         </div>
                         <div className="grid grid-cols-10 gap-1">
-                          {LAYERS.map(({ id, cssVar }) => {
+                          {TABLE_LAYERS.map(({ id, cssVar }) => {
                             const intensity = row.cells[id] ?? 0;
                             return (
                               <div key={id} className="flex justify-center items-center gap-[2px] h-6">
