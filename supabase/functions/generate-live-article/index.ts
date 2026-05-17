@@ -216,7 +216,12 @@ Deno.serve(async (req) => {
       verdict: analysis.verdict,
       vertical: analysis.vertical,
     };
-    if (publishedAt) insertRow.published_at = publishedAt;
+    // Date priority: explicit published_at param > model-extracted news_date > now()
+    const effectiveDate = publishedAt
+      || (analysis.news_date && /^\d{4}-\d{2}-\d{2}$/.test(analysis.news_date)
+            ? `${analysis.news_date}T12:00:00+00:00`
+            : undefined);
+    if (effectiveDate) insertRow.published_at = effectiveDate;
     const { data: inserted, error } = await supabase.from("live_articles").insert(insertRow).select().single();
 
     if (error) throw error;
