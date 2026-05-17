@@ -4,6 +4,7 @@ import Seo from "@/components/Seo";
 import { ArrowRight, Target, Compass, GitBranch, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SketchFilters, SketchBoard, SketchBox } from "@/components/sketch/SketchElements";
+import Eyebrow from "@/components/Eyebrow";
 
 const ForProductLeaders = () => (
   <SiteLayout>
@@ -18,9 +19,9 @@ const ForProductLeaders = () => (
     <section className="bg-background">
       <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-5">
-            — For Product Leaders
-          </p>
+          <Eyebrow className="mb-5">
+  For Product Leaders
+</Eyebrow>
           <h1 className="font-display text-[28px] md:text-[42px] font-bold text-foreground leading-[1.15] mb-5">
             You've Mastered the Customer Axis.{" "}
             <span className="text-accent">Now Master the Depth Axis.</span>
@@ -37,7 +38,7 @@ const ForProductLeaders = () => (
     {/* The Two Axes */}
     <section className="bg-secondary/30">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— The Shift</p>
+        <Eyebrow className="mb-4">The Shift</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           From Y-Axis Thinking to Y+Z Thinking
         </h2>
@@ -80,7 +81,7 @@ const ForProductLeaders = () => (
     {/* How to Use */}
     <section className="bg-background border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">— Practical Application</p>
+        <Eyebrow className="mb-4">Practical Application</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
           How Product Leaders Use the Framework
         </h2>

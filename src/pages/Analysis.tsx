@@ -4,6 +4,7 @@ import Seo from "@/components/Seo";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { ArrowRight } from "lucide-react";
+import Eyebrow from "@/components/Eyebrow";
 
 const FEATURED_SLUGS = [
   "jasper-vs-grammarly-copilot",
@@ -25,9 +26,9 @@ const AnalysisPage = () => (
     <section className="bg-background">
       <div className="max-w-5xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-6">
-            — Structural Analysis
-          </p>
+          <Eyebrow className="mb-6">
+  Structural Analysis
+</Eyebrow>
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
             Case Studies Through the Lens of the Stack
           </h1>
@@ -55,9 +56,9 @@ const AnalysisPage = () => (
     {/* Featured */}
     <section className="bg-secondary/30">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-8">
-          — Featured Case Studies
-        </p>
+        <Eyebrow className="mb-8">
+  Featured Case Studies
+</Eyebrow>
         <div className="space-y-8">
           {featured.map((study, i) => (
             <CaseStudyCard key={study.slug} study={study} index={i} featured />
@@ -69,9 +70,9 @@ const AnalysisPage = () => (
     {/* Remaining */}
     <section className="bg-background border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-8">
-          — More Analysis
-        </p>
+        <Eyebrow className="mb-8">
+  More Analysis
+</Eyebrow>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {remaining.map((study, i) => (
             <CaseStudyCard key={study.slug} study={study} index={i} />
@@ -83,9 +84,9 @@ const AnalysisPage = () => (
     {/* Structural Scoreboard */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-6">
-          — The Structural Scoreboard
-        </p>
+        <Eyebrow className="mb-6">
+  The Structural Scoreboard
+</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-10">
           Where Do They All Sit?
         </h2>

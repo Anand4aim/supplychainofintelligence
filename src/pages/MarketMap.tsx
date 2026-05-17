@@ -14,6 +14,7 @@ import {
   type Archetype,
   type MapCompany,
 } from "@/data/marketMap";
+import Eyebrow from "@/components/Eyebrow";
 
 const VERTICALS: ("all" | Vertical)[] = [
   "all", "horizontal", "code", "finance", "legal", "health", "cx", "creative", "sales", "edu", "infra",
@@ -93,7 +94,7 @@ const MarketMap = () => {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-2 mb-4">
               <Map size={16} className="text-accent" />
-              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent">— The Market Map</p>
+              <Eyebrow>The Market Map</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-4">
               Every notable AI company, <br />plotted on the 10 layers.

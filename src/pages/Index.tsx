@@ -19,6 +19,7 @@ import {
   SketchConnector,
 } from "@/components/sketch/SketchElements";
 import SixtySecondTour from "@/components/SixtySecondTour";
+import Eyebrow from "@/components/Eyebrow";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -58,9 +59,9 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <p className="font-mono-marker text-[12px] md:text-[13px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
+              <Eyebrow tone="muted" dash={false} className="mb-4">
                 By Anand Arivukkarasu · Ex-Meta Product Leader
-              </p>
+              </Eyebrow>
               <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold leading-[1.15] mb-5">
                 <SketchUnderline color="hsl(var(--accent))">
                   <span className="text-accent">JTBD tells you what users want.</span>
@@ -298,9 +299,9 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — The New AI Product Trap
-            </p>
+            <Eyebrow className="mb-4">
+  The New AI Product Trap
+</Eyebrow>
             <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-5">
               Desirability without Defensibility
             </h2>
@@ -326,9 +327,9 @@ const Index = () => {
                 <div className="font-sketch text-base font-bold text-muted-foreground px-3">
                   Jobs to Be Done
                 </div>
-                <div className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent px-3">
-                  Supply Chain of Intelligence™
-                </div>
+                <Eyebrow dash={false} className="px-3">
+  Supply Chain of Intelligence™
+</Eyebrow>
               </div>
 
               {JTBD_VS_SCOI.map((row, i) => (
@@ -412,9 +413,9 @@ const Index = () => {
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn}>
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — Why We Call It a Supply Chain
-            </p>
+            <Eyebrow className="mb-4">
+  Why We Call It a Supply Chain
+</Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-4">
               From Gold in the Ground to the Ring on Your Finger
             </h2>
@@ -515,9 +516,9 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">
-              — The Full Map
-            </p>
+            <Eyebrow className="mb-3">
+  The Full Map
+</Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
               10 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} Sublayers. The Defensible Positions Marked.
             </h2>
@@ -660,9 +661,9 @@ const Index = () => {
       <section className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — Three Structural Laws
-            </p>
+            <Eyebrow className="mb-4">
+  Three Structural Laws
+</Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               The Laws That Predict the Future
             </h2>
@@ -720,9 +721,9 @@ const Index = () => {
       <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="mb-10">
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — Use the Framework
-            </p>
+            <Eyebrow className="mb-4">
+  Use the Framework
+</Eyebrow>
             <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-3">
               The AI Defensibility Audit
             </h2>
@@ -742,9 +743,9 @@ const Index = () => {
                     key={i}
                     className="flex items-start gap-3 rounded-lg border border-border bg-card p-3.5 sketch-border"
                   >
-                    <span className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent shrink-0 leading-none mt-0.5">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <Eyebrow dash={false} className="shrink-0 leading-none mt-0.5">
+  {String(i + 1).padStart(2, "0")}
+</Eyebrow>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-sm font-bold text-foreground">{q.area}</span>
@@ -813,9 +814,9 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="flex items-end justify-between mb-10">
             <div>
-              <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-3">
-                — The Framework in Action
-              </p>
+              <Eyebrow className="mb-3">
+  The Framework in Action
+</Eyebrow>
               <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground">
                 Case Studies — Proof Through the Stack
               </h2>
@@ -843,9 +844,9 @@ const Index = () => {
       <section className="bg-background border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-10">
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — The Intelligence Cube™
-            </p>
+            <Eyebrow className="mb-4">
+  The Intelligence Cube™
+</Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               9 Functions × 9 Verticals × 10 Layers
             </h2>
@@ -864,9 +865,9 @@ const Index = () => {
       <section className="bg-secondary/40">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
           <motion.div {...fadeIn}>
-            <p className="font-mono-marker text-[12px] md:text-[13px] font-bold uppercase tracking-[0.18em] text-accent mb-4">
-              — The Diagnostic
-            </p>
+            <Eyebrow className="mb-4">
+  The Diagnostic
+</Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-6">
               Where Do You Actually Sit in the Stack?
             </h2>
