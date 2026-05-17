@@ -35,13 +35,13 @@ const SublayerImpactMap: React.FC<Props> = ({ layerScores }) => {
       <div className="space-y-5">
         {impacted.map(({ layer, subs }) => (
           <div key={layer} className="flex gap-4 items-start">
-            {/* Layer column tag */}
+            {/* Layer column tag — canonical "L# Short" with layer color */}
             <div className="shrink-0 w-24">
               <div
-                className="font-mono-marker text-[10px] font-bold text-white px-2 py-1 text-center rounded-sm"
+                className="font-mono-marker text-[10px] font-bold text-white px-2 py-1 text-center rounded-sm leading-tight"
                 style={{ background: `hsl(var(${layerVar(layer)}))` }}
               >
-                {layer}
+                {layer} {LAYER_SHORT_LABEL[layer]}
               </div>
               <div className="text-[10px] text-muted-foreground text-center mt-1 leading-tight">
                 {LAYER_LABEL[layer]}
