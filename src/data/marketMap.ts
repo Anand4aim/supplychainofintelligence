@@ -22,6 +22,7 @@ export type Archetype =
   | "railroad"      // L4 distribution
   | "memory"        // L8 compounder
   | "surface"       // L7-only, exposed
+  | "agent"         // L5+L7 (+/- L8) packaging — "an agent" with thin deeper moat
   | "graveyard";    // structurally dead/dying
 
 export interface MapCompany {
@@ -122,7 +123,7 @@ export const MAP_COMPANIES: MapCompany[] = [
   c("Gamma", "gamma.app", ["L7"], ["creative"], "graveyard", { caseStudy: "gamma-thin-layer-graveyard" }),
   c("Chegg", "chegg.com", ["L7"], ["edu"], "graveyard", { caseStudy: "chegg-collapse" }),
   c("Midjourney", "midjourney.com", ["L2", "L7"], ["creative"], "fortress", { caseStudy: "stability-ai-open-model-trap" }),
-  c("Devin (Cognition)", "cognition.ai", ["L7"], ["code"], "surface", { caseStudy: "devin-cognition-l7-agent" }),
+  c("Devin (Cognition)", "cognition.ai", ["L5", "L7"], ["code"], "agent", { caseStudy: "devin-cognition-l7-agent", note: "Pitched as an 'agent' — L5 execution wrapped in an L7 surface, thin on L1/L8." }),
   c("Adobe Firefly", "adobe.com", ["L1", "L3", "L4", "L7"], ["creative"], "fortress", { caseStudy: "adobe-firefly-licensed-data" }),
 
   // L8 Memory & Compounding
@@ -150,6 +151,7 @@ export const ARCHETYPE_LABEL: Record<Archetype, string> = {
   railroad: "Railroad",
   memory: "Memory",
   surface: "Surface-only",
+  agent: "Agent (L5+L7)",
   graveyard: "Graveyard",
 };
 
@@ -159,5 +161,6 @@ export const ARCHETYPE_COLOR: Record<Archetype, string> = {
   railroad: "hsl(var(--layer-4))",
   memory: "hsl(var(--layer-8))",
   surface: "hsl(var(--verdict-consolidating))",
+  agent: "hsl(var(--layer-5))",
   graveyard: "hsl(var(--verdict-exposed))",
 };
