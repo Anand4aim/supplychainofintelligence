@@ -186,7 +186,7 @@ const LivePage = () => {
             <p className="text-sm text-muted-foreground/80 italic mb-6">
               New analysis published as the news breaks · Weekly issue cadence · Free to read, copy, and repost anywhere.
             </p>
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={RSS_URL}
                 target="_blank"
@@ -195,9 +195,6 @@ const LivePage = () => {
               >
                 <Rss size={13} /> RSS feed
               </a>
-            </div>
-            <div className="max-w-xl">
-              <NewsletterCTA source="live-hero" compact />
             </div>
           </motion.div>
         </div>
@@ -234,7 +231,7 @@ const LivePage = () => {
               </div>
 
               <div className="space-y-12">
-                {grouped.map((group) => (
+                {grouped.map((group, gIdx) => (
                   <div key={group.key}>
                     {/* Week header */}
                     <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">
@@ -249,6 +246,69 @@ const LivePage = () => {
                     <div className="space-y-5">
                       {group.items.map((a, i) => {
                         const src = summarizeSources(a.source_urls);
+                        const isFeatured = gIdx === 0 && i === 0;
+
+                        if (isFeatured) {
+                          return (
+                            <motion.div
+                              key={a.id}
+                              initial={{ opacity: 0, y: 12 }}
+                              animate={{ opacity: 1, y: 0 }}
+                            >
+                              <Link
+                                to={`/live/${a.slug}`}
+                                className="block group relative overflow-hidden border border-foreground/15 bg-gradient-to-br from-card via-card to-secondary/40 hover:border-accent transition-all"
+                              >
+                                {/* Color rail */}
+                                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent" />
+                                <div className="p-8 md:p-12">
+                                  <div className="flex items-center gap-2 mb-5">
+                                    <span className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-accent">
+                                      ◆ Latest Issue
+                                    </span>
+                                    <span className="font-mono-marker text-[10px] text-muted-foreground">
+                                      · {new Date(a.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                                    </span>
+                                  </div>
+
+                                  <div className="flex items-center gap-3 mb-5 flex-wrap">
+                                    {a.vertical && (
+                                      <span className="font-mono-marker text-[10px] text-foreground/70 border border-foreground/25 px-2 py-0.5">
+                                        {a.vertical.toUpperCase()}
+                                      </span>
+                                    )}
+                                    <span className={`font-mono-marker text-[11px] font-bold border px-2.5 py-1 ${verdictTone(a.verdict)}`}>
+                                      {a.verdict}
+                                    </span>
+                                    {src.count > 0 && (
+                                      <span className="font-mono-marker text-[10px] text-foreground/55 inline-flex items-center gap-1">
+                                        <FileText size={10} />
+                                        {src.count} {src.count === 1 ? "source" : "sources"}
+                                        {src.outlets.length > 0 && ` · ${src.outlets.join(", ")}`}
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  <h3 className="font-display text-3xl md:text-5xl font-bold text-foreground leading-[1.05] mb-5 group-hover:text-accent transition-colors max-w-3xl">
+                                    {a.headline}
+                                  </h3>
+                                  {a.subheadline && (
+                                    <p className="text-lg md:text-xl text-foreground/85 mb-6 italic leading-snug max-w-2xl">
+                                      {a.subheadline}
+                                    </p>
+                                  )}
+                                  <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mb-8">
+                                    {a.news_summary}
+                                  </p>
+                                  <div className="inline-flex items-center gap-2 text-accent font-mono-marker text-[12px] font-bold border-b border-accent/50 group-hover:gap-3 transition-all">
+                                    Read the full teardown <ArrowRight size={13} />
+                                  </div>
+                                </div>
+                              </Link>
+                            </motion.div>
+                          );
+                        }
+
                         return (
                           <motion.div
                             key={a.id}
@@ -298,15 +358,19 @@ const LivePage = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Closing newsletter capture */}
-              <div className="mt-16">
-                <NewsletterCTA source="live-bottom" />
-              </div>
             </>
           )}
         </div>
       </section>
+
+      {/* ═══════════ INBOX CAPTURE — LAST ═══════════ */}
+      {!loading && articles.length > 0 && (
+        <section className="bg-background border-t border-foreground/10">
+          <div className="max-w-3xl mx-auto px-6 py-20">
+            <NewsletterCTA source="live-bottom" />
+          </div>
+        </section>
+      )}
     </SiteLayout>
   );
 };

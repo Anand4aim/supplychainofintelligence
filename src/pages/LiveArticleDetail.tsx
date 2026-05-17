@@ -425,18 +425,19 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
-          <ArticleFooterCTA
-            source={`live:${article.slug}`}
-            shareUrl={`https://supplychainofai.com/live/${article.slug}`}
-            shareText={article.subheadline ?? article.verdict}
-          />
-
           <div className="border-t border-foreground/10 mt-10 pt-8">
             <p className="text-sm text-muted-foreground">
               Written by the Supply Chain of Intelligence™ analysis engine, reviewed weekly.
               By <Link to="/about" className="text-accent underline">Anand Arivukkarasu</Link> · Ex-Meta Product Leader.
             </p>
           </div>
+
+          {/* Inbox capture — last */}
+          <ArticleFooterCTA
+            source={`live:${article.slug}`}
+            shareUrl={`https://supplychainofai.com/live/${article.slug}`}
+            shareText={article.subheadline ?? article.verdict}
+          />
         </div>
       </article>
     </SiteLayout>
