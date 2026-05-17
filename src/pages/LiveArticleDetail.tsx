@@ -7,7 +7,9 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 
 
-interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: string[]; }
+type SubLayer = string | { name: string; impact?: number; who?: string };
+interface LayerScore { layer: string; owned: boolean; intensity?: number; note: string; sublayers?: SubLayer[]; }
+interface CubePosition { functions?: string[]; verticals?: string[]; layers?: string[]; }
 
 interface LiveArticle {
   id: string;
