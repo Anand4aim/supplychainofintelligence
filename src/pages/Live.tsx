@@ -274,27 +274,10 @@ const LivePage = () => {
             </div>
           ) : articles.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-muted-foreground mb-6">No articles yet — the first edition publishes Monday.</p>
-              <button
-                onClick={triggerNow}
-                disabled={generating}
-                className="btn-sketch text-[11px] px-4 py-2 inline-flex items-center gap-2"
-              >
-                {generating ? <><Loader2 className="animate-spin" size={12}/> Scanning news & analyzing…</> : "Generate the first article now"}
-              </button>
-              <p className="text-xs text-muted-foreground/70 mt-3">Takes ~30 seconds</p>
+              <p className="text-muted-foreground">No articles yet — the first edition publishes Monday.</p>
             </div>
           ) : (
             <>
-              <div className="flex justify-end mb-6">
-                <button
-                  onClick={triggerNow}
-                  disabled={generating}
-                  className="font-mono-marker text-[10px] text-muted-foreground hover:text-accent inline-flex items-center gap-1.5 disabled:opacity-50"
-                >
-                  {generating ? <><Loader2 className="animate-spin" size={11}/> generating…</> : "+ generate now"}
-                </button>
-              </div>
 
               <div className="space-y-12">
                 {grouped.map((group, gIdx) => (
