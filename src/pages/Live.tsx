@@ -75,7 +75,7 @@ const LivePage = () => {
               <p className="font-sketch text-lg font-bold text-accent">— The Live Feed</p>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
-              Every Monday. One launch. <br />Scored on the 10 layers.
+              Every Monday. One launch. <br />Scored on the 10 layers, 50 sublayers, and the 10 laws.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
               An always-on analysis of the most strategically important AI move each week —
