@@ -348,6 +348,21 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
+          {article.source_urls?.length > 0 && (
+            <section className="mb-10">
+              <p className="font-sketch text-base font-bold text-accent mb-3">— Sources</p>
+              <ul className="space-y-1.5">
+                {article.source_urls.map((u, i) => (
+                  <li key={i}>
+                    <a href={u} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 text-[13px] text-foreground/75 hover:text-accent break-all">
+                      <ExternalLink size={11} className="mt-1 shrink-0"/> {u}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <div className="border-t border-foreground/10 pt-8">
             <p className="text-sm text-muted-foreground">
               Written by the Supply Chain of Intelligence™ analysis engine, reviewed weekly.
