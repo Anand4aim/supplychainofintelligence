@@ -485,48 +485,40 @@ const Index = () => {
             </div>
           </motion.div>
 
-          {/* Dark quote slab */}
+          {/* Closing pull quote — editorial light */}
           <motion.div {...fadeIn}>
-            <div className="relative bg-foreground rounded-3xl p-10 md:p-16 overflow-hidden">
-              <div
-                className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none"
-                style={{ background: "hsl(var(--accent) / 0.18)" }}
-              />
-              <div
-                className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"
-                style={{ background: "hsl(var(--layer-2) / 0.15)" }}
-              />
-
-              <div className="relative z-10 max-w-3xl mx-auto">
-                <blockquote className="font-display text-xl md:text-3xl text-background leading-snug text-center">
+            <div className="relative max-w-3xl mx-auto pt-2">
+              <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-accent" />
+              <div className="pl-8 md:pl-10">
+                <blockquote className="font-display text-xl md:text-2xl text-foreground leading-snug italic">
                   "JTBD answers{" "}
-                  <span className="italic" style={{ color: "hsl(var(--accent))" }}>
+                  <span className="not-italic font-bold text-foreground">
                     why a user will hire your product
                   </span>
                   . The Supply Chain of Intelligence answers{" "}
-                  <span className="italic" style={{ color: "hsl(var(--layer-2))" }}>
+                  <span className="not-italic font-bold text-accent">
                     why OpenAI, Google, Anthropic and other AI juggernauts won't erase it
                   </span>
                   . You need both — if you do it well, you can ride the wave without getting
                   crushed in it."
                 </blockquote>
-                <div className="mt-8 md:mt-10 flex flex-col items-center">
-                  <div className="w-12 h-px bg-background/30 mb-4" />
-                  <cite className="font-mono-marker text-[11px] uppercase tracking-[0.3em] text-background/60 font-bold not-italic">
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="h-px w-6 bg-border" />
+                  <cite className="font-mono-marker text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-bold not-italic">
                     Anand Arivukkarasu
                   </cite>
                 </div>
 
-                <div className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
                   <Link
                     to="/framework"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-accent-foreground font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:opacity-90 transition-opacity"
                   >
                     Read the full Framework <ArrowRight size={15} />
                   </Link>
                   <Link
                     to="/market-map"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-background/25 text-background font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:bg-background/5 transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border text-foreground font-mono-marker text-[12px] uppercase tracking-[0.18em] font-bold hover:bg-secondary transition-colors"
                   >
                     See the Market Map →
                   </Link>
