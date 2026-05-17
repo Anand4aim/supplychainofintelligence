@@ -220,8 +220,8 @@ const Predictions = () => {
         ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
           {filtered.map((p, i) => {
-              const meta = STATUS_META[p.status];
-              const Icon = meta.icon;
+              const sMeta = STRUCTURAL_META[p.structural];
+              const tMeta = TIMING_META[p.timing];
               return (
                 <motion.li
                   key={p.id}
@@ -234,25 +234,21 @@ const Predictions = () => {
                 >
                   <span
                     className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full border-2 border-background"
-                    style={{ background: meta.color }}
+                    style={{ background: sMeta.color }}
                     aria-hidden
                   />
-                  <div className="flex flex-wrap items-center gap-3 text-xs">
-                    <time className="font-mono-marker text-foreground/60">
+                  <div className="flex flex-wrap items-center gap-2 text-xs">
+                    <time className="font-mono-marker text-foreground/60 mr-1">
                       {fmtDate(p.date)}
                     </time>
-                    <span
-                      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-marker font-semibold"
-                      style={{ background: meta.bg, color: meta.color }}
-                    >
-                      <Icon size={12} />
-                      {meta.label}
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {p.layers.map((l) => (
-                        <LayerTag key={l} id={l} variant="chip" link />
-                      ))}
-                    </div>
+                    <Pill meta={sMeta} />
+                    <Pill meta={tMeta} />
+                  </div>
+
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {p.layers.map((l) => (
+                      <LayerTag key={l} id={l} variant="chip" link />
+                    ))}
                   </div>
 
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mt-3">
@@ -273,6 +269,15 @@ const Predictions = () => {
                       <p className="text-foreground/85 leading-relaxed">{p.outcome}</p>
                     </div>
                   </div>
+
+                  {p.timingNote && (
+                    <div className="mt-4 pl-3 border-l-2 text-sm text-foreground/70 italic" style={{ borderColor: tMeta.color }}>
+                      <span className="font-mono-marker not-italic text-[10px] uppercase tracking-wider mr-2" style={{ color: tMeta.color }}>
+                        Timing note
+                      </span>
+                      {p.timingNote}
+                    </div>
+                  )}
 
                   <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
                     <Link
