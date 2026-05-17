@@ -1,56 +1,113 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Clock, AlertCircle, XCircle, Search } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  AlertCircle,
+  XCircle,
+  Search,
+  Zap,
+  TrendingDown,
+  Minus,
+  HelpCircle,
+} from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import {
   PREDICTIONS,
-  PREDICTIONS_BY_STATUS,
+  PREDICTIONS_BY_STRUCTURAL,
   type Prediction,
-  type PredictionStatus,
+  type StructuralStatus,
+  type TimingStatus,
 } from "@/data/predictions";
 
 /**
  * /predictions — The track record.
  *
- * The single page that converts "smart lens" into "lens with a public scorecard".
- * Every entry has: date the call was made, the layer exposure that drove it,
- * what happened since, a status, and a link into the deep analysis. Optional
- * external source link for falsifiability.
+ * Two-axis scoring: every call is judged on STRUCTURAL (did the framework
+ * identify the right layer exposure?) and TIMING (did it arrive on the
+ * expected horizon?). Conflating those two is the most common way a
+ * framework loses credibility — separating them is how it earns trust.
  */
 
-const STATUS_META: Record<
-  PredictionStatus,
-  { label: string; icon: typeof CheckCircle2; color: string; bg: string }
-> = {
+type PillMeta = {
+  label: string;
+  icon: typeof CheckCircle2;
+  color: string;
+  bg: string;
+};
+
+const STRUCTURAL_META: Record<StructuralStatus, PillMeta> = {
   confirmed: {
-    label: "Confirmed",
+    label: "Structural · Confirmed",
     icon: CheckCircle2,
     color: "hsl(var(--layer-1))",
     bg: "hsl(var(--layer-1) / 0.08)",
   },
   "playing-out": {
-    label: "Playing out",
+    label: "Structural · Playing out",
     icon: Clock,
     color: "hsl(var(--layer-4))",
     bg: "hsl(var(--layer-4) / 0.08)",
   },
   pending: {
-    label: "Pending",
+    label: "Structural · Pending",
     icon: AlertCircle,
     color: "hsl(var(--layer-6))",
     bg: "hsl(var(--layer-6) / 0.08)",
   },
   wrong: {
-    label: "Wrong",
+    label: "Structural · Wrong",
     icon: XCircle,
     color: "hsl(var(--destructive))",
     bg: "hsl(var(--destructive) / 0.08)",
   },
 };
+
+const TIMING_META: Record<TimingStatus, PillMeta> = {
+  "on-pace": {
+    label: "Timing · On pace",
+    icon: Minus,
+    color: "hsl(var(--layer-3))",
+    bg: "hsl(var(--layer-3) / 0.08)",
+  },
+  faster: {
+    label: "Timing · Faster than expected",
+    icon: Zap,
+    color: "hsl(var(--layer-7))",
+    bg: "hsl(var(--layer-7) / 0.08)",
+  },
+  slower: {
+    label: "Timing · Slower than expected",
+    icon: TrendingDown,
+    color: "hsl(var(--layer-5))",
+    bg: "hsl(var(--layer-5) / 0.08)",
+  },
+  "too-early": {
+    label: "Timing · Too early to score",
+    icon: HelpCircle,
+    color: "hsl(var(--layer-6))",
+    bg: "hsl(var(--layer-6) / 0.08)",
+  },
+};
+
+const Pill = ({ meta }: { meta: PillMeta }) => {
+  const Icon = meta.icon;
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-marker text-[10px] font-semibold whitespace-nowrap"
+      style={{ background: meta.bg, color: meta.color }}
+    >
+      <Icon size={11} />
+      {meta.label}
+    </span>
+  );
+};
+
 
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
@@ -61,8 +118,9 @@ const fmtDate = (iso: string) =>
 
 const Predictions = () => {
   const total = PREDICTIONS.length;
-  const confirmed = PREDICTIONS_BY_STATUS.confirmed.length;
-  const playing = PREDICTIONS_BY_STATUS["playing-out"].length;
+  const confirmed = PREDICTIONS_BY_STRUCTURAL.confirmed.length;
+  const playing = PREDICTIONS_BY_STRUCTURAL["playing-out"].length;
+  const fasterThanExpected = PREDICTIONS.filter((p) => p.timing === "faster").length;
 
   const [query, setQuery] = useState("");
 
@@ -75,7 +133,7 @@ const Predictions = () => {
     const q = query.trim().toLowerCase();
     if (!q) return sorted;
     return sorted.filter((p) =>
-      [p.subject, p.call, p.outcome, ...p.layers, p.status]
+      [p.subject, p.call, p.outcome, ...p.layers, p.structural, p.timing]
         .join(" ")
         .toLowerCase()
         .includes(q),
@@ -111,15 +169,20 @@ const Predictions = () => {
           Predictions.
         </motion.h1>
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
-          Every structural call this framework has made, dated, tagged to the layer
-          exposure that drove it, with what has happened since and a link to the
-          full analysis. A framework without a scorecard is a guess.
+          Every structural call this framework has made, dated, tagged to the
+          layer exposure that drove it, and scored on two independent axes:
+          <strong className="text-foreground"> Structural</strong> (did the lens
+          identify the right moat or exposure?) and
+          <strong className="text-foreground"> Timing</strong> (did it arrive
+          on the expected horizon?). Conflating those two is how frameworks
+          lose credibility. Separating them is how this one earns it.
         </p>
 
-        <div className="mt-8 grid grid-cols-3 gap-4 max-w-xl">
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl">
           <Stat label="Total calls" value={total} />
-          <Stat label="Confirmed" value={confirmed} color="hsl(var(--layer-1))" />
-          <Stat label="Playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Structural confirmed" value={confirmed} color="hsl(var(--layer-1))" />
+          <Stat label="Structural playing out" value={playing} color="hsl(var(--layer-4))" />
+          <Stat label="Faster than expected" value={fasterThanExpected} color="hsl(var(--layer-7))" />
         </div>
 
         {/* Search + quick-jump */}
@@ -162,8 +225,8 @@ const Predictions = () => {
         ) : (
         <ol className="relative border-l border-foreground/15 ml-3">
           {filtered.map((p, i) => {
-              const meta = STATUS_META[p.status];
-              const Icon = meta.icon;
+              const sMeta = STRUCTURAL_META[p.structural];
+              const tMeta = TIMING_META[p.timing];
               return (
                 <motion.li
                   key={p.id}
@@ -176,25 +239,21 @@ const Predictions = () => {
                 >
                   <span
                     className="absolute -left-[7px] top-1 w-3.5 h-3.5 rounded-full border-2 border-background"
-                    style={{ background: meta.color }}
+                    style={{ background: sMeta.color }}
                     aria-hidden
                   />
-                  <div className="flex flex-wrap items-center gap-3 text-xs">
-                    <time className="font-mono-marker text-foreground/60">
+                  <div className="flex flex-wrap items-center gap-2 text-xs">
+                    <time className="font-mono-marker text-foreground/60 mr-1">
                       {fmtDate(p.date)}
                     </time>
-                    <span
-                      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-marker font-semibold"
-                      style={{ background: meta.bg, color: meta.color }}
-                    >
-                      <Icon size={12} />
-                      {meta.label}
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {p.layers.map((l) => (
-                        <LayerTag key={l} id={l} variant="chip" link />
-                      ))}
-                    </div>
+                    <Pill meta={sMeta} />
+                    <Pill meta={tMeta} />
+                  </div>
+
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {p.layers.map((l) => (
+                      <LayerTag key={l} id={l} variant="chip" link />
+                    ))}
                   </div>
 
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mt-3">
@@ -215,6 +274,15 @@ const Predictions = () => {
                       <p className="text-foreground/85 leading-relaxed">{p.outcome}</p>
                     </div>
                   </div>
+
+                  {p.timingNote && (
+                    <div className="mt-4 pl-3 border-l-2 text-sm text-foreground/70 italic" style={{ borderColor: tMeta.color }}>
+                      <span className="font-mono-marker not-italic text-[10px] uppercase tracking-wider mr-2" style={{ color: tMeta.color }}>
+                        Timing note
+                      </span>
+                      {p.timingNote}
+                    </div>
+                  )}
 
                   <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
                     <Link
@@ -240,14 +308,27 @@ const Predictions = () => {
         </ol>
         )}
 
-        <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02]">
+        <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02] space-y-4">
           <h3 className="font-display text-xl font-semibold text-foreground">
-            On honesty
+            On honesty — structural vs. timing
           </h3>
-          <p className="mt-2 text-foreground/75 leading-relaxed">
+          <p className="text-foreground/75 leading-relaxed">
+            A framework's job is to identify <em>where</em> value compresses and
+            <em> where</em> it accrues. Its job is not to predict <em>when</em> —
+            that depends on frontier-model release cadence, regulatory shocks,
+            distribution deals, and cap-table accidents the lens does not see.
+          </p>
+          <p className="text-foreground/75 leading-relaxed">
+            So every call is scored twice. A <strong className="text-foreground">structural</strong> call
+            can be confirmed even when <strong className="text-foreground">timing</strong> is faster
+            (Harvey, Jasper, Devin) or slower than expected. Christensen, Porter, and
+            JTBD all called direction correctly and timing wrong on multiple cases.
+            Naming the variable the framework can't control is how it stays
+            intellectually serious — and how it survives the cases it gets wrong.
+          </p>
+          <p className="text-foreground/75 leading-relaxed">
             Calls stay on this page whether they age well or not. Anything that
-            turns out wrong is marked wrong, not deleted. The framework earns its
-            keep one falsifiable call at a time.
+            turns out wrong is marked wrong, not deleted.
           </p>
         </div>
       </section>
