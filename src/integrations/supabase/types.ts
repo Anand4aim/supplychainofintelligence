@@ -190,6 +190,48 @@ export type Database = {
         }
         Relationships: []
       }
+      remaster_queue: {
+        Row: {
+          created_at: string
+          error: string | null
+          id: string
+          notes: string | null
+          priority: number
+          processed_at: string | null
+          result: Json | null
+          status: string
+          target_id: string
+          target_label: string
+          target_type: string
+        }
+        Insert: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          notes?: string | null
+          priority?: number
+          processed_at?: string | null
+          result?: Json | null
+          status?: string
+          target_id: string
+          target_label: string
+          target_type: string
+        }
+        Update: {
+          created_at?: string
+          error?: string | null
+          id?: string
+          notes?: string | null
+          priority?: number
+          processed_at?: string | null
+          result?: Json | null
+          status?: string
+          target_id?: string
+          target_label?: string
+          target_type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
