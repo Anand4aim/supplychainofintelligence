@@ -1,83 +1,82 @@
-## The strategic problem
+## Goal
 
-Today every verdict, chip, and case study stops at the **layer** ("L1 + L5"). That's the same vocabulary every analyst, blog post, and pitch deck already uses. It signals category, not insight.
+Turn the site into a **distribution engine**. Every key visual gets a watermarked PNG export. Every key argument gets a "copy as LinkedIn snippet" button. The Apollo case study becomes the 60-second explainer that makes the whole framework click.
 
-The framework's actual edge is the **50 sublayers** — saying "Harvey is **L1b proprietary data + L5b vertical agents**" is a different claim than "Harvey is L1+L5." The first is auditable. The second is a slogan.
+## Three workstreams
 
-This is also a defensive moat for the site itself: anyone can copy "10 layers," but the only way to copy 50 sublayers-with-verdicts is to actually do the work.
+### 1. Watermark + image export system
 
-## Notation decision (please confirm)
+**New primitive:** `<ExportablePng>` wrapper component that:
+- Wraps any visual block (the matrix on Index, the Intelligence Cube, the cube projection, layer diagrams)
+- Renders a small "Download PNG" button (top-right, ghost style, only visible on hover on desktop, always on mobile)
+- Uses `html-to-image` to rasterize the wrapped DOM to PNG
+- Appends a watermark strip at the bottom before download: `Source: The Supply Chain of Intelligence™ (supplychainofai.com)` in mono font on a thin band matching the layer color spectrum
 
-Our existing sublayer IDs in `src/data/layers.ts` are **letter-suffixed**: `L1a, L1b, L1c, L1d, L1e` (5 per layer). You wrote "L1.2 / L2.4" which suggests numeric. Two options:
+**Static images** (OG cards, public/*.png, hero images): regenerate or post-process to bake the same watermark into the bottom-right corner at ~50% opacity.
 
-- **Keep letters** (`L1b`, `L5a`) — already shipped, already in `DefinedTerm` JSON-LD, already on every layer detail page. Zero migration. Recommended.
-- **Switch to numeric** (`L1.2`, `L5.1`) — cleaner-looking but breaks every existing URL anchor, every JSON-LD `termCode`, llms.txt, and the structured-data already indexed by GSC.
+**Where it gets wired up:**
+- Matrix table on `/` (Index)
+- Intelligence Cube component (every page that renders it)
+- Cube 2D projection on case studies / live articles
+- Sublayer Impact Map
+- Layer detail page diagrams
+- OG images (static regen)
 
-I recommend **keeping letters**. If you want a numeric *display* later we can render `L1b` as `L1.2` in the UI without changing IDs.
+### 2. Copy-as-snippet system
 
-## The architecture
+**New primitive:** `<CopySnippet>` button component
+- Accepts a `text` prop (the pre-formatted ~120-150 word LinkedIn-ready snippet)
+- On click → `navigator.clipboard.writeText(text + attribution footer)` → toast "Copied — ready to paste on LinkedIn"
+- Attribution always: `\n\nSource: The Supply Chain of Intelligence™ (supplychainofai.com/[path])`
+- Variant: `<CopyQuote>` for short pull-quotes (tweet-sized)
 
-```text
-src/data/layers.ts         ← single source of truth (50 sublayers, already exists)
-src/data/sublayerIndex.ts  ← NEW: typed registry + helpers
-   SUBLAYER_BY_ID["L1b"]  → { id, name, layerId, defensible, color, label }
-   formatSublayers(["L1b","L5a"]) → "L1b Proprietary Data + L5b Vertical Agents"
+**Type additions:**
+- Add `linkedin_snippet?: string` to `CaseStudy`, `Prediction`, `LawEssay` types
+- Backfill snippets for: all existing case studies, all predictions, all 3 laws
 
-CaseStudy type:
-   layers:    LayerId[]        ← keep (for back-compat, filters, market map)
-   sublayers: SublayerId[]     ← NEW canonical field, drives every chip
-   verdict:   string           ← rewritten to cite sublayers, not layers
-   layer_scores[].sublayers[]  ← already exists, but free-text. Add canonical `id`.
+**Where it gets wired up:**
+- Case study detail pages (next to share button)
+- Prediction cards (per prediction)
+- Law essay pages
+- Layer detail pages (copy the layer definition)
+- Core principle blocks on `/start`
 
-<LayerTag> component  → extend to <SublayerTag id="L1b" />
-                        same color as parent layer, smaller chip
-```
+### 3. Apollo case study — the canonical SaaSpocalypse-survivor story
 
-## What changes on screen
+Why Apollo wins as the explainer: it's a **counter-intuitive win**, not just another death. Jasper-died, Chegg-eaten, etc. are all "look at the corpse" stories. Apollo is "look at the survivor who *gave up features* to win." That's the framework doing real work.
 
-1. **Verdict chips** (ProofOfCorpus, CaseStudyCard, Analysis grid, hero):
-   - Before: `Fortress · L1b + L5 + L8`  (mixed, accidental)
-   - After:  `Fortress · L1b + L5b + L8a` (always sublayer-precise)
+**Narrative arc (Anand's framing, layer-mapped):**
+- **Started:** Apollo had L1b moat (300M contact profiles, B2B data)
+- **Mid-2010s mistake:** Built up the SaaS stack — L5 (email sequences, dialer, workflows), L7 (full UI app), L8 (the "Apollo platform")
+- **The SaaSpocalypse threat:** As ChatGPT/Claude become L2 command centers, marketers don't want to log into 10 apps. The L7/L8 surface evaporates.
+- **The pivot:** Killed nothing visible, but bet on **becoming the L1 connector to L2**. When you ask Claude "find 50 marketing leaders at Series B startups," Apollo's MCP connector serves the answer. Free distribution. They ride on top of Claude instead of competing with it.
+- **Verdict:** L1 + L2-connector hybrid. The thin-stack survivor. Demonstrates Law of Layer Compression in real time.
 
-2. **Case study pages** — verdict line, "Who wins", and `layer_scores` annotations all reference canonical sublayer IDs with hover/click → sublayer definition.
+**Implementation:**
+- Full case study entry in `src/data/caseStudies.ts` with `layer_scores`, `cube_position`, `timeline`, `who_wins`/`who_loses`, `linkedin_snippet`, `pull_quote`, sources
+- Feature prominently on `/start` as the 60-second explainer (replace or supplement current hero example)
+- Cross-link from Law of Layer Compression essay and from L1 + L2 layer pages
+- Add to LinkedIn snippet backfill so it's the first thing people copy
 
-3. **Homepage ProofOfCorpus** — the 6 featured cards each show a sublayer-level verdict, not layer-level.
+## Execution order (this loop)
 
-4. **Market Map** — archetypes get sublayer signatures (e.g., Fortress = "L1b + L3 + L5b + L8a-c").
+1. Install `html-to-image` (small dep, ~12kb gzipped)
+2. Build `<ExportablePng>` and `<CopySnippet>` primitives
+3. Add `linkedin_snippet` field to types; write the Apollo case study with full snippet
+4. Wire `<ExportablePng>` into the matrix on Index (highest-leverage visual)
+5. Wire `<CopySnippet>` into case study detail + prediction cards
+6. Feature Apollo on `/start`
+7. Update memory with the "Apollo is the canonical explainer" rule + watermark/snippet conventions
 
-5. **Framework page (`/framework`)** — list view already shows sublayers; add anchor links so verdict chips elsewhere deep-link to the right sublayer block (e.g., `/framework/l1-data#l1b`).
+## Out of scope this loop
 
-## SEO upside
+- Regenerating all static OG/hero PNGs with baked watermarks (separate batch job — flag for follow-up)
+- Backfilling LinkedIn snippets for *every* prediction and law (will do the top 3-5 each; flag rest)
+- A "copy entire article" button (rejected by analysis — snippet is the right format)
 
-Each sublayer becomes a citable atom:
-- `DefinedTerm` JSON-LD already emits per-sublayer entries on layer pages — sublayer chips with stable anchors make them linkable from anywhere.
-- llms.txt gets a "Sublayer index" section so LLMs can answer "what is L1b?" with our wording.
-- New long-tail queries: "proprietary data moat AI L1b", "vertical agent layer L5b", etc.
+## Technical notes
 
-## Phased rollout (so we don't break the site mid-flight)
-
-**Phase 1 — Foundation (no visible change yet)**
-- Build `src/data/sublayerIndex.ts` with typed IDs and helpers.
-- Add `<SublayerTag>` component.
-- Add optional `sublayers?: SublayerId[]` to `CaseStudy` type (back-compat).
-
-**Phase 2 — Flagship pass (5 case studies + homepage)**
-- Rewrite verdicts + chips for: Jasper, Harvey, Sierra, Devin, Glean, Bloomberg (the homepage features).
-- Update ProofOfCorpus to render sublayer chips.
-- Ship and look at it together before going wider.
-
-**Phase 3 — Full corpus**
-- Walk the remaining ~22 case studies, adding canonical `sublayers` arrays + rewriting verdict + `layer_scores.sublayers.id`.
-- Update Market Map archetypes.
-- Update llms.txt sublayer section + sitemap anchors.
-
-**Phase 4 — Editorial enforcement**
-- Add a lint script (`scripts/sublayer-lint.ts`) that fails CI if any case study cites a layer in `verdict` without a corresponding entry in `sublayers[]`. Keeps future you honest.
-
-## Open questions before I start
-
-1. **Notation:** confirm letters (`L1b`) vs numeric display (`L1.2`).
-2. **Scope of Phase 2:** the 6 homepage-featured studies, or a different starter set?
-3. **Verdict voice:** should chips read `L1b Proprietary Data` (descriptive) or just `L1b` (terse, hover for name)? Recommend descriptive on cards, terse inside dense tables.
-
-Reply with answers to 1–3 and I'll execute Phase 1+2 in one pass.
+- `html-to-image` (not `dom-to-image`) — better React/SVG/CSS-var support, actively maintained
+- Watermark strip rendered as a real DOM node appended to the clone before rasterization (cleaner than canvas post-processing, respects layer colors)
+- Toast via existing `sonner` setup
+- All new components use semantic tokens only; no hardcoded colors
