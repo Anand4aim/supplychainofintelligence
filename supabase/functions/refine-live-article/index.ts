@@ -2,6 +2,7 @@
 // up to N rounds. Each round logged to article_revisions. Final accepted draft
 // is written back to live_articles.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { FRAMEWORK_CONTEXT } from "../_shared/framework-context.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -16,26 +17,33 @@ const MODELS = {
 const MAX_ROUNDS = 2;
 const ACCEPT_THRESHOLD = 8; // both critics ≥ 8/10 → stop early
 
-const CRITIC_A_SYSTEM = `You are a brutally honest senior product/strategy editor reviewing a Stratechery-grade analysis. Your job is to enforce the DEPTH RULES and TONE GUARDRAILS:
+const CRITIC_A_SYSTEM = `${FRAMEWORK_CONTEXT}
 
-DEPTH: every claim must answer "why" at least twice, name specific companies/products/contracts, connect to unit economics, surface the non-obvious, take a position. No "remains to be seen". Builder language: roadmap, GTM, packaging, eval, retention, multi-tenant.
+=== YOUR ROLE: CRITIC A — DEPTH & TONE ENFORCER ===
 
-TONE: factual & layer-based. AVOID loaded words (fortress, untouchable, crushed, killer, doomed, explosive, massive, trojan horse, war chest, eaten). PREFER structural language (stacked, contested, under pressure, shifts where value sits).
+You are a brutally honest senior product/strategy editor reviewing a Stratechery-grade analysis against the FRAMEWORK CONTEXT above. Enforce:
+- DEPTH RULES (why-twice, specific names, unit economics, non-obvious, takes a position, builder language).
+- TONE GUARDRAILS (no loaded words; prefer structural hedged language).
+- SCORING DISCIPLINE (most layers intensity 0; ≤5 layers > 0; ≤2 at intensity 3; sublayer counts respect intensity).
+- LAYER NAMES (use canonical names from the framework — flag any wrong name like "L1 Cloud" or "L4 Agents").
+- "AGENT" CONVENTION (must be decoded into L5+L7(+L8), never used as a layer).
 
-SCORING DISCIPLINE: most layers should be intensity 0. At most 5 layers > 0. At most 2 layers at intensity 3. Sublayers count must respect intensity (1→max 1, 2→max 2, 3→max 3).
+Return a JSON critique. Be specific — quote the offending sentence and propose a tighter rewrite that respects the framework vocabulary.`;
 
-Return a JSON critique. Be specific — quote the offending sentence and propose a tighter rewrite.`;
+const CRITIC_B_SYSTEM = `${FRAMEWORK_CONTEXT}
 
-const CRITIC_B_SYSTEM = `You are a senior strategy analyst reviewing a Stratechery-grade piece for STRUCTURAL RIGOR.
+=== YOUR ROLE: CRITIC B — STRUCTURAL RIGOR ===
 
-Check: (1) Are the 3 laws applied by NAME and by MECHANISM in structural_take? Law 1 = value to scarcest layer. Law 2 = thin wrappers displaced, deep stacks compound. Law 3 = distribution beats intelligence until intelligence becomes distribution.
+You are a senior strategy analyst reviewing a Stratechery-grade piece for STRUCTURAL RIGOR against the FRAMEWORK CONTEXT above. Check:
+(1) Are the 3 Laws cited by their CANONICAL titles (Intelligence Commoditizes Downward / Value Accrues at Bottlenecks / Surface Captures Attention, Chain Captures Power) and applied by mechanism in structural_take?
 (2) Is the scarcest layer being claimed actually named?
 (3) Is the counter_thesis genuinely steelmanned, not a strawman?
 (4) Are second_order_effects 2-3 moves downstream, not obvious first-order takes?
 (5) Are who_wins / who_loses NAMED specific companies with concrete reasons?
-(6) Does cube_position match layers with intensity > 0?
+(6) Does cube_position.layers match layers with intensity > 0 in layer_scores?
+(7) Are the Defensible Triangle slices (L1b / L5a,b,d / L8c,d,e) credited correctly when claimed?
 
-Return a JSON critique with specific line-level issues and proposed fixes.`;
+Return a JSON critique with specific line-level issues and proposed fixes that respect framework vocabulary.`;
 
 const CRITIQUE_SCHEMA = {
   name: "critique",
@@ -65,13 +73,15 @@ const CRITIQUE_SCHEMA = {
   }
 };
 
-const ENHANCER_SYSTEM = `You are the lead analyst rewriting your own Stratechery-grade analysis using critic feedback. You will receive the current draft and two structured critiques. Apply the fixes that are valid; ignore fixes that would weaken the piece. Preserve layer_scores math unless a critic explicitly challenges intensity numbers with reasoning.
+const ENHANCER_SYSTEM = `${FRAMEWORK_CONTEXT}
+
+=== YOUR ROLE: ENHANCER (LEAD ANALYST, REVISION PASS) ===
+
+You are the lead analyst rewriting your own Stratechery-grade analysis using critic feedback. You will receive the current draft and two structured critiques. Apply the fixes that are valid; ignore fixes that would weaken the piece. Preserve layer_scores math unless a critic explicitly challenges intensity numbers with reasoning.
 
 Return the FULL framework analysis in the same schema as the original. Every required field. Do not skip fields you didn't change — return them verbatim.
 
-DEPTH RULES (unchanged): why-twice on every claim, specific companies/products, unit economics, non-obvious takes, declarative positions, builder language.
-TONE GUARDRAILS (unchanged): factual layer-based language, no loaded words.
-SCORING DISCIPLINE (unchanged): most layers intensity 0, ≤5 layers > 0, ≤2 layers at 3, sublayer counts respect intensity.`;
+All revisions MUST conform to the FRAMEWORK CONTEXT above: canonical layer names (L1 Data, L4 Access, L8 Memory, etc.), canonical Law titles, scoring discipline, tone guardrails, "agent" decoded as L5+L7(+L8).`;
 
 // Same analysis schema as generate-live-article (kept in sync manually — small).
 const ANALYSIS_SCHEMA = {
