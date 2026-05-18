@@ -435,6 +435,40 @@ const Predictions = () => {
             turns out wrong is marked wrong, not deleted.
           </p>
         </div>
+
+        <div className="mt-8 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.015] space-y-3 text-[13.5px] text-foreground/70 leading-relaxed">
+          <h3 className="font-mono-marker text-[10px] uppercase tracking-wider text-foreground/55">
+            Disclaimer · editorial use only
+          </h3>
+          <p>
+            All company, product, and service names referenced on this page
+            (and across <em>The Supply Chain of Intelligence™</em>) are used
+            <strong className="text-foreground/85"> descriptively, for
+            editorial analysis</strong>, and remain the trademarks of their
+            respective owners. Their inclusion does not imply endorsement,
+            affiliation, or sponsorship — in either direction.
+          </p>
+          <p>
+            Every reference is drawn from <strong className="text-foreground/85">
+            publicly reported information</strong> — press, earnings, primary
+            documents, official blogs — and treated as a journalistic / blog
+            source. Figures (valuations, ARR, headcount, funding) are reported
+            as of the cited date and may change. We are not responsible for the
+            accuracy of third-party reporting, nor for the real-world business
+            outcomes, financings, or operating decisions of any company named.
+          </p>
+          <p>
+            We are not ranking companies as "good" or "bad," "winners" or
+            "losers." This is a <strong className="text-foreground/85">lens</strong>,
+            not a verdict. The framework identifies <em>layer exposure</em> —
+            which squares a company is sitting on. The company itself decides
+            what to do about it. That's the whole point of the counter-move.
+          </p>
+          <p className="text-foreground/55 italic">
+            "The Chess Board of Intelligence" is a descriptive heading within
+            this analysis. It is not claimed as a trademark.
+          </p>
+        </div>
       </section>
     </SiteLayout>
   );
