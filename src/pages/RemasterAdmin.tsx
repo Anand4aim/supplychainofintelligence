@@ -179,35 +179,23 @@ export default function RemasterAdmin() {
               }>+ All Live articles ({articles.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(CASE_STUDIES.filter((c) => !isQueued("case_study", c.slug))
-                  .map((c) => ({ target_type: "case_study", target_id: c.slug, target_label: c.title })))
+                  .map((c) => ({ target_type: "case_study", target_id: c.slug, target_label: c.title, content: caseStudyToText(c) })))
               }>+ All Case studies ({CASE_STUDIES.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(LAW_ESSAYS.filter((e) => !isQueued("law_essay", e.slug))
-                  .map((e) => ({ target_type: "law_essay", target_id: e.slug, target_label: e.title })))
+                  .map((e) => ({ target_type: "law_essay", target_id: e.slug, target_label: e.title, content: lawEssayToText(e) })))
               }>+ All Law essays ({LAW_ESSAYS.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(LAYERS.filter((l) => !isQueued("layer", l.id))
-                  .map((l) => ({ target_type: "layer", target_id: l.id, target_label: `${l.id} ${l.name}` })))
+                  .map((l) => ({ target_type: "layer", target_id: l.id, target_label: `${l.id} ${l.name}`, content: layerToText(l) })))
               }>+ All Layer pages ({LAYERS.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(PREDICTIONS.filter((p: any) => !isQueued("prediction", p.id ?? p.slug))
-                  .map((p: any) => ({ target_type: "prediction", target_id: p.id ?? p.slug, target_label: p.title ?? p.id ?? p.slug })))
+                  .map((p: any) => ({ target_type: "prediction", target_id: p.id ?? p.slug, target_label: p.title ?? p.id ?? p.slug, content: genericToText((p as any).title ?? (p.id ?? p.slug), p) })))
               }>+ All Predictions ({PREDICTIONS.length})</Button>
-              <Button variant="outline" onClick={() =>
-                enqueue([
-                  { target_type: "page", target_id: "homepage", target_label: "Homepage (/)", notes: "Hero, copy, CTAs" },
-                  { target_type: "page", target_id: "framework", target_label: "Framework (/framework)" },
-                  { target_type: "page", target_id: "about", target_label: "About (/about)" },
-                  { target_type: "page", target_id: "for-product-leaders", target_label: "For Product Leaders" },
-                  { target_type: "page", target_id: "start", target_label: "Start (/start)" },
-                  { target_type: "page", target_id: "faq", target_label: "FAQ (/faq)" },
-                  { target_type: "page", target_id: "market-map", target_label: "Market Map" },
-                ])
-              }>+ Key static pages</Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              Note: "page" items are placeholders — paste their text into <code>notes</code> on the row before processing
-              (or skip them and use Lovable to refactor pages directly).
+              Bulk-enqueued items include their content payload, so the every-6h cron job can process them automatically — no need to keep this tab open.
             </p>
           </section>
 
