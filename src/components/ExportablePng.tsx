@@ -100,15 +100,12 @@ const ExportablePng = ({
         style={{ background: exportBackground }}
         className="relative overflow-hidden rounded-2xl"
       >
-        {children}
-
         {/*
-          Inline watermark band — flows at the bottom of the ref container
-          (which shares the card's background + rounded corners), so it
-          reads as part of the card and never overlaps content.
+          Inline watermark band — flows at the TOP of the ref container so
+          it reads as part of the card and never overlaps content.
         */}
         <div
-          className="flex items-center justify-between gap-3 px-4 py-2 border-t"
+          className="flex items-center justify-between gap-3 px-4 py-2 border-b"
           style={{
             borderColor: "hsl(var(--foreground) / 0.08)",
             background: "hsl(var(--background) / 0.6)",
@@ -145,6 +142,8 @@ const ExportablePng = ({
             </span>
           </div>
         </div>
+
+        {children}
       </div>
     </div>
   );
