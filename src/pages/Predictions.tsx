@@ -192,8 +192,8 @@ const Predictions = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Predictions — The Supply Chain of Intelligence™ track record"
-        description="Public, dated, layer-tagged calls made through the 10-layer generative AI framework — Jasper, Chegg, Harvey, Sierra, Glean, Cursor, Perplexity, Klarna, Tesla/Waymo, BloombergGPT and more — scored on structural accuracy and timing."
+        title="The Board — AI Predictions & Track Record | Supply Chain of Intelligence™"
+        description="The Board: dated, layer-tagged calls on Jasper, Chegg, Harvey, Sierra, Glean, Cursor, Perplexity, Klarna, Tesla/Waymo, BloombergGPT and more — each scored on structural accuracy, timing, and the counter-move the company could still play. Directional reads on the 10-layer generative AI stack (not logistics/freight)."
         path="/predictions"
       />
       <script
