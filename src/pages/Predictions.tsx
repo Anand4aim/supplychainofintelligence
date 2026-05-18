@@ -364,6 +364,20 @@ const Predictions = () => {
                     </div>
                   )}
 
+                  {p.counterMove && (
+                    <div
+                      className="mt-4 p-4 rounded-md border bg-foreground/[0.02]"
+                      style={{ borderColor: "hsl(var(--accent) / 0.35)" }}
+                    >
+                      <div className="font-mono-marker text-[10px] uppercase tracking-wider mb-1.5 text-accent">
+                        ♞ Counter-move · the master stroke
+                      </div>
+                      <p className="text-foreground/85 text-[14.5px] leading-relaxed">
+                        {p.counterMove}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
                     <Link
                       to={`/analysis/${p.caseStudySlug}`}
