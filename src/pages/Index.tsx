@@ -9,6 +9,7 @@ import { LAW_ESSAY_BY_NUM } from "@/data/lawEssays";
 import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import ExportablePng from "@/components/ExportablePng";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
@@ -164,6 +165,10 @@ const Index = () => {
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-12"
           >
+            <ExportablePng
+              fileName="scoi-sales-marketing-layer-matrix"
+              caption="Sales & Marketing Tech — Layer Matrix"
+            >
             <SketchBoard className="p-5 md:p-8">
               <p className="font-mono-marker text-[11px] tracking-[0.2em] text-accent mb-2">
                 WORKED EXAMPLE · SALES & MARKETING TECH
@@ -202,9 +207,9 @@ const Index = () => {
                     verdict: "FORTIFIED", verdictClass: "text-emerald-600",
                   },
                   {
-                    name: "Apollo", sub: "GTM platform",
-                    cells: { L1: 2, L6: 3, L7: 1 } as Record<string, number>,
-                    verdict: "THINNING ↓", verdictClass: "text-orange-600",
+                    name: "Apollo", sub: "GTM data + L2 connector",
+                    cells: { L1: 3, L2: 2, L4: 2 } as Record<string, number>,
+                    verdict: "L1+L2 SURVIVOR", verdictClass: "text-emerald-600",
                   },
                   {
                     name: "Outreach", sub: "Sales Engagement",
@@ -303,6 +308,7 @@ const Index = () => {
                 as Claude becomes the marketer's command center. Most of martech gets swallowed by the juggernaut.
               </p>
             </SketchBoard>
+            </ExportablePng>
           </motion.div>
         </div>
       </section>
