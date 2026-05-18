@@ -21,6 +21,7 @@ import Disclaimer from "./pages/Disclaimer";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import RemasterAdmin from "./pages/RemasterAdmin";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/admin/remaster" element={<RemasterAdmin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
