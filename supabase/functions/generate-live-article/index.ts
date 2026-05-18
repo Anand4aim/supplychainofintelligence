@@ -285,7 +285,22 @@ Deno.serve(async (req) => {
     if (error) throw error;
     console.log("[live-article] published:", inserted.slug);
 
-    return new Response(JSON.stringify({ success: true, article: inserted }), {
+    // Fire-and-forget refinement loop (2 critics + enhancer). Don't block the response.
+    let refineStatus: unknown = "skipped";
+    try {
+      const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ article_id: inserted.id }),
+      });
+      refineStatus = await refineRes.json();
+      console.log("[live-article] refine result:", JSON.stringify(refineStatus));
+    } catch (refineErr) {
+      console.error("[live-article] refine failed (article still published):", refineErr);
+      refineStatus = { success: false, error: String(refineErr) };
+    }
+
+    return new Response(JSON.stringify({ success: true, article: inserted, refine: refineStatus }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
