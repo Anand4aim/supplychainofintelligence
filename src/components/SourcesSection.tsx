@@ -79,14 +79,22 @@ const SourcesSection = () => {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1 group"
+                      className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1 group flex-1 min-w-0"
                     >
-                      {s.label}
+                      <span className="truncate">{s.label}</span>
                       <ExternalLink
                         size={10}
-                        className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px]"
+                        className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px] shrink-0"
                       />
                     </a>
+                    <span className="mt-[3px] shrink-0">
+                      <ReportCitationDialog
+                        subjectId={p.id}
+                        subject={p.subject}
+                        sourceUrl={s.url}
+                        sourceLabel={s.label}
+                      />
+                    </span>
                   </li>
                 );
               })}
@@ -96,10 +104,8 @@ const SourcesSection = () => {
       </div>
 
       <p className="mt-8 text-[12px] text-foreground/55 italic leading-relaxed">
-        Links marked <em>Search</em> point to live Google News queries —
-        they're intentionally non-cached so the reader sees the latest
-        reporting on an evolving story. If a primary or news link 404s,
-        please let us know via the{" "}
+        Spotted a broken link or wrong source? Click the small flag next to
+        any citation to report it — or see the{" "}
         <a href="/disclaimer" className="text-accent hover:underline">
           Disclaimer
         </a>{" "}
