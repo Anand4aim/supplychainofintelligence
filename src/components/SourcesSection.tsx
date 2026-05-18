@@ -1,6 +1,7 @@
 import { ExternalLink, FileText, Newspaper, BookOpen, Search } from "lucide-react";
 import { PREDICTIONS } from "@/data/predictions";
 import ReportCitationDialog from "./ReportCitationDialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 /**
  * Sources & Citations — aggregated public-source list for every call
@@ -9,10 +10,34 @@ import ReportCitationDialog from "./ReportCitationDialog";
  */
 
 const KIND_META = {
-  primary: { Icon: FileText, label: "Primary", color: "hsl(var(--layer-1))" },
-  news: { Icon: Newspaper, label: "News", color: "hsl(var(--layer-4))" },
-  reference: { Icon: BookOpen, label: "Reference", color: "hsl(var(--layer-7))" },
-  search: { Icon: Search, label: "Search", color: "hsl(var(--layer-5))" },
+  primary: {
+    Icon: FileText,
+    label: "Primary",
+    color: "hsl(var(--layer-1))",
+    blurb:
+      "Primary source — published directly by the company (press release, official blog, earnings, SEC filing). Highest authority.",
+  },
+  news: {
+    Icon: Newspaper,
+    label: "News",
+    color: "hsl(var(--layer-4))",
+    blurb:
+      "News coverage — reporting by an independent outlet (Bloomberg, WSJ, The Information, TechCrunch, etc.). Editorially curated, point-in-time.",
+  },
+  reference: {
+    Icon: BookOpen,
+    label: "Reference",
+    color: "hsl(var(--layer-7))",
+    blurb:
+      "Reference page — stable background source (Wikipedia, arXiv, docs, encyclopedic profile). Useful for context, not for breaking facts.",
+  },
+  search: {
+    Icon: Search,
+    label: "Live search",
+    color: "hsl(var(--layer-5))",
+    blurb:
+      "Live news search — non-cached Google News query. The story is still moving; readers see the latest reporting at click time.",
+  },
 } as const;
 
 const SourcesSection = () => {
@@ -69,24 +94,38 @@ const SourcesSection = () => {
                 const Icon = meta.Icon;
                 return (
                   <li key={i} className="text-[13px] leading-snug flex items-start gap-2">
-                    <Icon
-                      size={11}
-                      className="mt-1 shrink-0"
-                      style={{ color: meta.color }}
-                      aria-hidden
-                    />
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1 group flex-1 min-w-0"
-                    >
-                      <span className="truncate">{s.label}</span>
-                      <ExternalLink
-                        size={10}
-                        className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px] shrink-0"
-                      />
-                    </a>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${meta.label} source: ${s.label}`}
+                          className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1.5 group flex-1 min-w-0"
+                        >
+                          <Icon
+                            size={11}
+                            className="translate-y-[1.5px] shrink-0"
+                            style={{ color: meta.color }}
+                            aria-hidden
+                          />
+                          <span className="truncate">{s.label}</span>
+                          <ExternalLink
+                            size={10}
+                            className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px] shrink-0"
+                          />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent side="top" className="max-w-xs text-[12px] leading-relaxed">
+                        <div
+                          className="font-mono-marker text-[10px] uppercase tracking-wider mb-1"
+                          style={{ color: meta.color }}
+                        >
+                          {meta.label}
+                        </div>
+                        {meta.blurb}
+                      </TooltipContent>
+                    </Tooltip>
                     <span className="mt-[3px] shrink-0">
                       <ReportCitationDialog
                         subjectId={p.id}
