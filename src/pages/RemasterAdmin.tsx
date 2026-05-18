@@ -58,11 +58,67 @@ function getPayload(target_type: string, target_id: string): { content: string; 
   }
 }
 
+const PASSCODE_KEY = "remaster_admin_passcode";
+
+function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
+  const [code, setCode] = useState("");
+  const [busy, setBusy] = useState(false);
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!code.trim()) return;
+    setBusy(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: code.trim() } });
+      if (error || !data?.ok) {
+        toast.error("Invalid passcode");
+        return;
+      }
+      localStorage.setItem(PASSCODE_KEY, code.trim());
+      onUnlock(code.trim());
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background text-foreground px-6">
+      <form onSubmit={submit} className="w-full max-w-sm space-y-4 border border-border rounded-lg p-6 bg-card">
+        <h1 className="text-xl font-serif">Remaster Admin</h1>
+        <p className="text-sm text-muted-foreground">Enter the admin passcode to continue.</p>
+        <input
+          type="password"
+          autoFocus
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          className="w-full px-3 py-2 rounded border border-border bg-background"
+          placeholder="Passcode"
+        />
+        <Button type="submit" disabled={busy || !code.trim()} className="w-full">
+          {busy ? "Checking…" : "Unlock"}
+        </Button>
+      </form>
+    </div>
+  );
+}
+
 export default function RemasterAdmin() {
+  const [unlocked, setUnlocked] = useState<boolean>(false);
+  const [checking, setChecking] = useState<boolean>(true);
   const [queue, setQueue] = useState<QueueRow[]>([]);
   const [articles, setArticles] = useState<LiveArticleLite[]>([]);
   const [processing, setProcessing] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
+
+  // Re-verify any stored passcode on mount (in case it changed server-side)
+  useEffect(() => {
+    const stored = localStorage.getItem(PASSCODE_KEY);
+    if (!stored) { setChecking(false); return; }
+    supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
+      .then(({ data, error }) => {
+        if (!error && data?.ok) setUnlocked(true);
+        else localStorage.removeItem(PASSCODE_KEY);
+      })
+      .finally(() => setChecking(false));
+  }, []);
 
   async function loadQueue() {
     const { data } = await supabase
@@ -83,11 +139,12 @@ export default function RemasterAdmin() {
   }
 
   useEffect(() => {
+    if (!unlocked) return;
     loadQueue();
     loadArticles();
-  }, []);
+  }, [unlocked]);
 
-  async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string }>) {
+  async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string; content?: string }>) {
     const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items } });
     if (error) return toast.error(error.message);
     if (!data?.success) return toast.error(data?.error ?? "Failed");
@@ -134,6 +191,21 @@ export default function RemasterAdmin() {
   );
   const isQueued = (t: string, id: string) => queuedKeys.has(`${t}::${id}`);
 
+  if (checking) {
+    return <div className="min-h-screen flex items-center justify-center text-sm text-muted-foreground">Checking…</div>;
+  }
+  if (!unlocked) {
+    return (
+      <>
+        <Helmet>
+          <title>Remaster Admin</title>
+          <meta name="robots" content="noindex,nofollow" />
+        </Helmet>
+        <PasscodeGate onUnlock={() => setUnlocked(true)} />
+      </>
+    );
+  }
+
   return (
     <>
       <Helmet>
@@ -146,8 +218,9 @@ export default function RemasterAdmin() {
             <div>
               <h1 className="text-3xl font-serif">Remaster Queue</h1>
               <p className="text-sm text-muted-foreground mt-1">
-                Run the AI critic loop across older content. Live articles get rewritten in place.
-                Case studies, law essays, predictions, and layer pages get critique-only output (apply by hand).
+                A cron job runs every 6 hours and pops one item from this queue through the cross-LLM critic loop.
+                Live articles get rewritten in place; case studies, law essays, predictions, and layer pages get critique-only reports (apply by hand).
+                You can also run an item manually below.
               </p>
             </div>
             <div className="flex items-center gap-2">
@@ -179,35 +252,23 @@ export default function RemasterAdmin() {
               }>+ All Live articles ({articles.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(CASE_STUDIES.filter((c) => !isQueued("case_study", c.slug))
-                  .map((c) => ({ target_type: "case_study", target_id: c.slug, target_label: c.title })))
+                  .map((c) => ({ target_type: "case_study", target_id: c.slug, target_label: c.title, content: caseStudyToText(c) })))
               }>+ All Case studies ({CASE_STUDIES.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(LAW_ESSAYS.filter((e) => !isQueued("law_essay", e.slug))
-                  .map((e) => ({ target_type: "law_essay", target_id: e.slug, target_label: e.title })))
+                  .map((e) => ({ target_type: "law_essay", target_id: e.slug, target_label: e.title, content: lawEssayToText(e) })))
               }>+ All Law essays ({LAW_ESSAYS.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(LAYERS.filter((l) => !isQueued("layer", l.id))
-                  .map((l) => ({ target_type: "layer", target_id: l.id, target_label: `${l.id} ${l.name}` })))
+                  .map((l) => ({ target_type: "layer", target_id: l.id, target_label: `${l.id} ${l.name}`, content: layerToText(l) })))
               }>+ All Layer pages ({LAYERS.length})</Button>
               <Button variant="outline" onClick={() =>
                 enqueue(PREDICTIONS.filter((p: any) => !isQueued("prediction", p.id ?? p.slug))
-                  .map((p: any) => ({ target_type: "prediction", target_id: p.id ?? p.slug, target_label: p.title ?? p.id ?? p.slug })))
+                  .map((p: any) => ({ target_type: "prediction", target_id: p.id ?? p.slug, target_label: p.title ?? p.id ?? p.slug, content: genericToText((p as any).title ?? (p.id ?? p.slug), p) })))
               }>+ All Predictions ({PREDICTIONS.length})</Button>
-              <Button variant="outline" onClick={() =>
-                enqueue([
-                  { target_type: "page", target_id: "homepage", target_label: "Homepage (/)", notes: "Hero, copy, CTAs" },
-                  { target_type: "page", target_id: "framework", target_label: "Framework (/framework)" },
-                  { target_type: "page", target_id: "about", target_label: "About (/about)" },
-                  { target_type: "page", target_id: "for-product-leaders", target_label: "For Product Leaders" },
-                  { target_type: "page", target_id: "start", target_label: "Start (/start)" },
-                  { target_type: "page", target_id: "faq", target_label: "FAQ (/faq)" },
-                  { target_type: "page", target_id: "market-map", target_label: "Market Map" },
-                ])
-              }>+ Key static pages</Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              Note: "page" items are placeholders — paste their text into <code>notes</code> on the row before processing
-              (or skip them and use Lovable to refactor pages directly).
+              Bulk-enqueued items include their content payload, so the every-6h cron job can process them automatically — no need to keep this tab open.
             </p>
           </section>
 

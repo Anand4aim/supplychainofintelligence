@@ -129,9 +129,10 @@ Deno.serve(async (req) => {
           { headers: { ...corsHeaders, "Content-Type": "application/json" } });
       }
 
-      // Static content critic-only pass
-      if (!payload?.content) throw new Error("payload.content required for static content critique");
-      const userMsg = `TARGET: ${item.target_type} — ${item.target_label}\nID: ${item.target_id}\n\n=== CONTENT ===\n${payload.content}`;
+      // Static content critic-only pass — prefer caller-supplied payload, fall back to row.content
+      const content = payload?.content ?? (typeof item.content === "string" ? item.content : null);
+      if (!content) throw new Error("no content available (pass payload.content or store content on the queue row)");
+      const userMsg = `TARGET: ${item.target_type} — ${item.target_label}\nID: ${item.target_id}\n\n=== CONTENT ===\n${content}`;
       const [a, b] = await Promise.all([
         callGateway(CRITIC_MODEL_A, STATIC_CRITIC_SYSTEM, userMsg, STATIC_CRITIQUE_SCHEMA, lovableKey),
         callGateway(CRITIC_MODEL_B, STATIC_CRITIC_SYSTEM, userMsg, STATIC_CRITIQUE_SCHEMA, lovableKey),

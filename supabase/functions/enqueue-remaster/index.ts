@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, serviceKey);
 
     const body = await req.json();
-    const items: Array<{ target_type: string; target_id: string; target_label: string; priority?: number; notes?: string }> = body.items ?? [];
+    const items: Array<{ target_type: string; target_id: string; target_label: string; priority?: number; notes?: string; content?: string }> = body.items ?? [];
     if (!Array.isArray(items) || items.length === 0) throw new Error("items[] required");
     for (const it of items) {
       if (!VALID_TYPES.includes(it.target_type)) throw new Error(`bad target_type: ${it.target_type}`);
@@ -37,6 +37,7 @@ Deno.serve(async (req) => {
         target_label: i.target_label,
         priority: i.priority ?? 0,
         notes: i.notes ?? null,
+        content: i.content ?? null,
         status: "queued",
       }));
 
