@@ -94,24 +94,38 @@ const SourcesSection = () => {
                 const Icon = meta.Icon;
                 return (
                   <li key={i} className="text-[13px] leading-snug flex items-start gap-2">
-                    <Icon
-                      size={11}
-                      className="mt-1 shrink-0"
-                      style={{ color: meta.color }}
-                      aria-hidden
-                    />
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1 group flex-1 min-w-0"
-                    >
-                      <span className="truncate">{s.label}</span>
-                      <ExternalLink
-                        size={10}
-                        className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px] shrink-0"
-                      />
-                    </a>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${meta.label} source: ${s.label}`}
+                          className="text-foreground/75 hover:text-accent hover:underline underline-offset-2 inline-flex items-baseline gap-1.5 group flex-1 min-w-0"
+                        >
+                          <Icon
+                            size={11}
+                            className="translate-y-[1.5px] shrink-0"
+                            style={{ color: meta.color }}
+                            aria-hidden
+                          />
+                          <span className="truncate">{s.label}</span>
+                          <ExternalLink
+                            size={10}
+                            className="opacity-50 group-hover:opacity-100 transition-opacity translate-y-[1px] shrink-0"
+                          />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent side="top" className="max-w-xs text-[12px] leading-relaxed">
+                        <div
+                          className="font-mono-marker text-[10px] uppercase tracking-wider mb-1"
+                          style={{ color: meta.color }}
+                        >
+                          {meta.label}
+                        </div>
+                        {meta.blurb}
+                      </TooltipContent>
+                    </Tooltip>
                     <span className="mt-[3px] shrink-0">
                       <ReportCitationDialog
                         subjectId={p.id}
