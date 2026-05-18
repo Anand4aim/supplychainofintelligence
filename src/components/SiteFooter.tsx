@@ -64,6 +64,9 @@ const SiteFooter = () => (
           <Link to="/disclaimer" className="hover:text-foreground transition-colors">
             Disclaimer
           </Link>
+          <Link to="/terms" className="hover:text-foreground transition-colors">
+            Terms
+          </Link>
           <Link to="/privacy" className="hover:text-foreground transition-colors">
             Privacy
           </Link>
