@@ -2,6 +2,7 @@
 // up to N rounds. Each round logged to article_revisions. Final accepted draft
 // is written back to live_articles.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { FRAMEWORK_CONTEXT } from "../_shared/framework-context.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
