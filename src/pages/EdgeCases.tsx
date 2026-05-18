@@ -1,7 +1,7 @@
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
-import LayerTag from "@/components/LayerTag";
+
 import { SketchBoard } from "@/components/sketch/SketchElements";
 
 type EdgeCase = {
