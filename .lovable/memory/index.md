@@ -6,9 +6,13 @@ The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks 
 Stratechery-style editorial + McKinsey authority. 8-layer color system is signature visual language.
 Owner: Anand Arivukkarasu, Ex-Meta Product Leader. Domain: SupplyChainOfAI.com.
 Editorial tone: lighter, factual, layer-based. Avoid strong verdicts ("fortress", "safe", "eaten", "doomed"). Prefer hedged, dated, structural language. See mem://preferences/tone.
+Distribution: every high-signal visual uses <ExportablePng> (watermarked PNG export); every key argument uses <CopySnippet> (auto-attributed LinkedIn-ready copy). Attribution is auto-injected — never hand-write it. See mem://features/distribution.
+Apollo (slug: apollo-thin-stack-survivor) is the canonical SaaSpocalypse-survivor explainer: L1b moat + L2 MCP connector + receding L7 = thin-stack survival. Use as the reference example when teaching the framework.
 
 ## Memories
 - [Framework content](mem://features/framework) — 8 layers, 3 laws, Intelligence Cube, 6 archetypes
 - [Design tokens](mem://design/tokens) — Layer colors L0-L8, brand palette, typography
 - [Site strategy](mem://features/strategy) — Stratechery model, free/paid split, Phase 1 vs Phase 2
 - [Editorial tone](mem://preferences/tone) — Site-wide voice rules: factual, hedged, layer-based; no strong verdicts
+- [Distribution primitives](mem://features/distribution) — ExportablePng + CopySnippet usage, Apollo canonical case study
+

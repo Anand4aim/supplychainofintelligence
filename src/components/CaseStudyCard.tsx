@@ -62,6 +62,13 @@ export interface CaseStudy {
     operator?: string;
   };
   pull_quote?: string;
+  /**
+   * Pre-formatted ~120-150 word LinkedIn-ready snippet. Surfaces a "Copy as
+   * LinkedIn post" affordance on the detail page. The CopySnippet component
+   * appends the canonical attribution footer automatically — do NOT include
+   * the attribution in this string.
+   */
+  linkedin_snippet?: string;
   sources?: { url: string; outlet?: string }[];
 }
 
