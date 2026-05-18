@@ -213,13 +213,20 @@ const Predictions = () => {
           Predictions.
         </motion.h1>
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
-          Every structural call this framework has made, dated, tagged to the
-          layer exposure that drove it, and scored on two independent axes:
+          Think of this page as a chess board, not a crystal ball. Every call
+          names the <strong className="text-foreground">layer exposure</strong> a
+          company is sitting on — the square under attack. The juggernaut still
+          has a move. A master stroke (acquire L1, ship L3, lock the L5
+          workflow) can flip the ending. Most don't make it. That's the read.
+        </p>
+        <p className="mt-4 text-base text-foreground/70 max-w-3xl leading-relaxed">
+          Each entry is scored on two independent axes:
           <strong className="text-foreground"> Structural</strong> (did the lens
           identify the right moat or exposure?) and
           <strong className="text-foreground"> Timing</strong> (did it arrive
           on the expected horizon?). Conflating those two is how frameworks
-          lose credibility. Separating them is how this one earns it.
+          lose credibility. Separating them — and naming the counter-move the
+          subject could still play — is how this one earns trust.
         </p>
 
         <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl">
