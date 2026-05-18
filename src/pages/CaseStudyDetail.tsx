@@ -7,6 +7,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import DepthModules from "@/components/live/DepthModules";
 import WhatThisMeans from "@/components/WhatThisMeans";
 import ArticleFooterCTA from "@/components/ArticleFooterCTA";
+import CopySnippet from "@/components/CopySnippet";
 import { ArrowLeft, ArrowRight, TrendingDown, TrendingUp, Minus, ExternalLink } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 
