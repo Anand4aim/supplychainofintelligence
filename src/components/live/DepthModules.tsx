@@ -117,6 +117,7 @@ const DepthModules: React.FC<Props> = ({
               })}
             </div>
           </div>
+          </ExportablePng>
         </section>
       )}
 
