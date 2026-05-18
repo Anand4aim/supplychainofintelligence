@@ -169,13 +169,18 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
   if (!layers.length && !functions.length && !verticals.length) return null;
 
   return (
-    <div
-      className="rounded-2xl p-5 md:p-6"
-      style={{
-        background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
-        border: "1px solid hsl(35 20% 88%)",
-      }}
+    <ExportablePng
+      fileName="scoi-cube-projection-2d"
+      caption="Intelligence Cube — 2D Projection"
+      exportBackground="hsl(40 30% 97%)"
     >
+      <div
+        className="rounded-2xl p-5 md:p-6"
+        style={{
+          background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
+          border: "1px solid hsl(35 20% 88%)",
+        }}
+      >
       <div className="grid md:grid-cols-2 gap-8">
         <Grid
           yAxis={LAYERS}
