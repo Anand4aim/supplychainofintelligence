@@ -218,8 +218,9 @@ export default function RemasterAdmin() {
             <div>
               <h1 className="text-3xl font-serif">Remaster Queue</h1>
               <p className="text-sm text-muted-foreground mt-1">
-                Run the AI critic loop across older content. Live articles get rewritten in place.
-                Case studies, law essays, predictions, and layer pages get critique-only output (apply by hand).
+                A cron job runs every 6 hours and pops one item from this queue through the cross-LLM critic loop.
+                Live articles get rewritten in place; case studies, law essays, predictions, and layer pages get critique-only reports (apply by hand).
+                You can also run an item manually below.
               </p>
             </div>
             <div className="flex items-center gap-2">
