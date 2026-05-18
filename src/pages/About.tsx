@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin } from "lucide-react";
+import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin, Crown } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 import anandPortrait from "@/assets/anand-portrait.png";
 
@@ -16,7 +16,7 @@ const personSchema = {
   jobTitle: "Product Leader & AI Product Architect",
   url: "https://supplychainofai.com/about",
   description:
-    "Ex-Meta (Instagram) product leader. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
+    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
   alumniOf: [
     { "@type": "Organization", name: "Meta (Instagram)" },
     { "@type": "Organization", name: "Vungle" },
@@ -38,6 +38,7 @@ const CRED_CHIPS = [
   { icon: Briefcase, label: "Ex-Meta (Instagram)" },
   { icon: Lightbulb, label: "Angel investor & advisor" },
   { icon: Mic, label: "Speaker" },
+  { icon: Crown, label: "Former chess champion" },
   { icon: MapPin, label: "San Francisco" },
 ];
 
@@ -147,6 +148,12 @@ const AboutPage = () => (
             <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
             layers, fifty sublayers, three structural laws, one diagnostic cube. It is opinionated, it is portable
             across categories, and it is free.
+          </p>
+          <p>
+            I grew up a <strong className="text-foreground">competitive chess player</strong> — a former
+            higher-level junior champion — and that is how I read the AI market. It is a board, not a forecast.
+            Every company on this site is sitting on a square. The framework names the square. The juggernaut
+            still has a move. The Predictions page tracks who saw the fork and who didn't.
           </p>
           <p>
             I write it for the audience I wish had it when I was building: founders, product leaders, boards, and

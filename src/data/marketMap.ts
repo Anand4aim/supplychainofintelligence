@@ -104,8 +104,20 @@ export const MAP_COMPANIES: MapCompany[] = [
   // L5 Domain Execution
   c("Sierra", "sierra.ai", ["L1", "L5", "L8"], ["cx"], "fortress", { caseStudy: "sierra-vs-salesforce" }),
   c("Klarna", "klarna.com", ["L1", "L5", "L8"], ["cx", "finance"], "fortress", { caseStudy: "klarna-customer-service" }),
-  c("Decagon", "decagon.ai", ["L5", "L8"], ["cx"], "fortress"),
-  c("Cresta", "cresta.com", ["L5", "L8"], ["cx"], "memory"),
+  c("Decagon", "decagon.ai", ["L1", "L5", "L8"], ["cx"], "fortress", { note: "Racing Sierra for the same F500 CX square — L1 (tenant transcripts) + L5 (CX-stack workflow) + L8 (resolution loop)." }),
+  c("Cresta", "cresta.com", ["L5", "L8"], ["cx"], "memory", { note: "Real-time agent assist + L8 coaching loop. Defensible as long as the loop stays per-tenant." }),
+  c("Parloa", "parloa.com", ["L5", "L8"], ["cx"], "agent", { note: "Voice-first CX agent. L5+L8 stack, racing Sierra/Decagon in EU enterprise." }),
+  c("Hebbia", "hebbia.com", ["L1", "L5"], ["finance"], "fortress", { note: "Finance research workflows on top of internal docs — L1 (firm corpus) + L5 (analyst loop). Harvey-pattern for buy-side." }),
+  c("Rogo", "rogo.ai", ["L1", "L5"], ["finance"], "fortress", { note: "Investment-banking analyst copilot. L1 (deal docs) + L5 (pitch/model workflow)." }),
+  c("Abridge", "abridge.com", ["L1", "L3", "L5"], ["health"], "fortress", { note: "Clinical documentation. L1 (encounter audio) + L3 (HIPAA / payer-grade) + L5 (EHR workflow). Fortress trio in health." }),
+  c("Ambience", "ambiencehealthcare.com", ["L1", "L3", "L5"], ["health"], "fortress", { note: "Same fortress pattern as Abridge — L1+L3+L5 in clinical documentation." }),
+  c("Suki", "suki.ai", ["L1", "L3", "L5"], ["health"], "fortress", { note: "Voice-first clinical AI. L1+L3+L5; contests Abridge / Ambience for EHR-integrated documentation." }),
+  c("Clay", "clay.com", ["L1", "L5", "L8"], ["sales"], "fortress", { note: "GTM enrichment + workflow. Quietly one of the best-stacked: L1 (data graph) + L5 (sequence workflow) + L8 (account-level memory)." }),
+  c("Mercor", "mercor.com", ["L1", "L5"], ["sales"], "agent", { note: "AI recruiting. L1 (candidate corpus) + L5 (hiring workflow); contested by Final Round + incumbents." }),
+  c("Crosby", "crosby.ai", ["L1", "L5"], ["legal"], "agent", { note: "AI contract review for ops/commercial. Thin slice of Harvey's board — defensible only if it owns a workflow Harvey won't bother with." }),
+  c("Profound", "tryprofound.com", ["L7"], ["sales"], "surface", { note: "LLM-recommendation analytics (AEO). Today: Ahrefs-clone L7 dashboard. Master stroke = ship a Claude/ChatGPT connector that *acts* on the diagnostic (L5+L8). Without it, Jasper 2.0." }),
+  c("Granola", "granola.ai", ["L7", "L8"], ["horizontal"], "memory", { note: "Meeting notes with L8 personal memory. Memory-orphan risk if L2 (model) and L4 (OS surface) both belong to someone else." }),
+  c("Cluely", "cluely.com", ["L7", "L8"], ["horizontal"], "memory", { note: "Real-time meeting assist. Same L8 memory-orphan exposure as Character.AI — beautiful surface, rented substrate." }),
 
   // L6 Orchestration
   c("Glean", "glean.com", ["L1", "L6", "L8"], ["horizontal"], "fortress", { caseStudy: "glean-enterprise-search-fortress" }),
