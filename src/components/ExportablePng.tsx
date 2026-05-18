@@ -90,49 +90,59 @@ const ExportablePng = ({
         {busy ? "..." : done ? "Saved" : "PNG"}
       </button>
 
-      <div ref={ref} className="relative">
+      {/*
+        The ref wraps BOTH the content and the watermark band, so the
+        watermark is baked into the exported PNG as part of the image
+        composition (not an overlay floating outside it).
+      */}
+      <div
+        ref={ref}
+        style={{ background: exportBackground }}
+        className="relative overflow-hidden rounded-[inherit]"
+      >
         {children}
 
         {/*
-          Corner watermark — lives INSIDE the image bounds so it's captured
-          on both download and any screenshot. Pill-shaped, semi-transparent
-          backing, 10-layer color bar above the URL. Kept compact so it
-          doesn't dominate the host visual.
+          Inline watermark band — flows at the bottom of the image as part
+          of the layout. Always visible, captured on download and on any
+          screenshot. 10-layer color bar + attribution line.
         */}
         <div
-          className={`absolute bottom-3 md:bottom-4 ${watermarkPos} z-20 flex flex-col gap-1 pointer-events-none select-none`}
+          className="flex items-center justify-between gap-3 px-4 py-2 border-t"
+          style={{
+            borderColor: "hsl(var(--foreground) / 0.08)",
+            background: "hsl(var(--background))",
+          }}
           aria-hidden
         >
-          <div
-            className="flex flex-col gap-1 rounded-md px-2.5 py-1.5 backdrop-blur"
-            style={{
-              background: "hsl(var(--background) / 0.82)",
-              border: "1px solid hsl(var(--foreground) / 0.10)",
-              boxShadow: "0 1px 2px hsl(var(--foreground) / 0.04)",
-            }}
-          >
-            <div
-              className="flex h-[2px] w-full rounded-sm overflow-hidden"
-              style={{ minWidth: 96 }}
-            >
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="flex h-[3px] w-16 md:w-24 rounded-sm overflow-hidden flex-shrink-0">
               {["neg1", "0", "1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
                 <div key={n} className="flex-1" style={{ background: `hsl(var(--layer-${n}))` }} />
               ))}
             </div>
-            <div className="flex items-baseline gap-2 leading-none">
+            {caption && (
               <span
-                className="font-mono-marker text-[9px] tracking-[0.14em] uppercase"
+                className="font-mono-marker text-[10px] md:text-[11px] tracking-[0.12em] uppercase truncate"
                 style={{ color: "hsl(var(--muted-foreground))" }}
               >
-                {caption ? `${caption} · ` : ""}SCOI
+                {caption}
               </span>
-              <span
-                className="font-mono-marker text-[10px] tracking-[0.08em] font-bold"
-                style={{ color: "hsl(var(--accent))" }}
-              >
-                supplychainofai.com
-              </span>
-            </div>
+            )}
+          </div>
+          <div className="flex items-baseline gap-1.5 leading-none flex-shrink-0">
+            <span
+              className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.14em] uppercase"
+              style={{ color: "hsl(var(--muted-foreground))" }}
+            >
+              SCOI ·
+            </span>
+            <span
+              className="font-mono-marker text-[10px] md:text-[11px] tracking-[0.08em] font-bold"
+              style={{ color: "hsl(var(--accent))" }}
+            >
+              supplychainofai.com
+            </span>
           </div>
         </div>
       </div>
