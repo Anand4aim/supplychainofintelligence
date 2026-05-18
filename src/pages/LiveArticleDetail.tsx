@@ -267,6 +267,7 @@ const LiveArticleDetail = () => {
                 <span>Empty = no presence</span>
               </div>
             </div>
+            </ExportablePng>
           </section>
 
           {/* Sublayer impact map — what specifically is touched and by what magnitude */}
