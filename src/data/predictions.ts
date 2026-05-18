@@ -48,8 +48,17 @@ export interface Prediction {
   timingNote?: string;
   /** Slug of the deep case study this prediction is grounded in. */
   caseStudySlug: string;
-  /** Optional external source link (press, earnings, primary doc). */
+  /**
+   * Featured source — shown inline under the prediction. The full citation
+   * list lives in `sources`; this is the most important one.
+   */
   source?: { label: string; url: string };
+  /**
+   * Full public-source citation list — news, primary docs, company posts,
+   * stable reference pages — rendered in the Sources & Citations section
+   * at the bottom of the Board page.
+   */
+  sources?: { label: string; url: string; kind?: "news" | "primary" | "reference" | "search" }[];
   /**
    * The chess move the subject could (still) play to beat the call.
    * Framework is directional, not deterministic — companies have agency.
