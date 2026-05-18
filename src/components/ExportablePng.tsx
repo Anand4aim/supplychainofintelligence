@@ -7,24 +7,25 @@ interface Props {
   children: React.ReactNode;
   /** Filename without extension. */
   fileName: string;
-  /** Optional title rendered into the watermark strip (e.g. "Sales & Marketing Tech — Layer Matrix"). */
+  /** Optional title rendered into the corner watermark (e.g. "Sales & Marketing Tech — Layer Matrix"). */
   caption?: string;
-  /** Where to position the button. */
+  /** Where to position the download button. */
   buttonPlacement?: "top-right" | "top-left";
-  /** Background color for the exported PNG (in case the surrounding page is transparent). */
+  /** Background color for the exported PNG. */
   exportBackground?: string;
+  /** Where to render the watermark inside the image bounds. */
+  watermarkPosition?: "bottom-right" | "bottom-left";
   /** Optional className for wrapper. */
   className?: string;
 }
 
 /**
- * Wraps any visual block and exposes a "Download PNG" button that exports the
- * wrapped DOM as a watermarked image. Watermark strip is appended to a cloned
- * node before rasterization so the original layout is unaffected.
+ * Wraps a visual block and provides a watermarked PNG export.
  *
- * Pattern: use sparingly on the highest-signal visuals (matrix, cube, layer
- * diagrams). The PNG is the unit of distribution — every screenshot that
- * escapes the site should carry the watermark.
+ * The watermark sits *inside* the image bounds (bottom corner, always
+ * visible) — so both downloads AND screenshots carry attribution. The
+ * download button is the only thing stripped from the captured PNG (via the
+ * data-export-hide attribute + html-to-image filter).
  */
 const ExportablePng = ({
   children,
@@ -32,59 +33,12 @@ const ExportablePng = ({
   caption,
   buttonPlacement = "top-right",
   exportBackground = "hsl(var(--background))",
+  watermarkPosition = "bottom-right",
   className = "",
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
-
-  const buildWatermark = () => {
-    const strip = document.createElement("div");
-    strip.style.cssText = `
-      margin-top: 16px;
-      padding: 14px 18px 12px;
-      border-top: 1px solid hsl(var(--border));
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    `;
-
-    // 10-color signature spectrum
-    const spectrum = document.createElement("div");
-    spectrum.style.cssText = "display:flex;height:3px;border-radius:2px;overflow:hidden;margin-bottom:8px;";
-    ["neg1", "0", "1", "2", "3", "4", "5", "6", "7", "8"].forEach((n) => {
-      const seg = document.createElement("div");
-      seg.style.cssText = `flex:1;background:hsl(var(--layer-${n}));`;
-      spectrum.appendChild(seg);
-    });
-    strip.appendChild(spectrum);
-
-    const row = document.createElement("div");
-    row.style.cssText = "display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;";
-
-    const left = document.createElement("div");
-    left.style.cssText = "display:flex;flex-direction:column;gap:2px;";
-    if (caption) {
-      const cap = document.createElement("div");
-      cap.style.cssText = "font-size:11px;letter-spacing:0.05em;color:hsl(var(--foreground));font-weight:600;";
-      cap.textContent = caption;
-      left.appendChild(cap);
-    }
-    const src = document.createElement("div");
-    src.style.cssText = "font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:hsl(var(--muted-foreground));";
-    src.textContent = "Source: The Supply Chain of Intelligence™";
-    left.appendChild(src);
-    row.appendChild(left);
-
-    const right = document.createElement("div");
-    right.style.cssText = "font-size:11px;letter-spacing:0.08em;color:hsl(var(--accent));font-weight:700;";
-    right.textContent = "supplychainofai.com";
-    row.appendChild(right);
-
-    strip.appendChild(row);
-    return strip;
-  };
 
   const handleDownload = async () => {
     if (!ref.current) return;
@@ -99,7 +53,6 @@ const ExportablePng = ({
           return !node.hasAttribute?.("data-export-hide");
         },
       });
-      // Trigger download
       const link = document.createElement("a");
       link.download = `${fileName}.png`;
       link.href = dataUrl;
@@ -117,57 +70,70 @@ const ExportablePng = ({
     }
   };
 
-  // html-to-image v1 has no onclone hook, so we briefly attach a real
-  // watermark node before exporting and remove it after. The DOM mutation is
-  // invisible because we re-render in the same frame as the export.
-  const handleDownloadWithWatermark = async () => {
-    if (!ref.current) return;
-    const watermark = buildWatermark();
-    watermark.setAttribute("data-export-watermark", "true");
-    ref.current.appendChild(watermark);
-    try {
-      await handleDownload();
-    } finally {
-      watermark.remove();
-    }
-  };
-
-  const positionClass =
+  const buttonPos =
     buttonPlacement === "top-left" ? "left-3 md:left-4" : "right-3 md:right-4";
+  const watermarkPos =
+    watermarkPosition === "bottom-left"
+      ? "left-3 md:left-4 items-start"
+      : "right-3 md:right-4 items-end";
 
   return (
     <div className={`relative group ${className}`}>
       <button
         data-export-hide
-        onClick={handleDownloadWithWatermark}
+        onClick={handleDownload}
         disabled={busy}
         aria-label="Download as watermarked PNG"
-        className={`absolute top-3 md:top-4 ${positionClass} z-20 inline-flex items-center gap-1.5 text-[11px] font-mono-marker tracking-[0.15em] uppercase bg-background/90 backdrop-blur border border-foreground/15 rounded-md px-2.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 disabled:opacity-50`}
+        className={`absolute top-3 md:top-4 ${buttonPos} z-30 inline-flex items-center gap-1.5 text-[11px] font-mono-marker tracking-[0.15em] uppercase bg-background/90 backdrop-blur border border-foreground/15 rounded-md px-2.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 disabled:opacity-50`}
       >
         {done ? <Check size={12} /> : <Download size={12} />}
         {busy ? "..." : done ? "Saved" : "PNG"}
       </button>
-      <div ref={ref}>
+
+      <div ref={ref} className="relative">
         {children}
+
         {/*
-          Inline watermark — always visible on the page so screenshots carry
-          attribution too. On download, html-to-image captures this strip plus
-          a richer one appended below. Kept minimal so it doesn't dominate.
+          Corner watermark — lives INSIDE the image bounds so it's captured
+          on both download and any screenshot. Pill-shaped, semi-transparent
+          backing, 10-layer color bar above the URL. Kept compact so it
+          doesn't dominate the host visual.
         */}
-        <div className="mt-3 pt-3 border-t border-foreground/10 flex items-center justify-between gap-3 flex-wrap">
-          <div className="flex items-center gap-2 min-w-0">
-            <div className="flex h-[3px] w-16 md:w-20 rounded-sm overflow-hidden shrink-0" aria-hidden>
-              {["neg1","0","1","2","3","4","5","6","7","8"].map((n) => (
+        <div
+          className={`absolute bottom-3 md:bottom-4 ${watermarkPos} z-20 flex flex-col gap-1 pointer-events-none select-none`}
+          aria-hidden
+        >
+          <div
+            className="flex flex-col gap-1 rounded-md px-2.5 py-1.5 backdrop-blur"
+            style={{
+              background: "hsl(var(--background) / 0.82)",
+              border: "1px solid hsl(var(--foreground) / 0.10)",
+              boxShadow: "0 1px 2px hsl(var(--foreground) / 0.04)",
+            }}
+          >
+            <div
+              className="flex h-[2px] w-full rounded-sm overflow-hidden"
+              style={{ minWidth: 96 }}
+            >
+              {["neg1", "0", "1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
                 <div key={n} className="flex-1" style={{ background: `hsl(var(--layer-${n}))` }} />
               ))}
             </div>
-            <span className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.14em] uppercase text-muted-foreground truncate">
-              {caption ?? "The Supply Chain of Intelligence™"}
-            </span>
+            <div className="flex items-baseline gap-2 leading-none">
+              <span
+                className="font-mono-marker text-[9px] tracking-[0.14em] uppercase"
+                style={{ color: "hsl(var(--muted-foreground))" }}
+              >
+                {caption ? `${caption} · ` : ""}SCOI
+              </span>
+              <span
+                className="font-mono-marker text-[10px] tracking-[0.08em] font-bold"
+                style={{ color: "hsl(var(--accent))" }}
+              >
+                supplychainofai.com
+              </span>
+            </div>
           </div>
-          <span className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.12em] uppercase text-accent font-bold shrink-0">
-            supplychainofai.com
-          </span>
         </div>
       </div>
     </div>
