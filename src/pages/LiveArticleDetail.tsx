@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import { supabase } from "@/integrations/supabase/client";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
+import ExportablePng from "@/components/ExportablePng";
 import WhatThisMeans from "@/components/WhatThisMeans";
 import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
@@ -148,8 +149,13 @@ const LiveArticleDetail = () => {
           <section className="mb-12">
             <Eyebrow className="mb-4">Layer Scoring</Eyebrow>
 
+            <ExportablePng
+              fileName={`${article.slug}-layer-scoring`}
+              caption={`${article.headline} — Layer Scoring`}
+              exportBackground="hsl(40 30% 97%)"
+            >
             <div
-              className="rounded-2xl p-5 md:p-6"
+              className="p-5 md:p-6"
               style={{
                 background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
                 border: "1px solid hsl(35 20% 88%)",
@@ -261,6 +267,7 @@ const LiveArticleDetail = () => {
                 <span>Empty = no presence</span>
               </div>
             </div>
+            </ExportablePng>
           </section>
 
           {/* Sublayer impact map — what specifically is touched and by what magnitude */}
