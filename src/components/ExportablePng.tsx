@@ -98,20 +98,20 @@ const ExportablePng = ({
       <div
         ref={ref}
         style={{ background: exportBackground }}
-        className="relative overflow-hidden rounded-[inherit]"
+        className="relative overflow-hidden rounded-2xl"
       >
         {children}
 
         {/*
-          Watermark — absolutely positioned at the bottom INSIDE the card,
-          overlaying the visual so it's baked into the image itself (not a
-          separate band below it). Captured on download and on screenshots.
+          Inline watermark band — flows at the bottom of the ref container
+          (which shares the card's background + rounded corners), so it
+          reads as part of the card and never overlaps content.
         */}
         <div
-          className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 z-20 pointer-events-none flex items-center justify-between gap-3 px-3 py-1.5 rounded-md backdrop-blur-sm"
+          className="flex items-center justify-between gap-3 px-4 py-2 border-t"
           style={{
-            background: "hsl(var(--background) / 0.78)",
-            border: "1px solid hsl(var(--foreground) / 0.08)",
+            borderColor: "hsl(var(--foreground) / 0.08)",
+            background: "hsl(var(--background) / 0.6)",
           }}
           aria-hidden
         >
