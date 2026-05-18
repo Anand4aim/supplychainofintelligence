@@ -58,11 +58,67 @@ function getPayload(target_type: string, target_id: string): { content: string; 
   }
 }
 
+const PASSCODE_KEY = "remaster_admin_passcode";
+
+function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
+  const [code, setCode] = useState("");
+  const [busy, setBusy] = useState(false);
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!code.trim()) return;
+    setBusy(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: code.trim() } });
+      if (error || !data?.ok) {
+        toast.error("Invalid passcode");
+        return;
+      }
+      localStorage.setItem(PASSCODE_KEY, code.trim());
+      onUnlock(code.trim());
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background text-foreground px-6">
+      <form onSubmit={submit} className="w-full max-w-sm space-y-4 border border-border rounded-lg p-6 bg-card">
+        <h1 className="text-xl font-serif">Remaster Admin</h1>
+        <p className="text-sm text-muted-foreground">Enter the admin passcode to continue.</p>
+        <input
+          type="password"
+          autoFocus
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          className="w-full px-3 py-2 rounded border border-border bg-background"
+          placeholder="Passcode"
+        />
+        <Button type="submit" disabled={busy || !code.trim()} className="w-full">
+          {busy ? "Checking…" : "Unlock"}
+        </Button>
+      </form>
+    </div>
+  );
+}
+
 export default function RemasterAdmin() {
+  const [unlocked, setUnlocked] = useState<boolean>(false);
+  const [checking, setChecking] = useState<boolean>(true);
   const [queue, setQueue] = useState<QueueRow[]>([]);
   const [articles, setArticles] = useState<LiveArticleLite[]>([]);
   const [processing, setProcessing] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
+
+  // Re-verify any stored passcode on mount (in case it changed server-side)
+  useEffect(() => {
+    const stored = localStorage.getItem(PASSCODE_KEY);
+    if (!stored) { setChecking(false); return; }
+    supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
+      .then(({ data, error }) => {
+        if (!error && data?.ok) setUnlocked(true);
+        else localStorage.removeItem(PASSCODE_KEY);
+      })
+      .finally(() => setChecking(false));
+  }, []);
 
   async function loadQueue() {
     const { data } = await supabase
