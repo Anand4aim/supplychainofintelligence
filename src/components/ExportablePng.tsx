@@ -98,12 +98,6 @@ const ExportablePng = ({
           if (!(node instanceof HTMLElement)) return true;
           return !node.hasAttribute?.("data-export-hide");
         },
-        // Inject the watermark by mutating the clone (html-to-image clones inside)
-        onclone: (clonedDoc) => {
-          // no-op: html-to-image v1 does not expose onclone. We instead append
-          // the watermark to the live ref temporarily below.
-          void clonedDoc;
-        },
       });
       // Trigger download
       const link = document.createElement("a");
