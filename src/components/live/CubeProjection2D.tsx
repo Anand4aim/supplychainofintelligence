@@ -208,7 +208,8 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
         Two 2D projections of the Intelligence Cube (Functions × Verticals × Layers). Filled cells = this move occupies that intersection.
         {hasDormant && " Dashed cells = adjacent layers a sparse move could pull in next."}
       </p>
-    </div>
+      </div>
+    </ExportablePng>
   );
 };
 
