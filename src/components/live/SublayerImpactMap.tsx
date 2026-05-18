@@ -124,7 +124,8 @@ const SublayerImpactMap: React.FC<Props> = ({ layerScores }) => {
         <span>Impact: <strong className="text-foreground/80">Touch</strong> = enters · <strong className="text-foreground/80">Share</strong> = meaningful · <strong className="text-foreground/80">Owns</strong> = dominates</span>
         <span>· bars = magnitude</span>
       </div>
-    </div>
+      </div>
+    </ExportablePng>
   );
 };
 
