@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      citation_reports: {
+        Row: {
+          created_at: string
+          id: string
+          issue_type: string
+          message: string
+          reporter_email: string | null
+          source_label: string
+          source_url: string
+          status: string
+          subject: string
+          subject_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          issue_type?: string
+          message: string
+          reporter_email?: string | null
+          source_label: string
+          source_url: string
+          status?: string
+          subject: string
+          subject_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          issue_type?: string
+          message?: string
+          reporter_email?: string | null
+          source_label?: string
+          source_url?: string
+          status?: string
+          subject?: string
+          subject_id?: string
+        }
+        Relationships: []
+      }
       live_articles: {
         Row: {
           analysis: Json
