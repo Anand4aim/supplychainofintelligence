@@ -16,6 +16,7 @@ import {
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import ChessBoardOfIntelligence from "@/components/ChessBoardOfIntelligence";
+import SourcesSection from "@/components/SourcesSection";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import {
@@ -109,6 +110,7 @@ const Pill = ({ meta }: { meta: PillMeta }) => {
   );
 };
 
+        <SourcesSection />
 
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
