@@ -1,0 +1,1 @@
+ALTER TABLE public.remaster_queue ADD COLUMN IF NOT EXISTS content text;

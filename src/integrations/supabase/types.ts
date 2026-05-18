@@ -192,6 +192,7 @@ export type Database = {
       }
       remaster_queue: {
         Row: {
+          content: string | null
           created_at: string
           error: string | null
           id: string
@@ -205,6 +206,7 @@ export type Database = {
           target_type: string
         }
         Insert: {
+          content?: string | null
           created_at?: string
           error?: string | null
           id?: string
@@ -218,6 +220,7 @@ export type Database = {
           target_type: string
         }
         Update: {
+          content?: string | null
           created_at?: string
           error?: string | null
           id?: string
