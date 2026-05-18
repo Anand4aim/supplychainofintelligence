@@ -167,9 +167,9 @@ const Predictions = () => {
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Predictions — The Supply Chain of Intelligence™ track record",
+    name: "The Board — Predictions & track record · The Supply Chain of Intelligence™",
     description:
-      "Dated, layer-tagged structural calls made through the 10-layer generative AI framework, each scored on structural accuracy and timing.",
+      "Dated, layer-tagged structural calls on the 10-layer generative AI stack (not logistics/freight), each scored on structural accuracy, timing, and the counter-move the subject could still play.",
     numberOfItems: PREDICTIONS.length,
     itemListOrder: "https://schema.org/ItemListOrderDescending",
     itemListElement: sorted.map((p, i) => ({
