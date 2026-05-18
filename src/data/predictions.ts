@@ -50,6 +50,12 @@ export interface Prediction {
   caseStudySlug: string;
   /** Optional external source link (press, earnings, primary doc). */
   source?: { label: string; url: string };
+  /**
+   * The chess move the subject could (still) play to beat the call.
+   * Framework is directional, not deterministic — companies have agency.
+   * One sentence, layer-tagged, concrete.
+   */
+  counterMove?: string;
 }
 
 export const PREDICTIONS: Prediction[] = [
