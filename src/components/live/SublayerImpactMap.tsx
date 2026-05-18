@@ -1,5 +1,6 @@
 import React from "react";
 import { LAYER_LABEL, LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
+import ExportablePng from "@/components/ExportablePng";
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
 export interface LayerScore {
