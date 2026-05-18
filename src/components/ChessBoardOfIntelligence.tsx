@@ -150,7 +150,7 @@ const RULES = [
 const ChessBoardOfIntelligence = () => {
   return (
     <section className="my-20">
-      <Eyebrow className="mb-3">The Chess Board of Intelligence™</Eyebrow>
+      <Eyebrow className="mb-3">The Chess Board of Intelligence</Eyebrow>
       <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
         Every company has the same 10 squares.
         <span className="block text-foreground/60 font-normal text-2xl md:text-3xl mt-1">
