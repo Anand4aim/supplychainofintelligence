@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { SketchBoard } from "@/components/sketch/SketchElements";
 import { LAW_ESSAYS, LAW_ESSAY_BY_SLUG } from "@/data/lawEssays";
+import { PRECEDENTS_BY_LAW } from "@/data/lawPrecedents";
 
 const renderInline = (text: string) => {
   // Render **bold** chunks within a paragraph.
@@ -82,6 +83,34 @@ const LawEssayPage = () => {
               </p>
             ))}
           </motion.div>
+
+          {/* Sources & Precedents */}
+          {PRECEDENTS_BY_LAW[essay.slug]?.length ? (
+            <div className="mt-14 border-t border-border pt-10">
+              <div className="font-mono-marker text-[10px] tracking-[0.22em] text-accent uppercase mb-2">
+                SOURCES & PRECEDENTS
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+                This law echoes earlier strategy thinking.
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6 max-w-2xl">
+                Law {essay.num} is a synthesis, not a one-person invention. It restates and specializes prior strategy work for the AI stack era.
+              </p>
+              <ol className="space-y-4">
+                {PRECEDENTS_BY_LAW[essay.slug].map((p, i) => (
+                  <li key={i} className="border-l-2 border-accent/40 pl-4">
+                    <div className="font-display font-semibold text-foreground">
+                      {p.thinker} <span className="font-normal text-muted-foreground">— {p.work}{p.year ? ` (${p.year})` : ""}</span>
+                    </div>
+                    <p className="text-sm text-foreground/80 leading-relaxed mt-1">{p.echo}</p>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-6 text-xs text-muted-foreground">
+                Have a better precedent or a counter-case? <a href="/challenge" className="text-accent underline underline-offset-2">Submit it →</a>
+              </p>
+            </div>
+          ) : null}
 
           {/* Footer / nav between essays */}
           <div className="mt-16 pt-8 border-t border-border">

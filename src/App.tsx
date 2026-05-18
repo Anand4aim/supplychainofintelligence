@@ -22,6 +22,11 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import RemasterAdmin from "./pages/RemasterAdmin";
+import Voices from "./pages/Voices";
+import Challenge from "./pages/Challenge";
+import EdgeCases from "./pages/EdgeCases";
+import Playbook from "./pages/Playbook";
+import PreAiProof from "./pages/PreAiProof";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +54,11 @@ const App = () => (
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin/remaster" element={<RemasterAdmin />} />
+        <Route path="/voices" element={<Voices />} />
+        <Route path="/challenge" element={<Challenge />} />
+        <Route path="/edge-cases" element={<EdgeCases />} />
+        <Route path="/playbook" element={<Playbook />} />
+        <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
