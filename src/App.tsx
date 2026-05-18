@@ -17,6 +17,7 @@ import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
 import Start from "./pages/Start";
 import Predictions from "./pages/Predictions";
+import Disclaimer from "./pages/Disclaimer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
         <Route path="/market-map" element={<MarketMap />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/laws/:slug" element={<LawEssayPage />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>

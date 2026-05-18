@@ -60,7 +60,12 @@ const SiteFooter = () => (
 
       <div className="border-t border-foreground/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px] text-foreground/50">
         <p>© {new Date().getFullYear()} Anand Arivukkarasu</p>
-        <p>Use it, cite it, build on it — credit appreciated.</p>
+        <div className="flex items-center gap-4">
+          <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+            Disclaimer
+          </Link>
+          <span>Use it, cite it, build on it — credit appreciated.</span>
+        </div>
       </div>
     </div>
   </footer>
