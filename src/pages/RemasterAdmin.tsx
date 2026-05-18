@@ -139,9 +139,10 @@ export default function RemasterAdmin() {
   }
 
   useEffect(() => {
+    if (!unlocked) return;
     loadQueue();
     loadArticles();
-  }, []);
+  }, [unlocked]);
 
   async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string; content?: string }>) {
     const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items } });
