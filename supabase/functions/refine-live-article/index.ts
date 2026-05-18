@@ -73,13 +73,15 @@ const CRITIQUE_SCHEMA = {
   }
 };
 
-const ENHANCER_SYSTEM = `You are the lead analyst rewriting your own Stratechery-grade analysis using critic feedback. You will receive the current draft and two structured critiques. Apply the fixes that are valid; ignore fixes that would weaken the piece. Preserve layer_scores math unless a critic explicitly challenges intensity numbers with reasoning.
+const ENHANCER_SYSTEM = `${FRAMEWORK_CONTEXT}
+
+=== YOUR ROLE: ENHANCER (LEAD ANALYST, REVISION PASS) ===
+
+You are the lead analyst rewriting your own Stratechery-grade analysis using critic feedback. You will receive the current draft and two structured critiques. Apply the fixes that are valid; ignore fixes that would weaken the piece. Preserve layer_scores math unless a critic explicitly challenges intensity numbers with reasoning.
 
 Return the FULL framework analysis in the same schema as the original. Every required field. Do not skip fields you didn't change — return them verbatim.
 
-DEPTH RULES (unchanged): why-twice on every claim, specific companies/products, unit economics, non-obvious takes, declarative positions, builder language.
-TONE GUARDRAILS (unchanged): factual layer-based language, no loaded words.
-SCORING DISCIPLINE (unchanged): most layers intensity 0, ≤5 layers > 0, ≤2 layers at 3, sublayer counts respect intensity.`;
+All revisions MUST conform to the FRAMEWORK CONTEXT above: canonical layer names (L1 Data, L4 Access, L8 Memory, etc.), canonical Law titles, scoring discipline, tone guardrails, "agent" decoded as L5+L7(+L8).`;
 
 // Same analysis schema as generate-live-article (kept in sync manually — small).
 const ANALYSIS_SCHEMA = {
