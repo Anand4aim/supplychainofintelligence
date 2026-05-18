@@ -191,6 +191,21 @@ export default function RemasterAdmin() {
   );
   const isQueued = (t: string, id: string) => queuedKeys.has(`${t}::${id}`);
 
+  if (checking) {
+    return <div className="min-h-screen flex items-center justify-center text-sm text-muted-foreground">Checking…</div>;
+  }
+  if (!unlocked) {
+    return (
+      <>
+        <Helmet>
+          <title>Remaster Admin</title>
+          <meta name="robots" content="noindex,nofollow" />
+        </Helmet>
+        <PasscodeGate onUnlock={() => setUnlocked(true)} />
+      </>
+    );
+  }
+
   return (
     <>
       <Helmet>
