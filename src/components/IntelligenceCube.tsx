@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import ExportablePng from "@/components/ExportablePng";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy", "Finance"];
 const FUNCTIONS_SHORT = ["Dev", "Des", "Prod", "PM", "Ops", "Mkt", "Sale", "CX", "Strat", "Fin"];
@@ -538,47 +539,53 @@ const IntelligenceCube = () => {
       </div>
 
       {/* Visualization panel */}
-      <motion.div
-        key={view}
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="rounded-2xl p-5 md:p-6"
-        style={{
-          background:
-            "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
-          border: "1px solid hsl(35 20% 88%)",
-        }}
+      <ExportablePng
+        fileName={view === "cube" ? "scoi-intelligence-cube-3d" : "scoi-intelligence-cube-grids"}
+        caption={view === "cube" ? "The Intelligence Cube — 3D" : "The Intelligence Cube — Flat Grids"}
+        exportBackground="hsl(40 30% 97%)"
       >
-        {view === "cube" ? (
-          <IsoCube visible={visible} />
-        ) : (
-          <div className="grid md:grid-cols-2 gap-8">
-            <ComparisonGrid
-              yAxis={LAYERS}
-              xAxis={VERTICALS}
-              xAxisKey="verticals"
-              yLabel="Layers"
-              xLabel="Verticals"
-              visible={visible}
-            />
-            <ComparisonGrid
-              yAxis={LAYERS}
-              xAxis={FUNCTIONS}
-              xAxisKey="functions"
-              yLabel="Layers"
-              xLabel="Functions"
-              visible={visible}
-            />
-          </div>
-        )}
+        <motion.div
+          key={view}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25 }}
+          className="rounded-2xl p-5 md:p-6"
+          style={{
+            background:
+              "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
+            border: "1px solid hsl(35 20% 88%)",
+          }}
+        >
+          {view === "cube" ? (
+            <IsoCube visible={visible} />
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              <ComparisonGrid
+                yAxis={LAYERS}
+                xAxis={VERTICALS}
+                xAxisKey="verticals"
+                yLabel="Layers"
+                xLabel="Verticals"
+                visible={visible}
+              />
+              <ComparisonGrid
+                yAxis={LAYERS}
+                xAxis={FUNCTIONS}
+                xAxisKey="functions"
+                yLabel="Layers"
+                xLabel="Functions"
+                visible={visible}
+              />
+            </div>
+          )}
 
-        <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
-          {view === "cube"
-            ? "Each dot = one company occupies one (Function × Vertical × Layer) cell. Stacked dots = contested cells. Toggle a name above to isolate its footprint."
-            : "Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint."}
-        </p>
-      </motion.div>
+          <p className="mt-5 pt-4 border-t border-foreground/10 font-mono-marker text-[10px] text-muted-foreground">
+            {view === "cube"
+              ? "Each dot = one company occupies one (Function × Vertical × Layer) cell. Stacked dots = contested cells. Toggle a name above to isolate its footprint."
+              : "Each colored dot = one company occupies that intersection. Stacked dots = contested cells. Toggle a name above to isolate its footprint."}
+          </p>
+        </motion.div>
+      </ExportablePng>
 
       {/* Verdict list */}
       <div className="space-y-2">
