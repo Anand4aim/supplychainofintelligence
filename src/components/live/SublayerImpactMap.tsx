@@ -26,13 +26,18 @@ const SublayerImpactMap: React.FC<Props> = ({ layerScores }) => {
   if (impacted.length === 0) return null;
 
   return (
-    <div
-      className="rounded-2xl p-5 md:p-6"
-      style={{
-        background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
-        border: "1px solid hsl(35 20% 88%)",
-      }}
+    <ExportablePng
+      fileName="scoi-sublayer-impact-map"
+      caption="Sublayer Impact Map"
+      exportBackground="hsl(40 30% 97%)"
     >
+      <div
+        className="rounded-2xl p-5 md:p-6"
+        style={{
+          background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
+          border: "1px solid hsl(35 20% 88%)",
+        }}
+      >
       <div className="space-y-5">
         {impacted.map(({ layer, subs }) => (
           <div key={layer} className="flex gap-4 items-start">
