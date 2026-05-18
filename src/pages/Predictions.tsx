@@ -210,7 +210,7 @@ const Predictions = () => {
           transition={{ duration: 0.6 }}
           className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground mt-4"
         >
-          Predictions.
+          The Board.
         </motion.h1>
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
           Think of this page as a chess board, not a crystal ball. Every call
