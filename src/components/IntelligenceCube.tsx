@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import ExportablePng from "@/components/ExportablePng";
 
 const FUNCTIONS = ["Dev/Eng", "Design", "Product", "PM/Proj", "Ops", "Mktg", "Sales", "CustCare", "Strategy", "Finance"];
 const FUNCTIONS_SHORT = ["Dev", "Des", "Prod", "PM", "Ops", "Mkt", "Sale", "CX", "Strat", "Fin"];
