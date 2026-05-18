@@ -1,6 +1,7 @@
 import { ExternalLink, FileText, Newspaper, BookOpen, Search } from "lucide-react";
 import { PREDICTIONS } from "@/data/predictions";
 import ReportCitationDialog from "./ReportCitationDialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 /**
  * Sources & Citations — aggregated public-source list for every call
@@ -9,10 +10,34 @@ import ReportCitationDialog from "./ReportCitationDialog";
  */
 
 const KIND_META = {
-  primary: { Icon: FileText, label: "Primary", color: "hsl(var(--layer-1))" },
-  news: { Icon: Newspaper, label: "News", color: "hsl(var(--layer-4))" },
-  reference: { Icon: BookOpen, label: "Reference", color: "hsl(var(--layer-7))" },
-  search: { Icon: Search, label: "Search", color: "hsl(var(--layer-5))" },
+  primary: {
+    Icon: FileText,
+    label: "Primary",
+    color: "hsl(var(--layer-1))",
+    blurb:
+      "Primary source — published directly by the company (press release, official blog, earnings, SEC filing). Highest authority.",
+  },
+  news: {
+    Icon: Newspaper,
+    label: "News",
+    color: "hsl(var(--layer-4))",
+    blurb:
+      "News coverage — reporting by an independent outlet (Bloomberg, WSJ, The Information, TechCrunch, etc.). Editorially curated, point-in-time.",
+  },
+  reference: {
+    Icon: BookOpen,
+    label: "Reference",
+    color: "hsl(var(--layer-7))",
+    blurb:
+      "Reference page — stable background source (Wikipedia, arXiv, docs, encyclopedic profile). Useful for context, not for breaking facts.",
+  },
+  search: {
+    Icon: Search,
+    label: "Live search",
+    color: "hsl(var(--layer-5))",
+    blurb:
+      "Live news search — non-cached Google News query. The story is still moving; readers see the latest reporting at click time.",
+  },
 } as const;
 
 const SourcesSection = () => {
