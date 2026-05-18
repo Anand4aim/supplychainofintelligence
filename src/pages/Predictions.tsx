@@ -412,6 +412,8 @@ const Predictions = () => {
         </ol>
         )}
 
+        <SourcesSection />
+
         <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02] space-y-4">
           <h3 className="font-display text-xl font-semibold text-foreground">
             On honesty — structural vs. timing
