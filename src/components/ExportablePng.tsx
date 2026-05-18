@@ -103,15 +103,15 @@ const ExportablePng = ({
         {children}
 
         {/*
-          Inline watermark band — flows at the bottom of the image as part
-          of the layout. Always visible, captured on download and on any
-          screenshot. 10-layer color bar + attribution line.
+          Watermark — absolutely positioned at the bottom INSIDE the card,
+          overlaying the visual so it's baked into the image itself (not a
+          separate band below it). Captured on download and on screenshots.
         */}
         <div
-          className="flex items-center justify-between gap-3 px-4 py-2 border-t"
+          className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 z-20 pointer-events-none flex items-center justify-between gap-3 px-3 py-1.5 rounded-md backdrop-blur-sm"
           style={{
-            borderColor: "hsl(var(--foreground) / 0.08)",
-            background: "hsl(var(--background))",
+            background: "hsl(var(--background) / 0.78)",
+            border: "1px solid hsl(var(--foreground) / 0.08)",
           }}
           aria-hidden
         >
