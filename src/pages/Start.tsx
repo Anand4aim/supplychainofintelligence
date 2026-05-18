@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Compass, LineChart, Rocket, Download } from "luc
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
+import CopySnippet from "@/components/CopySnippet";
 
 /**
  * /start — The atomic on-ramp.
@@ -378,7 +379,109 @@ const Start = () => {
         </div>
       </section>
 
-      {/* ═════════ 4 · THE ONE QUESTION ═════════ */}
+      {/* ═════════ 3.5 · APOLLO — THE SAASPOCALYPSE SURVIVOR ═════════ */}
+      {/*
+        The 60-second explainer. Most SaaSpocalypse coverage is corpses.
+        Apollo is the live survivor — and the survival pattern is the
+        single most useful thing to internalize about the framework.
+      */}
+      <section className="relative bg-secondary/30 border-y border-border">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
+          <motion.div {...fade} className="mb-10 md:mb-12">
+            <Eyebrow className="mb-3">The 60-second explainer · Survivor pattern</Eyebrow>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight max-w-3xl">
+              Apollo gave up its SaaS app to win the AI era.
+              <span className="text-muted-foreground"> The framework tells you why that's brilliant.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            {...fade}
+            className="rounded-2xl border border-border bg-card p-6 md:p-10 relative overflow-hidden"
+          >
+            <div
+              className="absolute top-0 left-0 right-0 h-1"
+              style={{ background: "hsl(var(--verdict-fortified))" }}
+            />
+
+            <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-start mb-8">
+              <div>
+                <p className="font-mono-marker text-[11px] tracking-[0.2em] text-accent mb-2">
+                  THE PATTERN
+                </p>
+                <p className="text-[17px] md:text-[18px] text-foreground/90 leading-[1.7]">
+                  For a decade Apollo built the full GTM SaaS stack — 300M+ contact profiles{" "}
+                  <span className="font-mono-marker text-[12px] tracking-wide text-muted-foreground">(L1b)</span>,
+                  sequencer{" "}
+                  <span className="font-mono-marker text-[12px] tracking-wide text-muted-foreground">(L5)</span>,
+                  dialer, full app{" "}
+                  <span className="font-mono-marker text-[12px] tracking-wide text-muted-foreground">(L7)</span>,
+                  platform pitch{" "}
+                  <span className="font-mono-marker text-[12px] tracking-wide text-muted-foreground">(L8)</span>.
+                  Then it noticed what every horizontal SaaS will eventually notice:{" "}
+                  <span className="text-foreground font-semibold">when Claude and ChatGPT become the command center, marketers don't want to log into ten apps.</span>{" "}
+                  The L7/L8 surface evaporates.
+                </p>
+                <p className="text-[17px] md:text-[18px] text-foreground/90 leading-[1.7] mt-4">
+                  Apollo's response was structurally radical: keep the L1b data moat. Become the default MCP connector
+                  into Claude. Let the surface quietly recede. Now when a marketer asks Claude{" "}
+                  <em className="text-foreground">"find me 50 RevOps leaders at Series B SaaS,"</em> Apollo serves the
+                  answer — free distribution from inside the command center.
+                </p>
+              </div>
+
+              <div className="md:w-[200px] shrink-0 flex md:flex-col gap-3">
+                {[
+                  { layer: "L1b", label: "Data moat", color: "var(--layer-1)" },
+                  { layer: "L2", label: "Connector", color: "var(--layer-2)" },
+                  { layer: "L7", label: "Receding", color: "var(--layer-7)", muted: true },
+                ].map((t) => (
+                  <div
+                    key={t.layer}
+                    className="flex items-center gap-3 rounded-lg border border-border px-3 py-2.5"
+                    style={{ background: `hsl(${t.color} / ${t.muted ? 0.03 : 0.08})` }}
+                  >
+                    <span
+                      className="font-display text-xl font-bold"
+                      style={{ color: `hsl(${t.color})`, opacity: t.muted ? 0.5 : 1 }}
+                    >
+                      {t.layer}
+                    </span>
+                    <span
+                      className="font-mono-marker text-[10px] tracking-[0.18em] uppercase"
+                      style={{ color: t.muted ? "hsl(var(--muted-foreground))" : "hsl(var(--foreground))" }}
+                    >
+                      {t.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-border pt-6 flex flex-wrap items-baseline justify-between gap-3 mb-2">
+              <p className="font-display italic text-foreground text-lg md:text-xl max-w-xl leading-snug">
+                "When the layer above you commoditizes, get thinner, not thicker.
+                <span className="text-muted-foreground"> Ride the layer that's eating you."</span>
+              </p>
+              <CopySnippet
+                text={
+                  "Apollo just ran the cleanest SaaSpocalypse survival playbook I've seen.\n\nFor a decade they stacked the whole GTM SaaS: 300M+ contact profiles (L1b), sequencer (L5), dialer, full app surface (L7), workflow platform (L8). Standard horizontal SaaS — login, dashboards, the works.\n\nThen they noticed what every horizontal SaaS will eventually notice: when Claude and ChatGPT become the command center, marketers don't want to log into 10 apps. The L7/L8 surface evaporates.\n\nApollo's response was structurally radical. Keep the L1b data moat. Become the default MCP connector into Claude. Let the surface quietly recede. Now when a marketer asks Claude \"find me 50 RevOps leaders at Series B SaaS,\" Apollo serves the answer — free distribution from inside the command center.\n\nThe lesson isn't \"build agents.\" It's: when the layer above you commoditizes, get thinner, not thicker. Ride the layer that's eating you.\n\nThat's Law of Layer Compression in real time."
+                }
+                path="/analysis/apollo-thin-stack-survivor"
+                label="Copy this argument"
+              />
+            </div>
+
+            <Link
+              to="/analysis/apollo-thin-stack-survivor"
+              className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:gap-2.5 transition-all"
+            >
+              Read the full case study <ArrowRight size={14} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="relative bg-foreground text-background overflow-hidden">
         <div
           aria-hidden
