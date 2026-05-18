@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
+import ChessBoardOfIntelligence from "@/components/ChessBoardOfIntelligence";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import {
@@ -299,7 +300,16 @@ const Predictions = () => {
         </div>
       </section>
 
+      {/* The Chess Board of Intelligence — piece-value mapping of the 10 squares */}
+      <section className="max-w-5xl mx-auto px-6">
+        <ChessBoardOfIntelligence />
+      </section>
+
       <section className="max-w-5xl mx-auto px-6 pb-24">
+        <Eyebrow className="mb-3">The Calls</Eyebrow>
+        <h2 className="font-display text-3xl font-semibold text-foreground tracking-tight mb-8">
+          Every dated call, with the counter-move still on the table.
+        </h2>
         {filtered.length === 0 ? (
           <p className="text-foreground/60 text-sm">No predictions match the current filter{query ? ` and search “${query}”` : ""}.</p>
         ) : (
