@@ -14,6 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
+      article_revisions: {
+        Row: {
+          accepted: boolean
+          article_id: string
+          created_at: string
+          critic_a: Json | null
+          critic_a_score: number | null
+          critic_b: Json | null
+          critic_b_score: number | null
+          draft: Json | null
+          id: string
+          models: Json
+          notes: string | null
+          round: number
+          stage: string
+        }
+        Insert: {
+          accepted?: boolean
+          article_id: string
+          created_at?: string
+          critic_a?: Json | null
+          critic_a_score?: number | null
+          critic_b?: Json | null
+          critic_b_score?: number | null
+          draft?: Json | null
+          id?: string
+          models?: Json
+          notes?: string | null
+          round: number
+          stage: string
+        }
+        Update: {
+          accepted?: boolean
+          article_id?: string
+          created_at?: string
+          critic_a?: Json | null
+          critic_a_score?: number | null
+          critic_b?: Json | null
+          critic_b_score?: number | null
+          draft?: Json | null
+          id?: string
+          models?: Json
+          notes?: string | null
+          round?: number
+          stage?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "article_revisions_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "live_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       citation_reports: {
         Row: {
           created_at: string
