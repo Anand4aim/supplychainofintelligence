@@ -37,6 +37,7 @@ Deno.serve(async (req) => {
         target_label: i.target_label,
         priority: i.priority ?? 0,
         notes: i.notes ?? null,
+        content: i.content ?? null,
         status: "queued",
       }));
 
