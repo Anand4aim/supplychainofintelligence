@@ -16,7 +16,7 @@ const personSchema = {
   jobTitle: "Product Leader & AI Product Architect",
   url: "https://supplychainofai.com/about",
   description:
-    "Ex-Meta (Instagram) product leader. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
+    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
   alumniOf: [
     { "@type": "Organization", name: "Meta (Instagram)" },
     { "@type": "Organization", name: "Vungle" },
