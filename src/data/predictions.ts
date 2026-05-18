@@ -72,6 +72,8 @@ export const PREDICTIONS: Prediction[] = [
     timing: "faster",
     timingNote: "Surface compression hit inside ~6 months of the call.",
     caseStudySlug: "jasper-vs-grammarly-copilot",
+    counterMove:
+      "Buy a vertical L1 corpus (industry-specific brand voice + compliance data) and bolt into a CRM L5 workflow before GPT-4 ships — convert from L7 wrapper to L1+L5 SaaS in under 12 months.",
     source: {
       label: "The Information — Jasper valuation reset",
       url: "https://www.theinformation.com/articles/jasper-ai-the-buzzy-startup-worth-1-5-billion-faces-an-increasingly-uncertain-future",
@@ -90,6 +92,8 @@ export const PREDICTIONS: Prediction[] = [
     timing: "on-pace",
     timingNote: "Repricing landed within the expected 12–24 month window.",
     caseStudySlug: "chegg-collapse",
+    counterMove:
+      "License the answer corpus to OpenAI/Anthropic as an L1 supplier and pivot the surface to L5+L8 tutoring workflows (per-student memory, assignment-aware) before the L7 search interface collapses.",
     source: {
       label: "CNBC — Chegg shares plunge 48% on ChatGPT impact",
       url: "https://www.cnbc.com/2023/05/02/chegg-drops-more-than-40percent-after-saying-chatgpt-is-killing-its-business.html",
@@ -109,6 +113,8 @@ export const PREDICTIONS: Prediction[] = [
     timingNote:
       "Frontier-model + incumbent-stack pressure arrived ~12–18 months sooner than the original horizon assumed.",
     caseStudySlug: "harvey-vs-generic-legal",
+    counterMove:
+      "Lock in 3–5 AmLaw 100 firms with multi-year L1 (firm-corpus) + L5 (matter-management) integrations so the switching cost compounds before LexisNexis / vLex / Westlaw close the citation-and-workflow gap.",
   },
   {
     id: "copilot-pressure-on-glean",
@@ -122,6 +128,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "playing-out",
     timing: "on-pace",
     caseStudySlug: "glean-enterprise-search-fortress",
+    counterMove:
+      "Double down on non-Microsoft enterprises and ship deeper L3 (governance, audit, BYOK) primitives Copilot structurally can't match — turn the L3 gap into the procurement wedge.",
   },
   {
     id: "sierra-l1-l5-l8-stack",
@@ -135,6 +143,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "confirmed",
     timing: "on-pace",
     caseStudySlug: "sierra-vs-salesforce",
+    counterMove:
+      "Race Decagon to lock in the F500 CX logos with multi-year L1 (per-tenant transcript + policy) contracts; the L8 resolution loop only compounds if the L1 contract length outlasts Salesforce's bundling cycle.",
     source: {
       label: "Reuters — Sierra valuation",
       url: "https://www.reuters.com/technology/artificial-intelligence/ai-startup-sierra-valued-45-billion-latest-funding-round-2024-10-28/",
@@ -153,6 +163,8 @@ export const PREDICTIONS: Prediction[] = [
     timing: "faster",
     timingNote: "Surface compression arrived within 9 months of the call.",
     caseStudySlug: "devin-cognition-l7-agent",
+    counterMove:
+      "Re-package Devin as an L5 teammate inside Slack/Linear/GitHub workflows with persistent L8 codebase memory — concede the standalone L7 surface, win the L5+L8 inside the org.",
   },
   {
     id: "stability-open-model-trap",
@@ -166,6 +178,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "confirmed",
     timing: "on-pace",
     caseStudySlug: "stability-ai-open-model-trap",
+    counterMove:
+      "Pick a vertical (creative pros, gaming assets, advertising) and build an L1 (licensed data) + L7 (paid surface) stack on top of the open model — stop competing on L2, start competing on distribution.",
   },
   {
     id: "perplexity-vs-google",
@@ -179,6 +193,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "confirmed",
     timing: "on-pace",
     caseStudySlug: "perplexity-vs-google-distribution",
+    counterMove:
+      "Acquire or build an L4 channel — browser, OS-level assistant, or default-search deal with a non-Google handset OEM — before Google's AI Overviews caps share permanently.",
   },
   {
     id: "cursor-ide-consolidation",
@@ -193,6 +209,8 @@ export const PREDICTIONS: Prediction[] = [
     timing: "faster",
     timingNote: "IDE consolidation arrived inside ~12 months of the call.",
     caseStudySlug: "cursor-ide-consolidation",
+    counterMove:
+      "Keep widening the L8 moat (per-developer accepted-edit memory, team-level codebase context) and ship L3 (enterprise audit, code-review policies) so F500 procurement can't default-buy Copilot Workspace.",
   },
   {
     id: "character-ai-memory-orphan",
@@ -206,6 +224,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "confirmed",
     timing: "on-pace",
     caseStudySlug: "character-ai-memory-orphan",
+    counterMove:
+      "Trade L2 independence for survival — sign an exclusive inference-cost deal with one frontier lab in exchange for compute credits, then monetize L8 memory via a premium tier before the cap table forces an acqui-hire.",
     source: {
       label: "The Information — Google's Character.AI deal",
       url: "https://www.theinformation.com/articles/why-googles-character-ai-deal-is-a-template-for-the-ai-talent-wars",
@@ -225,6 +245,8 @@ export const PREDICTIONS: Prediction[] = [
     timingNote:
       "L8 quality loop matured slower than the L5 cost story. The two diverged in public.",
     caseStudySlug: "klarna-customer-service",
+    counterMove:
+      "Re-segment: ship a quality-graded L8 loop where the AI handles high-confidence resolutions and routes the rest to humans, with the routing model itself becoming the moat. Don't oversell the cost story before the L8 maturity catches up.",
   },
   {
     id: "tesla-vs-waymo-stack",
@@ -238,6 +260,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "playing-out",
     timing: "too-early",
     caseStudySlug: "tesla-vs-waymo-autonomy-stack",
+    counterMove:
+      "Waymo's counter: open the geofenced fleet data to third-party L5 partners (logistics, ride-share) to monetize L1 + L8 without waiting for full L7 consumer rollout. Tesla's counter: ship L3 (regulator-grade safety evidence) before FSD scales — the L1+L8 lead means nothing without an L3 license to operate.",
   },
   {
     id: "adobe-firefly-licensed-data",
@@ -251,6 +275,8 @@ export const PREDICTIONS: Prediction[] = [
     structural: "confirmed",
     timing: "on-pace",
     caseStudySlug: "adobe-firefly-licensed-data",
+    counterMove:
+      "Defend by deepening L1 (more licensed catalogs, more language coverage) and tightening L5 (Creative Cloud-native workflows competitors can't reach) — the moment Midjourney ships an enterprise indemnification tier, the L1 alone won't hold.",
   },
   {
     id: "bloomberg-gpt-l2-fortress",
@@ -266,6 +292,8 @@ export const PREDICTIONS: Prediction[] = [
     timingNote:
       "The 'own L2' part of the call aged poorly. The 'L1 corpus is the moat' part survived. Logged honestly: the framework over-weighted L2 ownership against frontier-model improvement curves. This is the kind of call the lens has to get sharper on.",
     caseStudySlug: "bloomberg-gpt-vertical-fortress",
+    counterMove:
+      "Concede the L2 race, double down on L1 (terminal corpus exclusivity, real-time market data licensing) and ship L5 (analyst workflows inside the Terminal) — own the data + workflow, rent the model.",
   },
 ];
 
