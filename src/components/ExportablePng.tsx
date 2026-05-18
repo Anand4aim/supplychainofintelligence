@@ -147,7 +147,29 @@ const ExportablePng = ({
         {done ? <Check size={12} /> : <Download size={12} />}
         {busy ? "..." : done ? "Saved" : "PNG"}
       </button>
-      <div ref={ref}>{children}</div>
+      <div ref={ref}>
+        {children}
+        {/*
+          Inline watermark — always visible on the page so screenshots carry
+          attribution too. On download, html-to-image captures this strip plus
+          a richer one appended below. Kept minimal so it doesn't dominate.
+        */}
+        <div className="mt-3 pt-3 border-t border-foreground/10 flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="flex h-[3px] w-16 md:w-20 rounded-sm overflow-hidden shrink-0" aria-hidden>
+              {["neg1","0","1","2","3","4","5","6","7","8"].map((n) => (
+                <div key={n} className="flex-1" style={{ background: `hsl(var(--layer-${n}))` }} />
+              ))}
+            </div>
+            <span className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.14em] uppercase text-muted-foreground truncate">
+              {caption ?? "The Supply Chain of Intelligence™"}
+            </span>
+          </div>
+          <span className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.12em] uppercase text-accent font-bold shrink-0">
+            supplychainofai.com
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
