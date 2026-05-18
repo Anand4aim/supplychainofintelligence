@@ -38,8 +38,11 @@ const SiteFooter = () => (
           <div className="space-y-2.5">
             <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
+            <Link to="/playbook" className="block text-sm hover:text-foreground transition-colors">Playbook</Link>
             <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
+            <Link to="/edge-cases" className="block text-sm hover:text-foreground transition-colors">Edge Cases</Link>
+            <Link to="/essays/pre-ai-proof" className="block text-sm hover:text-foreground transition-colors">Pre-AI Proof</Link>
           </div>
         </div>
 
@@ -47,6 +50,8 @@ const SiteFooter = () => (
           <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
           <div className="space-y-2.5">
             <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
+            <Link to="/voices" className="block text-sm hover:text-foreground transition-colors">Voices</Link>
+            <Link to="/challenge" className="block text-sm hover:text-foreground transition-colors">Challenge the framework</Link>
             <Link to="/faq" className="block text-sm hover:text-foreground transition-colors">FAQ</Link>
             <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-sm hover:text-foreground transition-colors">
               <Linkedin size={13} /> LinkedIn
