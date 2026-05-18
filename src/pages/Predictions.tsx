@@ -110,8 +110,6 @@ const Pill = ({ meta }: { meta: PillMeta }) => {
   );
 };
 
-        <SourcesSection />
-
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
     year: "numeric",
