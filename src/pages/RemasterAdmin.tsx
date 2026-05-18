@@ -87,7 +87,7 @@ export default function RemasterAdmin() {
     loadArticles();
   }, []);
 
-  async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string }>) {
+  async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string; content?: string }>) {
     const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items } });
     if (error) return toast.error(error.message);
     if (!data?.success) return toast.error(data?.error ?? "Failed");
