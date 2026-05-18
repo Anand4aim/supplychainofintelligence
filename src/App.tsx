@@ -18,6 +18,7 @@ import LawEssayPage from "./pages/LawEssay";
 import Start from "./pages/Start";
 import Predictions from "./pages/Predictions";
 import Disclaimer from "./pages/Disclaimer";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/laws/:slug" element={<LawEssayPage />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
