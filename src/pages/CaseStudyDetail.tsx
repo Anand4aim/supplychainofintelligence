@@ -184,6 +184,25 @@ const CaseStudyDetailPage = () => {
 
             <div className="prose prose-lg max-w-none">{renderMarkdown(study.content)}</div>
 
+            {study.linkedin_snippet && (
+              <div className="mt-10 rounded-xl border border-accent/30 bg-accent/5 p-5 md:p-6">
+                <div className="flex items-baseline justify-between gap-3 mb-3 flex-wrap">
+                  <Eyebrow className="!mb-0">Share this argument</Eyebrow>
+                  <CopySnippet
+                    text={study.linkedin_snippet}
+                    path={`/analysis/${study.slug}`}
+                    label="Copy as LinkedIn post"
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {study.linkedin_snippet}
+                </p>
+                <p className="font-mono-marker text-[10px] tracking-[0.15em] uppercase text-muted-foreground/70 mt-3">
+                  Attribution auto-included on copy
+                </p>
+              </div>
+            )}
+
             <WhatThisMeans
               for_you={study.for_you}
               fallback={{ verdict: study.verdict, layers: study.layers }}
