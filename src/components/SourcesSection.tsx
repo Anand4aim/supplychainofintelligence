@@ -1,5 +1,6 @@
 import { ExternalLink, FileText, Newspaper, BookOpen, Search } from "lucide-react";
 import { PREDICTIONS } from "@/data/predictions";
+import ReportCitationDialog from "./ReportCitationDialog";
 
 /**
  * Sources & Citations — aggregated public-source list for every call
