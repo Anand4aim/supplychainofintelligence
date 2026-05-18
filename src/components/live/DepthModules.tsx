@@ -2,6 +2,7 @@ import React from "react";
 import { LAYER_LABEL, LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
 import SublayerImpactMap from "@/components/live/SublayerImpactMap";
 import CubeProjection2D from "@/components/live/CubeProjection2D";
+import ExportablePng from "@/components/ExportablePng";
 import type { LayerScore, CubePosition, TimelinePoint, WinnerLoser } from "@/components/CaseStudyCard";
 import Eyebrow from "@/components/Eyebrow";
 
@@ -48,8 +49,13 @@ const DepthModules: React.FC<Props> = ({
       {hasAnyScore && (
         <section>
           <Eyebrow className="mb-4">Layer Scoring</Eyebrow>
+          <ExportablePng
+            fileName="layer-scoring"
+            caption="Layer Scoring"
+            exportBackground="hsl(40 30% 97%)"
+          >
           <div
-            className="rounded-2xl p-3 sm:p-5 md:p-6 overflow-x-auto"
+            className="p-3 sm:p-5 md:p-6 overflow-x-auto"
             style={{
               background: "linear-gradient(145deg, hsl(40 30% 97%) 0%, hsl(38 28% 95%) 60%, hsl(40 30% 96%) 100%)",
               border: "1px solid hsl(35 20% 88%)",
