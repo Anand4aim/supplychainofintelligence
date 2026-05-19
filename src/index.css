@@ -39,6 +39,12 @@
 
     --radius: 0.25rem;
 
+    /* ─── Paper (sandalwood canvas for decks/diagrams) ─── */
+    --paper: 38 30% 92%;
+    --paper-deep: 36 22% 86%;
+    --paper-rule: 36 18% 78%;
+    --paper-ink: 220 50% 12%;
+
     /* ─── Layer colors (deck spectrum) ──────────────────── */
     /* Below the line — foundation, deliberately desaturated */
     --layer-neg1: 263 35% 30%;
