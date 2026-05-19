@@ -68,6 +68,7 @@ const App = () => (
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/stack" element={<Stack />} />
+        <Route path="/classification" element={<Classification />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
