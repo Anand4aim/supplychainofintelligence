@@ -42,7 +42,9 @@ const SiteFooter = () => (
             <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary · Decoder</Link>
             <Link to="/playbook" className="block text-sm hover:text-foreground transition-colors">Playbook</Link>
             <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
+            <Link to="/classification" className="block text-sm hover:text-foreground transition-colors">Classification Table</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
+            <Link to="/predictions" className="block text-sm hover:text-foreground transition-colors">Predictions Board</Link>
             <Link to="/edge-cases" className="block text-sm hover:text-foreground transition-colors">Edge Cases</Link>
             <Link to="/essays/pre-ai-proof" className="block text-sm hover:text-foreground transition-colors">Pre-AI Proof</Link>
           </div>
