@@ -39,7 +39,7 @@ const TIERS = [
     color: "var(--layer-7)",
     width: "w-full",
     verdict: "Easily replicated. Platforms ship this for free.",
-    durability: "Months",
+    durability: "Weeks",
   },
   {
     label: "WORKFLOW",
@@ -48,7 +48,7 @@ const TIERS = [
     color: "var(--layer-5)",
     width: "w-[78%]",
     verdict: "Sticky if deep. Survivable if owned.",
-    durability: "Years",
+    durability: "Months",
   },
   {
     label: "SUBSTRATE",
@@ -57,7 +57,7 @@ const TIERS = [
     color: "var(--layer-1)",
     width: "w-[56%]",
     verdict: "Proprietary data, trust gates, compounding memory.",
-    durability: "Decades",
+    durability: "Years",
   },
 ];
 
