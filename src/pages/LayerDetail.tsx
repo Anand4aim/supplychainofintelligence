@@ -8,6 +8,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import { DIAGNOSTIC_BY_LAYER } from "@/data/layerDiagnostics";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import { ArrowLeft, ArrowRight, Star, Check, X as XIcon } from "lucide-react";
+import GlossaryText from "@/components/GlossaryText";
 
 const slugFor = (id: string) => {
   const layer = LAYERS.find((l) => l.id === id);
