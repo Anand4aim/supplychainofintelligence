@@ -539,6 +539,103 @@ export const GLOSSARY: GlossaryTerm[] = [
   },
 ];
 
+// ─── Notation primer ──────────────────────────────────────────────
+// What "L1a", "L5b", "L-1" actually mean. The single most-asked
+// vocabulary question — answered once, citable, and linked from every
+// layer/sublayer entry below.
+GLOSSARY.push({
+  id: "notation",
+  term: "Layer notation (L#, L#x, L−1)",
+  aliases: [
+    "SCOI notation",
+    "L# notation",
+    "L1a meaning",
+    "L5b meaning",
+    "L8c meaning",
+    "what does L1a mean",
+    "sublayer notation",
+  ],
+  category: "framework",
+  shortDef:
+    "L# = one of the 10 layers in The Supply Chain of Intelligence™ (L−1 through L8). L#x (e.g. L1a, L5b, L8c) = the lettered sublayer inside that layer. L−1 uses a true minus, not a hyphen.",
+  longDef:
+    "The notation is a compressed coordinate system for diagnosing where value sits in any AI product. The capital L stands for Layer. The number identifies the layer: L−1 Resources (physical inputs), L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. The lowercase letter (a, b, c, d, e) identifies one of the 5 sublayers inside that layer — for example L1a Public & Open Data, L1b Proprietary Data, L1c Behavioral Data, L1d Outcome Data, L1e Synthetic Data. Always read it left to right as 'L-one-a', 'L-five-b', 'L-minus-one'. Stacking layers with '+' (e.g. 'L1b + L5a + L8c') is the canonical way to describe a defensible position. The dash in L−1 is a Unicode minus (U+2212), not an ASCII hyphen — it is read 'L minus one'.",
+  layerMapping: ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"],
+  primaryLayer: "L-1",
+  commonMistake:
+    "Reading 'L-1' as 'L-one' (it's 'L-minus-one'). Using L# without the sublayer letter when the sublayer is what actually carries the moat — e.g. saying 'L1' when the real claim is 'L1b proprietary data'.",
+  examples: [
+    "L1b = Proprietary Data",
+    "L5a = Domain Execution",
+    "L8c = Aggregated Network Learning",
+    "L−1c = Fabrication & Foundry",
+  ],
+  citation: `${ATTR}, layer notation is L# for one of 10 layers and L#x for the lettered sublayer — L−1 reads 'L minus one'.`,
+  seeAlso: ["layer", "sublayer", "defensible-triangle"],
+});
+
+// ─── Layer entries L−1 … L8 (auto-generated from canonical LAYERS) ─
+// Each layer in src/data/layers.ts becomes a glossary entry so the
+// search box surfaces "L1", "Data", "L-1", "Resources", etc.
+for (const layer of LAYERS) {
+  const display = displayLayerId(layer.id);
+  const layerNum = layer.id; // "L-1", "L0".."L8"
+  GLOSSARY.push({
+    id: `layer-${layer.id.toLowerCase().replace("-", "neg")}`,
+    term: `${display} — ${layer.name}`,
+    aliases: [
+      layer.id,
+      display,
+      `Layer ${layer.id}`,
+      layer.name,
+      layer.shortName,
+      `${layer.id} ${layer.shortName}`,
+    ],
+    category: "framework",
+    shortDef: layer.desc,
+    longDef: `${layer.detail} Sublayers: ${layer.sublayers
+      .map((s) => `${s.id} ${s.name}`)
+      .join(" · ")}.`,
+    layerMapping: [layer.id],
+    primaryLayer: layer.id,
+    commonMistake: `Confusing ${layerNum} with adjacent layers — see the inclusion / exclusion / removal tests on the ${layerNum} diagnostic card.`,
+    examples: layer.players,
+    citation: `${ATTR}, ${display} ${layer.name} is the layer that "${layer.verdict.toLowerCase().replace(/\.$/, "")}".`,
+    seeAlso: ["notation", "layer", "sublayer"],
+  });
+}
+
+// ─── Sublayer entries (all 50 lettered sublayers) ──────────────────
+// Search for "L1b" or "L5a" or "Proprietary Data" lands here directly.
+for (const layer of LAYERS) {
+  const layerDisplay = displayLayerId(layer.id);
+  for (const sub of layer.sublayers) {
+    const subDisplay = sub.id.startsWith("L-1")
+      ? sub.id.replace("L-1", "L\u22121")
+      : sub.id;
+    GLOSSARY.push({
+      id: `sublayer-${sub.id.toLowerCase().replace("-", "neg")}`,
+      term: `${subDisplay} ${sub.name}`,
+      aliases: [sub.id, subDisplay, sub.name, `${sub.id} ${sub.name}`],
+      category: "framework",
+      shortDef: sub.desc,
+      longDef: `${sub.desc} ${subDisplay} is one of the 5 sublayers inside ${layerDisplay} ${layer.name}.${
+        sub.defensible
+          ? " ★ Marked as a defensible sublayer — a primary source of structural moat inside this layer."
+          : ""
+      }`,
+      layerMapping: [layer.id],
+      primaryLayer: layer.id,
+      examples: [],
+      citation: `${ATTR}, ${subDisplay} ${sub.name} is a sublayer of ${layerDisplay} ${layer.name}${
+        sub.defensible ? " and a defensible source of moat" : ""
+      }.`,
+      seeAlso: ["notation", `layer-${layer.id.toLowerCase().replace("-", "neg")}`],
+    });
+  }
+}
+
+
 export const GLOSSARY_BY_ID: Record<string, GlossaryTerm> = Object.fromEntries(
   GLOSSARY.map((g) => [g.id, g]),
 );
