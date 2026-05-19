@@ -49,7 +49,7 @@ const LawEssayPage = () => {
             to="/#three-laws"
             className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
-            <ArrowLeft size={14} /> Back to the Three Laws
+            <ArrowLeft size={14} /> Back to the Four Laws
           </Link>
 
           <Eyebrow tone="accent" className="mb-3">
@@ -116,7 +116,7 @@ const LawEssayPage = () => {
           <div className="mt-16 pt-8 border-t border-border">
             <SketchBoard className="p-5 md:p-6 mb-8">
               <p className="font-mono-marker text-[10px] tracking-[0.2em] text-muted-foreground mb-2">
-                THE THREE STRUCTURAL LAWS
+                THE FOUR STRUCTURAL LAWS
               </p>
               <p className="text-sm text-foreground/80 leading-relaxed">
                 Law I predicts who gets absorbed. Law II predicts where value migrates.

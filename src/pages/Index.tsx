@@ -731,12 +731,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ THREE STRUCTURAL LAWS ═══════════ */}
+      {/* ═══════════ FOUR STRUCTURAL LAWS ═══════════ */}
       <section id="three-laws" className="bg-background">
         <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
           <motion.div {...fadeIn} className="text-center mb-12">
             <Eyebrow className="mb-4">
-  Three Structural Laws
+  Four Structural Laws
 </Eyebrow>
             <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
               The Laws That Predict the Future

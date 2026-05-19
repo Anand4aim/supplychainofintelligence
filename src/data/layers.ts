@@ -231,7 +231,7 @@ export const displayLayerId = (id: string): string =>
 
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
-// ─── The Three Structural Laws ──────────────────────────────────────
+// ─── The Four Structural Laws ──────────────────────────────────────
 // JTBD tells you what users want. The Supply Chain of Intelligence
 // tells you where value accrues — and who can fire you.
 export interface StructuralLaw {
@@ -268,7 +268,86 @@ export const LAWS: StructuralLaw[] = [
     example: "Gamma owns L7 surface. Replit owns agent + code-gen + hosting + auth + database (L4 + L5 + L6 + L8). Same prompt-to-output category. Different fate.",
     prediction: "Predicts WHO survives the platform era.",
   },
+  {
+    num: "IV",
+    title: "Generation and Verification Must Be Separate",
+    shortTitle: "Generation and verification must be separate",
+    desc: "Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator and the verifier must be separate economic entities. L3 above L2/L5 is structurally permanent — the model can't audit itself, the codegen can't certify itself, the drafter can't approve itself.",
+    example: "Vanta (L3) over AWS/OpenAI. Snyk (L3) over Copilot. Big-4 audit over SAP. Ironclad over Harvey. The verifier survives every model generation.",
+    prediction: "Predicts WHERE L3 is non-absorbable.",
+  },
 ];
+
+// ─── Observations ───────────────────────────────────────────────────
+// Patterns we see in market structure — not yet promoted to Laws,
+// but durable enough to bet on. Each gets 2 worked examples.
+export interface Observation {
+  num: number;
+  title: string;
+  shortTitle: string;
+  desc: string;
+  examples: string[];
+  layerTags: string[]; // layer ids it touches
+}
+
+export const OBSERVATIONS: Observation[] = [
+  {
+    num: 1,
+    title: "The Two-Vendor Rule",
+    shortTitle: "Two vendors when mistakes are unrecoverable",
+    desc: "Enterprises will pay for two vendors when one vendor's mistake is unrecoverable. Codegen + code-security. Draft + review. Model + eval. Trade + clearing. The buyer pays the duplication tax to avoid the single-point-of-failure tax.",
+    examples: [
+      "Cursor for codegen + Snyk/Semgrep for security review — no CISO accepts the same vendor doing both.",
+      "Harvey drafts contracts; Ironclad/Kira reviews them. The drafter is structurally not allowed to be the approver.",
+    ],
+    layerTags: ["L3", "L5"],
+  },
+  {
+    num: 2,
+    title: "Regulatory Half-Life",
+    shortTitle: "Regulated industries outlast 3+ model generations",
+    desc: "The more regulated the industry, the longer L3 outlives L2 churn. A compliance gate written into law is a moat measured in decades, not quarters. Models cycle every 6 months; SOC 2, HIPAA, EU AI Act, FDA 510(k) cycle every 5–10 years.",
+    examples: [
+      "Vanta and Drata are 4 model generations old and untouched. The frontier model labs are not certifying themselves.",
+      "Epic's L3+L4 position in healthcare predates the entire AI wave and will outlive GPT-7.",
+    ],
+    layerTags: ["L3"],
+  },
+  {
+    num: 3,
+    title: "The Bundling Asymmetry",
+    shortTitle: "Platforms bundle adjacent layers, never across trust boundaries",
+    desc: "Foundation model labs will expand from L2 into L5/L6/L7 — adjacent value — because the buyer accepts the same vendor doing both. They will not expand across the trust boundary into L3 above themselves. OpenAI will ship agents. OpenAI will not issue its own SOC 2 audit.",
+    examples: [
+      "OpenAI shipped GPTs, the Apps SDK, Operator, and Codex — all L5/L6/L7 expansion. None of it is self-certification.",
+      "AWS ships hundreds of services but pays Vanta/Drata for compliance evidence. The platform respects the boundary.",
+    ],
+    layerTags: ["L2", "L3"],
+  },
+  {
+    num: 4,
+    title: "Memory Is Not Truth",
+    shortTitle: "L8 memory is defensible; L8 truth-claims need L3",
+    desc: "L8 memory of what happened — what the user said, did, preferred — is a clean moat. L8 claims about what is true — diagnoses, legal positions, financial valuations — require an L3 verifier above them. The moment memory makes a truth claim, it inherits a regulator.",
+    examples: [
+      "Notion AI remembers your docs (L8b, defensible). It does not diagnose your patients.",
+      "An AI medical scribe (L8) is valuable; the same scribe issuing a diagnosis triggers FDA (L3) and an MD signature requirement.",
+    ],
+    layerTags: ["L8", "L3"],
+  },
+  {
+    num: 5,
+    title: "Distribution Eats Generation",
+    shortTitle: "When generation commoditizes, the moment-of-consumption captures the surplus",
+    desc: "Once L2 commoditizes (and it always does), the surplus flows to whichever layer owns the user's moment of consumption — L7c (embedded copilot) or L7d (transaction surface). The model is generic; the context of use is not.",
+    examples: [
+      "Cursor captures the codegen surplus, not the model underneath it. The model is interchangeable; the IDE moment is not.",
+      "Perplexity captures the answer surplus by owning the question moment. The model could be any of four — the surface is the moat.",
+    ],
+    layerTags: ["L2", "L7"],
+  },
+];
+
 
 // ─── AI Defensibility Audit ─────────────────────────────────────────
 // A simple 8-question scorecard. Score each 1–5. Total / 40 → band.

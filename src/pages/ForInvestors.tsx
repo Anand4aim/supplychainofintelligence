@@ -47,7 +47,7 @@ const USE_CASES = [
     kicker: "Board education",
     title: "AI Strategy Sessions for Boards",
     body:
-      "Two-hour board-level workshop. The 10 layers, the three structural laws, and where each portfolio bet sits on the map. Translates AI hype into the language of moats, margins, and capex.",
+      "Two-hour board-level workshop. The 10 layers, the four structural laws, and where each portfolio bet sits on the map. Translates AI hype into the language of moats, margins, and capex.",
     layers: ["L0", "L3", "L4"],
   },
 ];

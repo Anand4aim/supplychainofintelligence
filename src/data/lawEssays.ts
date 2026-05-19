@@ -1,9 +1,9 @@
-// Long-form essays — one per Structural Law. Linked from the Three Laws section.
+// Long-form essays — one per Structural Law. Linked from the Four Laws section.
 // Plain-text paragraphs; markdown-ish **bold** is rendered by the Law page.
 
 export interface LawEssay {
   slug: string;
-  num: "I" | "II" | "III";
+  num: "I" | "II" | "III" | "IV";
   title: string;
   shortTitle: string;
   oneLine: string;
@@ -69,6 +69,25 @@ export const LAW_ESSAYS: LawEssay[] = [
       "**The practical test:** for every product decision, ask which layer you are reinforcing. A new animation reinforces L7. A new template reinforces a thin L5. A new integration that captures usage data into a structured form your competitors cannot access reinforces L1c and L8. A new compliance certification reinforces L3. A new system-of-record write-back reinforces L4. These are not equivalent investments. They look equivalent on a roadmap. They are not equivalent in the market.",
       "The companies that will be cited as winners ten years from now are not the ones with the most polished prompt UI in 2026. They are the ones who used the prompt UI to acquire attention and then quietly built the chain underneath it — proprietary data the model layer cannot reach, workflows the user cannot leave, memory that compounds with every session, gates the platform cannot legally cross. Surface to acquire. Chain to retain. Both, or neither.",
       "Law III, stated as a prediction: the surface captures attention this quarter; the chain captures power this decade. Anything you ship today that does not deepen at least one layer below the surface is, by definition, a quarter of attention you cannot compound. That is fine, in moderation. As a strategy, it is a graveyard.",
+    ],
+  },
+  {
+    slug: "generation-and-verification-must-be-separate",
+    num: "IV",
+    title: "Generation and Verification Must Be Separate",
+    shortTitle: "Law IV — Generation and Verification Must Be Separate",
+    oneLine: "The model can't audit itself. The codegen can't certify itself. The drafter can't approve itself.",
+    description:
+      "Law IV of the Supply Chain of Intelligence: wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator and the verifier must be separate economic entities. Why L3 is structurally permanent in regulated industries.",
+    paragraphs: [
+      "The first three laws explain who gets absorbed, where value accrues, and why surface companies stagnate. They leave open the most important question for the next decade of AI: which companies are structurally immune to platform absorption — not because they are clever, but because the market will not allow a single vendor to occupy their position? The answer is the fourth law, and it does not come from software. It comes from accounting, security, medicine, and law, where the principle has been hard-coded into institutions for a hundred years: the entity that produces an output cannot be the same entity that certifies it.",
+      "**This is not a technical constraint. It is an institutional one — and that is exactly why it is permanent.** Every mature industry has reached the same conclusion through expensive failure. Auditors must be independent of management, or the audit means nothing. Drug manufacturers cannot approve their own drugs, or the FDA has nothing to enforce. Code that controls a payment system is reviewed by people who did not write it, or the breach is inevitable. Lawyers who draft a contract are not the ones who litigate it. The pattern is so foundational that we forget it is a pattern. It is simply how trust works in any system where the cost of a single failure is unrecoverable.",
+      "**AI inherits this constraint the moment its output crosses a trust boundary.** When ChatGPT writes a poem, no separation is required — the cost of being wrong is zero. When an AI scribe transcribes a doctor's notes, the cost of being wrong is a malpractice suit, and the FDA cares. When an AI agent writes production code that handles credit card data, the cost of being wrong is a PCI violation, and the CISO cares. Every layer of output that touches money, health, safety, law, or regulation triggers the same institutional reflex: the buyer demands that the generator and the verifier be separate companies. Not separate teams. Separate balance sheets.",
+      "This is why Vanta will not be absorbed by AWS or OpenAI, even though both have every technical capability to ship a SOC 2 product. The technical capability is not the constraint. The constraint is that AWS auditing AWS is, by definition, not an audit. A CISO who accepts that arrangement is not doing their job. The same logic protects Snyk from Copilot, Ironclad from Harvey, and Big-4 audit firms from every ERP vendor that has tried to absorb their work for forty years. The model layer cannot expand into the verification layer above itself — not because the model can't do the work, but because the work loses its meaning when the same party does both.",
+      "**The corollary is the Two-Vendor Rule:** enterprises will pay for two vendors when one vendor's mistake is unrecoverable. They will pay Cursor for code and Snyk for security review. They will pay Harvey for drafting and Ironclad for approval. They will pay the model for generation and a separate eval vendor for measurement. The duplication tax is cheap compared to the single-point-of-failure tax. This is why the L3 layer in regulated categories does not consolidate — every consolidation attempt runs into the same institutional wall.",
+      "There is a strategic implication operators usually miss. If you are building at L5 in a regulated industry — legal, medical, financial, security, accounting, infrastructure — the L3 above you is not your competition. It is your permanent counterweight. You will not absorb it; it will not absorb you. The smart move is to build the integration that makes you the preferred generator routed through the leading verifier. Harvey integrates with the contract management systems lawyers already trust. Cursor integrates with the SAST tools security teams already deploy. The generator that respects the verifier inherits the verifier's distribution.",
+      "And there is a structural implication for foundation model labs. OpenAI, Anthropic, and Google will keep expanding into adjacent value — agents, IDEs, surfaces, memory. They have shipped GPTs, Operator, Codex, Computer Use, and dozens more. None of it crosses the trust boundary into L3 above themselves. None of it ever will. The platforms are building everywhere except the one direction the institutional architecture forbids — and that one direction is, increasingly, where the most durable companies of the next decade will be built.",
+      "Law IV, stated as a prediction: in every industry where the cost of a single AI failure is unrecoverable, the L3 verifier above the model is non-absorbable. Find those industries. Build the gate. The platform will route through you, not over you.",
     ],
   },
 ];
