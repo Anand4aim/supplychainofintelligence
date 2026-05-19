@@ -324,9 +324,10 @@ Deno.serve(async (req) => {
       article_id, run_id, model, status: "complete",
       score: audit.score,
       severity: audit.severity,
+      dimension_scores: audit.dimension_scores ?? {},
       current_layers: article.analysis?.cube_position?.layers ?? [],
       proposed_layers: audit.proposed_layers ?? [],
-      current_sublayers: [], // we don't currently track sublayer tags on articles
+      current_sublayers: [],
       proposed_sublayers: audit.proposed_sublayers ?? [],
       flaws: audit.flaws ?? [],
       fixes: audit.fixes ?? [],
