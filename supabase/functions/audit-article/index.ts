@@ -43,11 +43,24 @@ const AUDIT_SCHEMA = {
   schema: {
     type: "object",
     properties: {
-      score: { type: "integer", minimum: 0, maximum: 100, description: "Composite quality score. 0 = wrong framework mapping & weak prose. 100 = canonical framing, sharp prose, defensible take." },
-      severity: { type: "string", enum: ["critical","needs_fix","minor","ok"], description: "critical = factual framework error (e.g. agent mis-mapped); needs_fix = missing required layer/sublayer; minor = could be enriched; ok = sound." },
-      checklist: { type: "array", description: "Before scoring, list the 3-5 framework rules you will check this article against (e.g. 'Agent decoder must include L5+L6', 'Trust story must tag L3', 'Memory claim must tag L8').", items: { type: "string" } },
-      proposed_layers: { type: "array", description: "Layers (L-1..L8) the article SHOULD be tagged with given its substance. Use only canonical IDs.", items: { type: "string", enum: ALL_LAYERS } },
-      proposed_sublayers: { type: "array", description: "Sublayers (L-1a..L8e) the article SHOULD be tagged with. Walk all 50 sublayers and include only those whose substance the article actually touches. Aim for 3-8 sublayers — be brutal.", items: { type: "string", enum: ALL_SUBLAYERS } },
+      score: { type: "integer", minimum: 0, maximum: 100, description: "Composite quality score. MUST equal the weighted average of dimension_scores using provided weights. Do not invent independently." },
+      severity: { type: "string", enum: ["critical","needs_fix","minor","ok"], description: "critical = framework_fidelity<40 OR composite<40; needs_fix = composite 40-69 OR any dimension<40; minor = composite 70-89; ok = composite>=90 AND no dimension<70." },
+      dimension_scores: {
+        type: "object",
+        description: "Score 0-100 on EACH of the ten lenses. Each has a numeric score and a 1-2 sentence rationale grounded in the article. 100 is reserved for elite work. Most articles land 55-75 on most lenses. Defend any 90+.",
+        properties: Object.fromEntries(DIMENSIONS.map(d => [d.id, {
+          type: "object",
+          properties: {
+            score: { type: "integer", minimum: 0, maximum: 100 },
+            rationale: { type: "string", description: "1-2 sentences grounded in the article." },
+          },
+          required: ["score","rationale"],
+        }])),
+        required: DIM_IDS,
+      },
+      checklist: { type: "array", description: "Before scoring, list the 3-5 framework rules you will check this article against.", items: { type: "string" } },
+      proposed_layers: { type: "array", description: "Layers (L-1..L8) the article SHOULD be tagged with. Canonical IDs only.", items: { type: "string", enum: ALL_LAYERS } },
+      proposed_sublayers: { type: "array", description: "Sublayers (L-1a..L8e) the article SHOULD be tagged with. 3-8 IDs, brutal.", items: { type: "string", enum: ALL_SUBLAYERS } },
       flaws: {
         type: "array",
         description: "Specific framework flaws in the current article. Each grounded in an evidence_quote.",
