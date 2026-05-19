@@ -200,4 +200,17 @@ export const TESTIMONIALS: Testimonial[] = [
     approved: false,
     homepage: true,
   },
+  {
+    name: "Siddhartha Roy",
+    role: "Senior Technical PM",
+    company: "Meta",
+    industry: "Platform / API Products",
+    quote:
+      "Platform PMs live at the seam between L4 distribution and L5 execution — and most AI strategy decks pretend that seam does not exist. The 10-layer map gives me a way to tell partners exactly which layer we are opening up and which one stays ours.",
+    layerTag: "L4 + L5",
+    source: "1:1",
+    linkedin: "https://linkedin.com/in/sidroy83",
+    approved: false,
+    homepage: true,
+  },
 ];
