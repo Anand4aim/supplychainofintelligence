@@ -6,8 +6,10 @@ const navItems = [
   { label: "Start Here", path: "/start" },
   { label: "Live Feed", path: "/live" },
   { label: "Framework", path: "/framework" },
+  { label: "Classification", path: "/classification" },
   { label: "Market Map", path: "/market-map" },
   { label: "Case Studies", path: "/analysis" },
+  { label: "Glossary", path: "/glossary" },
   { label: "Board", path: "/predictions" },
   { label: "About", path: "/about" },
 ];
