@@ -325,6 +325,101 @@ const Index = () => {
       {/* ═══════════ START HERE — 5-beat lobby for first-time readers ═══════════ */}
       <StartHereStrip />
 
+      {/* ═══════════ AI DEFENSIBILITY AUDIT — promoted so the hero CTA lands on proof ═══════════ */}
+      <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
+        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
+          <motion.div {...fadeIn} className="mb-10">
+            <Eyebrow className="mb-4">Use the Framework</Eyebrow>
+            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-3">
+              The AI Defensibility Audit
+            </h2>
+            <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
+              Score each area 1–5 (1 = exposed, 5 = owned). Total it. The band tells you whether
+              your product is a wrapper, a workflow, or a platform candidate. Built for product
+              leaders preparing a strategy review and for investors auditing a SaaS portfolio.
+            </p>
+          </motion.div>
+
+          <motion.div {...fadeIn}>
+            <SketchBoard className="p-5 md:p-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-7">
+                {AUDIT_QUESTIONS.map((q, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-3 rounded-lg border border-border bg-card p-3.5 sketch-border"
+                  >
+                    <Eyebrow dash={false} className="shrink-0 leading-none mt-0.5">
+                      {String(i + 1).padStart(2, "0")}
+                    </Eyebrow>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm font-bold text-foreground">{q.area}</span>
+                        <span className="font-sketch text-xs px-1.5 py-0.5 rounded-md bg-secondary text-muted-foreground shrink-0">
+                          {q.layer}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{q.question}</p>
+                      <div className="flex gap-1 mt-2">
+                        {[1, 2, 3, 4, 5].map((n) => (
+                          <span
+                            key={n}
+                            className="w-4 h-4 rounded-full border border-border bg-background"
+                            title={`${n}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-5 border-t border-border/60">
+                <p className="font-sketch text-base font-bold text-sketch-red mb-3">
+                  ← Score yourself out of 40
+                </p>
+                <div className="space-y-2">
+                  {AUDIT_BANDS.map((b) => (
+                    <div
+                      key={b.range}
+                      className="grid grid-cols-[60px_1fr] md:grid-cols-[70px_180px_1fr] gap-3 items-start py-2 border-b border-border/40 last:border-b-0"
+                    >
+                      <span
+                        className="font-sketch text-base font-bold"
+                        style={{ color: `hsl(${b.color})` }}
+                      >
+                        {b.range}
+                      </span>
+                      <span
+                        className="font-display text-sm font-bold text-foreground"
+                        style={{ color: `hsl(${b.color})` }}
+                      >
+                        {b.label}
+                      </span>
+                      <span className="text-xs md:text-sm text-muted-foreground leading-relaxed col-span-2 md:col-span-1">
+                        {b.verdict}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <p className="font-sketch text-xs text-muted-foreground/60 mt-5 text-center">
+                Use it as a one-page scorecard in your next strategy review or investment memo.
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <Link to="/start" className="btn-sketch">
+                  Run the full audit <ArrowRight size={15} />
+                </Link>
+                <Link to="/for-investors" className="btn-sketch-outline">
+                  For PE &amp; investors →
+                </Link>
+              </div>
+            </SketchBoard>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══════════ PROOF OF CORPUS ═══════════ */}
       <ProofOfCorpus />
 
