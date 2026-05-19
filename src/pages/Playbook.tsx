@@ -10,7 +10,7 @@ import { SketchBoard } from "@/components/sketch/SketchElements";
 
 const ROADMAP_MOVES = [
   {
-    layer: "L-1 / L0 Resources & Infra",
+    layer: "L\u22121 / L0 Resources & Infra",
     exposure: "You depend on capacity that can be priced or rationed against you.",
     moves: [
       "Lock in 12–24 month compute commitments before launch. Treat GPU as a supply-chain line item, not a cloud cost.",
