@@ -105,7 +105,7 @@ const AUDIT_SCHEMA = {
       laws_applied: { type: "array", description: "Which of the 4 Laws the article actually applies (by Roman numeral).", items: { type: "string", enum: ["I","II","III","IV"] } },
       laws_missed: { type: "array", description: "Laws the article SHOULD have applied but didn't.", items: { type: "string", enum: ["I","II","III","IV"] } },
     },
-    required: ["score","severity","checklist","proposed_layers","proposed_sublayers","flaws","fixes","verdict_check","evidence_quotes","laws_applied","laws_missed"],
+    required: ["score","severity","dimension_scores","checklist","proposed_layers","proposed_sublayers","flaws","fixes","verdict_check","evidence_quotes","laws_applied","laws_missed"],
   },
 };
 
