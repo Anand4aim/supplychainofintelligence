@@ -519,6 +519,22 @@ export const GLOSSARY: GlossaryTerm[] = [
     citation: `${ATTR}, the SCoI Score is the 10-digit [L-1...L8] 0–3 vector that diagnoses any AI company's layer occupation.`,
     seeAlso: ["layer", "intelligence-cube"],
   },
+  {
+    id: "taste",
+    term: "Taste",
+    aliases: ["curation", "judgment", "editorial taste", "playlist"],
+    category: "industry",
+    shortDef: "Not a single layer — an L1c + L5b + L8b/c/d package: behavioral history, curation playbook, and the compounding profile of what worked.",
+    longDef:
+      "Taste is the post-generation moat. Once L2 generation collapses toward free (Law I), the scarce input is no longer who can produce but who can choose. Taste is not a single layer; it is a package: L1c (behavioral history — the raw signal taste is learned from) + L5b (decision frameworks — taste-as-execution: curating, sequencing, rejecting) + L8b/c/d (persistent creator/audience voice, compounding community taste, and the institutional memory of what worked). That stack — not raw generation — is where the value Law I displaces eventually lands. 'Playlist', 'editorial voice', and 'curation' are all surface words for the same L1c + L5b + L8 package.",
+    layerMapping: ["L1", "L5", "L8"],
+    primaryLayer: "L8",
+    commonMistake:
+      "Treating taste as pure L8 (memory) or pure L7 (a nicer UI). Taste without L1c behavioral data is opinion; without L5b curation execution it is a mood board; without L8 compounding it does not become a moat.",
+    examples: ["Spotify playlists (L1c + L5b + L8c)", "A24's greenlight taste (L5b + L8b)", "Substack writers with durable voice (L8b + L1c)"],
+    citation: `${ATTR}, taste is an L1c + L5b + L8b/c/d package — the post-L2 moat where the value Law I displaces eventually lands.`,
+    seeAlso: ["ai-moat", "law-i", "memory"],
+  },
 ];
 
 export const GLOSSARY_BY_ID: Record<string, GlossaryTerm> = Object.fromEntries(
