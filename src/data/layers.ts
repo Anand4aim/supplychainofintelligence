@@ -219,6 +219,16 @@ export const layerVar = (id: string): string => {
 };
 export const layerColor = (id: string): string => `hsl(var(${layerVar(id)}))`;
 
+/**
+ * Human-display version of a layer id. Replaces the ASCII "-" in "L-1"
+ * with a true Unicode minus (U+2212) so users read "L minus 1", not "L-1".
+ * Use this anywhere a layer id is rendered as plain text in the UI.
+ * The underlying data id ("L-1") never changes — URLs, keys, and API
+ * payloads stay stable.
+ */
+export const displayLayerId = (id: string): string =>
+  id.startsWith("L-1") ? id.replace("L-1", "L\u22121") : id;
+
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
 // ─── The Three Structural Laws ──────────────────────────────────────
