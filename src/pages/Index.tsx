@@ -5,7 +5,7 @@ import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, ArrowDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
-import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS, JTBD_VS_SCOI } from "@/data/layers";
+import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
 import { LAW_ESSAY_BY_NUM } from "@/data/lawEssays";
 import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
