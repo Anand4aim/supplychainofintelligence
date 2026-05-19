@@ -146,7 +146,7 @@ const AboutPage = () => (
           </p>
           <p>
             <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
-            layers, fifty sublayers, three structural laws, one diagnostic cube. It is opinionated, it is portable
+            layers, fifty sublayers, four structural laws, one diagnostic cube. It is opinionated, it is portable
             across categories, and it is free.
           </p>
           <p>

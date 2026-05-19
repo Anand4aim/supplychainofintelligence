@@ -114,7 +114,7 @@ const DISCOVERY_QUESTIONS = [
   "What is our L8 strategy — what does the product remember tomorrow that it did not yesterday?",
   "Which gatekeeper (regulator, platform, editor, distributor) can shut us off? Are we earning that gate or ignoring it?",
   "If our category gets absorbed in 18 months, which adjacent layer do we sprint into?",
-  "Which of the Three Laws is most likely to delete us? Write the post-mortem now.",
+  "Which of the Four Laws is most likely to delete us? Write the post-mortem now.",
 ];
 
 const Playbook = () => (

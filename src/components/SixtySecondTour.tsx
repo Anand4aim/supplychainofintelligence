@@ -20,9 +20,9 @@ const SLIDES = [
     accent: "hsl(var(--layer-4))",
   },
   {
-    chip: "STEP 3 · THE THREE LAWS",
+    chip: "STEP 3 · THE FOUR LAWS",
     title: "Intelligence commoditizes down. Regulation rises with capability. Value migrates to the scarcest layer.",
-    body: "Apply the three laws to any AI move (Microsoft buys X, OpenAI ships Y, a startup raises $Zb) and you can predict — usually within a quarter — whether the move is structurally durable or a graveyard candidate. That's what every article on this site does.",
+    body: "Apply the four laws to any AI move (Microsoft buys X, OpenAI ships Y, a startup raises $Zb) and you can predict — usually within a quarter — whether the move is structurally durable or a graveyard candidate. That's what every article on this site does.",
     accent: "hsl(var(--layer-8))",
   },
 ];

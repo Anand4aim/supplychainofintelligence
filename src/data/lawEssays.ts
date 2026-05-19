@@ -1,4 +1,4 @@
-// Long-form essays — one per Structural Law. Linked from the Three Laws section.
+// Long-form essays — one per Structural Law. Linked from the Four Laws section.
 // Plain-text paragraphs; markdown-ish **bold** is rendered by the Law page.
 
 export interface LawEssay {
