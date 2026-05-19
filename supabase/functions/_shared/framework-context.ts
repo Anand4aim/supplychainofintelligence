@@ -91,7 +91,7 @@ L8 MEMORY — Retention, learning, compounding context. What the system remember
 === THE DEFENSIBLE TRIANGLE ===
 L1b + L5a/b/d + L8c/d/e — proprietary data + deep execution + compounding memory. This is where durable moats live.
 
-=== THE 3 STRUCTURAL LAWS (use these exact titles) ===
+=== THE 4 STRUCTURAL LAWS (use these exact titles) ===
 
 Law I — Intelligence Commoditizes Downward
 If your product depends only on generic model capability, the platform layer below you will eventually absorb it. Wrappers don't survive — wrappers become features. (Predicts WHO gets absorbed. Example: Jasper $1.5B → ~$300M once ChatGPT shipped.)
@@ -102,14 +102,32 @@ Durable value rarely sits in the model or the UI. It sits at the scarce layer �
 Law III — The Surface Captures Attention; the Chain Captures Power
 A beautiful UI may get users. But durable companies own a deeper layer of the intelligence chain — data, execution, memory, gates. Surface without depth is a graveyard. (Predicts WHO survives the platform era. Example: Gamma owns L7. Replit owns L4+L5+L6+L8. Same category, different fate.)
 
+Law IV — Generation and Verification Must Be Separate
+Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. L3 above L2/L5 is structurally permanent in those industries. (Predicts WHERE L3 is non-absorbable. Examples: Vanta over AWS, Snyk over Copilot, Big-4 audit over SAP, FDA over Pfizer.)
+
 === THE INTELLIGENCE CUBE™ ===
 Functions × Verticals × Layers. Volume = structural durability. Thin slivers die.
 Allowed Functions: Dev/Eng, Design, Product, PM/Proj, Ops, Mktg, Sales, CustCare, Strategy.
 Allowed Verticals: FinTech, EdTech, Legal, Health, Travel, eCom, Media, Gov, SaaS, Horizontal.
 Allowed Layers: L-1, L0, L1, L2, L3, L4, L5, L6, L7, L8 (use only those with intensity > 0 in layer_scores).
 
-=== "AGENT" CONVENTION (strict) ===
-"Agent" is NOT a layer. It is marketing language for an L5 + L7 (+ optional L8) package. When a company pitches an "agent", decode it into its actual layers and name them. Never use "agent" inside framework definitions.
+=== "AGENT" DECODER (strict — this is the #1 mis-mapping in current analyses) ===
+"Agent" is NOT a layer. It is marketing language for a package:
+  • L5 (Execution) — the actual skill / "doing the work" — REQUIRED.
+  • L6 (Orchestration) — multi-step planning, tool-use, routing — REQUIRED for anything called "agentic".
+  • L7 (Surface) — usually included (chat, inbox, copilot pane).
+  • L8 (Memory) — included if it remembers across sessions.
+  • L4 (Access) — the PIPES the agent rides on (MCP, OAuth, connectors, permissions). L4 is NOT the agent — it is the substrate. Tagging an agent story as L4-only is a factual error.
+When a company pitches an "agent", decode it: name L5 + L6 first, then which of L4/L7/L8 it bundles. Never use "agent" inside framework definitions. Never claim agents "capture L4" — they ride L4.
+
+=== COMMON MIS-MAPPINGS TO AVOID ===
+  • Agent story with no L5 or L6 tag → wrong. Add them.
+  • Trust / compliance / SOC2 / audit / safety / eval / regulatory story with no L3 → wrong. Add L3.
+  • Memory / personalization / "remembers you" story with no L8 → wrong. Add L8.
+  • Model launch (GPT-X, Claude-X, Gemini-X) with no L2 → wrong. Add L2.
+  • Workflow / orchestration / multi-step pipeline with no L6 → wrong. Add L6.
+  • Data / corpus / proprietary-data moat with no L1 → wrong. Add L1.
+  • Compute / GPU / data-center / cluster story with no L0 → wrong. Add L0.
 
 === TONE GUARDRAILS ===
 PREFER factual, layer-based, structural language.
