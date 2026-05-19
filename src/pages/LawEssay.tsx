@@ -111,11 +111,18 @@ const LawEssayPage = () => {
                 Taste = L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked).{" "}
                 <Link to="/glossary#taste" className="text-accent underline underline-offset-2">See glossary →</Link>
               </p>
-              <CopySnippet
-                text={TASTE_SNIPPET}
-                path="/laws/intelligence-commoditizes-downward"
-                label="Copy as LinkedIn post"
-              />
+              <div className="flex flex-wrap gap-2">
+                <CopySnippet
+                  text={TASTE_SNIPPET}
+                  path="/laws/intelligence-commoditizes-downward"
+                  label="Copy as LinkedIn post"
+                />
+                <CopySnippet
+                  text={TASTE_SNIPPET_X}
+                  path="/laws/intelligence-commoditizes-downward"
+                  label="Copy as X post"
+                />
+              </div>
             </div>
           ) : null}
 
