@@ -182,7 +182,9 @@ const Index = () => {
               {(() => {
                 const TABLE_LAYERS = LAYERS.map((l) => {
                   const num = l.id === "L-1" ? "neg1" : l.id.replace("L", "");
-                  return { id: l.id, label: l.id, name: l.shortName, cssVar: `--layer-${num}` };
+                  // Render L-1 with a true Unicode minus so it reads correctly.
+                  const label = l.id === "L-1" ? "L\u22121" : l.id;
+                  return { id: l.id, label, name: l.shortName, cssVar: `--layer-${num}` };
                 });
 
                 const rows = [
