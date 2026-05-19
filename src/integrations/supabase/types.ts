@@ -22,6 +22,7 @@ export type Database = {
           consensus_layers: Json
           consensus_sublayers: Json
           created_at: string
+          dimension_scores_avg: Json
           disagreements: Json
           id: string
           layer_jaccard: number | null
@@ -37,6 +38,7 @@ export type Database = {
           consensus_layers?: Json
           consensus_sublayers?: Json
           created_at?: string
+          dimension_scores_avg?: Json
           disagreements?: Json
           id?: string
           layer_jaccard?: number | null
@@ -52,6 +54,7 @@ export type Database = {
           consensus_layers?: Json
           consensus_sublayers?: Json
           created_at?: string
+          dimension_scores_avg?: Json
           disagreements?: Json
           id?: string
           layer_jaccard?: number | null
@@ -76,6 +79,7 @@ export type Database = {
           created_at: string
           current_layers: Json
           current_sublayers: Json
+          dimension_scores: Json
           error: string | null
           evidence_quotes: Json
           fixes: Json
@@ -98,6 +102,7 @@ export type Database = {
           created_at?: string
           current_layers?: Json
           current_sublayers?: Json
+          dimension_scores?: Json
           error?: string | null
           evidence_quotes?: Json
           fixes?: Json
@@ -120,6 +125,7 @@ export type Database = {
           created_at?: string
           current_layers?: Json
           current_sublayers?: Json
+          dimension_scores?: Json
           error?: string | null
           evidence_quotes?: Json
           fixes?: Json

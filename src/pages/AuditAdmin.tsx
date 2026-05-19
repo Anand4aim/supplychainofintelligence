@@ -16,9 +16,11 @@ const PASSCODE_KEY = "remaster_admin_passcode";
 const TICK_INTERVAL_MS = 75_000;
 
 interface Article { id: string; slug: string; headline: string; verdict: string; analysis: any; }
+interface DimScore { score: number; rationale: string; }
 interface AuditRow {
   id: string; article_id: string; run_id: string; model: string;
   score: number; severity: string;
+  dimension_scores: Record<string, DimScore>;
   current_layers: string[]; proposed_layers: string[];
   proposed_sublayers: string[];
   flaws: any[]; fixes: any[];
@@ -35,6 +37,7 @@ interface SummaryRow {
   models_run: string[];
   consensus_layers: string[]; consensus_sublayers: string[];
   disagreements: any[];
+  dimension_scores_avg: Record<string, number>;
 }
 interface AuditRun {
   id: string; status: string; models: string[];
@@ -119,8 +122,8 @@ export default function AuditAdmin() {
       supabase.from("article_audits").select("*").eq("run_id", runId).order("created_at",{ascending:false}),
       supabase.from("article_audit_summary").select("*").eq("run_id", runId),
     ]);
-    setAudits((au ?? []) as AuditRow[]);
-    setSummaries((su ?? []) as SummaryRow[]);
+    setAudits((au ?? []) as unknown as AuditRow[]);
+    setSummaries((su ?? []) as unknown as SummaryRow[]);
   }
 
   useEffect(() => { if (unlocked) loadAll(); }, [unlocked]);
@@ -318,6 +321,23 @@ export default function AuditAdmin() {
                       </div>
                     )}
 
+                    {summary?.dimension_scores_avg && Object.keys(summary.dimension_scores_avg).length > 0 && (
+                      <div>
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Dimension scores (cross-LLM average)</div>
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-1.5">
+                          {Object.entries(summary.dimension_scores_avg).map(([dim, s]) => {
+                            const color = s >= 85 ? "text-emerald-400" : s >= 70 ? "text-foreground" : s >= 50 ? "text-orange-400" : "text-red-400";
+                            return (
+                              <div key={dim} className="border border-border rounded px-2 py-1.5 bg-background/40">
+                                <div className="text-[9px] uppercase tracking-wide text-muted-foreground truncate">{dim.replace(/_/g," ")}</div>
+                                <div className={`text-sm font-mono font-semibold ${color}`}>{s}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Per-model panels */}
                     <div className="grid md:grid-cols-2 gap-4">
                       {auds.map(au => (
@@ -333,6 +353,20 @@ export default function AuditAdmin() {
                               <span className="text-muted-foreground">Verdict: </span>
                               <span className={au.verdict_check.agrees ? "text-emerald-400" : "text-orange-400"}>{au.verdict_check.agrees ? "agrees" : `should be ${au.verdict_check.should_be}`}</span>
                               {au.verdict_check.why && <div className="text-[11px] text-muted-foreground mt-0.5">{au.verdict_check.why}</div>}
+                            </div>
+                          )}
+                          {au.dimension_scores && Object.keys(au.dimension_scores).length > 0 && (
+                            <div className="mb-2">
+                              <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Lens scores</div>
+                              <div className="space-y-0.5">
+                                {Object.entries(au.dimension_scores).map(([dim, v]) => (
+                                  <div key={dim} className="text-[11px] flex gap-2">
+                                    <span className="font-mono w-10 text-right tabular-nums shrink-0">{v.score}</span>
+                                    <span className="text-muted-foreground w-32 shrink-0 truncate">{dim.replace(/_/g," ")}</span>
+                                    <span className="text-foreground/70 truncate" title={v.rationale}>{v.rationale}</span>
+                                  </div>
+                                ))}
+                              </div>
                             </div>
                           )}
                           {au.flaws?.length > 0 && (

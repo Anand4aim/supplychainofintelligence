@@ -23,16 +23,44 @@ const ALL_SUBLAYERS = [
   "L8a","L8b","L8c","L8d","L8e",
 ];
 
+// Ten critical lenses scored 0-100 each. Composite score = weighted blend.
+const DIMENSIONS = [
+  { id: "framework_fidelity",  weight: 0.18, desc: "Are the 10 layers, 50 sublayers, and 4 Laws applied correctly? Agent decoded to L5+L6? Trust to L3? Memory to L8? No invented IDs. Foundational — wrong here drags everything." },
+  { id: "thesis_sharpness",    weight: 0.12, desc: "Is the central claim crisp, non-obvious, and falsifiable? Can you state it in one sentence? Or is it mush, restating the news?" },
+  { id: "evidence_rigor",      weight: 0.11, desc: "Are claims grounded in specifics — named companies, numbers, primary sources? Or hand-wave and adjectives?" },
+  { id: "predictive_power",    weight: 0.10, desc: "Does the article make a forecast that could be checked later? Does it hold a view the consensus doesn't? Or is it pure post-hoc narration?" },
+  { id: "originality",         weight: 0.10, desc: "Is the insight differentiated vs. the commodity hot-take you'd read on TechCrunch / Twitter? Or recycled consensus dressed in layer tags?" },
+  { id: "strategic_depth",     weight: 0.12, desc: "Does it work the cross-layer dynamics — moats, gatekeeping, separation of generation/verification, second-order effects, who captures value where?" },
+  { id: "tone_discipline",     weight: 0.07, desc: "Stratechery + McKinsey voice. No hype, no clickbait, no breathless 'agent revolution'. Authoritative, calm, specific. Penalize bombast." },
+  { id: "editorial_craft",     weight: 0.07, desc: "Prose quality, paragraph rhythm, headline-sub-body alignment, no filler. Would a paying subscriber respect this?" },
+  { id: "actionability",       weight: 0.07, desc: "Does a PM, founder, or investor walk away with a decision, a watchlist item, or a sharpened mental model? Or just vibes?" },
+  { id: "risk_calibration",    weight: 0.06, desc: "Is the counter-thesis honest? Does the article say what would break its claim, who could win the other side, what the article might be wrong about?" },
+];
+const DIM_IDS = DIMENSIONS.map(d => d.id);
+
 const AUDIT_SCHEMA = {
   name: "framework_audit",
   schema: {
     type: "object",
     properties: {
-      score: { type: "integer", minimum: 0, maximum: 100, description: "Composite quality score. 0 = wrong framework mapping & weak prose. 100 = canonical framing, sharp prose, defensible take." },
-      severity: { type: "string", enum: ["critical","needs_fix","minor","ok"], description: "critical = factual framework error (e.g. agent mis-mapped); needs_fix = missing required layer/sublayer; minor = could be enriched; ok = sound." },
-      checklist: { type: "array", description: "Before scoring, list the 3-5 framework rules you will check this article against (e.g. 'Agent decoder must include L5+L6', 'Trust story must tag L3', 'Memory claim must tag L8').", items: { type: "string" } },
-      proposed_layers: { type: "array", description: "Layers (L-1..L8) the article SHOULD be tagged with given its substance. Use only canonical IDs.", items: { type: "string", enum: ALL_LAYERS } },
-      proposed_sublayers: { type: "array", description: "Sublayers (L-1a..L8e) the article SHOULD be tagged with. Walk all 50 sublayers and include only those whose substance the article actually touches. Aim for 3-8 sublayers — be brutal.", items: { type: "string", enum: ALL_SUBLAYERS } },
+      score: { type: "integer", minimum: 0, maximum: 100, description: "Composite quality score. MUST equal the weighted average of dimension_scores using provided weights. Do not invent independently." },
+      severity: { type: "string", enum: ["critical","needs_fix","minor","ok"], description: "critical = framework_fidelity<40 OR composite<40; needs_fix = composite 40-69 OR any dimension<40; minor = composite 70-89; ok = composite>=90 AND no dimension<70." },
+      dimension_scores: {
+        type: "object",
+        description: "Score 0-100 on EACH of the ten lenses. Each has a numeric score and a 1-2 sentence rationale grounded in the article. 100 is reserved for elite work. Most articles land 55-75 on most lenses. Defend any 90+.",
+        properties: Object.fromEntries(DIMENSIONS.map(d => [d.id, {
+          type: "object",
+          properties: {
+            score: { type: "integer", minimum: 0, maximum: 100 },
+            rationale: { type: "string", description: "1-2 sentences grounded in the article." },
+          },
+          required: ["score","rationale"],
+        }])),
+        required: DIM_IDS,
+      },
+      checklist: { type: "array", description: "Before scoring, list the 3-5 framework rules you will check this article against.", items: { type: "string" } },
+      proposed_layers: { type: "array", description: "Layers (L-1..L8) the article SHOULD be tagged with. Canonical IDs only.", items: { type: "string", enum: ALL_LAYERS } },
+      proposed_sublayers: { type: "array", description: "Sublayers (L-1a..L8e) the article SHOULD be tagged with. 3-8 IDs, brutal.", items: { type: "string", enum: ALL_SUBLAYERS } },
       flaws: {
         type: "array",
         description: "Specific framework flaws in the current article. Each grounded in an evidence_quote.",
@@ -77,30 +105,40 @@ const AUDIT_SCHEMA = {
       laws_applied: { type: "array", description: "Which of the 4 Laws the article actually applies (by Roman numeral).", items: { type: "string", enum: ["I","II","III","IV"] } },
       laws_missed: { type: "array", description: "Laws the article SHOULD have applied but didn't.", items: { type: "string", enum: ["I","II","III","IV"] } },
     },
-    required: ["score","severity","checklist","proposed_layers","proposed_sublayers","flaws","fixes","verdict_check","evidence_quotes","laws_applied","laws_missed"],
+    required: ["score","severity","dimension_scores","checklist","proposed_layers","proposed_sublayers","flaws","fixes","verdict_check","evidence_quotes","laws_applied","laws_missed"],
   },
 };
+
+const DIMENSIONS_BLOCK = DIMENSIONS.map(d => `  - ${d.id} (weight ${d.weight}): ${d.desc}`).join("\n");
 
 const SYSTEM_PROMPT = `${FRAMEWORK_CONTEXT}
 
 === YOUR ROLE: SENIOR FRAMEWORK CRITIC ===
 
-You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article. You are checking the existing one for framework accuracy at sublayer depth.
+You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article — you are grading it.
 
-Your job:
-1. Walk the article's substance against the 10 layers and all 50 sublayers.
-2. Identify EVERY framework mis-mapping (especially the agent→L4 confusion that is currently the most common error).
-3. Ground every flaw in a verbatim quote from the article. No flaw without evidence.
-4. Score 0–100. Be honest. A factually wrong layer tag is critical (severity=critical, score<40). Missing a required layer is needs_fix (score 40–69). Minor enrichment opportunities are minor (70–89). Sound = ok (90+).
-5. Propose CONCRETE fixes (add/remove specific layer tags, rewrite headline/sub, change verdict).
-6. Confirm or challenge the verdict (DOMINANT/SAFE/CONTESTED/DEAD).
-7. Check which of the 4 Laws the article applies, and which it MISSED.
+You will score the article on TEN INDEPENDENT LENSES (0-100 each), each with a short evidence-grounded rationale:
+
+${DIMENSIONS_BLOCK}
+
+The composite \`score\` MUST equal the weighted average of the ten dimension scores using the weights above. Round to integer. Then map severity:
+  - composite < 40, OR framework_fidelity < 40                       → critical
+  - composite 40-69, OR any single dimension < 40                    → needs_fix
+  - composite 70-89                                                  → minor
+  - composite ≥ 90 AND no dimension < 70                             → ok
+
+Also do the framework work:
+1. Walk the article's substance against the 10 layers and all 50 sublayers; emit proposed_layers and a tight 3-8 proposed_sublayers.
+2. Identify EVERY framework mis-mapping. The #1 trap is agent→L4 without L5+L6 — flag it critical every time.
+3. Ground every flaw in a verbatim quote. No flaw without evidence.
+4. Propose CONCRETE fixes (add/remove layer tags, rewrite headline/sub, change verdict).
+5. Confirm or challenge the verdict (DOMINANT/SAFE/CONTESTED/DEAD).
+6. Check which of the 4 Laws the article applies, and which it MISSED.
 
 Discipline:
-- Be brutal but specific. Vague critique is worse than no critique.
-- "Agent" is the #1 trap. If the article uses "agent" and doesn't tag L5+L6, that's a critical flaw — every time.
+- Be brutal but specific. Vague critique is worse than no critique. 100 is reserved for elite — most lenses on most articles land 55-75.
 - Use canonical IDs only (L-1, L0…L8 and L-1a…L8e). Never invent IDs.
-- proposed_sublayers must be a tight 3–8 IDs, not a maximalist list.`;
+- Do NOT inflate scores to be polite. A pretty article with a hollow thesis should score thesis_sharpness < 50 even if editorial_craft is 80.`;
 
 async function callCritic(model: string, lovableKey: string, article: any) {
   const articleBlock = `
@@ -209,6 +247,21 @@ async function recomputeSummary(supabase: any, articleId: string, runId: string,
   const consensusLayers = Object.entries(layerCount).filter(([, c]) => c >= threshold).map(([l]) => l);
   const consensusSubs = Object.entries(subCount).filter(([, c]) => c >= threshold).map(([s]) => s);
 
+  // Average dimension scores across critics
+  const dimAvg: Record<string, { score: number; n: number }> = {};
+  for (const r of rows) {
+    const ds = r.dimension_scores ?? {};
+    for (const [k, v] of Object.entries<any>(ds)) {
+      if (!v || typeof v.score !== "number") continue;
+      if (!dimAvg[k]) dimAvg[k] = { score: 0, n: 0 };
+      dimAvg[k].score += v.score;
+      dimAvg[k].n += 1;
+    }
+  }
+  const dimension_scores_avg = Object.fromEntries(
+    Object.entries(dimAvg).map(([k, v]) => [k, Math.round(v.score / Math.max(1, v.n))])
+  );
+
   await supabase.from("article_audit_summary").upsert({
     article_id: articleId,
     run_id: runId,
@@ -221,6 +274,7 @@ async function recomputeSummary(supabase: any, articleId: string, runId: string,
     consensus_layers: consensusLayers,
     consensus_sublayers: consensusSubs,
     disagreements,
+    dimension_scores_avg,
   }, { onConflict: "article_id,run_id" });
 
   void modelsExpected;
@@ -270,9 +324,10 @@ Deno.serve(async (req) => {
       article_id, run_id, model, status: "complete",
       score: audit.score,
       severity: audit.severity,
+      dimension_scores: audit.dimension_scores ?? {},
       current_layers: article.analysis?.cube_position?.layers ?? [],
       proposed_layers: audit.proposed_layers ?? [],
-      current_sublayers: [], // we don't currently track sublayer tags on articles
+      current_sublayers: [],
       proposed_sublayers: audit.proposed_sublayers ?? [],
       flaws: audit.flaws ?? [],
       fixes: audit.fixes ?? [],
