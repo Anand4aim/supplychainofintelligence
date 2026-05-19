@@ -8,6 +8,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import { DIAGNOSTIC_BY_LAYER } from "@/data/layerDiagnostics";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import { ArrowLeft, ArrowRight, Star, Check, X as XIcon } from "lucide-react";
+import GlossaryText from "@/components/GlossaryText";
 
 const slugFor = (id: string) => {
   const layer = LAYERS.find((l) => l.id === id);
@@ -186,7 +187,7 @@ const LayerDetailPage = () => {
                     Is a company really at {layer.id}?
                   </h2>
                   <p className="text-foreground/85 text-[16px] leading-[1.75] mb-6">
-                    {diag.oneLineDef}
+                    <GlossaryText>{diag.oneLineDef}</GlossaryText>
                   </p>
 
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -196,7 +197,7 @@ const LayerDetailPage = () => {
                         {diag.inclusionTests.map((t) => (
                           <li key={t} className="flex gap-2 text-sm text-foreground/90 leading-snug">
                             <Check size={14} className="shrink-0 mt-0.5 text-[hsl(var(--verdict-fortified))]" />
-                            <span>{t}</span>
+                            <span><GlossaryText>{t}</GlossaryText></span>
                           </li>
                         ))}
                       </ul>
@@ -207,7 +208,7 @@ const LayerDetailPage = () => {
                         {diag.exclusionTests.map((t) => (
                           <li key={t} className="flex gap-2 text-sm text-foreground/90 leading-snug">
                             <XIcon size={14} className="shrink-0 mt-0.5 text-[hsl(var(--verdict-exposed))]" />
-                            <span>{t}</span>
+                            <span><GlossaryText>{t}</GlossaryText></span>
                           </li>
                         ))}
                       </ul>
@@ -216,9 +217,9 @@ const LayerDetailPage = () => {
 
                   <div className="bg-foreground text-background rounded-xl p-5 mb-6">
                     <p className="font-mono-marker text-[11px] uppercase tracking-wider text-accent mb-2">The {layer.id} removal test</p>
-                    <p className="text-[15px] leading-[1.7]">{diag.removalTest}</p>
+                    <p className="text-[15px] leading-[1.7]"><GlossaryText>{diag.removalTest}</GlossaryText></p>
                     <p className="font-mono-marker text-[11px] uppercase tracking-wider text-background/60 mt-4 mb-1">Economic work this layer does</p>
-                    <p className="text-[14px] text-background/85 leading-snug">{diag.economicWork}</p>
+                    <p className="text-[14px] text-background/85 leading-snug"><GlossaryText>{diag.economicWork}</GlossaryText></p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
@@ -228,7 +229,7 @@ const LayerDetailPage = () => {
                         {diag.canonical.map((c) => (
                           <li key={c.name} className="bg-card border border-border rounded-lg p-3">
                             <p className="font-display font-bold text-foreground text-sm">{c.name}</p>
-                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{c.why}</p>
+                            <p className="text-xs text-muted-foreground leading-snug mt-0.5"><GlossaryText>{c.why}</GlossaryText></p>
                           </li>
                         ))}
                       </ul>
@@ -239,7 +240,7 @@ const LayerDetailPage = () => {
                         {diag.antiExamples.map((c) => (
                           <li key={c.name} className="bg-card border border-dashed border-border rounded-lg p-3">
                             <p className="font-display font-bold text-foreground/80 text-sm">{c.name}</p>
-                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{c.why}</p>
+                            <p className="text-xs text-muted-foreground leading-snug mt-0.5"><GlossaryText>{c.why}</GlossaryText></p>
                           </li>
                         ))}
                       </ul>
