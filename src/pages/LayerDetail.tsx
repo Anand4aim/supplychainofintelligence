@@ -26,6 +26,7 @@ const LayerDetailPage = () => {
   const next = idx < LAYERS.length - 1 ? LAYERS[idx + 1] : null;
 
   const relevantStudies = CASE_STUDIES.filter((s) => s.layers.includes(layer.id)).slice(0, 4);
+  const diag = DIAGNOSTIC_BY_LAYER[layer.id];
 
   const slug = slugFor(layer.id);
   const layerUrl = `https://supplychainofai.com/framework/${slug}`;
