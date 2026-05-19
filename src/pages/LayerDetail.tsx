@@ -5,8 +5,9 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { LAYERS } from "@/data/layers";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { DIAGNOSTIC_BY_LAYER } from "@/data/layerDiagnostics";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, Check, X as XIcon } from "lucide-react";
 
 const slugFor = (id: string) => {
   const layer = LAYERS.find((l) => l.id === id);
@@ -25,6 +26,7 @@ const LayerDetailPage = () => {
   const next = idx < LAYERS.length - 1 ? LAYERS[idx + 1] : null;
 
   const relevantStudies = CASE_STUDIES.filter((s) => s.layers.includes(layer.id)).slice(0, 4);
+  const diag = DIAGNOSTIC_BY_LAYER[layer.id];
 
   const slug = slugFor(layer.id);
   const layerUrl = `https://supplychainofai.com/framework/${slug}`;
@@ -165,6 +167,93 @@ const LayerDetailPage = () => {
                   ))}
                 </div>
               </section>
+
+              {diag && (
+                <section
+                  className="rounded-2xl border-2 p-6 md:p-8"
+                  style={{
+                    borderColor: `hsl(${layer.color} / 0.4)`,
+                    background: `hsl(${layer.bg} / 0.4)`,
+                  }}
+                >
+                  <p
+                    className="font-mono-marker text-[11px] font-bold uppercase tracking-[0.18em] mb-2"
+                    style={{ color: `hsl(${layer.color})` }}
+                  >
+                    — Layer diagnostic card · SCOI v1
+                  </p>
+                  <h2 className="font-display text-2xl md:text-[28px] font-bold text-foreground mb-3 leading-tight">
+                    Is a company really at {layer.id}?
+                  </h2>
+                  <p className="text-foreground/85 text-[16px] leading-[1.75] mb-6">
+                    {diag.oneLineDef}
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-6">
+                    <div className="bg-card border border-border rounded-xl p-4">
+                      <p className="font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground mb-3">Inclusion tests · include if ALL</p>
+                      <ul className="space-y-2">
+                        {diag.inclusionTests.map((t) => (
+                          <li key={t} className="flex gap-2 text-sm text-foreground/90 leading-snug">
+                            <Check size={14} className="shrink-0 mt-0.5 text-[hsl(var(--verdict-fortified))]" />
+                            <span>{t}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="bg-card border border-border rounded-xl p-4">
+                      <p className="font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground mb-3">Exclusion tests · exclude if ANY</p>
+                      <ul className="space-y-2">
+                        {diag.exclusionTests.map((t) => (
+                          <li key={t} className="flex gap-2 text-sm text-foreground/90 leading-snug">
+                            <XIcon size={14} className="shrink-0 mt-0.5 text-[hsl(var(--verdict-exposed))]" />
+                            <span>{t}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-foreground text-background rounded-xl p-5 mb-6">
+                    <p className="font-mono-marker text-[11px] uppercase tracking-wider text-accent mb-2">The {layer.id} removal test</p>
+                    <p className="text-[15px] leading-[1.7]">{diag.removalTest}</p>
+                    <p className="font-mono-marker text-[11px] uppercase tracking-wider text-background/60 mt-4 mb-1">Economic work this layer does</p>
+                    <p className="text-[14px] text-background/85 leading-snug">{diag.economicWork}</p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground mb-2">Canonical examples</p>
+                      <ul className="space-y-2">
+                        {diag.canonical.map((c) => (
+                          <li key={c.name} className="bg-card border border-border rounded-lg p-3">
+                            <p className="font-display font-bold text-foreground text-sm">{c.name}</p>
+                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{c.why}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground mb-2">Anti-examples · look-alikes that fail</p>
+                      <ul className="space-y-2">
+                        {diag.antiExamples.map((c) => (
+                          <li key={c.name} className="bg-card border border-dashed border-border rounded-lg p-3">
+                            <p className="font-display font-bold text-foreground/80 text-sm">{c.name}</p>
+                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{c.why}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs">
+                    <span className="text-muted-foreground italic">Disagree with a classification?</span>
+                    <Link to="/classification" className="text-accent hover:underline font-mono-marker uppercase tracking-wider">
+                      Open the classification table →
+                    </Link>
+                  </div>
+                </section>
+              )}
 
               <section>
                 <h2 className="font-display text-2xl font-bold text-foreground mb-3">

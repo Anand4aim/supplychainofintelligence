@@ -31,6 +31,7 @@ import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
 import Glossary from "./pages/Glossary";
 import Stack from "./pages/Stack";
+import Classification from "./pages/Classification";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +68,7 @@ const App = () => (
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/stack" element={<Stack />} />
+        <Route path="/classification" element={<Classification />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
