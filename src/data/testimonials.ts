@@ -17,6 +17,16 @@ export type Testimonial = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    name: "Bill Leece",
+    role: "Ex-Google Product Leader",
+    industry: "Product Leadership",
+    quote:
+      "The clearest way I can put it: JTBD tells you the length of the customer need — what the job actually is. The Supply Chain of Intelligence tells you the depth of the answer — how many layers you have to own to deliver it durably. 'Trust the output' is one job. You can answer it shallow with a verifier feature on L7, or deep with an L3 gatekeeping layer baked in. The framework finally gave me a vocabulary for that trade-off.",
+    layerTag: "JTBD × Chain",
+    source: "1:1",
+    approved: false,
+  },
+  {
     name: "Ruth Zimmerman",
     industry: "Product Leadership",
     quote:
