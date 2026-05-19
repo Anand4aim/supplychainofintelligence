@@ -89,7 +89,7 @@ interface Props {
  * NOTE: All quotes are pending formal sign-off (approved: false). The strip
  * carries a small "permission pending" disclaimer to stay honest.
  */
-const VoicesStrip: React.FC<Props> = ({ limit = 8 }) => {
+const VoicesStrip: React.FC<Props> = ({ limit = 12 }) => {
   const voices = TESTIMONIALS.filter((t) => t.homepage).slice(0, limit);
 
   return (
