@@ -31,6 +31,7 @@ import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
 import Glossary from "./pages/Glossary";
 import Stack from "./pages/Stack";
+import Classification from "./pages/Classification";
 
 const queryClient = new QueryClient();
 
