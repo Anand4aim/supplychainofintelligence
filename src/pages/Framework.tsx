@@ -591,17 +591,17 @@ const FrameworkPage = () => (
       </div>
     </section>
 
-    {/* Three Laws */}
+    {/* Structural Laws */}
     <section id="laws" className="bg-background">
-      <div className="max-w-5xl mx-auto px-6 py-20">
-        <Eyebrow className="mb-4">Three Structural Laws</Eyebrow>
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        <Eyebrow className="mb-4">Four Structural Laws</Eyebrow>
         <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">The Laws That Predict the Future</h2>
         <p className="text-base text-muted-foreground max-w-2xl mb-10 leading-relaxed">
           Not opinions. Structural forces that explain why most AI products die in the layer they were
           built in — and which ones survive the platforms coming for them.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {LAWS.map((law, i) => (
             <motion.div
               key={law.num}
@@ -629,6 +629,61 @@ const FrameworkPage = () => (
             <strong>finds defensibility.</strong>
           </p>
         </div>
+      </div>
+    </section>
+
+    {/* Observations — patterns under the Laws */}
+    <section id="observations" className="bg-secondary/30 border-y border-border">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        <Eyebrow className="mb-4">Five Observations</Eyebrow>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">
+          Patterns Under the Laws
+        </h2>
+        <p className="text-base text-muted-foreground max-w-2xl mb-10 leading-relaxed">
+          Repeatable market patterns we see across hundreds of AI companies — not yet promoted to
+          Laws, but durable enough to bet on. Each is a working hypothesis with two examples.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {OBSERVATIONS.map((obs, i) => (
+            <motion.div
+              key={obs.num}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="bg-card border border-border rounded-xl p-7 sketch-border flex flex-col"
+            >
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-mono-marker text-[11px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
+                  Obs · {String(obs.num).padStart(2, "0")}
+                </span>
+                <div className="flex gap-1.5 flex-wrap">
+                  {obs.layerTags.map((id) => (
+                    <LayerTag key={id} id={id} />
+                  ))}
+                </div>
+              </div>
+              <h3 className="font-display text-lg font-bold text-foreground mb-3 leading-snug">
+                {obs.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{obs.desc}</p>
+              <ul className="space-y-2 mt-auto pt-3 border-t border-border/60">
+                {obs.examples.map((ex, j) => (
+                  <li key={j} className="flex gap-2 text-xs text-foreground/80 leading-relaxed">
+                    <span className="text-accent shrink-0 font-mono-marker">→</span>
+                    <span>{ex}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="mt-8 text-xs text-muted-foreground italic max-w-2xl">
+          Observations earn their promotion to Laws over time. If you have a counter-example or a
+          stronger pattern, that is the kind of feedback that strengthens the framework.
+        </p>
       </div>
     </section>
 
