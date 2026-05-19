@@ -7,6 +7,13 @@ import Eyebrow from "@/components/Eyebrow";
 import { SketchBoard } from "@/components/sketch/SketchElements";
 import { LAW_ESSAYS, LAW_ESSAY_BY_SLUG } from "@/data/lawEssays";
 import { PRECEDENTS_BY_LAW } from "@/data/lawPrecedents";
+import CopySnippet from "@/components/CopySnippet";
+
+const TASTE_SNIPPET = `We aren't entering an era where AI replaces creators. We're entering an era where taste becomes the moat.
+
+Because once generation collapses into L2, the scarce input is no longer who can produce — it's who can choose.
+
+Taste isn't a single layer. It's an L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked) package. That stack is where the value Law I displaces eventually lands.`;
 
 const renderInline = (text: string) => {
   // Render **bold** chunks within a paragraph.
