@@ -120,7 +120,7 @@ const AboutPage = () => (
       <div className="max-w-3xl mx-auto px-6 py-14">
         <div className="prose prose-lg max-w-none space-y-5 text-foreground/85 text-[17px] leading-[1.85]">
           <p>
-            I'm a product architect focused on designing and scaling AI-first products — from 0→1 foundations to the
+            I'm a product leader and architect focused on designing and scaling AI-first products — from 0→1 foundations to the
             growth systems that hold up at scale. I spent a decade shipping product across consumer and B2B SaaS,
             including three years at <strong className="text-foreground">Meta</strong> leading product and growth for
             the Messenger business platform and Instagram monetization surfaces.
