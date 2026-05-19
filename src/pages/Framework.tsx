@@ -68,11 +68,11 @@ const FrameworkPage = () => (
           </p>
           <details className="max-w-2xl mx-auto text-left mt-4 group">
             <summary className="cursor-pointer font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent inline-flex items-center gap-1.5 hover:underline">
-              Why one ladder, when L-1→L2 and L3→L8 are different kinds of layer? ↓
+              Why one ladder, when L−1→L2 and L3→L8 are different kinds of layer? ↓
             </summary>
             <div className="mt-3 text-sm text-muted-foreground leading-relaxed space-y-2 pl-4 border-l-2 border-accent/30">
               <p>
-                Honest answer: they are different kinds of layer. <strong className="text-foreground">L-1 through L2</strong>{" "}
+                Honest answer: they are different kinds of layer. <strong className="text-foreground">L−1 through L2</strong>{" "}
                 (Resources → Infrastructure → Data → Models) is an economic / physical stack —
                 value flows up through transformation. <strong className="text-foreground">L3 through L8</strong>{" "}
                 (Gatekeeping → Access → Execution → Orchestration → Surface → Memory) is a
