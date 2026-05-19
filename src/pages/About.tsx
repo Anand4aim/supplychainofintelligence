@@ -164,6 +164,79 @@ const AboutPage = () => (
       </div>
     </section>
 
+    {/* JTBD × SUPPLY CHAIN — length vs depth */}
+    <section className="bg-background border-t border-border">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <Eyebrow className="mb-3">How the framework relates to JTBD</Eyebrow>
+        <h2 className="font-display text-2xl md:text-[34px] font-bold text-foreground leading-tight mb-3">
+          JTBD is the <span className="text-accent">length</span> of the need.<br className="hidden md:block" />
+          The Supply Chain is the <span className="text-accent">depth</span> of the answer.
+        </h2>
+        <p className="text-foreground/80 text-[16px] leading-[1.75] max-w-3xl mb-8">
+          Credit to <strong className="text-foreground">Bill Leece (Ex-Google product leader)</strong> for the
+          sharpest one-line framing of this. JTBD tells you <em>what job</em> the customer is hiring the product
+          to do. The Supply Chain of Intelligence tells you <em>how many layers</em> of the AI stack you have to
+          own to deliver that job durably. Same job can be answered <em>shallow</em> (one layer, fast, fragile)
+          or <em>deep</em> (multiple layers, slow, defensible). Surface looks identical. Fate is not.
+        </p>
+
+        <div className="overflow-x-auto border border-border rounded-xl">
+          <table className="w-full text-left text-[14px]">
+            <thead className="bg-secondary/60 border-b border-border">
+              <tr>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground">Customer job (JTBD)</th>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground">Shallow answer (feature)</th>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground">Deep answer (chain layer)</th>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground">Why depth wins</th>
+              </tr>
+            </thead>
+            <tbody className="[&>tr]:border-b [&>tr]:border-border/60 [&>tr:last-child]:border-0">
+              <tr>
+                <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Trust what the AI generated."</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">An L7 "verifier" widget bolted onto the output.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Bake an <strong className="text-foreground">L3 Gatekeeping</strong> layer into the pipeline — provenance, citation, policy, audit trail.</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">Any competitor can ship the widget in a weekend. Almost none can ship a gate that regulators and buyers accept.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Let the AI actually do the thing."</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">A button that opens a confirmation modal.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Own <strong className="text-foreground">L4 Access</strong> + <strong className="text-foreground">L5 Execution</strong> — auth, identity, write-permissions into the system of record.</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">Execution requires earned trust with the underlying system. That is a contract, not a feature flag.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Remember me. Get smarter for me."</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">Local chat history in the sidebar.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Build an <strong className="text-foreground">L8 Memory</strong> layer — user, org, and network-level state that compounds across sessions.</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">The shallow version resets every time the model resets. The deep version becomes switching cost.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Give me a better answer than ChatGPT."</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">Better prompt template on top of GPT-5.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Combine <strong className="text-foreground">L1b proprietary data</strong> with an <strong className="text-foreground">L5</strong> execution loop fine-tuned on your domain.</td>
+                <td className="px-4 py-3 text-foreground/75 align-top">A prompt is reproducible. A data + execution flywheel is not.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-foreground/70 text-[14px] leading-relaxed mt-5 max-w-3xl">
+          Rule of thumb: when a customer need shows up, do not just ask "what feature ships this?" — ask{" "}
+          <strong className="text-foreground">"which layer of the chain do we have to own to make this durable?"</strong>{" "}
+          Most AI products die because they answered the right job at the wrong depth.
+        </p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link to="/framework" className="btn-sketch-outline inline-flex items-center gap-2 text-sm">
+            See all 10 layers <ArrowRight size={14} />
+          </Link>
+          <Link to="/playbook" className="btn-sketch-outline inline-flex items-center gap-2 text-sm">
+            Translate it into a PRD <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+    </section>
+
+
     {/* CAREER ARC */}
     <section className="bg-secondary/40 border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-14">
