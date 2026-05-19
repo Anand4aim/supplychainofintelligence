@@ -250,8 +250,8 @@ def layer_page(c, idx, total, lid, short, analogy, summary, sublayers):
 
     # ★ marker explainer
     cy -= 14
-    c.setFillColor(GOLD); c.setFont(F_MONO, 9)
-    c.drawString(rx, cy, "★ = STRUCTURAL MOAT")
+    c.setFillColor(GOLD); c.setFont(F_BODY, 9)
+    c.drawString(rx, cy, "★  STRUCTURAL MOAT")
     cy -= 14
     c.setFillColor(HexColor("#0f172a")); c.setFont(F_BODY, 9)
     for line in simpleSplit(
