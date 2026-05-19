@@ -247,6 +247,21 @@ async function recomputeSummary(supabase: any, articleId: string, runId: string,
   const consensusLayers = Object.entries(layerCount).filter(([, c]) => c >= threshold).map(([l]) => l);
   const consensusSubs = Object.entries(subCount).filter(([, c]) => c >= threshold).map(([s]) => s);
 
+  // Average dimension scores across critics
+  const dimAvg: Record<string, { score: number; n: number }> = {};
+  for (const r of rows) {
+    const ds = r.dimension_scores ?? {};
+    for (const [k, v] of Object.entries<any>(ds)) {
+      if (!v || typeof v.score !== "number") continue;
+      if (!dimAvg[k]) dimAvg[k] = { score: 0, n: 0 };
+      dimAvg[k].score += v.score;
+      dimAvg[k].n += 1;
+    }
+  }
+  const dimension_scores_avg = Object.fromEntries(
+    Object.entries(dimAvg).map(([k, v]) => [k, Math.round(v.score / Math.max(1, v.n))])
+  );
+
   await supabase.from("article_audit_summary").upsert({
     article_id: articleId,
     run_id: runId,
@@ -259,6 +274,7 @@ async function recomputeSummary(supabase: any, articleId: string, runId: string,
     consensus_layers: consensusLayers,
     consensus_sublayers: consensusSubs,
     disagreements,
+    dimension_scores_avg,
   }, { onConflict: "article_id,run_id" });
 
   void modelsExpected;
