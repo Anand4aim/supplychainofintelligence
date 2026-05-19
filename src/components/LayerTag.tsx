@@ -44,8 +44,10 @@ const LayerTag: React.FC<Props> = ({
   const name = labelMap[parentId] ?? parentId;
   const subName = isSub ? SUBLAYER_LABEL[id] : "";
 
-  // Display: chips/inline show "L# Short" or sublayer "L#x · SubName"
-  const displayId = id;
+  // Display: chips/inline show "L# Short" or sublayer "L#x · SubName".
+  // Render L-1 with a true Unicode minus (U+2212) so it reads as "L minus one",
+  // not "L hyphen 1". Data id stays "L-1" for URLs / API stability.
+  const displayId = id.startsWith("L-1") ? id.replace("L-1", "L\u22121") : id;
   const showName = withSublayerName && subName ? subName : name;
 
   const color = layerColor(parentId);
