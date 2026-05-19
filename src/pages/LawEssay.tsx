@@ -91,6 +91,26 @@ const LawEssayPage = () => {
             ))}
           </motion.div>
 
+          {essay.slug === "intelligence-commoditizes-downward" ? (
+            <div className="mt-10 border-l-2 border-accent/60 bg-accent/5 rounded-r-md p-5 md:p-6">
+              <div className="font-mono-marker text-[10px] tracking-[0.22em] text-accent uppercase mb-3">
+                SHAREABLE COROLLARY
+              </div>
+              <p className="font-display text-lg md:text-xl text-foreground italic leading-snug mb-2">
+                "We aren't entering an era where AI replaces creators. We're entering an era where taste becomes the moat."
+              </p>
+              <p className="text-sm text-foreground/75 leading-relaxed mb-4">
+                Taste = L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked).{" "}
+                <Link to="/glossary#taste" className="text-accent underline underline-offset-2">See glossary →</Link>
+              </p>
+              <CopySnippet
+                text={TASTE_SNIPPET}
+                path="/laws/intelligence-commoditizes-downward"
+                label="Copy as LinkedIn post"
+              />
+            </div>
+          ) : null}
+
           {/* Sources & Precedents */}
           {PRECEDENTS_BY_LAW[essay.slug]?.length ? (
             <div className="mt-14 border-t border-border pt-10">
