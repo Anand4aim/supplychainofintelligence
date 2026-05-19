@@ -96,11 +96,16 @@ Each layer has its own indexable page at `/framework/{layer-id}` with definition
 - [L7 Surface](https://supplychainofai.com/framework/l7-surface) — conversational, visual, embedded/copilot, transactional, ambient.
 - [L8 Memory](https://supplychainofai.com/framework/l8-memory) — session, entity, network, institutional, world-model.
 
-## The Three Laws — long-form essays
+## The Four Laws — long-form essays
 
 - [Law I — Intelligence commoditizes downward](https://supplychainofai.com/laws/intelligence-commoditizes-downward)
 - [Law II — Value accrues at bottlenecks](https://supplychainofai.com/laws/value-accrues-at-bottlenecks)
 - [Law III — The surface captures attention; the chain captures power](https://supplychainofai.com/laws/surface-captures-attention-chain-captures-power)
+- [Law IV — Generation and verification must be separate](https://supplychainofai.com/laws/generation-and-verification-must-be-separate)
+
+## Five Observations — patterns under the Laws
+
+Repeatable market patterns: (1) The Two-Vendor Rule — buyers pay for two vendors when one mistake is unrecoverable (Cursor + Snyk, Harvey + Ironclad). (2) Regulatory Half-Life — L3 in regulated industries outlives 3+ model generations (Vanta, Drata, Epic). (3) The Bundling Asymmetry — platforms expand into adjacent layers but never across the trust boundary above themselves (OpenAI ships agents, will never issue its own SOC 2). (4) Memory Is Not Truth — L8 memory is defensible; L8 truth-claims trigger an L3 verifier. (5) Distribution Eats Generation — when L2 commoditizes, the moment-of-consumption captures the surplus (Cursor, Perplexity).
 
 ## Market Map
 
