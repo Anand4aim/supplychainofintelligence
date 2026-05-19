@@ -5,8 +5,9 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { LAYERS } from "@/data/layers";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { DIAGNOSTIC_BY_LAYER } from "@/data/layerDiagnostics";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, Check, X as XIcon } from "lucide-react";
 
 const slugFor = (id: string) => {
   const layer = LAYERS.find((l) => l.id === id);
