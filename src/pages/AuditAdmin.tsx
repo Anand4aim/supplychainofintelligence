@@ -321,6 +321,23 @@ export default function AuditAdmin() {
                       </div>
                     )}
 
+                    {summary?.dimension_scores_avg && Object.keys(summary.dimension_scores_avg).length > 0 && (
+                      <div>
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Dimension scores (cross-LLM average)</div>
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-1.5">
+                          {Object.entries(summary.dimension_scores_avg).map(([dim, s]) => {
+                            const color = s >= 85 ? "text-emerald-400" : s >= 70 ? "text-foreground" : s >= 50 ? "text-orange-400" : "text-red-400";
+                            return (
+                              <div key={dim} className="border border-border rounded px-2 py-1.5 bg-background/40">
+                                <div className="text-[9px] uppercase tracking-wide text-muted-foreground truncate">{dim.replace(/_/g," ")}</div>
+                                <div className={`text-sm font-mono font-semibold ${color}`}>{s}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
                     {/* Per-model panels */}
                     <div className="grid md:grid-cols-2 gap-4">
                       {auds.map(au => (
