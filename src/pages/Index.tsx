@@ -872,6 +872,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ VOICES ON THE FRAMEWORK ═══════════ */}
+      <VoicesStrip />
+
       {/* ═══════════ AI DEFENSIBILITY AUDIT ═══════════ */}
       <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
         <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
