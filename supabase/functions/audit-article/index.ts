@@ -23,6 +23,21 @@ const ALL_SUBLAYERS = [
   "L8a","L8b","L8c","L8d","L8e",
 ];
 
+// Ten critical lenses scored 0-100 each. Composite score = weighted blend.
+const DIMENSIONS = [
+  { id: "framework_fidelity",  weight: 0.18, desc: "Are the 10 layers, 50 sublayers, and 4 Laws applied correctly? Agent decoded to L5+L6? Trust to L3? Memory to L8? No invented IDs. Foundational — wrong here drags everything." },
+  { id: "thesis_sharpness",    weight: 0.12, desc: "Is the central claim crisp, non-obvious, and falsifiable? Can you state it in one sentence? Or is it mush, restating the news?" },
+  { id: "evidence_rigor",      weight: 0.11, desc: "Are claims grounded in specifics — named companies, numbers, primary sources? Or hand-wave and adjectives?" },
+  { id: "predictive_power",    weight: 0.10, desc: "Does the article make a forecast that could be checked later? Does it hold a view the consensus doesn't? Or is it pure post-hoc narration?" },
+  { id: "originality",         weight: 0.10, desc: "Is the insight differentiated vs. the commodity hot-take you'd read on TechCrunch / Twitter? Or recycled consensus dressed in layer tags?" },
+  { id: "strategic_depth",     weight: 0.12, desc: "Does it work the cross-layer dynamics — moats, gatekeeping, separation of generation/verification, second-order effects, who captures value where?" },
+  { id: "tone_discipline",     weight: 0.07, desc: "Stratechery + McKinsey voice. No hype, no clickbait, no breathless 'agent revolution'. Authoritative, calm, specific. Penalize bombast." },
+  { id: "editorial_craft",     weight: 0.07, desc: "Prose quality, paragraph rhythm, headline-sub-body alignment, no filler. Would a paying subscriber respect this?" },
+  { id: "actionability",       weight: 0.07, desc: "Does a PM, founder, or investor walk away with a decision, a watchlist item, or a sharpened mental model? Or just vibes?" },
+  { id: "risk_calibration",    weight: 0.06, desc: "Is the counter-thesis honest? Does the article say what would break its claim, who could win the other side, what the article might be wrong about?" },
+];
+const DIM_IDS = DIMENSIONS.map(d => d.id);
+
 const AUDIT_SCHEMA = {
   name: "framework_audit",
   schema: {
