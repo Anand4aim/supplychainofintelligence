@@ -30,6 +30,7 @@ import EdgeCases from "./pages/EdgeCases";
 import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
 import Glossary from "./pages/Glossary";
+import Stack from "./pages/Stack";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +66,7 @@ const App = () => (
         <Route path="/playbook" element={<Playbook />} />
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
         <Route path="/glossary" element={<Glossary />} />
+        <Route path="/stack" element={<Stack />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
