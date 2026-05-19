@@ -73,13 +73,13 @@ const Index = () => {
                 Strategic Framework · AI Defensibility
               </Eyebrow>
               <h1 className="font-display text-[32px] md:text-[42px] lg:text-[48px] font-bold leading-[1.1] mb-5 text-foreground">
-                A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map &amp; framework</span></SketchUnderline> for AI companies.
+                A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
               </h1>
               <p className="text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl mb-4">
                 Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong> — from compute and data to workflows, surfaces, and memory — and tells you where value actually accrues.
               </p>
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
-                The Supply Chain of Intelligence™ — the 10 layers &amp; 50 sublayers of the generative AI stack.
+                The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/start" className="btn-sketch">
