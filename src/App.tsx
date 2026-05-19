@@ -29,6 +29,7 @@ import Challenge from "./pages/Challenge";
 import EdgeCases from "./pages/EdgeCases";
 import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
+import Glossary from "./pages/Glossary";
 
 const queryClient = new QueryClient();
 
