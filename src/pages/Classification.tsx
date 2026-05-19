@@ -188,7 +188,7 @@ const ClassificationPage = () => {
                       <td className="px-4 py-3">
                         <div className="flex flex-wrap gap-1">
                           {c.layers.map((l) => (
-                            <LayerTag key={l} id={l} variant="compact" />
+                            <LayerTag key={l} id={l} variant="id-only" />
                           ))}
                         </div>
                       </td>
