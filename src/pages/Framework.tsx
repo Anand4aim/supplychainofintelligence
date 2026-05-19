@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS } from "@/data/layers";
+import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import {
   SketchFilters,
@@ -13,6 +13,7 @@ import {
   SketchLabel,
 } from "@/components/sketch/SketchElements";
 import Eyebrow from "@/components/Eyebrow";
+import LayerTag from "@/components/LayerTag";
 
 const layerSlug = (id: string, shortName: string) =>
   `${id.toLowerCase()}-${shortName.toLowerCase().replace(/\s+/g, "-")}`;
