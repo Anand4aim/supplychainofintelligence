@@ -196,7 +196,7 @@ def layer_page(c, idx, total, lid, short, analogy, summary, sublayers):
 
     x = MARGIN + 20
     # Eyebrow + huge Lx pill
-    draw_eyebrow(c, f"Layer {idx - 1} of 10  ·  {analogy}", x, H - MARGIN - 18, color=hex_to_color(LAYER_HEX[lid]))
+    draw_eyebrow(c, f"Layer {idx - 2} of 10  ·  {analogy}", x, H - MARGIN - 18, color=hex_to_color(LAYER_HEX[lid]))
 
     # Lx chip (big)
     pill_x, pill_y, pill_w, pill_h = x, H - MARGIN - 90, 130, 60
