@@ -15,6 +15,14 @@ Because once generation collapses into L2, the scarce input is no longer who can
 
 Taste isn't a single layer. It's an L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked) package. That stack is where the value Law I displaces eventually lands.`;
 
+const TASTE_SNIPPET_X = `We aren't entering an era where AI replaces creators.
+
+We're entering an era where taste becomes the moat.
+
+Once generation collapses into L2, the scarce input isn't who can produce — it's who can choose.
+
+Taste = L1c + L5b + L8b/c/d.`;
+
 const renderInline = (text: string) => {
   // Render **bold** chunks within a paragraph.
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -103,11 +111,18 @@ const LawEssayPage = () => {
                 Taste = L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked).{" "}
                 <Link to="/glossary#taste" className="text-accent underline underline-offset-2">See glossary →</Link>
               </p>
-              <CopySnippet
-                text={TASTE_SNIPPET}
-                path="/laws/intelligence-commoditizes-downward"
-                label="Copy as LinkedIn post"
-              />
+              <div className="flex flex-wrap gap-2">
+                <CopySnippet
+                  text={TASTE_SNIPPET}
+                  path="/laws/intelligence-commoditizes-downward"
+                  label="Copy as LinkedIn post"
+                />
+                <CopySnippet
+                  text={TASTE_SNIPPET_X}
+                  path="/laws/intelligence-commoditizes-downward"
+                  label="Copy as X post"
+                />
+              </div>
             </div>
           ) : null}
 
