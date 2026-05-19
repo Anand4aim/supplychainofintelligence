@@ -122,8 +122,8 @@ export default function AuditAdmin() {
       supabase.from("article_audits").select("*").eq("run_id", runId).order("created_at",{ascending:false}),
       supabase.from("article_audit_summary").select("*").eq("run_id", runId),
     ]);
-    setAudits((au ?? []) as AuditRow[]);
-    setSummaries((su ?? []) as SummaryRow[]);
+    setAudits((au ?? []) as unknown as AuditRow[]);
+    setSummaries((su ?? []) as unknown as SummaryRow[]);
   }
 
   useEffect(() => { if (unlocked) loadAll(); }, [unlocked]);
