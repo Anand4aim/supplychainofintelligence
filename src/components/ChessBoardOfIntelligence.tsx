@@ -24,7 +24,7 @@ const SQUARES: Square[] = [
   {
     layerId: "L-1",
     short: "Resources",
-    full: "L-1 Energy · Materials · Trades",
+    full: "L\u22121 Energy · Materials · Trades",
     piece: "♚",
     pieceName: "Clock",
     value: "∞",
