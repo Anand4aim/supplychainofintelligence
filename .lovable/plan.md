@@ -1,82 +1,75 @@
-## Goal
+# Sharpen for the first-time PE / board reader
 
-Turn the site into a **distribution engine**. Every key visual gets a watermarked PNG export. Every key argument gets a "copy as LinkedIn snippet" button. The Apollo case study becomes the 60-second explainer that makes the whole framework click.
+The critique is right: framework depth is there, hero density is the bottleneck. A PE partner should be able to read three lines and know what this is, who it's for, and what it does. Same site, sharper top.
 
-## Three workstreams
+## What changes
 
-### 1. Watermark + image export system
+### 1. New hero positioning (above the fold)
 
-**New primitive:** `<ExportablePng>` wrapper component that:
-- Wraps any visual block (the matrix on Index, the Intelligence Cube, the cube projection, layer diagrams)
-- Renders a small "Download PNG" button (top-right, ghost style, only visible on hover on desktop, always on mobile)
-- Uses `html-to-image` to rasterize the wrapped DOM to PNG
-- Appends a watermark strip at the bottom before download: `Source: The Supply Chain of Intelligence™ (supplychainofai.com)` in mono font on a thin band matching the layer color spectrum
+Replace the current dense hero with a three-line lockup written for someone who has never heard of the framework:
 
-**Static images** (OG cards, public/*.png, hero images): regenerate or post-process to bake the same watermark into the bottom-right corner at ~50% opacity.
+- **Eyebrow** — `Strategic Framework · AI Defensibility`
+- **H1** — `A defensibility map for AI companies.`
+- **Sub** — `Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across 10 layers — from compute and data to workflows, surfaces, and memory — and tells you where value actually accrues.`
+- **Primary CTA** — `Score your company (out of 40) →` deep-links to the Defensibility Audit
+- **Secondary CTA** — `Read the framework`
 
-**Where it gets wired up:**
-- Matrix table on `/` (Index)
-- Intelligence Cube component (every page that renders it)
-- Cube 2D projection on case studies / live articles
-- Sublayer Impact Map
-- Layer detail page diagrams
-- OG images (static regen)
+The canonical tagline ("The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack") stays as a smaller line under the H1 for SEO and brand consistency. It does not replace the new H1.
 
-### 2. Copy-as-snippet system
+### 2. New "Start Here" 5-beat strip (directly under hero)
 
-**New primitive:** `<CopySnippet>` button component
-- Accepts a `text` prop (the pre-formatted ~120-150 word LinkedIn-ready snippet)
-- On click → `navigator.clipboard.writeText(text + attribution footer)` → toast "Copied — ready to paste on LinkedIn"
-- Attribution always: `\n\nSource: The Supply Chain of Intelligence™ (supplychainofai.com/[path])`
-- Variant: `<CopyQuote>` for short pull-quotes (tweet-sized)
+A single horizontal band, 5 numbered cards, one sentence each. This is the spine the friend asked for:
 
-**Type additions:**
-- Add `linkedin_snippet?: string` to `CaseStudy`, `Prediction`, `LawEssay` types
-- Backfill snippets for: all existing case studies, all predictions, all 3 laws
+```text
+01 PROBLEM   AI products are getting erased by platforms.
+02 INSIGHT   JTBD finds demand. It does not prove defensibility.
+03 MAP       AI value moves through 10 layers.
+04 TEST      Score your company out of 40.
+05 OUTCOME   Deepen, defend, reposition, or exit.
+```
 
-**Where it gets wired up:**
-- Case study detail pages (next to share button)
-- Prediction cards (per prediction)
-- Law essay pages
-- Layer detail pages (copy the layer definition)
-- Core principle blocks on `/start`
+Each card links to the page that proves it (Framework, About JTBD section, Framework, Defensibility Audit, Playbook). This becomes the lobby — every other homepage section lives below it and is optional reading.
 
-### 3. Apollo case study — the canonical SaaSpocalypse-survivor story
+### 3. Demote / re-order existing homepage sections
 
-Why Apollo wins as the explainer: it's a **counter-intuitive win**, not just another death. Jasper-died, Chegg-eaten, etc. are all "look at the corpse" stories. Apollo is "look at the survivor who *gave up features* to win." That's the framework doing real work.
+Current order is depth-first. New order is reader-first:
 
-**Narrative arc (Anand's framing, layer-mapped):**
-- **Started:** Apollo had L1b moat (300M contact profiles, B2B data)
-- **Mid-2010s mistake:** Built up the SaaS stack — L5 (email sequences, dialer, workflows), L7 (full UI app), L8 (the "Apollo platform")
-- **The SaaSpocalypse threat:** As ChatGPT/Claude become L2 command centers, marketers don't want to log into 10 apps. The L7/L8 surface evaporates.
-- **The pivot:** Killed nothing visible, but bet on **becoming the L1 connector to L2**. When you ask Claude "find 50 marketing leaders at Series B startups," Apollo's MCP connector serves the answer. Free distribution. They ride on top of Claude instead of competing with it.
-- **Verdict:** L1 + L2-connector hybrid. The thin-stack survivor. Demonstrates Law of Layer Compression in real time.
+1. Hero (new)
+2. Start Here 5-beat strip (new)
+3. Defensibility Audit teaser (promoted up — this is the CTA the hero promised)
+4. Chess board of intelligence (the visual proof)
+5. Three Laws
+6. Voices strip (testimonials — stays)
+7. Intelligence Cube + deeper material (kept, but below the fold for skimmers)
 
-**Implementation:**
-- Full case study entry in `src/data/caseStudies.ts` with `layer_scores`, `cube_position`, `timeline`, `who_wins`/`who_loses`, `linkedin_snippet`, `pull_quote`, sources
-- Feature prominently on `/start` as the 60-second explainer (replace or supplement current hero example)
-- Cross-link from Law of Layer Compression essay and from L1 + L2 layer pages
-- Add to LinkedIn snippet backfill so it's the first thing people copy
+No content is deleted. Order and emphasis change.
 
-## Execution order (this loop)
+### 4. Meta and SEO
 
-1. Install `html-to-image` (small dep, ~12kb gzipped)
-2. Build `<ExportablePng>` and `<CopySnippet>` primitives
-3. Add `linkedin_snippet` field to types; write the Apollo case study with full snippet
-4. Wire `<ExportablePng>` into the matrix on Index (highest-leverage visual)
-5. Wire `<CopySnippet>` into case study detail + prediction cards
-6. Feature Apollo on `/start`
-7. Update memory with the "Apollo is the canonical explainer" rule + watermark/snippet conventions
+Update `<Seo>` title and description on `/` to lead with the defensibility framing while preserving the disambiguation phrase:
 
-## Out of scope this loop
+- Title: `Supply Chain of Intelligence — A Defensibility Map for AI Companies`
+- Description: `Score any AI product across 10 layers — compute, data, models, workflows, surfaces, memory — to see whether it's a moat or a wrapper. The generative AI stack, not logistics.`
 
-- Regenerating all static OG/hero PNGs with baked watermarks (separate batch job — flag for follow-up)
-- Backfilling LinkedIn snippets for *every* prediction and law (will do the top 3-5 each; flag rest)
-- A "copy entire article" button (rejected by analysis — snippet is the right format)
+OG image text + JSON-LD `description` mirror the same line.
 
-## Technical notes
+## What we do NOT change
 
-- `html-to-image` (not `dom-to-image`) — better React/SVG/CSS-var support, actively maintained
-- Watermark strip rendered as a real DOM node appended to the clone before rasterization (cleaner than canvas post-processing, respects layer colors)
-- Toast via existing `sonner` setup
-- All new components use semantic tokens only; no hardcoded colors
+- Brand name, trademark, canonical tagline, layer color system, framework content
+- Any deeper page (`/framework`, `/playbook`, `/voices`, `/about`)
+- The Voices strip we just shipped
+- Navigation
+
+## Files touched
+
+- `src/pages/Index.tsx` — new hero block, new Start Here strip, section reorder
+- `src/components/Seo.tsx` usage on Index — updated title/description
+- Possibly one new component `src/components/StartHereStrip.tsx` for the 5-beat band
+
+## Out of scope for this pass
+
+- PE/VC workshop landing page, fractional CPO positioning page, board-education packaging — these are the next move once the homepage holds first-time readers. Worth a dedicated `/for/pe-and-boards` page in a follow-up.
+
+## Open question before I build
+
+The friend's recommended positioning sentence is excellent but long (~50 words). I'd compress it into the hero sub (above). Confirm you're OK with the compressed version, or tell me to use the full sentence verbatim and I'll let the hero breathe taller.

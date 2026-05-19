@@ -26,6 +26,7 @@ import SixtySecondTour from "@/components/SixtySecondTour";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import VoicesStrip from "@/components/VoicesStrip";
+import StartHereStrip from "@/components/StartHereStrip";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -48,10 +49,11 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack"
-        description="The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack. JTBD finds demand; this finds defensibility. For AI founders, product leaders, and investors."
+        title="Supply Chain of Intelligence — A Defensibility Map for AI Companies"
+        description="Score any AI product across 10 layers — compute, data, models, workflows, surfaces, memory — to see whether it's a moat or a wrapper. The generative AI stack, not logistics."
         path="/"
       />
+
       <SketchFilters />
       <SixtySecondTour />
 
@@ -65,30 +67,34 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <Eyebrow tone="muted" dash={false} className="mb-4">
-                By Anand Arivukkarasu · Ex-Meta Product Leader
+              <Eyebrow tone="accent" dash={false} className="mb-4">
+                Strategic Framework · AI Defensibility
               </Eyebrow>
-              <h1 className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-bold leading-[1.15] mb-5">
-                <SketchUnderline color="hsl(var(--accent))">
-                  <span className="text-accent">JTBD tells you what users want.</span>
-                </SketchUnderline>{" "}
-                <span className="text-foreground">The Supply Chain of Intelligence™ tells you where AI value is created, captured, and defended.</span>
+              <h1 className="font-display text-[32px] md:text-[42px] lg:text-[48px] font-bold leading-[1.1] mb-5 text-foreground">
+                A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
               </h1>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl mb-6">
-                It helps founders, product leaders, and investors see whether an AI product owns a durable layer of intelligence — or merely sits on a surface larger platforms can absorb.
+              <p className="text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl mb-4">
+                Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across 10 layers — from compute and data to workflows, surfaces, and memory — and tells you where value actually accrues.
+              </p>
+              <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
+                The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/start" className="btn-sketch">
-                  Start in 5 minutes <ArrowRight size={15} />
+                  Score your company (out of 40) <ArrowRight size={15} />
                 </Link>
                 <Link to="/framework" className="btn-sketch-outline">
-                  Read the Framework →
+                  Read the framework →
                 </Link>
                 <Link to="/live" className="btn-sketch-outline">
-                  This Week's Analysis
+                  This week's analysis
                 </Link>
               </div>
+              <p className="text-[12px] text-muted-foreground mt-4">
+                By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader.
+              </p>
             </motion.div>
+
 
             {/* Right: L-1–L8 layer stack */}
             <motion.div
@@ -316,8 +322,12 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ START HERE — 5-beat lobby for first-time readers ═══════════ */}
+      <StartHereStrip />
+
       {/* ═══════════ PROOF OF CORPUS ═══════════ */}
       <ProofOfCorpus />
+
 
       {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
