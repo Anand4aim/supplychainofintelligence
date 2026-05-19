@@ -23,6 +23,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import RemasterAdmin from "./pages/RemasterAdmin";
+import AuditAdmin from "./pages/AuditAdmin";
 import Voices from "./pages/Voices";
 import Challenge from "./pages/Challenge";
 import EdgeCases from "./pages/EdgeCases";
@@ -56,6 +57,7 @@ const App = () => (
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin/remaster" element={<RemasterAdmin />} />
+        <Route path="/admin/audit" element={<AuditAdmin />} />
         <Route path="/voices" element={<Voices />} />
         <Route path="/challenge" element={<Challenge />} />
         <Route path="/edge-cases" element={<EdgeCases />} />
