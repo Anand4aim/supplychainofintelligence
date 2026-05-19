@@ -26,6 +26,7 @@ import SixtySecondTour from "@/components/SixtySecondTour";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import VoicesStrip from "@/components/VoicesStrip";
+import StartHereStrip from "@/components/StartHereStrip";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -321,8 +322,12 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ START HERE — 5-beat lobby for first-time readers ═══════════ */}
+      <StartHereStrip />
+
       {/* ═══════════ PROOF OF CORPUS ═══════════ */}
       <ProofOfCorpus />
+
 
       {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY ═══════════ */}
       <section className="bg-secondary/40">
