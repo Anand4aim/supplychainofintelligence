@@ -14,6 +14,139 @@ export type Database = {
   }
   public: {
     Tables: {
+      article_audit_summary: {
+        Row: {
+          article_id: string
+          composite_score: number
+          composite_severity: string
+          consensus_layers: Json
+          consensus_sublayers: Json
+          created_at: string
+          disagreements: Json
+          id: string
+          layer_jaccard: number | null
+          models_run: string[]
+          run_id: string
+          sublayer_jaccard: number | null
+          verdict_agreement: boolean | null
+        }
+        Insert: {
+          article_id: string
+          composite_score: number
+          composite_severity: string
+          consensus_layers?: Json
+          consensus_sublayers?: Json
+          created_at?: string
+          disagreements?: Json
+          id?: string
+          layer_jaccard?: number | null
+          models_run?: string[]
+          run_id: string
+          sublayer_jaccard?: number | null
+          verdict_agreement?: boolean | null
+        }
+        Update: {
+          article_id?: string
+          composite_score?: number
+          composite_severity?: string
+          consensus_layers?: Json
+          consensus_sublayers?: Json
+          created_at?: string
+          disagreements?: Json
+          id?: string
+          layer_jaccard?: number | null
+          models_run?: string[]
+          run_id?: string
+          sublayer_jaccard?: number | null
+          verdict_agreement?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "article_audit_summary_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "live_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      article_audits: {
+        Row: {
+          article_id: string
+          created_at: string
+          current_layers: Json
+          current_sublayers: Json
+          error: string | null
+          evidence_quotes: Json
+          fixes: Json
+          flaws: Json
+          id: string
+          model: string
+          proposed_layers: Json
+          proposed_sublayers: Json
+          raw_critique: string | null
+          run_id: string
+          score: number
+          severity: string
+          status: string
+          suggested_headline: string | null
+          suggested_subheadline: string | null
+          verdict_check: Json
+        }
+        Insert: {
+          article_id: string
+          created_at?: string
+          current_layers?: Json
+          current_sublayers?: Json
+          error?: string | null
+          evidence_quotes?: Json
+          fixes?: Json
+          flaws?: Json
+          id?: string
+          model: string
+          proposed_layers?: Json
+          proposed_sublayers?: Json
+          raw_critique?: string | null
+          run_id: string
+          score: number
+          severity: string
+          status?: string
+          suggested_headline?: string | null
+          suggested_subheadline?: string | null
+          verdict_check?: Json
+        }
+        Update: {
+          article_id?: string
+          created_at?: string
+          current_layers?: Json
+          current_sublayers?: Json
+          error?: string | null
+          evidence_quotes?: Json
+          fixes?: Json
+          flaws?: Json
+          id?: string
+          model?: string
+          proposed_layers?: Json
+          proposed_sublayers?: Json
+          raw_critique?: string | null
+          run_id?: string
+          score?: number
+          severity?: string
+          status?: string
+          suggested_headline?: string | null
+          suggested_subheadline?: string | null
+          verdict_check?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "article_audits_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "live_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       article_revisions: {
         Row: {
           accepted: boolean
@@ -69,6 +202,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      audit_runs: {
+        Row: {
+          completed_articles: number
+          finished_at: string | null
+          id: string
+          models: string[]
+          notes: string | null
+          started_at: string
+          status: string
+          total_articles: number
+        }
+        Insert: {
+          completed_articles?: number
+          finished_at?: string | null
+          id: string
+          models?: string[]
+          notes?: string | null
+          started_at?: string
+          status?: string
+          total_articles?: number
+        }
+        Update: {
+          completed_articles?: number
+          finished_at?: string | null
+          id?: string
+          models?: string[]
+          notes?: string | null
+          started_at?: string
+          status?: string
+          total_articles?: number
+        }
+        Relationships: []
       }
       citation_reports: {
         Row: {
