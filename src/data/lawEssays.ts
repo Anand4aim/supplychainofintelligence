@@ -3,7 +3,7 @@
 
 export interface LawEssay {
   slug: string;
-  num: "I" | "II" | "III";
+  num: "I" | "II" | "III" | "IV";
   title: string;
   shortTitle: string;
   oneLine: string;
