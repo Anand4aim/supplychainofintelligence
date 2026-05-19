@@ -27,9 +27,9 @@ F_BODY   = "Body"
 F_MONO   = "Mono"
 
 # ── Canonical color table (mirror of src/data/layerColors.ts) ─────────
-PAPER_BG    = HexColor("#ede5d3")
-PAPER_DEEP  = HexColor("#dcd1ba")
-PAPER_RULE  = HexColor("#c8bba0")
+PAPER_BG    = HexColor("#eef2f8")
+PAPER_DEEP  = HexColor("#dde4ee")
+PAPER_RULE  = HexColor("#c5d0de")
 PAPER_INK   = HexColor("#0f172a")
 GOLD        = HexColor("#b08a3a")
 WHITE       = HexColor("#ffffff")
