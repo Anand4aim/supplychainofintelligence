@@ -53,74 +53,95 @@ const StackPage = () => {
           </div>
         </header>
 
-        {/* The big diagram */}
+        {/* The big diagram — sandalwood paper canvas */}
         <section
-          className="border-2 border-foreground/15 rounded-lg p-4 sm:p-6 bg-card/40 overflow-x-auto"
+          className="rounded-lg p-5 sm:p-8 lg:p-10 overflow-x-auto"
+          style={{
+            background: "hsl(var(--paper))",
+            boxShadow: "inset 0 0 0 1px hsl(var(--paper-rule) / 0.5)",
+          }}
           aria-label="The 10-layer stack diagram"
         >
-          <div className="min-w-[1100px] grid grid-cols-10 gap-1.5">
-            {LAYERS.map((l) => {
-              const isFoundation = l.id === "L-1" || l.id === "L0";
-              return (
-                <Link
-                  key={l.id}
-                  to={`/framework/${layerSlug(l.id, l.shortName)}`}
-                  className="group flex flex-col rounded-md overflow-hidden border-2 transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                  style={{
-                    borderColor: `hsl(var(${layerVar(l.id)}) / 0.5)`,
-                    opacity: isFoundation ? 0.7 : 1,
-                  }}
-                >
-                  {/* Color header */}
+          {/* Eyebrow + serif title, attachment style */}
+          <div
+            className="font-mono-marker text-[10px] uppercase tracking-[0.24em] mb-3"
+            style={{ color: "hsl(var(--accent))" }}
+          >
+            The Framework · Ten Layers
+          </div>
+          <h2
+            className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.05] mb-2"
+            style={{ color: "hsl(var(--paper-ink))" }}
+          >
+            The supply chain of intelligence.
+          </h2>
+          <div className="h-[2px] w-24 mb-7" style={{ background: "hsl(var(--accent))" }} />
+
+          {/* Chip row — the visual signature from the attachment */}
+          <div className="min-w-[1100px]">
+            <div className="grid grid-cols-10 gap-2 mb-3">
+              {LAYERS.map((l) => (
+                <div key={`${l.id}-chip`} className="flex flex-col items-center">
                   <div
-                    className="px-2 py-3 text-center"
-                    style={{
-                      background: layerColor(l.id),
-                      color: "white",
-                    }}
+                    className="font-mono-marker text-[10px] tracking-[0.18em] text-center mb-1.5 leading-tight min-h-[28px] flex items-end justify-center"
+                    style={{ color: "hsl(var(--paper-ink) / 0.55)" }}
                   >
-                    <div className="font-mono-marker text-[10px] tracking-[0.14em] opacity-80 mb-0.5">
+                    {l.shortName.toUpperCase()}
+                  </div>
+                  <Link
+                    to={`/framework/${layerSlug(l.id, l.shortName)}`}
+                    className="w-full rounded-md py-2.5 px-2 text-center transition-transform hover:-translate-y-0.5"
+                    style={{ background: layerColor(l.id) }}
+                  >
+                    <div className="font-mono-marker text-white text-sm tracking-[0.1em] font-semibold">
                       {displayLayerId(l.id)}
                     </div>
-                    <div className="font-display font-bold text-base sm:text-lg leading-tight">
-                      {l.shortName}
-                    </div>
-                    <div className="font-display italic text-[11px] opacity-80 mt-0.5">
-                      ({ANALOGY[l.id]})
-                    </div>
-                  </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
 
-                  {/* Sublayers */}
+            {/* Sublayer columns under each chip */}
+            <div className="grid grid-cols-10 gap-2 mt-3">
+              {LAYERS.map((l) => (
+                <div key={`${l.id}-subs`} className="flex flex-col gap-1.5">
+                  {l.sublayers.map((s) => (
+                    <div
+                      key={s.id}
+                      className="rounded px-2 py-2 text-[11px] leading-tight text-center transition-colors"
+                      style={{
+                        background: `hsl(var(${layerVar(l.id)}-bg))`,
+                        color: "hsl(var(--paper-ink) / 0.82)",
+                        border: `1px solid hsl(var(${layerVar(l.id)}) / 0.25)`,
+                      }}
+                      title={`${s.id} ${s.name} — ${s.desc}`}
+                    >
+                      <span className="block font-medium">{s.name}</span>
+                      {s.defensible && (
+                        <span style={{ color: "hsl(var(--accent))" }} className="text-[10px]"> ★</span>
+                      )}
+                    </div>
+                  ))}
                   <div
-                    className="flex-1 flex flex-col gap-1 p-1.5"
-                    style={{ background: `hsl(var(${layerVar(l.id)}-bg))` }}
+                    className="font-display italic text-[11px] text-center mt-1"
+                    style={{ color: "hsl(var(--paper-ink) / 0.5)" }}
                   >
-                    {l.sublayers.map((s) => (
-                      <div
-                        key={s.id}
-                        className="bg-card/90 border border-foreground/10 rounded px-2 py-2 text-[11px] leading-tight text-foreground/85 text-center group-hover:border-foreground/25 transition-colors"
-                        title={`${s.id} ${s.name} — ${s.desc}`}
-                      >
-                        <span className="block font-medium">{s.name}</span>
-                        {s.defensible && (
-                          <span className="text-accent text-[10px]"> ★</span>
-                        )}
-                      </div>
-                    ))}
+                    {ANALOGY[l.id]}
                   </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Legend */}
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
-            <div className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/55">
-              ↑ below the line (foundation) &nbsp;·&nbsp;
-              <span className="text-accent">↑ above the line — where intelligence compounds</span>
-              &nbsp;·&nbsp; <span className="text-accent">★</span> = 18 defensible sublayers
+                </div>
+              ))}
             </div>
           </div>
+
+          {/* Italic caption — attachment signature */}
+          <p
+            className="font-display italic text-center text-base sm:text-lg mt-8 max-w-3xl mx-auto leading-snug"
+            style={{ color: "hsl(var(--paper-ink) / 0.72)" }}
+          >
+            Below the line is foundation — slow, capital-intensive, structurally permanent.
+            Above the line is where intelligence compounds and value accrues.
+            <span style={{ color: "hsl(var(--accent))" }}> ★</span> marks the 18 defensible sublayers.
+          </p>
         </section>
 
         {/* Laws strip */}
@@ -139,10 +160,10 @@ const StackPage = () => {
           ))}
         </section>
 
-        {/* Sheet footer in blueprint style */}
+        {/* Sheet footer */}
         <div className="mt-8 pt-4 border-t border-foreground/10 flex flex-wrap items-center justify-between gap-3 font-mono-marker text-[10px] tracking-[0.14em] text-foreground/50 uppercase">
           <span>The Supply Chain of Intelligence™ · By Anand Arivukkarasu</span>
-          <span>DWG SCI-010 · SHEET 01 / 01 · REV 1.0</span>
+          <span>DWG SCI-010 · SHEET 01 / 01 · REV 1.1</span>
         </div>
 
         {/* CTA */}
