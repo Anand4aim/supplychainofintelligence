@@ -9,6 +9,22 @@ from reportlab.lib.pagesizes import landscape, letter
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
 from reportlab.lib.utils import simpleSplit
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+import os
+
+# ── Register actual site fonts (Playfair Display + Inter + JetBrains Mono)
+FONT_DIR = os.environ.get("PDF_FONT_DIR", "/tmp/fonts")
+pdfmetrics.registerFont(TTFont("Display",        os.path.join(FONT_DIR, "PlayfairDisplay.ttf")))
+pdfmetrics.registerFont(TTFont("Display-Italic", os.path.join(FONT_DIR, "PlayfairDisplay-Italic.ttf")))
+pdfmetrics.registerFont(TTFont("Body",           os.path.join(FONT_DIR, "Inter.ttf")))
+pdfmetrics.registerFont(TTFont("Mono",           os.path.join(FONT_DIR, "JetBrainsMono.ttf")))
+
+# Font aliases used by the drawing helpers
+F_TITLE  = "Display"
+F_ITALIC = "Display-Italic"
+F_BODY   = "Body"
+F_MONO   = "Mono"
 
 # ── Canonical color table (mirror of src/data/layerColors.ts) ─────────
 PAPER_BG    = HexColor("#ede5d3")
