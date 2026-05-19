@@ -66,6 +66,12 @@ export default {
         indigo: "hsl(var(--indigo))",
         navy: "hsl(var(--navy))",
         "navy-mid": "hsl(var(--navy-mid))",
+        paper: {
+          DEFAULT: "hsl(var(--paper))",
+          deep: "hsl(var(--paper-deep))",
+          rule: "hsl(var(--paper-rule))",
+          ink: "hsl(var(--paper-ink))",
+        },
         layer: {
           0: "hsl(var(--layer-0))",
           1: "hsl(var(--layer-1))",
