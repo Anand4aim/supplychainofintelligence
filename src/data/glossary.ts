@@ -6,6 +6,8 @@
 //   - call out the common mis-mapping where one exists
 // Add new terms here; the /glossary page picks them up automatically.
 
+import { LAYERS, displayLayerId } from "./layers";
+
 export type GlossaryCategory = "marketing" | "technical" | "industry" | "framework";
 
 export interface GlossaryTerm {
