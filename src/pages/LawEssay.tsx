@@ -7,6 +7,13 @@ import Eyebrow from "@/components/Eyebrow";
 import { SketchBoard } from "@/components/sketch/SketchElements";
 import { LAW_ESSAYS, LAW_ESSAY_BY_SLUG } from "@/data/lawEssays";
 import { PRECEDENTS_BY_LAW } from "@/data/lawPrecedents";
+import CopySnippet from "@/components/CopySnippet";
+
+const TASTE_SNIPPET = `We aren't entering an era where AI replaces creators. We're entering an era where taste becomes the moat.
+
+Because once generation collapses into L2, the scarce input is no longer who can produce — it's who can choose.
+
+Taste isn't a single layer. It's an L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked) package. That stack is where the value Law I displaces eventually lands.`;
 
 const renderInline = (text: string) => {
   // Render **bold** chunks within a paragraph.
@@ -83,6 +90,26 @@ const LawEssayPage = () => {
               </p>
             ))}
           </motion.div>
+
+          {essay.slug === "intelligence-commoditizes-downward" ? (
+            <div className="mt-10 border-l-2 border-accent/60 bg-accent/5 rounded-r-md p-5 md:p-6">
+              <div className="font-mono-marker text-[10px] tracking-[0.22em] text-accent uppercase mb-3">
+                SHAREABLE COROLLARY
+              </div>
+              <p className="font-display text-lg md:text-xl text-foreground italic leading-snug mb-2">
+                "We aren't entering an era where AI replaces creators. We're entering an era where taste becomes the moat."
+              </p>
+              <p className="text-sm text-foreground/75 leading-relaxed mb-4">
+                Taste = L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked).{" "}
+                <Link to="/glossary#taste" className="text-accent underline underline-offset-2">See glossary →</Link>
+              </p>
+              <CopySnippet
+                text={TASTE_SNIPPET}
+                path="/laws/intelligence-commoditizes-downward"
+                label="Copy as LinkedIn post"
+              />
+            </div>
+          ) : null}
 
           {/* Sources & Precedents */}
           {PRECEDENTS_BY_LAW[essay.slug]?.length ? (
