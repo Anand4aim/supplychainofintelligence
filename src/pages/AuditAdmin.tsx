@@ -355,6 +355,20 @@ export default function AuditAdmin() {
                               {au.verdict_check.why && <div className="text-[11px] text-muted-foreground mt-0.5">{au.verdict_check.why}</div>}
                             </div>
                           )}
+                          {au.dimension_scores && Object.keys(au.dimension_scores).length > 0 && (
+                            <div className="mb-2">
+                              <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Lens scores</div>
+                              <div className="space-y-0.5">
+                                {Object.entries(au.dimension_scores).map(([dim, v]) => (
+                                  <div key={dim} className="text-[11px] flex gap-2">
+                                    <span className="font-mono w-10 text-right tabular-nums shrink-0">{v.score}</span>
+                                    <span className="text-muted-foreground w-32 shrink-0 truncate">{dim.replace(/_/g," ")}</span>
+                                    <span className="text-foreground/70 truncate" title={v.rationale}>{v.rationale}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                           {au.flaws?.length > 0 && (
                             <div className="mt-2">
                               <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Flaws ({au.flaws.length})</div>
