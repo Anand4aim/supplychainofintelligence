@@ -105,64 +105,116 @@ const Index = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <p className="font-sketch text-base text-muted-foreground mb-3">
-                The 10-Layer Stack — Click to explore ↓
+                The 10-Layer Stack — Click ▸ to see the 5 sublayers
               </p>
               <div className="sketch-paper rounded-2xl p-4 space-y-1.5 relative">
                 <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
                 {LAYERS.map((layer, i) => {
                   const defCount = layer.sublayers.filter((s) => s.defensible).length;
+                  const isOpen = expandedLayer === layer.id;
                   return (
                     <motion.div
                       key={layer.id}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + i * 0.05 }}
+                      className="relative"
                     >
-                      <Link
-                        to={`/framework#${layer.id}`}
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 group transition-all duration-200 hover:translate-x-1 sketch-border relative"
+                      <div
+                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 sketch-border relative"
                         style={{
                           background: `hsl(${layer.bg})`,
                           borderLeft: `3px solid hsl(${layer.color})`,
                         }}
                       >
-                        <SketchIcon name={layer.goldIcon} size={24} className="shrink-0" />
-                        <span
-                          className="font-sketch text-base font-bold min-w-[28px] shrink-0"
-                          style={{ color: `hsl(${layer.color})` }}
+                        <Link
+                          to={`/framework#${layer.id}`}
+                          className="flex items-center gap-2.5 flex-1 min-w-0 group"
                         >
-                          {layer.id}
-                        </span>
-                        <span className="text-foreground/70 text-sm font-medium flex-1 group-hover:text-foreground transition-colors truncate">
-                          {layer.name}
-                        </span>
-                        <div className="flex gap-0.5 items-center shrink-0">
-                          {layer.sublayers.map((sub) => (
-                            <div
-                              key={sub.id}
-                              className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-125"
-                              style={{
-                                background: sub.defensible
-                                  ? `hsl(${layer.color})`
-                                  : `hsl(${layer.color} / 0.25)`,
-                              }}
-                              title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
-                            />
-                          ))}
-                        </div>
-                        {defCount > 0 && (
-                          <span className="font-sketch text-xs text-muted-foreground shrink-0">
-                            {defCount}★
+                          <SketchIcon name={layer.goldIcon} size={24} className="shrink-0" />
+                          <span
+                            className="font-sketch text-base font-bold min-w-[28px] shrink-0"
+                            style={{ color: `hsl(${layer.color})` }}
+                          >
+                            {layer.id}
                           </span>
+                          <span className="text-foreground/70 text-sm font-medium flex-1 group-hover:text-foreground transition-colors truncate">
+                            {layer.name}
+                          </span>
+                          <div className="flex gap-0.5 items-center shrink-0">
+                            {layer.sublayers.map((sub) => (
+                              <div
+                                key={sub.id}
+                                className="w-1.5 h-1.5 rounded-full"
+                                style={{
+                                  background: sub.defensible
+                                    ? `hsl(${layer.color})`
+                                    : `hsl(${layer.color} / 0.25)`,
+                                }}
+                                title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
+                              />
+                            ))}
+                          </div>
+                          {defCount > 0 && (
+                            <span className="font-sketch text-xs text-muted-foreground shrink-0">
+                              {defCount}★
+                            </span>
+                          )}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setExpandedLayer(isOpen ? null : layer.id)}
+                          aria-expanded={isOpen}
+                          aria-label={`${isOpen ? "Hide" : "Show"} sublayers of ${layer.id} ${layer.name}`}
+                          className="shrink-0 ml-1 p-1 rounded-md hover:bg-foreground/5 transition-colors"
+                        >
+                          <ChevronRight
+                            size={16}
+                            className="text-muted-foreground transition-transform duration-200"
+                            style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+                          />
+                        </button>
+                      </div>
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="overflow-hidden mt-1 ml-6 pl-3 space-y-1"
+                            style={{ borderLeft: `2px dashed hsl(${layer.color} / 0.4)` }}
+                          >
+                            {layer.sublayers.map((sub) => (
+                              <li key={sub.id}>
+                                <Link
+                                  to={`/framework#${layer.id}`}
+                                  className="flex items-start gap-2 px-2 py-1 rounded-md hover:bg-foreground/5 transition-colors group"
+                                >
+                                  <span
+                                    className="font-mono-marker text-[10px] tracking-[0.05em] mt-0.5 shrink-0 font-bold"
+                                    style={{ color: `hsl(${layer.color})` }}
+                                  >
+                                    {sub.id}
+                                  </span>
+                                  <span className="text-foreground/80 text-xs leading-snug group-hover:text-foreground">
+                                    {sub.name}
+                                    {sub.defensible && (
+                                      <span className="ml-1 text-[10px]" style={{ color: `hsl(${layer.color})` }}>★</span>
+                                    )}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
                         )}
-                        <ArrowRight size={11} className="text-muted-foreground/30 group-hover:text-muted-foreground transition-colors shrink-0" />
-                      </Link>
+                      </AnimatePresence>
                     </motion.div>
                   );
                 })}
               </div>
               <p className="font-sketch text-xs text-muted-foreground mt-2.5">
-                ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)}+ mapped
+                ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} sublayers mapped
               </p>
             </motion.div>
           </div>
