@@ -287,8 +287,12 @@ def conclusion(c, total):
         c.drawString(cx + 12, MARGIN + 240, label)
         c.setFillColor(PAPER_INK); c.setFont(F_ITALIC, 11)
         c.drawString(cx + 12, MARGIN + 220, "Layer:  ______________")
-        c.drawString(cx + 12, MARGIN + 198, "Sublayer (★):  ______________")
-        c.drawString(cx + 12, MARGIN + 176, "Why it's defensible:")
+        c.drawString(cx + 12, MARGIN + 198, "Sublayer:  ______________")
+        # Draw the ★ marker in Inter so the glyph renders
+        c.setFont(F_BODY, 9); c.setFillColor(GOLD)
+        c.drawString(cx + 12, MARGIN + 184, "★  must be a defensible (starred) sublayer")
+        c.setFillColor(PAPER_INK); c.setFont(F_ITALIC, 11)
+        c.drawString(cx + 12, MARGIN + 168, "Why it's defensible:")
         for j in range(4):
             c.setStrokeColor(PAPER_RULE); c.setLineWidth(0.4)
             c.line(cx + 12, MARGIN + 150 - j*18, cx + card_w - 12, MARGIN + 150 - j*18)
