@@ -95,33 +95,33 @@ def draw_paper(c, color=PAPER_BG):
     c.rect(MARGIN/2, MARGIN/2, W - MARGIN, H - MARGIN, fill=0, stroke=1)
 
 def draw_eyebrow(c, text, x, y, color=GOLD):
-    c.setFillColor(color); c.setFont("Courier-Bold", 8)
+    c.setFillColor(color); c.setFont(F_MONO, 8)
     c.drawString(x, y, text.upper())
 
 def draw_title(c, text, x, y, size=34, color=PAPER_INK):
-    c.setFillColor(color); c.setFont("Times-Bold", size)
+    c.setFillColor(color); c.setFont(F_TITLE, size)
     c.drawString(x, y, text)
 
 def draw_rule(c, x, y, w=80, color=GOLD):
     c.setStrokeColor(color); c.setLineWidth(1.6); c.line(x, y, x + w, y)
 
 def draw_italic(c, text, x, y, size=12, color=PAPER_INK, max_w=None):
-    c.setFillColor(color); c.setFont("Times-Italic", size)
+    c.setFillColor(color); c.setFont(F_ITALIC, size)
     if max_w:
-        for line in simpleSplit(text, "Times-Italic", size, max_w):
+        for line in simpleSplit(text, F_ITALIC, size, max_w):
             c.drawString(x, y, line); y -= size * 1.25
     else:
         c.drawString(x, y, text)
     return y
 
-def draw_body(c, text, x, y, size=11, color=PAPER_INK, max_w=400, font="Helvetica"):
+def draw_body(c, text, x, y, size=11, color=PAPER_INK, max_w=400, font=F_BODY):
     c.setFillColor(color); c.setFont(font, size)
     for line in simpleSplit(text, font, size, max_w):
         c.drawString(x, y, line); y -= size * 1.35
     return y
 
 def draw_footer(c, page_num, total):
-    c.setFillColor(HexColor("#0f172a")); c.setFont("Courier-Bold", 7)
+    c.setFillColor(HexColor("#0f172a")); c.setFont(F_MONO, 7)
     c.drawString(MARGIN, MARGIN/2 - 4, "THE SUPPLY CHAIN OF INTELLIGENCE™  ·  ANAND ARIVUKKARASU  ·  SUPPLYCHAINOFAI.COM")
     c.drawRightString(W - MARGIN, MARGIN/2 - 4, f"DWG SCI-010  ·  SHEET {page_num:02d} / {total:02d}  ·  REV 1.1")
 
@@ -149,12 +149,12 @@ def cover(c, total):
         cx = MARGIN + 20 + i * chip_w
         c.setFillColor(hex_to_color(LAYER_HEX[lid]))
         c.rect(cx + 3, chip_y, chip_w - 6, 36, fill=1, stroke=0)
-        c.setFillColor(WHITE); c.setFont("Courier-Bold", 11)
+        c.setFillColor(WHITE); c.setFont(F_MONO, 11)
         c.drawCentredString(cx + chip_w/2, chip_y + 13, lid.replace("L-1", "L−1"))
-        c.setFillColor(HexColor("#0f172a")); c.setFont("Courier-Bold", 7)
+        c.setFillColor(HexColor("#0f172a")); c.setFont(F_MONO, 7)
         c.drawCentredString(cx + chip_w/2, chip_y - 10, short.upper())
 
-    c.setFillColor(HexColor("#0f172a")); c.setFont("Helvetica", 9)
+    c.setFillColor(HexColor("#0f172a")); c.setFont(F_BODY, 9)
     c.drawString(MARGIN + 10, MARGIN + 25, "By Anand Arivukkarasu  ·  Ex-Meta (Instagram) Product Leader & AI Product Architect")
     draw_footer(c, 1, total)
     c.showPage()
@@ -176,11 +176,11 @@ def how_to_use(c, total):
     ]
     y = H - MARGIN - 120
     for num, title, body in items:
-        c.setFillColor(GOLD); c.setFont("Courier-Bold", 14)
+        c.setFillColor(GOLD); c.setFont(F_MONO, 14)
         c.drawString(x, y, num)
-        c.setFillColor(PAPER_INK); c.setFont("Times-Bold", 14)
+        c.setFillColor(PAPER_INK); c.setFont(F_TITLE, 14)
         c.drawString(x + 36, y, title)
-        c.setFont("Helvetica", 10)
+        c.setFont(F_BODY, 10)
         c.drawString(x + 36, y - 16, body)
         y -= 48
     draw_footer(c, 2, total)
@@ -202,24 +202,24 @@ def layer_page(c, idx, total, lid, short, analogy, summary, sublayers):
     pill_x, pill_y, pill_w, pill_h = x, H - MARGIN - 90, 130, 60
     c.setFillColor(hex_to_color(LAYER_HEX[lid]))
     c.rect(pill_x, pill_y, pill_w, pill_h, fill=1, stroke=0)
-    c.setFillColor(WHITE); c.setFont("Courier-Bold", 32)
+    c.setFillColor(WHITE); c.setFont(F_MONO, 32)
     display = lid.replace("L-1", "L−1")
     c.drawCentredString(pill_x + pill_w/2, pill_y + 18, display)
 
     # Title beside the pill
-    c.setFillColor(PAPER_INK); c.setFont("Times-Bold", 44)
+    c.setFillColor(PAPER_INK); c.setFont(F_TITLE, 44)
     c.drawString(pill_x + pill_w + 22, pill_y + 30, short + ".")
-    c.setFont("Times-Italic", 16); c.setFillColor(HexColor("#0f172a"))
+    c.setFont(F_ITALIC, 16); c.setFillColor(HexColor("#0f172a"))
     c.drawString(pill_x + pill_w + 22, pill_y + 8, f"The {analogy.lower()} of the stack.")
 
     # Summary
     draw_rule(c, x, pill_y - 14, w=80, color=hex_to_color(LAYER_HEX[lid]))
     y = pill_y - 38
-    y = draw_body(c, summary, x, y, size=14, max_w=W * 0.55, font="Times-Roman")
+    y = draw_body(c, summary, x, y, size=14, max_w=W * 0.55, font=F_TITLE)
 
     # Sublayers (left half)
     y -= 18
-    c.setFillColor(hex_to_color(LAYER_HEX[lid])); c.setFont("Courier-Bold", 9)
+    c.setFillColor(hex_to_color(LAYER_HEX[lid])); c.setFont(F_MONO, 9)
     c.drawString(x, y, "FIVE SUBLAYERS")
     y -= 18
     for s in sublayers:
@@ -229,7 +229,7 @@ def layer_page(c, idx, total, lid, short, analogy, summary, sublayers):
         c.rect(x, y - chip_h + 6, W * 0.55 - 10, chip_h, fill=1, stroke=0)
         c.setStrokeColor(hex_to_color(LAYER_HEX[lid])); c.setLineWidth(0.6)
         c.rect(x, y - chip_h + 6, W * 0.55 - 10, chip_h, fill=0, stroke=1)
-        c.setFillColor(PAPER_INK); c.setFont("Helvetica", 11)
+        c.setFillColor(PAPER_INK); c.setFont(F_BODY, 11)
         c.drawString(x + 10, y - 8, s)
         y -= chip_h + 4
 
@@ -244,19 +244,19 @@ def layer_page(c, idx, total, lid, short, analogy, summary, sublayers):
     cy = ry - 30
     draw_eyebrow(c, "How Product Leaders Use This Layer", rx, cy, color=hex_to_color(LAYER_HEX[lid]))
     cy -= 24
-    c.setFillColor(PAPER_INK); c.setFont("Times-Italic", 16)
-    for line in simpleSplit(PM_USE[lid], "Times-Italic", 16, W - rx - MARGIN - 10):
+    c.setFillColor(PAPER_INK); c.setFont(F_ITALIC, 16)
+    for line in simpleSplit(PM_USE[lid], F_ITALIC, 16, W - rx - MARGIN - 10):
         c.drawString(rx, cy, line); cy -= 22
 
     # ★ marker explainer
     cy -= 14
-    c.setFillColor(GOLD); c.setFont("Courier-Bold", 9)
+    c.setFillColor(GOLD); c.setFont(F_MONO, 9)
     c.drawString(rx, cy, "★ = STRUCTURAL MOAT")
     cy -= 14
-    c.setFillColor(HexColor("#0f172a")); c.setFont("Helvetica", 9)
+    c.setFillColor(HexColor("#0f172a")); c.setFont(F_BODY, 9)
     for line in simpleSplit(
         "Sublayers marked ★ are positions where competitors cannot easily replicate you. Own at least one per product.",
-        "Helvetica", 9, W - rx - MARGIN - 10):
+        F_BODY, 9, W - rx - MARGIN - 10):
         c.drawString(rx, cy, line); cy -= 12
 
     draw_footer(c, idx, total)
@@ -283,9 +283,9 @@ def conclusion(c, total):
         c.setFillColor(PAPER_DEEP); c.rect(cx, MARGIN + 80, card_w, 180, fill=1, stroke=0)
         c.setStrokeColor(GOLD); c.setLineWidth(1)
         c.rect(cx, MARGIN + 80, card_w, 180, fill=0, stroke=1)
-        c.setFillColor(GOLD); c.setFont("Courier-Bold", 9)
+        c.setFillColor(GOLD); c.setFont(F_MONO, 9)
         c.drawString(cx + 12, MARGIN + 240, label)
-        c.setFillColor(PAPER_INK); c.setFont("Times-Italic", 11)
+        c.setFillColor(PAPER_INK); c.setFont(F_ITALIC, 11)
         c.drawString(cx + 12, MARGIN + 220, "Layer:  ______________")
         c.drawString(cx + 12, MARGIN + 198, "Sublayer (★):  ______________")
         c.drawString(cx + 12, MARGIN + 176, "Why it's defensible:")
@@ -294,7 +294,7 @@ def conclusion(c, total):
             c.line(cx + 12, MARGIN + 150 - j*18, cx + card_w - 12, MARGIN + 150 - j*18)
 
     # Footer line
-    c.setFillColor(HexColor("#0f172a")); c.setFont("Times-Italic", 11)
+    c.setFillColor(HexColor("#0f172a")); c.setFont(F_ITALIC, 11)
     c.drawCentredString(W/2, MARGIN + 50,
         "Read the full framework + 50 sublayers at supplychainofai.com/framework")
     draw_footer(c, total, total)
