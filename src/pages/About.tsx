@@ -237,6 +237,94 @@ const AboutPage = () => (
     </section>
 
 
+    {/* WHY — INDUSTRY STANDARD VOCABULARY */}
+    <section className="bg-background border-t border-border">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <Eyebrow className="mb-3">Why I'm really doing this</Eyebrow>
+        <h2 className="font-display text-2xl md:text-[34px] font-bold text-foreground leading-tight mb-4">
+          The AI industry doesn't have a <span className="text-accent">shared vocabulary</span> yet.<br className="hidden md:block" />
+          That's the gap I'm trying to close.
+        </h2>
+        <div className="prose prose-lg max-w-none space-y-5 text-foreground/85 text-[17px] leading-[1.85]">
+          <p>
+            Walk into any product review, board meeting, or investor call in 2026 and you'll hear the same three words
+            doing all the work: <em>"it's a wrapper"</em>, <em>"it's an agent"</em>, <em>"it's a copilot"</em>.
+            That's not analysis. That's a shrug. Two companies called "agents" can sit on completely different layers
+            of the stack, with completely different defensibility, and the word tells you nothing about which one
+            survives the next platform release.
+          </p>
+          <p>
+            Other industries solved this decades ago. Semiconductors have a fab → foundry → fabless taxonomy.
+            Cloud has IaaS → PaaS → SaaS. Logistics has Tier 1 / Tier 2 / Tier 3 suppliers. <strong className="text-foreground">JTBD</strong> became
+            durable not because the idea was uniquely brilliant, but because the vocabulary <em>froze</em>:
+            job, hire, fire, functional, emotional, social. Same words everywhere. That's what lets a PM in Berlin
+            and an investor in Singapore actually talk about the same thing.
+          </p>
+          <p>
+            Generative AI doesn't have that yet. So a product team ships a feature thinking they own a moat, and an
+            investor funds a "platform" thinking it's defensible, and six months later a hyperscaler ships the same
+            capability as a checkbox — because nobody named which <em>layer</em> the work was actually living on.
+          </p>
+          <p>
+            <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is my attempt at that
+            naming layer. Ten layers. Fifty sublayers. Four laws. One cube. Precise enough that a Series B founder, a
+            corp-dev lead at a hyperscaler, and a PM at a vertical SaaS can all point at the same square on the board
+            and mean the same thing.
+          </p>
+        </div>
+
+        <div className="mt-10 grid md:grid-cols-3 gap-4">
+          <div className="bg-card border border-border rounded-xl p-5">
+            <p className="font-mono-marker text-[10px] uppercase tracking-wider text-accent mb-2">Before</p>
+            <p className="font-display font-bold text-foreground text-[16px] leading-snug mb-2">
+              "It's just a GPT wrapper."
+            </p>
+            <p className="text-[13px] text-foreground/70 leading-snug">
+              Tells you nothing about who absorbs whom, or when.
+            </p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-5">
+            <p className="font-mono-marker text-[10px] uppercase tracking-wider text-accent mb-2">After</p>
+            <p className="font-display font-bold text-foreground text-[16px] leading-snug mb-2">
+              "It's an L7 surface on L2 with no L1b, L5d or L8c."
+            </p>
+            <p className="text-[13px] text-foreground/70 leading-snug">
+              Now everyone in the room knows it gets absorbed by the model layer in two quarters.
+            </p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-5">
+            <p className="font-mono-marker text-[10px] uppercase tracking-wider text-accent mb-2">After</p>
+            <p className="font-display font-bold text-foreground text-[16px] leading-snug mb-2">
+              "It's L1b + L5a + L8d in Legal."
+            </p>
+            <p className="text-[13px] text-foreground/70 leading-snug">
+              Now you can argue about price, moat, and exit on the same map.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 bg-secondary/40 border border-border rounded-xl p-6">
+          <p className="font-mono-marker text-[11px] uppercase tracking-wider text-accent mb-3">The ask</p>
+          <p className="text-foreground/85 text-[16px] leading-[1.75] mb-4">
+            If you're a founder, PM, or investor — try using the layer notation in your next memo, review, or
+            pitch. Say <strong className="text-foreground">L5</strong> instead of "the AI doing the work". Say{" "}
+            <strong className="text-foreground">L8</strong> instead of "it remembers stuff". Say{" "}
+            <strong className="text-foreground">L3</strong> instead of "trust and safety". The framework is{" "}
+            <strong className="text-foreground">free, citable, and intentionally portable</strong>. Standards only
+            become standards when enough people use them.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/framework" className="btn-sketch inline-flex items-center gap-2 text-sm">
+              Get the vocabulary <ArrowRight size={14} />
+            </Link>
+            <Link to="/challenge" className="btn-sketch-outline inline-flex items-center gap-2 text-sm">
+              Challenge a definition <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
     {/* CAREER ARC */}
     <section className="bg-secondary/40 border-y border-border">
       <div className="max-w-4xl mx-auto px-6 py-14">
