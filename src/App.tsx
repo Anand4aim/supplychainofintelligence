@@ -29,6 +29,7 @@ import Challenge from "./pages/Challenge";
 import EdgeCases from "./pages/EdgeCases";
 import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
+import Glossary from "./pages/Glossary";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
         <Route path="/edge-cases" element={<EdgeCases />} />
         <Route path="/playbook" element={<Playbook />} />
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
