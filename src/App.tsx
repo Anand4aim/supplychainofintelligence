@@ -64,6 +64,7 @@ const App = () => (
         <Route path="/edge-cases" element={<EdgeCases />} />
         <Route path="/playbook" element={<Playbook />} />
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
+        <Route path="/glossary" element={<Glossary />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
