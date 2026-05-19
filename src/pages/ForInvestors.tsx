@@ -54,7 +54,7 @@ const USE_CASES = [
 
 const VERDICTS = [
   { tier: "Fortress", color: "verdict-fortified", desc: "L1 + L5 + L8 — owns data, workflow, and memory. Compounds." },
-  { tier: "Workflow", color: "verdict-defensible", desc: "L5/L6 — earns its keep but vulnerable if the platform layer above swallows the surface." },
+  { tier: "Workflow", color: "verdict-consolidating", desc: "L5/L6 — earns its keep but vulnerable if the platform layer above swallows the surface." },
   { tier: "Wrapper", color: "verdict-exposed", desc: "L7-only on someone else's L2. One platform release note from extinction." },
 ];
 
