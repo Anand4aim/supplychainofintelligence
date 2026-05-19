@@ -38,6 +38,7 @@ const SiteFooter = () => (
           <div className="space-y-2.5">
             <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
+            <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary · Decoder</Link>
             <Link to="/playbook" className="block text-sm hover:text-foreground transition-colors">Playbook</Link>
             <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
