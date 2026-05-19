@@ -24,7 +24,7 @@ const SQUARES: Square[] = [
   {
     layerId: "L-1",
     short: "Resources",
-    full: "L-1 Energy · Materials · Trades",
+    full: "L\u22121 Energy · Materials · Trades",
     piece: "♚",
     pieceName: "Clock",
     value: "∞",
@@ -138,7 +138,7 @@ const RULES = [
   {
     n: "II",
     title: "Some squares are hard to move into.",
-    body: "L0 (fabs), L-1 (energy permits), L3 (regulator trust) are multi-year moves. L7 (surface) is a weekend. Time and money are the budget — pick the squares your clock can afford.",
+    body: "L0 (fabs), L\u22121 (energy permits), L3 (regulator trust) are multi-year moves. L7 (surface) is a weekend. Time and money are the budget — pick the squares your clock can afford.",
   },
   {
     n: "III",

@@ -10,7 +10,7 @@ import { SketchBoard } from "@/components/sketch/SketchElements";
 
 const ROADMAP_MOVES = [
   {
-    layer: "L-1 / L0 Resources & Infra",
+    layer: "L\u22121 / L0 Resources & Infra",
     exposure: "You depend on capacity that can be priced or rationed against you.",
     moves: [
       "Lock in 12–24 month compute commitments before launch. Treat GPU as a supply-chain line item, not a cloud cost.",
@@ -93,7 +93,7 @@ const ROADMAP_MOVES = [
 ];
 
 const BUILD_VS_RENT = [
-  { layer: "L-1 / L0", build: "Almost never", rent: "Always (AWS, GCP, NVIDIA)", note: "Build only if you are a hyperscaler." },
+  { layer: "L\u22121 / L0", build: "Almost never", rent: "Always (AWS, GCP, NVIDIA)", note: "Build only if you are a hyperscaler." },
   { layer: "L1 Data", build: "Always for L1b/c/d (proprietary, behavioral, outcome)", rent: "L1a public data, L1e synthetic", note: "The defensible sub-layers cannot be rented." },
   { layer: "L2 Models", build: "Only above ~$100M ARR or a defensible vertical slice", rent: "Foundation models, embeddings, routing", note: "Building before scale is a vanity moat." },
   { layer: "L3 Gates", build: "Always for editorial/distribution gates (L3d, L3e)", rent: "Compliance tooling (Vanta, Drata)", note: "Trust must be earned in-house; tooling can be bought." },
