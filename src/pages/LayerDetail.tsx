@@ -187,7 +187,7 @@ const LayerDetailPage = () => {
                     Is a company really at {layer.id}?
                   </h2>
                   <p className="text-foreground/85 text-[16px] leading-[1.75] mb-6">
-                    {diag.oneLineDef}
+                    <GlossaryText>{diag.oneLineDef}</GlossaryText>
                   </p>
 
                   <div className="grid md:grid-cols-2 gap-4 mb-6">
