@@ -16,9 +16,11 @@ const PASSCODE_KEY = "remaster_admin_passcode";
 const TICK_INTERVAL_MS = 75_000;
 
 interface Article { id: string; slug: string; headline: string; verdict: string; analysis: any; }
+interface DimScore { score: number; rationale: string; }
 interface AuditRow {
   id: string; article_id: string; run_id: string; model: string;
   score: number; severity: string;
+  dimension_scores: Record<string, DimScore>;
   current_layers: string[]; proposed_layers: string[];
   proposed_sublayers: string[];
   flaws: any[]; fixes: any[];
@@ -35,6 +37,7 @@ interface SummaryRow {
   models_run: string[];
   consensus_layers: string[]; consensus_sublayers: string[];
   disagreements: any[];
+  dimension_scores_avg: Record<string, number>;
 }
 interface AuditRun {
   id: string; status: string; models: string[];
