@@ -109,26 +109,36 @@ const AUDIT_SCHEMA = {
   },
 };
 
+const DIMENSIONS_BLOCK = DIMENSIONS.map(d => `  - ${d.id} (weight ${d.weight}): ${d.desc}`).join("\n");
+
 const SYSTEM_PROMPT = `${FRAMEWORK_CONTEXT}
 
 === YOUR ROLE: SENIOR FRAMEWORK CRITIC ===
 
-You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article. You are checking the existing one for framework accuracy at sublayer depth.
+You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article — you are grading it.
 
-Your job:
-1. Walk the article's substance against the 10 layers and all 50 sublayers.
-2. Identify EVERY framework mis-mapping (especially the agent→L4 confusion that is currently the most common error).
-3. Ground every flaw in a verbatim quote from the article. No flaw without evidence.
-4. Score 0–100. Be honest. A factually wrong layer tag is critical (severity=critical, score<40). Missing a required layer is needs_fix (score 40–69). Minor enrichment opportunities are minor (70–89). Sound = ok (90+).
-5. Propose CONCRETE fixes (add/remove specific layer tags, rewrite headline/sub, change verdict).
-6. Confirm or challenge the verdict (DOMINANT/SAFE/CONTESTED/DEAD).
-7. Check which of the 4 Laws the article applies, and which it MISSED.
+You will score the article on TEN INDEPENDENT LENSES (0-100 each), each with a short evidence-grounded rationale:
+
+${DIMENSIONS_BLOCK}
+
+The composite \`score\` MUST equal the weighted average of the ten dimension scores using the weights above. Round to integer. Then map severity:
+  - composite < 40, OR framework_fidelity < 40                       → critical
+  - composite 40-69, OR any single dimension < 40                    → needs_fix
+  - composite 70-89                                                  → minor
+  - composite ≥ 90 AND no dimension < 70                             → ok
+
+Also do the framework work:
+1. Walk the article's substance against the 10 layers and all 50 sublayers; emit proposed_layers and a tight 3-8 proposed_sublayers.
+2. Identify EVERY framework mis-mapping. The #1 trap is agent→L4 without L5+L6 — flag it critical every time.
+3. Ground every flaw in a verbatim quote. No flaw without evidence.
+4. Propose CONCRETE fixes (add/remove layer tags, rewrite headline/sub, change verdict).
+5. Confirm or challenge the verdict (DOMINANT/SAFE/CONTESTED/DEAD).
+6. Check which of the 4 Laws the article applies, and which it MISSED.
 
 Discipline:
-- Be brutal but specific. Vague critique is worse than no critique.
-- "Agent" is the #1 trap. If the article uses "agent" and doesn't tag L5+L6, that's a critical flaw — every time.
+- Be brutal but specific. Vague critique is worse than no critique. 100 is reserved for elite — most lenses on most articles land 55-75.
 - Use canonical IDs only (L-1, L0…L8 and L-1a…L8e). Never invent IDs.
-- proposed_sublayers must be a tight 3–8 IDs, not a maximalist list.`;
+- Do NOT inflate scores to be polite. A pretty article with a hollow thesis should score thesis_sharpness < 50 even if editorial_craft is 80.`;
 
 async function callCritic(model: string, lovableKey: string, article: any) {
   const articleBlock = `
