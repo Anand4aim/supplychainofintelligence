@@ -9,6 +9,7 @@ import LayerDetailPage from "./pages/LayerDetail";
 import AnalysisPage from "./pages/Analysis";
 import CaseStudyDetailPage from "./pages/CaseStudyDetail";
 import ForProductLeaders from "./pages/ForProductLeaders";
+import ForInvestors from "./pages/ForInvestors";
 import AboutPage from "./pages/About";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
