@@ -48,7 +48,7 @@ const BEATS: Beat[] = [
     n: "04",
     kicker: "Test",
     line: "Score your company out of 40.",
-    to: "/start",
+    to: "/framework",
     cta: "Run the audit",
   },
   {
