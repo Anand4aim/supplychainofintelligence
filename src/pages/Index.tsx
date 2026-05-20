@@ -11,7 +11,7 @@ import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIc
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
-import StackPoster from "@/components/StackPoster";
+import StackPosterFull from "@/components/StackPosterFull";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
@@ -227,7 +227,7 @@ const Index = () => {
             transition={{ delay: 0.85, duration: 0.5 }}
             className="mt-12"
           >
-            <StackPoster />
+            <StackPosterFull />
           </motion.div>
 
           {/* Worked example — Sales Tech layer matrix */}
