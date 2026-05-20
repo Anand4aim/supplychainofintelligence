@@ -50,9 +50,20 @@ const FrameworkPage = () => (
             <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>
             <span className="font-sketch text-base text-accent font-bold">{DEFENSIBLE_TRIANGLE}</span>
           </div>
+          <div className="mt-5">
+            <Link to="/about#why-this-exists" className="text-accent hover:underline font-sketch font-bold text-sm inline-flex items-center gap-1">
+              Why we built this →
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
+
+    {/* spacer marker */}
+    <div className="hidden">{/* removed duplicate closing */}</div>
+    <div style={{display:'none'}} aria-hidden="true"></div>
+    <div className="hidden"></div>
+    <div className="hidden"></div>
 
     {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY (moved from home) ═══════════ */}
     <section className="bg-secondary/40 border-y border-border">
