@@ -22,7 +22,7 @@ const FrameworkPage = () => (
   <SiteLayout>
     <Seo
       title="The Framework — 10 Layers of the Supply Chain of Intelligence"
-      description="The full breakdown: 10 layers, 50 sublayers, 3 structural laws, and the Defensible Triangle. Where AI value is created, captured, and defended."
+      description="The full breakdown: 10 layers, 50 sublayers, 4 structural laws, and the Defensible Triangle. Where AI value is created, captured, and defended."
       path="/framework"
     />
     <SketchFilters />
@@ -43,7 +43,7 @@ const FrameworkPage = () => (
           </p>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
             Follow the gold from the ground to the person wearing the ring and you'll see every layer
-            of the intelligence stack. 10 layers. 50 sublayers. 3 structural laws. One map.
+            of the intelligence stack. 10 layers. 50 sublayers. 4 structural laws. One map.
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-secondary border border-border sketch-border">
             <span className="font-sketch text-base text-muted-foreground">Defensible Triangle:</span>

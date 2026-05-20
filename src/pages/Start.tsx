@@ -597,7 +597,7 @@ const Start = () => {
               The whole framework is one click away.
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              10 layers · 50 sublayers · 3 structural laws · 19 worked verdicts · the Intelligence Cube.
+              10 layers · 50 sublayers · 4 structural laws · 22 worked verdicts · the Intelligence Cube.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
@@ -610,7 +610,7 @@ const Start = () => {
                 to="/analysis"
                 className="inline-flex items-center gap-2 rounded-lg border border-foreground/15 text-foreground px-5 py-3 font-mono-marker text-[11px] tracking-[0.15em] hover:border-accent hover:text-accent transition-colors"
               >
-                19 worked verdicts <ArrowRight size={13} />
+                22 worked verdicts <ArrowRight size={13} />
               </Link>
             </div>
           </motion.div>
