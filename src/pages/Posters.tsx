@@ -299,6 +299,16 @@ const Posters = () => (
       <OpenVsClosedPoster />
     </PosterBlock>
 
+    <PosterBlock
+      num="18"
+      eyebrow="What Google Actually Said"
+      title="GEO is Just SEO — The Five Myths"
+      blurb="Google's Nov 2025 generative-AI search guide, decoded through the 10-layer stack. The AEO/GEO playbook being sold to founders is mostly noise — here's what actually moves the needle."
+      tone="dark"
+    >
+      <GoogleGeoMythPoster />
+    </PosterBlock>
+
     {/* Closer */}
     <section className="bg-background border-t border-border">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
