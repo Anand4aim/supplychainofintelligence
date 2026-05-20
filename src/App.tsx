@@ -16,7 +16,7 @@ import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
 import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
-import Start from "./pages/Start";
+
 import Predictions from "./pages/Predictions";
 import Disclaimer from "./pages/Disclaimer";
 import Privacy from "./pages/Privacy";
