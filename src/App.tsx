@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -30,7 +30,7 @@ import EdgeCases from "./pages/EdgeCases";
 import Playbook from "./pages/Playbook";
 import PreAiProof from "./pages/PreAiProof";
 import Glossary from "./pages/Glossary";
-import Stack from "./pages/Stack";
+import Posters from "./pages/Posters";
 import Classification from "./pages/Classification";
 
 const queryClient = new QueryClient();
@@ -67,7 +67,8 @@ const App = () => (
         <Route path="/playbook" element={<Playbook />} />
         <Route path="/essays/pre-ai-proof" element={<PreAiProof />} />
         <Route path="/glossary" element={<Glossary />} />
-        <Route path="/stack" element={<Stack />} />
+        <Route path="/stack" element={<Navigate to="/framework" replace />} />
+        <Route path="/posters" element={<Posters />} />
         <Route path="/classification" element={<Classification />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
