@@ -17,6 +17,11 @@ import SixArchetypesPoster from "@/components/posters/SixArchetypesPoster";
 import IntelligenceCubePoster from "@/components/posters/IntelligenceCubePoster";
 import GoldMiningPoster from "@/components/posters/GoldMiningPoster";
 import WhereDoYouLivePoster from "@/components/posters/WhereDoYouLivePoster";
+import AITaxMapPoster from "@/components/posters/AITaxMapPoster";
+import StackCompressionMapPoster from "@/components/posters/StackCompressionMapPoster";
+import MigrationPathsPoster from "@/components/posters/MigrationPathsPoster";
+import GravityFlowPoster from "@/components/posters/GravityFlowPoster";
+import OpenVsClosedPoster from "@/components/posters/OpenVsClosedPoster";
 
 interface PosterBlockProps {
   num: string;
