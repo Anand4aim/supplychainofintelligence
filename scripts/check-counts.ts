@@ -153,12 +153,10 @@ function scan(content: string, file: string) {
 
   for (const rule of RULES) {
     next = next.replace(rule.pattern, (match, ...groups) => {
-      // groups = [...captures, offset, fullString]
       const fullString = groups[groups.length - 1] as string;
       const offset = groups[groups.length - 2] as number;
-      const captures = groups.slice(0, rule.canon.length) as string[];
+      const captures = groups.slice(0, groups.length - 2) as string[];
 
-      // Line-context skip
       const lineStart = fullString.lastIndexOf("\n", offset) + 1;
       const lineEnd = fullString.indexOf("\n", offset);
       const line = fullString.slice(lineStart, lineEnd === -1 ? undefined : lineEnd);
@@ -168,11 +166,11 @@ function scan(content: string, file: string) {
       }
 
       const canonVals = rule.canon.map((k) => CANON[k]);
-      const foundNums = captures.map((c) => Number(c));
+      const foundNums = rule.numericCaptures.map((i) => Number(captures[i]));
       const mismatch = foundNums.some((n, i) => n !== canonVals[i]);
       if (!mismatch) return match;
 
-      const replacement = rule.replace(match, ...(captures as any[]), ...canonVals);
+      const replacement = rule.replace(match, captures, canonVals);
       const lineNum = content.slice(0, offset).split("\n").length;
       findings.push({
         file,
@@ -185,6 +183,7 @@ function scan(content: string, file: string) {
       return replacement;
     });
   }
+
 
   return { findings, next, changed };
 }
