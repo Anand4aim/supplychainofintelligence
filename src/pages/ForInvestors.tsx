@@ -186,7 +186,7 @@ const ForInvestors = () => (
             ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
             ["Platform compression risk", "Which layers above and below are about to absorb this product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
-            ["Comparable mapping", "How the target sits next to 3–5 worked case studies from the corpus."], {/* counts-ok: range, not total */}
+            ["Comparable mapping", "How the target sits next to 3–5 worked case studies from the corpus."], // counts-ok: range, not total
             ["Board-ready one-pager", "Designed to drop into an IC memo or board pack as-is."],
           ].map(([title, body]) => (
             <div key={title} className="flex items-start gap-3 p-4 rounded-lg border border-border bg-card">
