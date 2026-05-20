@@ -84,7 +84,7 @@ const ForInvestors = () => (
             <a href="mailto:hello@supplychainofai.com?subject=AI%20Defensibility%20Diligence" className="btn-sketch">
               Request a diligence engagement <ArrowRight size={15} />
             </a>
-            <Link to="/start" className="btn-sketch-outline">
+            <Link to="/framework" className="btn-sketch-outline">
               Run the audit yourself →
             </Link>
             <Link to="/framework" className="btn-sketch-outline">
@@ -219,7 +219,7 @@ const ForInvestors = () => (
             <a href="mailto:hello@supplychainofai.com?subject=AI%20Defensibility%20Engagement" className="btn-sketch">
               Email Anand <ArrowRight size={15} />
             </a>
-            <Link to="/start" className="btn-sketch-outline">
+            <Link to="/framework" className="btn-sketch-outline">
               Run the self-serve audit →
             </Link>
           </div>

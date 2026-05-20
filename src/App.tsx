@@ -16,7 +16,7 @@ import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
 import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
-import Start from "./pages/Start";
+
 import Predictions from "./pages/Predictions";
 import Disclaimer from "./pages/Disclaimer";
 import Privacy from "./pages/Privacy";
@@ -42,7 +42,7 @@ const App = () => (
       <Sonner />
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/start" element={<Start />} />
+        <Route path="/start" element={<Navigate to="/framework" replace />} />
         <Route path="/predictions" element={<Predictions />} />
         <Route path="/framework" element={<FrameworkPage />} />
         <Route path="/framework/:layerId" element={<LayerDetailPage />} />
