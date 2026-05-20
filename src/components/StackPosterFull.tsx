@@ -72,9 +72,9 @@ const StackPosterFull = () => {
                 {/* 5 Sublayer cells (right) — progressively lighter shades of layer color */}
                 <div className="grid grid-cols-5 gap-[5px]">
                   {layer.sublayers.slice(0, 5).map((s, idx) => {
-                    // Darker on the left, lighter on the right — clearly visible shades
-                    const bgAlpha = 0.75 - idx * 0.13; // 0.75 → 0.23
-                    const borderAlpha = 0.9;
+                    // Darker on the left, lighter on the right (0.32 → 0.08)
+                    const bgAlpha = 0.32 - idx * 0.06;
+                    const borderAlpha = 0.7 - idx * 0.1;
                     return (
                       <div
                         key={s.id}
@@ -86,12 +86,13 @@ const StackPosterFull = () => {
                         title={s.desc}
                       >
                         <div
-                          className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold leading-none flex items-center gap-1 text-white/95"
+                          className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold leading-none flex items-center gap-1"
+                          style={{ color: c }}
                         >
                           <span>{s.id}</span>
                           {s.defensible && <span className="text-accent">★</span>}
                         </div>
-                        <div className="font-display text-white text-[11px] md:text-[12.5px] leading-tight mt-1 line-clamp-2 drop-shadow-sm">
+                        <div className="font-display text-foreground text-[11px] md:text-[12.5px] leading-tight mt-1 line-clamp-2">
                           {s.name}
                         </div>
                       </div>
