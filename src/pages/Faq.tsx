@@ -213,7 +213,7 @@ const FaqPage = () => (
           Start with the framework.
         </h2>
         <p className="text-muted-foreground mb-8">
-          10 layers · 50 sublayers · 3 structural laws · the Intelligence Cube · the Defensibility Audit.
+          10 layers · 50 sublayers · 4 structural laws · the Intelligence Cube · the Defensibility Audit.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link
