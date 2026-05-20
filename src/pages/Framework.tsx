@@ -14,7 +14,7 @@ import {
 } from "@/components/sketch/SketchElements";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
-import StackPoster from "@/components/StackPoster";
+
 
 const layerSlug = (id: string, shortName: string) =>
   `${id.toLowerCase()}-${shortName.toLowerCase().replace(/\s+/g, "-")}`;
@@ -730,21 +730,22 @@ const FrameworkPage = () => (
       </div>
     </section>
 
-    {/* Shareable square stack poster — pin / post / screenshot */}
+    {/* Shareable posters — link out to /posters */}
     <section className="bg-background border-t border-border">
-      <div className="max-w-3xl mx-auto px-6 py-14">
-        <div className="text-center mb-6">
-          <Eyebrow className="mb-3">Shareable</Eyebrow>
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
-            The stack, on one square.
-          </h2>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            Download and post. The 10 layers, the tagline, the attribution — nothing else.
-          </p>
-        </div>
-        <StackPoster />
+      <div className="max-w-3xl mx-auto px-6 py-12 text-center">
+        <Eyebrow className="mb-3">Shareable</Eyebrow>
+        <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+          Want the poster?
+        </h2>
+        <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
+          The full 10×5 grid and the square version, both downloadable.
+        </p>
+        <Link to="/posters" className="btn-sketch-outline">
+          Open the poster gallery →
+        </Link>
       </div>
     </section>
+
 
 
     {/* CTA */}
