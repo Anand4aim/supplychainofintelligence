@@ -56,7 +56,7 @@ const RULES: Rule[] = [
     pattern: /\b(\d+)\s+structural\s+laws?\b/gi,
     numericCaptures: [0],
     canon: ["laws"],
-    replace: (_m, _c, [laws]) => `${laws} structural laws`,
+    replace: (match, _c, [laws]) => match.replace(/^\d+/, String(laws)),
   },
   {
     name: "laws-and-observations",
