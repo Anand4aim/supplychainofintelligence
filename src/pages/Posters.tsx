@@ -22,6 +22,7 @@ import StackCompressionMapPoster from "@/components/posters/StackCompressionMapP
 import MigrationPathsPoster from "@/components/posters/MigrationPathsPoster";
 import GravityFlowPoster from "@/components/posters/GravityFlowPoster";
 import OpenVsClosedPoster from "@/components/posters/OpenVsClosedPoster";
+import GoogleGeoMythPoster from "@/components/posters/GoogleGeoMythPoster";
 
 interface PosterBlockProps {
   num: string;
@@ -62,7 +63,7 @@ const Posters = () => (
   <SiteLayout>
     <Seo
       title="Posters — The Supply Chain of Intelligence™"
-      description="Ten shareable posters of the 10-layer generative AI stack — the framework, the laws, the archetypes. Watermarked PNG and PDF. Free, citation-ready."
+      description="Eighteen shareable posters of the 10-layer generative AI stack — the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
       path="/posters"
     />
     <SketchFilters />
@@ -72,7 +73,7 @@ const Posters = () => (
       <div className="max-w-3xl mx-auto px-6 py-14 md:py-16">
         <Eyebrow className="mb-3">Shareable</Eyebrow>
         <h1 className="font-display text-3xl md:text-[40px] font-bold text-foreground leading-tight mb-3">
-          Seventeen posters of the framework.
+          Eighteen posters of the framework.
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
           The stack, the laws, the archetypes, the dynamics — every poster downloads as a watermarked PNG or PDF.
@@ -296,6 +297,16 @@ const Posters = () => (
       blurb="Plot a surface by openness, gate density, and memory depth. The top-left is where AI cannot legally, technically, or commercially compete."
     >
       <OpenVsClosedPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="18"
+      eyebrow="What Google Actually Said"
+      title="GEO is Just SEO — The Five Myths"
+      blurb="Google's Nov 2025 generative-AI search guide, decoded through the 10-layer stack. The AEO/GEO playbook being sold to founders is mostly noise — here's what actually moves the needle."
+      tone="dark"
+    >
+      <GoogleGeoMythPoster />
     </PosterBlock>
 
     {/* Closer */}
