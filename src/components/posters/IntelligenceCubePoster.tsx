@@ -84,7 +84,7 @@ const IntelligenceCubePoster = () => {
 
             {/* Axis labels */}
             <text x="300" y="430" textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))" letterSpacing="0.22em">
-              ← 5 SUBLAYERS WIDE →
+              ← 5 ACROSS · SUBLAYERS →
             </text>
             <text
               x="50"
