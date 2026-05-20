@@ -59,6 +59,57 @@ const FrameworkPage = () => (
       </div>
     </section>
 
+    {/* ═══════════ THREE-TIER TL;DR (compressed mental model before the 10) ═══════════ */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
+        <Eyebrow className="mb-3">Before the 10 layers — the 3 tiers</Eyebrow>
+        <h2 className="font-display text-2xl md:text-[34px] font-bold text-foreground leading-tight mb-3">
+          Every AI product lives on one of three tiers.{" "}
+          <span className="text-muted-foreground">Only one of them compounds.</span>
+        </h2>
+        <p className="text-foreground/80 text-[16px] leading-[1.75] max-w-3xl mb-10">
+          The full taxonomy below is 10 layers. The mental model before that is three:
+          what users <em>touch</em>, what they <em>live inside</em>, and what they <em>depend on</em>.
+          Surfaces commoditize in weeks. Workflows survive in months. Substrate compounds in years.
+        </p>
+
+        <div className="space-y-4 md:space-y-5">
+          {[
+            { label: "SURFACE", sub: "What users touch", layers: "L7", color: "var(--layer-7)", width: "w-full", verdict: "Easily replicated. Platforms ship this for free.", durability: "Weeks" },
+            { label: "WORKFLOW", sub: "What users live inside", layers: "L5 · L6", color: "var(--layer-5)", width: "w-[78%]", verdict: "Sticky if deep. Survivable if owned.", durability: "Months" },
+            { label: "SUBSTRATE", sub: "What users depend on", layers: "L1 · L3 · L8", color: "var(--layer-1)", width: "w-[56%]", verdict: "Proprietary data, trust gates, compounding memory.", durability: "Years" },
+          ].map((t, i) => (
+            <div key={t.label} className="flex items-stretch gap-4">
+              <div className="shrink-0 w-10 md:w-14 flex items-start justify-end pt-3">
+                <span className="font-display font-bold text-2xl md:text-4xl tabular-nums" style={{ color: `hsl(${t.color})` }}>
+                  0{i + 1}
+                </span>
+              </div>
+              <div className={`${t.width} relative`}>
+                <div className="rounded-r-lg p-5 md:p-6 border-l-[6px]" style={{ borderLeftColor: `hsl(${t.color})`, background: `hsl(${t.color} / 0.06)` }}>
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
+                    <span className="font-mono-marker text-[11px] tracking-[0.25em]" style={{ color: `hsl(${t.color})` }}>{t.label}</span>
+                    <span className="text-xs text-muted-foreground font-mono-marker">{t.layers}</span>
+                  </div>
+                  <p className="font-display text-xl md:text-2xl font-bold text-foreground mb-1.5">{t.sub}</p>
+                  <p className="text-sm md:text-[15px] text-muted-foreground">{t.verdict}</p>
+                </div>
+              </div>
+              <div className="shrink-0 hidden md:flex flex-col justify-center min-w-[80px]">
+                <span className="font-mono-marker text-[10px] tracking-[0.2em] text-muted-foreground/60">DURABILITY</span>
+                <span className="font-display text-lg font-bold" style={{ color: `hsl(${t.color})` }}>{t.durability}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 text-muted-foreground font-display italic text-[15px] md:text-base max-w-3xl">
+          <ArrowDown size={14} className="inline mr-2 text-accent" />
+          Value escapes the surface and accumulates in the layers below.{" "}
+          <span className="text-foreground">Own the lower layers, or rent them — and rent your future.</span>
+        </p>
+      </div>
+    </section>
 
     {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY (moved from home) ═══════════ */}
     <section className="bg-secondary/40 border-y border-border">
