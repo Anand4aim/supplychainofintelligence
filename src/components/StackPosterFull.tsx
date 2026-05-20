@@ -72,9 +72,10 @@ const StackPosterFull = () => {
                 {/* 5 Sublayer cells (right) — progressively lighter shades of layer color */}
                 <div className="grid grid-cols-5 gap-[5px]">
                   {layer.sublayers.slice(0, 5).map((s, idx) => {
-                    // Darker on the left, lighter on the right — clearly visible shades
-                    const bgAlpha = 0.75 - idx * 0.13; // 0.75 → 0.23
-                    const borderAlpha = 0.9;
+                    // All cells keep strong color saturation so white text reads;
+                    // shade goes darker → lighter left-to-right (0.95 → 0.55).
+                    const bgAlpha = 0.95 - idx * 0.1;
+                    const borderAlpha = 1;
                     return (
                       <div
                         key={s.id}
