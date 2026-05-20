@@ -220,15 +220,8 @@ const Index = () => {
             </motion.div>
           </div>
 
-          {/* Stack Poster — shareable 1:1 hero artifact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.5 }}
-            className="mt-12"
-          >
-            <StackPosterFull />
-          </motion.div>
+          {/* StackPosterFull moved to /posters — see Framework page footer link */}
+
 
           {/* Worked example — Sales Tech layer matrix */}
           <motion.div
