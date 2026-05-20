@@ -72,10 +72,10 @@ const Posters = () => (
       <div className="max-w-3xl mx-auto px-6 py-14 md:py-16">
         <Eyebrow className="mb-3">Shareable</Eyebrow>
         <h1 className="font-display text-3xl md:text-[40px] font-bold text-foreground leading-tight mb-3">
-          Ten posters of the framework.
+          Seventeen posters of the framework.
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
-          The stack, the laws, the archetypes — every poster downloads as a watermarked PNG or PDF.
+          The stack, the laws, the archetypes, the dynamics — every poster downloads as a watermarked PNG or PDF.
           Use them in decks, on LinkedIn, on your wall. Citation-ready, no signup.
         </p>
         <Link
