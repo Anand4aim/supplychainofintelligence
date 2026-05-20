@@ -5,28 +5,20 @@ import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, ArrowDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
-import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
-import { LAW_ESSAY_BY_NUM } from "@/data/lawEssays";
-import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
+import { LAYERS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
+import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
-import StackPosterFull from "@/components/StackPosterFull";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
   SketchFilters,
   SketchBoard,
-  SketchArrow,
-  SketchCircle,
   SketchUnderline,
-  SketchBox,
-  SketchLabel,
-  SketchConnector,
 } from "@/components/sketch/SketchElements";
 import SixtySecondTour from "@/components/SixtySecondTour";
 import Eyebrow from "@/components/Eyebrow";
-import LayerTag from "@/components/LayerTag";
 import VoicesStrip from "@/components/VoicesStrip";
 import StartHereStrip from "@/components/StartHereStrip";
 
