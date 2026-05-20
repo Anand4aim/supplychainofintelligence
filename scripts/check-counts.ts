@@ -50,20 +50,26 @@ type Rule = {
   skipIfLineHas?: string[];
 };
 
+/** Default replace: swap the i-th numeric occurrence in match with canon[i]. */
+const swapNumbers = (match: string, _captures: string[], canon: number[]): string => {
+  let i = 0;
+  return match.replace(/\d+\+?/g, () => (i < canon.length ? String(canon[i++]) : "")); // strip trailing "+"
+};
+
 const RULES: Rule[] = [
   {
     name: "structural-laws",
     pattern: /\b(\d+)\s+structural\s+laws?\b/gi,
     numericCaptures: [0],
     canon: ["laws"],
-    replace: (match, _c, [laws]) => match.replace(/^\d+/, String(laws)),
+    replace: swapNumbers,
   },
   {
     name: "laws-and-observations",
     pattern: /\b(\d+)\s+laws?\s+and\s+(\d+)\s+observations?\b/gi,
     numericCaptures: [0, 1],
     canon: ["laws", "observations"],
-    replace: (_m, _c, [laws, obs]) => `${laws} structural laws and ${obs} observations`,
+    replace: swapNumbers,
   },
   {
     name: "laws-enumeration",
@@ -71,39 +77,40 @@ const RULES: Rule[] = [
     pattern: /(?<=[·,—-]\s)(\d+)\s+laws\b/gi,
     numericCaptures: [0],
     canon: ["laws"],
-    replace: (_m, _c, [laws]) => `${laws} laws`,
+    replace: swapNumbers,
   },
   {
     name: "worked-verdicts-or-cases",
     pattern: /\b(\d+)\+?\s+worked\s+(verdicts?|case\s+studies)\b/gi,
     numericCaptures: [0],
     canon: ["caseStudies"],
-    replace: (_m, [, noun], [cases]) => `${cases} worked ${noun}`,
+    replace: swapNumbers,
   },
   {
     name: "case-studies-total",
     pattern: /\b(\d+)\+?\s+case\s+studies\b/gi,
     numericCaptures: [0],
     canon: ["caseStudies"],
-    replace: (_m, _c, [cases]) => `${cases} case studies`,
-    skipIfLineHas: ["per ", "each ", "inside", "worked case studies"],
+    replace: swapNumbers,
+    skipIfLineHas: ["per ", "each ", "inside", "worked case studies", "–", "—"],
   },
   {
     name: "layers-and-sublayers",
     pattern: /\b(\d+)\s+layers\s+and\s+(\d+)\s+sublayers\b/gi,
     numericCaptures: [0, 1],
     canon: ["layers", "sublayers"],
-    replace: (_m, _c, [layers, sub]) => `${layers} layers and ${sub} sublayers`,
+    replace: swapNumbers,
   },
   {
     name: "sublayers-total",
     pattern: /\b(\d+)\s+sublayers\b/gi,
     numericCaptures: [0],
     canon: ["sublayers"],
-    replace: (_m, _c, [sub]) => `${sub} sublayers`,
+    replace: swapNumbers,
     skipIfLineHas: ["per layer", "inside", "of the 5", "the 5 sublayers", "5 sublayers per", "layers and"],
   },
 ];
+
 
 
 const TARGET_GLOBS = [
