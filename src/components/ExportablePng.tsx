@@ -39,34 +39,66 @@ const ExportablePng = ({
   className = "",
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState(false);
+  const [busy, setBusy] = useState<false | "png" | "pdf">(false);
+  const [done, setDone] = useState<false | "png" | "pdf">(false);
+
+  const rasterize = async () => {
+    if (!ref.current) throw new Error("no ref");
+    return toPng(ref.current, {
+      pixelRatio: 2,
+      backgroundColor: exportBackground,
+      cacheBust: true,
+      filter: (node) => {
+        if (!(node instanceof HTMLElement)) return true;
+        return !node.hasAttribute?.("data-export-hide");
+      },
+    });
+  };
 
   const handleDownload = async () => {
-    if (!ref.current) return;
-    setBusy(true);
+    setBusy("png");
     try {
-      const dataUrl = await toPng(ref.current, {
-        pixelRatio: 2,
-        backgroundColor: exportBackground,
-        cacheBust: true,
-        filter: (node) => {
-          if (!(node instanceof HTMLElement)) return true;
-          return !node.hasAttribute?.("data-export-hide");
-        },
-      });
+      const dataUrl = await rasterize();
       const link = document.createElement("a");
       link.download = `${fileName}.png`;
       link.href = dataUrl;
       link.click();
-      setDone(true);
-      toast.success("Image downloaded — watermark included", {
+      setDone("png");
+      toast.success("PNG downloaded — watermark included", {
         description: "Drop it into LinkedIn, X, or a deck.",
       });
       setTimeout(() => setDone(false), 2200);
     } catch (err) {
       console.error(err);
-      toast.error("Couldn't export image");
+      toast.error("Couldn't export PNG");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!ref.current) return;
+    setBusy("pdf");
+    try {
+      const dataUrl = await rasterize();
+      const img = new Image();
+      img.src = dataUrl;
+      await new Promise((res, rej) => {
+        img.onload = res;
+        img.onerror = rej;
+      });
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+      const orientation = w >= h ? "landscape" : "portrait";
+      const pdf = new jsPDF({ orientation, unit: "px", format: [w, h] });
+      pdf.addImage(dataUrl, "PNG", 0, 0, w, h);
+      pdf.save(`${fileName}.pdf`);
+      setDone("pdf");
+      toast.success("PDF downloaded — watermark included");
+      setTimeout(() => setDone(false), 2200);
+    } catch (err) {
+      console.error(err);
+      toast.error("Couldn't export PDF");
     } finally {
       setBusy(false);
     }
@@ -79,18 +111,34 @@ const ExportablePng = ({
       ? "left-3 md:left-4 items-start"
       : "right-3 md:right-4 items-end";
 
+  const btnCls = `inline-flex items-center gap-1.5 text-[11px] font-mono-marker tracking-[0.15em] uppercase bg-background/90 backdrop-blur border border-foreground/15 rounded-md px-2.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 disabled:opacity-50`;
+
   return (
     <div className={`relative group ${className}`}>
-      <button
+      <div
         data-export-hide
-        onClick={handleDownload}
-        disabled={busy}
-        aria-label="Download as watermarked PNG"
-        className={`absolute top-3 md:top-4 ${buttonPos} z-30 inline-flex items-center gap-1.5 text-[11px] font-mono-marker tracking-[0.15em] uppercase bg-background/90 backdrop-blur border border-foreground/15 rounded-md px-2.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 disabled:opacity-50`}
+        className={`absolute top-3 md:top-4 ${buttonPos} z-30 flex items-center gap-2`}
       >
-        {done ? <Check size={12} /> : <Download size={12} />}
-        {busy ? "..." : done ? "Saved" : "PNG"}
-      </button>
+        <button
+          onClick={handleDownload}
+          disabled={!!busy}
+          aria-label="Download as watermarked PNG"
+          className={btnCls}
+        >
+          {done === "png" ? <Check size={12} /> : <Download size={12} />}
+          {busy === "png" ? "..." : done === "png" ? "Saved" : "PNG"}
+        </button>
+        <button
+          onClick={handleDownloadPdf}
+          disabled={!!busy}
+          aria-label="Download as watermarked PDF"
+          className={btnCls}
+        >
+          {done === "pdf" ? <Check size={12} /> : <FileText size={12} />}
+          {busy === "pdf" ? "..." : done === "pdf" ? "Saved" : "PDF"}
+        </button>
+      </div>
+
 
       {/*
         The ref wraps BOTH the content and the watermark band, so the
