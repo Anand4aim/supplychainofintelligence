@@ -17,4 +17,5 @@ Apollo (slug: apollo-thin-stack-survivor) is the canonical SaaSpocalypse-survivo
 - [Editorial tone](mem://preferences/tone) — Site-wide voice rules: factual, hedged, layer-based; no strong verdicts
 - [Chess framing](mem://preferences/chess-framing) — Board not oracle; counter-move convention on Predictions
 - [Distribution primitives](mem://features/distribution) — ExportablePng + CopySnippet usage, Apollo canonical case study
+- [SEO doctrine](mem://preferences/seo-doctrine) — Google's Nov 2025 AI search guide as project rule: no GEO/AEO snake-oil, no chunking, no AI-rewrites, no fake mentions
 
