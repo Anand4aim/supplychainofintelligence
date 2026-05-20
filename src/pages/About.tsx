@@ -5,6 +5,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin, Crown } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
+import LayerTag from "@/components/LayerTag";
 import anandPortrait from "@/assets/anand-portrait.png";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
@@ -322,6 +323,121 @@ const AboutPage = () => (
             </Link>
           </div>
         </div>
+      </div>
+    </section>
+
+    {/* WHY THIS FRAMEWORK EXISTS — what disappears without it */}
+    <section id="why-this-exists" className="bg-background border-t border-border scroll-mt-24">
+      <div className="max-w-5xl mx-auto px-6 py-16">
+        <Eyebrow className="mb-3">Why this framework exists</Eyebrow>
+        <h2 className="font-display text-2xl md:text-[34px] font-bold text-foreground leading-tight mb-4">
+          Six things the AI conversation <span className="text-accent">cannot do</span> without this lens.
+        </h2>
+        <p className="text-foreground/80 text-[16px] leading-[1.75] max-w-3xl mb-8">
+          Every row below names a sentence you hear in board rooms, pitch decks, and Twitter threads —
+          and the precise instrument the framework gives you to replace it with. If none of these
+          gaps existed, the framework would not need to exist.
+        </p>
+
+        <div className="overflow-x-auto border border-border rounded-xl">
+          <table className="w-full text-left text-[14px]">
+            <thead className="bg-secondary/60 border-b border-border">
+              <tr>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground w-[32%]">Without the framework</th>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground w-[44%]">What the framework gives you</th>
+                <th className="px-4 py-3 font-mono-marker text-[11px] uppercase tracking-wider text-muted-foreground w-[24%]">Where to see it</th>
+              </tr>
+            </thead>
+            <tbody className="[&>tr]:border-b [&>tr]:border-border/60 [&>tr:last-child]:border-0">
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"It's agentic / AI-native / a wrapper."</span>
+                  Vague labels. Two companies with the same label have completely different fates.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  A <strong className="text-foreground">precise vocabulary</strong> — 10 layers, 50 sublayers — so
+                  "L1b moat + L2 MCP + receding L7" replaces "AI-native". Same words, everywhere, every room.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/framework" className="text-accent hover:underline font-sketch font-bold text-[13px]">/framework →</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"Cool product. Great UX. Strong distribution."</span>
+                  Descriptive vibes. No way to test if it survives the next platform release.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  A <strong className="text-foreground">diagnostic instrument</strong> — Defensibility Audit + Triangle —
+                  that a product can actually fail. Which layer creates value, captures margin, is vulnerable to absorption.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/" className="text-accent hover:underline font-sketch font-bold text-[13px]">Home audit →</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"It's an agent."</span>
+                  Used for chatbots, copilots, automations, tool-callers — seven different architectures, one word.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  The <strong className="text-foreground">Agent Decoder</strong> — every "agent" decomposes into{" "}
+                  <LayerTag id="L5" /> + <LayerTag id="L6" /> + optional <LayerTag id="L4" /> / <LayerTag id="L7" /> / <LayerTag id="L8" />.
+                  Stops the conflation.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/framework" className="text-accent hover:underline font-sketch font-bold text-[13px]">/framework →</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"All AI gets commoditized."</span>
+                  Assumes every layer collapses together. It doesn't.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  <strong className="text-foreground">Generation ≠ Verification</strong> (Law IV). Explains why{" "}
+                  <LayerTag id="L3" /> stays economically durable — compliance, trust, ranking, fiduciary review —
+                  even when generation goes to zero.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/laws/generation-verification" className="text-accent hover:underline font-sketch font-bold text-[13px]">Law IV →</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"AI eats SaaS."</span>
+                  Binary verdict. Doesn't say which layer compresses, which compounds, which becomes a choke point.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  A <strong className="text-foreground">layer-by-layer value-migration map</strong> — surfaces collapse,
+                  infrastructure commoditizes, orchestration becomes strategic, memory compounds. Each layer on its own clock.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/predictions" className="text-accent hover:underline font-sketch font-bold text-[13px]">/predictions →</Link>
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-foreground/75 align-top">
+                  <span className="font-display font-bold text-foreground block mb-1">"Our moat is proprietary data."</span>
+                  Over-indexes on datasets. Misses workflow position, memory gravity, gate authority.
+                </td>
+                <td className="px-4 py-3 text-foreground/85 align-top">
+                  A <strong className="text-foreground">structural classification</strong> of companies:{" "}
+                  "L7-heavy with weak L8", "strong L3 gatekeeper", "owns L5a but dependent on external L2".
+                  Comparable, citable, falsifiable.
+                </td>
+                <td className="px-4 py-3 align-top">
+                  <Link to="/analysis" className="text-accent hover:underline font-sketch font-bold text-[13px]">/analysis →</Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-foreground/70 text-[14px] leading-relaxed mt-5 max-w-3xl">
+          If you can replace any row with a sharper existing framework, I want to hear it.{" "}
+          <Link to="/challenge" className="text-accent hover:underline font-sketch font-bold">Challenge a definition →</Link>
+        </p>
       </div>
     </section>
 
