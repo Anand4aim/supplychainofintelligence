@@ -162,7 +162,7 @@ function scan(content: string, file: string) {
       const mismatch = foundNums.some((n, i) => n !== canonVals[i]);
       if (!mismatch) return match;
 
-      const replacement = rule.replace(match, ...captures.map(Number), ...canonVals);
+      const replacement = rule.replace(match, ...(captures as any[]), ...canonVals);
       const lineNum = content.slice(0, offset).split("\n").length;
       findings.push({
         file,
