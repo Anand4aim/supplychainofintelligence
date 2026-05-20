@@ -42,7 +42,7 @@ const App = () => (
       <Sonner />
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/start" element={<Start />} />
+        <Route path="/start" element={<Navigate to="/framework" replace />} />
         <Route path="/predictions" element={<Predictions />} />
         <Route path="/framework" element={<FrameworkPage />} />
         <Route path="/framework/:layerId" element={<LayerDetailPage />} />
