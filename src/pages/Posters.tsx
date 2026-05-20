@@ -239,6 +239,65 @@ const Posters = () => (
       <WhereDoYouLivePoster />
     </PosterBlock>
 
+    {/* ──────────── SECTION IV — THE DYNAMICS ──────────── */}
+    <section className="bg-secondary/30 border-t border-border">
+      <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
+        <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
+          IV — The Dynamics
+        </p>
+        <p className="font-display text-lg md:text-xl text-foreground/80 italic">
+          Where the framework becomes an operating system.
+        </p>
+      </div>
+    </section>
+
+    <PosterBlock
+      num="13"
+      eyebrow="Where The Meter Runs"
+      title="The AI Tax Map"
+      blurb="Seven taxes every AI product pays — token, context, orchestration, inference margin, API dependency, model lock-in, distribution. Most founders only price for two."
+    >
+      <AITaxMapPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="14"
+      eyebrow="Law I, Visualized"
+      title="The Stack Compression Map"
+      blurb="When the model layer ships your feature for free, who survives and who becomes a footnote. The visual proof of Law I."
+      tone="dark"
+    >
+      <StackCompressionMapPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="15"
+      eyebrow="Four Strategic Arcs"
+      title="The Migration Paths"
+      blurb="Companies that survive Law I migrate. Four archetypal arcs — Wrapper to Workflow, Surface to Memory, Tool to System, Data to Platform — cover almost every move worth making."
+    >
+      <MigrationPathsPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="16"
+      eyebrow="How The Stack Moves"
+      title="The Gravity Flow"
+      blurb="Data flows down. Value flows up. Memory compounds recursively. The single rule that explains where margins go."
+      tone="dark"
+    >
+      <GravityFlowPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="17"
+      eyebrow="The Moat Quadrant"
+      title="Open vs Closed Surfaces"
+      blurb="Plot a surface by openness, gate density, and memory depth. The top-left is where AI cannot legally, technically, or commercially compete."
+    >
+      <OpenVsClosedPoster />
+    </PosterBlock>
+
     {/* Closer */}
     <section className="bg-background border-t border-border">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
