@@ -11,7 +11,7 @@ JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
 
 /* FRAMEWORK */
 Name: The Supply Chain of Intelligence™
-Structure: 10 Layers · 50 Sublayers · 3 Structural Laws · The Intelligence Cube · AI Defensibility Audit
+Structure: 10 Layers · 50 Sublayers · 4 Structural Laws · The Intelligence Cube · AI Defensibility Audit
 
 The 10 Layers:
   L-1 Resources       — energy, water, fabs, materials, skilled trades
@@ -25,7 +25,7 @@ The 10 Layers:
   L7  Surface         — conversational, visual, embedded/copilot, transactional, ambient
   L8  Memory          — session, entity, network, institutional, world-model
 
-The 3 Structural Laws:
+The 4 Structural Laws:
   I.   Intelligence commoditizes downward.        Wrappers become features.
   II.  Value accrues at bottlenecks.              Own the scarce layer.
   III. The surface captures attention; the chain captures power.
