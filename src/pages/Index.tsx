@@ -11,6 +11,7 @@ import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIc
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
+import StackPoster from "@/components/StackPoster";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
@@ -218,6 +219,16 @@ const Index = () => {
               </p>
             </motion.div>
           </div>
+
+          {/* Stack Poster — shareable 1:1 hero artifact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.5 }}
+            className="mt-12"
+          >
+            <StackPoster />
+          </motion.div>
 
           {/* Worked example — Sales Tech layer matrix */}
           <motion.div
