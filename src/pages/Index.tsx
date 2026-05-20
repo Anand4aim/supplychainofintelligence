@@ -2,31 +2,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, BookOpen, ArrowDown, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
-import { LAYERS, GOLD_KEY_INSIGHT, LAWS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
-import { LAW_ESSAY_BY_NUM } from "@/data/lawEssays";
-import { SketchIcon, IconPickaxe, IconBrain } from "@/components/sketch/SketchIcons";
+import { LAYERS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
+import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
-import StackPosterFull from "@/components/StackPosterFull";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
   SketchFilters,
   SketchBoard,
-  SketchArrow,
-  SketchCircle,
   SketchUnderline,
-  SketchBox,
-  SketchLabel,
-  SketchConnector,
 } from "@/components/sketch/SketchElements";
 import SixtySecondTour from "@/components/SixtySecondTour";
 import Eyebrow from "@/components/Eyebrow";
-import LayerTag from "@/components/LayerTag";
 import VoicesStrip from "@/components/VoicesStrip";
 import StartHereStrip from "@/components/StartHereStrip";
 
@@ -220,15 +212,8 @@ const Index = () => {
             </motion.div>
           </div>
 
-          {/* Stack Poster — shareable 1:1 hero artifact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.5 }}
-            className="mt-12"
-          >
-            <StackPosterFull />
-          </motion.div>
+          {/* StackPosterFull moved to /posters — see Framework page footer link */}
+
 
           {/* Worked example — Sales Tech layer matrix */}
           <motion.div
@@ -489,326 +474,14 @@ const Index = () => {
       <ProofOfCorpus />
 
 
-      {/* ═══════════ GOLD MINING ANALOGY ═══════════ */}
-      <section className="bg-background">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn}>
-            <Eyebrow className="mb-4">
-  Why We Call It a Supply Chain
-</Eyebrow>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground leading-tight mb-4">
-              From Gold in the Ground to the Ring on Your Finger
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mb-10">
-              Each layer transforms the output of the layer below it. No layer works alone. Most
-              companies only own one. The supply chain is only as strong as its weakest link.
-            </p>
-          </motion.div>
+      {/* Gold Mining Analogy moved to /framework — canonical reference */}
 
-          {/* Side-by-side comparative flowchart */}
-          <motion.div {...fadeIn}>
-            <SketchBoard className="p-5 md:p-8">
-              <p className="font-sketch text-base text-sketch-muted mb-6">
-                Same supply chain. Different raw material. ↓
-              </p>
 
-              {/* Column headers */}
-              <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] gap-0 mb-4">
-                <div className="text-center">
-                  <span className="inline-block px-3 py-1 rounded-full font-sketch text-base font-bold"
-                    style={{ background: "hsl(var(--layer-6-bg))", color: "hsl(var(--layer-6))" }}>
-                    <IconPickaxe size={22} className="inline-block mr-1 -mt-0.5" /> Gold Rush
-                  </span>
-                </div>
-                <div />
-                <div className="text-center">
-                  <span className="inline-block px-3 py-1 rounded-full font-sketch text-base font-bold"
-                    style={{ background: "hsl(var(--layer-8-bg))", color: "hsl(var(--layer-8))" }}>
-                    <IconBrain size={22} className="inline-block mr-1 -mt-0.5" /> AI Supply Chain
-                  </span>
-                </div>
-              </div>
+      {/* Full 10-Layer Map + Defensible Triangle moved to /framework — canonical reference */}
 
-              {/* Rows */}
-              <div className="space-y-0">
-                {LAYERS.map((layer, i) => (
-                  <div key={layer.id}>
-                    <div className="grid grid-cols-[1fr_40px_1fr] md:grid-cols-[1fr_60px_1fr] items-center gap-0">
-                      <div className="text-right pr-2 md:pr-4 py-2">
-                        <SketchIcon name={layer.goldIcon} size={28} />
-                        <span className="block font-sketch text-sm font-bold mt-0.5" style={{ color: "hsl(var(--layer-6))" }}>
-                          {layer.goldTitle?.replace(/^The\s+/i, "")}
-                        </span>
-                      </div>
 
-                      <div className="flex flex-col items-center justify-center">
-                        <div
-                          className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center font-sketch text-sm font-bold shadow-sm sketch-border"
-                          style={{
-                            background: `hsl(${layer.bg})`,
-                            color: `hsl(${layer.color})`,
-                            border: `1.5px solid hsl(${layer.color} / 0.4)`,
-                          }}
-                        >
-                          {layer.id}
-                        </div>
-                      </div>
+      {/* Four Structural Laws moved to /framework — canonical reference */}
 
-                      <div className="pl-2 md:pl-4 py-2">
-                        <span
-                          className="block font-sketch text-sm font-bold"
-                          style={{ color: `hsl(${layer.color})` }}
-                        >
-                          {layer.name}
-                        </span>
-                        <span className="text-xs text-muted-foreground leading-snug block mt-0.5">
-                          {layer.desc}
-                        </span>
-                      </div>
-                    </div>
-
-                    {i < LAYERS.length - 1 && (
-                      <div className="flex justify-center py-0.5">
-                        <svg width="16" height="18" viewBox="0 0 16 18" style={{ filter: "url(#sketch-wobble)" }}>
-                          <line x1="8" y1="1" x2="8" y2="12" stroke="hsl(var(--border))" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round" />
-                          <path d="M4 10 L8 16 L12 10" fill="none" stroke="hsl(var(--sketch-red))" strokeWidth="1.5" strokeLinecap="round" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-border">
-                <p className="font-sketch text-base font-bold text-sketch-red mb-1">
-                  ← Key insight
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {GOLD_KEY_INSIGHT}
-                </p>
-              </div>
-            </SketchBoard>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════ FULL 10-LAYER MAP ═══════════ */}
-      <section className="bg-secondary/40">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn} className="mb-10">
-            <Eyebrow className="mb-3">
-  The Full Map
-</Eyebrow>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
-              10 Layers. {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} Sublayers. The Defensible Positions Marked.
-            </h2>
-            <p className="text-base text-muted-foreground max-w-2xl">
-              This is not a metaphor. It is a structural map. The ★ markers show where defensibility actually sits.
-            </p>
-          </motion.div>
-
-          <div className="space-y-2">
-            {LAYERS.map((layer, i) => (
-              <motion.div
-                key={layer.id}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-20px" }}
-                transition={{ delay: i * 0.03, duration: 0.3 }}
-                className="rounded-xl overflow-hidden border border-border bg-card sketch-border"
-                style={{ borderLeftWidth: "3px", borderLeftColor: `hsl(${layer.color})` }}
-              >
-                <div className="flex flex-col lg:flex-row">
-                  <div
-                    className="flex items-center gap-3 px-5 py-3 lg:min-w-[200px] lg:flex-col lg:justify-center lg:items-center lg:py-5"
-                    style={{ background: `hsl(${layer.bg})` }}
-                  >
-                    <SketchIcon name={layer.goldIcon} size={32} />
-                    <div className="flex items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
-                      <span className="font-sketch text-xl font-bold" style={{ color: `hsl(${layer.color})` }}>
-                        {layer.id}
-                      </span>
-                      <span className="text-sm font-medium text-muted-foreground">{layer.name}</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 p-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {layer.sublayers.map((sub) => (
-                        <div
-                          key={sub.id}
-                          className="flex items-start gap-2 rounded-lg px-3 py-2 sketch-border"
-                          style={{
-                            background: sub.defensible ? `hsl(${layer.bg})` : `hsl(${layer.bg} / 0.4)`,
-                            border: sub.defensible ? `1.5px solid hsl(${layer.color} / 0.3)` : "1.5px solid transparent",
-                          }}
-                        >
-                          <span className="font-sketch text-sm font-bold whitespace-nowrap mt-0.5" style={{ color: `hsl(${layer.color})` }}>
-                            {sub.id}{sub.defensible ? " ★" : ""}
-                          </span>
-                          <div className="min-w-0">
-                            <span className="text-sm font-semibold text-foreground">{sub.name}</span>
-                            <p className="text-xs text-muted-foreground leading-snug mt-0.5">{sub.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-border/50">
-                      {layer.players.slice(0, 4).map((p) => (
-                        <span key={p} className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">{p}</span>
-                      ))}
-                      <span className="font-sketch text-sm font-bold ml-auto" style={{ color: `hsl(${layer.color})` }}>
-                        {layer.verdict}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Defensible Triangle */}
-          <motion.div {...fadeIn} className="mt-10">
-            <SketchBoard className="p-6 md:p-8">
-              <p className="font-sketch text-xl font-bold text-sketch-red mb-2">
-                The Defensible Triangle — a recurring fortress pattern
-              </p>
-              <p className="text-sm text-muted-foreground mb-5 max-w-2xl">
-                A pattern we keep seeing in app-layer fortresses —{" "}
-                <Link to="/analysis/sierra-vs-salesforce" className="text-foreground underline-offset-2 hover:underline">Sierra</Link>,{" "}
-                <Link to="/analysis/harvey-vs-generic-legal" className="text-foreground underline-offset-2 hover:underline">Harvey</Link>,{" "}
-                <Link to="/analysis/glean-enterprise-search-fortress" className="text-foreground underline-offset-2 hover:underline">Glean</Link>,{" "}
-                <Link to="/analysis/bloomberg-gpt-vertical-fortress" className="text-foreground underline-offset-2 hover:underline">BloombergGPT</Link>,{" "}
-                <Link to="/analysis/tempus-ai-clinical-data-stack" className="text-foreground underline-offset-2 hover:underline">Tempus</Link>{" "}
-                — not the only way to win. A pure gatekeeper like <span className="font-semibold text-foreground">Vanta</span> survives on L3 alone,
-                NVIDIA on L0, Snowflake on L4. Owning one layer <em>deeply</em> can be enough.
-              </p>
-
-              <div className="flex flex-col items-center">
-                <div className="relative w-[300px] h-[220px] mb-6">
-                  <svg viewBox="0 0 300 220" className="w-full h-full" style={{ filter: "url(#sketch-wobble)" }}>
-                    <path d="M150 30 L50 190 L250 190 Z" fill="hsl(0 65% 48% / 0.04)" stroke="hsl(25 12% 25%)" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" />
-                    <circle cx="150" cy="30" r="18" fill="hsl(40 30% 97%)" stroke="hsl(var(--layer-1))" strokeWidth="2" />
-                    <circle cx="50" cy="190" r="18" fill="hsl(40 30% 97%)" stroke="hsl(var(--layer-5))" strokeWidth="2" />
-                    <circle cx="250" cy="190" r="18" fill="hsl(40 30% 97%)" stroke="hsl(var(--layer-8))" strokeWidth="2" />
-                    <circle cx="150" cy="135" r="10" fill="hsl(0 65% 48% / 0.12)" stroke="hsl(0 65% 48%)" strokeWidth="1.5" />
-                  </svg>
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-center">
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-1))" }}>L1b ★</span>
-                    <span className="text-xs text-muted-foreground block">Proprietary Data</span>
-                  </span>
-                  <span className="absolute bottom-0 left-0 text-center" style={{ transform: "translate(-10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-5))" }}>L5a/b/d ★</span>
-                    <span className="text-xs text-muted-foreground block">Deep Skills</span>
-                  </span>
-                  <span className="absolute bottom-0 right-0 text-center" style={{ transform: "translate(10px, 8px)" }}>
-                    <span className="font-sketch text-base font-bold block" style={{ color: "hsl(var(--layer-8))" }}>L8c/d/e ★</span>
-                    <span className="text-xs text-muted-foreground block">Compounding Memory</span>
-                  </span>
-                  <span className="absolute" style={{ left: "135px", top: "122px" }}>
-                    <span className="font-sketch text-sm font-bold text-sketch-red">FORTRESS</span>
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-                  {[
-                    { id: "L1b", name: "Proprietary Data", note: "Data behind enterprise walls — your gold deposit", color: "hsl(var(--layer-1))" },
-                    { id: "L5a/b/d", name: "Deep Skills & Playbooks", note: "Encoded expertise that generic AI can't replicate", color: "hsl(var(--layer-5))" },
-                    { id: "L8c/d/e", name: "Compounding Memory", note: "System gets smarter every day — lock-in that compounds", color: "hsl(var(--layer-8))" },
-                  ].map((item) => (
-                    <SketchBox key={item.id} color={item.color} className="p-3.5">
-                      <span className="font-sketch text-base font-bold block mb-1" style={{ color: item.color }}>
-                        {item.id} ★
-                      </span>
-                      <span className="font-sketch text-base font-bold text-foreground block">
-                        {item.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground block mt-1">{item.note}</span>
-                    </SketchBox>
-                  ))}
-                </div>
-
-                <p className="font-sketch text-sm text-muted-foreground italic mt-4 text-center">
-                  Own all three → fortress · Own one layer deeply (Vanta on L3, NVIDIA on L0) → still survives · Own a thin sliver of a contested layer → graveyard
-                </p>
-              </div>
-            </SketchBoard>
-          </motion.div>
-
-          <div className="mt-6 text-center">
-            <Link to="/framework" className="inline-flex items-center gap-2 text-sm text-accent font-semibold hover:gap-3 transition-all">
-              Deep-dive into every layer and sublayer <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ FOUR STRUCTURAL LAWS ═══════════ */}
-      <section id="three-laws" className="bg-background">
-        <div className="max-w-4xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn} className="text-center mb-12">
-            <Eyebrow className="mb-4">
-  Four Structural Laws
-</Eyebrow>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              The Laws That Predict the Future
-            </h2>
-            <p className="text-base text-muted-foreground max-w-xl mx-auto">
-              Not opinions. Structural forces that predict who wins, who dies, and where value migrates.
-            </p>
-          </motion.div>
-
-          <motion.div {...fadeIn}>
-            <SketchBoard className="p-6 md:p-8">
-              <div className="space-y-6">
-                {LAWS.map((law) => (
-                  <div key={law.num} className="flex gap-4 items-start">
-                    <div className="min-w-[50px] text-center">
-                      <span className="font-sketch text-4xl font-bold leading-none text-sketch-red">
-                        {law.num}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <SketchBox color="hsl(25 12% 75%)" className="p-4">
-                        <span className="font-sketch text-xl font-bold text-foreground block mb-1.5 leading-snug">
-                          {law.title}
-                        </span>
-                        <span className="text-sm text-muted-foreground leading-relaxed block mb-2">
-                          {law.desc}
-                        </span>
-                        <span className="text-xs text-foreground/70 italic block mb-2 pl-3 border-l-2 border-border">
-                          {law.example}
-                        </span>
-                        <div className="flex items-center gap-2 mb-3">
-                          <SketchArrow direction="right" size={24} />
-                          <span className="font-sketch text-sm font-bold text-sketch-red">
-                            {law.prediction}
-                          </span>
-                        </div>
-                        {LAW_ESSAY_BY_NUM[law.num] && (
-                          <Link
-                            to={`/laws/${LAW_ESSAY_BY_NUM[law.num].slug}`}
-                            className="inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all"
-                          >
-                            Read the full essay <ArrowRight size={13} />
-                          </Link>
-                        )}
-                      </SketchBox>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SketchBoard>
-          </motion.div>
-
-          {/* JTBD vs SCoI tagline */}
-          <motion.div {...fadeIn} className="text-center mt-8">
-            <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
-              <strong className="text-muted-foreground">JTBD finds demand.</strong>{" "}
-              <strong className="text-accent">The Supply Chain of Intelligence finds defensibility.</strong>
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ═══════════ VOICES ON THE FRAMEWORK ═══════════ */}
       <VoicesStrip />
