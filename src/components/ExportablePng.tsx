@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
-import { Download, Check } from "lucide-react";
+import { Download, Check, FileText } from "lucide-react";
 import { toPng } from "html-to-image";
+import { jsPDF } from "jspdf";
 import { toast } from "sonner";
+
 
 interface Props {
   children: React.ReactNode;
