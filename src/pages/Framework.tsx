@@ -59,11 +59,6 @@ const FrameworkPage = () => (
       </div>
     </section>
 
-    {/* spacer marker */}
-    <div className="hidden">{/* removed duplicate closing */}</div>
-    <div style={{display:'none'}} aria-hidden="true"></div>
-    <div className="hidden"></div>
-    <div className="hidden"></div>
 
     {/* ═══════════ DESIRABILITY WITHOUT DEFENSIBILITY (moved from home) ═══════════ */}
     <section className="bg-secondary/40 border-y border-border">
