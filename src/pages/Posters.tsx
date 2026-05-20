@@ -37,7 +37,7 @@ const Posters = () => (
 
     <section className="bg-background">
       <div className="max-w-6xl mx-auto px-6 py-14">
-        <Eyebrow className="mb-3">10 Layers × 5 Sublayers</Eyebrow>
+        <Eyebrow className="mb-3">All 10 Layers · 50 Sublayers</Eyebrow>
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6">
           The full reference poster
         </h2>
