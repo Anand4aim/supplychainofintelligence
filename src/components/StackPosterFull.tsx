@@ -69,30 +69,35 @@ const StackPosterFull = () => {
                   </div>
                 </div>
 
-                {/* 5 Sublayer cells (right) */}
+                {/* 5 Sublayer cells (right) — progressively lighter shades of layer color */}
                 <div className="grid grid-cols-5 gap-[5px]">
-                  {layer.sublayers.slice(0, 5).map((s) => (
-                    <div
-                      key={s.id}
-                      className="rounded-md px-2 py-2 flex flex-col justify-center min-w-0"
-                      style={{
-                        background: `${c.replace(")", " / 0.12)")}`,
-                        borderTop: `2px solid ${c.replace(")", " / 0.55)")}`,
-                      }}
-                      title={s.desc}
-                    >
+                  {layer.sublayers.slice(0, 5).map((s, idx) => {
+                    // Darker on the left, lighter on the right (0.32 → 0.08)
+                    const bgAlpha = 0.32 - idx * 0.06;
+                    const borderAlpha = 0.7 - idx * 0.1;
+                    return (
                       <div
-                        className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold leading-none flex items-center gap-1"
-                        style={{ color: c }}
+                        key={s.id}
+                        className="rounded-md px-2 py-2 flex flex-col justify-center min-w-0"
+                        style={{
+                          background: c.replace(")", ` / ${bgAlpha})`),
+                          borderTop: `2px solid ${c.replace(")", ` / ${borderAlpha})`)}`,
+                        }}
+                        title={s.desc}
                       >
-                        <span>{s.id}</span>
-                        {s.defensible && <span className="text-accent">★</span>}
+                        <div
+                          className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold leading-none flex items-center gap-1"
+                          style={{ color: c }}
+                        >
+                          <span>{s.id}</span>
+                          {s.defensible && <span className="text-accent">★</span>}
+                        </div>
+                        <div className="font-display text-foreground text-[11px] md:text-[12.5px] leading-tight mt-1 line-clamp-2">
+                          {s.name}
+                        </div>
                       </div>
-                      <div className="font-display text-foreground text-[11px] md:text-[12.5px] leading-tight mt-1 line-clamp-2">
-                        {s.name}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );
