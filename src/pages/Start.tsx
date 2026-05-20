@@ -610,7 +610,7 @@ const Start = () => {
                 to="/analysis"
                 className="inline-flex items-center gap-2 rounded-lg border border-foreground/15 text-foreground px-5 py-3 font-mono-marker text-[11px] tracking-[0.15em] hover:border-accent hover:text-accent transition-colors"
               >
-                19 worked verdicts <ArrowRight size={13} />
+                22 worked verdicts <ArrowRight size={13} />
               </Link>
             </div>
           </motion.div>
