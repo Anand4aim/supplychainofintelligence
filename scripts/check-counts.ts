@@ -38,12 +38,14 @@ const CANON = {
 
 type Rule = {
   name: string;
-  /** Regex with capture groups. Each capture corresponds to a canonical key. */
+  /** Regex with capture groups. */
   pattern: RegExp;
-  /** Canonical value(s) the captures should equal, in order. */
+  /** Which capture indices (0-based) hold the numbers to validate. */
+  numericCaptures: number[];
+  /** Canonical value(s) the numeric captures should equal, in order. */
   canon: (keyof typeof CANON)[];
-  /** Build the replacement string. Receives original match + canonical numbers. */
-  replace: (match: string, ...vals: number[]) => string;
+  /** Build the replacement. Receives match + all string captures + canonical numbers. */
+  replace: (match: string, captures: string[], canon: number[]) => string;
   /** Skip this match if line contains any of these substrings. */
   skipIfLineHas?: string[];
 };
@@ -52,49 +54,57 @@ const RULES: Rule[] = [
   {
     name: "structural-laws",
     pattern: /\b(\d+)\s+structural\s+laws?\b/gi,
+    numericCaptures: [0],
     canon: ["laws"],
-    replace: (_m, _n, laws) => `${laws} structural laws`,
+    replace: (_m, _c, [laws]) => `${laws} structural laws`,
   },
   {
     name: "laws-and-observations",
     pattern: /\b(\d+)\s+laws?\s+and\s+(\d+)\s+observations?\b/gi,
+    numericCaptures: [0, 1],
     canon: ["laws", "observations"],
-    replace: (_m, _a, _b, laws, obs) => `${laws} structural laws and ${obs} observations`,
+    replace: (_m, _c, [laws, obs]) => `${laws} structural laws and ${obs} observations`,
   },
   {
     name: "laws-enumeration",
-    // " · N laws" or ", N laws" — enumeration form following sublayers etc.
-    pattern: /([·,—-])\s*(\d+)\s+laws\b/gi,
+    // Lookbehind: only capture the number so replacement is unambiguous.
+    pattern: /(?<=[·,—-]\s)(\d+)\s+laws\b/gi,
+    numericCaptures: [0],
     canon: ["laws"],
-    replace: (_m, sep, _n, laws) => `${sep} ${laws} laws`,
+    replace: (_m, _c, [laws]) => `${laws} laws`,
   },
   {
     name: "worked-verdicts-or-cases",
     pattern: /\b(\d+)\+?\s+worked\s+(verdicts?|case\s+studies)\b/gi,
+    numericCaptures: [0],
     canon: ["caseStudies"],
-    replace: (_m, _n, noun, cases) => `${cases} worked ${noun}`,
+    replace: (_m, [, noun], [cases]) => `${cases} worked ${noun}`,
   },
   {
     name: "case-studies-total",
     pattern: /\b(\d+)\+?\s+case\s+studies\b/gi,
+    numericCaptures: [0],
     canon: ["caseStudies"],
-    replace: (_m, _n, cases) => `${cases} case studies`,
-    skipIfLineHas: ["per ", "each ", "inside"],
+    replace: (_m, _c, [cases]) => `${cases} case studies`,
+    skipIfLineHas: ["per ", "each ", "inside", "worked case studies"],
   },
   {
     name: "layers-and-sublayers",
     pattern: /\b(\d+)\s+layers\s+and\s+(\d+)\s+sublayers\b/gi,
+    numericCaptures: [0, 1],
     canon: ["layers", "sublayers"],
-    replace: (_m, _a, _b, layers, sub) => `${layers} layers and ${sub} sublayers`,
+    replace: (_m, _c, [layers, sub]) => `${layers} layers and ${sub} sublayers`,
   },
   {
     name: "sublayers-total",
     pattern: /\b(\d+)\s+sublayers\b/gi,
+    numericCaptures: [0],
     canon: ["sublayers"],
-    replace: (_m, _n, sub) => `${sub} sublayers`,
-    skipIfLineHas: ["per layer", "inside", "of the 5", "the 5 sublayers", "5 sublayers per"],
+    replace: (_m, _c, [sub]) => `${sub} sublayers`,
+    skipIfLineHas: ["per layer", "inside", "of the 5", "the 5 sublayers", "5 sublayers per", "layers and"],
   },
 ];
+
 
 const TARGET_GLOBS = [
   "src/**/*.{ts,tsx,md,mdx}",
