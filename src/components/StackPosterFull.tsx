@@ -75,14 +75,17 @@ const StackPosterFull = () => {
                     // Only the BACKGROUND shifts in shade — text stays in
                     // readable foreground tones so the sublayer name is always
                     // legible. Lighter as you move right (0.28 → 0.10).
-                    const bgAlpha = 0.28 - idx * 0.045;
+                    const bgAlpha = 0.38 - idx * 0.055; // 0.38 → 0.16
+                    // Build hsl(var(--layer-X) / alpha) — must replace the
+                    // LAST ')' so the alpha sits inside the outer hsl(...).
+                    const tinted = `hsla(0,0%,0%,0)`; // fallback
+                    const inner = layer.id === "L-1" ? "neg1" : layer.id.replace("L", "");
+                    const bg = `hsl(var(--layer-${inner}) / ${bgAlpha})`;
                     return (
                       <div
                         key={s.id}
                         className="rounded-md px-2 py-2 flex flex-col justify-center min-w-0"
-                        style={{
-                          background: c.replace(")", ` / ${bgAlpha})`),
-                        }}
+                        style={{ background: bg }}
                         title={s.desc}
                       >
                         <div className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold leading-none flex items-center gap-1 text-foreground/70">
