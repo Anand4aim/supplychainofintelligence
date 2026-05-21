@@ -34,6 +34,7 @@ import Posters from "./pages/Posters";
 import Classification from "./pages/Classification";
 import Posts from "./pages/Posts";
 import PostDetail from "./pages/PostDetail";
+import Audit from "./pages/Audit";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,7 @@ const App = () => (
         <Route path="/classification" element={<Classification />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/:slug" element={<PostDetail />} />
+        <Route path="/audit" element={<Audit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
