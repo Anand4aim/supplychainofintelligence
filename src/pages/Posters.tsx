@@ -104,6 +104,15 @@ const Posters = () => (
     </section>
 
     <PosterBlock
+      num="00"
+      eyebrow="The Framework · One Image"
+      title="At-a-Glance Summary"
+      blurb="The single image to answer 'what is this framework?' — 10 layers with a one-liner each, plus the 4 laws strip. Built for screenshot + paste."
+    >
+      <FrameworkSummaryPoster />
+    </PosterBlock>
+
+    <PosterBlock
       num="01"
       eyebrow="Magazine Cover"
       title="The Hero Brand Poster"
