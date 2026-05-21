@@ -25,6 +25,7 @@ import OpenVsClosedPoster from "@/components/posters/OpenVsClosedPoster";
 import GoogleGeoMythPoster from "@/components/posters/GoogleGeoMythPoster";
 import ProductLeaderLensPoster from "@/components/posters/ProductLeaderLensPoster";
 import InvestorLensPoster from "@/components/posters/InvestorLensPoster";
+import FrameworkSummaryPoster from "@/components/posters/FrameworkSummaryPoster";
 
 interface PosterBlockProps {
   num: string;
