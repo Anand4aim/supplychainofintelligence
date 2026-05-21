@@ -65,7 +65,7 @@ const Posters = () => (
   <SiteLayout>
     <Seo
       title="Posters — The Supply Chain of Intelligence™"
-      description="Eighteen shareable posters of the 10-layer generative AI stack — the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
+      description="Twenty shareable posters of the 10-layer generative AI stack — the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
       path="/posters"
     />
     <SketchFilters />
@@ -75,7 +75,7 @@ const Posters = () => (
       <div className="max-w-3xl mx-auto px-6 py-14 md:py-16">
         <Eyebrow className="mb-3">Shareable</Eyebrow>
         <h1 className="font-display text-3xl md:text-[40px] font-bold text-foreground leading-tight mb-3">
-          Eighteen posters of the framework.
+          Twenty posters of the framework.
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
           The stack, the laws, the archetypes, the dynamics — every poster downloads as a watermarked PNG or PDF.
