@@ -23,6 +23,8 @@ import MigrationPathsPoster from "@/components/posters/MigrationPathsPoster";
 import GravityFlowPoster from "@/components/posters/GravityFlowPoster";
 import OpenVsClosedPoster from "@/components/posters/OpenVsClosedPoster";
 import GoogleGeoMythPoster from "@/components/posters/GoogleGeoMythPoster";
+import ProductLeaderLensPoster from "@/components/posters/ProductLeaderLensPoster";
+import InvestorLensPoster from "@/components/posters/InvestorLensPoster";
 
 interface PosterBlockProps {
   num: string;
