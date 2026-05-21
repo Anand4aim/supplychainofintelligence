@@ -311,6 +311,37 @@ const Posters = () => (
       <GoogleGeoMythPoster />
     </PosterBlock>
 
+    {/* ──────────── SECTION V — FOR YOUR AUDIENCE ──────────── */}
+    <section className="bg-secondary/30 border-t border-border">
+      <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
+        <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
+          V — For Your Audience
+        </p>
+        <p className="font-display text-lg md:text-xl text-foreground/80 italic">
+          Role-specific posters to share alongside your own POV.
+        </p>
+      </div>
+    </section>
+
+    <PosterBlock
+      num="19"
+      eyebrow="For Product Leaders"
+      title="The Product Leader's Lens"
+      blurb="Five questions to ask of any AI feature on your roadmap — mapped to the layer each one stress-tests. The poster that ends 'just a wrapper' arguments in a standup."
+    >
+      <ProductLeaderLensPoster />
+    </PosterBlock>
+
+    <PosterBlock
+      num="20"
+      eyebrow="For Investors"
+      title="The Investor's Lens — Rent or Own"
+      blurb="A 10-layer diligence map. Which layers compound, which commoditize, and the five questions every AI deal memo should answer before the check clears."
+      tone="dark"
+    >
+      <InvestorLensPoster />
+    </PosterBlock>
+
     {/* Closer */}
     <section className="bg-background border-t border-border">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
