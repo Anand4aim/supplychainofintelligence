@@ -115,7 +115,7 @@ const AuditPage = () => {
       <Seo
         title="AI Defensibility Audit — Score any company against the Supply Chain of Intelligence"
         description="Free public tool: paste a company name, get a layer-by-layer audit of where they sit on the 10-layer generative AI stack, cross-checked by two models. Fortress, wrapper, or somewhere in between."
-        canonical="https://supplychainofai.com/audit"
+        path="/audit"
       />
 
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
