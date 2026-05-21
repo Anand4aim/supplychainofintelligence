@@ -32,6 +32,8 @@ import PreAiProof from "./pages/PreAiProof";
 import Glossary from "./pages/Glossary";
 import Posters from "./pages/Posters";
 import Classification from "./pages/Classification";
+import Posts from "./pages/Posts";
+import PostDetail from "./pages/PostDetail";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +72,8 @@ const App = () => (
         <Route path="/stack" element={<Navigate to="/framework" replace />} />
         <Route path="/posters" element={<Posters />} />
         <Route path="/classification" element={<Classification />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/posts/:slug" element={<PostDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
