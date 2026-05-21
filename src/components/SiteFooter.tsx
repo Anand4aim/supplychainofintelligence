@@ -54,6 +54,7 @@ const SiteFooter = () => (
           <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
           <div className="space-y-2.5">
             <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
+            <Link to="/posts" className="block text-sm hover:text-foreground transition-colors">Posted · Essays</Link>
             <Link to="/voices" className="block text-sm hover:text-foreground transition-colors">Voices</Link>
             <Link to="/challenge" className="block text-sm hover:text-foreground transition-colors">Challenge the framework</Link>
             <Link to="/faq" className="block text-sm hover:text-foreground transition-colors">FAQ</Link>
