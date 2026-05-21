@@ -115,9 +115,21 @@ const PostDetail = () => {
                   </blockquote>
                 );
               }
+              const posterMatch = para.match(/^\[\[poster:([a-z-]+)\]\]$/);
+              if (posterMatch) {
+                const Poster = INLINE_POSTERS[posterMatch[1]];
+                if (Poster) {
+                  return (
+                    <div key={idx} className="my-10">
+                      <Poster />
+                    </div>
+                  );
+                }
+              }
               return <p key={idx}>{renderInline(para)}</p>;
             })}
           </div>
+
 
           {/* Tail CTA — drive back to framework + LinkedIn */}
           <div className="mt-14 pt-8 border-t border-border">
