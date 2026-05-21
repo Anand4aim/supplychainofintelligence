@@ -6,8 +6,18 @@ import HeroBrandPoster from "@/components/posters/HeroBrandPoster";
 import AboveBelowLinePoster from "@/components/posters/AboveBelowLinePoster";
 import AgentDecoderPoster from "@/components/posters/AgentDecoderPoster";
 import StackCompressionMapPoster from "@/components/posters/StackCompressionMapPoster";
+import FourLawsPoster from "@/components/posters/FourLawsPoster";
 import { getPostBySlug } from "@/data/posts";
 import { ArrowLeft, Linkedin } from "lucide-react";
+
+// Inline poster markers in post body: [[poster:hero|four-laws|agent-decoder|above-below|compression]]
+const INLINE_POSTERS: Record<string, React.ComponentType> = {
+  hero: HeroBrandPoster,
+  "four-laws": FourLawsPoster,
+  "agent-decoder": AgentDecoderPoster,
+  "above-below": AboveBelowLinePoster,
+  compression: StackCompressionMapPoster,
+};
 
 // Tiny inline markdown: **bold**, _italic_, drop everything else.
 const renderInline = (text: string) => {
