@@ -10,6 +10,7 @@ import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
+import FrameworkSummaryPoster from "@/components/posters/FrameworkSummaryPoster";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
 import {
@@ -215,7 +216,26 @@ const Index = () => {
           {/* StackPosterFull moved to /posters — see Framework page footer link */}
 
 
-          {/* Worked example — Sales Tech layer matrix */}
+          {/* Framework summary poster — the "what is this?" image people screenshot and share */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="mt-12"
+          >
+            <div className="mb-4 flex items-baseline justify-between gap-4 flex-wrap">
+              <div>
+                <Eyebrow className="mb-1">The Framework · One Image</Eyebrow>
+                <p className="font-sketch text-sm text-muted-foreground italic">
+                  Screenshot this. Paste it anywhere. Cite it where it helps.
+                </p>
+              </div>
+            </div>
+            <FrameworkSummaryPoster />
+          </motion.div>
+
+
+          {/* Worked example — Sales Tech layer matrix (now below the summary poster) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

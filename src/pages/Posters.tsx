@@ -25,6 +25,7 @@ import OpenVsClosedPoster from "@/components/posters/OpenVsClosedPoster";
 import GoogleGeoMythPoster from "@/components/posters/GoogleGeoMythPoster";
 import ProductLeaderLensPoster from "@/components/posters/ProductLeaderLensPoster";
 import InvestorLensPoster from "@/components/posters/InvestorLensPoster";
+import FrameworkSummaryPoster from "@/components/posters/FrameworkSummaryPoster";
 
 interface PosterBlockProps {
   num: string;
@@ -101,6 +102,15 @@ const Posters = () => (
         </p>
       </div>
     </section>
+
+    <PosterBlock
+      num="00"
+      eyebrow="The Framework · One Image"
+      title="At-a-Glance Summary"
+      blurb="The single image to answer 'what is this framework?' — 10 layers with a one-liner each, plus the 4 laws strip. Built for screenshot + paste."
+    >
+      <FrameworkSummaryPoster />
+    </PosterBlock>
 
     <PosterBlock
       num="01"
