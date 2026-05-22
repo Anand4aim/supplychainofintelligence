@@ -199,19 +199,26 @@ Deno.serve(async (req) => {
     const lovableKey = Deno.env.get("LOVABLE_API_KEY");
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     if (!perplexityKey || !lovableKey || !supabaseUrl || !serviceKey) {
       throw new Error("Missing required environment variables");
     }
 
     let topic: string | undefined;
     let publishedAt: string | undefined;
+    let passcode: string | null = req.headers.get("x-admin-passcode");
     try {
       if (req.method === "POST") {
         const body = await req.json();
         topic = typeof body?.topic === "string" ? body.topic : undefined;
         publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
+        passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
 
     console.log("[live-article] fetching news via Perplexity", topic ? `(topic: ${topic})` : "(weekly auto)");
     const newsContext = await fetchLatestNews(perplexityKey, topic);
