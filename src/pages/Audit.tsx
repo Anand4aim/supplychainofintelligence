@@ -259,6 +259,12 @@ const AuditPage = () => {
                 </div>
               </Card>
 
+              {/* Honesty banner — sets expectations before they share */}
+              <div className="text-[11px] font-mono-marker uppercase tracking-[0.12em] text-muted-foreground -mt-2 px-1">
+                Mapped from user-provided inputs + public footprint. Not verified. Not an endorsement. You can push back or remap in Claude/ChatGPT with the blank template below.
+              </div>
+
+
               {/* Insufficient data branch */}
               {result.verdict_tier === "insufficient_data" && result.guidance && (
                 <Card className="p-6 border-dashed">
