@@ -273,167 +273,73 @@ const AuditPage = () => {
               {/* Full audit */}
               {result.verdict_tier !== "insufficient_data" && (
                 <>
-                  {/* Layers owned vs rented */}
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-fortified mb-3">Layers owned</p>
-                      <div className="flex flex-wrap gap-2">
-                        {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                        {(!result.layers_owned || result.layers_owned.length === 0) && (
-                          <p className="text-sm text-muted-foreground italic">Nothing structural. This is the risk.</p>
-                        )}
-                      </div>
+                  {/* EXECUTIVE VERDICT — read in 15 seconds */}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <Card className="p-4">
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-muted-foreground mb-1.5">Archetype</p>
+                      <p className="font-display text-base font-bold text-foreground leading-tight">{result.archetype || "—"}</p>
                     </Card>
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-3">Layers rented</p>
-                      <div className="flex flex-wrap gap-2">
-                        {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                      </div>
+                    <Card className="p-4">
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-1.5">Biggest risk</p>
+                      <p className="text-[13px] text-foreground/85 leading-snug">{result.risks?.[0] || "—"}</p>
                     </Card>
-                  </div>
-
-                  {/* Sublayer claims */}
-                  {result.sublayer_claims && result.sublayer_claims.length > 0 && (
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4">Sublayer claims · cross-checked</p>
-                      <div className="space-y-3">
-                        {result.sublayer_claims.map((s) => (
-                          <div key={s.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
-                            <div className="shrink-0 pt-0.5">
-                              <LayerTag id={s.sublayer} variant="chip" withSublayerName />
-                            </div>
-                            <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{s.evidence}</p>
-                            <div className="shrink-0 flex items-center gap-2 pt-1">
-                              <ConfidenceDots c={s.confidence} />
-                              {s.cross_confirmed && (
-                                <CheckCircle2 size={12} className="text-verdict-fortified" aria-label="Confirmed by both models" />
-                              )}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="font-sketch text-xs italic text-muted-foreground mt-4">
-                        ✓ = both drafter and critic confirmed. Single-model claims downgraded automatically.
-                      </p>
+                    <Card className="p-4">
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-1.5">Biggest opportunity</p>
+                      {result.sublayer_gaps?.[0] ? (
+                        <>
+                          <div className="mb-1"><LayerTag id={result.sublayer_gaps[0].sublayer} variant="chip" withSublayerName /></div>
+                          <p className="text-[12px] text-foreground/75 leading-snug">{result.sublayer_gaps[0].why}</p>
+                        </>
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">{result.strengths?.[0] || "—"}</p>}
                     </Card>
-                  )}
-
-                  {/* Triangle + Laws */}
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4">Defensible Triangle</p>
-                      <div className="space-y-2.5">
-                        <TriangleSide label="Proprietary data (L1b)" status={result.triangle?.proprietary_data || "false"} />
-                        <TriangleSide label="Deep execution (L5a/b/d)" status={result.triangle?.deep_execution || "false"} />
-                        <TriangleSide label="Compounding memory (L8c/d/e)" status={result.triangle?.compounding_memory || "false"} />
-                      </div>
-                    </Card>
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4">Laws triggered</p>
-                      <div className="space-y-1.5">
-                        {(result.laws_triggered || []).map((l) => (
-                          <Link key={l} to={`/laws/${l.replace("Law ", "law-").toLowerCase()}`} className="block text-sm text-foreground/80 hover:text-accent transition-colors">
-                            → {l}
-                          </Link>
-                        ))}
-                      </div>
+                    <Card className="p-4">
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-1.5">Top threat</p>
+                      {result.competitive_landscape?.juggernaut_moves?.[0] ? (
+                        <p className="text-[13px] text-foreground/85 leading-snug">
+                          <span className="font-bold">{result.competitive_landscape.juggernaut_moves[0].actor}</span>{" "}
+                          <span className="text-muted-foreground">({result.competitive_landscape.juggernaut_moves[0].timeframe})</span>
+                          {" "}— {result.competitive_landscape.juggernaut_moves[0].move}
+                        </p>
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                   </div>
 
-                  {/* Strengths / Risks */}
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-fortified mb-3">Structural strengths</p>
-                      <ul className="space-y-2">
-                        {(result.strengths || []).map((s, i) => (
-                          <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-fortified">▸</span>{s}</li>
-                        ))}
-                      </ul>
-                    </Card>
-                    <Card className="p-6">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-3">Compression risks</p>
-                      <ul className="space-y-2">
-                        {(result.risks || []).map((s, i) => (
-                          <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-exposed">▸</span>{s}</li>
-                        ))}
-                      </ul>
-                    </Card>
-                  </div>
-
-                  {/* Sublayer GAPS — what they should own but don't */}
-                  {result.sublayer_gaps && result.sublayer_gaps.length > 0 && (
-                    <Card className="p-6 border-dashed border-2">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/70 mb-4">Sublayer gaps · what they should own but don't</p>
-                      <div className="space-y-3">
-                        {result.sublayer_gaps.map((g) => (
-                          <div key={g.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
-                            <div className="shrink-0 pt-0.5"><LayerTag id={g.sublayer} variant="chip" withSublayerName /></div>
-                            <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{g.why}</p>
-                          </div>
-                        ))}
+                  {/* Simple Owns / Rents / Compressed-by map */}
+                  <Card className="p-5">
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div>
+                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
+                          {(!result.layers_owned || result.layers_owned.length === 0) && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
+                        </div>
                       </div>
-                    </Card>
-                  )}
-
-                  {/* Competitive landscape */}
-                  {result.competitive_landscape && (
-                    <div className="grid md:grid-cols-2 gap-5">
-                      <Card className="p-6">
-                        <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players · who collides where</p>
-                        <div className="space-y-3">
-                          {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
-                            <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
-                              <div className="shrink-0">
-                                <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
-                                <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
-                              </div>
-                              <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
-                            </div>
+                      <div>
+                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {(result.competitive_landscape?.juggernaut_moves || []).slice(0, 3).map((j, i) => (
+                            <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
                           ))}
                         </div>
-                      </Card>
-                      <Card className="p-6">
-                        <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
-                        <div className="space-y-3">
-                          {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
-                            <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
-                              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                                <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
-                                <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
-                                <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
-                              </div>
-                              <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </Card>
+                      </div>
                     </div>
-                  )}
+                  </Card>
 
-                  {/* Prioritized Roadmap */}
-                  {result.roadmap && result.roadmap.length > 0 && (
-                    <Card className="p-6 border-2 border-foreground/15">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/70 mb-1">Prioritized roadmap · sublayer-anchored</p>
-                      <p className="text-xs text-muted-foreground mb-5 italic">P0 = next 90 days (existential) · P1 = next 180 days (defensive moat) · P2 = next 365 days (long-game)</p>
-                      <div className="space-y-4">
-                        {result.roadmap.map((r, i) => (
-                          <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
-                            <div className="flex flex-col items-center gap-1.5 pt-0.5">
-                              <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
-                              <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
-                            </div>
-                            <div className="min-w-0">
-                              <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
-                              <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
-                              <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                  {/* Strategic snippet — short, keep visible */}
+                  {result.snippet && (
+                    <Card className="p-6 border-2 border-accent/40 bg-accent/[0.03]">
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">How to apply this verdict</p>
+                      <p className="text-base text-foreground/90 leading-relaxed">{result.snippet}</p>
                     </Card>
                   )}
 
-                  {/* Downloadable share card */}
+                  {/* Downloadable share card — MOVED UP so they see it first */}
                   {result.score !== null && (
                     <div>
                       <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">Send-ready · download as PNG or PDF</p>
@@ -517,45 +423,203 @@ const AuditPage = () => {
                     </div>
                   )}
 
-                  {/* Open questions */}
-                  {result.open_questions && (
-                    <Card className="p-6 bg-foreground/[0.02]">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4">3 open questions for the next 90 days</p>
-                      <ol className="space-y-3">
-                        {result.open_questions.map((q, i) => (
-                          <li key={i} className="text-[15px] text-foreground/90 leading-relaxed flex gap-3">
-                            <span className="font-display font-bold text-accent shrink-0">{i + 1}.</span>
-                            <span>{q}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </Card>
-                  )}
+                  {/* DEEP DIVE — collapsed by default to reduce cognitive load */}
+                  <div className="pt-4 border-t border-foreground/10">
+                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-4">Deep dive · expand any section</p>
+                    <div className="space-y-3">
 
-                  {/* Strategic snippet */}
-                  {result.snippet && (
-                    <Card className="p-6 border-2 border-accent/40 bg-accent/[0.03]">
-                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">How to apply this verdict</p>
-                      <p className="text-base text-foreground/90 leading-relaxed">{result.snippet}</p>
-                    </Card>
-                  )}
+                      {/* Prioritized Roadmap — open by default, it's the killer feature */}
+                      {result.roadmap && result.roadmap.length > 0 && (
+                        <details open className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Prioritized roadmap · {result.roadmap.length} moves
+                          </summary>
+                          <div className="p-5 pt-0">
+                            <p className="text-xs text-muted-foreground mb-4 italic">P0 = next 90d (existential) · P1 = next 180d (defensive moat) · P2 = next 365d (long-game)</p>
+                            <div className="space-y-4">
+                              {result.roadmap.map((r, i) => (
+                                <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
+                                  <div className="flex flex-col items-center gap-1.5 pt-0.5">
+                                    <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
+                                    <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
+                                  </div>
+                                  <div className="min-w-0">
+                                    <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
+                                    <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                                    <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </details>
+                      )}
 
-                  {/* Cross-check transparency */}
-                  {result.cross_check && (
-                    <details className="text-xs text-muted-foreground">
-                      <summary className="cursor-pointer font-mono-marker uppercase tracking-wider hover:text-foreground/70">Cross-check details</summary>
-                      <div className="mt-3 grid grid-cols-2 gap-4 p-4 bg-foreground/[0.02] rounded">
-                        <div>
-                          <p className="font-medium text-foreground/70">Drafter (GPT-5-mini)</p>
-                          <p>Score: {result.cross_check.drafter_score} · Tier: {result.cross_check.drafter_tier}</p>
+                      {/* Sublayer claims */}
+                      {result.sublayer_claims && result.sublayer_claims.length > 0 && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Sublayer claims · {result.sublayer_claims.length}, cross-checked
+                          </summary>
+                          <div className="p-5 pt-0">
+                            <div className="space-y-3">
+                              {result.sublayer_claims.map((s) => (
+                                <div key={s.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                                  <div className="shrink-0 pt-0.5"><LayerTag id={s.sublayer} variant="chip" withSublayerName /></div>
+                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{s.evidence}</p>
+                                  <div className="shrink-0 flex items-center gap-2 pt-1">
+                                    <ConfidenceDots c={s.confidence} />
+                                    {s.cross_confirmed && <CheckCircle2 size={12} className="text-verdict-fortified" aria-label="Confirmed by both models" />}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <p className="font-sketch text-xs italic text-muted-foreground mt-4">✓ = both drafter and critic confirmed.</p>
+                          </div>
+                        </details>
+                      )}
+
+                      {/* Sublayer gaps */}
+                      {result.sublayer_gaps && result.sublayer_gaps.length > 0 && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Sublayer gaps · what they should own but don't
+                          </summary>
+                          <div className="p-5 pt-0">
+                            <div className="space-y-3">
+                              {result.sublayer_gaps.map((g) => (
+                                <div key={g.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                                  <div className="shrink-0 pt-0.5"><LayerTag id={g.sublayer} variant="chip" withSublayerName /></div>
+                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{g.why}</p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </details>
+                      )}
+
+                      {/* Triangle + Laws + Strengths/Risks bundled */}
+                      <details className="group border border-foreground/15 rounded-lg">
+                        <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                          Triangle, laws, strengths & risks
+                        </summary>
+                        <div className="p-5 pt-0 space-y-5">
+                          <div className="grid md:grid-cols-2 gap-5">
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">Defensible Triangle</p>
+                              <div className="space-y-2.5">
+                                <TriangleSide label="Proprietary data (L1b)" status={result.triangle?.proprietary_data || "false"} />
+                                <TriangleSide label="Deep execution (L5a/b/d)" status={result.triangle?.deep_execution || "false"} />
+                                <TriangleSide label="Compounding memory (L8c/d/e)" status={result.triangle?.compounding_memory || "false"} />
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">Laws triggered</p>
+                              <div className="space-y-1.5">
+                                {(result.laws_triggered || []).map((l) => (
+                                  <Link key={l} to={`/laws/${l.replace("Law ", "law-").toLowerCase()}`} className="block text-sm text-foreground/80 hover:text-accent transition-colors">→ {l}</Link>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-5">
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-fortified mb-3">Structural strengths</p>
+                              <ul className="space-y-2">
+                                {(result.strengths || []).map((s, i) => (
+                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-fortified">▸</span>{s}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-3">Compression risks</p>
+                              <ul className="space-y-2">
+                                {(result.risks || []).map((s, i) => (
+                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-exposed">▸</span>{s}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <p className="font-medium text-foreground/70">Critic (Gemini-2.5-pro)</p>
-                          <p>Score: {result.cross_check.critic_score} · Tier: {result.cross_check.critic_tier}</p>
-                        </div>
-                      </div>
-                    </details>
-                  )}
+                      </details>
+
+                      {/* Competitive landscape */}
+                      {result.competitive_landscape && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Competitive landscape · adjacent players & juggernaut moves
+                          </summary>
+                          <div className="p-5 pt-0 grid md:grid-cols-2 gap-5">
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players</p>
+                              <div className="space-y-3">
+                                {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
+                                  <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                                    <div className="shrink-0">
+                                      <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
+                                      <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                                    </div>
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
+                              <div className="space-y-3">
+                                {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
+                                  <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
+                                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                                      <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
+                                      <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
+                                      <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                                    </div>
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </details>
+                      )}
+
+                      {/* Open questions */}
+                      {result.open_questions && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            3 open questions for the next 90 days
+                          </summary>
+                          <div className="p-5 pt-0">
+                            <ol className="space-y-3">
+                              {result.open_questions.map((q, i) => (
+                                <li key={i} className="text-[15px] text-foreground/90 leading-relaxed flex gap-3">
+                                  <span className="font-display font-bold text-accent shrink-0">{i + 1}.</span>
+                                  <span>{q}</span>
+                                </li>
+                              ))}
+                            </ol>
+                          </div>
+                        </details>
+                      )}
+
+                      {/* Cross-check transparency */}
+                      {result.cross_check && (
+                        <details className="text-xs text-muted-foreground px-1">
+                          <summary className="cursor-pointer font-mono-marker uppercase tracking-wider hover:text-foreground/70 py-2">Cross-check details</summary>
+                          <div className="mt-2 grid grid-cols-2 gap-4 p-4 bg-foreground/[0.02] rounded">
+                            <div>
+                              <p className="font-medium text-foreground/70">Drafter (GPT-5-mini)</p>
+                              <p>Score: {result.cross_check.drafter_score} · Tier: {result.cross_check.drafter_tier}</p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground/70">Critic (Gemini-2.5-pro)</p>
+                              <p>Score: {result.cross_check.critic_score} · Tier: {result.cross_check.critic_tier}</p>
+                            </div>
+                          </div>
+                        </details>
+                      )}
+                    </div>
+                  </div>
                 </>
               )}
 
@@ -567,6 +631,7 @@ const AuditPage = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
 
         {/* How it works */}
         {!result && !loading && (
