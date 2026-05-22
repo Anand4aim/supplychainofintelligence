@@ -236,6 +236,47 @@ const Index = () => {
             <FrameworkSummaryPoster />
           </motion.div>
 
+          {/* The Crux · One Image — blank sublayer grid, right after the framework poster */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mt-16"
+          >
+            <div className="mb-6 max-w-3xl">
+              <Eyebrow tone="accent" className="mb-3">The Crux · One Image</Eyebrow>
+              <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight">
+                If you remember one thing, remember this map.
+              </h2>
+              <p className="mt-4 text-muted-foreground text-[15px] md:text-[16px] leading-relaxed">
+                Ten layers. Fifty sublayers. Every generative AI company — yours
+                included — plays in some of these squares and not others. Print it,
+                screenshot it, mark it up in Claude. Then ask the only question that
+                matters: <em>which squares do we actually own?</em>
+              </p>
+            </div>
+
+            <ExportablePng fileName="scoai-blank-grid" caption="The Supply Chain of Intelligence™ — blank template">
+              <IntelligenceGrid mode="blank" interactive />
+            </ExportablePng>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Link
+                to="/audit"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-accent text-accent-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
+              >
+                Map your company <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/framework"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-foreground/15 text-foreground font-semibold text-sm hover:bg-foreground/[0.03] transition-colors"
+              >
+                Read the full framework
+              </Link>
+            </div>
+          </motion.div>
+
+
 
           {/* Worked example — Sales Tech layer matrix (now below the summary poster) */}
           <motion.div
@@ -465,42 +506,8 @@ const Index = () => {
       {/* ═══════════ FRAMEWORK APPLIED — three worked audits ═══════════ */}
       <FrameworkApplied />
 
-      {/* ═══════════ THE CRUX · ONE IMAGE ═══════════ */}
-      <section className="bg-background border-y border-foreground/10">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn} className="mb-10 max-w-3xl">
-            <Eyebrow tone="accent" className="mb-3">The Crux · One Image</Eyebrow>
-            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight">
-              If you remember one thing, remember this map.
-            </h2>
-            <p className="mt-4 text-muted-foreground text-[15px] md:text-[16px] leading-relaxed">
-              Ten layers. Fifty sublayers. Every generative AI company — yours
-              included — plays in some of these squares and not others. Print it,
-              screenshot it, mark it up in Claude. Then ask the only question that
-              matters: <em>which squares do we actually own?</em>
-            </p>
-          </motion.div>
+      {/* Crux moved up — right after the Framework summary poster */}
 
-          <ExportablePng fileName="scoai-blank-grid" caption="The Supply Chain of Intelligence™ — blank template">
-            <IntelligenceGrid mode="blank" interactive />
-          </ExportablePng>
-
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link
-              to="/audit"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-accent text-accent-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
-            >
-              Map your company <ArrowRight size={14} />
-            </Link>
-            <Link
-              to="/framework"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-foreground/15 text-foreground font-semibold text-sm hover:bg-foreground/[0.03] transition-colors"
-            >
-              Read the full framework
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════ CASE STUDIES ═══════════ */}
       <section className="bg-secondary/40">
