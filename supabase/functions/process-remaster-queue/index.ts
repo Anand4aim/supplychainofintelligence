@@ -124,8 +124,8 @@ Deno.serve(async (req) => {
         // Dispatch to existing in-place critic loop
         const r = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
           method: "POST",
-          headers: { Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ article_id: item.target_id }),
+          headers: { Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
+          body: JSON.stringify({ article_id: item.target_id, passcode: expected }),
         });
         const result = await r.json();
         if (!r.ok || !result.success) throw new Error(result.error ?? `refine failed (${r.status})`);
