@@ -71,6 +71,7 @@ const AUDIT_SCHEMA = {
     verdict_tier: { type: "string", enum: ["fortress", "tilting_fortress", "mixed", "exposed", "wrapper_at_risk", "insufficient_data"] },
     score: { type: "integer", minimum: 0, maximum: 100, description: "Composite defensibility. 80+=fortress, 60-79=tilting, 40-59=mixed, 20-39=exposed, <20=wrapper." },
     one_line: { type: "string", description: "One-sentence verdict in Stratechery voice. Name the layers." },
+    domain: { type: "string", description: "Short domain/vertical label (e.g. 'Legal AI', 'CX Agents', 'Dev Tools')." },
     layers_owned: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers the company structurally owns or is meaningfully building toward. Be brutal — max 4." },
     layers_rented: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers they depend on but do not own. This is their risk list." },
     sublayer_claims: {
@@ -84,6 +85,18 @@ const AUDIT_SCHEMA = {
           evidence: { type: "string", description: "1 sentence pointing to a specific product feature, customer, or fact from research." },
         },
         required: ["sublayer", "confidence", "evidence"],
+      },
+    },
+    sublayer_gaps: {
+      type: "array",
+      description: "2-4 SPECIFIC sublayers the company should own but doesn't yet. Cite the exact sublayer ID.",
+      items: {
+        type: "object",
+        properties: {
+          sublayer: { type: "string", enum: ALL_SUBLAYERS },
+          why: { type: "string", description: "1 sentence: why this sublayer matters for their domain and what happens if they don't get it." },
+        },
+        required: ["sublayer", "why"],
       },
     },
     triangle: {
@@ -108,6 +121,57 @@ const AUDIT_SCHEMA = {
     },
     strengths: { type: "array", items: { type: "string" }, description: "2-3 specific structural strengths." },
     risks: { type: "array", items: { type: "string" }, description: "2-3 specific compression risks. Name who absorbs them." },
+    competitive_landscape: {
+      type: "object",
+      description: "Who eats their lunch, layer by layer.",
+      properties: {
+        adjacent_players: {
+          type: "array",
+          description: "2-4 named competitors. Each tied to the layer/sublayer where they collide.",
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              collides_at: { type: "string", description: "Layer or sublayer ID, e.g. L5b or L7." },
+              note: { type: "string", description: "1 sentence: how they differ, who wins today." },
+            },
+            required: ["name", "collides_at", "note"],
+          },
+        },
+        juggernaut_moves: {
+          type: "array",
+          description: "2-3 imminent moves by L2 foundation-model owners (OpenAI/Anthropic/Google) or L4 distribution owners (Microsoft/Salesforce/Apple) that compress this company.",
+          items: {
+            type: "object",
+            properties: {
+              actor: { type: "string", description: "e.g. 'Anthropic', 'OpenAI', 'Microsoft Copilot'." },
+              move: { type: "string", description: "What they're shipping or about to ship that hits this company." },
+              compresses: { type: "string", description: "Sublayer ID(s) it collapses, e.g. 'L5b, L7a'." },
+              timeframe: { type: "string", enum: ["shipped", "0-6mo", "6-18mo"] },
+            },
+            required: ["actor", "move", "compresses", "timeframe"],
+          },
+        },
+      },
+      required: ["adjacent_players", "juggernaut_moves"],
+    },
+    roadmap: {
+      type: "array",
+      description: "Exactly 5 prioritized roadmap moves. Each MUST cite a specific sublayer ID. Order P0 first.",
+      minItems: 5,
+      maxItems: 5,
+      items: {
+        type: "object",
+        properties: {
+          priority: { type: "string", enum: ["P0", "P1", "P2"], description: "P0 = next 90d, existential. P1 = next 180d, defensive moat. P2 = next 365d, long-game." },
+          horizon: { type: "string", enum: ["90d", "180d", "365d"] },
+          sublayer: { type: "string", enum: ALL_SUBLAYERS },
+          move: { type: "string", description: "1-2 sentences. Concrete product/data/distribution action — not 'invest in AI'." },
+          why: { type: "string", description: "1 sentence: which risk it closes or which juggernaut move it blunts." },
+        },
+        required: ["priority", "horizon", "sublayer", "move", "why"],
+      },
+    },
     open_questions: {
       type: "array",
       description: "Exactly 3 sharp questions the founder/exec should answer in the next 90 days.",
@@ -117,7 +181,7 @@ const AUDIT_SCHEMA = {
     },
     snippet: { type: "string", description: "2-3 sentences: what to do with this verdict. Specific next move tied to a layer." },
   },
-  required: ["verdict_tier", "score", "one_line", "layers_owned", "layers_rented", "sublayer_claims", "triangle", "archetype", "laws_triggered", "strengths", "risks", "open_questions", "snippet"],
+  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
   additionalProperties: false,
 };
 
