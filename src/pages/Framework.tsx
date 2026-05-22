@@ -5,6 +5,8 @@ import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI, OBSERVATIONS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
+import IntelligenceGrid from "@/components/IntelligenceGrid";
+import ExportablePng from "@/components/ExportablePng";
 import {
   SketchFilters,
   SketchBoard,
@@ -323,6 +325,33 @@ const FrameworkPage = () => (
               </div>
             </div>
           </div>
+        </motion.div>
+      </div>
+    </section>
+
+    {/* THE GRID — 10×5 framework, the canonical reference map */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="mb-4 flex items-baseline justify-between gap-4 flex-wrap">
+            <div>
+              <Eyebrow className="mb-1">The Framework · One Image</Eyebrow>
+              <p className="font-sketch text-sm text-muted-foreground italic">
+                10 layers × 50 sublayers. Screenshot it. Map your own company in it — blank version is free to use.
+              </p>
+            </div>
+            <div className="flex gap-3 shrink-0">
+              <Link to="/audit" className="btn-sketch text-[13px]">Score your company <ArrowRight size={14} /></Link>
+            </div>
+          </div>
+          <ExportablePng fileName="scoi-10x50-grid" caption="The Supply Chain of Intelligence — 10 × 50 grid">
+            <IntelligenceGrid mode="blank" />
+          </ExportablePng>
         </motion.div>
       </div>
     </section>
