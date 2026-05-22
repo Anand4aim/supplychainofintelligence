@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Rss } from "lucide-react";
 import NewsletterCTA from "./NewsletterCTA";
+import PersonalCapacityNotice from "./PersonalCapacityNotice";
 
 const PROJECT_ID = "pjococttuifybrwsxscy";
 const RSS_URL = `https://${PROJECT_ID}.supabase.co/functions/v1/rss-feed`;
