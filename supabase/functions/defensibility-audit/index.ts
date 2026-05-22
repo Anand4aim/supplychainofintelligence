@@ -26,8 +26,8 @@ const ALL_SUBLAYERS = [
 const PPLX_KEY = Deno.env.get("PERPLEXITY_API_KEY");
 const LOVABLE_KEY = Deno.env.get("LOVABLE_API_KEY");
 
-async function research(company: string, userContext?: string): Promise<{ text: string; insufficient: boolean }> {
-  if (!PPLX_KEY) return { text: userContext || "", insufficient: !userContext };
+async function researchPerplexity(company: string, userContext?: string): Promise<{ text: string; insufficient: boolean }> {
+  if (!PPLX_KEY) return { text: "", insufficient: true };
   const q = `Research the company "${company}" as an AI / software product analyst. Cover:
 1. What product(s) they ship and who the customer is.
 2. Underlying AI models (foundation models they use, any proprietary models they trained).
@@ -38,35 +38,72 @@ async function research(company: string, userContext?: string): Promise<{ text: 
 7. Compliance / trust posture (SOC2, HIPAA, audit, eval, safety).
 8. Funding stage, lead investors, last round.
 ${userContext ? `\nADDITIONAL CONTEXT FROM USER (use this, but verify against public data):\n${userContext}\n` : ""}
-If you cannot find substantive public information on this company, say "INSUFFICIENT_PUBLIC_DATA" at the top and explain what you could not find.
-Cite specific products, customers, contracts, headcount, numbers when possible. No hype.`;
+If you genuinely cannot find ANY public information matching this company name (e.g. it appears to be a typo or doesn't exist), say "INSUFFICIENT_PUBLIC_DATA" at the top. Otherwise, do your best with whatever public footprint exists — website copy, LinkedIn, press, GitHub, Crunchbase, podcasts. Cite specific products, customers, contracts, headcount, numbers when possible. No hype.`;
 
   try {
     const r = await fetch("https://api.perplexity.ai/chat/completions", {
       method: "POST",
       headers: { Authorization: `Bearer ${PPLX_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "sonar",
+        model: "sonar-pro",
         messages: [
-          { role: "system", content: "You are a rigorous tech-industry analyst. Cite specifics. If data is thin, say so explicitly." },
+          { role: "system", content: "You are a rigorous tech-industry analyst with deep AI/software coverage. Search broadly — company websites, LinkedIn, GitHub, Crunchbase, press, podcasts, investor decks. Be thorough; only declare INSUFFICIENT_PUBLIC_DATA if the name truly returns nothing." },
           { role: "user", content: q },
         ],
         temperature: 0.2,
-        max_tokens: 1400,
+        max_tokens: 2000,
       }),
     });
-    if (!r.ok) return { text: userContext || "", insufficient: !userContext };
+    if (!r.ok) return { text: "", insufficient: true };
     const j = await r.json();
     const text: string = j.choices?.[0]?.message?.content ?? "";
-    // Only treat as insufficient if the marker appears at the very top (first 200 chars),
-    // not anywhere in the body (Perplexity often says "this is NOT an INSUFFICIENT_PUBLIC_DATA case").
     const head = text.trim().slice(0, 200);
-    const insufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || text.trim().length < 300;
+    // Only the explicit marker counts. Drop the length heuristic — short answers about real
+    // small companies were getting nuked. Critic+drafter handle thin-evidence downgrading.
+    const insufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || text.trim().length < 120;
     return { text, insufficient };
   } catch {
-    return { text: userContext || "", insufficient: !userContext };
+    return { text: "", insufficient: true };
   }
 }
+
+async function researchGeminiFallback(company: string, userContext?: string): Promise<string> {
+  // Fallback when Perplexity is unavailable or returns nothing. Uses Gemini's training knowledge.
+  if (!LOVABLE_KEY) return userContext || "";
+  const prompt = `You are an AI/software industry analyst. Based on your training knowledge, write a factual research brief on the company "${company}" covering: product, customer, AI models used, data assets, workflow depth, memory/personalization, distribution, compliance, funding. Cite specifics you actually know. If you have NO knowledge of this company at all, write only "INSUFFICIENT_PUBLIC_DATA". Do not invent details.
+${userContext ? `\nUSER-PROVIDED CONTEXT:\n${userContext}\n` : ""}`;
+  try {
+    const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${LOVABLE_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash",
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+    if (!r.ok) return userContext || "";
+    const j = await r.json();
+    return j.choices?.[0]?.message?.content ?? (userContext || "");
+  } catch {
+    return userContext || "";
+  }
+}
+
+async function research(company: string, userContext?: string): Promise<{ text: string; insufficient: boolean }> {
+  const pplx = await researchPerplexity(company, userContext);
+  if (!pplx.insufficient) return pplx;
+  // Perplexity thin — try Gemini training knowledge as a second source
+  const gem = await researchGeminiFallback(company, userContext);
+  const head = gem.trim().slice(0, 200);
+  const gemInsufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || gem.trim().length < 120;
+  if (!gemInsufficient) {
+    const combined = [pplx.text && `[Perplexity]\n${pplx.text}`, `[Model knowledge]\n${gem}`, userContext && `[User context]\n${userContext}`].filter(Boolean).join("\n\n");
+    return { text: combined, insufficient: false };
+  }
+  // Both empty — only insufficient if no user context either
+  return { text: userContext || pplx.text || "", insufficient: !userContext || userContext.length < 200 };
+}
+
 
 const AUDIT_SCHEMA = {
   type: "object",
