@@ -1,40 +1,59 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle } from "lucide-react";
+import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import ExportablePng from "@/components/ExportablePng";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { SUBLAYER_LABEL } from "@/data/layers";
 
 const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/defensibility-audit`;
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean };
+type Gap = { sublayer: string; why: string };
+type Player = { name: string; collides_at: string; note: string };
+type Juggernaut = { actor: string; move: string; compresses: string; timeframe: "shipped" | "0-6mo" | "6-18mo" };
+type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string };
 type AuditResult = {
   company?: string;
+  domain?: string;
   verdict_tier: "fortress" | "tilting_fortress" | "mixed" | "exposed" | "wrapper_at_risk" | "insufficient_data";
   score: number | null;
   one_line: string;
   layers_owned?: string[];
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
+  sublayer_gaps?: Gap[];
   triangle?: { proprietary_data: string; deep_execution: string; compounding_memory: string };
   archetype?: string;
   laws_triggered?: string[];
   strengths?: string[];
   risks?: string[];
+  competitive_landscape?: { adjacent_players: Player[]; juggernaut_moves: Juggernaut[] };
+  roadmap?: RoadmapMove[];
   open_questions?: string[];
   snippet?: string;
   guidance?: string;
   research_snippet?: string;
   cross_check?: { drafter_score: number; critic_score: number; drafter_tier: string; critic_tier: string };
+};
+
+const prioStyle: Record<"P0" | "P1" | "P2", string> = {
+  P0: "bg-verdict-exposed/15 text-verdict-exposed border-verdict-exposed/40",
+  P1: "bg-accent/15 text-accent border-accent/40",
+  P2: "bg-foreground/10 text-foreground/70 border-foreground/20",
+};
+const tfStyle: Record<Juggernaut["timeframe"], string> = {
+  shipped: "bg-verdict-exposed/15 text-verdict-exposed",
+  "0-6mo": "bg-accent/15 text-accent",
+  "6-18mo": "bg-foreground/10 text-foreground/70",
 };
 
 const tierMeta: Record<AuditResult["verdict_tier"], { label: string; color: string; bg: string; icon: typeof Shield }> = {
@@ -326,6 +345,163 @@ const AuditPage = () => {
                       </ul>
                     </Card>
                   </div>
+
+                  {/* Sublayer GAPS — what they should own but don't */}
+                  {result.sublayer_gaps && result.sublayer_gaps.length > 0 && (
+                    <Card className="p-6 border-dashed border-2">
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/70 mb-4">Sublayer gaps · what they should own but don't</p>
+                      <div className="space-y-3">
+                        {result.sublayer_gaps.map((g) => (
+                          <div key={g.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                            <div className="shrink-0 pt-0.5"><LayerTag id={g.sublayer} variant="chip" withSublayerName /></div>
+                            <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{g.why}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
+                  )}
+
+                  {/* Competitive landscape */}
+                  {result.competitive_landscape && (
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <Card className="p-6">
+                        <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players · who collides where</p>
+                        <div className="space-y-3">
+                          {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
+                            <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                              <div className="shrink-0">
+                                <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
+                                <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                              </div>
+                              <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </Card>
+                      <Card className="p-6">
+                        <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
+                        <div className="space-y-3">
+                          {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
+                            <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
+                              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                                <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
+                                <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
+                                <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                              </div>
+                              <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </Card>
+                    </div>
+                  )}
+
+                  {/* Prioritized Roadmap */}
+                  {result.roadmap && result.roadmap.length > 0 && (
+                    <Card className="p-6 border-2 border-foreground/15">
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/70 mb-1">Prioritized roadmap · sublayer-anchored</p>
+                      <p className="text-xs text-muted-foreground mb-5 italic">P0 = next 90 days (existential) · P1 = next 180 days (defensive moat) · P2 = next 365 days (long-game)</p>
+                      <div className="space-y-4">
+                        {result.roadmap.map((r, i) => (
+                          <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
+                            <div className="flex flex-col items-center gap-1.5 pt-0.5">
+                              <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
+                              <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
+                            </div>
+                            <div className="min-w-0">
+                              <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
+                              <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                              <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
+                  )}
+
+                  {/* Downloadable share card */}
+                  {result.score !== null && (
+                    <div>
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">Send-ready · download as PNG or PDF</p>
+                      <ExportablePng
+                        fileName={`scoi-audit-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                        caption={`Defensibility Audit · ${result.company}`}
+                      >
+                        <div className="p-8 bg-background" style={{ minHeight: 800 }}>
+                          {/* Header */}
+                          <div className="flex items-start justify-between gap-4 mb-6 pb-5 border-b border-foreground/15">
+                            <div className="flex-1 min-w-0">
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.domain || "AI Company"} · Defensibility Audit</p>
+                              <h3 className="font-display text-2xl font-bold text-foreground">{result.company}</h3>
+                              <p className="text-sm text-foreground/80 mt-1 leading-snug">{result.one_line}</p>
+                            </div>
+                            <div className="text-right shrink-0">
+                              <div className="font-display text-5xl font-bold leading-none" style={{ color: tier.color }}>{result.score}</div>
+                              <div className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground mt-1">/ 100</div>
+                              <div className="font-mono-marker text-[10px] uppercase tracking-wider mt-1.5" style={{ color: tier.color }}>{tier.label}</div>
+                            </div>
+                          </div>
+
+                          {/* Layers + Triangle */}
+                          <div className="grid grid-cols-2 gap-5 mb-6">
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-fortified mb-2">Owned</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
+                                {(!result.layers_owned || result.layers_owned.length === 0) && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
+                              </div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mt-3 mb-2">Rented</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-accent mb-2">Defensible Triangle</p>
+                              <div className="space-y-1.5">
+                                <TriangleSide label="L1b Data" status={result.triangle?.proprietary_data || "false"} />
+                                <TriangleSide label="L5 Execution" status={result.triangle?.deep_execution || "false"} />
+                                <TriangleSide label="L8 Memory" status={result.triangle?.compounding_memory || "false"} />
+                              </div>
+                              {result.archetype && (
+                                <p className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground mt-3">Archetype: <span className="text-foreground/80">{result.archetype}</span></p>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Top roadmap moves */}
+                          {result.roadmap && (
+                            <div className="mb-5">
+                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/70 mb-3">Roadmap · top 3 prioritized moves</p>
+                              <div className="space-y-2.5">
+                                {result.roadmap.slice(0, 3).map((r, i) => (
+                                  <div key={i} className="grid grid-cols-[auto_1fr] gap-3 items-start">
+                                    <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-1.5 py-0.5 rounded border shrink-0 mt-0.5 ${prioStyle[r.priority]}`}>{r.priority}</span>
+                                    <div className="min-w-0">
+                                      <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                                        <LayerTag id={r.sublayer} variant="chip" withSublayerName />
+                                        <span className="font-mono-marker text-[9px] uppercase text-muted-foreground">{r.horizon}</span>
+                                      </div>
+                                      <p className="text-[12.5px] text-foreground/85 leading-snug">{r.move}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Top juggernaut threat */}
+                          {result.competitive_landscape?.juggernaut_moves?.[0] && (
+                            <div className="p-3 rounded border border-verdict-exposed/30 bg-verdict-exposed/[0.04]">
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mb-1">⚡ Top compression threat</p>
+                              <p className="text-[12.5px] text-foreground/90 leading-snug">
+                                <span className="font-bold">{result.competitive_landscape.juggernaut_moves[0].actor}</span> ({result.competitive_landscape.juggernaut_moves[0].timeframe}) — {result.competitive_landscape.juggernaut_moves[0].move} <span className="text-muted-foreground">[hits {result.competitive_landscape.juggernaut_moves[0].compresses}]</span>
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </ExportablePng>
+                    </div>
+                  )}
 
                   {/* Open questions */}
                   {result.open_questions && (
