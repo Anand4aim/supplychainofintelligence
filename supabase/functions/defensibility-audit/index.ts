@@ -226,7 +226,7 @@ const AUDIT_SCHEMA = {
     },
     snippet: { type: "string", description: "2-3 sentences: what to do with this verdict. Specific next move tied to a layer." },
   },
-  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
+  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
   additionalProperties: false,
 };
 
