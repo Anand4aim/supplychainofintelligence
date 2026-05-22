@@ -85,15 +85,22 @@ Deno.serve(async (req) => {
     const lovableKey = Deno.env.get("LOVABLE_API_KEY")!;
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     const supabase = createClient(supabaseUrl, serviceKey);
 
     // Optional: caller may pass a specific item_id; otherwise we pop the next queued one
     let itemId: string | null = null;
     let payload: { content?: string; title?: string } | null = null;
+    let passcode: string | null = req.headers.get("x-admin-passcode");
     if (req.method === "POST") {
       const body = await req.json().catch(() => ({}));
       itemId = body.item_id ?? null;
       payload = body.payload ?? null;
+      passcode = body.passcode ?? passcode;
+    }
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
     // Pick next item
