@@ -68,6 +68,9 @@ const Disclaimer = () => (
           </p>
         </section>
 
+        <section>
+
+
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">
             Trademarks &amp; descriptive use
           </h2>
