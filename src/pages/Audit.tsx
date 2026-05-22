@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import ExportablePng from "@/components/ExportablePng";
+import IntelligenceGrid from "@/components/IntelligenceGrid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
