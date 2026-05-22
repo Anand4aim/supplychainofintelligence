@@ -416,7 +416,7 @@ ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}
 PUBLIC RESEARCH:
 ${researchText.slice(0, 6000)}
 
-Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) Triangle. (4) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (5) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (6) 3 open questions. (7) Strategic snippet.`;
+Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy — typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents only. A company "wrapping a model" almost never gets above 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (6) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (7) 3 open questions. (8) Strategic snippet.`;
 
     const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),
