@@ -146,7 +146,8 @@ export default function RemasterAdmin() {
   }, [unlocked]);
 
   async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string; content?: string }>) {
-    const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items } });
+    const passcode = localStorage.getItem(PASSCODE_KEY) ?? "";
+    const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items, passcode } });
     if (error) return toast.error(error.message);
     if (!data?.success) return toast.error(data?.error ?? "Failed");
     toast.success(`Queued ${data.inserted} · skipped ${data.skipped}`);
@@ -156,8 +157,9 @@ export default function RemasterAdmin() {
   async function processItem(item: QueueRow) {
     setProcessing(item.id);
     try {
+      const passcode = localStorage.getItem(PASSCODE_KEY) ?? "";
       const payload = item.target_type === "live_article" ? null : getPayload(item.target_type, item.target_id);
-      const body: Record<string, unknown> = { item_id: item.id };
+      const body: Record<string, unknown> = { item_id: item.id, passcode };
       if (payload) body.payload = payload;
       const { data, error } = await supabase.functions.invoke("process-remaster-queue", { body });
       if (error) throw new Error(error.message);

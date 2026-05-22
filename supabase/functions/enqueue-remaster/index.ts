@@ -13,9 +13,15 @@ Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     const supabase = createClient(supabaseUrl, serviceKey);
 
     const body = await req.json();
+    const passcode = body?.passcode ?? req.headers.get("x-admin-passcode");
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
     const items: Array<{ target_type: string; target_id: string; target_label: string; priority?: number; notes?: string; content?: string }> = body.items ?? [];
     if (!Array.isArray(items) || items.length === 0) throw new Error("items[] required");
     for (const it of items) {

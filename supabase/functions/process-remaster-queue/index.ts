@@ -85,15 +85,22 @@ Deno.serve(async (req) => {
     const lovableKey = Deno.env.get("LOVABLE_API_KEY")!;
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     const supabase = createClient(supabaseUrl, serviceKey);
 
     // Optional: caller may pass a specific item_id; otherwise we pop the next queued one
     let itemId: string | null = null;
     let payload: { content?: string; title?: string } | null = null;
+    let passcode: string | null = req.headers.get("x-admin-passcode");
     if (req.method === "POST") {
       const body = await req.json().catch(() => ({}));
       itemId = body.item_id ?? null;
       payload = body.payload ?? null;
+      passcode = body.passcode ?? passcode;
+    }
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
     // Pick next item
@@ -117,8 +124,8 @@ Deno.serve(async (req) => {
         // Dispatch to existing in-place critic loop
         const r = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
           method: "POST",
-          headers: { Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ article_id: item.target_id }),
+          headers: { Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
+          body: JSON.stringify({ article_id: item.target_id, passcode: expected }),
         });
         const result = await r.json();
         if (!r.ok || !result.success) throw new Error(result.error ?? `refine failed (${r.status})`);

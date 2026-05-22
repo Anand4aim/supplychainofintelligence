@@ -219,9 +219,16 @@ Deno.serve(async (req) => {
     const lovableKey = Deno.env.get("LOVABLE_API_KEY");
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     if (!lovableKey || !supabaseUrl || !serviceKey) throw new Error("Missing env vars");
 
-    const { article_id } = await req.json();
+    const body = await req.json().catch(() => ({}));
+    const passcode = body?.passcode ?? req.headers.get("x-admin-passcode");
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
+    const article_id = body?.article_id;
     if (!article_id) throw new Error("article_id required");
 
     const supabase = createClient(supabaseUrl, serviceKey);

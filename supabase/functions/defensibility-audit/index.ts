@@ -381,9 +381,47 @@ function reconcile(draft: any, critic: any) {
   };
 }
 
+// --- Cost-control rate limiting (per-instance, best-effort) ---
+const RL_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RL_PER_IP_MAX = 5;            // 5 audits per IP per hour
+const RL_GLOBAL_MAX = 30;           // 30 audits per instance per hour
+const RL_CONCURRENCY_MAX = 4;       // max parallel in-flight
+const ipHits = new Map<string, number[]>();
+const globalHits: number[] = [];
+let inFlight = 0;
+
+function rateLimit(ip: string): { ok: boolean; reason?: string; retry_after?: number } {
+  const now = Date.now();
+  const cutoff = now - RL_WINDOW_MS;
+  // prune
+  for (const [k, arr] of ipHits) {
+    const kept = arr.filter((t) => t > cutoff);
+    if (kept.length) ipHits.set(k, kept); else ipHits.delete(k);
+  }
+  while (globalHits.length && globalHits[0] < cutoff) globalHits.shift();
+
+  if (inFlight >= RL_CONCURRENCY_MAX) return { ok: false, reason: "too many concurrent audits", retry_after: 30 };
+  if (globalHits.length >= RL_GLOBAL_MAX) return { ok: false, reason: "global hourly limit reached", retry_after: 600 };
+  const arr = ipHits.get(ip) ?? [];
+  if (arr.length >= RL_PER_IP_MAX) return { ok: false, reason: "per-IP hourly limit reached", retry_after: 600 };
+
+  arr.push(now); ipHits.set(ip, arr);
+  globalHits.push(now);
+  return { ok: true };
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
+    const ip = (req.headers.get("x-forwarded-for") ?? req.headers.get("cf-connecting-ip") ?? "anon").split(",")[0].trim();
+    const rl = rateLimit(ip);
+    if (!rl.ok) {
+      return new Response(JSON.stringify({ error: rl.reason }), {
+        status: 429,
+        headers: { ...corsHeaders, "Content-Type": "application/json", "Retry-After": String(rl.retry_after ?? 60) },
+      });
+    }
+    inFlight++;
     const { company, context } = await req.json();
     if (!company || typeof company !== "string" || company.trim().length < 2) {
       return new Response(JSON.stringify({ error: "company name required" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -436,5 +474,7 @@ Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evide
   } catch (e) {
     console.error("audit error", e);
     return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "unknown" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  } finally {
+    inFlight = Math.max(0, inFlight - 1);
   }
 });
