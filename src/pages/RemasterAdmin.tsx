@@ -121,12 +121,13 @@ export default function RemasterAdmin() {
   }, []);
 
   async function loadQueue() {
-    const { data } = await supabase
-      .from("remaster_queue")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(200);
-    setQueue((data ?? []) as QueueRow[]);
+    const passcode = localStorage.getItem(PASSCODE_KEY);
+    if (!passcode) return;
+    const { data, error } = await supabase.functions.invoke("admin-read", {
+      body: { passcode, resource: "remaster_queue" },
+    });
+    if (error || !data?.ok) return;
+    setQueue((data.queue ?? []) as QueueRow[]);
   }
 
   async function loadArticles() {
