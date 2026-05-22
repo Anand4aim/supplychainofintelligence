@@ -139,6 +139,11 @@ const AUDIT_SCHEMA = {
         required: ["sublayer", "why"],
       },
     },
+    sublayer_depth: {
+      type: "object",
+      description: "MAP of EVERY sublayer they touch to an integer depth 0–5. STINGY scale: 0=absent, 1=token/marketing claim, 2=real but shallow feature, 3=meaningful capability, 4=defensible at scale, 5=industry-defining ownership. Default to 0; only fill cells with real evidence. Most startups will have 3–10 non-zero cells, max one 4, rarely a 5 (reserve 5 for true incumbents like NVIDIA L0a, OpenAI L2a, Google L4a). Keys MUST be sublayer IDs (L1b, L8a, etc.).",
+      additionalProperties: { type: "integer", minimum: 0, maximum: 5 },
+    },
     triangle: {
       type: "object",
       description: "Defensible Triangle status. true = structurally present today, partial = building, false = absent.",
