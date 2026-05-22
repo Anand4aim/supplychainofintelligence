@@ -214,7 +214,31 @@ const Index = () => {
             </motion.div>
           </div>
 
-          {/* StackPosterFull moved to /posters — see Framework page footer link */}
+          {/* THE GRID — 10×5 framework, the single most shareable artifact on the site.
+              Placed here so it's the first thing below the hero. People screenshot this. */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-14"
+          >
+            <div className="mb-4 flex items-baseline justify-between gap-4 flex-wrap">
+              <div>
+                <Eyebrow className="mb-1">The Map · 10 Layers × 50 Sublayers</Eyebrow>
+                <p className="font-sketch text-sm text-muted-foreground italic">
+                  One picture. Screenshot it. Map your own company in it — blank version is free to use.
+                </p>
+              </div>
+              <div className="flex gap-3 shrink-0">
+                <Link to="/audit" className="btn-sketch text-[13px]">Score your company <ArrowRight size={14} /></Link>
+              </div>
+            </div>
+            <ExportablePng fileName="scoi-10x50-grid" caption="The Supply Chain of Intelligence — 10 × 50 grid">
+              <IntelligenceGrid mode="blank" />
+            </ExportablePng>
+          </motion.div>
+
+
 
 
           {/* Framework summary poster — the "what is this?" image people screenshot and share */}
