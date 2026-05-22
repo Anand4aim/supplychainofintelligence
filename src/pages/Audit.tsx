@@ -196,6 +196,14 @@ const AuditPage = () => {
                 <span className="font-mono-marker text-[11px] uppercase tracking-wider text-accent animate-pulse">{stage}</span>
               )}
             </div>
+            {loading && (
+              <div className="space-y-2">
+                <Progress value={progress} className="h-2" />
+                <p className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground">
+                  Usually 30–60 seconds. Keep this tab open.
+                </p>
+              </div>
+            )}
             {error && <p className="text-sm text-verdict-exposed">{error}</p>}
           </div>
         </Card>
