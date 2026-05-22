@@ -476,5 +476,7 @@ Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evide
   } catch (e) {
     console.error("audit error", e);
     return new Response(JSON.stringify({ error: e instanceof Error ? e.message : "unknown" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+  } finally {
+    inFlight = Math.max(0, inFlight - 1);
   }
 });
