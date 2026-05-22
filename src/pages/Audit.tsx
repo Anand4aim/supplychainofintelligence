@@ -94,6 +94,7 @@ const AuditPage = () => {
   const [context, setContext] = useState("");
   const [loading, setLoading] = useState(false);
   const [stage, setStage] = useState("");
+  const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [error, setError] = useState("");
 
@@ -103,11 +104,13 @@ const AuditPage = () => {
     setError("");
     setResult(null);
     setStage("Researching public footprint…");
-    // staged messaging during a single long call
+    setProgress(5);
+    // staged messaging + progress during a single long call
     const timers = [
-      setTimeout(() => setStage("Mapping to the 10 layers…"), 4500),
-      setTimeout(() => setStage("Cross-checking with a second model…"), 9000),
-      setTimeout(() => setStage("Reconciling verdicts…"), 14000),
+      setTimeout(() => { setStage("Mapping to the 10 layers…"); setProgress(28); }, 4500),
+      setTimeout(() => { setStage("Cross-checking with a second model…"); setProgress(55); }, 12000),
+      setTimeout(() => { setStage("Reconciling verdicts…"); setProgress(80); }, 22000),
+      setTimeout(() => { setStage("Almost there…"); setProgress(92); }, 35000),
     ];
     try {
       const r = await fetch(FN_URL, {
@@ -117,6 +120,7 @@ const AuditPage = () => {
       });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || "Audit failed");
+      setProgress(100);
       setResult(j);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
@@ -124,6 +128,7 @@ const AuditPage = () => {
       timers.forEach(clearTimeout);
       setLoading(false);
       setStage("");
+      setTimeout(() => setProgress(0), 600);
     }
   };
 
