@@ -361,12 +361,17 @@ ${researchText.slice(0, 6000)}
 
 Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) Triangle. (4) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (5) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (6) 3 open questions. (7) Strategic snippet.`;
 
-    const [draft, critic] = await Promise.all([
+    const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),
       callLLM("google/gemini-2.5-pro", system + "\n\nYOU ARE THE CRITIC. Be harsher than the drafter would be. Downgrade any layer claim where evidence is thin. Wrapper-at-risk is the default until proven otherwise.", userPrompt),
     ]);
-
-    const final = reconcile(draft, critic);
+    const draft = results[0].status === "fulfilled" ? results[0].value : null;
+    const critic = results[1].status === "fulfilled" ? results[1].value : null;
+    if (!draft && !critic) {
+      const reasons = results.map((r) => r.status === "rejected" ? (r.reason instanceof Error ? r.reason.message : String(r.reason)) : "ok").join(" | ");
+      throw new Error(`Both audit models failed: ${reasons}`);
+    }
+    const final = draft && critic ? reconcile(draft, critic) : reconcile(draft || critic, critic || draft);
 
     return new Response(JSON.stringify({ company: co, ...final, research_snippet: researchText.slice(0, 800) }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
