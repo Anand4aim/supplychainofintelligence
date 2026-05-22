@@ -1,40 +1,59 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle } from "lucide-react";
+import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import ExportablePng from "@/components/ExportablePng";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { SUBLAYER_LABEL } from "@/data/layers";
 
 const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/defensibility-audit`;
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean };
+type Gap = { sublayer: string; why: string };
+type Player = { name: string; collides_at: string; note: string };
+type Juggernaut = { actor: string; move: string; compresses: string; timeframe: "shipped" | "0-6mo" | "6-18mo" };
+type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string };
 type AuditResult = {
   company?: string;
+  domain?: string;
   verdict_tier: "fortress" | "tilting_fortress" | "mixed" | "exposed" | "wrapper_at_risk" | "insufficient_data";
   score: number | null;
   one_line: string;
   layers_owned?: string[];
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
+  sublayer_gaps?: Gap[];
   triangle?: { proprietary_data: string; deep_execution: string; compounding_memory: string };
   archetype?: string;
   laws_triggered?: string[];
   strengths?: string[];
   risks?: string[];
+  competitive_landscape?: { adjacent_players: Player[]; juggernaut_moves: Juggernaut[] };
+  roadmap?: RoadmapMove[];
   open_questions?: string[];
   snippet?: string;
   guidance?: string;
   research_snippet?: string;
   cross_check?: { drafter_score: number; critic_score: number; drafter_tier: string; critic_tier: string };
+};
+
+const prioStyle: Record<"P0" | "P1" | "P2", string> = {
+  P0: "bg-verdict-exposed/15 text-verdict-exposed border-verdict-exposed/40",
+  P1: "bg-accent/15 text-accent border-accent/40",
+  P2: "bg-foreground/10 text-foreground/70 border-foreground/20",
+};
+const tfStyle: Record<Juggernaut["timeframe"], string> = {
+  shipped: "bg-verdict-exposed/15 text-verdict-exposed",
+  "0-6mo": "bg-accent/15 text-accent",
+  "6-18mo": "bg-foreground/10 text-foreground/70",
 };
 
 const tierMeta: Record<AuditResult["verdict_tier"], { label: string; color: string; bg: string; icon: typeof Shield }> = {
