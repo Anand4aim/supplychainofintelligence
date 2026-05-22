@@ -5,6 +5,8 @@ import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI, OBSERVATIONS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
+import IntelligenceGrid from "@/components/IntelligenceGrid";
+import ExportablePng from "@/components/ExportablePng";
 import {
   SketchFilters,
   SketchBoard,
