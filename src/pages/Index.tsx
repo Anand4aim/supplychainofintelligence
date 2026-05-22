@@ -265,7 +265,7 @@ const Index = () => {
                 to="/audit"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-accent text-accent-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
               >
-                Map your company <ArrowRight size={14} />
+                Run the self-assessment <ArrowRight size={14} />
               </Link>
               <Link
                 to="/framework"

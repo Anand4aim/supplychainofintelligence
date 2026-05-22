@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin, Crown } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import PersonalCapacityNotice from "@/components/PersonalCapacityNotice";
 import anandPortrait from "@/assets/anand-portrait.png";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
@@ -28,7 +29,7 @@ const personSchema = {
 };
 
 const ROLES: { era: string; org: string; role: string }[] = [
-  { era: "Now", org: "Ideas2IT", role: "Enabling a startup studio (multiple AI-native companies, 0→1) + client engagements turning AI ambition into defensible product architecture" },
+  { era: "Now", org: "Ideas2IT", role: "Product leader (primary employment, separate from this site)" },
   { era: "Prior", org: "Refersion", role: "VP, Product Management" },
   { era: "Prior", org: "GRIN", role: "VP, Product Management & Advisor" },
   { era: "2016–2019", org: "Meta (Instagram & Messenger)", role: "Product Growth Leader — Messenger business platform, IG monetization" },
@@ -119,8 +120,10 @@ const AboutPage = () => (
     {/* SHORT BIO */}
     <section className="bg-background">
       <div className="max-w-3xl mx-auto px-6 py-14">
+        <PersonalCapacityNotice variant="block" className="mb-10" />
         <div className="prose prose-lg max-w-none space-y-5 text-foreground/85 text-[17px] leading-[1.85]">
           <p>
+
             I'm a product leader and architect focused on designing and scaling AI-first products — from 0→1 foundations to the
             growth systems that hold up at scale. I spent a decade shipping product across consumer and B2B SaaS,
             including three years at <strong className="text-foreground">Meta</strong> leading product and growth for
@@ -130,13 +133,12 @@ const AboutPage = () => (
             After Meta I ran product at <strong className="text-foreground">Vungle</strong>,{" "}
             <strong className="text-foreground">Pinsight Media</strong>,{" "}
             <strong className="text-foreground">GRIN</strong>, and{" "}
-            <strong className="text-foreground">Refersion</strong>. Today I'm at{" "}
-            <strong className="text-foreground">Ideas2IT</strong>, where the work splits two ways: enabling a{" "}
-            <strong className="text-foreground">startup studio</strong> incubating multiple AI-native companies from
-            zero, and partnering on <strong className="text-foreground">client engagements</strong> where established
-            teams need an architect to turn "we should do something with AI" into a defensible roadmap. Both seats keep
-            asking the same question — <em>"what does AI mean for this surface?"</em> — and the honest answer was
-            usually <em>"we don't have a framework that explains it."</em>
+            <strong className="text-foreground">Refersion</strong>. Today my primary role is at{" "}
+            <strong className="text-foreground">Ideas2IT</strong> as a product leader. Across a decade
+            of building AI-first products, the same question kept surfacing —{" "}
+            <em>"what does AI mean for this surface?"</em> — and the honest answer was usually{" "}
+            <em>"we don't have a framework that explains it."</em> So I started writing one down, on
+            evenings and weekends, as a personal project. This site is that project.
           </p>
           <p>
             JTBD told us <strong className="text-foreground">what users want</strong>. It never told us whether a model
@@ -499,30 +501,33 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* CTA STRIP */}
+    {/* READ MORE STRIP — no services, just where to read next */}
     <section className="bg-foreground text-background">
       <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
         <div>
-          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Work with the framework</p>
+          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Read & follow</p>
           <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
-            Diagnose your stack. Stress-test a portfolio. Sharpen a roadmap.
+            The framework is free. Use it, cite it, push back on it.
           </h3>
+          <p className="text-background/70 text-sm mt-2 max-w-xl">
+            No services, no consulting, no paid engagements through this site. Questions and corrections welcome on LinkedIn.
+          </p>
         </div>
         <div className="flex flex-wrap gap-3">
+          <Link
+            to="/framework"
+            className="bg-accent text-background font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-accent/90 transition-colors"
+          >
+            Read the framework <ArrowRight size={14} />
+          </Link>
           <a
             href={LINKEDIN}
             target="_blank"
             rel="noopener"
-            className="bg-accent text-background font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-accent/90 transition-colors"
-          >
-            <Linkedin size={14} /> Reach out
-          </a>
-          <Link
-            to="/for-product-leaders"
             className="border border-background/30 font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-background/10 transition-colors"
           >
-            For product leaders <ArrowRight size={14} />
-          </Link>
+            <Linkedin size={14} /> Follow on LinkedIn
+          </a>
         </div>
       </div>
     </section>

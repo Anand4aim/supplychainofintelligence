@@ -1,21 +1,22 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, AlertTriangle, Target } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertTriangle, Target, Linkedin } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import PersonalCapacityNotice from "@/components/PersonalCapacityNotice";
 import { SketchBoard, SketchUnderline } from "@/components/sketch/SketchElements";
 import VoicesStrip from "@/components/VoicesStrip";
 
 /**
- * /for-investors — packaging page for PE partners, growth investors, and boards.
+ * /for-investors — an editorial lens on AI defensibility for PE partners,
+ * growth investors, and boards.
  *
- * The homepage sells the framework. This page sells the *use*: due diligence,
- * portfolio audits, board-level AI roadmap reviews. Same IP, investor lens.
- *
- * "Board" is already used by /predictions (the prediction board), so this page
- * uses "For PE & Investors" as the route + nav label.
+ * This page is NOT a service offering. It is a public, free reading of how
+ * the 10-layer framework applies on the investor side: how to score
+ * portfolio companies, how to read defensibility, what verdicts mean.
+ * No engagements, no diligence-for-hire, no contact form.
  */
 
 const fadeIn = {
@@ -28,26 +29,26 @@ const fadeIn = {
 const USE_CASES = [
   {
     icon: Target,
-    kicker: "Pre-investment",
-    title: "AI Defensibility Due Diligence",
+    kicker: "Pre-investment read",
+    title: "AI Defensibility Diligence",
     body:
-      "Before you wire the check, score the target across all 10 layers. Find out whether you're funding a moat (L1 data + L5 workflow + L8 memory) or a wrapper that a platform release note will erase.",
+      "Before you wire the check, score the target across all 10 layers. The framework surfaces whether you're funding a moat (L1 data + L5 workflow + L8 memory) or a wrapper that a platform release note will erase. Run it on your own deals.",
     layers: ["L1", "L5", "L8"],
   },
   {
     icon: CheckCircle2,
-    kicker: "Portfolio audit",
-    title: "AI Roadmap Review (per company)",
+    kicker: "Portfolio read",
+    title: "AI Roadmap Audit",
     body:
-      "One-page scorecard per portfolio company. Audit / 40, layer-by-layer verdict, and a 90-day deepening plan. Surfaces which assets are compounding and which are about to be commoditized.",
+      "A one-page scorecard pattern per portfolio company. Audit / 40, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
     layers: ["L2", "L6", "L7"],
   },
   {
     icon: AlertTriangle,
-    kicker: "Board education",
-    title: "AI Strategy Sessions for Boards",
+    kicker: "Board read",
+    title: "AI Strategy at the Board Level",
     body:
-      "Two-hour board-level workshop. The 10 layers, the four structural laws, and where each portfolio bet sits on the map. Translates AI hype into the language of moats, margins, and capex.",
+      "The 10 layers, the structural laws, and where each portfolio bet sits on the map — the language a board needs to translate AI hype into moats, margins, and capex. The framework is public; bring it into your own board packs.",
     layers: ["L0", "L3", "L4"],
   },
 ];
@@ -61,8 +62,8 @@ const VERDICTS = [
 const ForInvestors = () => (
   <SiteLayout>
     <Seo
-      title="For PE & Investors — AI Defensibility Diligence | Supply Chain of Intelligence"
-      description="A defensibility map for AI investments. Pre-deal diligence, portfolio audits, and board-level AI strategy sessions across all 10 layers of the generative AI stack — not logistics."
+      title="For PE & Investors — An AI Defensibility Lens | Supply Chain of Intelligence"
+      description="A public, free lens for reading AI defensibility across the 10 layers of the generative AI stack — for PE partners, growth investors, and boards. Editorial, not a service offering. Not logistics."
       path="/for-investors"
     />
 
@@ -72,27 +73,25 @@ const ForInvestors = () => (
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <Eyebrow tone="accent" className="mb-4">For PE, Growth Investors &amp; Boards</Eyebrow>
           <h1 className="font-display text-[34px] md:text-[48px] font-bold text-foreground leading-[1.1] mb-5">
-            A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for your AI portfolio.
+            A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility lens</span></SketchUnderline> for your AI portfolio.
           </h1>
           <p className="text-lg text-foreground/85 leading-relaxed max-w-3xl mb-6">
             Most AI diligence still leans on TAM, growth rate, and a vibes-based read of the founder.
             That's how you end up funding a wrapper. The Supply Chain of Intelligence™ scores every AI
             product across 10 layers — compute, data, models, workflows, surfaces, memory — and tells
-            you, in one page, whether value is accruing to your company or leaking to the platform above it.
+            you, in one page, whether value is accruing to the company or leaking to the platform above it.
+            The framework is public and free. Use it on your own deals.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href="mailto:hello@supplychainofai.com?subject=AI%20Defensibility%20Diligence" className="btn-sketch">
-              Request a diligence engagement <ArrowRight size={15} />
-            </a>
-            <Link to="/framework" className="btn-sketch-outline">
-              Run the audit yourself →
+            <Link to="/audit" className="btn-sketch">
+              Run the self-assessment <ArrowRight size={15} />
             </Link>
             <Link to="/framework" className="btn-sketch-outline">
               Read the framework
             </Link>
           </div>
           <p className="text-[12px] text-muted-foreground mt-5">
-            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader, AI Product Architect, angel investor &amp; advisor.
+            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader &amp; AI Product Architect. Written in a personal capacity.
           </p>
         </motion.div>
       </div>
@@ -137,9 +136,9 @@ const ForInvestors = () => (
     <section className="bg-background border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <motion.div {...fadeIn} className="mb-10">
-          <Eyebrow className="mb-3">Engagements</Eyebrow>
+          <Eyebrow className="mb-3">Three reads</Eyebrow>
           <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight">
-            Three ways investors use the framework.
+            Three ways the framework reads on the investor side.
           </h2>
         </motion.div>
 
@@ -170,24 +169,24 @@ const ForInvestors = () => (
       </div>
     </section>
 
-    {/* WHAT YOU GET */}
+    {/* WHAT THE FRAMEWORK SURFACES */}
     <section className="bg-secondary/40 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <motion.div {...fadeIn} className="mb-8">
-          <Eyebrow className="mb-3">Deliverables</Eyebrow>
+          <Eyebrow className="mb-3">What the framework surfaces</Eyebrow>
           <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight">
-            What you walk away with.
+            What you can pull out of the public framework.
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 40 with verdict band."],
+            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 40 with verdict band. Public template on /audit."],
             ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
-            ["Platform compression risk", "Which layers above and below are about to absorb this product."],
+            ["Platform compression risk", "Which layers above and below are about to absorb a product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
-            ["Comparable mapping", "How the target sits next to 3–5 worked case studies from the corpus."], // counts-ok: range, not total
-            ["Board-ready one-pager", "Designed to drop into an IC memo or board pack as-is."],
+            ["Comparable mapping", "How a target sits next to 3–5 worked case studies in the public corpus."],
+            ["Board-ready one-pager", "Run it yourself, drop it into your own IC memo or board pack."],
           ].map(([title, body]) => (
             <div key={title} className="flex items-start gap-3 p-4 rounded-lg border border-border bg-card">
               <CheckCircle2 className="text-accent shrink-0 mt-0.5" size={18} />
@@ -207,21 +206,28 @@ const ForInvestors = () => (
     <section className="bg-background">
       <div className="max-w-3xl mx-auto px-6 py-20 md:py-24 text-center">
         <motion.div {...fadeIn}>
-          <Eyebrow tone="accent" className="mb-4 justify-center inline-flex">Start a conversation</Eyebrow>
+          <Eyebrow tone="accent" className="mb-4 justify-center inline-flex">Use it</Eyebrow>
           <h2 className="font-display text-[28px] md:text-[36px] font-bold text-foreground leading-tight mb-5">
-            Bring the map to your next deal or board meeting.
+            Bring the framework to your next deal or board meeting.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed mb-7 max-w-2xl mx-auto">
-            Diligence engagements, portfolio audits, and board sessions are scoped per firm.
-            Reach out with the company or thesis you want pressure-tested.
+            This is a public framework. Use it on your portfolio, cite it in your IC memos, link to it
+            in your decks. There are no engagements offered through this site. Questions, pushback, or
+            corrections are welcome on LinkedIn.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="mailto:hello@supplychainofai.com?subject=AI%20Defensibility%20Engagement" className="btn-sketch">
-              Email Anand <ArrowRight size={15} />
-            </a>
-            <Link to="/framework" className="btn-sketch-outline">
-              Run the self-serve audit →
+            <Link to="/audit" className="btn-sketch">
+              Run the self-assessment <ArrowRight size={15} />
             </Link>
+            <Link to="/framework" className="btn-sketch-outline">
+              Read the framework
+            </Link>
+            <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="btn-sketch-outline">
+              <Linkedin size={14} /> LinkedIn
+            </a>
+          </div>
+          <div className="mt-10 max-w-xl mx-auto text-left">
+            <PersonalCapacityNotice variant="line" />
           </div>
         </motion.div>
       </div>

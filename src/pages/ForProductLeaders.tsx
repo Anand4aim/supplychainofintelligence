@@ -111,11 +111,12 @@ const ForProductLeaders = () => (
     <section className="bg-secondary/30">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
         <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-          Map Your Company's Position
+          Run the framework on your own roadmap.
         </h2>
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
-          Use the Supply Chain of Intelligence™ to audit your roadmap, your competitive
-          position, and your structural defensibility — sublayer by sublayer.
+          Use the public Supply Chain of Intelligence™ to audit your roadmap, your competitive
+          position, and your structural defensibility — sublayer by sublayer. Free, no signup,
+          no follow-up.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           <Link to="/framework" className="btn-sketch">
