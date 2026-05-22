@@ -58,7 +58,10 @@ Cite specific products, customers, contracts, headcount, numbers when possible. 
     if (!r.ok) return { text: userContext || "", insufficient: !userContext };
     const j = await r.json();
     const text: string = j.choices?.[0]?.message?.content ?? "";
-    const insufficient = /INSUFFICIENT_PUBLIC_DATA/i.test(text) || text.trim().length < 300;
+    // Only treat as insufficient if the marker appears at the very top (first 200 chars),
+    // not anywhere in the body (Perplexity often says "this is NOT an INSUFFICIENT_PUBLIC_DATA case").
+    const head = text.trim().slice(0, 200);
+    const insufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || text.trim().length < 300;
     return { text, insufficient };
   } catch {
     return { text: userContext || "", insufficient: !userContext };
