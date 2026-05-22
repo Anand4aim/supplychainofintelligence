@@ -5,7 +5,7 @@ import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import IntelligenceCube from "@/components/IntelligenceCube";
-import { LAYERS, AUDIT_QUESTIONS, AUDIT_BANDS } from "@/data/layers";
+import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
