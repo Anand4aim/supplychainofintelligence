@@ -424,11 +424,9 @@ Deno.serve(async (req) => {
     inFlight++;
     const { company, context } = await req.json();
     if (!company || typeof company !== "string" || company.trim().length < 2) {
-      inFlight = Math.max(0, inFlight - 1);
       return new Response(JSON.stringify({ error: "company name required" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
     if (!LOVABLE_KEY) {
-      inFlight = Math.max(0, inFlight - 1);
       return new Response(JSON.stringify({ error: "AI not configured" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
