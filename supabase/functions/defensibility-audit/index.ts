@@ -336,6 +336,20 @@ function reconcile(draft: any, critic: any) {
   }
   const sublayer_gaps = Array.from(gapMap.values()).slice(0, 4);
 
+  // Sublayer depth: take the MIN of the two critics per sublayer — stingy by design.
+  // Anything only one model saw gets downgraded by 1 (with a floor of 0).
+  const sublayer_depth: Record<string, number> = {};
+  const dd = (draft.sublayer_depth || {}) as Record<string, number>;
+  const cd = (critic.sublayer_depth || {}) as Record<string, number>;
+  const allDepthKeys = new Set([...Object.keys(dd), ...Object.keys(cd)]);
+  for (const k of allDepthKeys) {
+    const a = Math.max(0, Math.min(5, Number(dd[k] ?? 0)));
+    const b = Math.max(0, Math.min(5, Number(cd[k] ?? 0)));
+    const both = dd[k] !== undefined && cd[k] !== undefined;
+    const merged = both ? Math.min(a, b) : Math.max(0, Math.max(a, b) - 1);
+    if (merged > 0) sublayer_depth[k] = merged;
+  }
+
   return {
     verdict_tier,
     score,
@@ -345,6 +359,7 @@ function reconcile(draft: any, critic: any) {
     layers_rented,
     sublayer_claims: reconciled_sublayers.sort((a, b) => conf[b.confidence] - conf[a.confidence]),
     sublayer_gaps,
+    sublayer_depth,
     triangle,
     archetype: critic.archetype || draft.archetype,
     laws_triggered: Array.from(new Set([...(draft.laws_triggered || []), ...(critic.laws_triggered || [])])),
