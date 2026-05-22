@@ -29,7 +29,7 @@ const personSchema = {
 };
 
 const ROLES: { era: string; org: string; role: string }[] = [
-  { era: "Now", org: "Ideas2IT", role: "Enabling a startup studio (multiple AI-native companies, 0→1) + client engagements turning AI ambition into defensible product architecture" },
+  { era: "Now", org: "Ideas2IT", role: "Product leader (primary employment, separate from this site)" },
   { era: "Prior", org: "Refersion", role: "VP, Product Management" },
   { era: "Prior", org: "GRIN", role: "VP, Product Management & Advisor" },
   { era: "2016–2019", org: "Meta (Instagram & Messenger)", role: "Product Growth Leader — Messenger business platform, IG monetization" },
