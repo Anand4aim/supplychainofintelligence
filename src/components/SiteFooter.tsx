@@ -69,19 +69,22 @@ const SiteFooter = () => (
         </div>
       </div>
 
-      <div className="border-t border-foreground/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px] text-foreground/50">
-        <p>© {new Date().getFullYear()} Anand Arivukkarasu</p>
-        <div className="flex items-center gap-4">
-          <Link to="/disclaimer" className="hover:text-foreground transition-colors">
-            Disclaimer
-          </Link>
-          <Link to="/terms" className="hover:text-foreground transition-colors">
-            Terms
-          </Link>
-          <Link to="/privacy" className="hover:text-foreground transition-colors">
-            Privacy
-          </Link>
-          <span>Use it, cite it, build on it — credit appreciated.</span>
+      <div className="border-t border-foreground/10 mt-10 pt-6">
+        <PersonalCapacityNotice variant="line" className="mb-4 max-w-3xl" />
+        <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px] text-foreground/50">
+          <p>© {new Date().getFullYear()} Anand Arivukkarasu</p>
+          <div className="flex items-center gap-4">
+            <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+              Disclaimer
+            </Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors">
+              Terms
+            </Link>
+            <Link to="/privacy" className="hover:text-foreground transition-colors">
+              Privacy
+            </Link>
+            <span>Use it, cite it, build on it — credit appreciated.</span>
+          </div>
         </div>
       </div>
     </div>
