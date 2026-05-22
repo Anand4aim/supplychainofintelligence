@@ -33,6 +33,7 @@ type AuditResult = {
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
   sublayer_gaps?: Gap[];
+  sublayer_depth?: Record<string, number>;
   triangle?: { proprietary_data: string; deep_execution: string; compounding_memory: string };
   archetype?: string;
   laws_triggered?: string[];
