@@ -251,18 +251,40 @@ function reconcile(draft: any, critic: any) {
     compounding_memory: triKey("compounding_memory"),
   };
 
+  // Roadmap: union, dedupe by sublayer, sort by priority
+  const prioOrder: Record<string, number> = { P0: 0, P1: 1, P2: 2 };
+  const seenSub = new Set<string>();
+  const roadmap = [...(critic.roadmap || []), ...(draft.roadmap || [])]
+    .filter((r: any) => r?.sublayer && !seenSub.has(r.sublayer) && seenSub.add(r.sublayer))
+    .sort((a: any, b: any) => (prioOrder[a.priority] ?? 9) - (prioOrder[b.priority] ?? 9))
+    .slice(0, 5);
+
+  // Sublayer gaps: union, dedupe
+  const gapMap = new Map<string, any>();
+  for (const g of [...(critic.sublayer_gaps || []), ...(draft.sublayer_gaps || [])]) {
+    if (g?.sublayer && !gapMap.has(g.sublayer)) gapMap.set(g.sublayer, g);
+  }
+  const sublayer_gaps = Array.from(gapMap.values()).slice(0, 4);
+
   return {
     verdict_tier,
     score,
     one_line: critic.one_line || draft.one_line,
+    domain: critic.domain || draft.domain,
     layers_owned,
     layers_rented,
     sublayer_claims: reconciled_sublayers.sort((a, b) => conf[b.confidence] - conf[a.confidence]),
+    sublayer_gaps,
     triangle,
     archetype: critic.archetype || draft.archetype,
     laws_triggered: Array.from(new Set([...(draft.laws_triggered || []), ...(critic.laws_triggered || [])])),
     strengths: critic.strengths || draft.strengths,
     risks: Array.from(new Set([...(draft.risks || []), ...(critic.risks || [])])).slice(0, 4),
+    competitive_landscape: {
+      adjacent_players: (critic.competitive_landscape?.adjacent_players || draft.competitive_landscape?.adjacent_players || []).slice(0, 4),
+      juggernaut_moves: (critic.competitive_landscape?.juggernaut_moves || draft.competitive_landscape?.juggernaut_moves || []).slice(0, 3),
+    },
+    roadmap,
     open_questions: critic.open_questions || draft.open_questions,
     snippet: critic.snippet || draft.snippet,
     cross_check: {
@@ -309,7 +331,7 @@ ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}
 PUBLIC RESEARCH:
 ${researchText.slice(0, 6000)}
 
-Audit this company. Map to layers + sublayers, assess the Defensible Triangle, name 3 sharp open questions, write the strategic snippet.`;
+Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) Triangle. (4) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (5) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (6) 3 open questions. (7) Strategic snippet.`;
 
     const [draft, critic] = await Promise.all([
       callLLM("openai/gpt-5-mini", system, userPrompt),
