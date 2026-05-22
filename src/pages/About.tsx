@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import { ArrowRight, Linkedin, Mic, Briefcase, Lightbulb, MapPin, Crown } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import PersonalCapacityNotice from "@/components/PersonalCapacityNotice";
 import anandPortrait from "@/assets/anand-portrait.png";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
