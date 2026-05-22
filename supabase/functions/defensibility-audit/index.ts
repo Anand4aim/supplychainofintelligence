@@ -188,25 +188,50 @@ const AUDIT_SCHEMA = {
   additionalProperties: false,
 };
 
-async function callLLM(model: string, system: string, user: string): Promise<any> {
-  const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${LOVABLE_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      tools: [{ type: "function", function: { name: "emit_audit", description: "Emit the structured defensibility audit.", parameters: AUDIT_SCHEMA } }],
-      tool_choice: { type: "function", function: { name: "emit_audit" } },
-    }),
-  });
-  if (!r.ok) {
-    const t = await r.text();
-    throw new Error(`LLM ${model} failed: ${r.status} ${t.slice(0, 200)}`);
+async function callLLMOnce(model: string, system: string, user: string, timeoutMs: number): Promise<any> {
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${LOVABLE_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+        tools: [{ type: "function", function: { name: "emit_audit", description: "Emit the structured defensibility audit.", parameters: AUDIT_SCHEMA } }],
+        tool_choice: { type: "function", function: { name: "emit_audit" } },
+      }),
+      signal: ctl.signal,
+    });
+    if (!r.ok) {
+      const tx = await r.text();
+      throw new Error(`LLM ${model} failed: ${r.status} ${tx.slice(0, 200)}`);
+    }
+    const text = await r.text(); // read as text first to avoid mid-stream JSON parse on EOF
+    const j = JSON.parse(text);
+    const call = j.choices?.[0]?.message?.tool_calls?.[0];
+    if (!call?.function?.arguments) throw new Error(`No tool call from ${model}`);
+    return JSON.parse(call.function.arguments);
+  } finally {
+    clearTimeout(t);
   }
-  const j = await r.json();
-  const call = j.choices?.[0]?.message?.tool_calls?.[0];
-  if (!call?.function?.arguments) throw new Error(`No tool call from ${model}`);
-  return JSON.parse(call.function.arguments);
+}
+
+async function callLLM(model: string, system: string, user: string): Promise<any> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await callLLMOnce(model, system, user, 110_000);
+    } catch (e) {
+      lastErr = e;
+      const msg = e instanceof Error ? e.message : String(e);
+      console.warn(`callLLM ${model} attempt ${attempt + 1} failed: ${msg}`);
+      // Only retry on transient stream/network errors
+      if (!/EOF|network|abort|timeout|fetch|stream|ECONN|terminated|502|503|504/i.test(msg)) break;
+      await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
+    }
+  }
+  throw lastErr;
 }
 
 function reconcile(draft: any, critic: any) {
