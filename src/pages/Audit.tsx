@@ -661,24 +661,36 @@ const AuditPage = () => {
         </AnimatePresence>
 
 
-        {/* How it works */}
+        {/* Blank template + How it works */}
         {!result && !loading && (
-          <div className="mt-16 pt-12 border-t border-foreground/10">
-            <Eyebrow className="mb-4">How it works</Eyebrow>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { n: "01", t: "Public research", d: "We pull public data on the company — product, customers, model dependencies, funding, integrations." },
-                { n: "02", t: "Two-model audit", d: "GPT-5-mini drafts a layer map. Gemini-2.5-pro audits the draft as the critic. Claims survive only if both confirm." },
-                { n: "03", t: "Reconciled verdict", d: "We take the lower of the two on every disagreement. The score is conservative by design — wrapper-at-risk is the default until proven otherwise." },
-              ].map((s) => (
-                <div key={s.n}>
-                  <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-2">{s.n}</p>
-                  <h3 className="font-display text-lg font-bold mb-2">{s.t}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-                </div>
-              ))}
+          <>
+            <div className="mt-16">
+              <Eyebrow className="mb-4">Or skip the form — map yourself</Eyebrow>
+              <p className="text-sm text-muted-foreground mb-5 max-w-2xl leading-relaxed">
+                We don't gate the template. Download the blank 10×5 grid, drop it into Claude or ChatGPT, and map your own company — or any company you're tracking. We're providing the framework, not the verdict.
+              </p>
+              <ExportablePng fileName="scoi-blank-grid-template" caption="Blank Supply Chain of Intelligence — map your company">
+                <IntelligenceGrid mode="blank" />
+              </ExportablePng>
             </div>
-          </div>
+
+            <div className="mt-16 pt-12 border-t border-foreground/10">
+              <Eyebrow className="mb-4">How it works</Eyebrow>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { n: "01", t: "Public research", d: "We pull public data on the company — product, customers, model dependencies, funding, integrations." },
+                  { n: "02", t: "Two-model audit", d: "GPT-5-mini drafts a layer map. Gemini-2.5-pro audits the draft as the critic. Claims survive only if both confirm." },
+                  { n: "03", t: "Reconciled verdict", d: "We take the lower of the two on every disagreement. The score is conservative by design — wrapper-at-risk is the default until proven otherwise." },
+                ].map((s) => (
+                  <div key={s.n}>
+                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-2">{s.n}</p>
+                    <h3 className="font-display text-lg font-bold mb-2">{s.t}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
         )}
       </div>
     </SiteLayout>
