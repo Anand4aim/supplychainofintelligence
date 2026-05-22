@@ -188,25 +188,50 @@ const AUDIT_SCHEMA = {
   additionalProperties: false,
 };
 
-async function callLLM(model: string, system: string, user: string): Promise<any> {
-  const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${LOVABLE_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      tools: [{ type: "function", function: { name: "emit_audit", description: "Emit the structured defensibility audit.", parameters: AUDIT_SCHEMA } }],
-      tool_choice: { type: "function", function: { name: "emit_audit" } },
-    }),
-  });
-  if (!r.ok) {
-    const t = await r.text();
-    throw new Error(`LLM ${model} failed: ${r.status} ${t.slice(0, 200)}`);
+async function callLLMOnce(model: string, system: string, user: string, timeoutMs: number): Promise<any> {
+  const ctl = new AbortController();
+  const t = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const r = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${LOVABLE_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: "system", content: system }, { role: "user", content: user }],
+        tools: [{ type: "function", function: { name: "emit_audit", description: "Emit the structured defensibility audit.", parameters: AUDIT_SCHEMA } }],
+        tool_choice: { type: "function", function: { name: "emit_audit" } },
+      }),
+      signal: ctl.signal,
+    });
+    if (!r.ok) {
+      const tx = await r.text();
+      throw new Error(`LLM ${model} failed: ${r.status} ${tx.slice(0, 200)}`);
+    }
+    const text = await r.text(); // read as text first to avoid mid-stream JSON parse on EOF
+    const j = JSON.parse(text);
+    const call = j.choices?.[0]?.message?.tool_calls?.[0];
+    if (!call?.function?.arguments) throw new Error(`No tool call from ${model}`);
+    return JSON.parse(call.function.arguments);
+  } finally {
+    clearTimeout(t);
   }
-  const j = await r.json();
-  const call = j.choices?.[0]?.message?.tool_calls?.[0];
-  if (!call?.function?.arguments) throw new Error(`No tool call from ${model}`);
-  return JSON.parse(call.function.arguments);
+}
+
+async function callLLM(model: string, system: string, user: string): Promise<any> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await callLLMOnce(model, system, user, 110_000);
+    } catch (e) {
+      lastErr = e;
+      const msg = e instanceof Error ? e.message : String(e);
+      console.warn(`callLLM ${model} attempt ${attempt + 1} failed: ${msg}`);
+      // Only retry on transient stream/network errors
+      if (!/EOF|network|abort|timeout|fetch|stream|ECONN|terminated|502|503|504/i.test(msg)) break;
+      await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
+    }
+  }
+  throw lastErr;
 }
 
 function reconcile(draft: any, critic: any) {
@@ -336,12 +361,17 @@ ${researchText.slice(0, 6000)}
 
 Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) Triangle. (4) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (5) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (6) 3 open questions. (7) Strategic snippet.`;
 
-    const [draft, critic] = await Promise.all([
+    const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),
       callLLM("google/gemini-2.5-pro", system + "\n\nYOU ARE THE CRITIC. Be harsher than the drafter would be. Downgrade any layer claim where evidence is thin. Wrapper-at-risk is the default until proven otherwise.", userPrompt),
     ]);
-
-    const final = reconcile(draft, critic);
+    const draft = results[0].status === "fulfilled" ? results[0].value : null;
+    const critic = results[1].status === "fulfilled" ? results[1].value : null;
+    if (!draft && !critic) {
+      const reasons = results.map((r) => r.status === "rejected" ? (r.reason instanceof Error ? r.reason.message : String(r.reason)) : "ok").join(" | ");
+      throw new Error(`Both audit models failed: ${reasons}`);
+    }
+    const final = draft && critic ? reconcile(draft, critic) : reconcile(draft || critic, critic || draft);
 
     return new Response(JSON.stringify({ company: co, ...final, research_snippet: researchText.slice(0, 800) }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
