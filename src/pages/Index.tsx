@@ -9,6 +9,7 @@ import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import ExportablePng from "@/components/ExportablePng";
 import FrameworkSummaryPoster from "@/components/posters/FrameworkSummaryPoster";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
 import FrameworkApplied from "@/components/FrameworkApplied";
