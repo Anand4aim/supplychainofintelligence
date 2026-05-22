@@ -107,23 +107,29 @@ export default function AuditAdmin() {
   }, []);
 
   async function loadAll() {
-    const [{ data: r }, { data: a }] = await Promise.all([
-      supabase.from("audit_runs").select("*").order("started_at", { ascending: false }).limit(20),
-      supabase.from("live_articles").select("id,slug,headline,verdict,analysis").eq("status","published").order("published_at",{ascending:false}),
+    const code = passcode || localStorage.getItem(PASSCODE_KEY) || "";
+    if (!code) return;
+    const [{ data: rd }, { data: ad }] = await Promise.all([
+      supabase.functions.invoke("admin-read", { body: { passcode: code, resource: "audit_runs" } }),
+      supabase.functions.invoke("admin-read", { body: { passcode: code, resource: "live_articles_admin" } }),
     ]);
-    setRuns((r ?? []) as AuditRun[]);
-    setArticles((a ?? []) as Article[]);
-    if (!activeRunId && r && r.length) setActiveRunId(r[0].id);
+    const r = rd?.ok ? (rd.runs ?? []) : [];
+    const a = ad?.ok ? (ad.articles ?? []) : [];
+    setRuns(r as AuditRun[]);
+    setArticles(a as Article[]);
+    if (!activeRunId && r.length) setActiveRunId(r[0].id);
   }
 
   async function loadRunData(runId: string) {
     if (!runId) return;
-    const [{ data: au }, { data: su }] = await Promise.all([
-      supabase.from("article_audits").select("*").eq("run_id", runId).order("created_at",{ascending:false}),
-      supabase.from("article_audit_summary").select("*").eq("run_id", runId),
-    ]);
-    setAudits((au ?? []) as unknown as AuditRow[]);
-    setSummaries((su ?? []) as unknown as SummaryRow[]);
+    const code = passcode || localStorage.getItem(PASSCODE_KEY) || "";
+    if (!code) return;
+    const { data, error } = await supabase.functions.invoke("admin-read", {
+      body: { passcode: code, resource: "run_data", run_id: runId },
+    });
+    if (error || !data?.ok) return;
+    setAudits((data.audits ?? []) as unknown as AuditRow[]);
+    setSummaries((data.summaries ?? []) as unknown as SummaryRow[]);
   }
 
   useEffect(() => { if (unlocked) loadAll(); }, [unlocked]);
