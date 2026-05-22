@@ -502,30 +502,33 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* CTA STRIP */}
+    {/* READ MORE STRIP — no services, just where to read next */}
     <section className="bg-foreground text-background">
       <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
         <div>
-          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Work with the framework</p>
+          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Read & follow</p>
           <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
-            Diagnose your stack. Stress-test a portfolio. Sharpen a roadmap.
+            The framework is free. Use it, cite it, push back on it.
           </h3>
+          <p className="text-background/70 text-sm mt-2 max-w-xl">
+            No services, no consulting, no paid engagements through this site. Questions and corrections welcome on LinkedIn.
+          </p>
         </div>
         <div className="flex flex-wrap gap-3">
+          <Link
+            to="/framework"
+            className="bg-accent text-background font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-accent/90 transition-colors"
+          >
+            Read the framework <ArrowRight size={14} />
+          </Link>
           <a
             href={LINKEDIN}
             target="_blank"
             rel="noopener"
-            className="bg-accent text-background font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-accent/90 transition-colors"
-          >
-            <Linkedin size={14} /> Reach out
-          </a>
-          <Link
-            to="/for-product-leaders"
             className="border border-background/30 font-sketch font-bold px-5 py-2.5 rounded-md inline-flex items-center gap-2 hover:bg-background/10 transition-colors"
           >
-            For product leaders <ArrowRight size={14} />
-          </Link>
+            <Linkedin size={14} /> Follow on LinkedIn
+          </a>
         </div>
       </div>
     </section>
