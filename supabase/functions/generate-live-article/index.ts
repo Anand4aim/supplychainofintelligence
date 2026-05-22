@@ -281,8 +281,8 @@ Deno.serve(async (req) => {
     try {
       const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
         method: "POST",
-        headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ article_id: inserted.id }),
+        headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
+        body: JSON.stringify({ article_id: inserted.id, passcode: expected }),
       });
       refineStatus = await refineRes.json();
       console.log("[live-article] refine result:", JSON.stringify(refineStatus));
