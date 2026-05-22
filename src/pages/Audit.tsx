@@ -312,6 +312,26 @@ const AuditPage = () => {
                     </Card>
                   </div>
 
+                  {/* The Map — 10×5 grid with depth dots. Most shareable artifact. */}
+                  {result.sublayer_depth && Object.keys(result.sublayer_depth).length > 0 && (
+                    <div>
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">
+                        The map · where {result.company} plays on the 10-layer stack
+                      </p>
+                      <ExportablePng
+                        fileName={`scoi-grid-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                        caption={`${result.company} on the Supply Chain of Intelligence`}
+                      >
+                        <IntelligenceGrid
+                          mode="audit"
+                          sublayerDepth={result.sublayer_depth}
+                          title={`${result.company} — depth across the 10 layers`}
+                          subtitle={result.domain || undefined}
+                        />
+                      </ExportablePng>
+                    </div>
+                  )}
+
                   {/* Simple Owns / Rents / Compressed-by map */}
                   <Card className="p-5">
                     <div className="grid sm:grid-cols-3 gap-4">
