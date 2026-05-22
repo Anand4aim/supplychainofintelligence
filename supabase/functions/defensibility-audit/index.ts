@@ -139,6 +139,11 @@ const AUDIT_SCHEMA = {
         required: ["sublayer", "why"],
       },
     },
+    sublayer_depth: {
+      type: "object",
+      description: "MAP of EVERY sublayer they touch to an integer depth 0–5. STINGY scale: 0=absent, 1=token/marketing claim, 2=real but shallow feature, 3=meaningful capability, 4=defensible at scale, 5=industry-defining ownership. Default to 0; only fill cells with real evidence. Most startups will have 3–10 non-zero cells, max one 4, rarely a 5 (reserve 5 for true incumbents like NVIDIA L0a, OpenAI L2a, Google L4a). Keys MUST be sublayer IDs (L1b, L8a, etc.).",
+      additionalProperties: { type: "integer", minimum: 0, maximum: 5 },
+    },
     triangle: {
       type: "object",
       description: "Defensible Triangle status. true = structurally present today, partial = building, false = absent.",
@@ -221,7 +226,7 @@ const AUDIT_SCHEMA = {
     },
     snippet: { type: "string", description: "2-3 sentences: what to do with this verdict. Specific next move tied to a layer." },
   },
-  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
+  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
   additionalProperties: false,
 };
 
@@ -331,6 +336,20 @@ function reconcile(draft: any, critic: any) {
   }
   const sublayer_gaps = Array.from(gapMap.values()).slice(0, 4);
 
+  // Sublayer depth: take the MIN of the two critics per sublayer — stingy by design.
+  // Anything only one model saw gets downgraded by 1 (with a floor of 0).
+  const sublayer_depth: Record<string, number> = {};
+  const dd = (draft.sublayer_depth || {}) as Record<string, number>;
+  const cd = (critic.sublayer_depth || {}) as Record<string, number>;
+  const allDepthKeys = new Set([...Object.keys(dd), ...Object.keys(cd)]);
+  for (const k of allDepthKeys) {
+    const a = Math.max(0, Math.min(5, Number(dd[k] ?? 0)));
+    const b = Math.max(0, Math.min(5, Number(cd[k] ?? 0)));
+    const both = dd[k] !== undefined && cd[k] !== undefined;
+    const merged = both ? Math.min(a, b) : Math.max(0, Math.max(a, b) - 1);
+    if (merged > 0) sublayer_depth[k] = merged;
+  }
+
   return {
     verdict_tier,
     score,
@@ -340,6 +359,7 @@ function reconcile(draft: any, critic: any) {
     layers_rented,
     sublayer_claims: reconciled_sublayers.sort((a, b) => conf[b.confidence] - conf[a.confidence]),
     sublayer_gaps,
+    sublayer_depth,
     triangle,
     archetype: critic.archetype || draft.archetype,
     laws_triggered: Array.from(new Set([...(draft.laws_triggered || []), ...(critic.laws_triggered || [])])),
@@ -396,7 +416,7 @@ ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}
 PUBLIC RESEARCH:
 ${researchText.slice(0, 6000)}
 
-Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) Triangle. (4) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (5) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (6) 3 open questions. (7) Strategic snippet.`;
+Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy — typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents only. A company "wrapping a model" almost never gets above 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (6) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (7) 3 open questions. (8) Strategic snippet.`;
 
     const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),

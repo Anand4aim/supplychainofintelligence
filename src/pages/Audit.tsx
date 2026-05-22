@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import ExportablePng from "@/components/ExportablePng";
+import IntelligenceGrid from "@/components/IntelligenceGrid";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,6 +33,7 @@ type AuditResult = {
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
   sublayer_gaps?: Gap[];
+  sublayer_depth?: Record<string, number>;
   triangle?: { proprietary_data: string; deep_execution: string; compounding_memory: string };
   archetype?: string;
   laws_triggered?: string[];
@@ -257,6 +259,12 @@ const AuditPage = () => {
                 </div>
               </Card>
 
+              {/* Honesty banner — sets expectations before they share */}
+              <div className="text-[11px] font-mono-marker uppercase tracking-[0.12em] text-muted-foreground -mt-2 px-1">
+                Mapped from user-provided inputs + public footprint. Not verified. Not an endorsement. You can push back or remap in Claude/ChatGPT with the blank template below.
+              </div>
+
+
               {/* Insufficient data branch */}
               {result.verdict_tier === "insufficient_data" && result.guidance && (
                 <Card className="p-6 border-dashed">
@@ -303,6 +311,26 @@ const AuditPage = () => {
                       ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                   </div>
+
+                  {/* The Map — 10×5 grid with depth dots. Most shareable artifact. */}
+                  {result.sublayer_depth && Object.keys(result.sublayer_depth).length > 0 && (
+                    <div>
+                      <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-3">
+                        The map · where {result.company} plays on the 10-layer stack
+                      </p>
+                      <ExportablePng
+                        fileName={`scoi-grid-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                        caption={`${result.company} on the Supply Chain of Intelligence`}
+                      >
+                        <IntelligenceGrid
+                          mode="audit"
+                          sublayerDepth={result.sublayer_depth}
+                          title={`${result.company} — depth across the 10 layers`}
+                          subtitle={result.domain || undefined}
+                        />
+                      </ExportablePng>
+                    </div>
+                  )}
 
                   {/* Simple Owns / Rents / Compressed-by map */}
                   <Card className="p-5">
@@ -633,24 +661,36 @@ const AuditPage = () => {
         </AnimatePresence>
 
 
-        {/* How it works */}
+        {/* Blank template + How it works */}
         {!result && !loading && (
-          <div className="mt-16 pt-12 border-t border-foreground/10">
-            <Eyebrow className="mb-4">How it works</Eyebrow>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { n: "01", t: "Public research", d: "We pull public data on the company — product, customers, model dependencies, funding, integrations." },
-                { n: "02", t: "Two-model audit", d: "GPT-5-mini drafts a layer map. Gemini-2.5-pro audits the draft as the critic. Claims survive only if both confirm." },
-                { n: "03", t: "Reconciled verdict", d: "We take the lower of the two on every disagreement. The score is conservative by design — wrapper-at-risk is the default until proven otherwise." },
-              ].map((s) => (
-                <div key={s.n}>
-                  <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-2">{s.n}</p>
-                  <h3 className="font-display text-lg font-bold mb-2">{s.t}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-                </div>
-              ))}
+          <>
+            <div className="mt-16">
+              <Eyebrow className="mb-4">Or skip the form — map yourself</Eyebrow>
+              <p className="text-sm text-muted-foreground mb-5 max-w-2xl leading-relaxed">
+                We don't gate the template. Download the blank 10×5 grid, drop it into Claude or ChatGPT, and map your own company — or any company you're tracking. We're providing the framework, not the verdict.
+              </p>
+              <ExportablePng fileName="scoi-blank-grid-template" caption="Blank Supply Chain of Intelligence — map your company">
+                <IntelligenceGrid mode="blank" />
+              </ExportablePng>
             </div>
-          </div>
+
+            <div className="mt-16 pt-12 border-t border-foreground/10">
+              <Eyebrow className="mb-4">How it works</Eyebrow>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { n: "01", t: "Public research", d: "We pull public data on the company — product, customers, model dependencies, funding, integrations." },
+                  { n: "02", t: "Two-model audit", d: "GPT-5-mini drafts a layer map. Gemini-2.5-pro audits the draft as the critic. Claims survive only if both confirm." },
+                  { n: "03", t: "Reconciled verdict", d: "We take the lower of the two on every disagreement. The score is conservative by design — wrapper-at-risk is the default until proven otherwise." },
+                ].map((s) => (
+                  <div key={s.n}>
+                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-2">{s.n}</p>
+                    <h3 className="font-display text-lg font-bold mb-2">{s.t}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
         )}
       </div>
     </SiteLayout>
