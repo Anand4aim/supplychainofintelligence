@@ -54,7 +54,7 @@ const FOR_AUDIENCE: Faq[] = [
   {
     q: "What does an investor get out of it?",
     a:
-      "The Defensibility Audit — an 8-question scorecard derived from the framework — that separates structural moats (proprietary data, workflow lock-in, distribution, memory, compliance) " +
+      "The Defensibility Audit — a layer-by-layer scorecard derived from the framework — that separates structural moats (proprietary data, workflow lock-in, distribution, memory, compliance) " +
       "from rented capabilities that disappear the moment the underlying model ships the same loop. Used to pressure-test AI investments before and after term sheet.",
   },
   {
