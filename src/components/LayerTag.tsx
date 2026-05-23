@@ -87,19 +87,16 @@ const LayerTag: React.FC<Props> = ({
     default:
       content = (
         <span
-          className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs font-bold whitespace-nowrap ${className}`}
+          className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs font-bold max-w-full ${className}`}
           style={{
             background: `hsl(var(${cssVar}) / 0.12)`,
             color,
             border: `1px solid hsl(var(${cssVar}) / 0.3)`,
           }}
-          title={full ? showName : LAYER_LABEL[parentId]}
+          title={isSub && subName ? `${displayId} ${subName}` : LAYER_LABEL[parentId]}
         >
-          <span>{displayId}</span>
-          <span className="font-semibold opacity-90">{showName}</span>
-          {isSub && withSublayerName && subName && (
-            <span className="font-normal opacity-70">· {subName}</span>
-          )}
+          <span className="shrink-0">{displayId}</span>
+          <span className="font-semibold opacity-90 break-words leading-tight">{showName}</span>
         </span>
       );
   }
