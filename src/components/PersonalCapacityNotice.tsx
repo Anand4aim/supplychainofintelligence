@@ -18,10 +18,13 @@ const PersonalCapacityNotice = ({ variant = "line", className = "" }: Props) => 
           A personal project · a give-back to the community
         </p>
         <p>
-          I built this on evenings and weekends because the frameworks I lean on — JTBD, Wardley Maps, Christensen — were all given away freely by their authors. This is my contribution back. Everything here is <strong className="text-foreground">free, open, and meant to be used, cited, argued with, and improved</strong>.
+          JTBD, Wardley Maps, and Christensen's work were all given away freely by their authors. 
+          This framework is mine. It is <strong className="text-foreground">free, open, and meant to be used, cited, argued with, and improved</strong>.
         </p>
         <p className="mt-2">
-          I have a day job (see the <Link to="/about" className="text-accent hover:underline">About</Link> page) — this site is entirely separate from that. These are my own views, not my employer's. I don't offer consulting, advisory, or any paid engagements through this site.
+          I have a day job (see the <Link to="/about" className="text-accent hover:underline">About</Link> page). 
+          This site is entirely separate. These are my own views, not my employer's. 
+          I don't offer consulting or paid engagements here.
         </p>
         <p className="mt-2 text-[13px] text-muted-foreground">
           See the full{" "}
