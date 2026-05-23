@@ -156,11 +156,14 @@ const ForInvestors = () => (
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     {u.body}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {u.layers.map((l) => (
                       <LayerTag key={l} id={l} />
                     ))}
                   </div>
+                  <Link to="/audit" className="text-[12px] font-mono-marker tracking-[0.14em] uppercase text-accent hover:underline inline-flex items-center gap-1">
+                    Run the audit <ArrowRight size={13} />
+                  </Link>
                 </SketchBoard>
               </motion.div>
             );
