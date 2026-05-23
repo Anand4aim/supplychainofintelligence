@@ -185,7 +185,7 @@ const ForInvestors = () => (
             ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
             ["Platform compression risk", "Which layers above and below are about to absorb a product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
-            ["Comparable mapping", "How a target sits next to 3–5 worked case studies in the public corpus."],
+            ["Comparable mapping", "How a target sits next to the 23 worked case studies in the public corpus."],
             ["Board-ready one-pager", "Run it yourself, drop it into your own IC memo or board pack."],
           ].map(([title, body]) => (
             <div key={title} className="flex items-start gap-3 p-4 rounded-lg border border-border bg-card">
