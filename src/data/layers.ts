@@ -350,7 +350,7 @@ export const OBSERVATIONS: Observation[] = [
 
 
 // ─── AI Defensibility Audit ─────────────────────────────────────────
-// A simple 8-question scorecard. Score each 1–5. Total / 40 → band.
+// Reference scorecard. The live /audit page scores 0–100 via the model run.
 export interface AuditQuestion {
   area: string;
   question: string;
@@ -376,11 +376,11 @@ export interface AuditBand {
 }
 
 export const AUDIT_BANDS: AuditBand[] = [
-  { range: "8–16",  label: "Thin Wrapper",            verdict: "Generic model + thin UI. The platform will absorb you.",          color: "var(--verdict-exposed)" },
-  { range: "17–24", label: "Useful Tool, Weak Moat",  verdict: "Real utility, but no structural protection. Time-bound.",         color: "var(--verdict-consolidating)" },
-  { range: "25–30", label: "Workflow Product",        verdict: "Embedded in a workflow. Survivable, but watch the platforms.",    color: "var(--accent)" },
-  { range: "31–36", label: "Defensible AI System",    verdict: "Owns multiple layers. The chain is yours, not rented.",            color: "var(--verdict-fortified)" },
-  { range: "37–40", label: "Intelligence Gate",       verdict: "Platform candidate. You are the bottleneck others must cross.",   color: "var(--verdict-dominant)" },
+  { range: "0–20",   label: "Thin Wrapper",            verdict: "Generic model + thin UI. The platform will absorb you.",          color: "var(--verdict-exposed)" },
+  { range: "21–40",  label: "Useful Tool, Weak Moat",  verdict: "Real utility, but no structural protection. Time-bound.",         color: "var(--verdict-consolidating)" },
+  { range: "41–60",  label: "Workflow Product",        verdict: "Embedded in a workflow. Survivable, but watch the platforms.",    color: "var(--accent)" },
+  { range: "61–80",  label: "Defensible AI System",    verdict: "Owns multiple layers. The chain is yours, not rented.",            color: "var(--verdict-fortified)" },
+  { range: "81–100", label: "Intelligence Gate",       verdict: "Platform candidate. You are the bottleneck others must cross.",   color: "var(--verdict-dominant)" },
 ];
 
 // ─── JTBD vs Supply Chain of Intelligence ───────────────────────────
