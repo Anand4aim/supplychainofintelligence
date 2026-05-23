@@ -27,42 +27,15 @@ const Disclaimer = () => (
       <div className="mt-10 space-y-6 text-[15.5px] text-foreground/80 leading-relaxed">
         <section>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">
-            A personal project · a give-back to the community
+            About this site
           </h2>
           <p>
-            This site is built and written by{" "}
-            <strong className="text-foreground">Anand Arivukkarasu</strong> on
-            personal time, as a voluntary contribution to the product community.
-            It reflects my own views and is separate from my primary employment.
-          </p>
-          <p className="mt-3">
-            I don't offer products, consulting, advisory, diligence, or any paid
-            services through this site. Every page — the framework, the
-            self-assessment, the predictions, the live feed, the case studies, the
-            posters, the newsletter — is{" "}
-            <em>free, public, and editorial</em>. There are no sponsorships, no paid
-            placements, no lead capture for services, and no contact form for
-            engagement requests. Questions, corrections, and pushback are welcome on{" "}
-            <a
-              href="https://www.linkedin.com/in/anandarivu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              LinkedIn
-            </a>
-            .
-          </p>
-          <p className="mt-3">
-            My primary employment is held separately from this site and is
-            disclosed on the{" "}
-            <Link to="/about" className="text-accent hover:underline">
-              About
-            </Link>{" "}
-            page. Nothing here should be read as work performed for, on behalf of,
-            or in service to any third party.
+            Written by <strong className="text-foreground">Anand Arivukkarasu</strong> as
+            personal thinking, shared freely. Views are my own. Roles and background are on the{" "}
+            <Link to="/about" className="text-accent hover:underline">About</Link> page.
           </p>
         </section>
+
 
         <section>
 

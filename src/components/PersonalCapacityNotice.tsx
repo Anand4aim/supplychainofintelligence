@@ -15,14 +15,14 @@ const PersonalCapacityNotice = ({ variant = "line", className = "" }: Props) => 
     return (
       <div className={`rounded-lg border border-border bg-secondary/40 p-5 text-[14px] leading-relaxed text-foreground/80 ${className}`}>
         <p className="font-mono-marker text-[10px] uppercase tracking-[0.16em] text-accent mb-2">
-          My mind mapping and thinking · a give-back to the community
+          Mind mapping, shared freely
         </p>
         <p>
-          JTBD, Wardley Maps, and Christensen's work were all given away freely by their authors.
-          This framework is mine. It is <strong className="text-foreground">free, open, and meant to be used, cited, argued with, and improved</strong>.
+          JTBD, Wardley Maps, and Christensen's work were given away by their authors.
+          This framework is mine, in the same spirit — <strong className="text-foreground">free to use, cite, argue with, and improve</strong>.
         </p>
         <p className="mt-2 text-[13px] text-muted-foreground">
-          See the full{" "}
+          More on the{" "}
           <Link to="/disclaimer" className="text-accent hover:underline">
             disclaimer
           </Link>
@@ -34,13 +34,13 @@ const PersonalCapacityNotice = ({ variant = "line", className = "" }: Props) => 
 
   return (
     <p className={`text-[11px] leading-relaxed text-foreground/55 ${className}`}>
-      Built by Anand Arivukkarasu as a personal project and give-back to the product community.
-      Free to use, cite, and build on. My own views, not my employer's. No paid services offered here.{" "}
+      Personal thinking by Anand Arivukkarasu, shared freely. Views are my own.{" "}
       <Link to="/disclaimer" className="hover:text-foreground underline-offset-2 hover:underline">
-        Full disclaimer →
+        Disclaimer →
       </Link>
     </p>
   );
 };
+
 
 export default PersonalCapacityNotice;
