@@ -80,7 +80,6 @@ const ForInvestors = () => (
             That's how you end up funding a wrapper. The Supply Chain of Intelligence™ scores every AI
             product across 10 layers — compute, data, models, workflows, surfaces, memory — and tells
             you, in one page, whether value is accruing to the company or leaking to the platform above it.
-            The framework is public and free. Use it on your own deals.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/audit" className="btn-sketch">
@@ -214,9 +213,8 @@ const ForInvestors = () => (
             Bring the framework to your next deal or board meeting.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed mb-7 max-w-2xl mx-auto">
-            This is a public framework. Use it on your portfolio, cite it in your IC memos, link to it
-            in your decks. There are no engagements offered through this site. Questions, pushback, or
-            corrections are welcome on LinkedIn.
+            Use it on your portfolio, cite it in your IC memos, link to it in your decks. Questions,
+            pushback, or corrections are welcome on LinkedIn.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/audit" className="btn-sketch">
