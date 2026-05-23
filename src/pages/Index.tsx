@@ -77,7 +77,7 @@ const Index = () => {
                 The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
               </p>
               <p className="text-[13px] text-foreground/60 leading-relaxed mb-4 max-w-lg">
-                A give-back to the product community. No signups, no sales, no services — just the framework, the audit, and the live analysis, open for anyone to use, cite, and build on.
+                The framework, the audit, and the live analysis — free to use, cite, and build on.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/audit" className="btn-sketch">
