@@ -341,6 +341,32 @@ const AuditPage = () => {
               {/* Full audit */}
               {result.verdict_tier !== "insufficient_data" && (
                 <>
+                  {/* THE AHA — one sentence of structural surprise. Highest-signal element. */}
+                  {result.aha && (
+                    <Card className="p-5 border-2 border-accent/50 bg-accent/[0.05]">
+                      <div className="flex items-start gap-3">
+                        <Sparkles size={18} className="text-accent shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1.5">The aha</p>
+                          <p className="text-[15px] md:text-base text-foreground/95 leading-relaxed font-medium">{result.aha}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  )}
+
+                  {/* COUNTER-THESIS — what would make this audit wrong */}
+                  {result.counter_thesis && (
+                    <Card className="p-5 border border-dashed border-foreground/30 bg-foreground/[0.02]">
+                      <div className="flex items-start gap-3">
+                        <Scale size={16} className="text-foreground/60 shrink-0 mt-1" />
+                        <div>
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-foreground/60 mb-1.5">Counter-thesis · what would make this read wrong</p>
+                          <p className="text-[14px] text-foreground/85 leading-relaxed">{result.counter_thesis}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  )}
+
                   {/* EXECUTIVE VERDICT — read in 15 seconds */}
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <Card className="p-4">
