@@ -116,7 +116,7 @@ const ForProductLeaders = () => (
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
           Use the public Supply Chain of Intelligence™ to audit your roadmap, your competitive
           position, and your structural defensibility — sublayer by sublayer. Free, no signup,
-          no follow-up. A give-back to the product community.
+          no follow-up.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           <Link to="/framework" className="btn-sketch">

@@ -80,7 +80,7 @@ const Posters = () => (
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
           The stack, the laws, the archetypes, the dynamics — every poster downloads as a watermarked PNG or PDF.
-          Use them in decks, on LinkedIn, on your wall. Citation-ready, no signup. A give-back to the product community.
+          Use them in decks, on LinkedIn, on your wall. Citation-ready, no signup.
         </p>
         <Link
           to="/framework"
