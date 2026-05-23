@@ -97,12 +97,38 @@ const TriangleSide = ({ label, status }: { label: string; status: string }) => {
 const ConfidenceDots = ({ c }: { c: "high" | "medium" | "low" }) => {
   const n = c === "high" ? 3 : c === "medium" ? 2 : 1;
   return (
-    <div className="inline-flex gap-0.5">
+    <div className="inline-flex gap-0.5" title={`${c} confidence`}>
       {[1, 2, 3].map((i) => (
         <span key={i} className={`w-1.5 h-1.5 rounded-full ${i <= n ? "bg-accent" : "bg-foreground/15"}`} />
       ))}
     </div>
   );
+};
+
+const ProvenanceTag = ({ p }: { p?: Provenance }) => {
+  if (!p) return null;
+  const meta: Record<Provenance, { Icon: typeof FileSearch; label: string; color: string }> = {
+    evidence:   { Icon: FileSearch, label: "Evidence",   color: "text-verdict-fortified" },
+    inference:  { Icon: Brain,      label: "Inference",  color: "text-foreground/60" },
+    assumption: { Icon: HelpingHand, label: "Assumption", color: "text-verdict-exposed" },
+  };
+  const { Icon, label, color } = meta[p];
+  return (
+    <span className={`inline-flex items-center gap-1 font-mono-marker text-[9px] uppercase tracking-wider ${color}`} title={`Provenance: ${label}`}>
+      <Icon size={10} /> {label}
+    </span>
+  );
+};
+
+const tierBandLabel = (tier: AuditResult["verdict_tier"]) => {
+  switch (tier) {
+    case "fortress": return "Fortress";
+    case "tilting_fortress": return "Tilting";
+    case "mixed": return "Mixed";
+    case "exposed": return "Exposed";
+    case "wrapper_at_risk": return "Wrapper";
+    default: return "—";
+  }
 };
 
 const AuditPage = () => {
