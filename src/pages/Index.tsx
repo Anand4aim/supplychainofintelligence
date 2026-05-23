@@ -19,7 +19,7 @@ import {
   SketchBoard,
   SketchUnderline,
 } from "@/components/sketch/SketchElements";
-import SixtySecondTour from "@/components/SixtySecondTour";
+
 import Eyebrow from "@/components/Eyebrow";
 import VoicesStrip from "@/components/VoicesStrip";
 import StartHereStrip from "@/components/StartHereStrip";
@@ -52,7 +52,6 @@ const Index = () => {
       />
 
       <SketchFilters />
-      <SixtySecondTour />
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative bg-background overflow-hidden">
