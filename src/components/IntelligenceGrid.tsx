@@ -87,9 +87,24 @@ const IntelligenceGrid = ({
           )}
         </div>
         <div className="hidden md:block text-right shrink-0">
-          <p className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
-            {mode === "audit" ? "0–5 dots = depth in that sublayer" : "Blank template · SCoAI"}
-          </p>
+          {mode === "audit" ? (
+            <div className="flex items-center gap-2 justify-end">
+              <div className="flex items-center gap-[5px]">
+                <span className="w-2.5 h-2.5 rounded-full bg-foreground/80 shadow-sm" />
+                <span className="w-2.5 h-2.5 rounded-full bg-foreground/80 shadow-sm" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+              </div>
+              <span className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
+                Depth · out of 5
+              </span>
+            </div>
+          ) : (
+            <p className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
+              Blank template · SCoAI
+            </p>
+          )}
           <p className="font-sketch text-[11px] italic text-muted-foreground mt-0.5">
             Not logistics. The AI stack.
           </p>
