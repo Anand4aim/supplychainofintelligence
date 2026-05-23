@@ -333,50 +333,59 @@ const AuditPage = () => {
                   )}
 
                   {/* Sublayer-level Owns / Partial / Rents map. Derived from sublayer_depth so
-                      we never overclaim a whole layer when the company only touches a few cells. */}
+                      we never overclaim a whole layer when the company only touches a few cells.
+                      Downloadable so customers can paste into a deck. */}
                   {(() => {
                     const depth = result.sublayer_depth || {};
                     const entries = Object.entries(depth).filter(([, v]) => v > 0);
                     const owns = entries.filter(([, v]) => v >= 3).sort((a, b) => b[1] - a[1]).map(([k]) => k);
                     const partial = entries.filter(([, v]) => v >= 1 && v <= 2).sort((a, b) => b[1] - a[1]).map(([k]) => k);
                     return (
-                      <Card className="p-5">
-                        <div className="grid sm:grid-cols-3 gap-4">
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns · sublayer depth 3+</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
-                              {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural yet.</span>}
+                      <ExportablePng
+                        fileName={`scoi-positioning-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                        caption={`${result.company} — Owns / Partial / Rents`}
+                      >
+                        <Card className="p-5 bg-background">
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · positioning</p>
+                          <p className="font-display text-lg text-foreground mb-4">Owns · Partial · Rents</p>
+                          <div className="grid sm:grid-cols-3 gap-4">
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns · sublayer depth 3+</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                                {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural yet.</span>}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Partial · depth 1–2</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {partial.slice(0, 8).map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                                {partial.length === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents · whole layer</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
+                                {(!result.layers_rented || result.layers_rented.length === 0) && <span className="text-xs text-muted-foreground italic">—</span>}
+                              </div>
                             </div>
                           </div>
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Partial · depth 1–2</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {partial.slice(0, 8).map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
-                              {partial.length === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                          {(result.competitive_landscape?.juggernaut_moves?.length ?? 0) > 0 && (
+                            <div className="mt-4 pt-4 border-t border-foreground/10">
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {result.competitive_landscape!.juggernaut_moves!.slice(0, 3).map((j, i) => (
+                                  <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents · whole layer</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                              {(!result.layers_rented || result.layers_rented.length === 0) && <span className="text-xs text-muted-foreground italic">—</span>}
-                            </div>
-                          </div>
-                        </div>
-                        {(result.competitive_landscape?.juggernaut_moves?.length ?? 0) > 0 && (
-                          <div className="mt-4 pt-4 border-t border-foreground/10">
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {result.competitive_landscape!.juggernaut_moves!.slice(0, 3).map((j, i) => (
-                                <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </Card>
+                          )}
+                        </Card>
+                      </ExportablePng>
                     );
                   })()}
+
 
 
                   {/* Strategic snippet — short, keep visible */}
@@ -491,22 +500,31 @@ const AuditPage = () => {
                             Prioritized roadmap · {result.roadmap.length} moves
                           </summary>
                           <div className="p-5 pt-0">
-                            <p className="text-xs text-muted-foreground mb-4 italic">P0 = next 90d (existential) · P1 = next 180d (defensive moat) · P2 = next 365d (long-game)</p>
-                            <div className="space-y-4">
-                              {result.roadmap.map((r, i) => (
-                                <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
-                                  <div className="flex flex-col items-center gap-1.5 pt-0.5">
-                                    <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
-                                    <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
-                                  </div>
-                                  <div className="min-w-0">
-                                    <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
-                                    <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
-                                    <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
-                                  </div>
+                            <ExportablePng
+                              fileName={`scoi-roadmap-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                              caption={`${result.company} — prioritized roadmap`}
+                            >
+                              <div className="p-6 bg-background">
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · Defensibility roadmap</p>
+                                <p className="font-display text-lg text-foreground mb-1">{result.roadmap.length} prioritized moves</p>
+                                <p className="text-xs text-muted-foreground mb-4 italic">P0 = next 90d (existential) · P1 = next 180d (defensive moat) · P2 = next 365d (long-game)</p>
+                                <div className="space-y-4">
+                                  {result.roadmap.map((r, i) => (
+                                    <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
+                                      <div className="flex flex-col items-center gap-1.5 pt-0.5">
+                                        <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
+                                        <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
+                                      </div>
+                                      <div className="min-w-0">
+                                        <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
+                                        <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                                        <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
+                                      </div>
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            </ExportablePng>
                           </div>
                         </details>
                       )}
@@ -605,36 +623,47 @@ const AuditPage = () => {
                           <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
                             Competitive landscape · adjacent players & juggernaut moves
                           </summary>
-                          <div className="p-5 pt-0 grid md:grid-cols-2 gap-5">
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players</p>
-                              <div className="space-y-3">
-                                {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
-                                  <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
-                                    <div className="shrink-0">
-                                      <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
-                                      <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                          <div className="p-5 pt-0">
+                            <ExportablePng
+                              fileName={`scoi-compression-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                              caption={`${result.company} — competitive landscape`}
+                            >
+                              <div className="p-6 bg-background">
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · Competitive landscape</p>
+                                <p className="font-display text-lg text-foreground mb-4">Adjacent players & juggernaut moves</p>
+                                <div className="grid md:grid-cols-2 gap-5">
+                                  <div>
+                                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players</p>
+                                    <div className="space-y-3">
+                                      {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
+                                        <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                                          <div className="shrink-0">
+                                            <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
+                                            <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                                          </div>
+                                          <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
+                                        </div>
+                                      ))}
                                     </div>
-                                    <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
                                   </div>
-                                ))}
-                              </div>
-                            </div>
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
-                              <div className="space-y-3">
-                                {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
-                                  <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
-                                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                                      <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
-                                      <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
-                                      <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                                  <div>
+                                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
+                                    <div className="space-y-3">
+                                      {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
+                                        <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
+                                          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                                            <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
+                                            <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
+                                            <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                                          </div>
+                                          <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
+                                        </div>
+                                      ))}
                                     </div>
-                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
                                   </div>
-                                ))}
+                                </div>
                               </div>
-                            </div>
+                            </ExportablePng>
                           </div>
                         </details>
                       )}
