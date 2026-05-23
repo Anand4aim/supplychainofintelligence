@@ -332,32 +332,52 @@ const AuditPage = () => {
                     </div>
                   )}
 
-                  {/* Simple Owns / Rents / Compressed-by map */}
-                  <Card className="p-5">
-                    <div className="grid sm:grid-cols-3 gap-4">
-                      <div>
-                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns</p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                          {(!result.layers_owned || result.layers_owned.length === 0) && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
+                  {/* Sublayer-level Owns / Partial / Rents map. Derived from sublayer_depth so
+                      we never overclaim a whole layer when the company only touches a few cells. */}
+                  {(() => {
+                    const depth = result.sublayer_depth || {};
+                    const entries = Object.entries(depth).filter(([, v]) => v > 0);
+                    const owns = entries.filter(([, v]) => v >= 3).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+                    const partial = entries.filter(([, v]) => v >= 1 && v <= 2).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+                    return (
+                      <Card className="p-5">
+                        <div className="grid sm:grid-cols-3 gap-4">
+                          <div>
+                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns · sublayer depth 3+</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                              {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural yet.</span>}
+                            </div>
+                          </div>
+                          <div>
+                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Partial · depth 1–2</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {partial.slice(0, 8).map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                              {partial.length === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                            </div>
+                          </div>
+                          <div>
+                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents · whole layer</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
+                              {(!result.layers_rented || result.layers_rented.length === 0) && <span className="text-xs text-muted-foreground italic">—</span>}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents</p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                        </div>
-                      </div>
-                      <div>
-                        <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {(result.competitive_landscape?.juggernaut_moves || []).slice(0, 3).map((j, i) => (
-                            <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
+                        {(result.competitive_landscape?.juggernaut_moves?.length ?? 0) > 0 && (
+                          <div className="mt-4 pt-4 border-t border-foreground/10">
+                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {result.competitive_landscape!.juggernaut_moves!.slice(0, 3).map((j, i) => (
+                                <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </Card>
+                    );
+                  })()}
+
 
                   {/* Strategic snippet — short, keep visible */}
                   {result.snippet && (
@@ -393,12 +413,20 @@ const AuditPage = () => {
                           {/* Layers + Triangle */}
                           <div className="grid grid-cols-2 gap-5 mb-6">
                             <div>
-                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-fortified mb-2">Owned</p>
-                              <div className="flex flex-wrap gap-1.5">
-                                {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
-                                {(!result.layers_owned || result.layers_owned.length === 0) && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
-                              </div>
-                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mt-3 mb-2">Rented</p>
+                              {(() => {
+                                const depth = result.sublayer_depth || {};
+                                const owns = Object.entries(depth).filter(([, v]) => v >= 3).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+                                return (
+                                  <>
+                                    <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-fortified mb-2">Owns · sublayers (depth 3+)</p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                      {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName />)}
+                                      {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
+                                    </div>
+                                  </>
+                                );
+                              })()}
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mt-3 mb-2">Rents · whole layer</p>
                               <div className="flex flex-wrap gap-1.5">
                                 {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
                               </div>
