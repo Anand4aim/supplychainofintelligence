@@ -91,7 +91,7 @@ const Index = () => {
                 </Link>
               </div>
               <p className="text-[12px] text-muted-foreground mt-4">
-                By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader.
+                Prepared by <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link>, Ex-Meta (Instagram) Product Leader, as a free resource for product leaders.
               </p>
             </motion.div>
 
