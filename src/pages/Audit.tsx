@@ -413,12 +413,20 @@ const AuditPage = () => {
                           {/* Layers + Triangle */}
                           <div className="grid grid-cols-2 gap-5 mb-6">
                             <div>
-                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-fortified mb-2">Owned</p>
-                              <div className="flex flex-wrap gap-1.5">
-                                {(result.layers_owned || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
-                                {(!result.layers_owned || result.layers_owned.length === 0) && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
-                              </div>
-                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mt-3 mb-2">Rented</p>
+                              {(() => {
+                                const depth = result.sublayer_depth || {};
+                                const owns = Object.entries(depth).filter(([, v]) => v >= 3).sort((a, b) => b[1] - a[1]).map(([k]) => k);
+                                return (
+                                  <>
+                                    <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-fortified mb-2">Owns · sublayers (depth 3+)</p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                      {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName />)}
+                                      {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural.</span>}
+                                    </div>
+                                  </>
+                                );
+                              })()}
+                              <p className="font-mono-marker text-[9px] uppercase tracking-wider text-verdict-exposed mt-3 mb-2">Rents · whole layer</p>
                               <div className="flex flex-wrap gap-1.5">
                                 {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
                               </div>
