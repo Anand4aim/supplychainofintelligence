@@ -374,8 +374,12 @@ const AuditPage = () => {
                       <p className="font-display text-base font-bold text-foreground leading-tight">{result.archetype || "—"}</p>
                     </Card>
                     <Card className="p-4">
-                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-1.5">Biggest risk</p>
-                      <p className="text-[13px] text-foreground/85 leading-snug">{result.risks?.[0] || "—"}</p>
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-1.5">Rents whole layer</p>
+                      {result.layers_rented && result.layers_rented.length > 0 ? (
+                        <div className="flex flex-wrap gap-1">
+                          {result.layers_rented.slice(0, 4).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
+                        </div>
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                     <Card className="p-4">
                       <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-1.5">Biggest opportunity</p>
@@ -384,7 +388,7 @@ const AuditPage = () => {
                           <div className="mb-1 [&>span]:!whitespace-normal [&>span]:max-w-full"><LayerTag id={result.sublayer_gaps[0].sublayer} variant="chip" withSublayerName /></div>
                           <p className="text-[12px] text-foreground/75 leading-snug">{result.sublayer_gaps[0].why}</p>
                         </>
-                      ) : <p className="text-[13px] text-foreground/85 leading-snug">{result.strengths?.[0] || "—"}</p>}
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                     <Card className="p-4">
                       <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-1.5">Top threat</p>
