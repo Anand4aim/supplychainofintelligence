@@ -623,36 +623,47 @@ const AuditPage = () => {
                           <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
                             Competitive landscape · adjacent players & juggernaut moves
                           </summary>
-                          <div className="p-5 pt-0 grid md:grid-cols-2 gap-5">
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players</p>
-                              <div className="space-y-3">
-                                {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
-                                  <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
-                                    <div className="shrink-0">
-                                      <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
-                                      <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                          <div className="p-5 pt-0">
+                            <ExportablePng
+                              fileName={`scoi-compression-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                              caption={`${result.company} — competitive landscape`}
+                            >
+                              <div className="p-6 bg-background">
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · Competitive landscape</p>
+                                <p className="font-display text-lg text-foreground mb-4">Adjacent players & juggernaut moves</p>
+                                <div className="grid md:grid-cols-2 gap-5">
+                                  <div>
+                                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-accent mb-4 flex items-center gap-2"><Swords size={12} /> Adjacent players</p>
+                                    <div className="space-y-3">
+                                      {(result.competitive_landscape.adjacent_players || []).map((p, i) => (
+                                        <div key={i} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
+                                          <div className="shrink-0">
+                                            <p className="font-display font-bold text-sm text-foreground">{p.name}</p>
+                                            <div className="mt-1"><LayerTag id={p.collides_at} variant="chip" /></div>
+                                          </div>
+                                          <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
+                                        </div>
+                                      ))}
                                     </div>
-                                    <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{p.note}</p>
                                   </div>
-                                ))}
-                              </div>
-                            </div>
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
-                              <div className="space-y-3">
-                                {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
-                                  <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
-                                    <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                                      <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
-                                      <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
-                                      <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                                  <div>
+                                    <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-4 flex items-center gap-2"><Zap size={12} /> L2 / L4 juggernaut moves</p>
+                                    <div className="space-y-3">
+                                      {(result.competitive_landscape.juggernaut_moves || []).map((j, i) => (
+                                        <div key={i} className="pb-3 border-b border-foreground/5 last:border-0">
+                                          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                                            <span className="font-display font-bold text-sm text-foreground">{j.actor}</span>
+                                            <span className={`font-mono-marker text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded ${tfStyle[j.timeframe]}`}>{j.timeframe}</span>
+                                            <span className="font-mono-marker text-[10px] text-muted-foreground">compresses {j.compresses}</span>
+                                          </div>
+                                          <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
+                                        </div>
+                                      ))}
                                     </div>
-                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{j.move}</p>
                                   </div>
-                                ))}
+                                </div>
                               </div>
-                            </div>
+                            </ExportablePng>
                           </div>
                         </details>
                       )}
