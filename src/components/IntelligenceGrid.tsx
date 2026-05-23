@@ -133,26 +133,33 @@ const IntelligenceGrid = ({
                 </div>
               </div>
 
-              {/* 5 sublayer cells — very low tint so dots dominate */}
+              {/* 5 sublayer cells */}
               <div className="grid grid-cols-5 gap-[5px]">
                 {layer.sublayers.slice(0, 5).map((s) => {
-                  const tintAlpha = mode === "audit" ? 0.06 : 0.10;
-                  const bg = `hsl(var(--layer-${inner(layer.id)}) / ${tintAlpha})`;
-                  const borderCol = `hsl(var(--layer-${inner(layer.id)}) / 0.22)`;
+                  const isAudit = mode === "audit";
+                  // In audit mode, drop the background so dots dominate. In blank mode, keep light tint.
+                  const tintAlpha = isAudit ? 0 : 0.10;
+                  const bg = isAudit ? "transparent" : `hsl(var(--layer-${inner(layer.id)}) / ${tintAlpha})`;
+                  const borderCol = `hsl(var(--layer-${inner(layer.id)}) / ${isAudit ? 0.28 : 0.22})`;
                   const depth = sublayerDepth[s.id] ?? 0;
 
                   const cellInner = (
                     <>
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/70">
+                      {/* Top row: ID + name inline, name visible at a glance */}
+                      <div className="flex items-baseline gap-1.5 min-w-0">
+                        <span className="shrink-0 font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/60">
                           {s.id}
                         </span>
-                        {s.defensible && <span className="text-accent text-[9px]">★</span>}
+                        <span className="font-display text-foreground text-[10.5px] md:text-[11.5px] leading-[1.15] line-clamp-1 min-w-0 flex-1">
+                          {s.name}
+                        </span>
+                        {s.defensible && <span className="text-accent text-[9px] shrink-0">★</span>}
                       </div>
-                      <div className="font-display text-foreground text-[10.5px] md:text-[11.5px] leading-[1.15] mt-0.5 line-clamp-2">
-                        {s.name}
-                      </div>
-                      {mode === "audit" && <DepthDots count={depth} color={c} />}
+                      {isAudit && (
+                        <div className="mt-2 flex items-center justify-center">
+                          <DepthDots count={depth} color={c} />
+                        </div>
+                      )}
                     </>
                   );
 
@@ -165,7 +172,7 @@ const IntelligenceGrid = ({
                       to={`/framework#${layer.id}`}
                       className={`${className} hover:bg-foreground/[0.03] transition-colors`}
                       style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
-                      title={`${s.id} ${s.name}${mode === "audit" ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </Link>
@@ -174,7 +181,7 @@ const IntelligenceGrid = ({
                       key={s.id}
                       className={className}
                       style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
-                      title={`${s.id} ${s.name}${mode === "audit" ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </div>
