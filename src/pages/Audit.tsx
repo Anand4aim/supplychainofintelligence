@@ -333,50 +333,59 @@ const AuditPage = () => {
                   )}
 
                   {/* Sublayer-level Owns / Partial / Rents map. Derived from sublayer_depth so
-                      we never overclaim a whole layer when the company only touches a few cells. */}
+                      we never overclaim a whole layer when the company only touches a few cells.
+                      Downloadable so customers can paste into a deck. */}
                   {(() => {
                     const depth = result.sublayer_depth || {};
                     const entries = Object.entries(depth).filter(([, v]) => v > 0);
                     const owns = entries.filter(([, v]) => v >= 3).sort((a, b) => b[1] - a[1]).map(([k]) => k);
                     const partial = entries.filter(([, v]) => v >= 1 && v <= 2).sort((a, b) => b[1] - a[1]).map(([k]) => k);
                     return (
-                      <Card className="p-5">
-                        <div className="grid sm:grid-cols-3 gap-4">
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns · sublayer depth 3+</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
-                              {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural yet.</span>}
+                      <ExportablePng
+                        fileName={`scoi-positioning-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                        caption={`${result.company} — Owns / Partial / Rents`}
+                      >
+                        <Card className="p-5 bg-background">
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · positioning</p>
+                          <p className="font-display text-lg text-foreground mb-4">Owns · Partial · Rents</p>
+                          <div className="grid sm:grid-cols-3 gap-4">
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-2">Owns · sublayer depth 3+</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {owns.map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                                {owns.length === 0 && <span className="text-xs text-muted-foreground italic">Nothing structural yet.</span>}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Partial · depth 1–2</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {partial.slice(0, 8).map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
+                                {partial.length === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                              </div>
+                            </div>
+                            <div>
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents · whole layer</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
+                                {(!result.layers_rented || result.layers_rented.length === 0) && <span className="text-xs text-muted-foreground italic">—</span>}
+                              </div>
                             </div>
                           </div>
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Partial · depth 1–2</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {partial.slice(0, 8).map((id) => <LayerTag key={id} id={id} variant="chip" withSublayerName link />)}
-                              {partial.length === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                          {(result.competitive_landscape?.juggernaut_moves?.length ?? 0) > 0 && (
+                            <div className="mt-4 pt-4 border-t border-foreground/10">
+                              <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {result.competitive_landscape!.juggernaut_moves!.slice(0, 3).map((j, i) => (
+                                  <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                          <div>
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-2">Rents · whole layer</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {(result.layers_rented || []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
-                              {(!result.layers_rented || result.layers_rented.length === 0) && <span className="text-xs text-muted-foreground italic">—</span>}
-                            </div>
-                          </div>
-                        </div>
-                        {(result.competitive_landscape?.juggernaut_moves?.length ?? 0) > 0 && (
-                          <div className="mt-4 pt-4 border-t border-foreground/10">
-                            <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-2">Compressed by</p>
-                            <div className="flex flex-wrap gap-1.5">
-                              {result.competitive_landscape!.juggernaut_moves!.slice(0, 3).map((j, i) => (
-                                <span key={i} className="font-mono-marker text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-foreground/15 text-foreground/80">{j.actor}</span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </Card>
+                          )}
+                        </Card>
+                      </ExportablePng>
                     );
                   })()}
+
 
 
                   {/* Strategic snippet — short, keep visible */}
