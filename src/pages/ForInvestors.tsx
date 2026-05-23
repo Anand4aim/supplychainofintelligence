@@ -91,7 +91,7 @@ const ForInvestors = () => (
             </Link>
           </div>
           <p className="text-[12px] text-muted-foreground mt-5">
-            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader &amp; AI Product Architect. Written in a personal capacity.
+            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader &amp; AI Product Architect. Personal thinking, shared freely.
           </p>
         </motion.div>
       </div>
