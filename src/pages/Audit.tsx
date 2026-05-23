@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap } from "lucide-react";
+import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap, Sparkles, Scale, FileSearch, Brain, HelpingHand } from "lucide-react";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
@@ -18,17 +18,30 @@ import { Progress } from "@/components/ui/progress";
 const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/defensibility-audit`;
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean };
-type Gap = { sublayer: string; why: string };
+type Provenance = "evidence" | "inference" | "assumption";
+type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean; provenance?: Provenance };
+type Gap = { sublayer: string; why: string; provenance?: Provenance };
 type Player = { name: string; collides_at: string; note: string };
 type Juggernaut = { actor: string; move: string; compresses: string; timeframe: "shipped" | "0-6mo" | "6-18mo" };
-type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string };
+type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string; law?: string };
+type Disagreements = {
+  verdict_disagree?: boolean;
+  drafter_tier?: string;
+  critic_tier?: string;
+  layers_only_drafter?: string[];
+  layers_only_critic?: string[];
+  subs_only_drafter?: string[];
+  subs_only_critic?: string[];
+};
 type AuditResult = {
   company?: string;
   domain?: string;
   verdict_tier: "fortress" | "tilting_fortress" | "mixed" | "exposed" | "wrapper_at_risk" | "insufficient_data";
   score: number | null;
+  score_band?: { low: number; high: number; spread: number };
   one_line: string;
+  aha?: string;
+  counter_thesis?: string;
   layers_owned?: string[];
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
@@ -45,6 +58,7 @@ type AuditResult = {
   snippet?: string;
   guidance?: string;
   research_snippet?: string;
+  disagreements?: Disagreements;
   cross_check?: { drafter_score: number; critic_score: number; drafter_tier: string; critic_tier: string };
 };
 
@@ -83,12 +97,38 @@ const TriangleSide = ({ label, status }: { label: string; status: string }) => {
 const ConfidenceDots = ({ c }: { c: "high" | "medium" | "low" }) => {
   const n = c === "high" ? 3 : c === "medium" ? 2 : 1;
   return (
-    <div className="inline-flex gap-0.5">
+    <div className="inline-flex gap-0.5" title={`${c} confidence`}>
       {[1, 2, 3].map((i) => (
         <span key={i} className={`w-1.5 h-1.5 rounded-full ${i <= n ? "bg-accent" : "bg-foreground/15"}`} />
       ))}
     </div>
   );
+};
+
+const ProvenanceTag = ({ p }: { p?: Provenance }) => {
+  if (!p) return null;
+  const meta: Record<Provenance, { Icon: typeof FileSearch; label: string; color: string }> = {
+    evidence:   { Icon: FileSearch, label: "Evidence",   color: "text-verdict-fortified" },
+    inference:  { Icon: Brain,      label: "Inference",  color: "text-foreground/60" },
+    assumption: { Icon: HelpingHand, label: "Assumption", color: "text-verdict-exposed" },
+  };
+  const { Icon, label, color } = meta[p];
+  return (
+    <span className={`inline-flex items-center gap-1 font-mono-marker text-[9px] uppercase tracking-wider ${color}`} title={`Provenance: ${label}`}>
+      <Icon size={10} /> {label}
+    </span>
+  );
+};
+
+const tierBandLabel = (tier: AuditResult["verdict_tier"]) => {
+  switch (tier) {
+    case "fortress": return "Fortress";
+    case "tilting_fortress": return "Tilting";
+    case "mixed": return "Mixed";
+    case "exposed": return "Exposed";
+    case "wrapper_at_risk": return "Wrapper";
+    default: return "—";
+  }
 };
 
 const AuditPage = () => {
@@ -245,17 +285,35 @@ const AuditPage = () => {
                       <div className="font-display text-6xl md:text-7xl font-bold leading-none" style={{ color: tier.color }}>
                         {result.score}
                       </div>
-                      <div className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground mt-1">/ 100 defensibility</div>
+                      <div className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                        / 100 · <span style={{ color: tier.color }}>{tierBandLabel(result.verdict_tier)}</span>
+                      </div>
                       {/* Meter bar */}
-                      <div className="w-44 h-1.5 bg-foreground/10 rounded-full mt-3 overflow-hidden ml-auto">
+                      <div className="w-44 h-1.5 bg-foreground/10 rounded-full mt-3 overflow-hidden ml-auto relative">
+                        {result.score_band && result.score_band.spread > 0 && (
+                          <div
+                            className="absolute top-0 h-full opacity-25"
+                            style={{
+                              left: `${result.score_band.low}%`,
+                              width: `${result.score_band.high - result.score_band.low}%`,
+                              background: tier.color,
+                            }}
+                            aria-hidden
+                          />
+                        )}
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${result.score}%` }}
                           transition={{ duration: 0.8, delay: 0.2 }}
-                          className="h-full rounded-full"
+                          className="h-full rounded-full relative"
                           style={{ background: tier.color }}
                         />
                       </div>
+                      {result.score_band && result.score_band.spread > 0 && (
+                        <div className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground mt-1.5">
+                          Models split {result.score_band.low}–{result.score_band.high}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -283,6 +341,32 @@ const AuditPage = () => {
               {/* Full audit */}
               {result.verdict_tier !== "insufficient_data" && (
                 <>
+                  {/* THE AHA — one sentence of structural surprise. Highest-signal element. */}
+                  {result.aha && (
+                    <Card className="p-5 border-2 border-accent/50 bg-accent/[0.05]">
+                      <div className="flex items-start gap-3">
+                        <Sparkles size={18} className="text-accent shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1.5">The aha</p>
+                          <p className="text-[15px] md:text-base text-foreground/95 leading-relaxed font-medium">{result.aha}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  )}
+
+                  {/* COUNTER-THESIS — what would make this audit wrong */}
+                  {result.counter_thesis && (
+                    <Card className="p-5 border border-dashed border-foreground/30 bg-foreground/[0.02]">
+                      <div className="flex items-start gap-3">
+                        <Scale size={16} className="text-foreground/60 shrink-0 mt-1" />
+                        <div>
+                          <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-foreground/60 mb-1.5">Counter-thesis · what would make this read wrong</p>
+                          <p className="text-[14px] text-foreground/85 leading-relaxed">{result.counter_thesis}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  )}
+
                   {/* EXECUTIVE VERDICT — read in 15 seconds */}
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <Card className="p-4">
@@ -290,8 +374,12 @@ const AuditPage = () => {
                       <p className="font-display text-base font-bold text-foreground leading-tight">{result.archetype || "—"}</p>
                     </Card>
                     <Card className="p-4">
-                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-1.5">Biggest risk</p>
-                      <p className="text-[13px] text-foreground/85 leading-snug">{result.risks?.[0] || "—"}</p>
+                      <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-exposed mb-1.5">Rents whole layer</p>
+                      {result.layers_rented && result.layers_rented.length > 0 ? (
+                        <div className="flex flex-wrap gap-1">
+                          {result.layers_rented.slice(0, 4).map((l) => <LayerTag key={l} id={l} variant="chip" />)}
+                        </div>
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                     <Card className="p-4">
                       <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-1.5">Biggest opportunity</p>
@@ -300,7 +388,7 @@ const AuditPage = () => {
                           <div className="mb-1 [&>span]:!whitespace-normal [&>span]:max-w-full"><LayerTag id={result.sublayer_gaps[0].sublayer} variant="chip" withSublayerName /></div>
                           <p className="text-[12px] text-foreground/75 leading-snug">{result.sublayer_gaps[0].why}</p>
                         </>
-                      ) : <p className="text-[13px] text-foreground/85 leading-snug">{result.strengths?.[0] || "—"}</p>}
+                      ) : <p className="text-[13px] text-foreground/85 leading-snug">—</p>}
                     </Card>
                     <Card className="p-4">
                       <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-accent mb-1.5">Top threat</p>
@@ -520,6 +608,11 @@ const AuditPage = () => {
                                       <div className="min-w-0">
                                         <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
                                         <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                                        {r.law && (
+                                          <span className="inline-flex items-center gap-1 font-mono-marker text-[9px] uppercase tracking-wider text-accent mt-1.5 mr-2">
+                                            <Scale size={10} /> {r.law}
+                                          </span>
+                                        )}
                                         <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
                                       </div>
                                     </div>
@@ -542,7 +635,10 @@ const AuditPage = () => {
                               {result.sublayer_claims.map((s) => (
                                 <div key={s.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
                                   <div className="shrink-0 pt-0.5"><LayerTag id={s.sublayer} variant="chip" withSublayerName /></div>
-                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{s.evidence}</p>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{s.evidence}</p>
+                                    <div className="flex items-center gap-3 mt-1.5"><ProvenanceTag p={s.provenance} /></div>
+                                  </div>
                                   <div className="shrink-0 flex items-center gap-2 pt-1">
                                     <ConfidenceDots c={s.confidence} />
                                     {s.cross_confirmed && <CheckCircle2 size={12} className="text-verdict-fortified" aria-label="Confirmed by both models" />}
@@ -550,7 +646,7 @@ const AuditPage = () => {
                                 </div>
                               ))}
                             </div>
-                            <p className="font-sketch text-xs italic text-muted-foreground mt-4">✓ = both drafter and critic confirmed.</p>
+                            <p className="font-sketch text-xs italic text-muted-foreground mt-4">✓ = both critics confirmed. Provenance tells you whether each claim is grounded in evidence, structural inference, or framework assumption.</p>
                           </div>
                         </details>
                       )}
@@ -566,7 +662,10 @@ const AuditPage = () => {
                               {result.sublayer_gaps.map((g) => (
                                 <div key={g.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
                                   <div className="shrink-0 pt-0.5"><LayerTag id={g.sublayer} variant="chip" withSublayerName /></div>
-                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{g.why}</p>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{g.why}</p>
+                                    <div className="mt-1.5"><ProvenanceTag p={g.provenance} /></div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
@@ -574,10 +673,10 @@ const AuditPage = () => {
                         </details>
                       )}
 
-                      {/* Triangle + Laws + Strengths/Risks bundled */}
+                      {/* Triangle + Laws */}
                       <details className="group border border-foreground/15 rounded-lg">
                         <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
-                          Triangle, laws, strengths & risks
+                          Defensible triangle & laws triggered
                         </summary>
                         <div className="p-5 pt-0 space-y-5">
                           <div className="grid md:grid-cols-2 gap-5">
@@ -598,26 +697,52 @@ const AuditPage = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="grid md:grid-cols-2 gap-5">
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-fortified mb-3">Structural strengths</p>
-                              <ul className="space-y-2">
-                                {(result.strengths || []).map((s, i) => (
-                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-fortified">▸</span>{s}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-3">Compression risks</p>
-                              <ul className="space-y-2">
-                                {(result.risks || []).map((s, i) => (
-                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-exposed">▸</span>{s}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
                         </div>
                       </details>
+
+                      {/* Where the two critics disagreed */}
+                      {result.disagreements && (
+                        result.disagreements.verdict_disagree ||
+                        (result.disagreements.subs_only_drafter?.length ?? 0) > 0 ||
+                        (result.disagreements.subs_only_critic?.length ?? 0) > 0 ||
+                        (result.disagreements.layers_only_drafter?.length ?? 0) > 0 ||
+                        (result.disagreements.layers_only_critic?.length ?? 0) > 0
+                      ) && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Where the two critics disagreed
+                          </summary>
+                          <div className="p-5 pt-0 space-y-4">
+                            {result.disagreements.verdict_disagree && (
+                              <div className="text-sm">
+                                <span className="font-mono-marker text-[10px] uppercase tracking-wider text-accent mr-2">Verdict split:</span>
+                                <span className="text-foreground/85">Drafter said <span className="font-bold">{result.disagreements.drafter_tier}</span> · Critic said <span className="font-bold">{result.disagreements.critic_tier}</span>. We took the more conservative read.</span>
+                              </div>
+                            )}
+                            <div className="grid md:grid-cols-2 gap-5">
+                              <div>
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Only the drafter saw</p>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {[...(result.disagreements.layers_only_drafter || []), ...(result.disagreements.subs_only_drafter || [])].map((id) => (
+                                    <LayerTag key={id} id={id} variant="chip" withSublayerName={/[a-z]$/.test(id)} />
+                                  ))}
+                                  {(result.disagreements.layers_only_drafter?.length ?? 0) + (result.disagreements.subs_only_drafter?.length ?? 0) === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                                </div>
+                              </div>
+                              <div>
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Only the critic saw</p>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {[...(result.disagreements.layers_only_critic || []), ...(result.disagreements.subs_only_critic || [])].map((id) => (
+                                    <LayerTag key={id} id={id} variant="chip" withSublayerName={/[a-z]$/.test(id)} />
+                                  ))}
+                                  {(result.disagreements.layers_only_critic?.length ?? 0) + (result.disagreements.subs_only_critic?.length ?? 0) === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-xs italic text-muted-foreground">Where one critic saw a layer the other didn't, the claim is shown in the main audit without the ✓ confirmation mark and at a downgraded confidence.</p>
+                          </div>
+                        </details>
+                      )}
 
                       {/* Competitive landscape */}
                       {result.competitive_landscape && (

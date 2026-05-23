@@ -105,26 +105,31 @@ async function research(company: string, userContext?: string): Promise<{ text: 
 }
 
 
+const PROVENANCE_ENUM = ["evidence", "inference", "assumption"];
+
 const AUDIT_SCHEMA = {
   type: "object",
   properties: {
     verdict_tier: { type: "string", enum: ["fortress", "tilting_fortress", "mixed", "exposed", "wrapper_at_risk", "insufficient_data"] },
     score: { type: "integer", minimum: 0, maximum: 100, description: "Composite defensibility. 80+=fortress, 60-79=tilting, 40-59=mixed, 20-39=exposed, <20=wrapper." },
     one_line: { type: "string", description: "One-sentence verdict in Stratechery voice. Name the layers." },
+    aha: { type: "string", description: "ONE sentence that delivers a surprise — the non-obvious structural insight a smart reader wouldn't get from skimming the company's homepage. NOT a summary. NOT the verdict restated. Something that reframes how you see them. If you can't write a real aha, write 'No surprise: behaves exactly as positioned.'" },
+    counter_thesis: { type: "string", description: "2-3 sentences. What would have to be true for this audit to read WRONG in 18 months? The strongest steelman that this company is actually defensible in ways the framework misses, or the move that would flip the verdict. Cite a specific layer." },
     domain: { type: "string", description: "Short domain/vertical label (e.g. 'Legal AI', 'CX Agents', 'Dev Tools')." },
     layers_owned: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers the company structurally owns or is meaningfully building toward. Be brutal — max 4." },
     layers_rented: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers they depend on but do not own. This is their risk list." },
     sublayer_claims: {
       type: "array",
-      description: "3-7 specific sublayer claims with confidence. Cite evidence from research.",
+      description: "3-7 specific sublayer claims with confidence AND provenance. Cite evidence from research.",
       items: {
         type: "object",
         properties: {
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
           confidence: { type: "string", enum: ["high", "medium", "low"] },
-          evidence: { type: "string", description: "1 sentence pointing to a specific product feature, customer, or fact from research." },
+          provenance: { type: "string", enum: PROVENANCE_ENUM, description: "evidence = verbatim/cited from research or user context. inference = reasonable structural deduction from named facts. assumption = no direct support, framework-pattern guess. Be honest." },
+          evidence: { type: "string", description: "1 sentence. If provenance=evidence, cite the specific product feature, customer, or fact. If inference, name what you inferred from. If assumption, say so." },
         },
-        required: ["sublayer", "confidence", "evidence"],
+        required: ["sublayer", "confidence", "provenance", "evidence"],
       },
     },
     sublayer_gaps: {
@@ -134,9 +139,10 @@ const AUDIT_SCHEMA = {
         type: "object",
         properties: {
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
+          provenance: { type: "string", enum: PROVENANCE_ENUM },
           why: { type: "string", description: "1 sentence: why this sublayer matters for their domain and what happens if they don't get it." },
         },
-        required: ["sublayer", "why"],
+        required: ["sublayer", "provenance", "why"],
       },
     },
     sublayer_depth: {
@@ -164,8 +170,6 @@ const AUDIT_SCHEMA = {
       items: { type: "string", enum: ["Law I", "Law II", "Law III", "Law IV"] },
       description: "Which structural laws apply most directly.",
     },
-    strengths: { type: "array", items: { type: "string" }, description: "2-3 specific structural strengths." },
-    risks: { type: "array", items: { type: "string" }, description: "2-3 specific compression risks. Name who absorbs them." },
     competitive_landscape: {
       type: "object",
       description: "Who eats their lunch, layer by layer.",
@@ -202,7 +206,7 @@ const AUDIT_SCHEMA = {
     },
     roadmap: {
       type: "array",
-      description: "Exactly 5 prioritized roadmap moves. Each MUST cite a specific sublayer ID. Order P0 first.",
+      description: "Exactly 5 prioritized roadmap moves. Each MUST cite a specific sublayer AND a Law. Order P0 first.",
       minItems: 5,
       maxItems: 5,
       items: {
@@ -212,9 +216,10 @@ const AUDIT_SCHEMA = {
           horizon: { type: "string", enum: ["90d", "180d", "365d"] },
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
           move: { type: "string", description: "1-2 sentences. Concrete product/data/distribution action — not 'invest in AI'." },
-          why: { type: "string", description: "1 sentence: which risk it closes or which juggernaut move it blunts." },
+          law: { type: "string", enum: ["Law I", "Law II", "Law III", "Law IV"], description: "Which structural Law this move is grounded in." },
+          why: { type: "string", description: "1 sentence beginning with the Law, e.g. 'Law II — without memory, every session restarts the relationship; closes the L8c gap before Anthropic ships persistent memory.'" },
         },
-        required: ["priority", "horizon", "sublayer", "move", "why"],
+        required: ["priority", "horizon", "sublayer", "move", "law", "why"],
       },
     },
     open_questions: {
@@ -226,7 +231,7 @@ const AUDIT_SCHEMA = {
     },
     snippet: { type: "string", description: "2-3 sentences: what to do with this verdict. Specific next move tied to a layer." },
   },
-  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
+  required: ["verdict_tier", "score", "one_line", "aha", "counter_thesis", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "competitive_landscape", "roadmap", "open_questions", "snippet"],
   additionalProperties: false,
 };
 
@@ -286,22 +291,28 @@ function reconcile(draft: any, critic: any) {
   const draftMap = new Map((draft.sublayer_claims || []).map((c: any) => [c.sublayer, c]));
   const criticMap = new Map((critic.sublayer_claims || []).map((c: any) => [c.sublayer, c]));
   const conf = { high: 3, medium: 2, low: 1 };
+  const provRank = { evidence: 3, inference: 2, assumption: 1 };
   const reconciled_sublayers: any[] = [];
   const allSubs = new Set([...draftMap.keys(), ...criticMap.keys()]);
   for (const s of allSubs) {
-    const d = draftMap.get(s);
-    const c = criticMap.get(s);
+    const d: any = draftMap.get(s);
+    const c: any = criticMap.get(s);
     if (d && c) {
       const minConf = conf[d.confidence] <= conf[c.confidence] ? d.confidence : c.confidence;
-      reconciled_sublayers.push({ sublayer: s, confidence: minConf, evidence: d.evidence, cross_confirmed: true });
+      // Take the WEAKER provenance — if one critic only inferred, mark inference.
+      const dp = d.provenance || "assumption";
+      const cp = c.provenance || "assumption";
+      const minProv = provRank[dp] <= provRank[cp] ? dp : cp;
+      reconciled_sublayers.push({ sublayer: s, confidence: minConf, provenance: minProv, evidence: d.evidence, cross_confirmed: true });
     } else if (d) {
-      const downgrade = d.confidence === "high" ? "medium" : d.confidence === "medium" ? "low" : "low";
-      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, evidence: d.evidence, cross_confirmed: false });
+      const downgrade = d.confidence === "high" ? "medium" : "low";
+      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, provenance: d.provenance || "inference", evidence: d.evidence, cross_confirmed: false });
     } else if (c) {
-      const downgrade = c.confidence === "high" ? "medium" : c.confidence === "medium" ? "low" : "low";
-      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, evidence: c.evidence, cross_confirmed: false });
+      const downgrade = c.confidence === "high" ? "medium" : "low";
+      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, provenance: c.provenance || "inference", evidence: c.evidence, cross_confirmed: false });
     }
   }
+
 
   const score = Math.round(((draft.score ?? 0) + (critic.score ?? 0)) / 2);
   const tierOrder = ["wrapper_at_risk", "exposed", "mixed", "tilting_fortress", "fortress"];
@@ -350,10 +361,27 @@ function reconcile(draft: any, critic: any) {
     if (merged > 0) sublayer_depth[k] = merged;
   }
 
+  // Disagreement panel — surface what the two critics actually split on.
+  const draftSubKeys = new Set((draft.sublayer_claims || []).map((c: any) => c.sublayer));
+  const criticSubKeys = new Set((critic.sublayer_claims || []).map((c: any) => c.sublayer));
+  const subs_only_drafter = [...draftSubKeys].filter((s) => !criticSubKeys.has(s));
+  const subs_only_critic = [...criticSubKeys].filter((s) => !draftSubKeys.has(s));
+  const draftOwnSet = new Set(draft.layers_owned || []);
+  const criticOwnSet = new Set(critic.layers_owned || []);
+  const layers_only_drafter = [...draftOwnSet].filter((l) => !criticOwnSet.has(l));
+  const layers_only_critic = [...criticOwnSet].filter((l) => !draftOwnSet.has(l));
+  const ds = draft.score ?? 0;
+  const cs = critic.score ?? 0;
+  const score_band = { low: Math.min(ds, cs), high: Math.max(ds, cs), spread: Math.abs(ds - cs) };
+  const verdict_disagree = draft.verdict_tier !== critic.verdict_tier;
+
   return {
     verdict_tier,
     score,
+    score_band,
     one_line: critic.one_line || draft.one_line,
+    aha: critic.aha || draft.aha || "",
+    counter_thesis: critic.counter_thesis || draft.counter_thesis || "",
     domain: critic.domain || draft.domain,
     layers_owned,
     layers_rented,
@@ -363,8 +391,6 @@ function reconcile(draft: any, critic: any) {
     triangle,
     archetype: critic.archetype || draft.archetype,
     laws_triggered: Array.from(new Set([...(draft.laws_triggered || []), ...(critic.laws_triggered || [])])),
-    strengths: critic.strengths || draft.strengths,
-    risks: Array.from(new Set([...(draft.risks || []), ...(critic.risks || [])])).slice(0, 4),
     competitive_landscape: {
       adjacent_players: (critic.competitive_landscape?.adjacent_players || draft.competitive_landscape?.adjacent_players || []).slice(0, 4),
       juggernaut_moves: (critic.competitive_landscape?.juggernaut_moves || draft.competitive_landscape?.juggernaut_moves || []).slice(0, 3),
@@ -372,6 +398,15 @@ function reconcile(draft: any, critic: any) {
     roadmap,
     open_questions: critic.open_questions || draft.open_questions,
     snippet: critic.snippet || draft.snippet,
+    disagreements: {
+      verdict_disagree,
+      drafter_tier: draft.verdict_tier,
+      critic_tier: critic.verdict_tier,
+      layers_only_drafter,
+      layers_only_critic,
+      subs_only_drafter,
+      subs_only_critic,
+    },
     cross_check: {
       drafter_score: draft.score,
       critic_score: critic.score,
@@ -454,7 +489,7 @@ ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}
 PUBLIC RESEARCH:
 ${researchText.slice(0, 6000)}
 
-Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims with evidence. (2) Identify 2-4 sublayer GAPS — sublayers they should own for their domain but don't. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy — typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents only. A company "wrapping a model" almost never gets above 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players (with collision sublayer) + 2-3 imminent L2/L4 juggernaut moves (Anthropic, OpenAI, Google, Microsoft, Salesforce, Apple) that compress them, with timeframe. (6) Roadmap: exactly 5 moves with P0/P1/P2 priority and horizon (90d/180d/365d), each tied to a specific sublayer ID. (7) 3 open questions. (8) Strategic snippet.`;
+Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims. EACH claim MUST carry a provenance tag: evidence (cited from research/user context), inference (structural deduction from named facts), or assumption (framework-pattern guess). Be honest — over-tagging as 'evidence' will be penalized. (2) Identify 2-4 sublayer GAPS with provenance. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy — typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents. A "model wrapper" almost never exceeds 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players + 2-3 imminent L2/L4 juggernaut moves with timeframe. (6) Roadmap: exactly 5 moves. EACH must cite a specific sublayer AND a Law (I/II/III/IV); 'why' must START with the law name. (7) 3 open questions. (8) Strategic snippet. (9) **aha**: ONE sentence delivering a non-obvious structural surprise — what the smart reader wouldn't have seen by skimming the homepage. (10) **counter_thesis**: 2-3 sentences steelmanning what would make this audit read wrong in 18 months — the move that flips the verdict.`;
 
     const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),
