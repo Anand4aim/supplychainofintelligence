@@ -673,10 +673,10 @@ const AuditPage = () => {
                         </details>
                       )}
 
-                      {/* Triangle + Laws + Strengths/Risks bundled */}
+                      {/* Triangle + Laws */}
                       <details className="group border border-foreground/15 rounded-lg">
                         <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
-                          Triangle, laws, strengths & risks
+                          Defensible triangle & laws triggered
                         </summary>
                         <div className="p-5 pt-0 space-y-5">
                           <div className="grid md:grid-cols-2 gap-5">
@@ -697,26 +697,52 @@ const AuditPage = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="grid md:grid-cols-2 gap-5">
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-fortified mb-3">Structural strengths</p>
-                              <ul className="space-y-2">
-                                {(result.strengths || []).map((s, i) => (
-                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-fortified">▸</span>{s}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-verdict-exposed mb-3">Compression risks</p>
-                              <ul className="space-y-2">
-                                {(result.risks || []).map((s, i) => (
-                                  <li key={i} className="text-sm text-foreground/85 leading-relaxed flex gap-2"><span className="text-verdict-exposed">▸</span>{s}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
                         </div>
                       </details>
+
+                      {/* Where the two critics disagreed */}
+                      {result.disagreements && (
+                        result.disagreements.verdict_disagree ||
+                        (result.disagreements.subs_only_drafter?.length ?? 0) > 0 ||
+                        (result.disagreements.subs_only_critic?.length ?? 0) > 0 ||
+                        (result.disagreements.layers_only_drafter?.length ?? 0) > 0 ||
+                        (result.disagreements.layers_only_critic?.length ?? 0) > 0
+                      ) && (
+                        <details className="group border border-foreground/15 rounded-lg">
+                          <summary className="cursor-pointer p-4 font-mono-marker text-[11px] uppercase tracking-wider text-foreground hover:bg-foreground/[0.02]">
+                            Where the two critics disagreed
+                          </summary>
+                          <div className="p-5 pt-0 space-y-4">
+                            {result.disagreements.verdict_disagree && (
+                              <div className="text-sm">
+                                <span className="font-mono-marker text-[10px] uppercase tracking-wider text-accent mr-2">Verdict split:</span>
+                                <span className="text-foreground/85">Drafter said <span className="font-bold">{result.disagreements.drafter_tier}</span> · Critic said <span className="font-bold">{result.disagreements.critic_tier}</span>. We took the more conservative read.</span>
+                              </div>
+                            )}
+                            <div className="grid md:grid-cols-2 gap-5">
+                              <div>
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Only the drafter saw</p>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {[...(result.disagreements.layers_only_drafter || []), ...(result.disagreements.subs_only_drafter || [])].map((id) => (
+                                    <LayerTag key={id} id={id} variant="chip" withSublayerName={/[a-z]$/.test(id)} />
+                                  ))}
+                                  {(result.disagreements.layers_only_drafter?.length ?? 0) + (result.disagreements.subs_only_drafter?.length ?? 0) === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                                </div>
+                              </div>
+                              <div>
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.12em] text-foreground/60 mb-2">Only the critic saw</p>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {[...(result.disagreements.layers_only_critic || []), ...(result.disagreements.subs_only_critic || [])].map((id) => (
+                                    <LayerTag key={id} id={id} variant="chip" withSublayerName={/[a-z]$/.test(id)} />
+                                  ))}
+                                  {(result.disagreements.layers_only_critic?.length ?? 0) + (result.disagreements.subs_only_critic?.length ?? 0) === 0 && <span className="text-xs text-muted-foreground italic">—</span>}
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-xs italic text-muted-foreground">Where one critic saw a layer the other didn't, the claim is shown in the main audit without the ✓ confirmation mark and at a downgraded confidence.</p>
+                          </div>
+                        </details>
+                      )}
 
                       {/* Competitive landscape */}
                       {result.competitive_landscape && (
