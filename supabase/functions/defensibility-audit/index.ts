@@ -105,26 +105,31 @@ async function research(company: string, userContext?: string): Promise<{ text: 
 }
 
 
+const PROVENANCE_ENUM = ["evidence", "inference", "assumption"];
+
 const AUDIT_SCHEMA = {
   type: "object",
   properties: {
     verdict_tier: { type: "string", enum: ["fortress", "tilting_fortress", "mixed", "exposed", "wrapper_at_risk", "insufficient_data"] },
     score: { type: "integer", minimum: 0, maximum: 100, description: "Composite defensibility. 80+=fortress, 60-79=tilting, 40-59=mixed, 20-39=exposed, <20=wrapper." },
     one_line: { type: "string", description: "One-sentence verdict in Stratechery voice. Name the layers." },
+    aha: { type: "string", description: "ONE sentence that delivers a surprise — the non-obvious structural insight a smart reader wouldn't get from skimming the company's homepage. NOT a summary. NOT the verdict restated. Something that reframes how you see them. If you can't write a real aha, write 'No surprise: behaves exactly as positioned.'" },
+    counter_thesis: { type: "string", description: "2-3 sentences. What would have to be true for this audit to read WRONG in 18 months? The strongest steelman that this company is actually defensible in ways the framework misses, or the move that would flip the verdict. Cite a specific layer." },
     domain: { type: "string", description: "Short domain/vertical label (e.g. 'Legal AI', 'CX Agents', 'Dev Tools')." },
     layers_owned: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers the company structurally owns or is meaningfully building toward. Be brutal — max 4." },
     layers_rented: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers they depend on but do not own. This is their risk list." },
     sublayer_claims: {
       type: "array",
-      description: "3-7 specific sublayer claims with confidence. Cite evidence from research.",
+      description: "3-7 specific sublayer claims with confidence AND provenance. Cite evidence from research.",
       items: {
         type: "object",
         properties: {
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
           confidence: { type: "string", enum: ["high", "medium", "low"] },
-          evidence: { type: "string", description: "1 sentence pointing to a specific product feature, customer, or fact from research." },
+          provenance: { type: "string", enum: PROVENANCE_ENUM, description: "evidence = verbatim/cited from research or user context. inference = reasonable structural deduction from named facts. assumption = no direct support, framework-pattern guess. Be honest." },
+          evidence: { type: "string", description: "1 sentence. If provenance=evidence, cite the specific product feature, customer, or fact. If inference, name what you inferred from. If assumption, say so." },
         },
-        required: ["sublayer", "confidence", "evidence"],
+        required: ["sublayer", "confidence", "provenance", "evidence"],
       },
     },
     sublayer_gaps: {
@@ -134,9 +139,10 @@ const AUDIT_SCHEMA = {
         type: "object",
         properties: {
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
+          provenance: { type: "string", enum: PROVENANCE_ENUM },
           why: { type: "string", description: "1 sentence: why this sublayer matters for their domain and what happens if they don't get it." },
         },
-        required: ["sublayer", "why"],
+        required: ["sublayer", "provenance", "why"],
       },
     },
     sublayer_depth: {
@@ -164,8 +170,6 @@ const AUDIT_SCHEMA = {
       items: { type: "string", enum: ["Law I", "Law II", "Law III", "Law IV"] },
       description: "Which structural laws apply most directly.",
     },
-    strengths: { type: "array", items: { type: "string" }, description: "2-3 specific structural strengths." },
-    risks: { type: "array", items: { type: "string" }, description: "2-3 specific compression risks. Name who absorbs them." },
     competitive_landscape: {
       type: "object",
       description: "Who eats their lunch, layer by layer.",
@@ -202,7 +206,7 @@ const AUDIT_SCHEMA = {
     },
     roadmap: {
       type: "array",
-      description: "Exactly 5 prioritized roadmap moves. Each MUST cite a specific sublayer ID. Order P0 first.",
+      description: "Exactly 5 prioritized roadmap moves. Each MUST cite a specific sublayer AND a Law. Order P0 first.",
       minItems: 5,
       maxItems: 5,
       items: {
@@ -212,9 +216,10 @@ const AUDIT_SCHEMA = {
           horizon: { type: "string", enum: ["90d", "180d", "365d"] },
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
           move: { type: "string", description: "1-2 sentences. Concrete product/data/distribution action — not 'invest in AI'." },
-          why: { type: "string", description: "1 sentence: which risk it closes or which juggernaut move it blunts." },
+          law: { type: "string", enum: ["Law I", "Law II", "Law III", "Law IV"], description: "Which structural Law this move is grounded in." },
+          why: { type: "string", description: "1 sentence beginning with the Law, e.g. 'Law II — without memory, every session restarts the relationship; closes the L8c gap before Anthropic ships persistent memory.'" },
         },
-        required: ["priority", "horizon", "sublayer", "move", "why"],
+        required: ["priority", "horizon", "sublayer", "move", "law", "why"],
       },
     },
     open_questions: {
@@ -226,7 +231,7 @@ const AUDIT_SCHEMA = {
     },
     snippet: { type: "string", description: "2-3 sentences: what to do with this verdict. Specific next move tied to a layer." },
   },
-  required: ["verdict_tier", "score", "one_line", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "strengths", "risks", "competitive_landscape", "roadmap", "open_questions", "snippet"],
+  required: ["verdict_tier", "score", "one_line", "aha", "counter_thesis", "domain", "layers_owned", "layers_rented", "sublayer_claims", "sublayer_gaps", "sublayer_depth", "triangle", "archetype", "laws_triggered", "competitive_landscape", "roadmap", "open_questions", "snippet"],
   additionalProperties: false,
 };
 
