@@ -662,7 +662,10 @@ const AuditPage = () => {
                               {result.sublayer_gaps.map((g) => (
                                 <div key={g.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
                                   <div className="shrink-0 pt-0.5"><LayerTag id={g.sublayer} variant="chip" withSublayerName /></div>
-                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{g.why}</p>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{g.why}</p>
+                                    <div className="mt-1.5"><ProvenanceTag p={g.provenance} /></div>
+                                  </div>
                                 </div>
                               ))}
                             </div>
