@@ -15,7 +15,7 @@ const PersonalCapacityNotice = ({ variant = "line", className = "" }: Props) => 
     return (
       <div className={`rounded-lg border border-border bg-secondary/40 p-5 text-[14px] leading-relaxed text-foreground/80 ${className}`}>
         <p className="font-mono-marker text-[10px] uppercase tracking-[0.16em] text-accent mb-2">
-          A personal project · a give-back to the community
+          My mind mapping and thinking · a give-back to the community
         </p>
         <p>
           JTBD, Wardley Maps, and Christensen's work were all given away freely by their authors.
