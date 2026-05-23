@@ -87,7 +87,7 @@ const FAQ_SCHEMA = {
 const FaqPage = () => (
   <SiteLayout>
     <Seo
-      title="FAQ — AI Strategy Framework, Not Physical Supply Chain or Logistics"
+      title="FAQ — Supply Chain of Intelligence™"
       description="The Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack — built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
       path="/faq"
     />

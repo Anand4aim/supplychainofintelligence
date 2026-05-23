@@ -10,7 +10,7 @@ import Eyebrow from "@/components/Eyebrow";
 const Disclaimer = () => (
   <SiteLayout>
     <Seo
-      title="Disclaimer · Editorial Use & Trademarks | Supply Chain of Intelligence™"
+      title="Disclaimer — Editorial Use & Trademarks"
       description="Editorial-use disclaimer for The Supply Chain of Intelligence™ — descriptive trademark use, public-source reporting, and lens-not-verdict policy across the 10-layer generative AI stack (not logistics/freight)."
       path="/disclaimer"
     />

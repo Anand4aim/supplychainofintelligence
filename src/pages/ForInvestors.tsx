@@ -62,7 +62,7 @@ const VERDICTS = [
 const ForInvestors = () => (
   <SiteLayout>
     <Seo
-      title="For PE & Investors — An AI Defensibility Lens | Supply Chain of Intelligence"
+      title="For PE & Investors — AI Defensibility Lens"
       description="A public, free lens for reading AI defensibility across the 10 layers of the generative AI stack — for PE partners, growth investors, and boards. Editorial, not a service offering. Not logistics."
       path="/for-investors"
     />

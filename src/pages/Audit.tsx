@@ -140,7 +140,7 @@ const AuditPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="AI Defensibility Audit — Score any company against the Supply Chain of Intelligence"
+        title="AI Defensibility Audit — Score Any Company"
         description="Free public tool: paste a company name, get a layer-by-layer audit of where they sit on the 10-layer generative AI stack, cross-checked by two models. Fortress, wrapper, or somewhere in between."
         path="/audit"
       />
