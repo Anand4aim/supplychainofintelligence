@@ -83,7 +83,7 @@ const SiteFooter = () => (
             <Link to="/privacy" className="hover:text-foreground transition-colors">
               Privacy
             </Link>
-            <span>Use it, cite it, build on it — credit appreciated.</span>
+            <span>A give-back to the product community. Use it, cite it, build on it.</span>
           </div>
         </div>
       </div>

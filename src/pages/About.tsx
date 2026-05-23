@@ -150,7 +150,10 @@ const AboutPage = () => (
           <p>
             <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
             layers, fifty sublayers, four structural laws, one diagnostic cube. It is opinionated, it is portable
-            across categories, and it is free.
+            across categories, and it is free — a give-back to the product community.
+          </p>
+          <p>
+            I spent two decades building products inside Meta, Vungle, and others, and the frameworks I leaned on most — JTBD, Wardley Maps, the Innovator's Dilemma — were all given away by their authors. This is my contribution back. Use it, cite it, fork it, disagree with it in public. That's the whole point.
           </p>
           <p>
             I grew up a <strong className="text-foreground">competitive chess player</strong> — a former

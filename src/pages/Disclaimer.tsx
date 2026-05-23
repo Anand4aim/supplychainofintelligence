@@ -27,7 +27,7 @@ const Disclaimer = () => (
       <div className="mt-10 space-y-6 text-[15.5px] text-foreground/80 leading-relaxed">
         <section>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">
-            A personal intellectual project · no services offered
+            A personal intellectual project · a give-back to the community
           </h2>
           <p>
             This site is published by{" "}
@@ -44,7 +44,8 @@ const Disclaimer = () => (
             offered, sold, accepted, or solicited through this site.</strong> Every
             page — the framework, the self-assessment, the predictions, the live
             feed, the case studies, the posters, the newsletter — is{" "}
-            <em>free, public, and editorial</em>. There are no sponsorships, no paid
+            <em>free, public, and editorial</em>, published as a give-back to the
+            product community. There are no sponsorships, no paid
             placements, no lead capture for services, and no contact form for
             engagement requests. Questions, corrections, and pushback are welcome on{" "}
             <a
