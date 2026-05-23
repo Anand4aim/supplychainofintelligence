@@ -40,7 +40,7 @@ const USE_CASES = [
     kicker: "Portfolio read",
     title: "AI Roadmap Audit",
     body:
-      "A one-page scorecard pattern per portfolio company. Audit / 40, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
+      "A one-page scorecard pattern per portfolio company. Audit / 100, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
     layers: ["L2", "L6", "L7"],
   },
   {
@@ -156,11 +156,14 @@ const ForInvestors = () => (
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     {u.body}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {u.layers.map((l) => (
                       <LayerTag key={l} id={l} />
                     ))}
                   </div>
+                  <Link to="/audit" className="text-[12px] font-mono-marker tracking-[0.14em] uppercase text-accent hover:underline inline-flex items-center gap-1">
+                    Run the audit <ArrowRight size={13} />
+                  </Link>
                 </SketchBoard>
               </motion.div>
             );
@@ -181,7 +184,7 @@ const ForInvestors = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 40 with verdict band. Public template on /audit."],
+            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 100 with verdict band. Run it on the audit page."],
             ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
             ["Platform compression risk", "Which layers above and below are about to absorb a product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
