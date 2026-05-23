@@ -27,25 +27,20 @@ const Disclaimer = () => (
       <div className="mt-10 space-y-6 text-[15.5px] text-foreground/80 leading-relaxed">
         <section>
           <h2 className="font-display text-xl font-semibold text-foreground mb-3">
-            A personal intellectual project · a give-back to the community
+            A personal project · a give-back to the community
           </h2>
           <p>
-            This site is published by{" "}
-            <strong className="text-foreground">Anand Arivukkarasu</strong> in a
-            personal capacity and produced on personal time as writing and
-            thought leadership. It reflects personal views only and is{" "}
-            <strong className="text-foreground">not affiliated with, endorsed by,
-            or representative of any current or former employer</strong>, client,
-            firm, or organization.
+            This site is built and written by{" "}
+            <strong className="text-foreground">Anand Arivukkarasu</strong> on
+            personal time, as a voluntary contribution to the product community.
+            It reflects my own views and is separate from my primary employment.
           </p>
           <p className="mt-3">
-            <strong className="text-foreground">No products, consulting, advisory,
-            diligence, audits, board engagements, or paid services of any kind are
-            offered, sold, accepted, or solicited through this site.</strong> Every
-            page — the framework, the self-assessment, the predictions, the live
-            feed, the case studies, the posters, the newsletter — is{" "}
-            <em>free, public, and editorial</em>, published as a give-back to the
-            product community. There are no sponsorships, no paid
+            I don't offer products, consulting, advisory, diligence, or any paid
+            services through this site. Every page — the framework, the
+            self-assessment, the predictions, the live feed, the case studies, the
+            posters, the newsletter — is{" "}
+            <em>free, public, and editorial</em>. There are no sponsorships, no paid
             placements, no lead capture for services, and no contact form for
             engagement requests. Questions, corrections, and pushback are welcome on{" "}
             <a
@@ -59,13 +54,13 @@ const Disclaimer = () => (
             .
           </p>
           <p className="mt-3">
-            The author's primary employment is held separately from this site and
-            is disclosed on the{" "}
+            My primary employment is held separately from this site and is
+            disclosed on the{" "}
             <Link to="/about" className="text-accent hover:underline">
               About
             </Link>{" "}
-            page. Nothing on this site should be read as work performed for, on
-            behalf of, or in service to any third party.
+            page. Nothing here should be read as work performed for, on behalf of,
+            or in service to any third party.
           </p>
         </section>
 
