@@ -145,18 +145,20 @@ const IntelligenceGrid = ({
 
                   const cellInner = (
                     <>
-                      {/* Top row: ID + name inline, name visible at a glance */}
-                      <div className="flex items-baseline gap-1.5 min-w-0">
-                        <span className="shrink-0 font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/60">
-                          {s.id}
-                        </span>
-                        <span className="font-display text-foreground text-[10.5px] md:text-[11.5px] leading-[1.15] line-clamp-1 min-w-0 flex-1">
+                      {/* ID on top, full name below — wraps to 2 lines so nothing clips */}
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1">
+                          <span className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/55">
+                            {s.id}
+                          </span>
+                          {s.defensible && <span className="text-accent text-[9px]">★</span>}
+                        </div>
+                        <div className="font-display text-foreground text-[10.5px] md:text-[11px] leading-[1.15] mt-0.5 break-words">
                           {s.name}
-                        </span>
-                        {s.defensible && <span className="text-accent text-[9px] shrink-0">★</span>}
+                        </div>
                       </div>
                       {isAudit && (
-                        <div className="mt-2 flex items-center justify-center">
+                        <div className="mt-1.5 flex items-center justify-center">
                           <DepthDots count={depth} color={c} />
                         </div>
                       )}
@@ -171,7 +173,7 @@ const IntelligenceGrid = ({
                       key={s.id}
                       to={`/framework#${layer.id}`}
                       className={`${className} hover:bg-foreground/[0.03] transition-colors`}
-                      style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
+                      style={{ background: bg, borderColor: borderCol, minHeight: 72 }}
                       title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
@@ -180,7 +182,7 @@ const IntelligenceGrid = ({
                     <div
                       key={s.id}
                       className={className}
-                      style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
+                      style={{ background: bg, borderColor: borderCol, minHeight: 72 }}
                       title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
