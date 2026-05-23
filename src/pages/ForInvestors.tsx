@@ -181,7 +181,7 @@ const ForInvestors = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 40 with verdict band. Public template on /audit."],
+            ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 100 with verdict band. Run it on the audit page."],
             ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
             ["Platform compression risk", "Which layers above and below are about to absorb a product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
