@@ -76,9 +76,6 @@ const Index = () => {
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
                 The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
               </p>
-              <p className="text-[13px] text-foreground/60 leading-relaxed mb-4 max-w-lg">
-                The framework, the audit, and the live analysis — free to use, cite, and build on.
-              </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/audit" className="btn-sketch">
                   Score your company <ArrowRight size={15} />

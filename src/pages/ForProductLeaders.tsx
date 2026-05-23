@@ -69,9 +69,7 @@ const ForProductLeaders = () => (
 
         <div className="verdict-dominant bg-accent/5 rounded-xl p-5">
           <p className="text-sm text-foreground leading-relaxed italic">
-            "Great product leaders have mastered the Y-axis — customer depth. In the AI era, you also need 
-            the Z-axis — infrastructure depth — or you'll build something customers love today that gets 
-            commoditized tomorrow."
+            "JTBD tells you what to build. The stack tells you whether it survives."
           </p>
           <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
         </div>
@@ -114,9 +112,8 @@ const ForProductLeaders = () => (
           Run the framework on your own roadmap.
         </h2>
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
-          Use the public Supply Chain of Intelligence™ to audit your roadmap, your competitive
-          position, and your structural defensibility — sublayer by sublayer. Free, no signup,
-          no follow-up.
+          Audit your roadmap, your competitive position, and your structural defensibility —
+          sublayer by sublayer.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
           <Link to="/framework" className="btn-sketch">
