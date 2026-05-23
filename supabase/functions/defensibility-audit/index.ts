@@ -291,22 +291,28 @@ function reconcile(draft: any, critic: any) {
   const draftMap = new Map((draft.sublayer_claims || []).map((c: any) => [c.sublayer, c]));
   const criticMap = new Map((critic.sublayer_claims || []).map((c: any) => [c.sublayer, c]));
   const conf = { high: 3, medium: 2, low: 1 };
+  const provRank = { evidence: 3, inference: 2, assumption: 1 };
   const reconciled_sublayers: any[] = [];
   const allSubs = new Set([...draftMap.keys(), ...criticMap.keys()]);
   for (const s of allSubs) {
-    const d = draftMap.get(s);
-    const c = criticMap.get(s);
+    const d: any = draftMap.get(s);
+    const c: any = criticMap.get(s);
     if (d && c) {
       const minConf = conf[d.confidence] <= conf[c.confidence] ? d.confidence : c.confidence;
-      reconciled_sublayers.push({ sublayer: s, confidence: minConf, evidence: d.evidence, cross_confirmed: true });
+      // Take the WEAKER provenance — if one critic only inferred, mark inference.
+      const dp = d.provenance || "assumption";
+      const cp = c.provenance || "assumption";
+      const minProv = provRank[dp] <= provRank[cp] ? dp : cp;
+      reconciled_sublayers.push({ sublayer: s, confidence: minConf, provenance: minProv, evidence: d.evidence, cross_confirmed: true });
     } else if (d) {
-      const downgrade = d.confidence === "high" ? "medium" : d.confidence === "medium" ? "low" : "low";
-      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, evidence: d.evidence, cross_confirmed: false });
+      const downgrade = d.confidence === "high" ? "medium" : "low";
+      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, provenance: d.provenance || "inference", evidence: d.evidence, cross_confirmed: false });
     } else if (c) {
-      const downgrade = c.confidence === "high" ? "medium" : c.confidence === "medium" ? "low" : "low";
-      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, evidence: c.evidence, cross_confirmed: false });
+      const downgrade = c.confidence === "high" ? "medium" : "low";
+      reconciled_sublayers.push({ sublayer: s, confidence: downgrade, provenance: c.provenance || "inference", evidence: c.evidence, cross_confirmed: false });
     }
   }
+
 
   const score = Math.round(((draft.score ?? 0) + (critic.score ?? 0)) / 2);
   const tierOrder = ["wrapper_at_risk", "exposed", "mixed", "tilting_fortress", "fortress"];
