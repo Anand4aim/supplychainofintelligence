@@ -30,19 +30,21 @@ interface Props {
 const inner = (id: string) => (id === "L-1" ? "neg1" : id.replace("L", ""));
 
 const DepthDots = ({ count, color }: { count: number; color: string }) => {
-  // Five always-rendered slots so layout never shifts. Filled = score.
+  // Five slots so layout never shifts. Filled dots are large + saturated; empty
+  // dots are tiny + faint so the score reads at a glance without losing the /5 scale.
   return (
-    <div className="flex items-center gap-[3px] mt-1.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <span
-          key={i}
-          className="w-1.5 h-1.5 rounded-full transition-colors"
-          style={{
-            background: i <= count ? color : "hsl(var(--foreground) / 0.12)",
-          }}
-          aria-hidden
-        />
-      ))}
+    <div className="flex items-center gap-[5px]">
+      {[1, 2, 3, 4, 5].map((i) => {
+        const filled = i <= count;
+        return (
+          <span
+            key={i}
+            className={`rounded-full transition-all ${filled ? "w-2.5 h-2.5 shadow-sm" : "w-1 h-1"}`}
+            style={{ background: filled ? color : "hsl(var(--foreground) / 0.18)" }}
+            aria-hidden
+          />
+        );
+      })}
     </div>
   );
 };
