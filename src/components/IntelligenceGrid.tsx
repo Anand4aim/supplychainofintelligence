@@ -30,19 +30,21 @@ interface Props {
 const inner = (id: string) => (id === "L-1" ? "neg1" : id.replace("L", ""));
 
 const DepthDots = ({ count, color }: { count: number; color: string }) => {
-  // Five always-rendered slots so layout never shifts. Filled = score.
+  // Five slots so layout never shifts. Filled dots are large + saturated; empty
+  // dots are tiny + faint so the score reads at a glance without losing the /5 scale.
   return (
-    <div className="flex items-center gap-[3px] mt-1.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <span
-          key={i}
-          className="w-1.5 h-1.5 rounded-full transition-colors"
-          style={{
-            background: i <= count ? color : "hsl(var(--foreground) / 0.12)",
-          }}
-          aria-hidden
-        />
-      ))}
+    <div className="flex items-center gap-[5px]">
+      {[1, 2, 3, 4, 5].map((i) => {
+        const filled = i <= count;
+        return (
+          <span
+            key={i}
+            className={`rounded-full transition-all ${filled ? "w-2.5 h-2.5 shadow-sm" : "w-1 h-1"}`}
+            style={{ background: filled ? color : "hsl(var(--foreground) / 0.18)" }}
+            aria-hidden
+          />
+        );
+      })}
     </div>
   );
 };
@@ -85,9 +87,24 @@ const IntelligenceGrid = ({
           )}
         </div>
         <div className="hidden md:block text-right shrink-0">
-          <p className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
-            {mode === "audit" ? "0–5 dots = depth in that sublayer" : "Blank template · SCoAI"}
-          </p>
+          {mode === "audit" ? (
+            <div className="flex items-center gap-2 justify-end">
+              <div className="flex items-center gap-[5px]">
+                <span className="w-2.5 h-2.5 rounded-full bg-foreground/80 shadow-sm" />
+                <span className="w-2.5 h-2.5 rounded-full bg-foreground/80 shadow-sm" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+                <span className="w-1 h-1 rounded-full bg-foreground/18" />
+              </div>
+              <span className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
+                Depth · out of 5
+              </span>
+            </div>
+          ) : (
+            <p className="font-mono-marker text-[9px] tracking-[0.18em] uppercase text-foreground/60">
+              Blank template · SCoAI
+            </p>
+          )}
           <p className="font-sketch text-[11px] italic text-muted-foreground mt-0.5">
             Not logistics. The AI stack.
           </p>
@@ -116,26 +133,33 @@ const IntelligenceGrid = ({
                 </div>
               </div>
 
-              {/* 5 sublayer cells — very low tint so dots dominate */}
+              {/* 5 sublayer cells */}
               <div className="grid grid-cols-5 gap-[5px]">
                 {layer.sublayers.slice(0, 5).map((s) => {
-                  const tintAlpha = mode === "audit" ? 0.06 : 0.10;
-                  const bg = `hsl(var(--layer-${inner(layer.id)}) / ${tintAlpha})`;
-                  const borderCol = `hsl(var(--layer-${inner(layer.id)}) / 0.22)`;
+                  const isAudit = mode === "audit";
+                  // In audit mode, drop the background so dots dominate. In blank mode, keep light tint.
+                  const tintAlpha = isAudit ? 0 : 0.10;
+                  const bg = isAudit ? "transparent" : `hsl(var(--layer-${inner(layer.id)}) / ${tintAlpha})`;
+                  const borderCol = `hsl(var(--layer-${inner(layer.id)}) / ${isAudit ? 0.28 : 0.22})`;
                   const depth = sublayerDepth[s.id] ?? 0;
 
                   const cellInner = (
                     <>
-                      <div className="flex items-center justify-between gap-1">
-                        <span className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/70">
+                      {/* Top row: ID + name inline, name visible at a glance */}
+                      <div className="flex items-baseline gap-1.5 min-w-0">
+                        <span className="shrink-0 font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/60">
                           {s.id}
                         </span>
-                        {s.defensible && <span className="text-accent text-[9px]">★</span>}
+                        <span className="font-display text-foreground text-[10.5px] md:text-[11.5px] leading-[1.15] line-clamp-1 min-w-0 flex-1">
+                          {s.name}
+                        </span>
+                        {s.defensible && <span className="text-accent text-[9px] shrink-0">★</span>}
                       </div>
-                      <div className="font-display text-foreground text-[10.5px] md:text-[11.5px] leading-[1.15] mt-0.5 line-clamp-2">
-                        {s.name}
-                      </div>
-                      {mode === "audit" && <DepthDots count={depth} color={c} />}
+                      {isAudit && (
+                        <div className="mt-2 flex items-center justify-center">
+                          <DepthDots count={depth} color={c} />
+                        </div>
+                      )}
                     </>
                   );
 
@@ -148,7 +172,7 @@ const IntelligenceGrid = ({
                       to={`/framework#${layer.id}`}
                       className={`${className} hover:bg-foreground/[0.03] transition-colors`}
                       style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
-                      title={`${s.id} ${s.name}${mode === "audit" ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </Link>
@@ -157,7 +181,7 @@ const IntelligenceGrid = ({
                       key={s.id}
                       className={className}
                       style={{ background: bg, borderColor: borderCol, minHeight: 58 }}
-                      title={`${s.id} ${s.name}${mode === "audit" ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </div>
