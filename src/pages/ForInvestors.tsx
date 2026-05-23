@@ -171,6 +171,131 @@ const ForInvestors = () => (
       </div>
     </section>
 
+    {/* VALUATION PROTECTION & EXPANSION — the PE playbook */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
+        <motion.div {...fadeIn} className="mb-10">
+          <Eyebrow tone="accent" className="mb-3">The PE playbook</Eyebrow>
+          <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-4">
+            Valuation protection &amp; expansion, in stack language.
+          </h2>
+          <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
+            Private equity does not buy architecture. It buys structural insulation against margin
+            compression — multiple expansion, churn reduction, NRR, gross-margin protection. The
+            Supply Chain of Intelligence™ translates each of those into specific moves on the stack.
+            Any L7-heavy portfolio company (orchestration, workflow, dashboard, &quot;agent&quot;
+            wrapper) faces the same threat: Law I — intelligence commoditizes downward — and the
+            native platform below compresses the surface above. The defense is to climb down the
+            stack into layers the platform cannot absorb.
+          </p>
+        </motion.div>
+
+        <div className="mb-10 rounded-xl border border-border bg-secondary/30 p-6 md:p-7">
+          <Eyebrow className="mb-2">The core threat</Eyebrow>
+          <h3 className="font-display text-xl font-bold text-foreground mb-2">L7 / L6 compression.</h3>
+          <p className="text-sm text-foreground/85 leading-relaxed">
+            Revenue built on orchestration and surface-level automation sits one platform release
+            note from extinction. Foundation models below (<LayerTag id="L2" />) and native
+            ecosystems above (<LayerTag id="L3" />, <LayerTag id="L7" />) are building intelligent
+            agents that talk directly to APIs. If a buyer can route around the interface, the
+            interface is a feature, not a moat. Multiples reprice accordingly.
+          </p>
+        </div>
+
+        <div className="mb-6">
+          <Eyebrow className="mb-2">The three structural moves</Eyebrow>
+          <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed">
+            Move the product from a workflow interface to an un-bypassable reasoning node. Three
+            defensible pillars, each tied to a PE-grade outcome.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+          {[
+            {
+              tag: "L4",
+              kicker: "Move 1 · Weaponize Access",
+              title: "Turn the MCP / API layer into a tollbooth.",
+              action:
+                "Position the company's MCP server or access layer as the only compliance, guardrail, and governance pipe for enterprise AI agents acting in your domain. Internal AI buyers do not connect to the upstream platform directly — they route through your layer to enforce budget pacing, brand safety, policy, and cross-channel rules.",
+              outcome:
+                "Churn collapses toward zero. Turning off the product means breaking the enterprise's internal AI architecture. Critical infrastructure, not a dashboard.",
+            },
+            {
+              tag: "L5",
+              kicker: "Move 2 · Monetize Decisions",
+              title: "Package historical telemetry as routing playbooks.",
+              action:
+                "Stop selling only software seats. Package years of proprietary transaction, attribution, and outcome data into fine-tuned decision frameworks at the L5 layer. When an external agent queries the domain, charge a premium to inject your closed-loop playbooks into its context window.",
+              outcome:
+                "High-margin, usage-based data revenue that scales independently of seat licenses. NRR expands without sales headcount.",
+            },
+            {
+              tag: "L8",
+              kicker: "Move 3 · Compound Memory",
+              title: "Build institutional memory the platform cannot replicate.",
+              action:
+                "Every automated decision, every override, every seasonal pivot the system executes feeds a compounding graph of why. Context drift — the largest enterprise AI failure mode — gets solved on your side of the wall.",
+              outcome:
+                "A data moat measured in years, not features. A cheaper UI or a faster orchestrator cannot copy compounded memory. Multiple expansion at exit.",
+            },
+          ].map((m) => (
+            <motion.div key={m.title} {...fadeIn}>
+              <SketchBoard className="p-6 h-full flex flex-col">
+                <div className="flex items-center gap-2 mb-3">
+                  <LayerTag id={m.tag} />
+                  <Eyebrow>{m.kicker}</Eyebrow>
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground leading-tight mb-3">
+                  {m.title}
+                </h3>
+                <div className="mb-3">
+                  <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/60 mb-1">Action</p>
+                  <p className="text-sm text-foreground/85 leading-relaxed">{m.action}</p>
+                </div>
+                <div className="mt-auto pt-3 border-t border-border/60">
+                  <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent mb-1">PE Value</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{m.outcome}</p>
+                </div>
+              </SketchBoard>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="rounded-xl border border-border bg-secondary/30 p-6 md:p-7">
+          <Eyebrow className="mb-2">How to frame it in the room</Eyebrow>
+          <h3 className="font-display text-xl font-bold text-foreground mb-3">
+            Present it as a valuation-protection audit, not an engineering overhaul.
+          </h3>
+          <ol className="space-y-3 text-sm text-foreground/85 leading-relaxed">
+            <li>
+              <span className="font-bold text-foreground">1. Map the vulnerability.</span> Show how
+              much of current EBITDA sits on execution layers (L6 / L7) exposed to native-platform
+              compression.
+            </li>
+            <li>
+              <span className="font-bold text-foreground">2. Name the structural fix.</span> The
+              three moves above are a product blueprint to defend NRR and gross margin — not a
+              re-platforming project.
+            </li>
+            <li>
+              <span className="font-bold text-foreground">3. Tie it to the exit.</span> Each move
+              maps to a PE lever: churn, NRR, gross margin, data revenue, multiple expansion. The
+              language travels from product to IC memo without translation.
+            </li>
+          </ol>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link to="/audit" className="btn-sketch">
+              Run the audit on a portfolio company <ArrowRight size={15} />
+            </Link>
+            <Link to="/framework" className="btn-sketch-outline">
+              Read the underlying laws
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
     {/* WHAT THE FRAMEWORK SURFACES */}
     <section className="bg-secondary/40 border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">

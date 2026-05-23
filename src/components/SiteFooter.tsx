@@ -25,7 +25,6 @@ const SiteFooter = () => (
           </p>
           <p className="text-sm leading-relaxed max-w-md mb-5">
             A structural framework that maps where AI companies live, compete, and die.
-            10 Layers. 50 Sublayers. 3 Laws. The Intelligence Cube.
           </p>
           <NewsletterCTA source="footer" variant="footer" />
           <p className="text-xs mt-4 text-muted-foreground">
@@ -33,31 +32,26 @@ const SiteFooter = () => (
           </p>
         </div>
 
-        {/* Links */}
+        {/* The Framework */}
         <div>
-          <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Navigate</h4>
+          <h4 className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/60 mb-4">The Framework</h4>
           <div className="space-y-2.5">
-            <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
-            <Link to="/posters" className="block text-sm hover:text-foreground transition-colors">Posters · Shareable</Link>
-            <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary · Decoder</Link>
-            <Link to="/playbook" className="block text-sm hover:text-foreground transition-colors">Playbook</Link>
-            <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
-            <Link to="/classification" className="block text-sm hover:text-foreground transition-colors">Classification Table</Link>
+            <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
-            <Link to="/predictions" className="block text-sm hover:text-foreground transition-colors">Predictions Board</Link>
-            <Link to="/edge-cases" className="block text-sm hover:text-foreground transition-colors">Edge Cases</Link>
-            <Link to="/essays/pre-ai-proof" className="block text-sm hover:text-foreground transition-colors">Pre-AI Proof</Link>
+            <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
+            <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
+            <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary</Link>
           </div>
         </div>
 
+        {/* For & About */}
         <div>
-          <h4 className="font-mono-marker text-[10px] text-foreground/60 mb-4">Connect</h4>
+          <h4 className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/60 mb-4">For &amp; About</h4>
           <div className="space-y-2.5">
+            <Link to="/for-product-leaders" className="block text-sm hover:text-foreground transition-colors">For Product Leaders</Link>
+            <Link to="/for-investors" className="block text-sm hover:text-foreground transition-colors">For PE &amp; Investors</Link>
             <Link to="/about" className="block text-sm hover:text-foreground transition-colors">About Anand</Link>
-            <Link to="/posts" className="block text-sm hover:text-foreground transition-colors">Posted · Essays</Link>
-            <Link to="/voices" className="block text-sm hover:text-foreground transition-colors">Voices</Link>
-            <Link to="/challenge" className="block text-sm hover:text-foreground transition-colors">Challenge the framework</Link>
             <Link to="/faq" className="block text-sm hover:text-foreground transition-colors">FAQ</Link>
             <a href="https://www.linkedin.com/in/anandarivu" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-sm hover:text-foreground transition-colors">
               <Linkedin size={13} /> LinkedIn
