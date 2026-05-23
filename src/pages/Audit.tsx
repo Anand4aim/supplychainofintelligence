@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap } from "lucide-react";
+import { Shield, AlertTriangle, HelpCircle, Loader2, Search, CheckCircle2, XCircle, Circle, Swords, Zap, Sparkles, Scale, FileSearch, Brain, HelpingHand } from "lucide-react";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
@@ -18,17 +18,30 @@ import { Progress } from "@/components/ui/progress";
 const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/defensibility-audit`;
 const ANON = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean };
-type Gap = { sublayer: string; why: string };
+type Provenance = "evidence" | "inference" | "assumption";
+type SubClaim = { sublayer: string; confidence: "high" | "medium" | "low"; evidence: string; cross_confirmed?: boolean; provenance?: Provenance };
+type Gap = { sublayer: string; why: string; provenance?: Provenance };
 type Player = { name: string; collides_at: string; note: string };
 type Juggernaut = { actor: string; move: string; compresses: string; timeframe: "shipped" | "0-6mo" | "6-18mo" };
-type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string };
+type RoadmapMove = { priority: "P0" | "P1" | "P2"; horizon: "90d" | "180d" | "365d"; sublayer: string; move: string; why: string; law?: string };
+type Disagreements = {
+  verdict_disagree?: boolean;
+  drafter_tier?: string;
+  critic_tier?: string;
+  layers_only_drafter?: string[];
+  layers_only_critic?: string[];
+  subs_only_drafter?: string[];
+  subs_only_critic?: string[];
+};
 type AuditResult = {
   company?: string;
   domain?: string;
   verdict_tier: "fortress" | "tilting_fortress" | "mixed" | "exposed" | "wrapper_at_risk" | "insufficient_data";
   score: number | null;
+  score_band?: { low: number; high: number; spread: number };
   one_line: string;
+  aha?: string;
+  counter_thesis?: string;
   layers_owned?: string[];
   layers_rented?: string[];
   sublayer_claims?: SubClaim[];
@@ -45,6 +58,7 @@ type AuditResult = {
   snippet?: string;
   guidance?: string;
   research_snippet?: string;
+  disagreements?: Disagreements;
   cross_check?: { drafter_score: number; critic_score: number; drafter_tier: string; critic_tier: string };
 };
 
