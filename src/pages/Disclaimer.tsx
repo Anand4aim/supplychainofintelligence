@@ -60,6 +60,14 @@ const Disclaimer = () => (
             <strong className="text-foreground">descriptive editorial
             framings</strong> and are not claimed as trademarks.
           </p>
+          <p className="mt-3">
+            You're welcome to cite, teach, and build on the framework with
+            attribution to <strong className="text-foreground">Anand
+            Arivukkarasu</strong> and a link to{" "}
+            <a href="https://supplychainofai.com" className="text-accent hover:underline">
+              supplychainofai.com
+            </a>. No permission needed.
+          </p>
         </section>
 
         <section>
