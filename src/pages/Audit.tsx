@@ -297,7 +297,7 @@ const AuditPage = () => {
                       <p className="font-mono-marker text-[9px] uppercase tracking-[0.12em] text-verdict-fortified mb-1.5">Biggest opportunity</p>
                       {result.sublayer_gaps?.[0] ? (
                         <>
-                          <div className="mb-1"><LayerTag id={result.sublayer_gaps[0].sublayer} variant="chip" withSublayerName /></div>
+                          <div className="mb-1 [&>span]:!whitespace-normal [&>span]:max-w-full"><LayerTag id={result.sublayer_gaps[0].sublayer} variant="chip" withSublayerName /></div>
                           <p className="text-[12px] text-foreground/75 leading-snug">{result.sublayer_gaps[0].why}</p>
                         </>
                       ) : <p className="text-[13px] text-foreground/85 leading-snug">{result.strengths?.[0] || "—"}</p>}
