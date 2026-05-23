@@ -500,22 +500,31 @@ const AuditPage = () => {
                             Prioritized roadmap · {result.roadmap.length} moves
                           </summary>
                           <div className="p-5 pt-0">
-                            <p className="text-xs text-muted-foreground mb-4 italic">P0 = next 90d (existential) · P1 = next 180d (defensive moat) · P2 = next 365d (long-game)</p>
-                            <div className="space-y-4">
-                              {result.roadmap.map((r, i) => (
-                                <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
-                                  <div className="flex flex-col items-center gap-1.5 pt-0.5">
-                                    <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
-                                    <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
-                                  </div>
-                                  <div className="min-w-0">
-                                    <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
-                                    <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
-                                    <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
-                                  </div>
+                            <ExportablePng
+                              fileName={`scoi-roadmap-${(result.company || "company").toLowerCase().replace(/\s+/g, "-")}`}
+                              caption={`${result.company} — prioritized roadmap`}
+                            >
+                              <div className="p-6 bg-background">
+                                <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent mb-1">{result.company} · Defensibility roadmap</p>
+                                <p className="font-display text-lg text-foreground mb-1">{result.roadmap.length} prioritized moves</p>
+                                <p className="text-xs text-muted-foreground mb-4 italic">P0 = next 90d (existential) · P1 = next 180d (defensive moat) · P2 = next 365d (long-game)</p>
+                                <div className="space-y-4">
+                                  {result.roadmap.map((r, i) => (
+                                    <div key={i} className="grid grid-cols-[auto_1fr] gap-4 pb-4 border-b border-foreground/5 last:border-0">
+                                      <div className="flex flex-col items-center gap-1.5 pt-0.5">
+                                        <span className={`font-mono-marker text-[10px] font-bold tracking-wider px-2 py-1 rounded border ${prioStyle[r.priority]}`}>{r.priority}</span>
+                                        <span className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground">{r.horizon}</span>
+                                      </div>
+                                      <div className="min-w-0">
+                                        <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
+                                        <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                                        <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
+                                      </div>
+                                    </div>
+                                  ))}
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            </ExportablePng>
                           </div>
                         </details>
                       )}
