@@ -40,7 +40,7 @@ const USE_CASES = [
     kicker: "Portfolio read",
     title: "AI Roadmap Audit",
     body:
-      "A one-page scorecard pattern per portfolio company. Audit / 40, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
+      "A one-page scorecard pattern per portfolio company. Audit / 100, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
     layers: ["L2", "L6", "L7"],
   },
   {
