@@ -140,24 +140,26 @@ const AuditPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="AI Defensibility Audit — Score Any Company"
-        description="Free public tool: paste a company name, get a layer-by-layer audit of where they sit on the 10-layer generative AI stack, cross-checked by two models. Fortress, wrapper, or somewhere in between."
+        title="AI Defensibility Lens — Read Any Company by Layer"
+        description="A diagnostic lens, not a scoring app. Paste a company, get a layer-by-layer reading of where its defensibility actually sits on the 10-layer generative AI stack. Two models cross-check; the verdict is conservative by design."
         path="/audit"
       />
 
       <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
         {/* Header */}
         <div className="mb-12">
-          <Eyebrow className="mb-4">The Defensibility Audit</Eyebrow>
+          <Eyebrow className="mb-4">The Defensibility Lens</Eyebrow>
           <h1 className="font-display text-3xl md:text-5xl font-bold leading-[1.1] mb-5 text-foreground">
-            Is this company a fortress, or a wrapper waiting to be absorbed?
+            A lens for reading AI companies, not a calculator for ranking them.
           </h1>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
-            Score any AI company against the 10-layer Supply Chain of Intelligence™. Two
-            models audit independently, then we reconcile — claims survive only if both
-            confirm them. The output is a structural verdict, not a vibe.
+            Paste a company. Get a layer-by-layer reading against the 10-layer Supply Chain of Intelligence™ — what they own, what they rent, and which sublayers actually hold. Two models audit independently and we keep the conservative read.
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground/90 leading-relaxed max-w-3xl border-l-2 border-accent/40 pl-4">
+            <span className="font-semibold text-foreground/80">What this is, honestly:</span> the score is a structuring device, not the answer. The real output is the sublayer-by-sublayer reframe — a vocabulary for arguing about defensibility instead of vibes. Treat it as a companion to the case studies, not a verdict machine.
           </p>
         </div>
+
 
         {/* Form */}
         <Card className="p-6 md:p-8 mb-10 border-2 border-foreground/15">
