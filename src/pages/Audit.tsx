@@ -635,7 +635,10 @@ const AuditPage = () => {
                               {result.sublayer_claims.map((s) => (
                                 <div key={s.sublayer} className="flex items-start gap-3 pb-3 border-b border-foreground/5 last:border-0">
                                   <div className="shrink-0 pt-0.5"><LayerTag id={s.sublayer} variant="chip" withSublayerName /></div>
-                                  <p className="text-[13px] text-foreground/80 leading-relaxed flex-1">{s.evidence}</p>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-[13px] text-foreground/80 leading-relaxed">{s.evidence}</p>
+                                    <div className="flex items-center gap-3 mt-1.5"><ProvenanceTag p={s.provenance} /></div>
+                                  </div>
                                   <div className="shrink-0 flex items-center gap-2 pt-1">
                                     <ConfidenceDots c={s.confidence} />
                                     {s.cross_confirmed && <CheckCircle2 size={12} className="text-verdict-fortified" aria-label="Confirmed by both models" />}
@@ -643,7 +646,7 @@ const AuditPage = () => {
                                 </div>
                               ))}
                             </div>
-                            <p className="font-sketch text-xs italic text-muted-foreground mt-4">✓ = both drafter and critic confirmed.</p>
+                            <p className="font-sketch text-xs italic text-muted-foreground mt-4">✓ = both critics confirmed. Provenance tells you whether each claim is grounded in evidence, structural inference, or framework assumption.</p>
                           </div>
                         </details>
                       )}
