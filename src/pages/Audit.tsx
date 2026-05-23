@@ -608,6 +608,11 @@ const AuditPage = () => {
                                       <div className="min-w-0">
                                         <div className="mb-1.5"><LayerTag id={r.sublayer} variant="chip" withSublayerName /></div>
                                         <p className="text-[14px] text-foreground/90 leading-relaxed font-medium">{r.move}</p>
+                                        {r.law && (
+                                          <span className="inline-flex items-center gap-1 font-mono-marker text-[9px] uppercase tracking-wider text-accent mt-1.5 mr-2">
+                                            <Scale size={10} /> {r.law}
+                                          </span>
+                                        )}
                                         <p className="text-[12px] text-muted-foreground italic mt-1">Why: {r.why}</p>
                                       </div>
                                     </div>
