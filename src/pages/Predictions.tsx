@@ -193,8 +193,8 @@ const Predictions = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Board — AI Predictions & Track Record | Supply Chain of Intelligence™"
-        description="The Board: dated, layer-tagged calls on Jasper, Chegg, Harvey, Sierra, Glean, Cursor, Perplexity, Klarna, Tesla/Waymo, BloombergGPT and more — each scored on structural accuracy, timing, and the counter-move the company could still play. Directional reads on the 10-layer generative AI stack (not logistics/freight)."
+        title="The Board — AI Predictions & Track Record"
+        description="Dated, layer-tagged calls on AI moves — scored on structural accuracy, timing, and counter-moves. Directional reads on the 10-layer AI stack."
         path="/predictions"
       />
       <script

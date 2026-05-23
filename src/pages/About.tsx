@@ -53,7 +53,7 @@ const TALKS = [
 const AboutPage = () => (
   <SiteLayout>
     <Seo
-      title="About Anand Arivukkarasu — Author of The Supply Chain of Intelligence™"
+      title="About Anand Arivukkarasu — Framework Author"
       description="Ex-Meta (Instagram) product leader. VP/Head of Product at Ideas2IT, Refersion, GRIN. Angel investor. Creator of the 10-layer framework for where AI value accrues."
       path="/about"
     />

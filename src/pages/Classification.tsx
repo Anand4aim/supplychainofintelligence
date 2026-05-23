@@ -81,7 +81,7 @@ const ClassificationPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="SCOI Classification Table — 60+ AI companies mapped to the 10-layer stack"
+        title="Classification — 60+ AI Companies on 10 Layers"
         description={SEO_DESC}
         path="/classification"
       />

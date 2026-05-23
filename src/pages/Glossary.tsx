@@ -60,7 +60,7 @@ const GlossaryPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="AI Stack Glossary — Wrapper, Agent, Copilot, RAG, MCP decoded into 10 Layers"
+        title="AI Stack Glossary — Wrapper, Agent, RAG, MCP Decoded"
         description={SEO_DESC}
         path="/glossary"
       />
