@@ -361,10 +361,27 @@ function reconcile(draft: any, critic: any) {
     if (merged > 0) sublayer_depth[k] = merged;
   }
 
+  // Disagreement panel — surface what the two critics actually split on.
+  const draftSubKeys = new Set((draft.sublayer_claims || []).map((c: any) => c.sublayer));
+  const criticSubKeys = new Set((critic.sublayer_claims || []).map((c: any) => c.sublayer));
+  const subs_only_drafter = [...draftSubKeys].filter((s) => !criticSubKeys.has(s));
+  const subs_only_critic = [...criticSubKeys].filter((s) => !draftSubKeys.has(s));
+  const draftOwnSet = new Set(draft.layers_owned || []);
+  const criticOwnSet = new Set(critic.layers_owned || []);
+  const layers_only_drafter = [...draftOwnSet].filter((l) => !criticOwnSet.has(l));
+  const layers_only_critic = [...criticOwnSet].filter((l) => !draftOwnSet.has(l));
+  const ds = draft.score ?? 0;
+  const cs = critic.score ?? 0;
+  const score_band = { low: Math.min(ds, cs), high: Math.max(ds, cs), spread: Math.abs(ds - cs) };
+  const verdict_disagree = draft.verdict_tier !== critic.verdict_tier;
+
   return {
     verdict_tier,
     score,
+    score_band,
     one_line: critic.one_line || draft.one_line,
+    aha: critic.aha || draft.aha || "",
+    counter_thesis: critic.counter_thesis || draft.counter_thesis || "",
     domain: critic.domain || draft.domain,
     layers_owned,
     layers_rented,
@@ -374,8 +391,6 @@ function reconcile(draft: any, critic: any) {
     triangle,
     archetype: critic.archetype || draft.archetype,
     laws_triggered: Array.from(new Set([...(draft.laws_triggered || []), ...(critic.laws_triggered || [])])),
-    strengths: critic.strengths || draft.strengths,
-    risks: Array.from(new Set([...(draft.risks || []), ...(critic.risks || [])])).slice(0, 4),
     competitive_landscape: {
       adjacent_players: (critic.competitive_landscape?.adjacent_players || draft.competitive_landscape?.adjacent_players || []).slice(0, 4),
       juggernaut_moves: (critic.competitive_landscape?.juggernaut_moves || draft.competitive_landscape?.juggernaut_moves || []).slice(0, 3),
@@ -383,6 +398,15 @@ function reconcile(draft: any, critic: any) {
     roadmap,
     open_questions: critic.open_questions || draft.open_questions,
     snippet: critic.snippet || draft.snippet,
+    disagreements: {
+      verdict_disagree,
+      drafter_tier: draft.verdict_tier,
+      critic_tier: critic.verdict_tier,
+      layers_only_drafter,
+      layers_only_critic,
+      subs_only_drafter,
+      subs_only_critic,
+    },
     cross_check: {
       drafter_score: draft.score,
       critic_score: critic.score,
