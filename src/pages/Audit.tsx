@@ -285,17 +285,35 @@ const AuditPage = () => {
                       <div className="font-display text-6xl md:text-7xl font-bold leading-none" style={{ color: tier.color }}>
                         {result.score}
                       </div>
-                      <div className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground mt-1">/ 100 defensibility</div>
+                      <div className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                        / 100 · <span style={{ color: tier.color }}>{tierBandLabel(result.verdict_tier)}</span>
+                      </div>
                       {/* Meter bar */}
-                      <div className="w-44 h-1.5 bg-foreground/10 rounded-full mt-3 overflow-hidden ml-auto">
+                      <div className="w-44 h-1.5 bg-foreground/10 rounded-full mt-3 overflow-hidden ml-auto relative">
+                        {result.score_band && result.score_band.spread > 0 && (
+                          <div
+                            className="absolute top-0 h-full opacity-25"
+                            style={{
+                              left: `${result.score_band.low}%`,
+                              width: `${result.score_band.high - result.score_band.low}%`,
+                              background: tier.color,
+                            }}
+                            aria-hidden
+                          />
+                        )}
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${result.score}%` }}
                           transition={{ duration: 0.8, delay: 0.2 }}
-                          className="h-full rounded-full"
+                          className="h-full rounded-full relative"
                           style={{ background: tier.color }}
                         />
                       </div>
+                      {result.score_band && result.score_band.spread > 0 && (
+                        <div className="font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground mt-1.5">
+                          Models split {result.score_band.low}–{result.score_band.high}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
