@@ -26,13 +26,13 @@ const VERTICES = [
     name: "Harvey",
     layer: "L5",
     role: "the work",
-    caption: "Owns the legal workflow — top firms run on it.",
+    caption: "Built deep inside the legal workflow — still contested by Claude.",
   },
   {
     name: "Sierra",
     layer: "L8",
     role: "the memory",
-    caption: "Remembers every customer — leaving costs the relationship.",
+    caption: "Accumulates per-customer memory that makes leaving costly.",
   },
 ] as const;
 
@@ -45,8 +45,8 @@ const ThreeLayerProof = () => (
       <div className="max-w-3xl mb-10">
         <Eyebrow tone="accent" className="mb-3">The 30-second aha</Eyebrow>
         <h2 className="font-display text-[26px] md:text-[36px] font-bold text-foreground leading-[1.15]">
-          Three companies. Three different things they own.{" "}
-          <span className="text-accent">That&rsquo;s why none of them can be erased.</span>
+          Three companies. Three different layers.{" "}
+          <span className="text-accent">Three different ways to be hard to displace.</span>
         </h2>
       </div>
 
