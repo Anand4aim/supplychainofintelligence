@@ -149,7 +149,7 @@ const FrameworkApplied = () => (
                 <div className="flex items-start justify-between mb-3 gap-3">
                   <div className="flex items-start gap-3 min-w-0">
                     <img
-                      src={`https://logo.clearbit.com/${a.domain}`}
+                      src={`https://www.google.com/s2/favicons?domain=${a.domain}&sz=128`}
                       alt={`${a.company} logo`}
                       loading="lazy"
                       className="w-10 h-10 rounded bg-white object-contain border border-border shrink-0"
