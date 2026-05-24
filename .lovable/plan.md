@@ -1,7 +1,7 @@
 
 # Strategy: Make the Framework Feel Concrete, Not Theoretical
 
-**v2 — merged with cross-LLM critique + the Professor's read.** No code in this pass. Approve and we execute.
+**v3 — Gold Mining restored as the Tier-1 explainer.** Execution plan, one piece at a time.
 
 ---
 
@@ -19,16 +19,19 @@ Every framework concept leads with a **Tier 1** sentence before Tier 2 (logos) o
 
 The Triangle headline today is Tier 3. Fix: reverse the order. Same content.
 
-### Rule B — One genre per page, two metaphors max
+### Rule B — Metaphor hierarchy (revised v3)
 
-Four metaphors compete across the site (supply chain, gold mining, cube, chess). Demote:
+Gold mining is not a competing metaphor — it is the **supply chain in human form**. It is the *only* Tier-1 explainer the site has. It stays.
 
-- **Supply chain** — stays everywhere (the brand).
-- **Gold mining** — Home only, one sentence. Removed from /framework.
-- **Intelligence Cube** — /framework only.
-- **Chess** — /predictions only.
+| Metaphor | Where it lives | Job |
+|---|---|---|
+| **Supply chain** (brand) | Everywhere | Identity |
+| **Gold mining** (explainer) | Home (1 line) **+** /framework (full, as Tier-1 ramp into the Triangle) | Translate the 10 layers into something human |
+| **Triangle** (thesis) | Home preview (logos) + /framework full | What to own |
+| **Intelligence Cube** (extension) | /framework only | Triangle × functions × verticals |
+| **Chess** (forecast) | /predictions only | Counter-moves |
 
-No page carries more than two metaphors. No page repeats another page's metaphor.
+Gold mining and Triangle are a **handoff**, not competitors: gold mining answers *"what are these 10 layers?"*, Triangle answers *"which to own?"*. No page carries Cube or Chess outside its home page.
 
 ### Rule C — "Why should I care?" opener on long pages
 
@@ -135,6 +138,7 @@ Posters link                  footer                      section (819)         
    └──────────────────────────────────────────────────────────────┘
    One sentence. No cards. No 10-card render. Hands the reader an
    intuitive picture before any code or layer label appears.
+   Right-aligned link: "Read the full analogy → /framework#gold-mining"
 
 3. THREE-LAYER PROOF (new, the spine of Home — Tier 1 → Tier 2 → Tier 3)
    ┌──────────────────────────────────────────────────────────────┐
@@ -187,17 +191,34 @@ CUT FROM HOME:
 ```text
 1. Hero (keep, shorten by 40%)
    Tagline only: "JTBD finds demand. The Supply Chain finds defensibility."
-   Gold-mining line removed (Rule B — gold mining lives on Home only).
 
 2. WHY SHOULD I CARE — new opener (Rule C, Tier 1)
-   One paragraph above the Triangle. Stakes-first, framework-second:
+   One paragraph above everything else. Stakes-first:
    "In the last 18 months, single-layer products lost 80% of their value
     while multi-layer companies compounded. Jasper, Chegg, Stack Overflow
     sat on one layer and got absorbed. Bloomberg, Harvey, Cursor sat on
     three and compounded. This page is the map of which layers survive
     and which get erased — and why."
 
-3. THE TRIANGLE (the spine — Tier 1 → Tier 2 → Tier 3)
+3. GOLD MINING — the Tier-1 ramp into the 10 layers (RESTORED in v3)
+   Rebuilt as a tight 10-row table, not 10 long cards. Reads in 30 seconds.
+   ┌──────────────────────────────────────────────────────────────────┐
+   │ Layer · Gold equivalent · One-line meaning · Example company     │
+   │ L0   · The earth        · Compute hardware  · NVIDIA             │
+   │ L1   · The ore          · Data              · Bloomberg          │
+   │ L2   · The smelter      · Models            · OpenAI             │
+   │ L3   · Assay & permit   · Safety / gates    · Vanta              │
+   │ L4   · Foundry          · Tooling           · LangChain          │
+   │ L5   · Jewellery shop   · Workflow / agents · Harvey · Sierra    │
+   │ L6   · Marketplace      · Distribution      · GPT Store          │
+   │ L7   · The ring shown   · Surface / UX      · Jasper             │
+   │ L8   · Customer memory  · Memory            · Sierra · Glean     │
+   │ L-1  · The whole town   · Energy / orbit    · grid · datacenters │
+   └──────────────────────────────────────────────────────────────────┘
+   Closing line: "Value moves through 10 layers. Most products sit on
+   one — usually the wrong one. The next section says which to own."
+
+4. THE TRIANGLE (the spine — Tier 1 → Tier 2 → Tier 3)
    Tier 1 headline (plain English):
      "Three things to own. Own all three and you can't be erased."
    Tier 2 — three vertices with company logos:
@@ -213,40 +234,38 @@ CUT FROM HOME:
       Own one deeply (NVIDIA on L0, Vanta on L3) → also survivable.
       Own a thin sliver of a contested layer → graveyard."
 
-4. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
+5. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
    Keep Gamma vs Replit two-fate proof — it earns its keep.
 
-5. THE 10×5 GRID — the reference map
-   Now reads as "the full taxonomy behind the three vertices you just saw."
+6. THE 10×5 GRID — the reference map
    Eyebrow renames "The Framework · One Image" → "Reference Map".
 
-6. AGENT DECODER (keep — high-traffic question)
+7. AGENT DECODER (keep — high-traffic question)
    Repositioned as "applying the Triangle to the 'agent' marketing wave."
 
-7. THE 4 LAWS (keep, each law gets one Observation folded in as evidence)
+8. THE 4 LAWS (keep, each law gets one Observation folded in as evidence)
    Each Law leads with a Tier 1 sentence; logos as Tier 2; code references
    in small type at the bottom of each card.
 
-8. THE INTELLIGENCE CUBE (keep, single render — Rule B keeps it /framework-only)
+9. THE INTELLIGENCE CUBE (keep, single render — Rule B keeps it /framework-only)
    Framed as "the Triangle, extended into functions × verticals."
 
-9. ARCHETYPES (collapsed to 6 compact rows with 2-3 logos each)
-   Data Refineries         → Bloomberg · Apollo · Tempus
-   Infra Rails             → NVIDIA · Supabase · Twilio
-   Workflow Fortresses     → Salesforce · HubSpot
-   Domain Specialists      → Harvey · Sierra · Cursor
-   Thin-Layer Graveyard    → Jasper · Gamma · Chegg
-   Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
+10. ARCHETYPES (collapsed to 6 compact rows with 2-3 logos each)
+    Data Refineries         → Bloomberg · Apollo · Tempus
+    Infra Rails             → NVIDIA · Supabase · Twilio
+    Workflow Fortresses     → Salesforce · HubSpot
+    Domain Specialists      → Harvey · Sierra · Cursor
+    Thin-Layer Graveyard    → Jasper · Gamma · Chegg
+    Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
 
-10. Posters link
-11. CTA → Case Studies
+11. Posters link
+12. CTA → Case Studies
 
 CUT FROM /framework:
 - "Before the 10 layers — the 3 tiers" (Surface / Workflow / Substrate)
    → Triangle says it better, with real companies.
-- "Gold Mining Analogy" full render (10 long cards)
-   → Removed entirely from /framework (Rule B). The one-sentence anchor
-     lives on Home; the full analogy moves to a Glossary entry.
+- "Gold Mining Analogy" 10 long cards
+   → REPLACED (not cut) by the 10-row table in step 3 above.
 - "Five Observations" as its own section
    → Each Observation folded into the relevant Law as the evidence row.
 ```

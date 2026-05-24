@@ -4,8 +4,6 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import IntelligenceCube from "@/components/IntelligenceCube";
-import IntelligenceGrid from "@/components/IntelligenceGrid";
 import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
@@ -22,7 +20,9 @@ import {
 
 import Eyebrow from "@/components/Eyebrow";
 import VoicesStrip from "@/components/VoicesStrip";
-import StartHereStrip from "@/components/StartHereStrip";
+import GoldMiningAnchor from "@/components/home/GoldMiningAnchor";
+import ThreeLayerProof from "@/components/home/ThreeLayerProof";
+import ContrastRow from "@/components/home/ContrastRow";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -212,6 +212,23 @@ const Index = () => {
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════ GOLD MINING ANCHOR — Tier-1 one-liner ═══════════ */}
+      <GoldMiningAnchor />
+
+      {/* ═══════════ THREE-LAYER PROOF — Bloomberg / Harvey / Sierra ═══════════ */}
+      <ThreeLayerProof />
+
+      {/* ═══════════ CONTRAST ROW — Jasper vs Cursor ═══════════ */}
+      <ContrastRow />
+
+      {/* ═══════════ FRAMEWORK SUMMARY POSTER + WORKED EXAMPLE ═══════════ */}
+      <section className="bg-background">
+        <div className="max-w-6xl mx-auto px-6 pt-14 md:pt-20 pb-14 md:pb-16">
+
+
 
 
 
@@ -235,45 +252,7 @@ const Index = () => {
             <FrameworkSummaryPoster />
           </motion.div>
 
-          {/* The Crux · One Image — blank sublayer grid, right after the framework poster */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="mt-16"
-          >
-            <div className="mb-6 max-w-3xl">
-              <Eyebrow tone="accent" className="mb-3">The Crux · One Image</Eyebrow>
-              <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight">
-                If you remember one thing, remember this map.
-              </h2>
-              <p className="mt-4 text-muted-foreground text-[15px] md:text-[16px] leading-relaxed">
-                Ten layers. Fifty sublayers. Every generative AI company — yours
-                included — plays in some of these squares and not others. Print it,
-                screenshot it, mark it up in Claude. Then ask the only question that
-                matters: <em>which squares do we actually own?</em>
-              </p>
-            </div>
 
-            <ExportablePng fileName="scoai-blank-grid" caption="The Supply Chain of Intelligence™ — blank template">
-              <IntelligenceGrid mode="blank" interactive />
-            </ExportablePng>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Link
-                to="/audit"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-accent text-accent-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
-              >
-                Run the self-assessment <ArrowRight size={14} />
-              </Link>
-              <Link
-                to="/framework"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-foreground/15 text-foreground font-semibold text-sm hover:bg-foreground/[0.03] transition-colors"
-              >
-                Read the full framework
-              </Link>
-            </div>
-          </motion.div>
 
 
 
@@ -434,8 +413,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ START HERE — 5-beat lobby for first-time readers ═══════════ */}
-      <StartHereStrip />
+      {/* StartHereStrip removed in v3 — Three-Layer Proof now serves the lobby role */}
 
       {/* ═══════════ AI DEFENSIBILITY AUDIT — single CTA, canonical tool lives at /audit ═══════════ */}
       <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
@@ -600,32 +578,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ THE INTELLIGENCE CUBE™ ═══════════ */}
-      <section className="bg-background border-y border-border">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn} className="text-center mb-10">
-            <Eyebrow className="mb-4">
-  The Intelligence Cube
-</Eyebrow>
-            <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3">
-              10 Functions × 10 Verticals × 10 Layers
-            </h2>
-            <p className="text-base text-muted-foreground max-w-xl mx-auto mb-4">
-              Volume = structural durability. Companies that occupy thin slivers get dissolved.
-              Companies that fill the cube become fortresses.
-            </p>
-            <p className="font-mono-marker text-[11px] tracking-[0.18em] text-muted-foreground/80">
-              CURRENTLY PLOTTED ·{" "}
-              <span className="text-emerald-600">Sierra (fortress)</span> ·{" "}
-              <span className="text-indigo-600">Harvey (vertical spike)</span> ·{" "}
-              <span className="text-muted-foreground">Gamma (thin slice)</span>
-            </p>
-          </motion.div>
-          <motion.div {...fadeIn}>
-            <IntelligenceCube />
-          </motion.div>
-        </div>
-      </section>
+      {/* The Intelligence Cube moved to /framework — canonical reference (Rule B) */}
 
       {/* ═══════════ DIAGNOSTIC CTA ═══════════ */}
       <section className="bg-secondary/40">
