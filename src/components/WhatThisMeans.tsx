@@ -20,29 +20,29 @@ const buildFallback = (fb?: Props["fallback"]): ForYou => {
   const layers = (fb?.layers ?? []).join(", ");
   if (v.includes("DEAD") || v.includes("EXPOSED")) {
     return {
-      product_leader: `If your roadmap depends on ${layers || "the same layer"}, you're shipping into a collapsing moat. Pivot up the stack — toward proprietary data (L1), workflow execution (L5), or memory (L8).`,
-      investor: `Re-rate any position concentrated in ${layers || "this layer"}. Multiples should compress toward strategic-buyer math, not growth math.`,
-      operator: `Don't sign multi-year contracts at this layer. Renegotiate to month-to-month, or shift spend to the platform owner that's absorbing it.`,
+      product_leader: `If your roadmap leans on ${layers || "this layer"} alone, the moat is thin today. The counter-move is to deepen the stack — add proprietary data (L1), workflow execution (L5), or memory (L8) under what you already ship.`,
+      investor: `Re-underwrite positions concentrated in ${layers || "this layer"}. The thesis works only if management has a credible plan to add a deeper layer in the next 12–18 months.`,
+      operator: `Hold off on multi-year commitments at this layer for now. Keep the relationship; renegotiate to shorter terms and watch how the vendor deepens.`,
     };
   }
   if (v.includes("SAFE") || v.includes("FORTRESS") || v.includes("DOMINANT") || v.includes("WINS") || v.includes("RISING")) {
     return {
-      product_leader: `This is the layer pattern to copy: own at least one of L1 (data), L3 (compliance), or L8 (memory) under your surface. A pure L7 won't survive the next platform cycle.`,
-      investor: `Durable layer ownership justifies premium multiples. Underwrite the moat layer, not the ARR.`,
-      operator: `Standardize on this stack where you can — switching cost is the feature, not the bug. The data and memory you build here compounds for you.`,
+      product_leader: `This is the layer pattern worth studying: own at least one of L1 (data), L3 (compliance), or L8 (memory) under your surface. A pure L7 alone tends to compress over time.`,
+      investor: `Durable layer ownership supports premium multiples. Underwrite the moat layer, not the ARR.`,
+      operator: `This is a reasonable stack to standardize on — switching cost is the feature, not the bug. Data and memory built here compounds for you.`,
     };
   }
   if (v.includes("CONTESTED") || v.includes("CONSOLIDATING")) {
     return {
-      product_leader: `Pick a side: own a deeper layer or attach to whoever does. The middle position gets ground out within 18 months.`,
-      investor: `Position-size for binary outcomes. Track who absorbs the L4 owner above this layer.`,
-      operator: `Run a 90-day bake-off. Don't lock in until the L4 winner is clear.`,
+      product_leader: `Pick a side: deepen a layer of your own, or attach cleanly to whoever does. The middle position tends to get ground out over 12–18 months.`,
+      investor: `Position-size for binary outcomes. Track who consolidates the L4 distribution above this layer.`,
+      operator: `Run a 90-day bake-off. Hold off on lock-in until the L4 winner is clearer.`,
     };
   }
   return {
-    product_leader: `Map your product to the layers it actually owns vs. rents. The rented ones are your real risk.`,
+    product_leader: `Map your product to the layers it actually owns vs. rents. The rented ones are where the counter-move work belongs.`,
     investor: `Underwrite layer ownership, not feature count. The Cube footprint is the moat.`,
-    operator: `Audit your stack against the Supply Chain of Intelligence. Anything sitting only at L7 is exposed.`,
+    operator: `Audit your stack against the Supply Chain of Intelligence. Anything sitting only at L7 is the layer to watch.`,
   };
 };
 

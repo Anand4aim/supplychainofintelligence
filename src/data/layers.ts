@@ -264,7 +264,7 @@ export const LAWS: StructuralLaw[] = [
     num: "III",
     title: "The Surface Captures Attention; the Chain Captures Power",
     shortTitle: "Surface captures attention, chain captures power",
-    desc: "A beautiful UI may get users. But durable companies own a deeper layer of the intelligence chain — data, execution, memory, gates. Surface without depth is a graveyard.",
+    desc: "A beautiful UI may get users. But durable companies own a deeper layer of the intelligence chain — data, execution, memory, gates. Surface without depth rarely compounds.",
     example: "Gamma owns L7 surface. Replit owns agent + code-gen + hosting + auth + database (L4 + L5 + L6 + L8). Same prompt-to-output category. Different fate.",
     prediction: "Predicts WHO survives the platform era.",
   },

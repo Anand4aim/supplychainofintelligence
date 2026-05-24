@@ -200,10 +200,10 @@ const MarketMap = () => {
         <div className="max-w-7xl mx-auto px-6 pb-20">
           <div className="border-t border-foreground/10 pt-6 text-[11px] text-muted-foreground leading-relaxed max-w-3xl">
             <strong className="text-foreground">How to read this map.</strong> A company appears at
-            every layer it <em>structurally owns</em>, not every layer it touches. Logos shown via
-            Clearbit. Archetype dots are editorial calls — fortresses own multiple layers in a
-            defensible stack, graveyards are exposed surfaces awaiting commoditization. The list is
-            curated, not exhaustive — suggest additions via the contact page.
+            every layer it <em>structurally owns</em>, not every layer it touches. Archetype dots
+            are editorial reads — defensible stacks own multiple layers, thin stacks sit on a
+            single surface and have a counter-move available (deepen into L1, L5, or L8). The list
+            is curated, not exhaustive — suggest additions via the contact page.
           </div>
         </div>
       </section>

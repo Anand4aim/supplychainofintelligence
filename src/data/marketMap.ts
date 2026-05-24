@@ -158,13 +158,13 @@ export const VERTICAL_LABEL: Record<Vertical, string> = {
 };
 
 export const ARCHETYPE_LABEL: Record<Archetype, string> = {
-  fortress: "Fortress",
+  fortress: "Defensible stack",
   refinery: "Refinery",
   railroad: "Railroad",
   memory: "Memory",
   surface: "Surface-only",
   agent: "Agent (L5+L7)",
-  graveyard: "Graveyard",
+  graveyard: "Thin stack",
 };
 
 export const ARCHETYPE_COLOR: Record<Archetype, string> = {

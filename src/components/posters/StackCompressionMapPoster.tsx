@@ -42,7 +42,7 @@ const StackCompressionMapPoster = () => {
             The Stack Compression Map.
           </h2>
           <p className="text-[12px] md:text-sm text-muted-foreground mt-2">
-            When the model layer ships your feature for free — who survives, and who becomes a footnote.
+            When the model layer ships your feature for free — who holds, and where the counter-move sits.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ const StackCompressionMapPoster = () => {
           >
             <div className="flex items-baseline justify-between mb-4">
               <h3 className="font-display text-[18px] md:text-[22px] font-bold" style={{ color: "hsl(0 60% 35%)" }}>
-                ✕ Eaten
+                ◌ Compressed
               </h3>
               <span className="font-mono-marker text-[10px] tracking-[0.18em] uppercase font-bold" style={{ color: "hsl(0 50% 40%)" }}>
                 Surface-only
