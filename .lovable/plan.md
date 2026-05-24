@@ -185,68 +185,70 @@ CUT FROM HOME:
 ### 4B. /framework — "the reference manual" (Triangle as spine)
 
 ```text
-1. Hero                                      (keep, shorten by 40%)
-   "JTBD finds demand. The Supply Chain finds defensibility."
-   No more "gold from the ground" line — that metaphor is being cut below.
+1. Hero (keep, shorten by 40%)
+   Tagline only: "JTBD finds demand. The Supply Chain finds defensibility."
+   Gold-mining line removed (Rule B — gold mining lives on Home only).
 
-2. THE TRIANGLE (promoted to position #2, was #8)
-   Same 3-card layout as Home, but with the full explanation:
-   - Each vertex shows 3 company logos, not 1
-       L1 DATA       → Bloomberg · Apollo · Tempus
-       L5 EXECUTION  → Harvey · Sierra · Cursor
-       L8 MEMORY     → Sierra · Glean · Clay
-   - Below the vertices: "Own all three → fortress.
-     Own one deeply (NVIDIA on L0, Vanta on L3) → also survivable.
-     Own a thin sliver of a contested layer → graveyard."
-   - Codes (L1b, L5a/b/d, L8c/d/e) shown in small type beneath each vertex,
-     never in the headline.
+2. WHY SHOULD I CARE — new opener (Rule C, Tier 1)
+   One paragraph above the Triangle. Stakes-first, framework-second:
+   "In the last 18 months, single-layer products lost 80% of their value
+    while multi-layer companies compounded. Jasper, Chegg, Stack Overflow
+    sat on one layer and got absorbed. Bloomberg, Harvey, Cursor sat on
+    three and compounded. This page is the map of which layers survive
+    and which get erased — and why."
 
-3. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
+3. THE TRIANGLE (the spine — Tier 1 → Tier 2 → Tier 3)
+   Tier 1 headline (plain English):
+     "Three things to own. Own all three and you can't be erased."
+   Tier 2 — three vertices with company logos:
+     The data corner       → Bloomberg · Apollo · Tempus
+     The workflow corner   → Harvey · Sierra · Cursor
+     The memory corner     → Sierra · Glean · Clay
+   Tier 1 — what the corners mean, in one line each:
+     "Data you collected and no one else can buy."
+     "The work people do all day, done inside your product."
+     "The memory of every interaction, which makes leaving expensive."
+   Tier 3 — caption under the figure, small:
+     "Taxonomy: L1b + L5a/b/d + L8c/d/e. Own all three → fortress.
+      Own one deeply (NVIDIA on L0, Vanta on L3) → also survivable.
+      Own a thin sliver of a contested layer → graveyard."
+
+4. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
    Keep Gamma vs Replit two-fate proof — it earns its keep.
 
-4. THE 10×5 GRID                              (the reference map)
-   Now the reader has the Triangle as a mental anchor, so the grid
-   reads as "the full taxonomy behind the three vertices you just saw."
+5. THE 10×5 GRID — the reference map
+   Now reads as "the full taxonomy behind the three vertices you just saw."
    Eyebrow renames "The Framework · One Image" → "Reference Map".
 
-5. AGENT DECODER                              (keep — high-traffic question)
+6. AGENT DECODER (keep — high-traffic question)
    Repositioned as "applying the Triangle to the 'agent' marketing wave."
 
-6. THE 4 LAWS                                 (keep, each law gets 1 observation
-                                                folded in as its evidence row)
-   Law I — Intelligence Commoditizes Downward
-     Evidence: [former Obs that maps to Law I]
-     Example logo row: Jasper, Chegg, Stack Overflow
-   Law II — Value Accrues at Bottlenecks
-     Evidence: [former Obs]
-     Logo row: NVIDIA, Bloomberg, Vanta
-   …etc.
+7. THE 4 LAWS (keep, each law gets one Observation folded in as evidence)
+   Each Law leads with a Tier 1 sentence; logos as Tier 2; code references
+   in small type at the bottom of each card.
 
-7. THE INTELLIGENCE CUBE                      (keep, single render)
+8. THE INTELLIGENCE CUBE (keep, single render — Rule B keeps it /framework-only)
    Framed as "the Triangle, extended into functions × verticals."
 
-8. ARCHETYPES (collapsed)
-   Was: 6 long cards.
-   Now: 6 compact rows with 2-3 logos each.
-     Data Refineries         → Bloomberg · Apollo · Tempus
-     Infra Rails             → NVIDIA · Supabase · Twilio
-     Workflow Fortresses     → Salesforce · HubSpot
-     Domain Specialists      → Harvey · Sierra · Cursor
-     Thin-Layer Graveyard    → Jasper · Gamma · Chegg
-     Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
+9. ARCHETYPES (collapsed to 6 compact rows with 2-3 logos each)
+   Data Refineries         → Bloomberg · Apollo · Tempus
+   Infra Rails             → NVIDIA · Supabase · Twilio
+   Workflow Fortresses     → Salesforce · HubSpot
+   Domain Specialists      → Harvey · Sierra · Cursor
+   Thin-Layer Graveyard    → Jasper · Gamma · Chegg
+   Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
 
-9. Posters link                               (keep)
-10. CTA → Case Studies                        (keep)
+10. Posters link
+11. CTA → Case Studies
 
 CUT FROM /framework:
-- "Before the 10 layers — the 3 tiers" section (Surface / Workflow / Substrate)
-  → Triangle says it better, with real companies.
+- "Before the 10 layers — the 3 tiers" (Surface / Workflow / Substrate)
+   → Triangle says it better, with real companies.
 - "Gold Mining Analogy" full render (10 long cards)
-  → Replace with a single paragraph: "Think of it like a gold supply chain —
-     ore in the ground (L-1), refining (L2), assay (L3), retail (L7), wedding
-     ring on a finger (L8). Glossary entry for the full analogy."
+   → Removed entirely from /framework (Rule B). The one-sentence anchor
+     lives on Home; the full analogy moves to a Glossary entry.
 - "Five Observations" as its own section
-  → Each Observation folded into the relevant Law as the evidence row.
+   → Each Observation folded into the relevant Law as the evidence row.
 ```
 
 ---
