@@ -1,7 +1,38 @@
 
 # Strategy: Make the Framework Feel Concrete, Not Theoretical
 
-No code changes in this pass. This is the diagnosis, the cross-LLM critique, and the rebuild blueprint for Home and /framework. You decide what ships.
+**v2 — merged with cross-LLM critique + the Professor's read.** No code in this pass. Approve and we execute.
+
+---
+
+## 0. The three editorial laws that govern everything below
+
+From the Professor's read. These are not sections of the rebuild — they are rules every sub-section must obey. If a sub-section violates a rule, it gets cut or rewritten.
+
+### Rule A — The Plain-English Layer (Tier 1 → Tier 2 → Tier 3)
+
+Every framework concept leads with a **Tier 1** sentence before Tier 2 (logos) or Tier 3 (codes).
+
+- **Tier 1 — Human:** a sentence a smart non-technical reader gets in one pass. No jargon, no codes. Stakes first.
+- **Tier 2 — Logos:** real companies as anchors (Bloomberg, Harvey, Sierra, Jasper, Cursor).
+- **Tier 3 — Codes:** the taxonomy (L1b, L5a/b/d, L8c/d/e). Reference grammar, never the opening line.
+
+The Triangle headline today is Tier 3. Fix: reverse the order. Same content.
+
+### Rule B — One genre per page, two metaphors max
+
+Four metaphors compete across the site (supply chain, gold mining, cube, chess). Demote:
+
+- **Supply chain** — stays everywhere (the brand).
+- **Gold mining** — Home only, one sentence. Removed from /framework.
+- **Intelligence Cube** — /framework only.
+- **Chess** — /predictions only.
+
+No page carries more than two metaphors. No page repeats another page's metaphor.
+
+### Rule C — "Why should I care?" opener on long pages
+
+/framework currently opens with the framework. It should open with the *stakes*. One paragraph above the Triangle: who gets erased, who survives, why it matters this quarter. Framework second.
 
 ---
 
@@ -94,111 +125,130 @@ Posters link                  footer                      section (819)         
 
 ```text
 1. Hero                           (keep — tagline is the SEO + brand anchor)
-2. THREE-LAYER PROOF (new)        ← the new spine of Home
+
+2. ONE-LINE GOLD MINING ANCHOR (new, Tier 1 — Rule B keeps it Home-only)
    ┌──────────────────────────────────────────────────────────────┐
-   │  Headline: "Three layers. One moat. This is the framework."  │
+   │  "AI is a supply chain. Like gold: ore in the ground,        │
+   │   refining, assay, retail, the ring on a finger. Value moves │
+   │   through 10 layers. Most products sit on one — the wrong    │
+   │   one."                                                      │
+   └──────────────────────────────────────────────────────────────┘
+   One sentence. No cards. No 10-card render. Hands the reader an
+   intuitive picture before any code or layer label appears.
+
+3. THREE-LAYER PROOF (new, the spine of Home — Tier 1 → Tier 2 → Tier 3)
+   ┌──────────────────────────────────────────────────────────────┐
+   │  Tier 1 (headline, plain English):                           │
+   │  "Three companies. Three different things they own.          │
+   │   That's why none of them can be erased."                    │
    │                                                              │
+   │  Tier 2 (logo cards):                                        │
    │  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
    │  │ BLOOMBERG │  │  HARVEY  │  │  SIERRA  │                   │
-   │  │   logo    │  │   logo   │  │   logo   │                   │
-   │  │           │  │          │  │          │                   │
-   │  │ L1 DATA   │  │ L5 EXEC  │  │ L8 MEM   │                   │
-   │  │           │  │          │  │          │                   │
-   │  │ "owns the │  │ "owns    │  │ "remem-  │                   │
-   │  │  corpus   │  │  legal   │  │  bers    │                   │
-   │  │  nobody   │  │  work-   │  │  every   │                   │
-   │  │  can buy" │  │  flow"   │  │  cust."  │                   │
+   │  │ owns the  │  │ owns the │  │ remembers │                  │
+   │  │ data no   │  │ legal    │  │ every     │                  │
+   │  │ one else  │  │ workflow │  │ customer  │                  │
+   │  │ can buy   │  │          │  │           │                  │
    │  └──────────┘  └──────────┘  └──────────┘                   │
+   │   the data       the work       the memory                   │
    │                                                              │
-   │  Sub: "In the taxonomy: L1b + L5a/b/d + L8c/d/e."           │
+   │  Tier 3 (small caption underneath, taxonomy):                │
+   │  "In the framework: L1 Data · L5 Execution · L8 Memory.      │
+   │   Own the three corners → the Defensible Triangle."          │
    └──────────────────────────────────────────────────────────────┘
 
-3. CONTRAST ROW (new, replaces Sales Matrix prominence)
+4. CONTRAST ROW (the stakes — Rule C, "why should I care")
    ┌──────────────────────────┐  ┌──────────────────────────┐
-   │  JASPER  (L7 only)       │  │  CURSOR  (L4+L5+L6+L8)   │
+   │  JASPER                  │  │  CURSOR                  │
    │  $1.5B → $300M           │  │  $9B+, still compounding │
-   │  "wrapper, absorbed"     │  │  "owned the workflow"    │
+   │  sat on one layer        │  │  owned four layers       │
    └──────────────────────────┘  └──────────────────────────┘
-   Caption: "Same JTBD. Different layers. Different fate."
+   Caption (Tier 1): "Same job. Different layers. Different fate."
+   Sub (Tier 3): "Jasper = L7 only. Cursor = L4+L5+L6+L8."
 
-4. Framework Summary Poster      (keep — share asset)
-5. Sales Tech matrix             (keep but move here — worked example)
-6. Audit CTA                     (keep)
-7. Proof of Corpus               (keep)
-8. Voices Strip                  (keep)
-9. Newsletter                    (keep)
+5. Framework Summary Poster      (keep — share asset)
+6. Sales Tech matrix             (keep — worked example, moves here)
+7. Audit CTA                     (keep)
+8. Proof of Corpus               (keep)
+9. Voices Strip                  (keep)
+10. Newsletter                   (keep)
 
 CUT FROM HOME:
 - "The Crux · One Image" section (the blank 10×5 grid) — lives on /framework now
-- "Start Here · 5-beat strip" — promise it makes is now redundant with proof row above
+- "Start Here · 5-beat strip" — redundant with the new proof row
 - Cube preview — drop, /framework owns the Cube
+- Interactive 10-layer stack — DEMOTED below the proof row (still on the page,
+  but no longer the first thing a reader meets). The reader now arrives at the
+  stack already armed with Bloomberg/Harvey/Sierra as anchors.
 ```
 
 ### 4B. /framework — "the reference manual" (Triangle as spine)
 
 ```text
-1. Hero                                      (keep, shorten by 40%)
-   "JTBD finds demand. The Supply Chain finds defensibility."
-   No more "gold from the ground" line — that metaphor is being cut below.
+1. Hero (keep, shorten by 40%)
+   Tagline only: "JTBD finds demand. The Supply Chain finds defensibility."
+   Gold-mining line removed (Rule B — gold mining lives on Home only).
 
-2. THE TRIANGLE (promoted to position #2, was #8)
-   Same 3-card layout as Home, but with the full explanation:
-   - Each vertex shows 3 company logos, not 1
-       L1 DATA       → Bloomberg · Apollo · Tempus
-       L5 EXECUTION  → Harvey · Sierra · Cursor
-       L8 MEMORY     → Sierra · Glean · Clay
-   - Below the vertices: "Own all three → fortress.
-     Own one deeply (NVIDIA on L0, Vanta on L3) → also survivable.
-     Own a thin sliver of a contested layer → graveyard."
-   - Codes (L1b, L5a/b/d, L8c/d/e) shown in small type beneath each vertex,
-     never in the headline.
+2. WHY SHOULD I CARE — new opener (Rule C, Tier 1)
+   One paragraph above the Triangle. Stakes-first, framework-second:
+   "In the last 18 months, single-layer products lost 80% of their value
+    while multi-layer companies compounded. Jasper, Chegg, Stack Overflow
+    sat on one layer and got absorbed. Bloomberg, Harvey, Cursor sat on
+    three and compounded. This page is the map of which layers survive
+    and which get erased — and why."
 
-3. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
+3. THE TRIANGLE (the spine — Tier 1 → Tier 2 → Tier 3)
+   Tier 1 headline (plain English):
+     "Three things to own. Own all three and you can't be erased."
+   Tier 2 — three vertices with company logos:
+     The data corner       → Bloomberg · Apollo · Tempus
+     The workflow corner   → Harvey · Sierra · Cursor
+     The memory corner     → Sierra · Glean · Clay
+   Tier 1 — what the corners mean, in one line each:
+     "Data you collected and no one else can buy."
+     "The work people do all day, done inside your product."
+     "The memory of every interaction, which makes leaving expensive."
+   Tier 3 — caption under the figure, small:
+     "Taxonomy: L1b + L5a/b/d + L8c/d/e. Own all three → fortress.
+      Own one deeply (NVIDIA on L0, Vanta on L3) → also survivable.
+      Own a thin sliver of a contested layer → graveyard."
+
+4. DESIRABILITY vs DEFENSIBILITY (kept, compressed to 4 rows)
    Keep Gamma vs Replit two-fate proof — it earns its keep.
 
-4. THE 10×5 GRID                              (the reference map)
-   Now the reader has the Triangle as a mental anchor, so the grid
-   reads as "the full taxonomy behind the three vertices you just saw."
+5. THE 10×5 GRID — the reference map
+   Now reads as "the full taxonomy behind the three vertices you just saw."
    Eyebrow renames "The Framework · One Image" → "Reference Map".
 
-5. AGENT DECODER                              (keep — high-traffic question)
+6. AGENT DECODER (keep — high-traffic question)
    Repositioned as "applying the Triangle to the 'agent' marketing wave."
 
-6. THE 4 LAWS                                 (keep, each law gets 1 observation
-                                                folded in as its evidence row)
-   Law I — Intelligence Commoditizes Downward
-     Evidence: [former Obs that maps to Law I]
-     Example logo row: Jasper, Chegg, Stack Overflow
-   Law II — Value Accrues at Bottlenecks
-     Evidence: [former Obs]
-     Logo row: NVIDIA, Bloomberg, Vanta
-   …etc.
+7. THE 4 LAWS (keep, each law gets one Observation folded in as evidence)
+   Each Law leads with a Tier 1 sentence; logos as Tier 2; code references
+   in small type at the bottom of each card.
 
-7. THE INTELLIGENCE CUBE                      (keep, single render)
+8. THE INTELLIGENCE CUBE (keep, single render — Rule B keeps it /framework-only)
    Framed as "the Triangle, extended into functions × verticals."
 
-8. ARCHETYPES (collapsed)
-   Was: 6 long cards.
-   Now: 6 compact rows with 2-3 logos each.
-     Data Refineries         → Bloomberg · Apollo · Tempus
-     Infra Rails             → NVIDIA · Supabase · Twilio
-     Workflow Fortresses     → Salesforce · HubSpot
-     Domain Specialists      → Harvey · Sierra · Cursor
-     Thin-Layer Graveyard    → Jasper · Gamma · Chegg
-     Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
+9. ARCHETYPES (collapsed to 6 compact rows with 2-3 logos each)
+   Data Refineries         → Bloomberg · Apollo · Tempus
+   Infra Rails             → NVIDIA · Supabase · Twilio
+   Workflow Fortresses     → Salesforce · HubSpot
+   Domain Specialists      → Harvey · Sierra · Cursor
+   Thin-Layer Graveyard    → Jasper · Gamma · Chegg
+   Full-Stack Juggernauts  → ChatGPT · Claude · Copilot
 
-9. Posters link                               (keep)
-10. CTA → Case Studies                        (keep)
+10. Posters link
+11. CTA → Case Studies
 
 CUT FROM /framework:
-- "Before the 10 layers — the 3 tiers" section (Surface / Workflow / Substrate)
-  → Triangle says it better, with real companies.
+- "Before the 10 layers — the 3 tiers" (Surface / Workflow / Substrate)
+   → Triangle says it better, with real companies.
 - "Gold Mining Analogy" full render (10 long cards)
-  → Replace with a single paragraph: "Think of it like a gold supply chain —
-     ore in the ground (L-1), refining (L2), assay (L3), retail (L7), wedding
-     ring on a finger (L8). Glossary entry for the full analogy."
+   → Removed entirely from /framework (Rule B). The one-sentence anchor
+     lives on Home; the full analogy moves to a Glossary entry.
 - "Five Observations" as its own section
-  → Each Observation folded into the relevant Law as the evidence row.
+   → Each Observation folded into the relevant Law as the evidence row.
 ```
 
 ---
@@ -238,12 +288,13 @@ Cheapest. Looks like text. Doesn't feel like a "logo board."
 
 ## 6. What I need from you to start building
 
-Four decisions. Once these are locked I can ship in a single pass.
+Five decisions. Once locked, ship in a single pass.
 
-1. **Approve the redundancy ledger (Section 3)?** Any item you want to defend instead of cut?
-2. **Approve the Home rebuild (Section 4A)?** Specifically — OK to cut StartHereStrip + Crux blank grid + Cube preview?
-3. **Approve the /framework rebuild (Section 4B)?** Specifically — OK to cut 3 Tiers, cut Gold Mining full render, fold 5 Observations into 4 Laws?
-4. **Logo style — Option A (monogram tiles), B (real logos), or C (text)?**
+1. **Approve the three editorial laws (Section 0)?** Tier 1→2→3, one-genre-per-page, "why should I care" opener.
+2. **Approve the redundancy ledger (Section 3)?** Any item to defend?
+3. **Approve the Home rebuild (Section 4A)?** OK to cut StartHereStrip + Crux grid + Cube preview, demote interactive stack below the proof row, and add the one-sentence gold-mining anchor?
+4. **Approve the /framework rebuild (Section 4B)?** OK to cut 3 Tiers, cut Gold Mining entirely, fold 5 Observations into 4 Laws, and add the "why should I care" opener?
+5. **Logo style — A (monogram tiles), B (real logos), or C (text)?**
 
 ---
 
