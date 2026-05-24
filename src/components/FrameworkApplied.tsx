@@ -19,6 +19,7 @@ type AuditScore = { q: string; score: 1 | 2 | 3 | 4 | 5; note: string };
 type Audit = {
   slug: string;
   company: string;
+  domain: string; // for Clearbit logo
   tier: "fortress" | "exposed" | "mixed";
   tierLabel: string;
   icon: typeof Shield;
@@ -33,6 +34,7 @@ const AUDITS: Audit[] = [
   {
     slug: "sierra-vs-salesforce",
     company: "Sierra",
+    domain: "sierra.ai",
     tier: "fortress",
     tierLabel: "Fortress",
     icon: Shield,
@@ -50,6 +52,7 @@ const AUDITS: Audit[] = [
   {
     slug: "jasper-vs-grammarly-copilot",
     company: "Jasper",
+    domain: "jasper.ai",
     tier: "exposed",
     tierLabel: "Wrapper-at-risk",
     icon: AlertTriangle,
@@ -67,6 +70,7 @@ const AUDITS: Audit[] = [
   {
     slug: "glean-enterprise-search-fortress",
     company: "Glean",
+    domain: "glean.com",
     tier: "mixed",
     tierLabel: "Ambiguous → tilting fortress",
     icon: HelpCircle,
@@ -142,14 +146,25 @@ const FrameworkApplied = () => (
                 className={`group block h-full rounded-lg border-2 ${styles.ring} bg-card p-6 hover:shadow-lg transition-all hover:-translate-y-0.5`}
               >
                 {/* Header */}
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-foreground mb-1">{a.company}</h3>
-                    <span className={`inline-flex items-center gap-1 font-mono-marker text-[10px] uppercase tracking-[0.12em] px-2 py-0.5 rounded border ${styles.chip}`}>
-                      <Icon size={10} /> {a.tierLabel}
-                    </span>
+                <div className="flex items-start justify-between mb-3 gap-3">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <img
+                      src={`https://logo.clearbit.com/${a.domain}`}
+                      alt={`${a.company} logo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded bg-white object-contain border border-border shrink-0"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = "none";
+                      }}
+                    />
+                    <div className="min-w-0">
+                      <h3 className="font-display text-xl font-bold text-foreground mb-1 leading-tight">{a.company}</h3>
+                      <span className={`inline-flex items-center gap-1 font-mono-marker text-[10px] uppercase tracking-[0.12em] px-2 py-0.5 rounded border ${styles.chip}`}>
+                        <Icon size={10} /> {a.tierLabel}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-right shrink-0 ml-3">
+                  <div className="text-right shrink-0">
                     <span className={`font-display text-3xl font-bold leading-none ${styles.total}`}>{a.total}</span>
                     <span className="block font-mono-marker text-[9px] uppercase tracking-wider text-muted-foreground mt-0.5">/ 40</span>
                   </div>
