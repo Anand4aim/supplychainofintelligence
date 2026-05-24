@@ -1,22 +1,34 @@
 ---
 name: Editorial tone
-description: Site-wide voice rules for case studies, live articles, and analysis copy
+description: Site-wide voice rules — counter-move framing, soft directional language, never harsh verdicts
 type: preference
 ---
-**Rule:** Use lighter, factual, analytical language across all case studies, live articles, and analysis copy. Avoid strong verdict language and absolute claims.
+**Rule:** This is a counter-move site, not a prediction site. Anand may reach out to these companies to help. Every verdict must land soft and directional — never affirmative-crushing. Use lighter, factual, analytical, structural language everywhere — case studies, live articles, framework, posters, home page, market map.
 
-**Avoid:**
-- "Fortress", "untouchable", "can't be touched", "dead", "eaten", "destroyed", "killer", "crushed"
-- "SAFE", "EXPOSED", "DOOMED" style ALL-CAPS verdicts
+**Avoid (hard ban):**
+- "DEAD", "DOOMED", "EXPOSED" ALL-CAPS verdicts shown to readers (the DB enum can keep DEAD internally, but display via `verdictLabel()` in `src/data/verdictLabels.ts` → "AT RISK")
+- "Fortress", "untouchable", "can't be touched", "killer", "crushed", "eaten", "destroyed", "swallowed", "obliterated"
+- "graveyard candidate", "wrappers die", "thin slivers die", "X dies in eighteen months"
+- "extinction", "footnote", "obituaries", "display case"
+- 💀 skull emojis, ✕ "Eaten" labels on posters
 - Definitive future predictions ("X will lose", "Y wins")
-- Hype framing ("massive", "explosive", "game-changing")
 
 **Prefer:**
-- Layer-based descriptions ("L1 + L5 + L8 stack", "compresses L5 over time")
-- Hedged framing ("contested", "under pressure", "shifts where value sits", "worth watching")
-- Dated observations with sources ("As of May 2026…")
-- Neutral verdicts that describe structure, not outcome
+- "Compresses", "gets compressed", "absorbed", "consolidates"
+- "Defensible stack" / "Thin stack" / "At risk" / "Leading" / "Contested"
+- "Counter-move available" — always name the deeper layer (L1, L5, or L8) the company could add
+- "Structurally durable" vs "compression candidate (counter-move available)"
+- Hedged framing ("contested", "under pressure", "shifts where value sits")
+- Dated observations ("As of May 2026…")
 
-**How to apply:** When writing or editing any case study (`src/data/caseStudies.ts`), live article, or analysis blurb, prefer structural/factual descriptions over predictive verdicts. Keep `verdict` fields descriptive (e.g. "L1 + L3 + L5 + L8") rather than judgmental.
+**Display label map** (in `src/data/verdictLabels.ts` — single source of truth):
+- DOMINANT → LEADING
+- SAFE → DEFENSIBLE
+- CONTESTED → CONTESTED
+- DEAD / EXPOSED / DOOMED → AT RISK
 
-**Why:** User feedback — strong opinions create cross-article inconsistencies when news shifts. Factual layer-mapping ages better.
+**Archetype labels** (in `src/data/marketMap.ts` `ARCHETYPE_LABEL`):
+- fortress → "Defensible stack"
+- graveyard → "Thin stack"
+
+**Why:** Anand may engage these companies to help them deepen their stack. Harsh verdicts burn the relationship and age badly when news shifts. Soft, directional framing keeps the analysis useful and the door open.
