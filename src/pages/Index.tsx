@@ -4,8 +4,6 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import IntelligenceCube from "@/components/IntelligenceCube";
-import IntelligenceGrid from "@/components/IntelligenceGrid";
 import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import CaseStudyCard from "@/components/CaseStudyCard";
