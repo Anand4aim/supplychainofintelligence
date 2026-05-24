@@ -11,6 +11,7 @@ import ExportablePng from "@/components/ExportablePng";
 import WhatThisMeans from "@/components/WhatThisMeans";
 import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
+import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 
 
@@ -67,8 +68,8 @@ const verdictTone = (v: string) => {
   }
 };
 
-// Soft display label — never render "DEAD" / "EXPOSED" to the reader. See verdictLabels.ts.
-import { verdictLabel } from "@/data/verdictLabels";
+
+
 
 const LiveArticleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
