@@ -1,7 +1,7 @@
 import type { CaseStudy } from "@/components/CaseStudyCard";
 
 // Using Clearbit Logo API for real company logos (free, public)
-const logo = (domain: string) => `https://logo.clearbit.com/${domain}`;
+const logo = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
 export const CASE_STUDIES: CaseStudy[] = [
   {

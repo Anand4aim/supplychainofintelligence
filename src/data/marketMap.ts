@@ -2,7 +2,7 @@
 // Curated. Layer assignments reflect the company's *primary* structural position(s),
 // not every layer they touch. Edit freely.
 
-const logo = (domain: string) => `https://logo.clearbit.com/${domain}`;
+const logo = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
 export type Vertical =
   | "horizontal"

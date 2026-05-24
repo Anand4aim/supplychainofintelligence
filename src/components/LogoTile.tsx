@@ -54,8 +54,14 @@ const LogoTile = ({ name, domain, layer, caption, size = "md", className = "" }:
   const s = SIZE[size];
   const stripe = layer ? `hsl(${layerVar(layer)})` : "hsl(var(--border))";
   const resolved = domain ?? DOMAINS[name];
-  const logoUrl = resolved ? `https://logo.clearbit.com/${resolved}` : null;
-  const [failed, setFailed] = useState(!logoUrl);
+  const sources = resolved
+    ? [
+        `https://www.google.com/s2/favicons?domain=${resolved}&sz=128`,
+        `https://icons.duckduckgo.com/ip3/${resolved}.ico`,
+      ]
+    : [];
+  const [srcIdx, setSrcIdx] = useState(0);
+  const [failed, setFailed] = useState(sources.length === 0);
 
   return (
     <div
@@ -76,12 +82,15 @@ const LogoTile = ({ name, domain, layer, caption, size = "md", className = "" }:
       )}
       <div className="flex flex-col items-center text-center pt-3">
         <div className={`flex items-center justify-center ${s.img}`}>
-          {!failed && logoUrl ? (
+          {!failed ? (
             <img
-              src={logoUrl}
+              src={sources[srcIdx]}
               alt={`${name} logo`}
               loading="lazy"
-              onError={() => setFailed(true)}
+              onError={() => {
+                if (srcIdx + 1 < sources.length) setSrcIdx(srcIdx + 1);
+                else setFailed(true);
+              }}
               className={`${s.img} w-auto max-w-full object-contain`}
             />
           ) : (
