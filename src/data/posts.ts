@@ -49,9 +49,9 @@ export const POSTS: Post[] = [
       "Before somebody wears a gold ring, there is an entire chain underneath it: mining, refining, transport, verification, crafting, distribution, retail, and eventually memory about the customer itself. The visible experience is only the final layer.",
       "That idea stayed in my head for months and eventually became part of why I called this framework **The Supply Chain of Intelligence™**. I'll write separately about the full analogy — it ended up being one of the clearest ways to explain how AI value actually moves through the stack.",
 
-      "## The companies that didn't get crushed",
+      "## The companies that compressed — and the ones that adapted",
 
-      "I kept watching companies respond very differently to the rise of foundation models. Some got crushed almost instantly. Others adapted surprisingly well.",
+      "I kept watching companies respond very differently to the rise of foundation models. Some compressed almost overnight. Others adapted surprisingly well.",
       "**Apollo** was one example that made me think deeply. At one point, Apollo had a broad set of workflow features: prospecting, messaging, outbound, CRM-like behaviors. But instead of trying to fight the model companies head-on, they increasingly leaned into becoming a trusted data and access layer for the AI ecosystem itself.",
       "The Claude partnership direction was especially interesting. Rather than forcing users into a giant standalone interface, Apollo became useful as structured business intelligence directly inside the AI workflow. They were not trying to out-model the model companies. They were positioning themselves where the models still needed them — where trust, permissions, freshness, enterprise relationships, and proprietary business data still mattered. That was not weakness. That was **structural positioning**.",
       "Then I looked at companies like **Sierra**. Everyone called them “agent companies.” But underneath the branding, they were clearly building orchestration, workflow control, enterprise integrations, runtime systems, access layers. The value was not just the conversational surface. The value was increasingly underneath it.",
@@ -122,7 +122,7 @@ export const POSTS: Post[] = [
 
       "## Three things become obvious once you see the stack",
 
-      "**One. Most \"AI companies\" live on one layer — L7, the surface.** That's the chat box, the autocomplete, the copilot panel, the polished prompt template. It's also the layer with the lowest moat and the highest churn. It's why Jasper, Chegg, and a dozen well-funded copilots got eaten in eighteen months. The platforms shipped the same surface for free, and the surface had nothing underneath it to hold customers in place.",
+      "**One. Most \"AI companies\" live on one layer — L7, the surface.** That's the chat box, the autocomplete, the copilot panel, the polished prompt template. It's also the layer with the lowest moat and the highest churn. It's why Jasper, Chegg, and a dozen well-funded copilots got compressed inside eighteen months. The platforms shipped the same surface for free, and the surface had nothing underneath it to hold customers in place.",
 
       "**Two. The defensible layers are below the waterline.** L1 (proprietary data nobody else can license), L3 (trust gates — the regulatory, compliance, and editorial checkpoints buyers will not bypass), and L8 (memory that compounds with every user interaction). These layers don't demo well. They don't show up in keynotes. They win quietly, over years, while the surface layer churns every six months.",
 
@@ -132,7 +132,7 @@ export const POSTS: Post[] = [
 
       "## Why this matters right now",
 
-      "We are in the part of the cycle where capital, talent, and attention are still flowing to the surface. Two thousand prompt-wrapper startups are still being funded as if the surface is the moat. It is not. The next eighteen months will resolve this the hard way — through compression, absorption, and a wave of acquihires that read like obituaries.",
+      "We are in the part of the cycle where capital, talent, and attention are still flowing to the surface. Two thousand prompt-wrapper startups are still being funded as if the surface is the moat. It is not. The next eighteen months will resolve this structurally — through compression, absorption, and a long tail of acquihires for teams that ran out of runway before they could deepen the stack.",
 
       "If you are a product leader, the question isn't \"which model are we using.\" The question is: which layer do we actually own, and is anything underneath it ours?",
 

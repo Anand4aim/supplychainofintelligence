@@ -404,8 +404,8 @@ const Index = () => {
               </div>
 
               <p className="font-display italic text-[13px] md:text-[14px] text-orange-700 text-center mt-4 leading-relaxed max-w-3xl mx-auto">
-                Claude owns L2 and is reaching into L5/L6/L7 — gravity at work. Apollo thins to a data + connector play
-                as Claude becomes the marketer's command center. Most of martech gets swallowed by the juggernaut.
+                Claude owns L2 and is reaching into L5/L6/L7 — gravity at work. Apollo thins toward a data + connector role
+                as Claude becomes the marketer's command center. Much of martech gets compressed unless it deepens into L1 or L8.
               </p>
             </SketchBoard>
             </ExportablePng>

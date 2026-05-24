@@ -195,10 +195,10 @@ const ForInvestors = () => (
           <h3 className="font-display text-xl font-bold text-foreground mb-2">L7 / L6 compression.</h3>
           <p className="text-sm text-foreground/85 leading-relaxed">
             Revenue built on orchestration and surface-level automation sits one platform release
-            note from extinction. Foundation models below (<LayerTag id="L2" />) and native
+            away from being absorbed. Foundation models below (<LayerTag id="L2" />) and native
             ecosystems above (<LayerTag id="L3" />, <LayerTag id="L7" />) are building intelligent
             agents that talk directly to APIs. If a buyer can route around the interface, the
-            interface is a feature, not a moat. Multiples reprice accordingly.
+            interface is a feature, not a moat — and the counter-move is to add a deeper layer (L1, L5, or L8) before multiples reprice.
           </p>
         </div>
 
