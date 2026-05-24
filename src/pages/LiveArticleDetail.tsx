@@ -120,7 +120,7 @@ const LiveArticleDetail = () => {
               </span>
             )}
             <span className={`font-mono-marker text-[10px] px-2 py-0.5 ${verdictTone(article.verdict)}`}>
-              {article.verdict}
+              {verdictLabel(article.verdict)}
             </span>
           </div>
 
@@ -340,7 +340,7 @@ const LiveArticleDetail = () => {
               )}
               {(article.analysis.who_loses?.length ?? 0) > 0 && (
                 <div className="border-l-4 border-[hsl(var(--verdict-exposed))] pl-4">
-                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3">— Who Loses</p>
+                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3">— Who's Exposed</p>
                   <ul className="space-y-3">
                     {article.analysis.who_loses!.map((w, i) => (
                       <li key={i} className="text-[15px] leading-snug">
