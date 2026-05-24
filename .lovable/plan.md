@@ -19,16 +19,19 @@ Every framework concept leads with a **Tier 1** sentence before Tier 2 (logos) o
 
 The Triangle headline today is Tier 3. Fix: reverse the order. Same content.
 
-### Rule B — One genre per page, two metaphors max
+### Rule B — Metaphor hierarchy (revised v3)
 
-Four metaphors compete across the site (supply chain, gold mining, cube, chess). Demote:
+Gold mining is not a competing metaphor — it is the **supply chain in human form**. It is the *only* Tier-1 explainer the site has. It stays.
 
-- **Supply chain** — stays everywhere (the brand).
-- **Gold mining** — Home only, one sentence. Removed from /framework.
-- **Intelligence Cube** — /framework only.
-- **Chess** — /predictions only.
+| Metaphor | Where it lives | Job |
+|---|---|---|
+| **Supply chain** (brand) | Everywhere | Identity |
+| **Gold mining** (explainer) | Home (1 line) **+** /framework (full, as Tier-1 ramp into the Triangle) | Translate the 10 layers into something human |
+| **Triangle** (thesis) | Home preview (logos) + /framework full | What to own |
+| **Intelligence Cube** (extension) | /framework only | Triangle × functions × verticals |
+| **Chess** (forecast) | /predictions only | Counter-moves |
 
-No page carries more than two metaphors. No page repeats another page's metaphor.
+Gold mining and Triangle are a **handoff**, not competitors: gold mining answers *"what are these 10 layers?"*, Triangle answers *"which to own?"*. No page carries Cube or Chess outside its home page.
 
 ### Rule C — "Why should I care?" opener on long pages
 
