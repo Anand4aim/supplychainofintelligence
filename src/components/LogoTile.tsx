@@ -1,39 +1,61 @@
+import { useState } from "react";
 import { layerVar } from "@/data/layers";
 
 /**
- * LogoTile — hand-built monogram tile (Option A from plan v3 §5).
+ * LogoTile — real logo via Clearbit, with a monogram fallback.
  *
- * Renders a company as a Playfair monogram + Inter wordmark, with a 4px
- * top stripe in the layer's color. Used everywhere we'd reach for a real
- * logo: Three-Layer Proof on Home, Triangle vertices on /framework,
- * Archetypes row, Contrast row.
- *
- * Why monograms (not real SVG logos):
- *   - No trademark gray area for a published thought-leadership site
- *   - No external runtime dependency / dead-link risk on logo CDNs
- *   - The layer-color stripe IS the framework, visible — Sierra (L8) and
- *     Harvey (L5) look like different objects because they live on
- *     different layers. A real logo flattens that.
+ * Renders the company's actual logo (Clearbit Logo API), with the layer-color
+ * stripe on top so the framework's visual language stays visible.
+ * Falls back to a Playfair monogram if the logo fails to load.
  */
 
 interface LogoTileProps {
   name: string;
-  layer?: string; // e.g. "L1", "L5", "L8" — drives the stripe color
-  caption?: string; // optional one-liner under the wordmark
+  domain?: string;       // override if the auto-mapped domain is wrong
+  layer?: string;
+  caption?: string;
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-const SIZE = {
-  sm: { tile: "p-3", mono: "text-[36px]", word: "text-[10px]", cap: "text-[10px] mt-2" },
-  md: { tile: "p-4", mono: "text-[48px]", word: "text-[11px]", cap: "text-[11px] mt-2.5" },
-  lg: { tile: "p-5", mono: "text-[64px]", word: "text-[12px]", cap: "text-[12px] mt-3" },
+const DOMAINS: Record<string, string> = {
+  Bloomberg: "bloomberg.com",
+  Harvey: "harvey.ai",
+  Sierra: "sierra.ai",
+  Jasper: "jasper.ai",
+  Cursor: "cursor.com",
+  Apollo: "apollo.io",
+  Tempus: "tempus.com",
+  Glean: "glean.com",
+  Clay: "clay.com",
+  NVIDIA: "nvidia.com",
+  Supabase: "supabase.com",
+  Twilio: "twilio.com",
+  Salesforce: "salesforce.com",
+  HubSpot: "hubspot.com",
+  Gamma: "gamma.app",
+  Chegg: "chegg.com",
+  ChatGPT: "openai.com",
+  Claude: "anthropic.com",
+  Copilot: "github.com",
+  OpenAI: "openai.com",
+  Vanta: "vanta.com",
+  LangChain: "langchain.com",
+  Replit: "replit.com",
 };
 
-const LogoTile = ({ name, layer, caption, size = "md", className = "" }: LogoTileProps) => {
+const SIZE = {
+  sm: { tile: "p-3", img: "h-9", mono: "text-[32px]", word: "text-[10px]", cap: "text-[10px] mt-2" },
+  md: { tile: "p-4", img: "h-12", mono: "text-[44px]", word: "text-[11px]", cap: "text-[11px] mt-2.5" },
+  lg: { tile: "p-5", img: "h-16", mono: "text-[60px]", word: "text-[12px]", cap: "text-[12px] mt-3" },
+};
+
+const LogoTile = ({ name, domain, layer, caption, size = "md", className = "" }: LogoTileProps) => {
   const s = SIZE[size];
   const stripe = layer ? `hsl(${layerVar(layer)})` : "hsl(var(--border))";
-  const monogram = name.charAt(0).toUpperCase();
+  const resolved = domain ?? DOMAINS[name];
+  const logoUrl = resolved ? `https://logo.clearbit.com/${resolved}` : null;
+  const [failed, setFailed] = useState(!logoUrl);
 
   return (
     <div
@@ -52,15 +74,27 @@ const LogoTile = ({ name, layer, caption, size = "md", className = "" }: LogoTil
           {layer}
         </span>
       )}
-      <div className="flex flex-col items-center text-center pt-2">
+      <div className="flex flex-col items-center text-center pt-3">
+        <div className={`flex items-center justify-center ${s.img}`}>
+          {!failed && logoUrl ? (
+            <img
+              src={logoUrl}
+              alt={`${name} logo`}
+              loading="lazy"
+              onError={() => setFailed(true)}
+              className={`${s.img} w-auto max-w-full object-contain`}
+            />
+          ) : (
+            <span
+              aria-hidden
+              className={`font-display font-bold leading-none text-foreground ${s.mono}`}
+            >
+              {name.charAt(0).toUpperCase()}
+            </span>
+          )}
+        </div>
         <span
-          aria-hidden
-          className={`font-display font-bold leading-none text-foreground ${s.mono}`}
-        >
-          {monogram}
-        </span>
-        <span
-          className={`font-mono-marker tracking-[0.14em] uppercase font-semibold text-foreground/85 mt-2 ${s.word}`}
+          className={`font-mono-marker tracking-[0.14em] uppercase font-semibold text-foreground/85 mt-3 ${s.word}`}
         >
           {name}
         </span>
