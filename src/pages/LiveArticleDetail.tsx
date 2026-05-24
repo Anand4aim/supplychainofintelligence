@@ -67,6 +67,9 @@ const verdictTone = (v: string) => {
   }
 };
 
+// Soft display label — never render "DEAD" / "EXPOSED" to the reader. See verdictLabels.ts.
+import { verdictLabel } from "@/data/verdictLabels";
+
 const LiveArticleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<LiveArticle | null>(null);

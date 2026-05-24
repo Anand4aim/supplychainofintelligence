@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import { supabase } from "@/integrations/supabase/client";
 import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
+import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 
 interface LiveArticle {
