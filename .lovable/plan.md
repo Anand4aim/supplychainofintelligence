@@ -138,6 +138,7 @@ Posters link                  footer                      section (819)         
    └──────────────────────────────────────────────────────────────┘
    One sentence. No cards. No 10-card render. Hands the reader an
    intuitive picture before any code or layer label appears.
+   Right-aligned link: "Read the full analogy → /framework#gold-mining"
 
 3. THREE-LAYER PROOF (new, the spine of Home — Tier 1 → Tier 2 → Tier 3)
    ┌──────────────────────────────────────────────────────────────┐
