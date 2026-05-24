@@ -92,124 +92,131 @@ const Index = () => {
             </motion.div>
 
 
-            {/* Right: L-1–L8 layer stack */}
+            {/* Right: L-1–L8 layer stack — editorial chip + sublayer cells */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <p className="font-sketch text-base text-muted-foreground mb-3">
-                The 10-Layer Stack — Click ▸ to see the 5 sublayers
-              </p>
-              <div className="sketch-paper rounded-2xl p-4 space-y-1.5 relative">
-                <div className="absolute inset-0 sketch-dots rounded-2xl pointer-events-none" />
-                {LAYERS.map((layer, i) => {
+              <div className="mb-3 flex items-baseline justify-between gap-3 flex-wrap">
+                <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent">
+                  The Supply Chain of Intelligence™
+                </p>
+                <p className="font-sketch text-xs text-muted-foreground italic">
+                  Tap a layer to open its 5 sublayers
+                </p>
+              </div>
+              <div
+                className="rounded-2xl p-3 md:p-4 space-y-[5px] relative border border-foreground/10"
+                style={{
+                  background:
+                    "linear-gradient(160deg, hsl(40 30% 97%) 0%, hsl(38 26% 94%) 100%)",
+                }}
+              >
+                {[...LAYERS].reverse().map((layer, i) => {
                   const defCount = layer.sublayers.filter((s) => s.defensible).length;
                   const isOpen = expandedLayer === layer.id;
+                  const c = `hsl(${layer.color})`;
                   return (
                     <motion.div
                       key={layer.id}
-                      initial={{ opacity: 0, x: 20 }}
+                      initial={{ opacity: 0, x: 14 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 + i * 0.05 }}
+                      transition={{ delay: 0.35 + i * 0.04 }}
                       className="relative"
                     >
-                      <div
-                        className="flex items-center gap-2.5 rounded-xl px-3.5 py-2 sketch-border relative"
-                        style={{
-                          background: `hsl(${layer.bg})`,
-                          borderLeft: `3px solid hsl(${layer.color})`,
-                        }}
-                      >
+                      {/* Row: colored chip (L#) + sublayer mini cells + chevron */}
+                      <div className="grid grid-cols-[88px_1fr_auto] gap-[5px] items-stretch">
+                        {/* Layer chip — full saturated color, the legend */}
                         <Link
                           to={`/framework#${layer.id}`}
-                          className="flex items-center gap-2.5 flex-1 min-w-0 group"
+                          className="rounded-md px-2.5 py-2 flex flex-col justify-center transition-transform hover:-translate-y-[1px]"
+                          style={{ background: c }}
+                          title={`${layer.id} — ${layer.name}`}
                         >
-                          <SketchIcon name={layer.goldIcon} size={24} className="shrink-0" />
-                          <span
-                            className="font-sketch text-base font-bold min-w-[28px] shrink-0"
-                            style={{ color: `hsl(${layer.color})` }}
-                          >
-                            {layer.id}
-                          </span>
-                          <span className="text-foreground/70 text-sm font-medium flex-1 group-hover:text-foreground transition-colors truncate">
-                            {layer.name}
-                          </span>
-                          <div className="flex gap-0.5 items-center shrink-0">
-                            {layer.sublayers.map((sub) => (
-                              <div
-                                key={sub.id}
-                                className="w-1.5 h-1.5 rounded-full"
-                                style={{
-                                  background: sub.defensible
-                                    ? `hsl(${layer.color})`
-                                    : `hsl(${layer.color} / 0.25)`,
-                                }}
-                                title={`${sub.id} ${sub.name}${sub.defensible ? " ★" : ""}`}
-                              />
-                            ))}
+                          <div className="font-mono-marker text-white text-[11px] font-bold tracking-wider leading-none">
+                            {layer.id === "L-1" ? "L−1" : layer.id}
                           </div>
-                          {defCount > 0 && (
-                            <span className="font-sketch text-xs text-muted-foreground shrink-0">
-                              {defCount}★
-                            </span>
-                          )}
+                          <div className="font-display text-white text-[12px] leading-tight mt-0.5 truncate">
+                            {layer.shortName}
+                          </div>
                         </Link>
+
+                        {/* Sublayer cells — collapsed=5 micro-letter chips, expanded=5 named cards */}
                         <button
                           type="button"
                           onClick={() => setExpandedLayer(isOpen ? null : layer.id)}
                           aria-expanded={isOpen}
                           aria-label={`${isOpen ? "Hide" : "Show"} sublayers of ${layer.id} ${layer.name}`}
-                          className="shrink-0 ml-1 p-1 rounded-md hover:bg-foreground/5 transition-colors"
+                          className="grid grid-cols-5 gap-[5px] text-left"
+                        >
+                          {layer.sublayers.slice(0, 5).map((s) => {
+                            const letter = s.id.replace(layer.id, "").toUpperCase();
+                            return (
+                              <div
+                                key={s.id}
+                                className="rounded-md border flex flex-col justify-between min-w-0 transition-all"
+                                style={{
+                                  background: isOpen
+                                    ? `${c.replace("hsl(", "hsl(").replace(")", " / 0.10)")}`
+                                    : "hsl(var(--background) / 0.6)",
+                                  borderColor: `${c.replace(")", " / 0.28)")}`,
+                                  padding: isOpen ? "6px 8px" : "4px 6px",
+                                  minHeight: isOpen ? 56 : 32,
+                                }}
+                                title={`${s.id} ${s.name}${s.defensible ? " ★" : ""}`}
+                              >
+                                <div className="flex items-center gap-1">
+                                  <span
+                                    className="font-mono-marker text-[9px] font-bold tracking-wider"
+                                    style={{ color: c }}
+                                  >
+                                    {isOpen ? s.id : letter}
+                                  </span>
+                                  {s.defensible && (
+                                    <span className="text-[8px]" style={{ color: c }}>★</span>
+                                  )}
+                                </div>
+                                {isOpen && (
+                                  <div className="font-display text-foreground text-[10.5px] leading-[1.15] mt-1 break-words">
+                                    {s.name}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </button>
+
+                        {/* Chevron */}
+                        <button
+                          type="button"
+                          onClick={() => setExpandedLayer(isOpen ? null : layer.id)}
+                          aria-hidden
+                          tabIndex={-1}
+                          className="px-1.5 rounded-md hover:bg-foreground/5 transition-colors flex items-center"
                         >
                           <ChevronRight
-                            size={16}
+                            size={14}
                             className="text-muted-foreground transition-transform duration-200"
-                            style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)" }}
+                            style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", color: c }}
                           />
                         </button>
                       </div>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.ul
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="overflow-hidden mt-1 ml-6 pl-3 space-y-1"
-                            style={{ borderLeft: `2px dashed hsl(${layer.color} / 0.4)` }}
-                          >
-                            {layer.sublayers.map((sub) => (
-                              <li key={sub.id}>
-                                <Link
-                                  to={`/framework#${layer.id}`}
-                                  className="flex items-start gap-2 px-2 py-1 rounded-md hover:bg-foreground/5 transition-colors group"
-                                >
-                                  <span
-                                    className="font-mono-marker text-[10px] tracking-[0.05em] mt-0.5 shrink-0 font-bold"
-                                    style={{ color: `hsl(${layer.color})` }}
-                                  >
-                                    {sub.id}
-                                  </span>
-                                  <span className="text-foreground/80 text-xs leading-snug group-hover:text-foreground">
-                                    {sub.name}
-                                    {sub.defensible && (
-                                      <span className="ml-1 text-[10px]" style={{ color: `hsl(${layer.color})` }}>★</span>
-                                    )}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </motion.ul>
-                        )}
-                      </AnimatePresence>
                     </motion.div>
                   );
                 })}
               </div>
-              <p className="font-sketch text-xs text-muted-foreground mt-2.5">
-                ★ = defensible · Filled dots = defensible sublayers · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} sublayers mapped
-              </p>
+              <div className="mt-2.5 flex items-baseline justify-between gap-3 flex-wrap">
+                <p className="font-sketch text-xs text-muted-foreground italic">
+                  ★ = structurally defensible · {LAYERS.reduce((a, l) => a + l.sublayers.length, 0)} sublayers mapped
+                </p>
+                <Link
+                  to="/framework"
+                  className="font-mono-marker text-[10px] tracking-[0.18em] uppercase text-accent hover:underline"
+                >
+                  See the full 10×5 grid →
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
