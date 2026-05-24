@@ -1,7 +1,7 @@
 
 # Strategy: Make the Framework Feel Concrete, Not Theoretical
 
-**v2 — merged with cross-LLM critique + the Professor's read.** No code in this pass. Approve and we execute.
+**v3 — Gold Mining restored as the Tier-1 explainer.** Execution plan, one piece at a time.
 
 ---
 
