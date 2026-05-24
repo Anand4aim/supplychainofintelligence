@@ -125,44 +125,61 @@ Posters link                  footer                      section (819)         
 
 ```text
 1. Hero                           (keep — tagline is the SEO + brand anchor)
-2. THREE-LAYER PROOF (new)        ← the new spine of Home
+
+2. ONE-LINE GOLD MINING ANCHOR (new, Tier 1 — Rule B keeps it Home-only)
    ┌──────────────────────────────────────────────────────────────┐
-   │  Headline: "Three layers. One moat. This is the framework."  │
+   │  "AI is a supply chain. Like gold: ore in the ground,        │
+   │   refining, assay, retail, the ring on a finger. Value moves │
+   │   through 10 layers. Most products sit on one — the wrong    │
+   │   one."                                                      │
+   └──────────────────────────────────────────────────────────────┘
+   One sentence. No cards. No 10-card render. Hands the reader an
+   intuitive picture before any code or layer label appears.
+
+3. THREE-LAYER PROOF (new, the spine of Home — Tier 1 → Tier 2 → Tier 3)
+   ┌──────────────────────────────────────────────────────────────┐
+   │  Tier 1 (headline, plain English):                           │
+   │  "Three companies. Three different things they own.          │
+   │   That's why none of them can be erased."                    │
    │                                                              │
+   │  Tier 2 (logo cards):                                        │
    │  ┌──────────┐  ┌──────────┐  ┌──────────┐                   │
    │  │ BLOOMBERG │  │  HARVEY  │  │  SIERRA  │                   │
-   │  │   logo    │  │   logo   │  │   logo   │                   │
-   │  │           │  │          │  │          │                   │
-   │  │ L1 DATA   │  │ L5 EXEC  │  │ L8 MEM   │                   │
-   │  │           │  │          │  │          │                   │
-   │  │ "owns the │  │ "owns    │  │ "remem-  │                   │
-   │  │  corpus   │  │  legal   │  │  bers    │                   │
-   │  │  nobody   │  │  work-   │  │  every   │                   │
-   │  │  can buy" │  │  flow"   │  │  cust."  │                   │
+   │  │ owns the  │  │ owns the │  │ remembers │                  │
+   │  │ data no   │  │ legal    │  │ every     │                  │
+   │  │ one else  │  │ workflow │  │ customer  │                  │
+   │  │ can buy   │  │          │  │           │                  │
    │  └──────────┘  └──────────┘  └──────────┘                   │
+   │   the data       the work       the memory                   │
    │                                                              │
-   │  Sub: "In the taxonomy: L1b + L5a/b/d + L8c/d/e."           │
+   │  Tier 3 (small caption underneath, taxonomy):                │
+   │  "In the framework: L1 Data · L5 Execution · L8 Memory.      │
+   │   Own the three corners → the Defensible Triangle."          │
    └──────────────────────────────────────────────────────────────┘
 
-3. CONTRAST ROW (new, replaces Sales Matrix prominence)
+4. CONTRAST ROW (the stakes — Rule C, "why should I care")
    ┌──────────────────────────┐  ┌──────────────────────────┐
-   │  JASPER  (L7 only)       │  │  CURSOR  (L4+L5+L6+L8)   │
+   │  JASPER                  │  │  CURSOR                  │
    │  $1.5B → $300M           │  │  $9B+, still compounding │
-   │  "wrapper, absorbed"     │  │  "owned the workflow"    │
+   │  sat on one layer        │  │  owned four layers       │
    └──────────────────────────┘  └──────────────────────────┘
-   Caption: "Same JTBD. Different layers. Different fate."
+   Caption (Tier 1): "Same job. Different layers. Different fate."
+   Sub (Tier 3): "Jasper = L7 only. Cursor = L4+L5+L6+L8."
 
-4. Framework Summary Poster      (keep — share asset)
-5. Sales Tech matrix             (keep but move here — worked example)
-6. Audit CTA                     (keep)
-7. Proof of Corpus               (keep)
-8. Voices Strip                  (keep)
-9. Newsletter                    (keep)
+5. Framework Summary Poster      (keep — share asset)
+6. Sales Tech matrix             (keep — worked example, moves here)
+7. Audit CTA                     (keep)
+8. Proof of Corpus               (keep)
+9. Voices Strip                  (keep)
+10. Newsletter                   (keep)
 
 CUT FROM HOME:
 - "The Crux · One Image" section (the blank 10×5 grid) — lives on /framework now
-- "Start Here · 5-beat strip" — promise it makes is now redundant with proof row above
+- "Start Here · 5-beat strip" — redundant with the new proof row
 - Cube preview — drop, /framework owns the Cube
+- Interactive 10-layer stack — DEMOTED below the proof row (still on the page,
+  but no longer the first thing a reader meets). The reader now arrives at the
+  stack already armed with Bloomberg/Harvey/Sierra as anchors.
 ```
 
 ### 4B. /framework — "the reference manual" (Triangle as spine)
