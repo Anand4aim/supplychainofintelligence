@@ -7,6 +7,7 @@ import Seo from "@/components/Seo";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import { supabase } from "@/integrations/supabase/client";
 import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
+import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 
 interface LiveArticle {
@@ -311,7 +312,7 @@ const LivePage = () => {
                                       </span>
                                     )}
                                     <span className={`font-mono-marker text-[11px] font-bold border px-2.5 py-1 ${verdictTone(a.verdict)}`}>
-                                      {a.verdict}
+                                      {verdictLabel(a.verdict)}
                                     </span>
                                     {src.count > 0 && (
                                       <span className="font-mono-marker text-[10px] text-foreground/55 inline-flex items-center gap-1">
@@ -374,7 +375,7 @@ const LivePage = () => {
                                   </span>
                                 )}
                                 <span className={`font-mono-marker text-[10px] border px-2 py-0.5 ${verdictTone(a.verdict)}`}>
-                                  {a.verdict}
+                                  {verdictLabel(a.verdict)}
                                 </span>
                                 {src.count > 0 && (
                                   <span className="font-mono-marker text-[10px] text-foreground/55 inline-flex items-center gap-1">

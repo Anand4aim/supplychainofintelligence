@@ -635,19 +635,19 @@ const FrameworkPage = () => (
             10 Functions × 10 Verticals × 10 Layers
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mb-10 leading-relaxed">
-            Volume in the Cube = Structural Durability. Height is layers, width is functions, depth is verticals.
-            Thin slivers die. Tall fortresses survive.
+            Volume in the Cube = structural durability. Height is layers, width is functions, depth is verticals.
+            Thin single-layer plays compress fast; multi-layer stacks hold longer. The counter-move is always to add depth.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-card border border-border rounded-xl p-8 sketch-border verdict-fortified">
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl">🏰</span>
-                <h3 className="font-display text-xl font-bold text-foreground">Sierra = FORTRESS</h3>
+                <span className="text-2xl">▣</span>
+                <h3 className="font-display text-xl font-bold text-foreground">Sierra — Defensible stack</h3>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                Customer Care × 4 verticals × 3 layers (L1b + L5b + L8c). Memory compounds.
-                Volume = massive. Hard to displace.
+                Customer Care × 4 verticals × 3 layers (L1b + L5b + L8c). Memory compounds per customer.
+                Multi-layer footprint = harder to displace.
               </p>
               <div className="flex gap-2 flex-wrap">
                 {["L1b ★", "L5a ★", "L8c ★"].map((l) => (
@@ -660,16 +660,16 @@ const FrameworkPage = () => (
 
             <div className="bg-card border border-border rounded-xl p-8 sketch-border verdict-exposed">
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-2xl">💀</span>
-                <h3 className="font-display text-xl font-bold text-foreground">Gamma ($2.1B) = DEAD</h3>
+                <span className="text-2xl">◌</span>
+                <h3 className="font-display text-xl font-bold text-foreground">Gamma ($2.1B) — Thin stack, exposed</h3>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                Product + PM × cross-industry × L7a only. No proprietary data, no playbooks,
-                no memory. Just a display case.
+                Product + PM × cross-industry × L7a only — surface-resident today. The counter-move is real:
+                add proprietary deck-data (L1), template playbooks (L5), or per-team memory (L8) to deepen the stack.
               </p>
               <div className="flex gap-2">
                 <span className="font-sketch text-sm font-bold px-2.5 py-1 rounded-md bg-verdict-exposed/10 text-verdict-exposed">
-                  L7a only — no ★
+                  L7a only — counter-move available
                 </span>
               </div>
             </div>
@@ -684,8 +684,8 @@ const FrameworkPage = () => (
         <Eyebrow className="mb-4">Four Structural Laws</Eyebrow>
         <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">The Laws That Predict the Future</h2>
         <p className="text-base text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-          Not opinions. Structural forces that explain why most AI products die in the layer they were
-          built in — and which ones survive the platforms coming for them.
+          Not opinions. Structural forces that explain why most AI products get compressed in the layer they were
+          built in — and which counter-moves keep them durable as the platforms move.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

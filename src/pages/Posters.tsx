@@ -177,7 +177,7 @@ const Posters = () => (
       num="06"
       eyebrow="The Physics"
       title="The Four Structural Laws"
-      blurb="Wrappers die. Bottlenecks win. Surface captures attention; chain captures power. Memory is the final moat."
+      blurb="Wrappers get compressed. Bottlenecks compound. Surface captures attention; chain captures power. Memory is the final moat."
       tone="dark"
     >
       <FourLawsPoster />
@@ -277,7 +277,7 @@ const Posters = () => (
       num="14"
       eyebrow="Law I, Visualized"
       title="The Stack Compression Map"
-      blurb="When the model layer ships your feature for free, who survives and who becomes a footnote. The visual proof of Law I."
+      blurb="When the model layer ships your feature for free, who holds and where the counter-move sits. The visual proof of Law I."
       tone="dark"
     >
       <StackCompressionMapPoster />
