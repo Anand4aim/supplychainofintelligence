@@ -1,7 +1,38 @@
 
 # Strategy: Make the Framework Feel Concrete, Not Theoretical
 
-No code changes in this pass. This is the diagnosis, the cross-LLM critique, and the rebuild blueprint for Home and /framework. You decide what ships.
+**v2 — merged with cross-LLM critique + the Professor's read.** No code in this pass. Approve and we execute.
+
+---
+
+## 0. The three editorial laws that govern everything below
+
+From the Professor's read. These are not sections of the rebuild — they are rules every sub-section must obey. If a sub-section violates a rule, it gets cut or rewritten.
+
+### Rule A — The Plain-English Layer (Tier 1 → Tier 2 → Tier 3)
+
+Every framework concept leads with a **Tier 1** sentence before Tier 2 (logos) or Tier 3 (codes).
+
+- **Tier 1 — Human:** a sentence a smart non-technical reader gets in one pass. No jargon, no codes. Stakes first.
+- **Tier 2 — Logos:** real companies as anchors (Bloomberg, Harvey, Sierra, Jasper, Cursor).
+- **Tier 3 — Codes:** the taxonomy (L1b, L5a/b/d, L8c/d/e). Reference grammar, never the opening line.
+
+The Triangle headline today is Tier 3. Fix: reverse the order. Same content.
+
+### Rule B — One genre per page, two metaphors max
+
+Four metaphors compete across the site (supply chain, gold mining, cube, chess). Demote:
+
+- **Supply chain** — stays everywhere (the brand).
+- **Gold mining** — Home only, one sentence. Removed from /framework.
+- **Intelligence Cube** — /framework only.
+- **Chess** — /predictions only.
+
+No page carries more than two metaphors. No page repeats another page's metaphor.
+
+### Rule C — "Why should I care?" opener on long pages
+
+/framework currently opens with the framework. It should open with the *stakes*. One paragraph above the Triangle: who gets erased, who survives, why it matters this quarter. Framework second.
 
 ---
 
