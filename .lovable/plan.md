@@ -288,12 +288,13 @@ Cheapest. Looks like text. Doesn't feel like a "logo board."
 
 ## 6. What I need from you to start building
 
-Four decisions. Once these are locked I can ship in a single pass.
+Five decisions. Once locked, ship in a single pass.
 
-1. **Approve the redundancy ledger (Section 3)?** Any item you want to defend instead of cut?
-2. **Approve the Home rebuild (Section 4A)?** Specifically — OK to cut StartHereStrip + Crux blank grid + Cube preview?
-3. **Approve the /framework rebuild (Section 4B)?** Specifically — OK to cut 3 Tiers, cut Gold Mining full render, fold 5 Observations into 4 Laws?
-4. **Logo style — Option A (monogram tiles), B (real logos), or C (text)?**
+1. **Approve the three editorial laws (Section 0)?** Tier 1→2→3, one-genre-per-page, "why should I care" opener.
+2. **Approve the redundancy ledger (Section 3)?** Any item to defend?
+3. **Approve the Home rebuild (Section 4A)?** OK to cut StartHereStrip + Crux grid + Cube preview, demote interactive stack below the proof row, and add the one-sentence gold-mining anchor?
+4. **Approve the /framework rebuild (Section 4B)?** OK to cut 3 Tiers, cut Gold Mining entirely, fold 5 Observations into 4 Laws, and add the "why should I care" opener?
+5. **Logo style — A (monogram tiles), B (real logos), or C (text)?**
 
 ---
 
