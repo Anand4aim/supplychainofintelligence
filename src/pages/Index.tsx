@@ -1,8 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
+
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
@@ -32,7 +32,6 @@ const fadeIn = {
 };
 
 const Index = () => {
-  const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
   const featuredSlugs = [
     "jasper-vs-grammarly-copilot",
     "chegg-collapse",
@@ -103,19 +102,17 @@ const Index = () => {
                   The Supply Chain of Intelligence™
                 </p>
                 <p className="font-sketch text-xs text-muted-foreground italic">
-                  Tap a layer to open its 5 sublayers
+                  10 layers · 50 sublayers — every name is a link
                 </p>
               </div>
               <div
-                className="rounded-2xl p-3 md:p-4 space-y-[5px] relative border border-foreground/10"
+                className="rounded-2xl p-3 md:p-4 space-y-[6px] relative border border-foreground/10"
                 style={{
                   background:
                     "linear-gradient(160deg, hsl(40 30% 97%) 0%, hsl(38 26% 94%) 100%)",
                 }}
               >
                 {[...LAYERS].reverse().map((layer, i) => {
-                  const defCount = layer.sublayers.filter((s) => s.defensible).length;
-                  const isOpen = expandedLayer === layer.id;
                   const c = `hsl(${layer.color})`;
                   return (
                     <motion.div
@@ -123,84 +120,56 @@ const Index = () => {
                       initial={{ opacity: 0, x: 14 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.35 + i * 0.04 }}
-                      className="relative"
+                      className="grid grid-cols-[96px_1fr] gap-[6px] items-stretch"
                     >
-                      {/* Row: colored chip (L#) + sublayer mini cells + chevron */}
-                      <div className="grid grid-cols-[88px_1fr_auto] gap-[5px] items-stretch">
-                        {/* Layer chip — full saturated color, the legend */}
-                        <Link
-                          to={`/framework#${layer.id}`}
-                          className="rounded-md px-2.5 py-2 flex flex-col justify-center transition-transform hover:-translate-y-[1px]"
-                          style={{ background: c }}
-                          title={`${layer.id} — ${layer.name}`}
-                        >
-                          <div className="font-mono-marker text-white text-[11px] font-bold tracking-wider leading-none">
-                            {layer.id === "L-1" ? "L−1" : layer.id}
-                          </div>
-                          <div className="font-display text-white text-[12px] leading-tight mt-0.5 truncate">
-                            {layer.shortName}
-                          </div>
-                        </Link>
+                      {/* Layer chip — colored, links to layer */}
+                      <Link
+                        to={`/framework#${layer.id}`}
+                        className="rounded-md px-2.5 py-2 flex flex-col justify-center transition-transform hover:-translate-y-[1px]"
+                        style={{ background: c }}
+                        title={`${layer.id} — ${layer.name}`}
+                      >
+                        <div className="font-mono-marker text-white text-[11px] font-bold tracking-wider leading-none">
+                          {layer.id === "L-1" ? "L−1" : layer.id}
+                        </div>
+                        <div className="font-display text-white text-[12px] leading-tight mt-0.5 truncate">
+                          {layer.shortName}
+                        </div>
+                      </Link>
 
-                        {/* Sublayer cells — collapsed=5 micro-letter chips, expanded=5 named cards */}
-                        <button
-                          type="button"
-                          onClick={() => setExpandedLayer(isOpen ? null : layer.id)}
-                          aria-expanded={isOpen}
-                          aria-label={`${isOpen ? "Hide" : "Show"} sublayers of ${layer.id} ${layer.name}`}
-                          className="grid grid-cols-5 gap-[5px] text-left"
-                        >
-                          {layer.sublayers.slice(0, 5).map((s) => {
-                            const letter = s.id.replace(layer.id, "").toUpperCase();
-                            return (
-                              <div
-                                key={s.id}
-                                className="rounded-md border flex flex-col justify-between min-w-0 transition-all"
-                                style={{
-                                  background: isOpen
-                                    ? `${c.replace("hsl(", "hsl(").replace(")", " / 0.10)")}`
-                                    : "hsl(var(--background) / 0.6)",
-                                  borderColor: `${c.replace(")", " / 0.28)")}`,
-                                  padding: isOpen ? "6px 8px" : "4px 6px",
-                                  minHeight: isOpen ? 56 : 32,
-                                }}
-                                title={`${s.id} ${s.name}${s.defensible ? " ★" : ""}`}
+                      {/* Full-width sublayer line — names visible inline, each a link */}
+                      <div
+                        className="rounded-md border px-2.5 py-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 min-w-0"
+                        style={{
+                          background: `${c.replace(")", " / 0.06)")}`,
+                          borderColor: `${c.replace(")", " / 0.22)")}`,
+                        }}
+                      >
+                        {layer.sublayers.slice(0, 5).map((s, idx) => (
+                          <span key={s.id} className="inline-flex items-center gap-1 min-w-0">
+                            {idx > 0 && (
+                              <span className="text-foreground/25 text-[10px]" aria-hidden>·</span>
+                            )}
+                            <Link
+                              to={`/framework#${layer.id}`}
+                              className="inline-flex items-baseline gap-1 hover:bg-foreground/[0.04] rounded px-1 -mx-1 transition-colors"
+                              title={`${s.id} ${s.name}${s.defensible ? " ★" : ""}`}
+                            >
+                              <span
+                                className="font-mono-marker text-[9px] font-bold tracking-wider shrink-0"
+                                style={{ color: c }}
                               >
-                                <div className="flex items-center gap-1">
-                                  <span
-                                    className="font-mono-marker text-[9px] font-bold tracking-wider"
-                                    style={{ color: c }}
-                                  >
-                                    {isOpen ? s.id : letter}
-                                  </span>
-                                  {s.defensible && (
-                                    <span className="text-[8px]" style={{ color: c }}>★</span>
-                                  )}
-                                </div>
-                                {isOpen && (
-                                  <div className="font-display text-foreground text-[10.5px] leading-[1.15] mt-1 break-words">
-                                    {s.name}
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </button>
-
-                        {/* Chevron */}
-                        <button
-                          type="button"
-                          onClick={() => setExpandedLayer(isOpen ? null : layer.id)}
-                          aria-hidden
-                          tabIndex={-1}
-                          className="px-1.5 rounded-md hover:bg-foreground/5 transition-colors flex items-center"
-                        >
-                          <ChevronRight
-                            size={14}
-                            className="text-muted-foreground transition-transform duration-200"
-                            style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", color: c }}
-                          />
-                        </button>
+                                {s.id}
+                              </span>
+                              <span className="font-display text-foreground text-[11.5px] leading-tight">
+                                {s.name}
+                              </span>
+                              {s.defensible && (
+                                <span className="text-[9px] shrink-0" style={{ color: c }}>★</span>
+                              )}
+                            </Link>
+                          </span>
+                        ))}
                       </div>
                     </motion.div>
                   );
@@ -218,6 +187,7 @@ const Index = () => {
                 </Link>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
