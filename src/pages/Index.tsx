@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen } from "lucide-react";
