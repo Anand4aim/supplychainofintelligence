@@ -32,7 +32,6 @@ const fadeIn = {
 };
 
 const Index = () => {
-  const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
   const featuredSlugs = [
     "jasper-vs-grammarly-copilot",
     "chegg-collapse",
