@@ -137,39 +137,30 @@ const Index = () => {
                         </div>
                       </Link>
 
-                      {/* Full-width sublayer line — names visible inline, each a link */}
-                      <div
-                        className="rounded-md border px-2.5 py-1.5 flex flex-wrap items-center gap-x-2 gap-y-1 min-w-0"
-                        style={{
-                          background: `${c.replace(")", " / 0.06)")}`,
-                          borderColor: `${c.replace(")", " / 0.22)")}`,
-                        }}
-                      >
-                        {layer.sublayers.slice(0, 5).map((s, idx) => (
-                          <span key={s.id} className="inline-flex items-center gap-1 min-w-0">
-                            {idx > 0 && (
-                              <span className="text-foreground/25 text-[10px]" aria-hidden>·</span>
-                            )}
+                      {/* 5 evenly-sized sublayer cells (matches /posters grid) */}
+                      <div className="grid grid-cols-5 gap-[5px]">
+                        {layer.sublayers.slice(0, 5).map((s, idx) => {
+                          const inner = layer.id === "L-1" ? "neg1" : layer.id.replace("L", "");
+                          const bgAlpha = 0.34 - idx * 0.05; // 0.34 → 0.14
+                          const bg = `hsl(var(--layer-${inner}) / ${bgAlpha})`;
+                          return (
                             <Link
+                              key={s.id}
                               to={`/framework#${layer.id}`}
-                              className="inline-flex items-baseline gap-1 hover:bg-foreground/[0.04] rounded px-1 -mx-1 transition-colors"
+                              className="rounded-md px-2 py-1.5 flex flex-col justify-center min-w-0 transition-transform hover:-translate-y-[1px]"
+                              style={{ background: bg }}
                               title={`${s.id} ${s.name}${s.defensible ? " ★" : ""}`}
                             >
-                              <span
-                                className="font-mono-marker text-[9px] font-bold tracking-wider shrink-0"
-                                style={{ color: c }}
-                              >
-                                {s.id}
-                              </span>
-                              <span className="font-display text-foreground text-[11.5px] leading-tight">
+                              <div className="font-mono-marker text-[9px] tracking-wider font-bold leading-none flex items-center gap-1 text-foreground/70">
+                                <span>{s.id}</span>
+                                {s.defensible && <span style={{ color: c }}>★</span>}
+                              </div>
+                              <div className="font-display text-foreground text-[11.5px] leading-tight mt-1 line-clamp-2">
                                 {s.name}
-                              </span>
-                              {s.defensible && (
-                                <span className="text-[9px] shrink-0" style={{ color: c }}>★</span>
-                              )}
+                              </div>
                             </Link>
-                          </span>
-                        ))}
+                          );
+                        })}
                       </div>
                     </motion.div>
                   );
