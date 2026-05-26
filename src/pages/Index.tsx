@@ -97,12 +97,9 @@ const Index = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <div className="mb-3 flex items-baseline justify-between gap-3 flex-wrap">
+              <div className="mb-3">
                 <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent">
                   The Supply Chain of Intelligence™
-                </p>
-                <p className="font-sketch text-xs text-muted-foreground italic">
-                  10 layers · 50 sublayers — every name is a link
                 </p>
               </div>
               <div
