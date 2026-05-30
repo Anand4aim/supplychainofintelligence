@@ -1,1 +1,16 @@
 project_id = "pjococttuifybrwsxscy"
+
+[functions.generate-live-article]
+verify_jwt = false
+
+[functions.refine-live-article]
+verify_jwt = false
+
+[functions.cron-remaster-tick]
+verify_jwt = false
+
+[functions.process-remaster-queue]
+verify_jwt = false
+
+[functions.rss-feed]
+verify_jwt = false
