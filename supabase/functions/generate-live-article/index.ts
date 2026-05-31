@@ -215,7 +215,18 @@ Deno.serve(async (req) => {
         passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
-    if (!expected || passcode !== expected) {
+    // Auth: accept either the admin passcode (manual UI calls) OR a valid Supabase
+    // apikey/Authorization header (pg_cron + internal calls). This lets the
+    // scheduled job keep working without embedding the passcode in cron SQL.
+    const apikeyHeader = req.headers.get("apikey") ?? "";
+    const authHeader = req.headers.get("authorization") ?? "";
+    const anonKey = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
+    const hasValidSupabaseKey =
+      (apikeyHeader && (apikeyHeader === anonKey || apikeyHeader === serviceKey)) ||
+      authHeader === `Bearer ${serviceKey}` ||
+      authHeader === `Bearer ${anonKey}`;
+    const hasValidPasscode = expected && passcode === expected;
+    if (!hasValidSupabaseKey && !hasValidPasscode) {
       return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
         { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
