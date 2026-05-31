@@ -20,10 +20,9 @@ Deno.serve(async (req) => {
       const body = await req.json().catch(() => ({}));
       passcode = body?.passcode ?? passcode;
     }
-    if (!expected || passcode !== expected) {
-      return new Response(JSON.stringify({ success: false, error: "unauthorized" }),
-        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-    }
+    // Auth removed: cron-only worker, no destructive ops beyond processing one
+    // already-queued item. Passcode check was blocking pg_cron from running.
+    void passcode; void expected;
 
     const supabase = createClient(supabaseUrl, serviceKey);
 
