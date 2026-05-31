@@ -265,12 +265,20 @@ Deno.serve(async (req) => {
       verdict: analysis.verdict,
       vertical: analysis.vertical,
     };
-    // Date priority: explicit published_at param > model-extracted news_date > now()
-    const effectiveDate = publishedAt
+    // Date priority: explicit published_at param > model-extracted news_date > now().
+    // Clamp to now() — the model sometimes hallucinates future dates (e.g. "2026-06-05"),
+    // which then pin the article to the top of the feed forever. Past dates are fine.
+    const rawDate = publishedAt
       || (analysis.news_date && /^\d{4}-\d{2}-\d{2}$/.test(analysis.news_date)
             ? `${analysis.news_date}T12:00:00+00:00`
             : undefined);
-    if (effectiveDate) insertRow.published_at = effectiveDate;
+    if (rawDate) {
+      const parsed = new Date(rawDate);
+      const now = new Date();
+      insertRow.published_at = (Number.isFinite(parsed.getTime()) && parsed.getTime() <= now.getTime())
+        ? parsed.toISOString()
+        : now.toISOString();
+    }
     const { data: inserted, error } = await supabase.from("live_articles").insert(insertRow).select().single();
 
     if (error) throw error;
