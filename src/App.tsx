@@ -14,6 +14,7 @@ import AboutPage from "./pages/About";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
 import MarketMap from "./pages/MarketMap";
+import MarketMapVertical from "./pages/MarketMapVertical";
 import FaqPage from "./pages/Faq";
 import LawEssayPage from "./pages/LawEssay";
 
@@ -57,6 +58,7 @@ const App = () => (
         <Route path="/live" element={<LivePage />} />
         <Route path="/live/:slug" element={<LiveArticleDetail />} />
         <Route path="/market-map" element={<MarketMap />} />
+        <Route path="/market-map/:vertical" element={<MarketMapVertical />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/laws/:slug" element={<LawEssayPage />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
