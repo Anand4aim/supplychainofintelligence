@@ -8,6 +8,7 @@ const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) =>
   if (failed || !domain) {
     return (
       <span
+        data-export-logo-fallback
         aria-hidden
         className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-[2px] bg-foreground/10 text-[8px] font-display font-bold text-foreground/70 shrink-0"
       >
@@ -16,14 +17,26 @@ const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) =>
     );
   }
   return (
-    <img
-      src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
-      alt=""
-      aria-hidden
-      loading="lazy"
-      onError={() => setFailed(true)}
-      className="w-3.5 h-3.5 rounded-[2px] object-contain shrink-0 bg-background"
-    />
+    <span className="relative inline-flex w-3.5 h-3.5 shrink-0">
+      <span
+        data-export-logo-fallback
+        aria-hidden
+        className="hidden items-center justify-center w-3.5 h-3.5 rounded-[2px] bg-foreground/10 text-[8px] font-display font-bold text-foreground/70"
+      >
+        {name.charAt(0).toUpperCase()}
+      </span>
+      <img
+        data-export-logo-img
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+        onError={() => setFailed(true)}
+        className="w-3.5 h-3.5 rounded-[2px] object-contain shrink-0 bg-background"
+      />
+    </span>
   );
 };
 import type { VerticalMapData, CompanyStage, VerticalCompany } from "@/data/verticals/legal";
