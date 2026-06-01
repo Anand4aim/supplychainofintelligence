@@ -142,6 +142,38 @@ export const MAP_COMPANIES: MapCompany[] = [
   c("Character.AI", "character.ai", ["L7", "L8"], ["horizontal"], "memory", { caseStudy: "character-ai-memory-orphan" }),
   c("Replika", "replika.com", ["L7", "L8"], ["horizontal"], "memory"),
   c("Notion AI", "notion.so", ["L4", "L6", "L8"], ["horizontal"], "fortress"),
+
+  // === Legal vertical cohort ===
+  // L1 Data — legal corpora & precedent graphs
+  c("LexisNexis", "lexisnexis.com", ["L1", "L4", "L7"], ["legal"], "fortress", { note: "Century-old case-law corpus. L1 fortress; Lexis+ AI is the L7 surface on top." }),
+  c("Westlaw (Thomson Reuters)", "thomsonreuters.com", ["L1", "L4", "L7"], ["legal"], "fortress", { note: "Westlaw Precision AI sits on the same L1 moat as Lexis — case law + headnotes + KeyCite." }),
+  c("Bloomberg Law", "bloomberglaw.com", ["L1", "L4", "L7"], ["legal"], "fortress", { note: "Bloomberg's legal arm — dockets, opinions, secondary sources. L1 + L4 distribution into BigLaw." }),
+  c("vLex", "vlex.com", ["L1", "L7"], ["legal"], "refinery", { note: "Global case-law corpus; powers Vincent AI. Refinery racing toward fortress." }),
+  c("Fastcase", "fastcase.com", ["L1", "L7"], ["legal"], "refinery"),
+  c("Casetext (Thomson)", "casetext.com", ["L1", "L5", "L7"], ["legal"], "fortress", { note: "Acquired by Thomson Reuters for $650M. CoCounsel is now the L5 surface on Westlaw's L1." }),
+
+  // L3 Trust & Gates — privilege, conflicts, citator-grade
+  c("Harvey AI", "harvey.ai", ["L1", "L3", "L5", "L8"], ["legal"], "fortress", { caseStudy: "harvey-vs-generic-legal", note: "BigLaw fortress — firm corpus (L1) + privilege gates (L3) + matter workflow (L5) + per-firm memory (L8)." }),
+
+  // L5 Domain Execution — drafting, review, diligence, litigation workflows
+  c("Spellbook", "spellbook.legal", ["L5"], ["legal"], "agent", { note: "Contract drafting/review in Word. L5 workflow; thin without L1 firm corpus." }),
+  c("Ironclad", "ironcladapp.com", ["L1", "L5"], ["legal"], "fortress", { note: "CLM incumbent layering AI on top of a per-tenant contract corpus (L1 + L5)." }),
+  c("LinkSquares", "linksquares.com", ["L1", "L5"], ["legal"], "fortress", { note: "CLM + post-signature analytics. Same L1+L5 pattern as Ironclad." }),
+  c("Evisort (Workday)", "evisort.com", ["L1", "L5"], ["legal"], "fortress", { note: "Contract intelligence; acquired by Workday — now L1+L5 inside an L4 distribution moat." }),
+  c("DraftWise", "draftwise.com", ["L1", "L5"], ["legal"], "fortress", { note: "Drafts off a firm's precedent corpus. L1 (precedents) + L5 (drafting workflow)." }),
+  c("Robin AI", "robinai.com", ["L5"], ["legal"], "agent", { note: "Contract review agent. L5-only; vulnerable to Harvey + CLM incumbents." }),
+  c("EvenUp", "evenuplaw.com", ["L1", "L5"], ["legal"], "fortress", { note: "Personal-injury demand letters — L1 (medical/PI corpus) + L5 (case-prep workflow)." }),
+  c("Supio", "supio.com", ["L1", "L5"], ["legal"], "agent", { note: "PI case prep — racing EvenUp on the same L1+L5 square." }),
+  c("Eve", "eve.legal", ["L5"], ["legal"], "agent", { note: "Plaintiff-side litigation copilot. L5; needs to deepen into L1/L8 to survive." }),
+  c("Paxton AI", "paxton.ai", ["L5", "L7"], ["legal"], "agent"),
+  c("Leya", "leya.law", ["L5"], ["legal"], "agent", { note: "European BigLaw copilot. Harvey-pattern, smaller geography." }),
+  c("Definely", "definely.com", ["L5"], ["legal"], "agent", { note: "Drafting/definitions tool inside Word. Useful surface, single-layer." }),
+  c("Luminance", "luminance.com", ["L1", "L5"], ["legal"], "fortress", { note: "Diligence + contract analysis; one of the older L1+L5 stacks in legal AI." }),
+  c("Kira (Litera)", "litera.com", ["L1", "L5"], ["legal"], "fortress", { note: "Acquired by Litera — diligence corpus + workflow inside the BigLaw stack." }),
+
+  // L7 Surface — vendor-branded copilots over someone else's L1
+  c("CoCounsel (Thomson)", "thomsonreuters.com/cocounsel", ["L5", "L7"], ["legal"], "fortress", { note: "Casetext rebrand. Now an L7 surface backed by Westlaw's L1 — fortress by acquisition." }),
+  c("Lexis+ AI", "lexisnexis.com", ["L5", "L7"], ["legal"], "fortress", { note: "L7 wrapper over LexisNexis's L1. Fortress because the corpus is captive." }),
 ];
 
 export const VERTICAL_LABEL: Record<Vertical, string> = {
