@@ -66,7 +66,8 @@ const Chip = ({ co, secondary, onClick }: { co: VerticalCompany; secondary?: boo
     style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
     title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
   >
-    <span className="font-mono-marker tracking-tight truncate max-w-[100px]">{co.name}</span>
+    <LogoMark companyKey={co.key} name={co.name} />
+    <span className="font-mono-marker tracking-tight truncate max-w-[90px]">{co.name}</span>
   </button>
 );
 
