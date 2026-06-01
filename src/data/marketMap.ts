@@ -152,8 +152,8 @@ export const MAP_COMPANIES: MapCompany[] = [
   c("Fastcase", "fastcase.com", ["L1", "L7"], ["legal"], "refinery"),
   c("Casetext (Thomson)", "casetext.com", ["L1", "L5", "L7"], ["legal"], "fortress", { note: "Acquired by Thomson Reuters for $650M. CoCounsel is now the L5 surface on Westlaw's L1." }),
 
-  // L3 Trust & Gates — privilege, conflicts, citator-grade
-  c("Harvey AI", "harvey.ai", ["L1", "L3", "L5", "L8"], ["legal"], "fortress", { caseStudy: "harvey-vs-generic-legal", note: "BigLaw fortress — firm corpus (L1) + privilege gates (L3) + matter workflow (L5) + per-firm memory (L8)." }),
+  // L3 Trust & Gates — privilege, conflicts, citator-grade (Harvey lives in the L3 block above)
+
 
   // L5 Domain Execution — drafting, review, diligence, litigation workflows
   c("Spellbook", "spellbook.legal", ["L5"], ["legal"], "agent", { note: "Contract drafting/review in Word. L5 workflow; thin without L1 firm corpus." }),
