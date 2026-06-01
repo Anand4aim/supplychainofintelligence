@@ -31,7 +31,6 @@ const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) =>
         alt=""
         aria-hidden
         loading="lazy"
-        crossOrigin="anonymous"
         referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
         className="w-3.5 h-3.5 rounded-[2px] object-contain shrink-0 bg-background"
