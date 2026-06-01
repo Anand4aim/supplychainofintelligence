@@ -48,6 +48,7 @@ const ExportablePng = ({
       pixelRatio: 2,
       backgroundColor: exportBackground,
       cacheBust: true,
+      skipFonts: true,
       filter: (node) => {
         if (!(node instanceof HTMLElement)) return true;
         return !node.hasAttribute?.("data-export-hide");
