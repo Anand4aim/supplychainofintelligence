@@ -1,5 +1,31 @@
 import { useState, useMemo } from "react";
 import { LAYERS, SUBLAYER_LABEL, layerColor, layerVar } from "@/data/layers";
+import { LEGAL_DOMAINS } from "@/data/verticals/legalDomains";
+
+const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) => {
+  const domain = LEGAL_DOMAINS[companyKey];
+  const [failed, setFailed] = useState(!domain);
+  if (failed || !domain) {
+    return (
+      <span
+        aria-hidden
+        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-[2px] bg-foreground/10 text-[8px] font-display font-bold text-foreground/70 shrink-0"
+      >
+        {name.charAt(0).toUpperCase()}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+      alt=""
+      aria-hidden
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className="w-3.5 h-3.5 rounded-[2px] object-contain shrink-0 bg-background"
+    />
+  );
+};
 import type { VerticalMapData, CompanyStage, VerticalCompany } from "@/data/verticals/legal";
 
 const STAGE_LABEL: Record<CompanyStage | "all", string> = {
@@ -40,7 +66,8 @@ const Chip = ({ co, secondary, onClick }: { co: VerticalCompany; secondary?: boo
     style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
     title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
   >
-    <span className="font-mono-marker tracking-tight truncate max-w-[100px]">{co.name}</span>
+    <LogoMark companyKey={co.key} name={co.name} />
+    <span className="font-mono-marker tracking-tight truncate max-w-[90px]">{co.name}</span>
   </button>
 );
 
