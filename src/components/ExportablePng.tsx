@@ -44,16 +44,25 @@ const ExportablePng = ({
 
   const rasterize = async () => {
     if (!ref.current) throw new Error("no ref");
-    return toPng(ref.current, {
-      pixelRatio: 2,
-      backgroundColor: exportBackground,
-      cacheBust: true,
-      skipFonts: true,
-      filter: (node) => {
-        if (!(node instanceof HTMLElement)) return true;
-        return !node.hasAttribute?.("data-export-hide");
-      },
-    });
+    ref.current.setAttribute("data-exporting", "true");
+    await new Promise((resolve) => requestAnimationFrame(() => resolve(undefined)));
+
+    try {
+      return await toPng(ref.current, {
+        pixelRatio: 2,
+        backgroundColor: exportBackground,
+        cacheBust: true,
+        skipFonts: true,
+        imagePlaceholder:
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
+        filter: (node) => {
+          if (!(node instanceof HTMLElement)) return true;
+          return !node.hasAttribute?.("data-export-hide") && !node.hasAttribute?.("data-export-skip");
+        },
+      });
+    } finally {
+      ref.current.removeAttribute("data-exporting");
+    }
   };
 
   const handleDownload = async () => {
@@ -116,6 +125,10 @@ const ExportablePng = ({
 
   return (
     <div className={`relative group ${className}`}>
+      <style>{`
+        [data-exporting="true"] [data-export-logo-fallback] { display: inline-flex !important; }
+        [data-exporting="true"] [data-export-logo-img] { display: none !important; }
+      `}</style>
       <div
         data-export-hide
         className={`absolute top-3 md:top-4 ${buttonPos} z-30 flex items-center gap-2`}
