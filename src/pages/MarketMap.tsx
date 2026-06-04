@@ -128,15 +128,23 @@ const MarketMap = () => {
                 Same 10-layer grid, drilled into one industry at a time.
               </div>
               <div className="text-[12px] text-muted-foreground mt-1">
-                Legal is live. 23 more in the queue.
+                Legal and WealthTech are live. 22 more in the queue.
               </div>
             </div>
-            <Link
-              to="/market-map/legal"
-              className="font-mono-marker text-[11px] tracking-wider uppercase px-3 py-2 border border-foreground bg-foreground text-background hover:bg-accent hover:border-accent transition-colors"
-            >
-              Open the Legal Map →
-            </Link>
+            <div className="flex gap-2 flex-wrap">
+              <Link
+                to="/market-map/legal"
+                className="font-mono-marker text-[11px] tracking-wider uppercase px-3 py-2 border border-foreground bg-foreground text-background hover:bg-accent hover:border-accent transition-colors"
+              >
+                Legal Map →
+              </Link>
+              <Link
+                to="/market-map/wealth"
+                className="font-mono-marker text-[11px] tracking-wider uppercase px-3 py-2 border border-foreground bg-foreground text-background hover:bg-accent hover:border-accent transition-colors"
+              >
+                WealthTech Map →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
