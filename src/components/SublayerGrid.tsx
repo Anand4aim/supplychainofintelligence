@@ -151,9 +151,11 @@ const Cell = ({
 
 interface Props {
   data: VerticalMapData;
+  /** Compact mode: render only the 10×5 grid (no thesis/filter/legend/scorecard/whitespace/notes/modal). Used inside the shareable export card. */
+  compact?: boolean;
 }
 
-const SublayerGrid = ({ data }: Props) => {
+const SublayerGrid = ({ data, compact = false }: Props) => {
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
@@ -176,7 +178,9 @@ const SublayerGrid = ({ data }: Props) => {
 
   return (
     <div className="space-y-4">
-      {/* Thesis */}
+      {!compact && (
+        <>
+
       <div
         className="rounded-md border-l-4 px-4 py-3 bg-card"
         style={{ borderLeftColor: "hsl(var(--brand-gold))" }}
