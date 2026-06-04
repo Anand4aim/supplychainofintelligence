@@ -190,7 +190,7 @@ const Cell = ({
       </div>
       {hot ? (() => {
         const count = primary.length + secondary.length;
-        const cols = logoFirst ? 0 : Math.max(2, Math.ceil(count / 2));
+        const cols = logoFirst ? 0 : Math.min(4, Math.max(2, count));
         return (
           <div
             className={logoFirst ? "flex flex-wrap mt-auto gap-1.5" : "grid gap-1 mt-auto"}
