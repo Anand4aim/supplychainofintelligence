@@ -227,8 +227,8 @@ const SublayerGrid = ({ data, compact = false, hideLayers }: Props) => {
 
       {/* 10×5 grid */}
 
-      <div className="overflow-x-auto">
-        <div className="min-w-[820px]">
+      <div className={compact ? "" : "overflow-x-auto"}>
+        <div className={compact ? "w-full" : "min-w-[820px]"}>
           {/* Header row */}
           <div className="grid grid-cols-[110px_repeat(5,1fr)] gap-1.5 mb-1.5">
             <div />
