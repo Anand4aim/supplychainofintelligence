@@ -156,8 +156,8 @@ const ExportablePng = ({
   return (
     <div className={`relative group ${className}`}>
       <style>{`
-        [data-exporting="true"] [data-export-logo-img] { display: none !important; }
-        [data-exporting="true"] [data-export-logo-cors] { display: block !important; }
+        [data-exporting="true"] [data-export-logo-img] { opacity: 0 !important; }
+        [data-exporting="true"] [data-export-logo-cors] { opacity: 1 !important; }
       `}</style>
 
 
