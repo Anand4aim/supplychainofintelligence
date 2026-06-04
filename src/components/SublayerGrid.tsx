@@ -27,7 +27,7 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
       <span
         data-export-logo-fallback
         aria-hidden
-        className="absolute inset-0 hidden items-center justify-center font-display font-bold leading-none text-foreground"
+        className="absolute inset-0 flex items-center justify-center font-display font-bold leading-none text-foreground"
         style={{ fontSize: Math.round(size * 0.55) }}
       >
         {initial}
@@ -44,15 +44,16 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
         className="relative shrink-0 object-contain"
         style={{ height: innerSize, width: innerSize }}
       />
-      {/* Export logo — DuckDuckGo (CORS-enabled, inlineable by html-to-image).
-          Eager-loaded offscreen so it's ready when export fires. */}
+      {/* Export logo — same-origin copy, so html-to-image can read pixels. */}
       <img
         data-export-logo-cors
-        src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
+        src={`/company-logos/${companyKey}.png`}
         alt=""
         aria-hidden
-        crossOrigin="anonymous"
         referrerPolicy="no-referrer"
+        onError={(event) => {
+          event.currentTarget.style.display = "none";
+        }}
         className="pointer-events-none absolute inset-0 m-auto object-contain opacity-0"
         style={{ height: innerSize, width: innerSize }}
       />
