@@ -153,9 +153,11 @@ interface Props {
   data: VerticalMapData;
   /** Compact mode: render only the 10×5 grid (no thesis/filter/legend/scorecard/whitespace/notes/modal). Used inside the shareable export card. */
   compact?: boolean;
+  /** Optional list of layer IDs to omit (e.g. ["L-1","L0"] for share card). */
+  hideLayers?: string[];
 }
 
-const SublayerGrid = ({ data, compact = false }: Props) => {
+const SublayerGrid = ({ data, compact = false, hideLayers }: Props) => {
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
@@ -173,7 +175,8 @@ const SublayerGrid = ({ data, compact = false }: Props) => {
     };
   }, [data, stage]);
 
-  const orderedLayers = [...LAYERS].reverse(); // L8 → L-1
+  const hidden = new Set(hideLayers ?? []);
+  const orderedLayers = [...LAYERS].reverse().filter((l) => !hidden.has(l.id)); // L8 → L-1
   const generics = new Set(data.genericLayers.map((g) => g.id));
 
   return (
