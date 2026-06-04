@@ -55,6 +55,44 @@ const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
   </aside>
 );
 
+const MarketMapBody = ({ dataset }: { dataset: typeof VERTICAL_DATASETS[string] }) => {
+  const [view, setView] = useState<"detailed" | "packed">("detailed");
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center gap-2">
+        <span className="font-mono-marker text-[10px] tracking-wider uppercase text-muted-foreground mr-1">
+          View:
+        </span>
+        {([
+          ["detailed", "Detailed (10×5)"],
+          ["packed", "One-page (packed)"],
+        ] as const).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => setView(key)}
+            className={`px-2.5 py-1 text-[11px] font-mono-marker tracking-wide rounded border transition-colors ${
+              view === key
+                ? "border-foreground bg-foreground text-background"
+                : "border-foreground/20 hover:border-foreground/50"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+        {view === "packed" && (
+          <span className="text-[10.5px] text-muted-foreground italic ml-2">
+            All 8 layers in one screen — ideal for an A4 screenshot.
+          </span>
+        )}
+      </div>
+      <SublayerGrid data={dataset} packed={view === "packed"} hideLayers={view === "packed" ? ["L-1", "L0"] : undefined} />
+    </div>
+  );
+};
+
+
+
 const MarketMapVertical = () => {
   const { vertical: slug } = useParams<{ vertical: string }>();
   const entry = slug ? getVertical(slug) : undefined;
