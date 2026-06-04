@@ -224,9 +224,12 @@ interface Props {
   hideLayers?: string[];
   /** Logo-first: render chips as logo-only square tiles (no company name). Used in export. */
   logoFirst?: boolean;
+  /** Packed: collapse each layer's 5 sublayers into a single flowing row of logos. Fits all 8 layers on one A4 screen. */
+  packed?: boolean;
 }
 
-const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: Props) => {
+const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false, packed = false }: Props) => {
+
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
@@ -294,8 +297,74 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: 
         </>
       )}
 
-      {/* 10×5 grid */}
+      {/* Packed view — one row per layer, logos flow freely */}
+      {packed ? (
+        <div className="w-full space-y-1">
+          {orderedLayers.map((layer) => {
+            const isGeneric = generics.has(layer.id);
+            const genericNote = data.genericLayers.find((g) => g.id === layer.id)?.note;
+            // Collect all companies across this layer's sublayers
+            const placements = layer.sublayers
+              .map((sl) => filtered.placements.find((p) => p.id === sl.id))
+              .filter(Boolean) as NonNullable<typeof filtered.placements[number]>[];
+            const primary = placements.flatMap((p) => p.primary ?? []);
+            const secondary = placements.flatMap((p) => p.secondary ?? []);
+            const hasLogos = primary.length + secondary.length > 0;
 
+            return (
+              <div
+                key={layer.id}
+                className="grid grid-cols-[110px_1fr] gap-1.5 items-stretch"
+              >
+                <div
+                  className="rounded-sm px-2 py-1.5 flex flex-col justify-center"
+                  style={{
+                    background: `hsl(${layerVar(layer.id)} / 0.12)`,
+                    borderLeft: `3px solid ${layerColor(layer.id)}`,
+                  }}
+                >
+                  <div
+                    className="font-mono-marker text-[10px] tracking-wider"
+                    style={{ color: layerColor(layer.id) }}
+                  >
+                    {layer.id}
+                  </div>
+                  <div className="font-display text-[12px] font-bold leading-tight text-foreground">
+                    {layer.shortName}
+                  </div>
+                </div>
+                <div
+                  className="border border-foreground/10 rounded-sm p-1.5 bg-background flex items-center"
+                  style={{ borderBottom: `2px solid ${layerColor(layer.id)}` }}
+                >
+                  {isGeneric ? (
+                    <div className="text-[10px] text-muted-foreground italic px-1">
+                      {genericNote}
+                    </div>
+                  ) : hasLogos ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {primary.map((k) => {
+                        const co = filtered.companies[k];
+                        if (!co) return null;
+                        return <Chip key={`p-${k}`} co={co} onClick={() => setPicked(co)} logoFirst />;
+                      })}
+                      {secondary.map((k) => {
+                        const co = filtered.companies[k];
+                        if (!co) return null;
+                        return <Chip key={`s-${k}`} co={co} secondary onClick={() => setPicked(co)} logoFirst />;
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-[10px] text-muted-foreground/70 italic px-1">
+                      No AI-native occupants
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
       <div className={compact ? "" : "overflow-x-auto"}>
         <div className={compact ? "w-full" : "min-w-[820px]"}>
           {/* Header row */}
@@ -359,6 +428,8 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: 
           })}
         </div>
       </div>
+      )}
+
 
       {!compact && (
         <>
