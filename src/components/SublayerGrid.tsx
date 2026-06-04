@@ -219,8 +219,11 @@ const SublayerGrid = ({ data, compact = false }: Props) => {
         <span><span className="inline-block w-2 h-2 rounded-sm bg-foreground/[0.05] mr-1" />Feature (absorbed)</span>
         <span><span className="inline-block w-2 h-2 rounded-sm bg-foreground/[0.08] mr-1" />Horizontal (owned outside vertical)</span>
       </div>
+        </>
+      )}
 
       {/* 10×5 grid */}
+
       <div className="overflow-x-auto">
         <div className="min-w-[820px]">
           {/* Header row */}
@@ -284,7 +287,10 @@ const SublayerGrid = ({ data, compact = false }: Props) => {
         </div>
       </div>
 
+      {!compact && (
+        <>
       {/* Scorecard */}
+
       <div className="mt-6">
         <h3 className="font-display text-lg font-bold text-foreground mb-2">
           Layer scorecard — contested vs. open
@@ -390,6 +396,8 @@ const SublayerGrid = ({ data, compact = false }: Props) => {
             )}
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );
