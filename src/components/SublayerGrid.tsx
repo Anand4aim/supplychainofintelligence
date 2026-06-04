@@ -224,9 +224,12 @@ interface Props {
   hideLayers?: string[];
   /** Logo-first: render chips as logo-only square tiles (no company name). Used in export. */
   logoFirst?: boolean;
+  /** Packed: collapse each layer's 5 sublayers into a single flowing row of logos. Fits all 8 layers on one A4 screen. */
+  packed?: boolean;
 }
 
-const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: Props) => {
+const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false, packed = false }: Props) => {
+
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
