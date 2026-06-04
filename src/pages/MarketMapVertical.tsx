@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { Map, ChevronRight, Lock } from "lucide-react";
+import { Map, ChevronRight, Lock, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
@@ -55,47 +56,18 @@ const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
   </aside>
 );
 
-const MarketMapBody = ({ dataset }: { dataset: typeof VERTICAL_DATASETS[string] }) => {
-  const [view, setView] = useState<"detailed" | "packed">("detailed");
-  return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <span className="font-mono-marker text-[10px] tracking-wider uppercase text-muted-foreground mr-1">
-          View:
-        </span>
-        {([
-          ["detailed", "Detailed (10×5)"],
-          ["packed", "One-page (packed)"],
-        ] as const).map(([key, label]) => (
-          <button
-            key={key}
-            type="button"
-            onClick={() => setView(key)}
-            className={`px-2.5 py-1 text-[11px] font-mono-marker tracking-wide rounded border transition-colors ${
-              view === key
-                ? "border-foreground bg-foreground text-background"
-                : "border-foreground/20 hover:border-foreground/50"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-        {view === "packed" && (
-          <span className="text-[10.5px] text-muted-foreground italic ml-2">
-            All 8 layers in one screen — ideal for an A4 screenshot.
-          </span>
-        )}
-      </div>
-      <SublayerGrid data={dataset} packed={view === "packed"} hideLayers={view === "packed" ? ["L-1", "L0"] : undefined} />
-    </div>
-  );
-};
+const MarketMapBody = ({ dataset }: { dataset: typeof VERTICAL_DATASETS[string] }) => (
+  <SublayerGrid data={dataset} />
+);
+
+
 
 
 
 const MarketMapVertical = () => {
   const { vertical: slug } = useParams<{ vertical: string }>();
   const entry = slug ? getVertical(slug) : undefined;
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   if (!entry) return <Navigate to="/market-map" replace />;
   if (entry.status !== "live") return <Navigate to="/market-map" replace />;
@@ -136,8 +108,26 @@ const MarketMapVertical = () => {
       </section>
 
       <section className="bg-secondary/20">
-        <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-          <VerticalSidebar activeSlug={entry.slug} />
+        <div
+          className={`mx-auto px-4 md:px-6 py-8 grid gap-4 transition-[max-width,grid-template-columns] duration-300 ${
+            sidebarOpen
+              ? "max-w-[1800px] grid-cols-1 md:grid-cols-[200px_1fr]"
+              : "max-w-none grid-cols-1 md:grid-cols-[40px_1fr]"
+          }`}
+        >
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen((v) => !v)}
+              className="sticky top-20 z-10 mb-3 inline-flex items-center gap-1.5 rounded border border-foreground/15 bg-background px-2 py-1 text-[10px] font-mono-marker tracking-wider uppercase text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+              title={sidebarOpen ? "Collapse verticals list" : "Show verticals list"}
+            >
+              {sidebarOpen ? <PanelLeftClose size={12} /> : <PanelLeftOpen size={12} />}
+              {sidebarOpen && <span>Hide</span>}
+            </button>
+            {sidebarOpen && <VerticalSidebar activeSlug={entry.slug} />}
+          </div>
+
 
           <div>
             {dataset ? (
