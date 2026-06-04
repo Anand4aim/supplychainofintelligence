@@ -27,7 +27,7 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
       <span
         data-export-logo-fallback
         aria-hidden
-        className="absolute inset-0 flex items-center justify-center font-display font-bold leading-none text-foreground"
+        className="absolute inset-0 hidden items-center justify-center font-display font-bold leading-none text-foreground"
         style={{ fontSize: Math.round(size * 0.55) }}
       >
         {initial}
@@ -51,6 +51,8 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
         alt=""
         aria-hidden
         referrerPolicy="no-referrer"
+        loading="eager"
+        decoding="sync"
         onError={(event) => {
           event.currentTarget.style.display = "none";
         }}
