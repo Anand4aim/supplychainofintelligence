@@ -115,9 +115,10 @@ const MarketMapVertical = () => {
                 }
               >
                 <div className="bg-background p-4 md:p-6">
-                  <SublayerGrid data={dataset} />
+                  <MarketMapBody dataset={dataset} />
                 </div>
               </ExportablePng>
+
             ) : (
               <div className="bg-background p-6 text-sm text-muted-foreground italic">
                 Detailed sublayer dataset for this vertical is in progress.
