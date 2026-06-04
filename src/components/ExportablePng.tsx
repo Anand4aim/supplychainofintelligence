@@ -53,13 +53,32 @@ const ExportablePng = ({
     const target = exportSlot ? exportRef.current : childRef.current;
     if (!target) throw new Error("no ref");
     target.setAttribute("data-exporting", "true");
+
+    // Wait for the CORS-enabled export logos to finish loading so html-to-image
+    // can inline them. Cap the wait so a slow/failed favicon doesn't block forever.
+    const corsImgs = Array.from(
+      target.querySelectorAll<HTMLImageElement>("img[data-export-logo-cors]")
+    );
+    await Promise.race([
+      Promise.all(
+        corsImgs.map((img) =>
+          img.complete && img.naturalWidth > 0
+            ? Promise.resolve()
+            : new Promise<void>((resolve) => {
+                img.addEventListener("load", () => resolve(), { once: true });
+                img.addEventListener("error", () => resolve(), { once: true });
+              })
+        )
+      ),
+      new Promise((resolve) => setTimeout(resolve, 3500)),
+    ]);
     await new Promise((resolve) => requestAnimationFrame(() => resolve(undefined)));
 
     try {
       return await toPng(target, {
         pixelRatio: 2,
         backgroundColor: exportBackground,
-        cacheBust: true,
+        cacheBust: false,
         skipFonts: true,
         imagePlaceholder:
           "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
