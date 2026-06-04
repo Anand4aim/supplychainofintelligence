@@ -121,7 +121,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
         }}
       >
         <div style={{ flex: 1, minHeight: 0 }}>
-          <SublayerGrid data={dataset} compact />
+          <SublayerGrid data={dataset} compact hideLayers={["L-1", "L0"]} />
         </div>
       </div>
 
