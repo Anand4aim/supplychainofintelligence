@@ -67,33 +67,68 @@ const GAP_STYLE: Record<string, { bg: string; tag: string; label: string }> = {
   horiz: { bg: "bg-foreground/[0.05]", tag: "text-muted-foreground/80", label: "Horizontal" },
 };
 
-const Chip = ({ co, secondary, onClick }: { co: VerticalCompany; secondary?: boolean; onClick: () => void }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`inline-flex items-center gap-1.5 px-1.5 py-1 text-[10px] leading-tight rounded border transition-colors text-left ${
-      secondary
-        ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
-        : "border-foreground/25 bg-background text-foreground hover:border-accent"
-    }`}
-    style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
-    title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
-  >
-    <LogoMark companyKey={co.key} name={co.name} />
-    <span className="font-mono-marker tracking-wide truncate max-w-[92px]">{co.name}</span>
-  </button>
-);
+const Chip = ({
+  co,
+  secondary,
+  onClick,
+  logoFirst,
+}: {
+  co: VerticalCompany;
+  secondary?: boolean;
+  onClick: () => void;
+  logoFirst?: boolean;
+}) => {
+  if (logoFirst) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
+        className={`relative inline-flex items-center justify-center rounded-md border transition-colors ${
+          secondary
+            ? "border-foreground/15 bg-background/60 opacity-80"
+            : "border-foreground/25 bg-background hover:border-accent"
+        }`}
+        style={{
+          width: 34,
+          height: 34,
+          borderBottom: `3px solid ${STAGE_COLOR[co.stage]}`,
+        }}
+      >
+        <LogoMark companyKey={co.key} name={co.name} />
+      </button>
+    );
+  }
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`inline-flex items-center gap-1.5 px-1.5 py-1 text-[10px] leading-tight rounded border transition-colors text-left ${
+        secondary
+          ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
+          : "border-foreground/25 bg-background text-foreground hover:border-accent"
+      }`}
+      style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
+      title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
+    >
+      <LogoMark companyKey={co.key} name={co.name} />
+      <span className="font-mono-marker tracking-wide truncate max-w-[92px]">{co.name}</span>
+    </button>
+  );
+};
 
 const Cell = ({
   sublayerId,
   layerId,
   data,
   onPick,
+  logoFirst,
 }: {
   sublayerId: string;
   layerId: string;
   data: VerticalMapData;
   onPick: (co: VerticalCompany) => void;
+  logoFirst?: boolean;
 }) => {
   const placement = data.placements.find((p) => p.id === sublayerId);
   const primary = placement?.primary ?? [];
@@ -105,9 +140,11 @@ const Cell = ({
 
   return (
     <div
-      className={`border border-foreground/10 rounded-sm p-1.5 min-h-[72px] flex flex-col ${
-        hot ? "bg-background" : gapStyle?.bg ?? "bg-background/40"
-      } ${isWhitespace ? "ring-1 ring-inset ring-[hsl(var(--layer-5)/0.5)]" : ""}`}
+      className={`border border-foreground/10 rounded-sm p-1.5 flex flex-col ${
+        logoFirst ? "" : "min-h-[72px]"
+      } ${hot ? "bg-background" : gapStyle?.bg ?? "bg-background/40"} ${
+        isWhitespace ? "ring-1 ring-inset ring-[hsl(var(--layer-5)/0.5)]" : ""
+      }`}
     >
       <div className="flex items-baseline justify-between gap-1 mb-1">
         <span className="font-mono-marker text-[8.5px] tracking-wider text-muted-foreground/80">
@@ -119,28 +156,33 @@ const Cell = ({
           </span>
         )}
       </div>
-      <div className="text-[10px] leading-tight text-foreground/85 font-semibold mb-1.5">
+      <div
+        className={`leading-tight text-foreground/85 font-semibold mb-1.5 ${
+          logoFirst ? "text-[9px]" : "text-[10px]"
+        }`}
+      >
         {SUBLAYER_LABEL[sublayerId] ?? sublayerId}
       </div>
       {hot ? (
-        <div className="flex flex-wrap gap-1 mt-auto">
+        <div className={`flex flex-wrap mt-auto ${logoFirst ? "gap-1.5" : "gap-1"}`}>
           {primary.map((k) => {
             const co = data.companies[k];
             if (!co) return null;
-            return <Chip key={`p-${k}`} co={co} onClick={() => onPick(co)} />;
+            return <Chip key={`p-${k}`} co={co} onClick={() => onPick(co)} logoFirst={logoFirst} />;
           })}
           {secondary.map((k) => {
             const co = data.companies[k];
             if (!co) return null;
-            return <Chip key={`s-${k}`} co={co} secondary onClick={() => onPick(co)} />;
+            return (
+              <Chip key={`s-${k}`} co={co} secondary onClick={() => onPick(co)} logoFirst={logoFirst} />
+            );
           })}
         </div>
       ) : gap ? (
-        <div className={`text-[9.5px] leading-snug mt-auto ${gapStyle?.tag}`}>
+        <div className={`leading-snug mt-auto ${gapStyle?.tag} ${logoFirst ? "text-[9px]" : "text-[9.5px]"}`}>
           {gap.note}
         </div>
       ) : null}
-      {/* layer-color accent strip */}
       <div
         className="h-[2px] -mx-1.5 -mb-1.5 mt-1.5 rounded-b-sm opacity-60"
         style={{ background: layerColor(layerId) }}
@@ -155,9 +197,11 @@ interface Props {
   compact?: boolean;
   /** Optional list of layer IDs to omit (e.g. ["L-1","L0"] for share card). */
   hideLayers?: string[];
+  /** Logo-first: render chips as logo-only square tiles (no company name). Used in export. */
+  logoFirst?: boolean;
 }
 
-const SublayerGrid = ({ data, compact = false, hideLayers }: Props) => {
+const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: Props) => {
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
@@ -281,6 +325,7 @@ const SublayerGrid = ({ data, compact = false, hideLayers }: Props) => {
                       layerId={layer.id}
                       data={filtered}
                       onPick={setPicked}
+                      logoFirst={logoFirst}
                     />
                   ))
                 )}

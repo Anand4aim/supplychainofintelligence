@@ -38,7 +38,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       {/* Header */}
       <div
         style={{
-          padding: "28px 44px 18px",
+          padding: "20px 32px 14px",
           borderBottom: "1px solid hsl(var(--foreground) / 0.08)",
           display: "flex",
           alignItems: "flex-end",
@@ -49,7 +49,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
         <div style={{ minWidth: 0, flex: 1 }}>
           <div
             style={{
-              fontSize: 11,
+              fontSize: 10,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "hsl(var(--muted-foreground))",
@@ -62,7 +62,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
           <h1
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: 44,
+              fontSize: 36,
               lineHeight: 1.05,
               fontWeight: 700,
               margin: 0,
@@ -74,8 +74,8 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
           {subtitle && (
             <div
               style={{
-                marginTop: 8,
-                fontSize: 15,
+                marginTop: 6,
+                fontSize: 13,
                 color: "hsl(var(--muted-foreground))",
                 maxWidth: 1100,
                 lineHeight: 1.4,
@@ -114,21 +114,26 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       <div
         style={{
           flex: 1,
-          padding: "20px 44px 12px",
+          padding: "14px 32px 8px",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
         }}
       >
         <div style={{ flex: 1, minHeight: 0 }}>
-          <SublayerGrid data={dataset} compact hideLayers={["L-1", "L0"]} />
+          <SublayerGrid
+            data={dataset}
+            compact
+            hideLayers={["L-1", "L0"]}
+            logoFirst
+          />
         </div>
       </div>
 
       {/* Footer */}
       <div
         style={{
-          padding: "12px 44px 18px",
+          padding: "10px 32px 14px",
           borderTop: "1px solid hsl(var(--foreground) / 0.08)",
           display: "flex",
           alignItems: "center",
@@ -139,8 +144,8 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       >
         <span>
           <strong style={{ color: "hsl(var(--foreground))" }}>How to read:</strong>{" "}
-          Solid chip = primary layer · faded = secondary · gold ring = open whitespace ·
-          shaded cell = feature absorbed or horizontal-owned.
+          Each logo = one AI-native company placed on the layer it primarily owns.
+          Gold ring = open whitespace. Shaded cell = absorbed feature or horizontal-owned.
         </span>
         <span style={{ fontWeight: 600, letterSpacing: "0.08em" }}>
           {dataset.asOf}
