@@ -93,8 +93,8 @@ const Privacy = () => (
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <strong className="text-foreground">Hosting &amp; backend.</strong>{" "}
-              The site is hosted on Lovable and uses Lovable Cloud (Supabase
-              under the hood) for the newsletter database and edge functions.
+              A managed cloud backend handles the newsletter database and edge
+              functions.
             </li>
             <li>
               <strong className="text-foreground">Analytics.</strong>{" "}
