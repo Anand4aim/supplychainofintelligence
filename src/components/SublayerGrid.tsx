@@ -44,16 +44,16 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
         className="relative shrink-0 object-contain"
         style={{ height: innerSize, width: innerSize }}
       />
-      {/* Export logo — DuckDuckGo (CORS-enabled, inlineable by html-to-image) */}
+      {/* Export logo — DuckDuckGo (CORS-enabled, inlineable by html-to-image).
+          Eager-loaded offscreen so it's ready when export fires. */}
       <img
         data-export-logo-cors
         src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
         alt=""
         aria-hidden
-        loading="lazy"
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
-        className="absolute inset-0 m-auto hidden object-contain"
+        className="pointer-events-none absolute inset-0 m-auto object-contain opacity-0"
         style={{ height: innerSize, width: innerSize }}
       />
     </span>
