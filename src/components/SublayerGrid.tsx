@@ -325,6 +325,7 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: 
                       layerId={layer.id}
                       data={filtered}
                       onPick={setPicked}
+                      logoFirst={logoFirst}
                     />
                   ))
                 )}
