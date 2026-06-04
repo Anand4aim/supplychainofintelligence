@@ -38,7 +38,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       {/* Header */}
       <div
         style={{
-          padding: "28px 44px 18px",
+          padding: "20px 32px 14px",
           borderBottom: "1px solid hsl(var(--foreground) / 0.08)",
           display: "flex",
           alignItems: "flex-end",
@@ -49,7 +49,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
         <div style={{ minWidth: 0, flex: 1 }}>
           <div
             style={{
-              fontSize: 11,
+              fontSize: 10,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "hsl(var(--muted-foreground))",
@@ -62,7 +62,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
           <h1
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: 44,
+              fontSize: 36,
               lineHeight: 1.05,
               fontWeight: 700,
               margin: 0,
