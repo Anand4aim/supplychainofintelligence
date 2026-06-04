@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { Map, ChevronRight, Lock } from "lucide-react";
+import { Map, ChevronRight, Lock, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
