@@ -67,6 +67,7 @@ const MarketMapBody = ({ dataset }: { dataset: typeof VERTICAL_DATASETS[string] 
 const MarketMapVertical = () => {
   const { vertical: slug } = useParams<{ vertical: string }>();
   const entry = slug ? getVertical(slug) : undefined;
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   if (!entry) return <Navigate to="/market-map" replace />;
   if (entry.status !== "live") return <Navigate to="/market-map" replace />;
@@ -107,8 +108,26 @@ const MarketMapVertical = () => {
       </section>
 
       <section className="bg-secondary/20">
-        <div className="max-w-7xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6">
-          <VerticalSidebar activeSlug={entry.slug} />
+        <div
+          className={`mx-auto px-4 md:px-6 py-8 grid gap-4 transition-[max-width,grid-template-columns] duration-300 ${
+            sidebarOpen
+              ? "max-w-[1800px] grid-cols-1 md:grid-cols-[200px_1fr]"
+              : "max-w-none grid-cols-1 md:grid-cols-[40px_1fr]"
+          }`}
+        >
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen((v) => !v)}
+              className="sticky top-20 z-10 mb-3 inline-flex items-center gap-1.5 rounded border border-foreground/15 bg-background px-2 py-1 text-[10px] font-mono-marker tracking-wider uppercase text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
+              title={sidebarOpen ? "Collapse verticals list" : "Show verticals list"}
+            >
+              {sidebarOpen ? <PanelLeftClose size={12} /> : <PanelLeftOpen size={12} />}
+              {sidebarOpen && <span>Hide</span>}
+            </button>
+            {sidebarOpen && <VerticalSidebar activeSlug={entry.slug} />}
+          </div>
+
 
           <div>
             {dataset ? (
