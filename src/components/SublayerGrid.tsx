@@ -110,7 +110,7 @@ const Chip = ({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 px-1.5 py-1 text-[10px] leading-tight rounded border transition-colors text-left ${
+      className={`inline-flex items-center gap-2 px-1.5 py-1 leading-tight rounded border transition-colors text-left ${
         secondary
           ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
           : "border-foreground/25 bg-background text-foreground hover:border-accent"
@@ -118,8 +118,10 @@ const Chip = ({
       style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
       title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
     >
-      <LogoMark companyKey={co.key} name={co.name} />
-      <span className="font-mono-marker tracking-wide truncate max-w-[92px]">{co.name}</span>
+      <LogoMark companyKey={co.key} name={co.name} size={26} />
+      <span className="font-mono-marker text-[8.5px] tracking-wide truncate max-w-[80px] text-muted-foreground">
+        {co.name}
+      </span>
     </button>
   );
 };
