@@ -5,35 +5,36 @@ import { LEGAL_DOMAINS } from "@/data/verticals/legalDomains";
 const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) => {
   const domain = LEGAL_DOMAINS[companyKey];
   const [failed, setFailed] = useState(!domain);
+  const initial = name.charAt(0).toUpperCase();
   if (failed || !domain) {
     return (
       <span
         data-export-logo-fallback
         aria-hidden
-        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-[2px] bg-foreground/10 text-[8px] font-display font-bold text-foreground/70 shrink-0"
+        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] border border-foreground/20 bg-card text-[11px] font-display font-bold leading-none text-foreground shadow-sm"
       >
-        {name.charAt(0).toUpperCase()}
+        {initial}
       </span>
     );
   }
   return (
-    <span className="relative inline-flex w-3.5 h-3.5 shrink-0">
+    <span className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-foreground/20 bg-card shadow-sm">
       <span
         data-export-logo-fallback
         aria-hidden
-        className="hidden items-center justify-center w-3.5 h-3.5 rounded-[2px] bg-foreground/10 text-[8px] font-display font-bold text-foreground/70"
+        className="hidden h-5 w-5 items-center justify-center text-[11px] font-display font-bold leading-none text-foreground"
       >
-        {name.charAt(0).toUpperCase()}
+        {initial}
       </span>
       <img
         data-export-logo-img
-        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
         alt=""
         aria-hidden
         loading="lazy"
         referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
-        className="w-3.5 h-3.5 rounded-[2px] object-contain shrink-0 bg-background"
+        className="h-4 w-4 shrink-0 object-contain"
       />
     </span>
   );
@@ -70,7 +71,7 @@ const Chip = ({ co, secondary, onClick }: { co: VerticalCompany; secondary?: boo
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex items-center gap-1 px-1.5 py-0.5 text-[10px] leading-tight rounded border transition-colors text-left ${
+    className={`inline-flex items-center gap-1.5 px-1.5 py-1 text-[10px] leading-tight rounded border transition-colors text-left ${
       secondary
         ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
         : "border-foreground/25 bg-background text-foreground hover:border-accent"
@@ -79,7 +80,7 @@ const Chip = ({ co, secondary, onClick }: { co: VerticalCompany; secondary?: boo
     title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
   >
     <LogoMark companyKey={co.key} name={co.name} />
-    <span className="font-mono-marker tracking-tight truncate max-w-[90px]">{co.name}</span>
+    <span className="font-mono-marker tracking-wide truncate max-w-[92px]">{co.name}</span>
   </button>
 );
 
