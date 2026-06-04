@@ -126,15 +126,15 @@ const Chip = ({
     <button
       type="button"
       onClick={onClick}
-      className={`flex items-center gap-1 px-1 py-0.5 leading-tight rounded border transition-colors text-left min-w-0 ${
+      className={`flex items-center gap-1 px-1 py-0.5 leading-tight rounded border transition-colors text-left min-w-0 w-full ${
         secondary
           ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
           : "border-foreground/25 bg-background text-foreground hover:border-accent"
       }`}
-      style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage], width: 82, flex: "0 0 82px" }}
+      style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
       title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
     >
-      <LogoMark companyKey={co.key} name={co.name} size={18} />
+      <LogoMark companyKey={co.key} name={co.name} size={20} />
       <span className="font-mono-marker text-[8px] tracking-tight truncate min-w-0 text-muted-foreground">
         {co.name}
       </span>
@@ -189,7 +189,13 @@ const Cell = ({
         {SUBLAYER_LABEL[sublayerId] ?? sublayerId}
       </div>
       {hot ? (
-        <div className={`flex flex-wrap mt-auto ${logoFirst ? "gap-1.5" : "gap-1"}`}>
+        <div
+          className={
+            logoFirst
+              ? "flex flex-wrap mt-auto gap-1.5"
+              : "grid grid-cols-2 gap-1 mt-auto"
+          }
+        >
           {primary.map((k) => {
             const co = data.companies[k];
             if (!co) return null;
@@ -203,8 +209,6 @@ const Cell = ({
             );
           })}
         </div>
-
-
 
       ) : gap ? (
         <div className={`leading-snug mt-auto ${gapStyle?.tag} ${logoFirst ? "text-[9px]" : "text-[9.5px]"}`}>

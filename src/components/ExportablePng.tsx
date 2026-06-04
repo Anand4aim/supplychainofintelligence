@@ -84,11 +84,7 @@ const ExportablePng = ({
           "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",
         filter: (node) => {
           if (!(node instanceof HTMLElement)) return true;
-          if (node.hasAttribute?.("data-export-hide") || node.hasAttribute?.("data-export-skip")) return false;
-          // Skip the cross-origin Google favicon img — its pixels can't be read
-          // and it throws inside html-to-image. The same-origin CORS copy stays.
-          if (node.hasAttribute?.("data-export-logo-img")) return false;
-          return true;
+          return !node.hasAttribute?.("data-export-hide") && !node.hasAttribute?.("data-export-skip");
         },
       });
     } finally {
