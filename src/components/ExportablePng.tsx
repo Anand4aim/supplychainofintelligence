@@ -136,10 +136,6 @@ const ExportablePng = ({
 
   return (
     <div className={`relative group ${className}`}>
-      <style>{`
-        [data-exporting="true"] [data-export-logo-fallback] { display: inline-flex !important; }
-        [data-exporting="true"] [data-export-logo-img] { display: none !important; }
-      `}</style>
 
       {/* Download buttons (hidden in any rasterized output) */}
       <div

@@ -34,10 +34,11 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
       </span>
       <img
         data-export-logo-img
-        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+        src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
         alt=""
         aria-hidden
         loading="lazy"
+        crossOrigin="anonymous"
         referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
         className="shrink-0 object-contain"
