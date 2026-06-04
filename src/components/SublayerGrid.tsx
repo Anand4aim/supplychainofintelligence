@@ -2,27 +2,33 @@ import { useState, useMemo } from "react";
 import { LAYERS, SUBLAYER_LABEL, layerColor, layerVar } from "@/data/layers";
 import { LEGAL_DOMAINS } from "@/data/verticals/legalDomains";
 
-const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) => {
+const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: string; size?: number }) => {
   const domain = LEGAL_DOMAINS[companyKey];
   const [failed, setFailed] = useState(!domain);
   const initial = name.charAt(0).toUpperCase();
+  const innerSize = Math.round(size * 0.8);
   if (failed || !domain) {
     return (
       <span
         data-export-logo-fallback
         aria-hidden
-        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] border border-foreground/20 bg-card text-[11px] font-display font-bold leading-none text-foreground shadow-sm"
+        className="inline-flex shrink-0 items-center justify-center rounded-[4px] border border-foreground/20 bg-card font-display font-bold leading-none text-foreground shadow-sm"
+        style={{ height: size, width: size, fontSize: Math.round(size * 0.55) }}
       >
         {initial}
       </span>
     );
   }
   return (
-    <span className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-foreground/20 bg-card shadow-sm">
+    <span
+      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-foreground/20 bg-card shadow-sm"
+      style={{ height: size, width: size }}
+    >
       <span
         data-export-logo-fallback
         aria-hidden
-        className="hidden h-5 w-5 items-center justify-center text-[11px] font-display font-bold leading-none text-foreground"
+        className="hidden items-center justify-center font-display font-bold leading-none text-foreground"
+        style={{ height: size, width: size, fontSize: Math.round(size * 0.55) }}
       >
         {initial}
       </span>
@@ -34,7 +40,8 @@ const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) =>
         loading="lazy"
         referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
-        className="h-4 w-4 shrink-0 object-contain"
+        className="shrink-0 object-contain"
+        style={{ height: innerSize, width: innerSize }}
       />
     </span>
   );
@@ -103,7 +110,7 @@ const Chip = ({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 px-1.5 py-1 text-[10px] leading-tight rounded border transition-colors text-left ${
+      className={`inline-flex items-center gap-2 px-1.5 py-1 leading-tight rounded border transition-colors text-left ${
         secondary
           ? "border-foreground/15 bg-background/60 text-foreground/65 hover:text-foreground hover:border-foreground/30"
           : "border-foreground/25 bg-background text-foreground hover:border-accent"
@@ -111,8 +118,10 @@ const Chip = ({
       style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
       title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
     >
-      <LogoMark companyKey={co.key} name={co.name} />
-      <span className="font-mono-marker tracking-wide truncate max-w-[92px]">{co.name}</span>
+      <LogoMark companyKey={co.key} name={co.name} size={26} />
+      <span className="font-mono-marker text-[8.5px] tracking-wide truncate max-w-[80px] text-muted-foreground">
+        {co.name}
+      </span>
     </button>
   );
 };
