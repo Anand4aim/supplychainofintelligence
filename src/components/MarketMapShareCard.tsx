@@ -125,7 +125,6 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
             data={dataset}
             compact
             hideLayers={["L-1", "L0"]}
-            logoFirst
           />
         </div>
       </div>
