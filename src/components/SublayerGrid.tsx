@@ -197,9 +197,11 @@ interface Props {
   compact?: boolean;
   /** Optional list of layer IDs to omit (e.g. ["L-1","L0"] for share card). */
   hideLayers?: string[];
+  /** Logo-first: render chips as logo-only square tiles (no company name). Used in export. */
+  logoFirst?: boolean;
 }
 
-const SublayerGrid = ({ data, compact = false, hideLayers }: Props) => {
+const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false }: Props) => {
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
