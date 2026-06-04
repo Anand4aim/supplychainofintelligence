@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import ExportablePng from "@/components/ExportablePng";
 import SublayerGrid from "@/components/SublayerGrid";
+import MarketMapShareCard from "@/components/MarketMapShareCard";
 import { VERTICAL_REGISTRY, getVertical } from "@/data/verticalsRegistry";
 import { VERTICAL_DATASETS } from "@/data/verticals/legal";
 
@@ -101,8 +102,15 @@ const MarketMapVertical = () => {
           <div>
             {dataset ? (
               <ExportablePng
-                fileName={`market-map-${entry.slug}`}
+                fileName={`scoi-${entry.slug}-market-map`}
                 caption={`${entry.label} — Supply Chain of Intelligence™`}
+                exportSlot={
+                  <MarketMapShareCard
+                    title={`${entry.label} AI — Supply Chain of Intelligence Map`}
+                    subtitle={dataset.thesis}
+                    dataset={dataset}
+                  />
+                }
               >
                 <div className="bg-background p-4 md:p-6">
                   <SublayerGrid data={dataset} />
