@@ -188,21 +188,30 @@ const Cell = ({
       >
         {SUBLAYER_LABEL[sublayerId] ?? sublayerId}
       </div>
-      {hot ? (
-        <div className={`flex flex-wrap mt-auto ${logoFirst ? "gap-1.5" : "gap-1"}`}>
-          {primary.map((k) => {
-            const co = data.companies[k];
-            if (!co) return null;
-            return <Chip key={`p-${k}`} co={co} onClick={() => onPick(co)} logoFirst={logoFirst} />;
-          })}
-          {secondary.map((k) => {
-            const co = data.companies[k];
-            if (!co) return null;
-            return (
-              <Chip key={`s-${k}`} co={co} secondary onClick={() => onPick(co)} logoFirst={logoFirst} />
-            );
-          })}
-        </div>
+      {hot ? (() => {
+        const count = primary.length + secondary.length;
+        const cols = logoFirst ? 0 : Math.max(2, Math.ceil(count / 2));
+        return (
+          <div
+            className={logoFirst ? "flex flex-wrap mt-auto gap-1.5" : "grid gap-1 mt-auto"}
+            style={logoFirst ? undefined : { gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+          >
+            {primary.map((k) => {
+              const co = data.companies[k];
+              if (!co) return null;
+              return <Chip key={`p-${k}`} co={co} onClick={() => onPick(co)} logoFirst={logoFirst} />;
+            })}
+            {secondary.map((k) => {
+              const co = data.companies[k];
+              if (!co) return null;
+              return (
+                <Chip key={`s-${k}`} co={co} secondary onClick={() => onPick(co)} logoFirst={logoFirst} />
+              );
+            })}
+          </div>
+        );
+      })()
+
 
 
 
