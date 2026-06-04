@@ -74,8 +74,8 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
           {subtitle && (
             <div
               style={{
-                marginTop: 8,
-                fontSize: 15,
+                marginTop: 6,
+                fontSize: 13,
                 color: "hsl(var(--muted-foreground))",
                 maxWidth: 1100,
                 lineHeight: 1.4,
