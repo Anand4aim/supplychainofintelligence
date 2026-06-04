@@ -20,8 +20,9 @@ export interface VerticalEntry {
 
 export const VERTICAL_REGISTRY: VerticalEntry[] = [
   { slug: "legal", label: "Legal", blurb: "AI for law firms, in-house counsel, and contracting.", mapsTo: "legal", status: "live" },
+  { slug: "wealth", label: "WealthTech", blurb: "AI-native wealth management, advisor copilots, planning, estate, RIA compliance.", mapsTo: "finance", status: "live" },
   { slug: "healthcare", label: "Healthcare", blurb: "Clinical documentation, diagnostics, payer/provider workflows.", mapsTo: "health", status: "coming-soon" },
-  { slug: "financial-services", label: "Financial Services", blurb: "Banking, capital markets, wealth, payments.", mapsTo: "finance", status: "coming-soon" },
+  { slug: "financial-services", label: "Financial Services (broad)", blurb: "Banking, capital markets, payments. (WealthTech split out above.)", mapsTo: "finance", status: "coming-soon" },
   { slug: "customer-experience", label: "Customer Experience", blurb: "Voice, chat, and post-sale resolution agents.", mapsTo: "cx", status: "coming-soon" },
   { slug: "sales-gtm", label: "Sales & GTM", blurb: "Prospecting, enrichment, outbound, RevOps.", mapsTo: "sales", status: "coming-soon" },
   { slug: "code-devtools", label: "Code & Developer Tools", blurb: "IDEs, copilots, agents, code review.", mapsTo: "code", status: "coming-soon" },

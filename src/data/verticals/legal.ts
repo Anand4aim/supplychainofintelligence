@@ -368,6 +368,9 @@ export const LEGAL_MAP: VerticalMapData = {
     "† Pincites → acquired by Filevine (Dec 2025); Robin AI → distressed sale to Microsoft (Mar 2026). Funding from primary announcements + TechCrunch, Bloomberg, LawNext/LawSites, Artificial Lawyer, Sifted, Crunchbase. Valuations point-in-time (2025-26).",
 };
 
+import { WEALTH_MAP } from "./wealth";
+
 export const VERTICAL_DATASETS: Record<string, VerticalMapData> = {
   legal: LEGAL_MAP,
+  wealth: WEALTH_MAP,
 };
