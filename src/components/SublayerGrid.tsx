@@ -210,7 +210,7 @@ const Cell = ({
             })}
           </div>
         );
-      })()) : gap ? (
+      })() : gap ? (
         <div className={`leading-snug mt-auto ${gapStyle?.tag} ${logoFirst ? "text-[9px]" : "text-[9.5px]"}`}>
           {gap.note}
         </div>
