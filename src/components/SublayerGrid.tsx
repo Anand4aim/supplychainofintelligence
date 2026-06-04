@@ -141,7 +141,7 @@ const Cell = ({
   return (
     <div
       className={`border border-foreground/10 rounded-sm p-1.5 flex flex-col ${
-        logoFirst ? "" : "min-h-[72px]"
+        logoFirst ? "min-h-[96px]" : "min-h-[72px]"
       } ${hot ? "bg-background" : gapStyle?.bg ?? "bg-background/40"} ${
         isWhitespace ? "ring-1 ring-inset ring-[hsl(var(--layer-5)/0.5)]" : ""
       }`}
