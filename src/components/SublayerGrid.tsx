@@ -231,7 +231,7 @@ interface Props {
   hideLayers?: string[];
   /** Logo-first: render chips as logo-only square tiles (no company name). Used in export. */
   logoFirst?: boolean;
-  /** Packed: collapse each layer's 5 sublayers into a single flowing row of logos. Fits all 8 layers on one A4 screen. */
+  /** Packed: collapse each layer's sublayers into a single flowing row of logos. Fits all 8 layers on one A4 screen. */
   packed?: boolean;
 }
 
