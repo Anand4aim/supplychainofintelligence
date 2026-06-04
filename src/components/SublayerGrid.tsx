@@ -189,13 +189,7 @@ const Cell = ({
         {SUBLAYER_LABEL[sublayerId] ?? sublayerId}
       </div>
       {hot ? (
-        <div
-          className={
-            logoFirst
-              ? "flex flex-wrap mt-auto gap-1.5"
-              : "grid grid-cols-2 gap-1 mt-auto"
-          }
-        >
+        <div className={`flex flex-wrap mt-auto ${logoFirst ? "gap-1.5" : "gap-1"}`}>
           {primary.map((k) => {
             const co = data.companies[k];
             if (!co) return null;
@@ -209,6 +203,8 @@ const Cell = ({
             );
           })}
         </div>
+
+
 
       ) : gap ? (
         <div className={`leading-snug mt-auto ${gapStyle?.tag} ${logoFirst ? "text-[9px]" : "text-[9.5px]"}`}>
