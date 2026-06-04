@@ -2,27 +2,33 @@ import { useState, useMemo } from "react";
 import { LAYERS, SUBLAYER_LABEL, layerColor, layerVar } from "@/data/layers";
 import { LEGAL_DOMAINS } from "@/data/verticals/legalDomains";
 
-const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) => {
+const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: string; size?: number }) => {
   const domain = LEGAL_DOMAINS[companyKey];
   const [failed, setFailed] = useState(!domain);
   const initial = name.charAt(0).toUpperCase();
+  const innerSize = Math.round(size * 0.8);
   if (failed || !domain) {
     return (
       <span
         data-export-logo-fallback
         aria-hidden
-        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] border border-foreground/20 bg-card text-[11px] font-display font-bold leading-none text-foreground shadow-sm"
+        className="inline-flex shrink-0 items-center justify-center rounded-[4px] border border-foreground/20 bg-card font-display font-bold leading-none text-foreground shadow-sm"
+        style={{ height: size, width: size, fontSize: Math.round(size * 0.55) }}
       >
         {initial}
       </span>
     );
   }
   return (
-    <span className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[3px] border border-foreground/20 bg-card shadow-sm">
+    <span
+      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[4px] border border-foreground/20 bg-card shadow-sm"
+      style={{ height: size, width: size }}
+    >
       <span
         data-export-logo-fallback
         aria-hidden
-        className="hidden h-5 w-5 items-center justify-center text-[11px] font-display font-bold leading-none text-foreground"
+        className="hidden items-center justify-center font-display font-bold leading-none text-foreground"
+        style={{ height: size, width: size, fontSize: Math.round(size * 0.55) }}
       >
         {initial}
       </span>
@@ -34,7 +40,8 @@ const LogoMark = ({ companyKey, name }: { companyKey: string; name: string }) =>
         loading="lazy"
         referrerPolicy="no-referrer"
         onError={() => setFailed(true)}
-        className="h-4 w-4 shrink-0 object-contain"
+        className="shrink-0 object-contain"
+        style={{ height: innerSize, width: innerSize }}
       />
     </span>
   );
