@@ -114,21 +114,26 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       <div
         style={{
           flex: 1,
-          padding: "20px 44px 12px",
+          padding: "14px 32px 8px",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
         }}
       >
         <div style={{ flex: 1, minHeight: 0 }}>
-          <SublayerGrid data={dataset} compact hideLayers={["L-1", "L0"]} />
+          <SublayerGrid
+            data={dataset}
+            compact
+            hideLayers={["L-1", "L0"]}
+            logoFirst
+          />
         </div>
       </div>
 
       {/* Footer */}
       <div
         style={{
-          padding: "12px 44px 18px",
+          padding: "10px 32px 14px",
           borderTop: "1px solid hsl(var(--foreground) / 0.08)",
           display: "flex",
           alignItems: "center",
@@ -139,8 +144,8 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
       >
         <span>
           <strong style={{ color: "hsl(var(--foreground))" }}>How to read:</strong>{" "}
-          Solid chip = primary layer · faded = secondary · gold ring = open whitespace ·
-          shaded cell = feature absorbed or horizontal-owned.
+          Each logo = one AI-native company placed on the layer it primarily owns.
+          Gold ring = open whitespace. Shaded cell = absorbed feature or horizontal-owned.
         </span>
         <span style={{ fontWeight: 600, letterSpacing: "0.08em" }}>
           {dataset.asOf}
