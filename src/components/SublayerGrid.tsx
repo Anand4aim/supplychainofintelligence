@@ -27,21 +27,33 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
       <span
         data-export-logo-fallback
         aria-hidden
-        className="hidden items-center justify-center font-display font-bold leading-none text-foreground"
-        style={{ height: size, width: size, fontSize: Math.round(size * 0.55) }}
+        className="absolute inset-0 hidden items-center justify-center font-display font-bold leading-none text-foreground"
+        style={{ fontSize: Math.round(size * 0.55) }}
       >
         {initial}
       </span>
+      {/* Display logo — Google (best coverage, no CORS) */}
       <img
         data-export-logo-img
+        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => setFailed(true)}
+        className="relative shrink-0 object-contain"
+        style={{ height: innerSize, width: innerSize }}
+      />
+      {/* Export logo — DuckDuckGo (CORS-enabled, inlineable by html-to-image) */}
+      <img
+        data-export-logo-cors
         src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
         alt=""
         aria-hidden
         loading="lazy"
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
-        onError={() => setFailed(true)}
-        className="shrink-0 object-contain"
+        className="absolute inset-0 m-auto hidden object-contain"
         style={{ height: innerSize, width: innerSize }}
       />
     </span>
