@@ -182,6 +182,12 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ COLD OPEN — Three Areas of AI Transformation ═══════════ */}
+      <ThreeAreasOfAI />
+
+      {/* ═══════════ COLD OPEN — Two Lenses on Core Product ═══════════ */}
+      <TwoLensesOnCoreProduct />
+
       {/* ═══════════ GOLD MINING ANCHOR — Tier-1 one-liner ═══════════ */}
       <GoldMiningAnchor />
 
