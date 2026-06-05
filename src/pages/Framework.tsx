@@ -722,7 +722,7 @@ const FrameworkPage = () => (
     {/* Observations — patterns under the Laws */}
     <section id="observations" className="bg-secondary/30 border-y border-border">
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <Eyebrow className="mb-4">Five Observations</Eyebrow>
+        <Eyebrow className="mb-4">Six Observations</Eyebrow>
         <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">
           Patterns Under the Laws
         </h2>
