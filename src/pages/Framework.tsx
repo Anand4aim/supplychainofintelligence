@@ -399,8 +399,77 @@ const FrameworkPage = () => (
           </details>
         </div>
 
+        {/* PARALLEL SNAPSHOT — Gold flow vs AI Layer, side by side */}
+        <ExportablePng
+          fileName="scoi-gold-vs-ai-parallel"
+          caption="Gold Mining ⇄ Supply Chain of Intelligence — parallel view"
+        >
+          <div className="bg-card rounded-xl border border-border sketch-border p-5 md:p-7 mb-10">
+            <div className="grid grid-cols-[1fr_auto_1fr] gap-x-3 md:gap-x-5 items-center mb-3 pb-3 border-b border-border">
+              <div className="font-mono-marker text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-accent text-right">
+                Gold Supply Chain
+              </div>
+              <div className="font-mono-marker text-[10px] text-muted-foreground px-1">≡</div>
+              <div className="font-mono-marker text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-accent">
+                Supply Chain of Intelligence
+              </div>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              {LAYERS.map((layer) => (
+                <div
+                  key={`snap-${layer.id}`}
+                  className="grid grid-cols-[1fr_auto_1fr] gap-x-3 md:gap-x-5 items-center py-1.5 border-b border-border/40 last:border-b-0"
+                >
+                  {/* GOLD side */}
+                  <div className="flex items-center justify-end gap-2.5 text-right min-w-0">
+                    <div className="min-w-0">
+                      <div className="font-display text-[13px] md:text-[14px] font-bold text-foreground leading-tight truncate">
+                        {layer.goldTitle.split(" — ")[0]}
+                      </div>
+                      <div className="text-[11px] md:text-[12px] text-muted-foreground leading-snug truncate">
+                        {layer.goldTitle.split(" — ")[1] ?? ""}
+                      </div>
+                    </div>
+                    <SketchIcon name={layer.goldIcon} size={28} className="shrink-0" />
+                  </div>
+
+                  {/* connector */}
+                  <div
+                    className="font-mono-marker text-[10px] md:text-[11px] font-bold px-1.5"
+                    style={{ color: `hsl(${layer.color})` }}
+                  >
+                    →
+                  </div>
+
+                  {/* AI side */}
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span
+                      className="font-sketch text-[13px] md:text-[14px] font-bold shrink-0 px-1.5 py-0.5 rounded"
+                      style={{ color: `hsl(${layer.color})`, background: `hsl(${layer.bg})` }}
+                    >
+                      {layer.id}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="font-display text-[13px] md:text-[14px] font-bold text-foreground leading-tight truncate">
+                        {layer.name}
+                      </div>
+                      <div className="text-[11px] md:text-[12px] text-muted-foreground leading-snug truncate">
+                        {layer.players.slice(0, 3).join(" · ")}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="font-sketch text-[11px] md:text-xs text-muted-foreground italic text-center mt-4 pt-3 border-t border-border">
+              Read across any row — that's the same job, told twice. Read top-to-bottom — that's how value flows.
+            </p>
+          </div>
+        </ExportablePng>
+
         <div className="relative">
           <div className="absolute left-[39px] md:left-[47px] top-0 bottom-0 w-px bg-border z-0" />
+
 
           <div className="space-y-1">
             {LAYERS.map((layer, i) => (
