@@ -11,7 +11,15 @@ import Eyebrow from "@/components/Eyebrow";
  * innermost — the hardest, most defensible, least talked-about area.
  */
 
-const AREAS = [
+type Area = {
+  n: string;
+  title: string;
+  line: string;
+  sub: string;
+  highlight?: boolean;
+};
+
+const AREAS: Area[] = [
   {
     n: "01",
     title: "Internal Operations",
@@ -31,7 +39,7 @@ const AREAS = [
     sub: "Hardest. Most defensible. This site is about this.",
     highlight: true,
   },
-] as const;
+];
 
 const ThreeAreasOfAI = () => (
   <section
