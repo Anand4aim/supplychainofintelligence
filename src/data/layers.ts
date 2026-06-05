@@ -346,6 +346,7 @@ export const OBSERVATIONS: Observation[] = [
       "Perplexity captures the answer surplus by owning the question moment. The model could be any of four — the surface is the moat.",
     ],
     layerTags: ["L2", "L7"],
+  },
   {
     num: 6,
     title: "The Gatekeeper Tax is Always Arbitraged",
