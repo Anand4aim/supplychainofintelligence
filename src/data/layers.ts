@@ -288,6 +288,7 @@ export interface Observation {
   desc: string;
   examples: string[];
   layerTags: string[]; // layer ids it touches
+  caseStudy?: { slug: string; label: string }; // optional canonical illustration
 }
 
 export const OBSERVATIONS: Observation[] = [
