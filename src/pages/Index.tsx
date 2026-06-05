@@ -23,6 +23,8 @@ import VoicesStrip from "@/components/VoicesStrip";
 import GoldMiningAnchor from "@/components/home/GoldMiningAnchor";
 import ThreeLayerProof from "@/components/home/ThreeLayerProof";
 import ContrastRow from "@/components/home/ContrastRow";
+import ThreeAreasOfAI from "@/components/home/ThreeAreasOfAI";
+import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -179,6 +181,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════════ COLD OPEN — Three Areas of AI Transformation ═══════════ */}
+      <ThreeAreasOfAI />
+
+      {/* ═══════════ COLD OPEN — Two Lenses on Core Product ═══════════ */}
+      <TwoLensesOnCoreProduct />
 
       {/* ═══════════ GOLD MINING ANCHOR — Tier-1 one-liner ═══════════ */}
       <GoldMiningAnchor />
