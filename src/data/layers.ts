@@ -346,6 +346,17 @@ export const OBSERVATIONS: Observation[] = [
       "Perplexity captures the answer surplus by owning the question moment. The model could be any of four — the surface is the moat.",
     ],
     layerTags: ["L2", "L7"],
+  {
+    num: 6,
+    title: "The Gatekeeper Tax is Always Arbitraged",
+    shortTitle: "Every gatekeeper margin attracts an arbitrageur",
+    desc: "Wherever a gatekeeper extracts rent between the marginal cost of supply and the perceived value of demand, an arbitrageur — API shim, cloud automation, open-source replacement, lateral integration, or regulatory appeal — will step into the gap. The gatekeeper's pricing power is bounded by the cost of the workaround. The arbitrageur lives at L7 and quietly reaches down into L5 to widen the margin further.",
+    examples: [
+      "Dripify (L7) arbitrages LinkedIn's (L1+L3) connection-request bottleneck: cloud automation + proxies cost pennies, sales teams pay $39–$99/seat/month. Newer entrants now hook L5 open-source LLMs to auto-reply — compressing the last human cost.",
+      "Plaid (L4b) arbitraged the bank gatekeepers' API absence for a decade; the moment banks shipped their own APIs, Plaid's margin compressed and it had to migrate up into identity and data.",
+    ],
+    layerTags: ["L1", "L3", "L7"],
+    caseStudy: { slug: "dripify-linkedin-arbitrage", label: "Dripify vs LinkedIn — the L7 arbitrageur" },
   },
 ];
 
