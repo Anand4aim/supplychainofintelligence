@@ -21,8 +21,8 @@ const GOLD_SHORT: Record<string, string> = {
   L3: "Assay",
   L4: "Railroads",
   L5: "Jeweler",
-  L6: "Storefront",
-  L7: "The Ring",
+  L6: "Collection",
+  L7: "Storefront",
   L8: "Record Book",
 };
 
