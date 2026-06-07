@@ -1,5 +1,18 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Mountain,
+  Pickaxe,
+  Gem,
+  Flame,
+  Scale,
+  TrainTrack,
+  Hammer,
+  Package,
+  Store,
+  BookOpen,
+  type LucideIcon,
+} from "lucide-react";
 import { LAYERS, layerColor } from "@/data/layers";
 
 /**
@@ -25,6 +38,20 @@ const GOLD_SHORT: Record<string, string> = {
   L7: "Storefront",
   L8: "Record Book",
 };
+
+const GOLD_ICON: Record<string, LucideIcon> = {
+  "L-1": Mountain,
+  L0: Pickaxe,
+  L1: Gem,
+  L2: Flame,
+  L3: Scale,
+  L4: TrainTrack,
+  L5: Hammer,
+  L6: Package,
+  L7: Store,
+  L8: BookOpen,
+};
+
 
 const GoldMiningAnchor = () => (
   <section
