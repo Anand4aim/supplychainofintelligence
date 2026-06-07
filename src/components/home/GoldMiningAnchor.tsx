@@ -27,7 +27,7 @@ import { LAYERS, layerColor } from "@/data/layers";
 // Short gold word per layer — matches the deck. Kept ≤2 words so all
 // 10 columns fit a single horizontal strip.
 const GOLD_SHORT: Record<string, string> = {
-  "L-1": "Earth",
+  "L-1": "Ground",
   L0: "Shovels",
   L1: "Ore",
   L2: "Refinery",
