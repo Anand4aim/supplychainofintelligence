@@ -27,7 +27,7 @@ export const LAYERS: Layer[] = [
     desc: "What supports the chain. Energy, water, fabs, materials, skilled trades — the inputs the entire stack consumes.",
     detail: "Before chips, before data centers, before models — there's power, water, foundries, rare earths, and the humans who build it all. When AI demand explodes, the bottleneck isn't algorithms. It's megawatts and skilled trades.",
     goldIcon: "rock",
-    goldTitle: "The Earth Itself — Land, Power, Materials",
+    goldTitle: "The Ground Itself — Land, Power, Materials",
     goldAnalogy: "Before the gold rush, you need land, water rights, ore deposits, and the miners who work the seams. In AI: power generation, cooling water, foundry capacity, rare earths, and the electricians and technicians who physically build the boom. When demand spikes, this layer is the real bottleneck.",
     players: ["NextEra", "TSMC fabs", "MP Materials", "Vistra", "Bechtel"],
     verdict: "The real bottleneck. Slow to build, impossible to fake.",
