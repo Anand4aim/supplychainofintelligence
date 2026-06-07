@@ -92,17 +92,31 @@ const GoldMiningAnchor = () => (
             className="grid gap-1.5"
             style={{ gridTemplateColumns: `repeat(${LAYERS.length}, minmax(0, 1fr))` }}
           >
-            {LAYERS.map((l) => (
-              <div
-                key={`g-${l.id}`}
-                className="rounded-md bg-background border px-1.5 py-2 text-center"
-                style={{ borderColor: `${layerColor(l.id)}55` }}
-              >
-                <p className="font-display text-[12px] md:text-[13px] text-foreground/90 leading-tight">
-                  {GOLD_SHORT[l.id]}
-                </p>
-              </div>
-            ))}
+            {LAYERS.map((l) => {
+              const Icon = GOLD_ICON[l.id];
+              return (
+                <div
+                  key={`g-${l.id}`}
+                  className="rounded-md bg-background border px-1.5 py-2 text-center"
+                  style={{ borderColor: `${layerColor(l.id)}55` }}
+                >
+                  <div className="flex items-center justify-center gap-1">
+                    {Icon && (
+                      <Icon
+                        size={12}
+                        className="shrink-0"
+                        style={{ color: layerColor(l.id) }}
+                        aria-hidden
+                      />
+                    )}
+                    <p className="font-display text-[12px] md:text-[13px] text-foreground/90 leading-tight">
+                      {GOLD_SHORT[l.id]}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+
           </div>
 
           {/* Connector arrows */}
