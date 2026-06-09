@@ -385,50 +385,7 @@ const Index = () => {
 
       {/* StartHereStrip removed in v3 — Three-Layer Proof now serves the lobby role */}
 
-      {/* ═══════════ AI DEFENSIBILITY AUDIT — single CTA, canonical tool lives at /audit ═══════════ */}
-      <section id="defensibility-audit" className="bg-secondary/40 border-y border-border">
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-24">
-          <motion.div {...fadeIn} className="mb-10">
-            <Eyebrow className="mb-4">Use the Framework</Eyebrow>
-            <h2 className="font-display text-[26px] md:text-[34px] font-bold text-foreground leading-tight mb-3">
-              The AI Defensibility Audit
-            </h2>
-            <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
-              Paste a company name. Get a structured defensibility verdict scored out of 100 —
-              layers owned vs. rented, sublayer gaps, named competitors, juggernaut moves from
-              OpenAI / Anthropic / Google, and a prioritized 5-move roadmap. Built for product
-              leaders preparing a strategy review and for investors auditing a portfolio.
-            </p>
-          </motion.div>
-
-          <motion.div {...fadeIn}>
-            <SketchBoard className="p-6 md:p-8">
-              <div className="grid md:grid-cols-3 gap-5 mb-7">
-                {[
-                  { n: "01", t: "Public-data research", d: "Cross-checked across two LLMs and a web research pass — not vibes." },
-                  { n: "02", t: "Scored out of 100", d: "Wrapper · Exposed · Mixed · Tilting Fortress · Fortress — with the specific sublayers behind the score." },
-                  { n: "03", t: "Send-ready verdict card", d: "Triangle status, top-3 prioritized moves, biggest compression threat — downloadable as PNG." },
-                ].map((b) => (
-                  <div key={b.n} className="rounded-lg border border-border bg-card p-4 sketch-border">
-                    <Eyebrow dash={false} className="mb-2 leading-none">{b.n}</Eyebrow>
-                    <div className="text-sm font-bold text-foreground mb-1">{b.t}</div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{b.d}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <Link to="/audit" className="btn-sketch">
-                  Run the audit <ArrowRight size={15} />
-                </Link>
-                <Link to="/for-investors" className="btn-sketch-outline">
-                  For PE &amp; investors →
-                </Link>
-              </div>
-            </SketchBoard>
-          </motion.div>
-        </div>
-      </section>
+      {/* ═══════════ AI DEFENSIBILITY AUDIT — hidden from public view ═══════════ */}
 
 
       {/* ═══════════ PROOF OF CORPUS ═══════════ */}
