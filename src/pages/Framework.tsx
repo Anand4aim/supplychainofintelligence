@@ -345,9 +345,6 @@ const FrameworkPage = () => (
                 10 layers × 50 sublayers. Screenshot it. Map your own company in it — blank version is free to use.
               </p>
             </div>
-            <div className="flex gap-3 shrink-0">
-              <Link to="/audit" className="btn-sketch text-[13px]">Score your company <ArrowRight size={14} /></Link>
-            </div>
           </div>
           <ExportablePng fileName="scoi-10x50-grid" caption="The Supply Chain of Intelligence — 10 × 50 grid">
             <IntelligenceGrid mode="blank" />
