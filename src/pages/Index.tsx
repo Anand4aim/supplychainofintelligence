@@ -11,7 +11,7 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import ExportablePng from "@/components/ExportablePng";
 import FrameworkSummaryPoster from "@/components/posters/FrameworkSummaryPoster";
 import ProofOfCorpus from "@/components/ProofOfCorpus";
-import FrameworkApplied from "@/components/FrameworkApplied";
+
 import {
   SketchFilters,
   SketchBoard,
@@ -450,11 +450,7 @@ const Index = () => {
       {/* ═══════════ VOICES ON THE FRAMEWORK ═══════════ */}
       <VoicesStrip />
 
-      {/* AI DEFENSIBILITY AUDIT — moved above (right under Start Here) */}
-
-
-      {/* ═══════════ FRAMEWORK APPLIED — three worked audits ═══════════ */}
-      <FrameworkApplied />
+      {/* AI DEFENSIBILITY AUDIT — removed from public view */}
 
       {/* Crux moved up — right after the Framework summary poster */}
 
