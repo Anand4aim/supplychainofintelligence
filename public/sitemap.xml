@@ -93,4 +93,35 @@
   <url><loc>https://supplychainofai.com/live/anthropics-sonnet-3-5-artifacts-trojan-horse-for-l5-workflow</loc><lastmod>2024-06-20</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://supplychainofai.com/live/apple-intelligence-on-device-trojan-horse</loc><lastmod>2024-06-10</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
 
+
+  <!-- Additional static pages -->
+  <url><loc>https://supplychainofai.com/terms</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://supplychainofai.com/audit</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Market Map: per-vertical pages -->
+  <url><loc>https://supplychainofai.com/market-map/legal</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/wealth</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/healthcare</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/financial-services</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/customer-experience</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/sales-gtm</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/code-devtools</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/creative-media</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/education</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/marketing-advertising</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/hr-recruiting</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/cybersecurity</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/insurance</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/real-estate</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/government-defense</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/logistics</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/retail-ecommerce</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/manufacturing</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/energy-utilities</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/agriculture</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/pharma-biotech</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/consulting-services</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/travel-hospitality</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/construction-aec</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://supplychainofai.com/market-map/telecom-media</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
