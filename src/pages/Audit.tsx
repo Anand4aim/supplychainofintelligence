@@ -209,7 +209,7 @@ const AuditPage = () => {
   const gapSet = useMemo(() => new Set((result?.sublayer_gaps ?? []).map((g) => g.sublayer)), [result]);
   const rentedSet = useMemo(() => new Set(result?.layers_rented ?? []), [result]);
 
-  // "What they own" — top 3-4 sublayers by depth
+  // "What they own" — top 3-4 sublayers by depth (counts-ok)
   const ownedTop = useMemo(() => {
     return Object.entries(depth)
       .filter(([, d]) => d >= 3)
@@ -307,7 +307,7 @@ const AuditPage = () => {
                     <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                       <div>
                         <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-accent">
-                          Defensibility Map · 10 layers × 5 sublayers
+                          Defensibility Map · 10 layers × 5 sublayers per layer
                         </p>
                         <p className="text-[11px] text-muted-foreground mt-0.5">
                           Each cell scored 0–5. Filled dot = owns. Ring = touches. Gold = open counter-move.
