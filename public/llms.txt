@@ -87,11 +87,11 @@ Each layer has its own indexable page at `/framework/{layer-id}` with definition
 
 - [L-1 Resources](https://supplychainofai.com/framework/l-1-resources) — energy, water, fabs, materials, skilled trades.
 - [L0 Infrastructure](https://supplychainofai.com/framework/l0-infra) — silicon, data centers, interconnect, cloud, edge.
-- [L1 Data](https://supplychainofai.com/framework/l1-data) — public, proprietary, behavioral, outcome, synthetic.
-- [L2 Models](https://supplychainofai.com/framework/l2-models) — foundation, specialized, embedding, routing, reasoning.
-- [L3 Gatekeeping](https://supplychainofai.com/framework/l3-gates) — compliance, quality, safety, editorial, distribution.
-- [L4 Access](https://supplychainofai.com/framework/l4-access) — APIs, agent protocols (MCP), governance, real-time pipes, agent identity.
-- [L5 Execution](https://supplychainofai.com/framework/l5-execution) — domain skills, decision frameworks, RAG, playbooks.
+- [L1 Data](https://supplychainofai.com/framework/l1-data) — public, proprietary, behavioral & sensor, outcome, synthetic & simulation.
+- [L2 Models](https://supplychainofai.com/framework/l2-models) — foundation & multimodal, specialized & fine-tuned, embedding/retrieval, routing/composition, reasoning & world models.
+- [L3 Gatekeeping](https://supplychainofai.com/framework/l3-gates) — compliance & export controls, quality, safety/security/provenance, editorial, distribution.
+- [L4 Access](https://supplychainofai.com/framework/l4-access) — APIs, agent protocols (MCP), access governance & agent commerce, real-time pipes, agent identity.
+- [L5 Execution](https://supplychainofai.com/framework/l5-execution) — domain execution & tool use, decision frameworks, RAG, playbooks, interaction skills & actuation.
 - [L6 Orchestration](https://supplychainofai.com/framework/l6-orchestration) — agent loops, human-in-the-loop, role routing, runtime assurance.
 - [L7 Surface](https://supplychainofai.com/framework/l7-surface) — conversational, visual, embedded & embodied AI, transactional, ambient.
 - [L8 Memory](https://supplychainofai.com/framework/l8-memory) — session, entity, network, institutional, world-model.

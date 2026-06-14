@@ -19,14 +19,14 @@ VOICE: Stratechery-grade editorial + McKinsey authority. Senior product/strategy
 === THE 10 LAYERS (L-1 through L8) ===
 
 L-1 RESOURCES — Energy, water, fabs, materials, skilled trades. The inputs the entire stack consumes. Players: NextEra, TSMC fabs, MP Materials, Vistra, Bechtel. Verdict: The real bottleneck. Slow to build, impossible to fake.
-  L-1a Energy
+  L-1a Energy & Grid Interconnect
   L-1b Thermal & Water Management
   L-1c Fabrication & Foundry
-  L-1d Critical Materials
+  L-1d Critical Materials & Supply Chain
   L-1e Skilled Trades & Human Capital
 
 L0 INFRASTRUCTURE (short: Infra) — The shovels. Chips, data centers, networking, cloud, edge. Players: NVIDIA, AMD, TSMC, CoreWeave, Equinix. Verdict: Shovel sellers win every gold rush.
-  L0a Silicon
+  L0a Silicon & Memory
   L0b Data Centers
   L0c Interconnect Fabric
   L0d Compute & State Infrastructure
@@ -35,33 +35,33 @@ L0 INFRASTRUCTURE (short: Infra) — The shovels. Chips, data centers, networkin
 L1 DATA — Raw input. What data do you have that nobody else can get? Players: Apollo.io, Bloomberg, ZoomInfo, Scale AI. Verdict: Structurally safe. API-first wins.
   L1a Public & Open Data
   L1b Proprietary Data ★ defensible
-  L1c Behavioral Data ★ defensible
+  L1c Behavioral & Sensor Data ★ defensible
   L1d Outcome Data ★ defensible
-  L1e Synthetic Data
+  L1e Synthetic & Simulation Data
 
 L2 MODELS — Intelligence refinement. Rent early, build custom at scale. Players: OpenAI, Anthropic, Google DeepMind, Meta AI. Verdict: Winner-take-most. Commodity risk high.
-  L2a Foundation Models
-  L2b Specialized Models
+  L2a Foundation & Multimodal Models
+  L2b Specialized & Fine-Tuned Models
   L2c Embedding & Retrieval
   L2d Model Routing & Composition
-  L2e Reasoning Models
+  L2e Reasoning & World Models
 
 L3 GATEKEEPING (short: Gates) — Trust, acceptance, approval. Can the system be allowed in? Players: Vanta, Drata, OneTrust, Apple App Store. Verdict: Essential. More agents = more access control.
-  L3a Compliance Gates
+  L3a Compliance & Export Controls
   L3b Quality Gates
-  L3c Safety & Security
+  L3c Safety, Security & Provenance
   L3d Editorial Gates ★ defensible
   L3e Distribution Gates ★ defensible
 
 L4 ACCESS — Connectivity, permissions, integrations — the pipes layer. Players: AWS, Snowflake, Supabase, Twilio. Verdict: Load-bearing walls. Invest accordingly.
   L4a API & Integration Layer
   L4b Agent Interface Protocols ★ defensible
-  L4c Access Governance
+  L4c Access Governance & Agent Commerce
   L4d Real-Time Interaction Infrastructure
   L4e Agent Identity & Provenance ★ defensible
 
 L5 EXECUTION — Applied skills and capabilities. Doing the actual work. Players: Harvey, Sierra, 11x, Cursor. Verdict: Durable if deep. Generic skills get absorbed.
-  L5a Domain Execution ★ defensible
+  L5a Domain Execution & Tool Use ★ defensible
   L5b Decision Frameworks & Reasoning Scaffolds ★ defensible
   L5c Retrieval-Augmented Workflows
   L5d Operating Playbooks ★ defensible

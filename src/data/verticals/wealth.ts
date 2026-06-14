@@ -20,7 +20,7 @@ const COMPANIES = Object.fromEntries([
   // ── AI-native wealth firms (vertically integrated) ────────────────────────
   C("farther", "Farther", "AI-native wealth firm", "growth",
     "AI-native RIA — intelligent wealth management; 'AI Analyst' copilot for its advisors.",
-    "Vertically integrated L5a Domain Execution + delivery · Secondary L7c · Future moat L8d household memory",
+    "Vertically integrated L5a Domain Execution & Tool Use + delivery · Secondary L7c · Future moat L8d household memory",
     "$150M Series D (General Atlantic), >$272M total; reported unicorn (Series C was $542M, Oct 2024). $23B+ recruited assets; ~12,000% revenue growth 2021–24.",
     "Not software-for-RIAs — IS the RIA. Captures full advisory margin and the data exhaust.",
     "Series D valuation undisclosed; 'unicorn' per press reports."),
@@ -44,7 +44,7 @@ const COMPANIES = Object.fromEntries([
     "Category leader in the most crowded cell. Must build a data layer or climb to execution to escape commoditization."),
   C("zocks", "Zocks", "Copilot + client data", "growth",
     "Client intelligence extracted from advisor conversations; enterprise integrations.",
-    "Primary L7c · Secondary L1c Behavioral Data",
+    "Primary L7c · Secondary L1c Behavioral & Sensor Data",
     "$13.8M Series A (Mar 2025) → $45M Series B; $65M total.",
     "Conversation-exhaust → proprietary client data. Best-positioned copilot to survive consolidation."),
   C("zeplyn", "Zeplyn", "Advisor copilot", "early",
@@ -106,7 +106,7 @@ const COMPANIES = Object.fromEntries([
   // ── Compliance (L3a) ──────────────────────────────────────────────────────
   C("hadrius", "Hadrius", "RIA compliance", "early",
     "AI SEC/RIA compliance — comms review, marketing review, archiving, trade monitoring.",
-    "Primary L3a Compliance Gates",
+    "Primary L3a Compliance & Export Controls",
     "$2M seed (YC, 2023); ~$6M total (unverified).",
     "This map is its HOME vertical — nearly alone at L3a. Clearest open, fundable cell."),
   C("greenlite", "Greenlite AI (adjacent)", "Compliance / RegTech", "early",
@@ -188,9 +188,9 @@ export const WEALTH_MAP: VerticalMapData = {
     { title: "Copilot consolidation arbitrage.", body: "L7c will consolidate (Parrot AI already acquired). Winner = whoever converts notes into a proprietary L1c behavioral asset first (Zocks' thesis)." },
   ],
   scorecard: [
-    { sublayer: "L1c Behavioral Data", occupants: "Zocks (conversation exhaust)", state: "open" },
+    { sublayer: "L1c Behavioral & Sensor Data", occupants: "Zocks (conversation exhaust)", state: "open" },
     { sublayer: "L1d Outcome Data", occupants: "No AI-native owner — incumbents hold raw data", state: "open" },
-    { sublayer: "L3a Compliance Gates", occupants: "Hadrius (small), Greenlite (adjacent)", state: "open" },
+    { sublayer: "L3a Compliance & Export Controls", occupants: "Hadrius (small), Greenlite (adjacent)", state: "open" },
     { sublayer: "L5a Execution (as firms)", occupants: "Farther, Savvy, Arta; Wealth.com, Powder, Vanilla", state: "contested" },
     { sublayer: "L5b Planning / Reasoning", occupants: "Conquest", state: "mid" },
     { sublayer: "L5c Research / RAG", occupants: "Brightwave (Rogo adjacent), FP Alpha", state: "contested" },
