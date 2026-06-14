@@ -785,6 +785,89 @@ const FrameworkPage = () => (
       </div>
     </section>
 
+    {/* Three Currents — horizontal forces across the chain */}
+    <section id="currents" className="bg-background border-t border-border">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+        <Eyebrow className="mb-4">Three Currents</Eyebrow>
+        <h2 className="font-display text-[28px] md:text-[32px] font-bold text-foreground mb-3">
+          The Forces That Flow Across the Chain
+        </h2>
+        <p className="text-base text-muted-foreground max-w-3xl mb-3 leading-relaxed">
+          The 10 layers describe how intelligence is <em>produced and delivered</em> — the supply side.
+          Three market currents flow <em>horizontally across</em> every layer and decide whether a defensible
+          position actually compounds into a business. Ignore them and a perfect stack still dies.
+        </p>
+        <p className="text-xs text-muted-foreground/80 italic max-w-3xl mb-10">
+          These are market cross-currents. Regulatory and geopolitical constraints are handled at their native
+          layers (L-1 energy/fabs/materials, L3 compliance and export controls) and are not currents.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              num: "C1",
+              title: "Demand Gravity",
+              oneLine: "Where the budget actually sits — and what it pulls toward.",
+              desc: "A defensible layer position only compounds if a buyer with budget and urgency exists on the other side. CFO, CIO, line-of-business, and CEO discretionary pools each have different velocity, willingness-to-pay, and tolerance for risk. As L2 prices collapse, demand elasticity moves the money toward outcomes (L5+L8), verification (L3), and proprietary data access (L1) — not toward generation itself.",
+              affects: "Pulls hardest on L5, L7, L8. Drains away from L2 over time.",
+              action: "Before defending a layer, name the buyer, the budget line, and what they will stop paying for once L2 is free.",
+            },
+            {
+              num: "C2",
+              title: "Attention Economics",
+              oneLine: "What becomes scarce when generation becomes infinite.",
+              desc: "When L2 makes content, code, and answers near-free, the scarce resource flips from supply to the eyeball. Default placement, OS integration, habit loops, and on-ramp ownership decide who gets used. Apple, Google, and Microsoft become L7 landlords charging rent in attention. Law III names this; this Current economizes it: distribution CAC, retention, and frequency of use are now first-order moats, not vanity metrics.",
+              affects: "Distorts L7 (Surface) and L8 (Outcome) most. Reshapes go-to-market at every layer.",
+              action: "Assume infinite supply. Then ask: who owns the on-ramp, and what does default placement cost?",
+            },
+            {
+              num: "C3",
+              title: "Capital Flows",
+              oneLine: "How funding rounds bend the chain they fund.",
+              desc: "The chain does not evolve in a vacuum. Capital concentration distorts natural layer economics — tens of billions into L2 in 2023–24 created a generation glut and a price collapse; near-zero into L-1 created the energy and fab bottleneck now constraining everything above it. Funding is reflexive: rounds reshape the very layers being invested in, often overshooting supply and underfunding the scarce inputs.",
+              affects: "Overheats whichever layer is in fashion (L2 then L5 then L-1). Starves the unglamorous bottleneck.",
+              action: "Read the funding map as a distortion field, not as a signal of where value will accrue.",
+            },
+          ].map((c, i) => (
+            <motion.div
+              key={c.num}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-card border border-border rounded-xl p-7 sketch-border flex flex-col"
+            >
+              <div className="flex items-baseline gap-3 mb-3">
+                <span className="font-sketch text-3xl font-bold text-accent">{c.num}</span>
+                <h3 className="font-display text-lg font-bold text-foreground leading-snug">{c.title}</h3>
+              </div>
+              <p className="font-display text-sm md:text-base text-foreground mb-3 leading-snug italic">
+                {c.oneLine}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.desc}</p>
+              <div className="mt-auto pt-3 border-t border-border/60 space-y-2">
+                <p className="text-xs text-muted-foreground/90 leading-relaxed">
+                  <span className="font-mono-marker uppercase tracking-[0.18em] text-foreground/70">Where it bites · </span>
+                  {c.affects}
+                </p>
+                <p className="text-xs text-accent leading-relaxed">
+                  <span className="font-mono-marker uppercase tracking-[0.18em]">Use it · </span>
+                  {c.action}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <p className="mt-8 text-xs text-muted-foreground italic max-w-3xl">
+          The Laws predict structural fate. The Currents decide market timing and capital reality.
+          A durable company reads both.
+        </p>
+      </div>
+    </section>
+
+
+
     {/* Observations — patterns under the Laws */}
     <section id="observations" className="bg-secondary/30 border-y border-border">
       <div className="max-w-6xl mx-auto px-6 py-20">
