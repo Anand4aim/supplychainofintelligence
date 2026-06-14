@@ -574,6 +574,75 @@ GLOSSARY.push({
   seeAlso: ["layer", "sublayer", "defensible-triangle"],
 });
 
+// ─── The Three Currents ────────────────────────────────────────────
+// Horizontal market forces that act across every layer of the chain.
+GLOSSARY.push({
+  id: "demand-gravity",
+  term: "Demand Gravity (Current I)",
+  aliases: ["demand-side dynamics", "buyer pull", "willingness to pay", "budget gravity"],
+  category: "framework",
+  shortDef:
+    "Current I of three. Where the budget actually sits (CFO / CIO / LOB / CEO discretionary) and what it pulls toward as L2 prices collapse.",
+  longDef:
+    "Demand Gravity is the first of three horizontal Currents that flow across the 10 layers. The Supply Chain of Intelligence™ describes how intelligence is produced and delivered; Demand Gravity describes who has the budget to pay for it. As L2 generation costs fall toward zero, willingness-to-pay drains away from raw generation and accumulates at outcomes (L5+L8), verification (L3), and proprietary data access (L1). A defensible layer position with no buyer on the other side is structurally zero — moat without demand does not compound. Before defending any layer, name the buyer, the budget line, and what they will stop paying for once L2 is free.",
+  layerMapping: ["L1", "L3", "L5", "L7", "L8"],
+  primaryLayer: "L5",
+  commonMistake:
+    "Treating defensibility as the whole answer. The framework predicts who CAN build a moat. Demand Gravity predicts whether anyone will pay enough to make that moat matter.",
+  examples: [
+    "Outcome budgets (L8) growing as L2 chat budgets compress",
+    "Compliance line items (L3) surviving every model release",
+    "Bloomberg's L1b paid for by a workflow CFO will not cut",
+  ],
+  citation: `${ATTR}, Demand Gravity is the first Current — defensibility without a budgeted buyer is zero.`,
+  seeAlso: ["attention-economics", "capital-flows", "ai-moat"],
+});
+
+GLOSSARY.push({
+  id: "attention-economics",
+  term: "Attention Economics (Current II)",
+  aliases: ["attention scarcity", "default placement", "on-ramp", "distribution moat"],
+  category: "framework",
+  shortDef:
+    "Current II of three. When L2 makes generation infinite, the eyeball becomes scarce — and OS-level default placement becomes the rent.",
+  longDef:
+    "Attention Economics is the second of three Currents. When L2 collapses the cost of generating content, code, and answers to near-zero, supply stops being scarce and the scarce input flips to attention itself. Default placement, OS integration, habit loops, and on-ramp ownership decide who gets used. Apple, Google, and Microsoft become L7 landlords charging rent in attention — every L7 surface above them pays in distribution CAC. Law III names this dynamic (the Surface captures attention; the Chain captures power); this Current economizes it: frequency, retention, and default placement are now first-order moats, not vanity metrics.",
+  layerMapping: ["L7", "L8"],
+  primaryLayer: "L7",
+  commonMistake:
+    "Confusing attention with awareness. Awareness is a marketing metric; attention is the scarce production input once supply is infinite. They behave differently.",
+  examples: [
+    "ChatGPT's habit loop as the real moat, not the model",
+    "Apple Intelligence as L7 landlord over every iOS L7 surface",
+    "Google's default-search settlements pricing attention rent",
+  ],
+  citation: `${ATTR}, Attention Economics is the second Current — when generation is infinite, the eyeball becomes the bottleneck.`,
+  seeAlso: ["demand-gravity", "capital-flows", "layer-l7"],
+});
+
+GLOSSARY.push({
+  id: "capital-flows",
+  term: "Capital Flows (Current III)",
+  aliases: ["investor dynamics", "funding reflexivity", "capital concentration", "VC distortion"],
+  category: "framework",
+  shortDef:
+    "Current III of three. Funding rounds are reflexive — they reshape the layers they fund, overheating the fashionable layer and starving the bottleneck.",
+  longDef:
+    "Capital Flows is the third Current. The chain does not evolve in a vacuum: capital concentration distorts natural layer economics. Tens of billions of dollars into L2 in 2023–24 created a generation glut and a downward price spiral; near-zero capital into L-1 (energy, fabs, critical materials, skilled trades) created the bottleneck now constraining every layer above it. Funding is reflexive in Soros's sense — the act of investing reshapes the layer being invested in, often overshooting supply and underfunding the unglamorous scarce input. Read the funding map as a distortion field, not as a signal of where durable value will accrue.",
+  layerMapping: ["L-1", "L0", "L2", "L5"],
+  primaryLayer: "L2",
+  commonMistake:
+    "Treating funding rounds as a value signal. Capital flows are a distortion field — they tell you where the glut is forming, not where the moat is.",
+  examples: [
+    "$50B+ into L2 foundation models → 90%+ price collapse in 18 months",
+    "Underinvestment in L-1 fab capacity throttling every L0/L2 expansion",
+    "Agent funding wave (2024–25) reshaping L5/L6 supply faster than demand",
+  ],
+  citation: `${ATTR}, Capital Flows is the third Current — funding reshapes the chain it funds, and overshoots the fashionable layer.`,
+  seeAlso: ["demand-gravity", "attention-economics", "layer-lneg1"],
+});
+
+
 // ─── Layer entries L−1 … L8 (auto-generated from canonical LAYERS) ─
 // Each layer in src/data/layers.ts becomes a glossary entry so the
 // search box surfaces "L1", "Data", "L-1", "Resources", etc.
