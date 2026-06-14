@@ -384,7 +384,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: "Embedded AI",
     aliases: ["AI in product", "embedded copilot"],
     category: "industry",
-    shortDef: "L7c (Embedded & Copilot) — AI surfaces injected into existing SaaS workflows.",
+    shortDef: "L7c (Embedded & Embodied AI) — AI surfaces injected into existing SaaS workflows, plus AI embodied in physical hardware.",
     longDef:
       "Embedded AI is L7c. The defensibility comes from the host product's distribution and the L8d institutional knowledge that lives in it. Standalone copilots without a host product struggle to acquire users.",
     layerMapping: ["L7", "L8"],
