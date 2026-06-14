@@ -170,7 +170,7 @@ export const LAYERS: Layer[] = [
     sublayers: [
       { id: "L7a", name: "Conversational", desc: "Voice and chat interfaces — the talking layer" },
       { id: "L7b", name: "Visual Interfaces & Media", desc: "Dashboards, generated images, video, rich media output" },
-      { id: "L7c", name: "Embedded & Copilot", desc: "AI woven into existing tools — IDE copilots, email assistants, in-app agents", defensible: true },
+      { id: "L7c", name: "Embedded & Embodied AI", desc: "AI woven into existing tools (IDE copilots, email assistants, in-app agents) and embodied in physical hardware (robots, devices, vehicles)", defensible: true },
       { id: "L7d", name: "Transaction Surface", desc: "Where the AI closes a deal, books an appointment, processes a payment", defensible: true },
       { id: "L7e", name: "Async & Ambient Surfaces", desc: "Background agents, notifications, proactive nudges, always-on monitoring" },
     ],
