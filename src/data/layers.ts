@@ -32,11 +32,11 @@ export const LAYERS: Layer[] = [
     players: ["NextEra", "TSMC fabs", "MP Materials", "Vistra", "Bechtel"],
     verdict: "The real bottleneck. Slow to build, impossible to fake.",
     sublayers: [
-      { id: "L-1a", name: "Energy", desc: "Power generation and procurement for AI compute" },
-      { id: "L-1b", name: "Thermal & Water Management", desc: "Cooling systems, water access, heat dissipation at scale" },
-      { id: "L-1c", name: "Fabrication & Foundry", desc: "Chip fabrication capacity and semiconductor manufacturing" },
-      { id: "L-1d", name: "Critical Materials", desc: "Rare earths, lithium, cobalt, specialized substrates" },
-      { id: "L-1e", name: "Skilled Trades & Human Capital", desc: "Electricians, technicians, data-center builders, hardware engineers" },
+      { id: "L-1a", name: "Energy & Grid Interconnect", desc: "Power generation, PPAs, transmission, and the multi-year grid-interconnect queue — the megawatts the stack consumes and the wait to get them switched on" },
+      { id: "L-1b", name: "Thermal & Water Management", desc: "Cooling systems, water access, immersion/liquid cooling, heat reuse — the thermodynamic ceiling on every GPU cluster" },
+      { id: "L-1c", name: "Fabrication & Foundry", desc: "Leading-edge chip fabrication capacity, EUV lithography, advanced packaging (CoWoS) — the physical floor of L0" },
+      { id: "L-1d", name: "Critical Materials & Supply Chain", desc: "Rare earths, lithium, cobalt, gallium, specialty substrates — and the refining, logistics, and geopolitical chokepoints that gate them" },
+      { id: "L-1e", name: "Skilled Trades & Human Capital", desc: "Electricians, HVAC techs, data-center builders, fab process engineers, robotics technicians — the labor pool no model can synthesize" },
     ],
   },
   {
@@ -49,7 +49,7 @@ export const LAYERS: Layer[] = [
     players: ["NVIDIA", "AMD", "TSMC", "CoreWeave", "Equinix"],
     verdict: "Shovel sellers win every gold rush.",
     sublayers: [
-      { id: "L0a", name: "Silicon", desc: "GPUs, TPUs, custom AI accelerators" },
+      { id: "L0a", name: "Silicon & Memory", desc: "GPUs, TPUs, custom AI accelerators — plus HBM and high-bandwidth memory (SK Hynix, Micron, Samsung), the invisible bottleneck behind every chip cycle" },
       { id: "L0b", name: "Data Centers", desc: "Physical facilities housing compute at scale" },
       { id: "L0c", name: "Interconnect Fabric", desc: "Networking between chips, racks, regions, clouds" },
       { id: "L0d", name: "Compute & State Infrastructure", desc: "On-demand compute, scheduling, and durable agent state (checkpointing, workflow state, runtime memory stores)" },
@@ -68,9 +68,9 @@ export const LAYERS: Layer[] = [
     sublayers: [
       { id: "L1a", name: "Public & Open Data", desc: "Common Crawl, Wikipedia, government data, open datasets" },
       { id: "L1b", name: "Proprietary Data", desc: "Licensed, paywalled, or internally generated training corpora", defensible: true },
-      { id: "L1c", name: "Behavioral Data", desc: "Clicks, sessions, usage patterns, interaction logs", defensible: true },
-      { id: "L1d", name: "Outcome Data", desc: "Labels, results, conversions — what actually happened", defensible: true },
-      { id: "L1e", name: "Synthetic Data", desc: "Machine-generated data for training, augmentation, simulation" },
+      { id: "L1c", name: "Behavioral & Sensor Data", desc: "Clicks, sessions, interaction logs — and camera, LiDAR, IMU, telemetry, and physical-world sensor streams for robotics and autonomy", defensible: true },
+      { id: "L1d", name: "Outcome Data", desc: "Labels, results, conversions, win/loss, audit trails — what actually happened after the model acted", defensible: true },
+      { id: "L1e", name: "Synthetic & Simulation Data", desc: "Machine-generated corpora and simulated environments (Isaac Sim, CARLA, Omniverse, world-sim) for training, augmentation, and embodied agent rollout" },
     ],
   },
   {
@@ -83,11 +83,11 @@ export const LAYERS: Layer[] = [
     players: ["OpenAI", "Anthropic", "Google DeepMind", "Meta AI"],
     verdict: "Winner-take-most. Commodity risk high.",
     sublayers: [
-      { id: "L2a", name: "Foundation Models", desc: "Large pre-trained models — GPT, Claude, Gemini, Llama" },
-      { id: "L2b", name: "Specialized Models", desc: "Domain fine-tuned or distilled models for specific verticals" },
-      { id: "L2c", name: "Embedding & Retrieval", desc: "Vector representations, search indices, RAG infrastructure" },
-      { id: "L2d", name: "Model Routing & Composition", desc: "Selecting, chaining, or ensembling multiple models per task" },
-      { id: "L2e", name: "Reasoning Models", desc: "Extended chain-of-thought, planning, multi-step inference" },
+      { id: "L2a", name: "Foundation & Multimodal Models", desc: "Large pre-trained generalists — GPT, Claude, Gemini, Llama — and vision-language-action and video models (Sora, Veo) that span text, image, audio, and motion" },
+      { id: "L2b", name: "Specialized & Fine-Tuned Models", desc: "Domain-tuned, distilled, and PEFT/LoRA-adapted models for specific verticals or tasks (BloombergGPT, Med-PaLM, Codestral)" },
+      { id: "L2c", name: "Embedding & Retrieval", desc: "Vector representations, search indices, reranking, and RAG infrastructure" },
+      { id: "L2d", name: "Model Routing & Composition", desc: "Selecting, chaining, ensembling, or mixture-of-experts routing across multiple models per task to balance cost, latency, and quality" },
+      { id: "L2e", name: "Reasoning & World Models", desc: "Extended chain-of-thought, planning, and multi-step inference — plus predictive world models (V-JEPA, Genie, Sora-as-simulator) that let agents and robots imagine outcomes before acting" },
     ],
   },
   {
@@ -100,9 +100,9 @@ export const LAYERS: Layer[] = [
     players: ["Vanta", "Drata", "OneTrust", "Apple App Store"],
     verdict: "Essential. More agents = more access control.",
     sublayers: [
-      { id: "L3a", name: "Compliance Gates", desc: "Regulatory, legal, and policy filters — HIPAA, GDPR, SOC 2, EU AI Act" },
-      { id: "L3b", name: "Quality Gates", desc: "Accuracy, hallucination detection, output grading, evals" },
-      { id: "L3c", name: "Safety & Security", desc: "Harmful content filtering, adversarial defense, prompt-injection protection" },
+      { id: "L3a", name: "Compliance & Export Controls", desc: "Regulatory, legal, and policy filters (HIPAA, GDPR, SOC 2, EU AI Act) — plus chip export controls, model sovereignty, and data-residency regimes that decide where the stack is allowed to run" },
+      { id: "L3b", name: "Quality Gates", desc: "Accuracy, hallucination detection, output grading, eval harnesses, regression suites" },
+      { id: "L3c", name: "Safety, Security & Provenance", desc: "Harmful-content filtering, adversarial defense, prompt-injection protection — and content provenance (C2PA, watermarking, deepfake attestation) that proves what was generated and by whom", },
       { id: "L3d", name: "Editorial Gates", desc: "Tone, brand voice, style, taste — the human judgment layer", defensible: true },
       { id: "L3e", name: "Distribution Gates", desc: "App store approval, ranking, marketplace curation, discovery control", defensible: true },
     ],
@@ -119,7 +119,7 @@ export const LAYERS: Layer[] = [
     sublayers: [
       { id: "L4a", name: "API & Integration Layer", desc: "REST/GraphQL endpoints, SDKs, webhooks connecting AI to systems" },
       { id: "L4b", name: "Agent Interface Protocols", desc: "MCP, tool-use specs, agent-to-agent communication standards", defensible: true },
-      { id: "L4c", name: "Access Governance", desc: "Who can use what, RBAC, scoping, audit trails" },
+      { id: "L4c", name: "Access Governance & Agent Commerce", desc: "Who can use what — RBAC, scoping, audit trails — and agent-payment rails (Stripe/Visa/Mastercard agent-pay, spend limits, programmatic checkout, machine-to-machine billing)" },
       { id: "L4d", name: "Real-Time Interaction Infrastructure", desc: "Streaming, voice pipelines, video, low-latency modality transport" },
       { id: "L4e", name: "Agent Identity & Provenance", desc: "Verifying which agent acted, credential chains, trust signatures", defensible: true },
     ],
@@ -134,7 +134,7 @@ export const LAYERS: Layer[] = [
     players: ["Harvey", "Sierra", "11x", "Cursor"],
     verdict: "Durable if deep. Generic skills get absorbed.",
     sublayers: [
-      { id: "L5a", name: "Domain Execution", desc: "Doing the actual work — legal drafting, code generation, diagnosis, underwriting", defensible: true },
+      { id: "L5a", name: "Domain Execution & Tool Use", desc: "Doing the actual work — legal drafting, code generation, diagnosis, underwriting — including function calling, code interpreter, browser/computer use, and structured tool invocation that turns a model into an operator", defensible: true },
       { id: "L5b", name: "Decision Frameworks & Reasoning Scaffolds", desc: "Structured thinking patterns, checklists, rubrics the agent follows", defensible: true },
       { id: "L5c", name: "Retrieval-Augmented Workflows", desc: "Grounding execution in retrieved context, knowledge, and documents" },
       { id: "L5d", name: "Operating Playbooks", desc: "Company-specific SOPs, rules, preferences encoded for agents", defensible: true },
