@@ -77,7 +77,7 @@ L6 ORCHESTRATION — Workflow, routing, coordination. How skills compose into ou
 L7 SURFACE — Interface, presentation, experience. How the user meets the intelligence. Players: ChatGPT, Gemini, Copilot, ElevenLabs. Verdict: Modality = commodity. Context = moat.
   L7a Conversational
   L7b Visual Interfaces & Media
-  L7c Embedded & Copilot ★ defensible
+  L7c Embedded & Embodied AI ★ defensible
   L7d Transaction Surface ★ defensible
   L7e Async & Ambient Surfaces
 
