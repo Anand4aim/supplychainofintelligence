@@ -105,7 +105,20 @@ A beautiful UI may get users. But durable companies own a deeper layer of the in
 Law IV — Generation and Verification Must Be Separate
 Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. L3 above L2/L5 is structurally permanent in those industries. (Predicts WHERE L3 is non-absorbable. Examples: Vanta over AWS, Snyk over Copilot, Big-4 audit over SAP, FDA over Pfizer.)
 
+=== THE 3 CURRENTS (horizontal forces across the chain — not layers) ===
+The 10 layers are supply-side. The 3 Currents are market forces that flow across every layer and decide whether a defensible position compounds into a business. Geopolitics and regulation are NOT currents — they live at their native layers (L-1, L3).
+
+Current I — Demand Gravity
+Where the budget actually sits (CFO / CIO / LOB / CEO discretionary) and what it pulls toward. As L2 prices collapse, demand moves toward outcomes (L5+L8), verification (L3), and proprietary data (L1). A defensible layer with no buyer is zero. (Use: name the buyer, the budget line, and what they stop paying for once L2 is free.)
+
+Current II — Attention Economics
+When generation becomes infinite, the eyeball becomes scarce. Default placement, OS integration, habit loops, and on-ramp ownership decide who gets used. Apple/Google/Microsoft act as L7 landlords charging rent in attention. Law III names this; this Current economizes it. (Use: assume infinite supply; ask who owns the on-ramp and what default placement costs.)
+
+Current III — Capital Flows
+Funding is reflexive — rounds reshape the layers they fund. Tens of billions into L2 created a generation glut; near-zero into L-1 created the bottleneck constraining everything above it. Capital overheats the fashionable layer and starves the unglamorous one. (Use: read the funding map as a distortion field, not as a value signal.)
+
 === THE INTELLIGENCE CUBE™ ===
+
 Functions × Verticals × Layers. Volume = structural durability. Thin slivers die.
 Allowed Functions: Dev/Eng, Design, Product, PM/Proj, Ops, Mktg, Sales, CustCare, Strategy.
 Allowed Verticals: FinTech, EdTech, Legal, Health, Travel, eCom, Media, Gov, SaaS, Horizontal.
