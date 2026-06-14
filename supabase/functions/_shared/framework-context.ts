@@ -29,7 +29,7 @@ L0 INFRASTRUCTURE (short: Infra) — The shovels. Chips, data centers, networkin
   L0a Silicon
   L0b Data Centers
   L0c Interconnect Fabric
-  L0d Compute Access Cloud
+  L0d Compute & State Infrastructure
   L0e Edge & On-Device Compute
 
 L1 DATA — Raw input. What data do you have that nobody else can get? Players: Apollo.io, Bloomberg, ZoomInfo, Scale AI. Verdict: Structurally safe. API-first wins.
