@@ -344,7 +344,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "industry",
     shortDef: "L0 + L4 incumbent — owns the compute substrate AND the access plane.",
     longDef:
-      "Hyperscalers (AWS, Azure, GCP) own both L0 (Data Centers + Compute Access Cloud) and L4 (API & Integration). That double-layer hold is why every L2 model maker eventually negotiates with them, and why L7 wrappers without distribution get absorbed.",
+      "Hyperscalers (AWS, Azure, GCP) own both L0 (Data Centers + Compute & State Infrastructure) and L4 (API & Integration). That double-layer hold is why every L2 model maker eventually negotiates with them, and why L7 wrappers without distribution get absorbed.",
     layerMapping: ["L0", "L4"],
     primaryLayer: "L0",
     examples: ["AWS", "Microsoft Azure", "Google Cloud"],
