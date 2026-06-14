@@ -68,7 +68,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "marketing",
     shortDef: "An embedded L7 surface (usually L7c) wired into an existing workflow, backed by L2 + sometimes L5/L8.",
     longDef:
-      "A 'copilot' is an L7c (Embedded & Copilot) surface inside someone else's product, typically backed by an L2 model and — when defensible — L5 skill and L8 memory. The defensibility is almost entirely a function of WHICH host product owns the L7c slot (Microsoft 365, GitHub, Salesforce). Standalone copilots without distribution rarely survive.",
+      "A 'copilot' is an L7c (Embedded & Embodied AI) surface inside someone else's product, typically backed by an L2 model and — when defensible — L5 skill and L8 memory. The defensibility is almost entirely a function of WHICH host product owns the L7c slot (Microsoft 365, GitHub, Salesforce). Standalone copilots without distribution rarely survive.",
     layerMapping: ["L7", "L2", "L5", "L8"],
     primaryLayer: "L7",
     commonMistake:
