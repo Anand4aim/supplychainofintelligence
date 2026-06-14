@@ -138,7 +138,7 @@ export const LAYERS: Layer[] = [
       { id: "L5b", name: "Decision Frameworks & Reasoning Scaffolds", desc: "Structured thinking patterns, checklists, rubrics the agent follows", defensible: true },
       { id: "L5c", name: "Retrieval-Augmented Workflows", desc: "Grounding execution in retrieved context, knowledge, and documents" },
       { id: "L5d", name: "Operating Playbooks", desc: "Company-specific SOPs, rules, preferences encoded for agents", defensible: true },
-      { id: "L5e", name: "Interactional Skills", desc: "Tone, empathy, negotiation, persuasion — how the agent handles the human moment" },
+      { id: "L5e", name: "Interaction Skills & Actuation", desc: "Tone, empathy, negotiation, persuasion — and physical-world actuation (robotic control, valve/vehicle/device operation)" },
     ],
   },
   {
