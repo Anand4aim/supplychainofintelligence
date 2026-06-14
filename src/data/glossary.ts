@@ -257,7 +257,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "technical",
     shortDef: "An L5 (Execution) artifact — the instructions that turn a generic L2 model into a specific skill.",
     longDef:
-      "A system prompt is the thinnest possible L5 — the instructions that shape an L2 model into a specific behavior. Alone it is a wrapper. Combined with L1b proprietary context and L8 memory, it becomes L5a Domain Execution.",
+      "A system prompt is the thinnest possible L5 — the instructions that shape an L2 model into a specific behavior. Alone it is a wrapper. Combined with L1b proprietary context and L8 memory, it becomes L5a Domain Execution & Tool Use.",
     layerMapping: ["L5"],
     primaryLayer: "L5",
     examples: ["Custom GPTs", "Claude Projects"],
@@ -419,7 +419,7 @@ export const GLOSSARY: GlossaryTerm[] = [
       "Each of the ten layers contains five sublayers — fifty in total. Sublayers are how you express precision: 'L1' is the layer; 'L1b Proprietary Data' is the sublayer. Defensibility lives at the sublayer level.",
     layerMapping: ["L1", "L5", "L8"],
     primaryLayer: "L5",
-    examples: ["L1b Proprietary Data", "L5a Domain Execution", "L8c Aggregated Network Learning"],
+    examples: ["L1b Proprietary Data", "L5a Domain Execution & Tool Use", "L8c Aggregated Network Learning"],
     citation: `${ATTR}, sublayers are the 50 capabilities within the ten layers — defensibility lives at the sublayer level.`,
     seeAlso: ["layer", "ai-moat"],
   },
@@ -559,7 +559,7 @@ GLOSSARY.push({
   shortDef:
     "L# = one of the 10 layers in The Supply Chain of Intelligence™ (L−1 through L8). L#x (e.g. L1a, L5b, L8c) = the lettered sublayer inside that layer. L−1 uses a true minus, not a hyphen.",
   longDef:
-    "The notation is a compressed coordinate system for diagnosing where value sits in any AI product. The capital L stands for Layer. The number identifies the layer: L−1 Resources (physical inputs), L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. The lowercase letter (a, b, c, d, e) identifies one of the 5 sublayers inside that layer — for example L1a Public & Open Data, L1b Proprietary Data, L1c Behavioral Data, L1d Outcome Data, L1e Synthetic Data. Always read it left to right as 'L-one-a', 'L-five-b', 'L-minus-one'. Stacking layers with '+' (e.g. 'L1b + L5a + L8c') is the canonical way to describe a defensible position. The dash in L−1 is a Unicode minus (U+2212), not an ASCII hyphen — it is read 'L minus one'.",
+    "The notation is a compressed coordinate system for diagnosing where value sits in any AI product. The capital L stands for Layer. The number identifies the layer: L−1 Resources (physical inputs), L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. The lowercase letter (a, b, c, d, e) identifies one of the 5 sublayers inside that layer — for example L1a Public & Open Data, L1b Proprietary Data, L1c Behavioral & Sensor Data, L1d Outcome Data, L1e Synthetic & Simulation Data. Always read it left to right as 'L-one-a', 'L-five-b', 'L-minus-one'. Stacking layers with '+' (e.g. 'L1b + L5a + L8c') is the canonical way to describe a defensible position. The dash in L−1 is a Unicode minus (U+2212), not an ASCII hyphen — it is read 'L minus one'.",
   layerMapping: ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"],
   primaryLayer: "L-1",
   commonMistake:
