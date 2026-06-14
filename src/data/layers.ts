@@ -52,7 +52,7 @@ export const LAYERS: Layer[] = [
       { id: "L0a", name: "Silicon", desc: "GPUs, TPUs, custom AI accelerators" },
       { id: "L0b", name: "Data Centers", desc: "Physical facilities housing compute at scale" },
       { id: "L0c", name: "Interconnect Fabric", desc: "Networking between chips, racks, regions, clouds" },
-      { id: "L0d", name: "Compute Access Cloud", desc: "On-demand compute rental and scheduling" },
+      { id: "L0d", name: "Compute & State Infrastructure", desc: "On-demand compute, scheduling, and durable agent state (checkpointing, workflow state, runtime memory stores)" },
       { id: "L0e", name: "Edge & On-Device Compute", desc: "Local inference on phones, vehicles, sensors, endpoints" },
     ],
   },
