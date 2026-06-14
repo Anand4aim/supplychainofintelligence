@@ -25,7 +25,7 @@ const FrameworkPage = () => (
   <SiteLayout>
     <Seo
       title="The Framework — 10 Layers of the AI Stack"
-      description="The full breakdown: 10 layers, 50 sublayers, 4 structural laws, and the Defensible Triangle. Where AI value is created, captured, and defended."
+      description="10 layers, 50 sublayers, 4 structural laws, the Defensible Triangle, and the 3 Currents (demand, attention, capital). Where AI value is created, captured, and defended."
       path="/framework"
     />
     <SketchFilters />
