@@ -328,7 +328,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: "Inference",
     aliases: ["model serving", "AI inference"],
     category: "industry",
-    shortDef: "L0d (Compute Access Cloud) workload — running an L2 model in production against user requests.",
+    shortDef: "L0d (Compute & State Infrastructure) workload — running an L2 model in production against user requests.",
     longDef:
       "Inference is an L0d workload. The economics — tokens-per-dollar, latency, throughput — are decided at L0 (Silicon + Compute). This is why hyperscalers and NVIDIA capture most of the AI capex flow.",
     layerMapping: ["L0", "L2"],
