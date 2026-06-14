@@ -107,7 +107,13 @@ Each layer has its own indexable page at `/framework/{layer-id}` with definition
 
 Repeatable market patterns: (1) The Two-Vendor Rule — buyers pay for two vendors when one mistake is unrecoverable (Cursor + Snyk, Harvey + Ironclad). (2) Regulatory Half-Life — L3 in regulated industries outlives 3+ model generations (Vanta, Drata, Epic). (3) The Bundling Asymmetry — platforms expand into adjacent layers but never across the trust boundary above themselves (OpenAI ships agents, will never issue its own SOC 2). (4) Memory Is Not Truth — L8 memory is defensible; L8 truth-claims trigger an L3 verifier. (5) Distribution Eats Generation — when L2 commoditizes, the moment-of-consumption captures the surplus (Cursor, Perplexity).
 
+## The Three Currents — horizontal forces across the chain
+
+The 10 layers are supply-side. Three Currents are market forces that flow horizontally across every layer and decide whether a defensible position compounds into a business. They are NOT layers, and geopolitics/regulation are NOT currents (those live at L-1 and L3). (I) **Demand Gravity** — where the budget actually sits (CFO/CIO/LOB/CEO discretionary) and what it pulls toward as L2 prices collapse; defensibility without a budgeted buyer is zero. (II) **Attention Economics** — when generation becomes infinite, the eyeball becomes scarce; default placement and on-ramp ownership are the rent (Apple/Google/Microsoft as L7 landlords). (III) **Capital Flows** — funding is reflexive; rounds reshape the layers they fund, overheating the fashionable layer (L2) and starving the bottleneck (L-1). Read the funding map as a distortion field, not a value signal.
+
 ## Market Map
+
+
 
 [Market Map](https://supplychainofai.com/market-map): visual directory plotting every major AI company on the 10 layers, with archetypes — Fortress, Refinery, Railroad, Memory, Surface, Agent, Graveyard.
 
