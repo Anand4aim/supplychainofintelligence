@@ -65,7 +65,7 @@ L5 EXECUTION — Applied skills and capabilities. Doing the actual work. Players
   L5b Decision Frameworks & Reasoning Scaffolds ★ defensible
   L5c Retrieval-Augmented Workflows
   L5d Operating Playbooks ★ defensible
-  L5e Interactional Skills
+  L5e Interaction Skills & Actuation
 
 L6 ORCHESTRATION — Workflow, routing, coordination. How skills compose into outcomes. Players: LangChain, CrewAI, Zapier (at risk), Make (at risk). Verdict: Contested. Becoming a feature, not a product.
   L6a Agent Loops
