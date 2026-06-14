@@ -114,7 +114,7 @@ const COMPANIES = Object.fromEntries([
     "Early, partial claimant to institutional knowledge for litigation."),
   C("spellbook", "Spellbook", "Embedded copilot", "growth",
     "GenAI copilot inside Microsoft Word; transactional / contract drafting & review.",
-    "Primary L7c Embedded & Copilot · Secondary L5a (via 'Associate' agent)",
+    "Primary L7c Embedded & Embodied AI · Secondary L5a (via 'Associate' agent)",
     "$50M Series B (Oct 2025, Khosla/Rabois), $350M post-money, >$80M total. ~4,000 teams.",
     "Strongest pure-copilot story; climbing from Surface (L7) into Execution (L5)."),
   C("genie", "Genie AI", "Embedded copilot", "early",

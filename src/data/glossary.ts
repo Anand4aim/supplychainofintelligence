@@ -68,7 +68,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "marketing",
     shortDef: "An embedded L7 surface (usually L7c) wired into an existing workflow, backed by L2 + sometimes L5/L8.",
     longDef:
-      "A 'copilot' is an L7c (Embedded & Copilot) surface inside someone else's product, typically backed by an L2 model and — when defensible — L5 skill and L8 memory. The defensibility is almost entirely a function of WHICH host product owns the L7c slot (Microsoft 365, GitHub, Salesforce). Standalone copilots without distribution rarely survive.",
+      "A 'copilot' is an L7c (Embedded & Embodied AI) surface inside someone else's product, typically backed by an L2 model and — when defensible — L5 skill and L8 memory. The defensibility is almost entirely a function of WHICH host product owns the L7c slot (Microsoft 365, GitHub, Salesforce). Standalone copilots without distribution rarely survive.",
     layerMapping: ["L7", "L2", "L5", "L8"],
     primaryLayer: "L7",
     commonMistake:
@@ -328,7 +328,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: "Inference",
     aliases: ["model serving", "AI inference"],
     category: "industry",
-    shortDef: "L0d (Compute Access Cloud) workload — running an L2 model in production against user requests.",
+    shortDef: "L0d (Compute & State Infrastructure) workload — running an L2 model in production against user requests.",
     longDef:
       "Inference is an L0d workload. The economics — tokens-per-dollar, latency, throughput — are decided at L0 (Silicon + Compute). This is why hyperscalers and NVIDIA capture most of the AI capex flow.",
     layerMapping: ["L0", "L2"],
@@ -344,7 +344,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "industry",
     shortDef: "L0 + L4 incumbent — owns the compute substrate AND the access plane.",
     longDef:
-      "Hyperscalers (AWS, Azure, GCP) own both L0 (Data Centers + Compute Access Cloud) and L4 (API & Integration). That double-layer hold is why every L2 model maker eventually negotiates with them, and why L7 wrappers without distribution get absorbed.",
+      "Hyperscalers (AWS, Azure, GCP) own both L0 (Data Centers + Compute & State Infrastructure) and L4 (API & Integration). That double-layer hold is why every L2 model maker eventually negotiates with them, and why L7 wrappers without distribution get absorbed.",
     layerMapping: ["L0", "L4"],
     primaryLayer: "L0",
     examples: ["AWS", "Microsoft Azure", "Google Cloud"],
@@ -384,7 +384,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: "Embedded AI",
     aliases: ["AI in product", "embedded copilot"],
     category: "industry",
-    shortDef: "L7c (Embedded & Copilot) — AI surfaces injected into existing SaaS workflows.",
+    shortDef: "L7c (Embedded & Embodied AI) — AI surfaces injected into existing SaaS workflows, plus AI embodied in physical hardware.",
     longDef:
       "Embedded AI is L7c. The defensibility comes from the host product's distribution and the L8d institutional knowledge that lives in it. Standalone copilots without a host product struggle to acquire users.",
     layerMapping: ["L7", "L8"],

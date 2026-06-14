@@ -29,7 +29,7 @@ L0 INFRASTRUCTURE (short: Infra) — The shovels. Chips, data centers, networkin
   L0a Silicon
   L0b Data Centers
   L0c Interconnect Fabric
-  L0d Compute Access Cloud
+  L0d Compute & State Infrastructure
   L0e Edge & On-Device Compute
 
 L1 DATA — Raw input. What data do you have that nobody else can get? Players: Apollo.io, Bloomberg, ZoomInfo, Scale AI. Verdict: Structurally safe. API-first wins.
@@ -65,7 +65,7 @@ L5 EXECUTION — Applied skills and capabilities. Doing the actual work. Players
   L5b Decision Frameworks & Reasoning Scaffolds ★ defensible
   L5c Retrieval-Augmented Workflows
   L5d Operating Playbooks ★ defensible
-  L5e Interactional Skills
+  L5e Interaction Skills & Actuation
 
 L6 ORCHESTRATION — Workflow, routing, coordination. How skills compose into outcomes. Players: LangChain, CrewAI, Zapier (at risk), Make (at risk). Verdict: Contested. Becoming a feature, not a product.
   L6a Agent Loops
@@ -77,7 +77,7 @@ L6 ORCHESTRATION — Workflow, routing, coordination. How skills compose into ou
 L7 SURFACE — Interface, presentation, experience. How the user meets the intelligence. Players: ChatGPT, Gemini, Copilot, ElevenLabs. Verdict: Modality = commodity. Context = moat.
   L7a Conversational
   L7b Visual Interfaces & Media
-  L7c Embedded & Copilot ★ defensible
+  L7c Embedded & Embodied AI ★ defensible
   L7d Transaction Surface ★ defensible
   L7e Async & Ambient Surfaces
 
