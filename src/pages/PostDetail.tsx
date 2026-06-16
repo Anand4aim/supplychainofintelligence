@@ -53,7 +53,9 @@ const PostDetail = () => {
         ? AgentDecoderPoster
         : post.heroPoster === "compression"
           ? StackCompressionMapPoster
-          : HeroBrandPoster;
+          : post.heroPoster === "framework-compare-hero"
+            ? FrameworkComparisonHero
+            : HeroBrandPoster;
 
   return (
     <SiteLayout>
