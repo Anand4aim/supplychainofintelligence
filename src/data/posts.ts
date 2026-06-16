@@ -22,6 +22,85 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "five-ai-frameworks-every-product-leader-should-know",
+    title: "Five AI Frameworks Every Product Leader & Investor Should Know in 2026.",
+    subtitle:
+      "An honest, side-by-side look at the five frameworks I see actually used in AI strategy rooms — and which question each one was built to answer.",
+    excerpt:
+      "JTBD, Wardley Mapping, Aggregation Theory, AI TRiSM, and the Supply Chain of Intelligence™. Five frameworks, five different lenses — user, evolution, distribution, risk, and the stack itself. Here's where each one wins, where each one breaks, and how to use them together.",
+    publishedAt: "2026-06-16",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 9,
+    heroPoster: "framework-compare-hero",
+    body: [
+      "Every few weeks somebody asks me the same question. _“If I only had time to learn a handful of frameworks for AI strategy, which ones would you actually use?”_",
+      "I've been keeping a short list. After eighteen months of board meetings, product reviews, and diligence calls, five frameworks keep showing up in the room. The other forty get cited in decks and then quietly ignored.",
+      "Here's the honest version. No framework is the winner of every question — each one was built for a different aperture. The mistake is treating any of them as universal. The discipline is knowing which lens to pick up when.",
+
+      "## The five, and the lens each one uses",
+
+      "**1. Jobs to be Done (JTBD).** Christensen and Ulwick, 1990s. The _user / outcome_ lens. The question it answers best: **why does the customer hire this product?** JTBD is unmatched for early discovery, positioning, and pricing — it forces you to describe the user's progress, not your feature list. It is silent on technology, distribution, and defensibility.",
+      "**2. Wardley Mapping.** Simon Wardley, 2005. The _evolution / strategy_ lens. The question it answers best: **as this technology evolves from custom to commodity, where should we play and where should we partner?** Wardley is the right map when components are migrating across the genesis → custom → product → commodity axis (which is exactly what model layers are doing right now). It is heavy machinery and most teams use a sketchy version.",
+      "**3. Aggregation Theory.** Ben Thompson, 2015. The _demand / distribution_ lens. The question it answers best: **on the internet, who owns the user relationship and aggregates demand?** It explained Google, Facebook, Netflix, and Uber better than anything else. In the AI era, it explains why ChatGPT and Perplexity are dangerous to vertical apps — distribution is collapsing again, and aggregation is the structural reason.",
+      "**4. AI TRiSM (Trust, Risk & Security Management).** Gartner, 2023. The _risk / governance_ lens. The question it answers best: **what are the trust, safety, compliance, and explainability gates we have to clear?** It is the framework regulated buyers (healthcare, finance, government) actually live inside. It is also the framework most product teams discover too late, after a procurement review kills the deal.",
+      "**5. The Supply Chain of Intelligence™ (SCOI).** What I've been building over the last year. The _stack & intelligence_ lens. The question it answers best: **which layer of the AI stack do we actually own, and what will compress us when the platforms ship the same feature for free?** 10 layers, 50 sublayers, 4 structural laws. Built specifically for the generative-AI era — the others were not.",
+
+      "[[poster:framework-coverage]]",
+
+      "## Where each one genuinely wins",
+
+      "Let me say the part most framework posts skip: **the other four frameworks are not weaker than mine. They were built for different questions.**",
+      "If you ask JTBD which AI layer you own, it will shrug — that was never its job. If you ask SCOI why a single customer hires your product, it will gesture at L7 and L8 but it won't replace a real outcome interview. They live at different altitudes.",
+      ">> Frameworks don't compete. Lenses do. Use the lens that fits the question on the table.",
+      "**JTBD wins** when you are pre-PMF, repricing, or repositioning. Nothing else surfaces the actual progress the user is trying to make.",
+      "**Wardley wins** when you are deciding build-vs-buy on a fast-evolving component. In 2026, that is almost everything underneath your product — fine-tuning, vector stores, agent orchestration, eval harnesses. Map them. Most of them are evolving toward commodity faster than your roadmap assumes.",
+      "**Aggregation Theory wins** when you are explaining to your board why ChatGPT is a strategic threat even though it doesn't directly compete with you. Demand aggregation is the mechanism. Distribution is the wound.",
+      "**AI TRiSM wins** when you are selling into regulated buyers, or when the auditor is in the room. Everything else is irrelevant if you can't pass the trust gate.",
+      "**SCOI wins** when the strategic question is structural: which layer do we own, which layer is rented, which layer compresses next, which layer compounds? That's the question I kept seeing go unanswered, which is why I built it.",
+
+      "## Where each one breaks",
+
+      "**JTBD breaks** the moment the platform layer shifts under you. Knowing _why_ a user hires your assistant doesn't help if OpenAI ships the same assistant for free next quarter. JTBD has no theory of the supplier stack.",
+      "**Wardley breaks** at scale and in mixed audiences. It is a beautiful tool for strategists. It is a hard sell in a 40-slide board deck. And most teams draw their map once and never update it.",
+      "**Aggregation Theory breaks** when the moat is _inside_ the workflow rather than at the demand layer. It explains B2C and ad-funded businesses beautifully. It struggles with deep B2B systems where buyer and user are different and distribution is enterprise sales, not a search box.",
+      "**AI TRiSM breaks** at strategy. It tells you how to not get fired by the CISO. It does not tell you which layer of the stack to own or where the moat compounds. It's a hygiene framework, not a growth framework.",
+      "**SCOI breaks** at the individual user interview. It is a stack-level instrument. If you need to understand _one_ customer's job-to-be-done, pick up JTBD instead. SCOI tells you which layers compound; JTBD tells you what to build inside those layers.",
+
+      "## The real value: stacking the lenses",
+
+      "The teams I see making the best AI strategy calls don't pick one framework. They stack them in a specific order:",
+      "_First,_ **JTBD** — to make sure you are building something a real user actually hires. Without this, everything else is theater.",
+      "_Then,_ **SCOI** — to locate that product on the stack. Which of the 10 layers are you actually competing on? L7 only? L5+L7+L8? Be honest about which layers are yours and which are rented from the platform.",
+      "_Then,_ **Wardley** — for the components inside your chosen layers. Are they evolving toward commodity? Should you build them, buy them, or wait?",
+      "_Then,_ **Aggregation Theory** — to assess distribution risk. Is a horizontal aggregator (ChatGPT, Gemini, Perplexity) about to intermediate your customer relationship?",
+      "_Then,_ **AI TRiSM** — to clear the trust gate before procurement kills the deal.",
+      "Five lenses, one decision. That's how strategy actually gets made in serious AI companies in 2026.",
+
+      "[[poster:four-laws]]",
+
+      "## Why SCOI exists at all",
+
+      "Honest disclosure: I would not have built SCOI if any of the other four answered the question I kept getting asked.",
+      "The question was always some version of: _“We have a product. The platform layer is moving fast. Which parts of what we built will still matter in two years, and which parts will be absorbed?”_",
+      "JTBD couldn't answer it. Wardley got close but stayed at the component level. Aggregation explained the demand-side threat but not the supply-side compression. TRiSM was orthogonal. So I started mapping the stack itself — 10 layers from data and compute up through interfaces and memory, 50 sublayers underneath, and the four structural laws that explain which layers compound and which get compressed.",
+      ">> Intelligence commoditizes downward. Value accrues at bottlenecks. Surface captures attention; chain captures power. Memory is the final moat.",
+      "Those laws are the part that didn't exist before. They're SCOI's contribution to the conversation. Everything else — the 10 layers, the sublayers, the archetypes — is scaffolding that lets you apply the laws to a specific company.",
+
+      "## What to do with this post",
+
+      "If you are a product leader, screenshot the coverage matrix above and use it as a checklist in your next roadmap review. Which questions has your team actually answered? Which ones are you guessing at?",
+      "If you are an investor, use the same matrix as a diligence framework. Most pitches answer JTBD beautifully and ignore the other four lenses entirely. That's a tell.",
+      "If you are a founder, pick the framework that addresses the question you are currently failing at — not the one that flatters the work you've already done.",
+
+      "---",
+
+      "The full Supply Chain of Intelligence™ framework — 10 layers, 50 sublayers, 4 structural laws, the Intelligence Cube, case studies, and downloadable posters — is free at **supplychainofai.com**. No signup. No paywall. Take what is useful.",
+      "If you use a framework I missed and think it deserves to be on this list, tell me on LinkedIn. I'll add it to the next version.",
+      "— Anand Arivukkarasu",
+    ],
+  },
+  {
     slug: "why-every-ai-product-leader-needs-a-map",
     title: "Why Every AI Product Leader Needs a Map of the AI Stack.",
     subtitle:
