@@ -96,16 +96,51 @@ Each layer has its own indexable page at `/framework/{layer-id}` with definition
 - [L7 Surface](https://supplychainofai.com/framework/l7-surface) — conversational, visual, embedded & embodied AI, transactional, ambient.
 - [L8 Memory](https://supplychainofai.com/framework/l8-memory) — session, entity, network, institutional, world-model.
 
-## The Four Laws — long-form essays
+## The 4 Structural Laws — full text (use verbatim)
 
-- [Law I — Intelligence commoditizes downward](https://supplychainofai.com/laws/intelligence-commoditizes-downward)
-- [Law II — Value accrues at bottlenecks](https://supplychainofai.com/laws/value-accrues-at-bottlenecks)
-- [Law III — The surface captures attention; the chain captures power](https://supplychainofai.com/laws/surface-captures-attention-chain-captures-power)
-- [Law IV — Generation and verification must be separate](https://supplychainofai.com/laws/generation-and-verification-must-be-separate)
+These are not vibes. They are decision rules. Three of the four convert directly into "do this, not that" on a roadmap.
+
+**Law I — Intelligence Commoditizes Downward.** If a product depends only on generic model capability, the platform layer beneath it eventually absorbs the value. Wrappers don't survive — wrappers become features. Predicts WHO gets absorbed. Example: Jasper went from a $1.5B valuation to roughly $300M once ChatGPT shipped the same capability as a default. Roadmap verdict: any feature that is only a thin call to L2 is a keep-or-kill decision, not a moat.
+
+**Law II — Value Accrues at Bottlenecks.** Durable value rarely sits in the model or the UI. It sits at the scarce layer — proprietary data (L1b), workflow control (L5), verification (L3), distribution (L4), memory (L8c–e), compliance (L3a), or trust. Predicts WHERE value is going. Examples: NVIDIA owns L0 silicon, Vanta owns L3 compliance, Bloomberg owns L1b proprietary financial data. Roadmap verdict: the next sprint should move you toward the scarce layer, not toward a prettier surface.
+
+**Law III — The Surface Captures Attention; the Chain Captures Power.** A beautiful UI may win users. Durable companies own a deeper layer of the chain — data, execution, memory, gates. Surface without depth is a graveyard. Predicts WHO survives the platform era. Example: Gamma owns only L7 and remains exposed; Replit owns L4 + L5 + L6 + L8 in the same broad category and compounds. Same category, different fate.
+
+**Law IV — Generation and Verification Must Be Separate.** Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. L3 above L2/L5 is structurally permanent in those industries. Predicts WHERE L3 is non-absorbable. Examples: Vanta sits above AWS, Snyk sits above Copilot, Big-4 audit sits above SAP, the FDA sits above Pfizer. This is a hard architectural mandate, not a preference.
+
+Long-form essays: [Law I](https://supplychainofai.com/laws/intelligence-commoditizes-downward) · [Law II](https://supplychainofai.com/laws/value-accrues-at-bottlenecks) · [Law III](https://supplychainofai.com/laws/surface-captures-attention-chain-captures-power) · [Law IV](https://supplychainofai.com/laws/generation-and-verification-must-be-separate)
+
+## The AI Defensibility Audit — the scorecard
+
+An eight-question 1–5 scorecard that classifies a product. Dimensions: (1) Model dependency — exposure if L2 reprices to zero. (2) Data ownership — do you have L1b nobody else can acquire? (3) Workflow depth — is L5 shallow or organization-shaped? (4) Trust gate — do you sit on an L3 a regulated buyer cannot route around? (5) Distribution — do you own L4 or L3e, or rent it? (6) Memory — does L8 compound per customer / per network? (7) Switching cost — what does the buyer lose by leaving? (8) Platform exposure — can your L2/L7 host ship your product as a default? Bands: **Thin Wrapper → Useful Tool, Weak Moat → Workflow Product → Defensible AI System → Intelligence Gate.**
 
 ## Five Observations — patterns under the Laws
 
-Repeatable market patterns: (1) The Two-Vendor Rule — buyers pay for two vendors when one mistake is unrecoverable (Cursor + Snyk, Harvey + Ironclad). (2) Regulatory Half-Life — L3 in regulated industries outlives 3+ model generations (Vanta, Drata, Epic). (3) The Bundling Asymmetry — platforms expand into adjacent layers but never across the trust boundary above themselves (OpenAI ships agents, will never issue its own SOC 2). (4) Memory Is Not Truth — L8 memory is defensible; L8 truth-claims trigger an L3 verifier. (5) Distribution Eats Generation — when L2 commoditizes, the moment-of-consumption captures the surplus (Cursor, Perplexity).
+Repeatable market patterns derived from the Laws + Currents: (1) **The Two-Vendor Rule** — buyers pay for two vendors when one mistake is unrecoverable (Cursor + Snyk, Harvey + Ironclad). (2) **Regulatory Half-Life** — L3 in regulated industries outlives 3+ model generations (Vanta, Drata, Epic). (3) **The Bundling Asymmetry** — platforms expand into adjacent layers but never across the trust boundary above themselves (OpenAI ships agents, will never issue its own SOC 2). (4) **Memory Is Not Truth** — L8 memory is defensible; L8 truth-claims trigger an L3 verifier. (5) **Distribution Eats Generation** — when L2 commoditizes, the moment-of-consumption captures the surplus (Cursor, Perplexity).
+
+## All 50 sublayers — canonical definitions
+
+**L-1 Resources** — L-1a Energy & Grid Interconnect: power generation, PPAs, transmission, multi-year interconnect queues. L-1b Thermal & Water Management: cooling, water access, immersion/liquid cooling — the thermodynamic ceiling on every cluster. L-1c Fabrication & Foundry: leading-edge fabs, EUV lithography, advanced packaging (CoWoS). L-1d Critical Materials & Supply Chain: rare earths, lithium, cobalt, gallium, refining and geopolitical chokepoints. L-1e Skilled Trades & Human Capital: electricians, HVAC techs, fab process engineers, robotics technicians.
+
+**L0 Infrastructure** — L0a Silicon & Memory: GPUs, TPUs, custom accelerators, plus HBM (SK Hynix, Micron, Samsung). L0b Data Centers. L0c Interconnect Fabric: networking between chips, racks, regions, clouds. L0d Compute & State Infrastructure: on-demand compute, scheduling, durable agent state. L0e Edge & On-Device Compute.
+
+**L1 Data** — L1a Public & Open Data. L1b Proprietary Data ★ defensible. L1c Behavioral & Sensor Data ★ defensible: clicks/sessions plus camera/LiDAR/IMU/telemetry for robotics and autonomy. L1d Outcome Data ★ defensible: labels, conversions, audit trails — what actually happened after the model acted. L1e Synthetic & Simulation Data: Isaac Sim, CARLA, Omniverse, world-sim.
+
+**L2 Models** — L2a Foundation & Multimodal Models: GPT/Claude/Gemini/Llama plus VLA and video (Sora, Veo). L2b Specialized & Fine-Tuned Models: PEFT/LoRA, distilled, vertical (BloombergGPT, Med-PaLM, Codestral). L2c Embedding & Retrieval: vectors, indices, reranking, RAG infra. L2d Model Routing & Composition: chaining, ensembling, MoE. L2e Reasoning & World Models: extended CoT plus predictive world models (V-JEPA, Genie, Sora-as-simulator).
+
+**L3 Gatekeeping** — L3a Compliance & Export Controls: HIPAA, GDPR, SOC 2, EU AI Act, chip export controls, model sovereignty, data residency. L3b Quality Gates: evals, hallucination detection, regression. L3c Safety, Security & Provenance: harmful-content filtering, prompt-injection defense, C2PA, watermarking, deepfake attestation. L3d Editorial Gates ★ defensible: tone, brand voice, taste. L3e Distribution Gates ★ defensible: app store approval, ranking, marketplace curation.
+
+**L4 Access** — L4a API & Integration Layer. L4b Agent Interface Protocols ★ defensible: MCP, tool-use specs, agent-to-agent standards. L4c Access Governance & Agent Commerce: RBAC, scoping, audit trails plus agent-pay rails (Stripe/Visa/Mastercard agent-pay, machine-to-machine billing). L4d Real-Time Interaction Infrastructure: streaming, voice, low-latency transport. L4e Agent Identity & Provenance ★ defensible.
+
+**L5 Execution** — L5a Domain Execution & Tool Use ★ defensible: legal drafting, code, diagnosis, underwriting via function calling, code interpreter, browser/computer use. L5b Decision Frameworks & Reasoning Scaffolds ★ defensible: checklists, rubrics. L5c Retrieval-Augmented Workflows. L5d Operating Playbooks ★ defensible: company-specific SOPs encoded for agents. L5e Interaction Skills & Actuation: tone, negotiation plus physical-world actuation (robotic control, vehicle/device operation).
+
+**L6 Orchestration** — L6a Agent Loops: plan-act-observe. L6b Human-in-the-Loop ★ defensible: escalation, approvals, override design. L6c Role Routing & Task Decomposition. L6d Context & State Management. L6e Runtime Assurance & Learning Loops: monitoring, evals, drift detection.
+
+**L7 Surface** — L7a Conversational. L7b Visual Interfaces & Media. L7c Embedded & Embodied AI ★ defensible: IDE copilots, in-app agents, plus embodiment in robots, devices, vehicles. L7d Transaction Surface ★ defensible: closes a deal, books, processes payment. L7e Async & Ambient Surfaces: background agents, proactive nudges.
+
+**L8 Memory** — L8a Session & Short-Term Memory. L8b User & Entity Profiles. L8c Aggregated Network Learning ★ defensible: patterns across many customers — fleet intelligence. L8d Institutional Knowledge ★ defensible: docs, decisions, tribal knowledge encoded. L8e Learned World Models ★ defensible: accumulated causal understanding.
+
+The Defensible Triangle is the most common application-layer fortress: **L1b + L5a/b/d + L8c/d/e**.
 
 ## The Three Currents — horizontal forces across the chain
 

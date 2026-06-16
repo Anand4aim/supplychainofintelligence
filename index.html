@@ -245,22 +245,55 @@
         <li><strong>L8 Memory:</strong> Session, entity, network, institutional, and world-model memory.</li>
       </ol>
 
-      <h2>The 4 Structural Laws</h2>
+      <h2>The 4 Structural Laws (full text)</h2>
       <ol>
-        <li><strong>Intelligence Commoditizes Downward.</strong> If a product depends only on generic model capability, the platform layer below it absorbs the value. Wrappers become features.</li>
-        <li><strong>Value Accrues at Bottlenecks.</strong> Durable value sits at the scarce layer — proprietary data, workflow control, verification, distribution, memory, compliance, or trust.</li>
-        <li><strong>The Surface Captures Attention; the Chain Captures Power.</strong> A beautiful UI gets users. Durable companies own a deeper layer of the chain.</li>
-        <li><strong>Generation and Verification Must Be Separate.</strong> Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities.</li>
+        <li><strong>Law I — Intelligence Commoditizes Downward.</strong> If a product depends only on generic model capability, the platform layer beneath it absorbs the value. Wrappers don't survive — wrappers become features. Predicts WHO gets absorbed (e.g. Jasper $1.5B → ~$300M once ChatGPT shipped). Roadmap verdict: any feature that is only a thin call to L2 is a keep-or-kill decision, not a moat.</li>
+        <li><strong>Law II — Value Accrues at Bottlenecks.</strong> Durable value rarely sits in the model or the UI. It sits at the scarce layer — proprietary data (L1b), workflow control (L5), verification (L3), distribution (L4), memory (L8c–e), compliance (L3a), or trust. Predicts WHERE value is going (NVIDIA owns L0, Vanta owns L3, Bloomberg owns L1b). Roadmap verdict: move toward the scarce layer, not toward a prettier surface.</li>
+        <li><strong>Law III — The Surface Captures Attention; the Chain Captures Power.</strong> A beautiful UI may get users. Durable companies own a deeper layer — data, execution, memory, gates. Surface without depth is a graveyard. Example: Gamma owns L7 only; Replit owns L4+L5+L6+L8. Same category, different fate.</li>
+        <li><strong>Law IV — Generation and Verification Must Be Separate.</strong> Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. L3 above L2/L5 is structurally permanent in those industries (Vanta over AWS, Snyk over Copilot, Big-4 audit over SAP, FDA over Pfizer). A hard architectural mandate, not a preference.</li>
       </ol>
 
       <h2>The Defensible Triangle</h2>
       <p>The most common fortress pattern for application-layer AI companies: <strong>L1b proprietary data + L5a/b/d deep skills and playbooks + L8c/d/e compounding memory</strong>. Owning one layer deeply (Vanta on L3, NVIDIA on L0, Snowflake on L4) is another route to survival.</p>
 
       <h2>The AI Defensibility Audit</h2>
-      <p>An eight-question scorecard scoring 1–5 across model dependency, data ownership, workflow depth, trust gate, distribution, memory, switching cost, and platform exposure. Scores classify a product as Thin Wrapper, Useful Tool with Weak Moat, Workflow Product, Defensible AI System, or Intelligence Gate.</p>
+      <p>Eight 1–5 questions scoring: (1) model dependency, (2) data ownership, (3) workflow depth, (4) trust gate, (5) distribution, (6) memory, (7) switching cost, (8) platform exposure. Bands: <strong>Thin Wrapper → Useful Tool, Weak Moat → Workflow Product → Defensible AI System → Intelligence Gate</strong>.</p>
+
+      <h2>The 5 Observations</h2>
+      <ol>
+        <li><strong>The Two-Vendor Rule.</strong> Buyers pay for two vendors when one mistake is unrecoverable (Cursor + Snyk, Harvey + Ironclad).</li>
+        <li><strong>Regulatory Half-Life.</strong> L3 in regulated industries outlives 3+ model generations (Vanta, Drata, Epic).</li>
+        <li><strong>The Bundling Asymmetry.</strong> Platforms expand into adjacent layers but never across the trust boundary above themselves (OpenAI ships agents but will never issue its own SOC 2).</li>
+        <li><strong>Memory Is Not Truth.</strong> L8 memory is defensible; L8 truth-claims trigger an L3 verifier.</li>
+        <li><strong>Distribution Eats Generation.</strong> When L2 commoditizes, the moment-of-consumption captures the surplus (Cursor, Perplexity).</li>
+      </ol>
+
+      <h2>The 3 Currents (horizontal forces — not layers)</h2>
+      <ol>
+        <li><strong>Demand Gravity.</strong> Where the budget actually sits (CFO/CIO/LOB/CEO discretionary) and what it pulls toward as L2 prices collapse. Defensibility without a budgeted buyer is zero.</li>
+        <li><strong>Attention Economics.</strong> When generation becomes infinite, the eyeball becomes scarce. Default placement and on-ramp ownership are the rent (Apple/Google/Microsoft as L7 landlords).</li>
+        <li><strong>Capital Flows.</strong> Funding is reflexive — rounds reshape the layers they fund, overheating the fashionable layer (L2) and starving the bottleneck (L-1). Read the funding map as a distortion field, not a value signal.</li>
+      </ol>
+      <p><em>Geopolitics and regulation are NOT currents — they live at L-1 and L3.</em></p>
+
+      <h2>All 50 sublayers</h2>
+      <ul>
+        <li><strong>L-1 Resources:</strong> L-1a Energy &amp; Grid Interconnect · L-1b Thermal &amp; Water Management · L-1c Fabrication &amp; Foundry · L-1d Critical Materials &amp; Supply Chain · L-1e Skilled Trades &amp; Human Capital.</li>
+        <li><strong>L0 Infrastructure:</strong> L0a Silicon &amp; Memory (incl. HBM) · L0b Data Centers · L0c Interconnect Fabric · L0d Compute &amp; State Infrastructure · L0e Edge &amp; On-Device Compute.</li>
+        <li><strong>L1 Data:</strong> L1a Public &amp; Open · L1b Proprietary ★ · L1c Behavioral &amp; Sensor ★ (clicks plus LiDAR/IMU/telemetry) · L1d Outcome ★ · L1e Synthetic &amp; Simulation (Isaac Sim, CARLA, Omniverse).</li>
+        <li><strong>L2 Models:</strong> L2a Foundation &amp; Multimodal (incl. VLA, video) · L2b Specialized &amp; Fine-Tuned (PEFT/LoRA, distilled) · L2c Embedding &amp; Retrieval · L2d Model Routing &amp; Composition · L2e Reasoning &amp; World Models (V-JEPA, Genie, Sora-as-simulator).</li>
+        <li><strong>L3 Gatekeeping:</strong> L3a Compliance &amp; Export Controls (incl. chip bans, sovereignty) · L3b Quality Gates · L3c Safety, Security &amp; Provenance (C2PA, watermarking) · L3d Editorial ★ · L3e Distribution ★.</li>
+        <li><strong>L4 Access:</strong> L4a API &amp; Integration · L4b Agent Interface Protocols ★ (MCP) · L4c Access Governance &amp; Agent Commerce (agent-pay rails) · L4d Real-Time Interaction Infrastructure · L4e Agent Identity &amp; Provenance ★.</li>
+        <li><strong>L5 Execution:</strong> L5a Domain Execution &amp; Tool Use ★ (function calling, code interpreter, browser/computer use) · L5b Decision Frameworks &amp; Reasoning Scaffolds ★ · L5c Retrieval-Augmented Workflows · L5d Operating Playbooks ★ · L5e Interaction Skills &amp; Actuation (incl. robotic actuation).</li>
+        <li><strong>L6 Orchestration:</strong> L6a Agent Loops · L6b Human-in-the-Loop ★ · L6c Role Routing &amp; Task Decomposition · L6d Context &amp; State Management · L6e Runtime Assurance &amp; Learning Loops.</li>
+        <li><strong>L7 Surface:</strong> L7a Conversational · L7b Visual Interfaces &amp; Media · L7c Embedded &amp; Embodied AI ★ (IDE copilots, robots, devices) · L7d Transaction Surface ★ · L7e Async &amp; Ambient Surfaces.</li>
+        <li><strong>L8 Memory:</strong> L8a Session &amp; Short-Term · L8b User &amp; Entity Profiles · L8c Aggregated Network Learning ★ · L8d Institutional Knowledge ★ · L8e Learned World Models ★.</li>
+      </ul>
+      <p><em>★ marks defensible sublayers. The Defensible Triangle composes L1b + L5a/b/d + L8c/d/e.</em></p>
 
       <h2>The Intelligence Cube</h2>
       <p>A diagnostic plotting any company across 10 functions × 10 verticals × 10 layers. Volume in the Cube equals structural durability.</p>
+
 
       <p><strong>JTBD finds demand. The Supply Chain of Intelligence finds defensibility.</strong></p>
       <p>© Anand Arivukkarasu. The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu — credit appreciated but not required for discussion, teaching, or critique. Suggested attribution: "Anand Arivukkarasu — The Supply Chain of Intelligence (https://supplychainofai.com)".</p>
