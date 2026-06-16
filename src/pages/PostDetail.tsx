@@ -7,16 +7,21 @@ import AboveBelowLinePoster from "@/components/posters/AboveBelowLinePoster";
 import AgentDecoderPoster from "@/components/posters/AgentDecoderPoster";
 import StackCompressionMapPoster from "@/components/posters/StackCompressionMapPoster";
 import FourLawsPoster from "@/components/posters/FourLawsPoster";
+import FrameworkComparisonHero from "@/components/posts/FrameworkComparisonHero";
+import FrameworkCoverageMatrix from "@/components/posts/FrameworkCoverageMatrix";
 import { getPostBySlug } from "@/data/posts";
 import { ArrowLeft, Linkedin } from "lucide-react";
 
-// Inline poster markers in post body: [[poster:hero|four-laws|agent-decoder|above-below|compression]]
+// Inline poster markers in post body:
+// [[poster:hero|four-laws|agent-decoder|above-below|compression|framework-compare-hero|framework-coverage]]
 const INLINE_POSTERS: Record<string, React.ComponentType> = {
   hero: HeroBrandPoster,
   "four-laws": FourLawsPoster,
   "agent-decoder": AgentDecoderPoster,
   "above-below": AboveBelowLinePoster,
   compression: StackCompressionMapPoster,
+  "framework-compare-hero": FrameworkComparisonHero,
+  "framework-coverage": FrameworkCoverageMatrix,
 };
 
 // Tiny inline markdown: **bold**, _italic_, drop everything else.
