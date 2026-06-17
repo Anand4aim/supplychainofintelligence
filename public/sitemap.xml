@@ -124,4 +124,13 @@
   <url><loc>https://supplychainofai.com/market-map/travel-hospitality</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://supplychainofai.com/market-map/construction-aec</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://supplychainofai.com/market-map/telecom-media</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Opinion posts -->
+  <url><loc>https://supplychainofai.com/posts</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://supplychainofai.com/posts/why-workflows-and-distribution-are-not-new-layers</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/posts/software-for-one-still-rides-shared-rails</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/posts/model-routing-is-an-l2d-story</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/posts/five-ai-frameworks-every-product-leader-should-know</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/posts/why-every-ai-product-leader-needs-a-map</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://supplychainofai.com/posts/every-ai-conversation-is-at-the-wrong-layer</loc><lastmod>2026-06-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
