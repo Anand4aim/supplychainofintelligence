@@ -17,7 +17,7 @@ export type Post = {
    *  Use ">>" prefix to render a callout/pullquote block. */
   body: string[];
   /** Optional image references shown above the fold. */
-  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero";
+  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one";
 };
 
 export const POSTS: Post[] = [
@@ -100,7 +100,7 @@ export const POSTS: Post[] = [
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
-    heroPoster: "above-below",
+    heroPoster: "software-for-one",
     body: [
       ">> “The next wave of software won't be built for millions of users. It'll be built for one.”",
       "It's a good line, and the directional read is right. The cost of producing a working piece of software is collapsing toward zero. A personal agent that knows your calendar, your inbox, your contracts, your spend, and your taste is now buildable for an audience of one. That was a fantasy in 2022. It's a weekend project in 2026.",

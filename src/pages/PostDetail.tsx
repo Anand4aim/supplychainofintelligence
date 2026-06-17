@@ -7,6 +7,7 @@ import AboveBelowLinePoster from "@/components/posters/AboveBelowLinePoster";
 import AgentDecoderPoster from "@/components/posters/AgentDecoderPoster";
 import StackCompressionMapPoster from "@/components/posters/StackCompressionMapPoster";
 import FourLawsPoster from "@/components/posters/FourLawsPoster";
+import SoftwareForOnePoster from "@/components/posters/SoftwareForOnePoster";
 import FrameworkComparisonHero from "@/components/posts/FrameworkComparisonHero";
 import FrameworkCoverageMatrix from "@/components/posts/FrameworkCoverageMatrix";
 import { getPostBySlug } from "@/data/posts";
@@ -55,7 +56,9 @@ const PostDetail = () => {
           ? StackCompressionMapPoster
           : post.heroPoster === "framework-compare-hero"
             ? FrameworkComparisonHero
-            : HeroBrandPoster;
+            : post.heroPoster === "software-for-one"
+              ? SoftwareForOnePoster
+              : HeroBrandPoster;
 
   return (
     <SiteLayout>
