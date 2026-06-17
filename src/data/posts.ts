@@ -22,6 +22,74 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "why-workflows-and-distribution-are-not-new-layers",
+    title: "Why Workflows and Distribution Are Not New Layers in SCoI.",
+    subtitle:
+      "Every few weeks someone proposes an L9 Workflows or an L10 Distribution sitting above Memory. The Supply Chain of Intelligence™ (SCoI) already absorbs both — and the reason it doesn't add them is the same reason the framework works at all.",
+    excerpt:
+      "The 10-layer stack stops at Memory on purpose. Workflows are not a layer above L8 — they're L6 Orchestration plus L5d Operating Playbooks doing their job. Distribution is not a layer above L7 — it's a horizontal force already split across L3e, L7, and two of the Three Currents. Adding either as a new floor breaks the stack logic. Here's the decode.",
+    publishedAt: "2026-06-17",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 7,
+    body: [
+      ">> “Shouldn't there be an L9 for workflows? And an L10 for distribution?”",
+      "It's the single most common framework question I get, and it's a good one. Both concepts are real. Both matter. Both already exist inside the Supply Chain of Intelligence™ (SCoI) — just not as new floors stacked on top of Memory. This post is the explicit decode, because the answer is more interesting than “no.”",
+      "The short version: **SCoI is not a linear path from raw resources to a product surface.** It's a vertical stack of intelligence layers crossed by horizontal forces. Workflows and Distribution are real, but they don't live on the vertical axis. Treating them as L9 and L10 collapses the framework's most important property — the boundary between intelligence and business.",
+
+      "## What the 10 layers actually are",
+
+      "Before answering where Workflows and Distribution go, it's worth restating what the stack _is_, because the question usually assumes the stack is a value chain. It isn't.",
+      "**SCoI traces intelligence from raw resources to compounding memory.** L-1 Geopolitics. L0 Infrastructure. L1 Data. L2 Models. L3 Gatekeeping. L4 Access. L5 Execution. L6 Orchestration. L7 Surface. L8 Memory. That's the spine. Each layer is a distinct kind of intelligence work — not a distinct business activity. The stack ends at Memory because Memory is the highest-order form of intelligence the system can produce on its own. Anything above Memory is no longer intelligence work. It's commercial work _on top of_ intelligence.",
+      ">> The stack ends at Memory by design. Everything below is infrastructure. Everything above is business strategy. The boundary is the framework's main load-bearing wall.",
+      "Once you see the boundary, the question changes shape. Workflows and Distribution are not absent from SCoI. They are deliberately placed _where they actually act_ — and that turns out not to be a new floor on top.",
+
+      "## Workflows: already L6 Orchestration + L5d Operating Playbooks",
+
+      "“Workflows” as people typically mean it — multi-app processes, automation pipelines, multi-step agent behavior across tools — is a textbook description of what **L6 Orchestration** does. Specifically:",
+      "**L6a Agent Loops** — the actual run-loop that takes a goal, plans steps, calls tools, observes results, and decides what's next. That _is_ a workflow engine. It's just generalized.",
+      "**L6c Role Routing & Task Decomposition** — splitting a job across specialized callers (a planner, a coder, a verifier, a summarizer). That's the multi-step part of a workflow.",
+      "**L6d Context Management** — carrying state across tools, sessions, and handoffs. That's the “pipeline” part — what makes step 7 know what happened in step 2.",
+      "Pair that with **L5d Operating Playbooks** at the Execution layer — the codified, repeatable patterns of _how this kind of work gets done in this domain_ — and you have exactly what classical workflow products (Zapier, n8n, Make, Workato, even Power Automate) ship, plus the agentic version on top.",
+      "Calling this a new L9 would be like adding a layer above Models called “inference” — it's not a new layer, it's the work the existing layer was defined to do. If anything, the move is the opposite: when workflows feel under-weighted, **promote a sublayer**, don't invent a floor. The vocabulary already exists.",
+
+      "## Distribution: a horizontal force, not a vertical layer",
+
+      "Distribution is the harder one, because the temptation to make it L10 is real. Every product person has felt it. “Without distribution none of this matters, therefore distribution must be a layer.” The first half is true. The second half doesn't follow.",
+      "Distribution in SCoI is _already_ split across the framework, in four different places, and each placement is doing specific work:",
+      "**L3e Distribution Gates** — app stores, model marketplaces, browser defaults, OS-level agent slots, enterprise procurement gates. The _gatekeeping_ of distribution. This is where Apple, Google, Microsoft, AWS Marketplace, and Salesforce AppExchange actually live in the framework. It's a sublayer of Gatekeeping for a reason: distribution at this level is _permission_, not channel.",
+      "**L7 Surface** — the product surface itself is the distribution endpoint for the user. A great L7 _is_ a distribution advantage. ChatGPT's surface is its distribution. Cursor's surface is its distribution. Distribution and Surface aren't separable at the product level.",
+      "**Current I — Demand Gravity** — the horizontal force pulling users toward whichever surface is sticky enough to become the default. Demand Gravity _is_ distribution viewed from the user side. It cuts across every layer; it doesn't sit on top of any of them.",
+      "**Current II — Attention Economics** — the horizontal force determining what content, what surface, what agent gets reach. Attention Economics _is_ distribution viewed from the channel side. Also horizontal. Also cross-cutting.",
+      "Four placements, each with a job. None of them require a 10th-floor “Distribution” layer to be coherent. The framework already pays distribution the respect it deserves — by refusing to flatten it into a single vertical slot.",
+      ">> Distribution isn't missing from SCoI. It's everywhere in SCoI — which is exactly why it can't be a single layer.",
+
+      "## Why “not linear” is the whole point",
+
+      "The instinct to add L9 and L10 comes from a hidden assumption: that SCoI is a linear value chain, like a manufacturing line, where raw material enters on the left and a packaged product leaves on the right. If that were true, then yes — Workflows and Distribution would be the natural next stations after Memory.",
+      "But SCoI was never linear. The structure is a **vertical stack crossed by horizontal forces**, with **four structural laws** governing how value moves and **three currents** sweeping across all layers at once. The shape on the page is a stack because intelligence has a substrate-to-surface direction — you can't have L5 Execution without L2 Models, you can't have L2 Models without L1 Data, and so on. But the _business_ around the stack is not stacked. It threads through it.",
+      "That's why **Geopolitics is L-1 _and_ shows up again at L3**. Why **Capital Flows is Current III**, not a layer. Why **agents** aren't a layer at all — they're a packaging of L5+L7(+L8). The framework's whole point is that real-world phenomena rarely sit on exactly one floor. The discipline is in placing each phenomenon where it _acts_, not where it _feels visible_.",
+      "Workflows feel like a layer because we shipped workflow products for twenty years. Distribution feels like a layer because GTM teams own a P&L. Neither feeling is wrong — but neither is structural. Inside SCoI, both are already accounted for, in the places they actually exert force.",
+
+      "## What this means in practice",
+
+      "**If you're an operator:** when a vendor pitches you a “workflow layer” or a “distribution layer,” decode it. A workflow product is L6 Orchestration plus L5d Playbooks — judge it on L6a loop quality, L6c routing, L6d context, and L5d domain depth. A distribution play is L3e gatekeeping, L7 surface, or one of the Currents — judge it on which one, because the moats are completely different.",
+      "**If you're a builder:** don't ship a “workflow layer” company. Ship an L6 Orchestration company with a clear L5d playbook, or a vertical L5 Execution company that uses L6 well. Don't ship a “distribution layer” company. Ship an L7 Surface, an L3e Gate, or a Demand Gravity / Attention Economics play — and be honest about which one.",
+      "**If you're an investor:** any deck that proposes a new top-of-stack layer above L8 Memory is usually re-naming L6 or L7 to look more defensible. The defensibility test is **Law II (Value Accrues at Bottlenecks)** — does this thing aggregate flow that nothing else can route around? Workflows don't, on their own. Distribution does, but only at L3e and the Currents, not as a generic “layer.”",
+
+      "## The 10-layer count is doing work",
+
+      "Last point, the meta one. The 10-layer number is now part of the framework's identity — “the 10 layers of the generative AI stack.” Diluting it by adding L9 and L10 every time a new product category gets hot would turn SCoI from a structural framework into a feature list. The reason the framework is useful is precisely that it _refuses_ to grow a new layer for every trend.",
+      "Memory is the ceiling. Geopolitics is the floor. Between them, ten layers of intelligence work. Around them, three currents and four laws. That's the whole map. Workflows and Distribution don't get new floors — they get correctly placed inside the map that already exists.",
+      "Not linear. Not flat. Stacked plus crossed. That's the design.",
+
+      "---",
+
+      "The full framework — 10 layers, 50 sublayers, 4 structural laws, 3 currents, 6 archetypes — is free at **supplychainofai.com**. No signup, no paywall.",
+      "— Anand Arivukkarasu",
+    ],
+  },
+  {
     slug: "software-for-one-still-rides-shared-rails",
     title: "The Next Wave of Software Will Be Built for One. It Will Still Ride Shared Rails.",
     subtitle:
