@@ -22,6 +22,67 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "model-routing-is-an-l2d-story",
+    title: "Model Routing Is an L2d Story — and a Law I Receipt.",
+    subtitle:
+      "When applied-AI leaders talk about routing between models, they're not describing a new layer. They're describing intelligence commoditizing downward in real time — and naming who captures the surplus.",
+    excerpt:
+      "Cost optimization, capability maximization, risk mitigation. Three reasons everyone is suddenly talking about model routing. All three resolve to one sublayer (L2d) and one law (Intelligence Commoditizes Downward). Here's the decode, and why the value doesn't actually accrue to the router.",
+    publishedAt: "2026-06-17",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 6,
+    heroPoster: "compression",
+    body: [
+      "A line I keep hearing in operator and investor conversations right now:",
+      ">> “Over the coming weeks and months you're going to hear a lot more about model routing. This is one of the biggest plays for the applied AI layer.”",
+      "The framing is right. The layer attribution is usually wrong. Most people are calling routing a new category. Structurally, it isn't. It's a single sublayer of L2 — **L2d Model Routing & Composition** — getting pulled into the spotlight because the layer above it (L5 Execution) finally has a reason to use it at scale.",
+      "Worth decoding properly, because the difference between “routing is a category” and “routing is a sublayer that benefits L5” changes who you'd back, who you'd build, and which roadmap items you'd cut.",
+
+      "## The three reasons, mapped to the framework",
+
+      "The argument for routing usually shows up as three bullets. Each one lands cleanly on the stack.",
+      "**1. Cost optimization.** Frontier intelligence for planning and review, cheaper or open-source models for the bulk of the workload. This is pure **L2d Model Routing & Composition** — the sublayer was literally defined for this. It's also the most visible signal of **Law I (Intelligence Commoditizes Downward)** in action: once you can swap a frontier call for an OSS call mid-workflow without quality loss, the frontier model has been commoditized for that step. Not someday. That step, that workload, today.",
+      "**2. Capability maximization.** Different models are better at tool use, coding, or domain knowledge. Route accordingly. Still **L2d** as the capability — but the _decision_ of which model to call for which step is made at runtime by **L6a Agent Loops** and **L6c Role Routing & Task Decomposition**. This is the L2↔L6 seam, and it's why standalone “router” startups keep getting absorbed into orchestration frameworks. The capability lives at L2d; the caller lives at L6.",
+      "**3. Risk mitigation.** If a government restricts a model or a provider has a Fable-style incident, you want to swap providers without rebuilding the workflow. That's **L3a Compliance & Export Controls** treating routing as a compliance primitive, not just a cost lever. Once routing is load-bearing for compliance, it stops being optional infrastructure — and L3's grip on the stack tightens by one more notch (consistent with **Law IV — Generation and Verification Must Be Separate**).",
+      "Three reasons, three layers touched: **L2d** (the capability), **L6a/L6c** (the runtime that uses it), **L3a** (the compliance reason it becomes mandatory). One framework, no new vocabulary required.",
+
+      "## Who actually captures the value",
+
+      "Here's where the popular framing gets the conclusion right for the wrong reason.",
+      "The claim is that routing shifts value to “the applied AI layer.” Correct. In framework language: **L5 Execution** captures the surplus. But not because L5 owns routing. Because L5 finally gets to treat L2 as a swappable commodity — which is the textbook definition of **Law I**.",
+      ">> When a layer becomes commoditized downward, the layer above it captures the surplus. Routing is the mechanism. L5 is the beneficiary.",
+      "This is the same pattern that played out with databases under SaaS, with compute under SaaS, and with CDNs under media companies. The layer that commoditizes doesn't capture the value it releases — the layer above does. Routing is L2 telling on itself.",
+      "Which means the interesting question isn't “who builds the best router.” It's “which L5 companies are positioned to harvest the L2 surplus when routing is free.” Two answers stand out:",
+      "**L5 companies with L1b Proprietary Data.** If your moat is data the model can't get elsewhere, the choice of model becomes irrelevant — you win on inputs, not on inference. Harvey, Bloomberg-style verticals, anything with regulated corpus access.",
+      "**L5 companies with L8 Memory that compounds.** If the system remembers the user, the workflow, and the institution across sessions, swapping the underlying L2 is a config change. The moat is in L8, not in which model answered the last call. This is **Law III (Surface Captures Attention; Chain Captures Power)** read forward.",
+
+      "## Where routing as a _product_ gets compressed",
+
+      "Standalone routing products are in a familiar spot. The capability is real. The defensibility isn't.",
+      "L2 providers will ship routing themselves (OpenAI's model picker, Anthropic's tier selection, Bedrock-style multi-model endpoints) — that's L2d absorbing the function back into L2. Orchestration frameworks (LangChain, CrewAI, the agent stacks) will ship routing as a built-in primitive — that's L6 absorbing it upward. Both directions of compression. Same logic as every other middleware story in the last two cycles.",
+      "The companies that survive at L2d will be the ones that turn routing into something neither L2 nor L6 can easily replicate: cross-provider evals tied to **L3b Quality Gates**, enterprise audit trails tied to **L3a**, or workload-specific routing policies tied to a vertical's compliance regime. In other words — L2d only survives by anchoring into L3. Pure routing is a feature.",
+
+      "## What to do with this",
+
+      "If you're a **product leader at an L5 company**: routing is good news for you. It means the cost and capability ceiling above you is about to drop. Spend the surplus on L1b (proprietary data) and L8 (memory). Do not spend it on building your own router — that's the layer commoditizing.",
+      "If you're an **investor**: when you see a pitch deck for a routing company, ask one question — what L3 surface are they anchored to? No answer means they're a feature waiting to be absorbed. A real answer (audit, compliance, eval governance) means they may have a wedge.",
+      "If you're a **founder building at L2d**: the capability is necessary. Necessary capabilities without anchors get absorbed. Pick your anchor early.",
+
+      "[[poster:four-laws]]",
+
+      "## The bigger pattern",
+
+      "Model routing isn't the story. It's a symptom. The story is that L2 is becoming the layer everyone routes _through_ rather than the layer everyone builds _on top of_. That's what commoditization looks like from the inside — and it's exactly what the framework predicts.",
+      "Watch for the same pattern at L7 over the next twelve months. Surface routing — picking between ChatGPT, Gemini, Copilot, and Claude for the same task — will follow the same arc. Same law. Different layer.",
+
+      "---",
+
+      "The full framework — 10 layers, 50 sublayers, 4 structural laws — is free at **supplychainofai.com**. No signup, no paywall.",
+      "— Anand Arivukkarasu",
+    ],
+  },
+  {
     slug: "five-ai-frameworks-every-product-leader-should-know",
     title: "Five AI Frameworks Every Product Leader & Investor Should Know in 2026.",
     subtitle:
