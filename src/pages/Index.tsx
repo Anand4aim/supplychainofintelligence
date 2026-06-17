@@ -98,7 +98,7 @@ const Index = () => {
             >
               <div className="mb-3">
                 <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent">
-                  The Supply Chain of Intelligence™
+                  The Supply Chain of Intelligence™ (SCoI)
                 </p>
               </div>
               <div
