@@ -18,6 +18,7 @@ import { pathToFileURL } from "url";
 import { CASE_STUDIES } from "../src/data/caseStudies";
 import { LAYERS } from "../src/data/layers";
 import { LAW_ESSAYS } from "../src/data/lawEssays";
+import { POSTS } from "../src/data/posts";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
