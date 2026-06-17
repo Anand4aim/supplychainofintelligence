@@ -12,6 +12,7 @@ Distribution: every high-signal visual uses <ExportablePng> (watermarked PNG exp
 Apollo (slug: apollo-thin-stack-survivor) is the canonical SaaSpocalypse-survivor explainer: L1b moat + L2 MCP connector + receding L7 = thin-stack survival. Use as the reference example when teaching the framework.
 
 ## Memories
+- [Two-register visual system](mem://design/two-register-system) — editorial (sketch) vs reference (clean) surfaces; which pages use which; AuthorNote rules
 - [SCoI acronym](mem://preferences/scoi-acronym) — Subtle acronym usage for Supply Chain of Intelligence™: headers, footers, posters, metadata; never replace first mention
 - [Framework content](mem://features/framework) — 8 layers, 3 laws, Intelligence Cube, 6 archetypes
 - [Design tokens](mem://design/tokens) — Layer colors L0-L8, brand palette, typography
