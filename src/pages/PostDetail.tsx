@@ -56,7 +56,9 @@ const PostDetail = () => {
           ? StackCompressionMapPoster
           : post.heroPoster === "framework-compare-hero"
             ? FrameworkComparisonHero
-            : HeroBrandPoster;
+            : post.heroPoster === "software-for-one"
+              ? SoftwareForOnePoster
+              : HeroBrandPoster;
 
   return (
     <SiteLayout>
