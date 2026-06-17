@@ -177,6 +177,7 @@ const summarizeSources = (urls: string[] | null | undefined): { count: number; o
 const LivePage = () => {
   const [articles, setArticles] = useState<LiveArticle[]>([]);
   const [loading, setLoading] = useState(true);
+  const [tab, setTab] = useState<"news" | "opinion">("news");
 
   const load = async () => {
     const { data } = await supabase
