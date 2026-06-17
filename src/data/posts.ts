@@ -17,7 +17,7 @@ export type Post = {
    *  Use ">>" prefix to render a callout/pullquote block. */
   body: string[];
   /** Optional image references shown above the fold. */
-  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one";
+  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one" | "no-new-layers";
 };
 
 export const POSTS: Post[] = [
@@ -32,6 +32,7 @@ export const POSTS: Post[] = [
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 7,
+    heroPoster: "no-new-layers",
     body: [
       ">> “Shouldn't there be an L9 for workflows? And an L10 for distribution?”",
       "It's the single most common framework question I get, and it's a good one. Both concepts are real. Both matter. Both already exist inside the Supply Chain of Intelligence™ (SCoI) — just not as new floors stacked on top of Memory. This post is the explicit decode, because the answer is more interesting than “no.”",
