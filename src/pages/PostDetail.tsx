@@ -2,6 +2,12 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
+import AuthorNote from "@/components/AuthorNote";
+import {
+  SketchFilters,
+  SketchBox,
+  SketchConnector,
+} from "@/components/sketch/SketchElements";
 import HeroBrandPoster from "@/components/posters/HeroBrandPoster";
 import AboveBelowLinePoster from "@/components/posters/AboveBelowLinePoster";
 import AgentDecoderPoster from "@/components/posters/AgentDecoderPoster";
