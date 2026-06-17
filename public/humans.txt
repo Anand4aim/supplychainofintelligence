@@ -10,7 +10,7 @@ The Supply Chain of Intelligence tells you where AI value accrues — and who ca
 JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
 
 /* FRAMEWORK */
-Name: The Supply Chain of Intelligence™
+Name: The Supply Chain of Intelligence™ (SCoI)
 Structure: 10 Layers · 50 Sublayers · 4 Structural Laws · The Intelligence Cube · AI Defensibility Audit
 
 The 10 Layers:

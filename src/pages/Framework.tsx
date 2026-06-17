@@ -35,9 +35,12 @@ const FrameworkPage = () => (
       <div className="max-w-4xl mx-auto px-6 py-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <Eyebrow className="mb-6">The Framework</Eyebrow>
-          <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-6">
+          <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-1">
             The Supply Chain of Intelligence™
           </h1>
+          <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
+            <span style={{ textTransform: 'none' }}>SCoI</span> — the 10 layers of the generative AI stack
+          </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
             <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
             The Supply Chain of Intelligence tells you{" "}
