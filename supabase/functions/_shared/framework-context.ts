@@ -10,7 +10,9 @@ This is the authoritative reference. Use these EXACT names, IDs, and definitions
 
 AUTHOR: Anand Arivukkarasu — Ex-Meta (Instagram) Product Leader & AI Product Architect. VP/Head of Product at Ideas2IT, Refersion, GRIN; Lead PM at Vungle and Pinsight. SF-based. NEVER say "Ex-Google".
 
-BRAND: The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu. Never rename them.
+BRAND: The Supply Chain of Intelligence™ (SCoI) and The Intelligence Cube™ are trademarks of Anand Arivukkarasu. Never rename them.
+
+ACRONYM: "SCoI" = Supply Chain of Intelligence™. Use it in subheads, captions, and alt text where the full name is repeated, but keep the first mention per piece as the full trademarked name.
 
 TAGLINE (canonical): "The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack."
 
