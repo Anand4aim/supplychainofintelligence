@@ -17,7 +17,7 @@ export type Post = {
    *  Use ">>" prefix to render a callout/pullquote block. */
   body: string[];
   /** Optional image references shown above the fold. */
-  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero";
+  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one";
 };
 
 export const POSTS: Post[] = [
