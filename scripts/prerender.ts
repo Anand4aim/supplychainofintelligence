@@ -89,6 +89,8 @@ const routes: string[] = [
   "/market-map",
   "/faq",
   ...LAW_ESSAYS.map((e) => `/laws/${e.slug}`),
+  "/posts",
+  ...POSTS.map((p) => `/posts/${p.slug}`),
 ];
 
 interface RenderFn {
