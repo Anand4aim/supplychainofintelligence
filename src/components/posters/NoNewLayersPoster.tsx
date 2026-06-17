@@ -1,5 +1,5 @@
 import ExportablePng from "@/components/ExportablePng";
-import heroImg from "@/assets/no-new-layers-anatomy-sketch.png";
+import heroImg from "@/assets/no-new-layers-sketch.png";
 
 /**
  * NoNewLayersPoster — hand-drawn hero for the "Why Workflows and Distribution

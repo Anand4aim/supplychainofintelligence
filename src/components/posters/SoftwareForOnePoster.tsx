@@ -1,5 +1,5 @@
 import ExportablePng from "@/components/ExportablePng";
-import heroImg from "@/assets/software-for-one-anatomy-sketch.png";
+import heroImg from "@/assets/software-for-one-shared-rails.png";
 
 /**
  * SoftwareForOnePoster — the hero image for the "built for one" article.
