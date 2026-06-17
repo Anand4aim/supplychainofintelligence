@@ -28,7 +28,7 @@ const StackPoster = () => {
         {/* Header */}
         <div className="mb-4 md:mb-5">
           <p className="font-mono-marker text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-accent">
-            The Supply Chain of Intelligence™ (SCoI)
+            The Supply Chain of Intelligence™ <span style={{ textTransform: 'none' }}>(SCoI)</span>
           </p>
           <h2 className="font-display text-xl md:text-2xl leading-tight text-foreground mt-1">
             The 10 layers of the generative AI stack.

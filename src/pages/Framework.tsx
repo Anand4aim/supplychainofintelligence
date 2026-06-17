@@ -39,7 +39,7 @@ const FrameworkPage = () => (
             The Supply Chain of Intelligence™
           </h1>
           <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
-            SCoI — the 10 layers of the generative AI stack
+            <span style={{ textTransform: 'none' }}>SCoI</span> — the 10 layers of the generative AI stack
           </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
             <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
