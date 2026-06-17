@@ -86,7 +86,6 @@ export const POSTS: Post[] = [
       "---",
 
       "The full framework — 10 layers, 50 sublayers, 4 structural laws, 3 currents, 6 archetypes — is free at **supplychainofai.com**. No signup, no paywall.",
-      "— Anand Arivukkarasu",
     ],
   },
   {
@@ -151,7 +150,6 @@ export const POSTS: Post[] = [
       "---",
  
       "The full framework — 10 layers, 50 sublayers, 4 structural laws — is free at **supplychainofai.com**. No signup, no paywall.",
-      "— Anand Arivukkarasu",
     ],
   },
   {
@@ -212,7 +210,6 @@ export const POSTS: Post[] = [
       "---",
 
       "The full framework — 10 layers, 50 sublayers, 4 structural laws — is free at **supplychainofai.com**. No signup, no paywall.",
-      "— Anand Arivukkarasu",
     ],
   },
   {
@@ -291,7 +288,6 @@ export const POSTS: Post[] = [
 
       "The full Supply Chain of Intelligence™ framework — 10 layers, 50 sublayers, 4 structural laws, the Intelligence Cube, case studies, and downloadable posters — is free at **supplychainofai.com**. No signup. No paywall. Take what is useful.",
       "If you use a framework I missed and think it deserves to be on this list, tell me on LinkedIn. I'll add it to the next version.",
-      "— Anand Arivukkarasu",
     ],
   },
   {
@@ -369,7 +365,6 @@ export const POSTS: Post[] = [
       "My hope is that over time it becomes useful the same way JTBD became useful: not as something people admire, but as a language founders, PMs, and investors naturally think in.",
       "Because the next generation of AI winners probably will not be determined only by who generates intelligence best. It will be determined by **who structurally owns the deepest parts of the chain**.",
       "The full framework — 10 layers, 50 sublayers, the four laws, the case studies, the live market map, and the downloadable posters — is free at **supplychainofai.com**. No signup. Take what is useful. Cite it where it helps.",
-      "— Anand Arivukkarasu",
     ],
   },
   {
