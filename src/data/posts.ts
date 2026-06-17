@@ -22,6 +22,71 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "software-for-one-still-rides-shared-rails",
+    title: "The Next Wave of Software Will Be Built for One. It Will Still Ride Shared Rails.",
+    subtitle:
+      "Personal agents are the new surface. Stripe, Cloudflare, and the L2 providers are still the substrate. The Supply Chain of Intelligence™ (SCoI) explains why both halves of that sentence have to be true at once.",
+    excerpt:
+      "Every personal agent — one user, one context, one memory — still terminates at someone else's payment rail, someone else's edge, someone else's model. That's not a contradiction. It's Law II: value accrues at bottlenecks, and the bottlenecks for a million single-user agents are exactly the layers that aggregate across all of them.",
+    publishedAt: "2026-06-17",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 6,
+    heroPoster: "above-below",
+    body: [
+      ">> “The next wave of software won't be built for millions of users. It'll be built for one.”",
+      "It's a good line, and the directional read is right. The cost of producing a working piece of software is collapsing toward zero. A personal agent that knows your calendar, your inbox, your contracts, your spend, and your taste is now buildable for an audience of one. That was a fantasy in 2022. It's a weekend project in 2026.",
+      "But the line is only half the story. The half that gets repeated on LinkedIn is the romantic half — software for one, agents per person, the end of the SaaS seat. The half that gets skipped is the structural half: **every one of those single-user agents still terminates at someone else's rails.** Stripe takes the payment. Cloudflare serves the edge. An L2 provider answers the prompt. A compliance vendor signs off on the audit trail.",
+      "Both sentences are true at the same time. The framework is the only thing that makes them stop sounding like a contradiction.",
+ 
+      "## What “software for one” actually is, in framework terms",
+ 
+      "“An agent built for one user” is a packaging story. Decoded into the Supply Chain of Intelligence™ (SCoI), it's a specific stack:",
+      "**L7 Surface** — personal, often ambient or async. Not a SaaS dashboard. A chat thread, a voice loop, an inbox listener, a home-screen tile. **L7a** and **L7e** carry most of these.",
+      "**L8 Memory** — the part that makes “for one” meaningful. **L8a** session memory, **L8b** entity profile (you), and over time **L8d** institutional knowledge of your life. Without L8, the agent is just a prompt with your name in it.",
+      "**L5 Execution** — the actual work: book the thing, draft the reply, reconcile the spend, prep the meeting. **L5a** tool use, **L5d** an operating playbook for _your_ patterns. This is where the agent earns its keep.",
+      "**L6 Orchestration** — the loop that ties it together. **L6a** agent loops, **L6d** context management across your tools.",
+      "**L1b Proprietary Data** — but proprietary _to you_. Your email, your files, your transactions. The smallest possible corpus, the most personal possible moat.",
+      "That's the whole “software for one” package: a tight L5+L6+L7+L8 bundle sitting on a personal L1b. It's real, and it's new, and the SCoI framework already has names for every piece of it. No new layer is required.",
+ 
+      "## What it cannot build itself — and why that's permanent",
+ 
+      "Here is the part the romantic version skips. A personal agent does not — cannot — vertically integrate the stack underneath it. The layers below L5 are shared rails by construction.",
+      "**L0 Infrastructure.** Your agent runs on someone's GPUs and someone's edge. Cloudflare, AWS, CoreWeave, Vercel, Fly. You are not buying a data center for one user.",
+      "**L2 Models.** Your agent calls a frontier model, an open-source model, or a routed mix. You are not training a foundation model for one user either. Even fine-tunes ride on a shared base.",
+      "**L3 Gatekeeping.** When the agent moves money, signs a contract, files a return, or touches health data, someone has to verify. Vanta-style audit. KYC providers. Notary equivalents. **Law IV (Generation and Verification Must Be Separate)** says this gate is non-absorbable — your single-user agent does not get to mark its own homework.",
+      "**L4 Access.** The pipes. Stripe for payments and **L4c agent commerce**. Plaid for bank rails. Twilio for messaging. OAuth providers for identity. MCP-style connectors for tool access. The agent rides L4 — it does not become L4.",
+      ">> A personal agent is a vertical stack at L5–L8. The layers below it are horizontal by physics, not by choice.",
+      "This is **Law II — Value Accrues at Bottlenecks**, viewed from the other side. The bottlenecks for a billion single-user agents are exactly the layers that aggregate _across_ those agents. Stripe doesn't care that your agent is bespoke. It cares that it's one of fifty million bespoke agents all needing to charge a card. That's the entire business.",
+ 
+      "## The two defensibility trades, side by side",
+ 
+      "Once you can hold both halves in your head, the strategic picture clarifies. There are two distinct defensibility games being played at the same time, and they don't compete — they need each other.",
+      "**Top of the stack (L5–L8) wins by going narrower.** One user, one workflow, one corpus, one memory. The moat is depth of context, not breadth of users. **L1b proprietary data** for an audience of one is still **L1b**. **L8 memory** that compounds across one person's life is still a compounding moat — arguably the most defensible kind, because no platform can rip it out without breaking the user's continuity.",
+      "**Bottom of the stack (L0, L2, L3, L4) wins by going wider.** One payment rail for every agent. One edge network for every agent. One compliance gate for every agent. The moat is aggregation across millions of personal stacks that each look nothing like the others. The personalization above is what _drives demand_ for the standardization below.",
+      "This is the same shape we've seen before — App Store + payments + CDN under a million indie apps; Shopify + Stripe + Klaviyo under a million indie brands. Personal agents are the next iteration of the same pattern, with **L8 Memory** added to the moat list. The romance is on top; the rent is on the bottom.",
+ 
+      "[[poster:above-below]]",
+ 
+      "## What this means if you're building",
+ 
+      "**If you're building the agent (L5–L8):** stop trying to also be the rail. Pick the deepest possible **L1b** corpus you can ethically reach for that one user, build **L8** memory that survives model swaps, and treat L0/L2/L3/L4 as a menu. **Law I (Intelligence Commoditizes Downward)** is your friend here — the cheaper the substrate gets, the more surplus there is to capture at the personal layer.",
+      "**If you're building the rail (L0/L3/L4):** the unit you're serving is no longer the company. It's the agent. Pricing, SDKs, identity, audit, error handling — all of it has to assume a non-human caller acting on behalf of a single human principal. The winners at L4c (agent commerce) will be the providers who figure this out first. Stripe is already iterating on it in public. Watch that line of work.",
+      "**If you're investing:** be suspicious of any pitch that claims to own both halves. A personal-agent company that also wants to be the payment rail is fighting Stripe with a thousand-user TAM. A rail provider that also wants to ship the personal agent is fighting the long tail of indie builders. The framework predicts both of those collapse back to their natural layer. Pick a side.",
+ 
+      "## The bigger pattern",
+ 
+      "“Software for one” is not the end of platforms. It's the moment platforms finally get to charge for what they were always going to charge for — the boring, load-bearing layers nobody wants to rebuild. The romance moves up to L7 and L8. The economics stay at L0, L3, and L4.",
+      "If anything, the personal-agent era makes the shared rails _more_ valuable, not less. A million bespoke agents need a million more API calls, a million more payment intents, a million more audit logs, a million more edge requests. The substrate eats well in this scenario. It just doesn't get the headline.",
+      "Hold both halves at once. That's the whole trick.",
+ 
+      "---",
+ 
+      "The full framework — 10 layers, 50 sublayers, 4 structural laws — is free at **supplychainofai.com**. No signup, no paywall.",
+      "— Anand Arivukkarasu",
+    ],
+  },
+  {
     slug: "model-routing-is-an-l2d-story",
     title: "Model Routing Is an L2d Story — and a Law I Receipt.",
     subtitle:
