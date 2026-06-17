@@ -255,7 +255,80 @@ const LivePage = () => {
 
       <section className="bg-secondary/30 border-y border-foreground/10">
         <div className="max-w-5xl mx-auto px-6 py-16">
-          {loading ? (
+          {/* Tab bar */}
+          <div className="mb-10 flex items-center gap-2 border-b border-foreground/10">
+            {([
+              { id: "news", label: "News", icon: Rss, count: articles.length },
+              { id: "opinion", label: "Opinion", icon: BookOpen, count: POSTS.length },
+            ] as const).map((t) => {
+              const active = tab === t.id;
+              const Icon = t.icon;
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setTab(t.id)}
+                  className={`inline-flex items-center gap-2 px-4 py-3 -mb-px border-b-2 font-mono-marker text-[11px] uppercase tracking-[0.18em] transition-colors ${
+                    active
+                      ? "border-accent text-foreground"
+                      : "border-transparent text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <Icon size={13} />
+                  {t.label}
+                  <span className={`text-[10px] ${active ? "text-accent" : "text-muted-foreground/70"}`}>
+                    {t.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {tab === "opinion" ? (
+            <div className="space-y-5">
+              <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">
+                <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                  Opinion · Long-form essays
+                </h2>
+                <p className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground whitespace-nowrap">
+                  {POSTS.length} {POSTS.length === 1 ? "essay" : "essays"}
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5">
+                {POSTS.map((post, idx) => {
+                  const issueNum = POSTS.length - idx;
+                  return (
+                    <motion.article
+                      key={post.slug}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.03 }}
+                      className="relative border border-foreground/10 bg-card hover:border-accent/60 transition-colors group"
+                    >
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent/40 group-hover:bg-accent transition-colors" />
+                      <Link to={`/posts/${post.slug}`} className="block p-6 md:p-7">
+                        <div className="flex items-center gap-2 mb-3 font-mono-marker text-[10px] uppercase tracking-[0.16em] text-muted-foreground flex-wrap">
+                          <span>Essay #{issueNum}</span>
+                          <span>·</span>
+                          <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
+                          <span>·</span>
+                          <span>{post.readingMinutes} min</span>
+                        </div>
+                        <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight mb-3 group-hover:text-accent transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-4">
+                          {post.excerpt}
+                        </p>
+                        <span className="inline-flex items-center gap-1 text-accent font-sketch font-bold text-sm">
+                          Read <ArrowRight size={13} />
+                        </span>
+                      </Link>
+                    </motion.article>
+                  );
+                })}
+              </div>
+            </div>
+          ) : loading ? (
             <div className="flex items-center justify-center py-20 text-muted-foreground">
               <Loader2 className="animate-spin mr-2" size={18} /> Loading the feed…
             </div>
