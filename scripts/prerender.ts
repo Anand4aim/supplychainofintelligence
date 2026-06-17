@@ -18,6 +18,7 @@ import { pathToFileURL } from "url";
 import { CASE_STUDIES } from "../src/data/caseStudies";
 import { LAYERS } from "../src/data/layers";
 import { LAW_ESSAYS } from "../src/data/lawEssays";
+import { POSTS } from "../src/data/posts";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
@@ -88,6 +89,8 @@ const routes: string[] = [
   "/market-map",
   "/faq",
   ...LAW_ESSAYS.map((e) => `/laws/${e.slug}`),
+  "/posts",
+  ...POSTS.map((p) => `/posts/${p.slug}`),
 ];
 
 interface RenderFn {

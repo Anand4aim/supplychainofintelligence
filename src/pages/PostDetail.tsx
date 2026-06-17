@@ -89,7 +89,7 @@ const PostDetail = () => {
           </p>
 
           <p className="text-sm text-muted-foreground mb-10">
-            By <strong className="text-foreground">Anand Arivukkarasu</strong> · Creator of The Supply Chain of Intelligence™ · {post.readingMinutes} min read
+            {post.readingMinutes} min read
           </p>
 
           {/* Hero poster (also serves as the LinkedIn share image) */}
