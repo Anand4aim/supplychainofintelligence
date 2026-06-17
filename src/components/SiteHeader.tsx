@@ -27,7 +27,7 @@ const SiteHeader = () => {
         <Link to="/" className="flex items-center gap-2">
           <span className="font-display text-[16px] font-bold text-foreground tracking-tight">
             Supply Chain of Intelligence<span className="text-accent">™</span>
-            <span className="font-mono-marker text-[9px] text-foreground/40 ml-1 tracking-wider">(SCoI)</span>
+            <span className="font-mono-marker text-[9px] text-foreground/40 ml-1 tracking-wider" style={{ textTransform: 'none' }}>(SCoI)</span>
           </span>
         </Link>
 
