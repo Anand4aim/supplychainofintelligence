@@ -29,7 +29,7 @@
 import { CASE_STUDIES } from "../src/data/caseStudies";
 import { LAW_ESSAYS } from "../src/data/lawEssays";
 import { POSTS } from "../src/data/posts";
-import { VERTICALS } from "../src/data/verticalsRegistry";
+import { VERTICAL_REGISTRY as VERTICALS } from "../src/data/verticalsRegistry";
 
 const SITE = process.argv[2]?.replace(/\/$/, "") || "https://supplychainofai.com";
 
