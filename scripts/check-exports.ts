@@ -32,7 +32,7 @@ let ok = 0;
 let failed = 0;
 
 for (const req of REQUIRED) {
-  const modPath = resolve(__dirname, req.module);
+    const modPath = resolve(import.meta.dirname, req.module);
   try {
     const mod = await import(modPath);
     const missing = req.exports.filter((name) => !(name in mod));
