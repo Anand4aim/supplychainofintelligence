@@ -28,7 +28,7 @@ export const POSTS: Post[] = [
       "Every few weeks someone proposes an L9 Workflows or an L10 Distribution sitting above Memory. The Supply Chain of Intelligence™ (SCoI) already absorbs both — and the reason it doesn't add them is the same reason the framework works at all.",
     excerpt:
       "The 10-layer stack stops at Memory on purpose. Workflows are not a layer above L8 — they're L6 Orchestration plus L5d Operating Playbooks doing their job. Distribution is not a layer above L7 — it's a horizontal force already split across L3e, L7, and two of the Three Currents. Adding either as a new floor breaks the stack logic. Here's the decode.",
-    publishedAt: "2026-06-17",
+    publishedAt: "2026-05-22",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 7,
@@ -96,7 +96,7 @@ export const POSTS: Post[] = [
       "Personal agents are the new surface. Stripe, Cloudflare, and the L2 providers are still the substrate. The Supply Chain of Intelligence™ (SCoI) explains why both halves of that sentence have to be true at once.",
     excerpt:
       "Every personal agent — one user, one context, one memory — still terminates at someone else's payment rail, someone else's edge, someone else's model. That's not a contradiction. It's Law II: value accrues at bottlenecks, and the bottlenecks for a million single-user agents are exactly the layers that aggregate across all of them.",
-    publishedAt: "2026-06-17",
+    publishedAt: "2026-05-08",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
@@ -160,7 +160,7 @@ export const POSTS: Post[] = [
       "When applied-AI leaders talk about routing between models, they're not describing a new layer. They're describing intelligence commoditizing downward in real time — and naming who captures the surplus.",
     excerpt:
       "Cost optimization, capability maximization, risk mitigation. Three reasons everyone is suddenly talking about model routing. All three resolve to one sublayer (L2d) and one law (Intelligence Commoditizes Downward). Here's the decode, and why the value doesn't actually accrue to the router.",
-    publishedAt: "2026-06-17",
+    publishedAt: "2026-04-24",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
@@ -220,7 +220,7 @@ export const POSTS: Post[] = [
       "An honest, side-by-side look at the five frameworks I see actually used in AI strategy rooms — and which question each one was built to answer.",
     excerpt:
       "JTBD, Wardley Mapping, Aggregation Theory, AI TRiSM, and the Supply Chain of Intelligence™. Five frameworks, five different lenses — user, evolution, distribution, risk, and the stack itself. Here's where each one wins, where each one breaks, and how to use them together.",
-    publishedAt: "2026-06-16",
+    publishedAt: "2026-04-10",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 9,
@@ -298,7 +298,7 @@ export const POSTS: Post[] = [
       "“Just a wrapper” became the lazy verdict of the last two years. The companies that survived weren't the ones with better demos — they owned a deeper layer of the chain.",
     excerpt:
       "Over the last year I kept hearing the same phrase in every AI conversation: \"just a wrapper.\" Sometimes it was right. Often it was lazy. The market had vocabulary for product-market fit, but not for structural position in the AI era. So I built one.",
-    publishedAt: "2026-05-21",
+    publishedAt: "2026-03-18",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 8,
@@ -375,7 +375,7 @@ export const POSTS: Post[] = [
       "Why boards talk about models, founders pitch agents, and the part that actually compounds is two layers below — unowned and invisible on the roadmap.",
     excerpt:
       "Most AI companies live on one layer — the surface. That's the layer with the lowest moat and the highest churn. The defensible layers are below the waterline. Here's a map.",
-    publishedAt: "2026-05-21",
+    publishedAt: "2026-02-20",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
