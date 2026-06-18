@@ -179,6 +179,24 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ PLAIN-TEXT MIRRORS — AI assistant fallbacks ═══════════ */}
+      <section className="border-b border-border/40 bg-background">
+        <div className="max-w-6xl mx-auto px-6 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
+            Plain-text mirrors
+          </span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <a href="/paper.md" className="font-mono-marker text-[10px] tracking-wider text-accent hover:underline">paper.md</a>
+            <span className="text-muted-foreground/40">·</span>
+            <a href="/llms.txt" className="font-mono-marker text-[10px] tracking-wider text-accent hover:underline">llms.txt</a>
+            <span className="text-muted-foreground/40">·</span>
+            <a href="/sitemap.xml" className="font-mono-marker text-[10px] tracking-wider text-accent hover:underline">sitemap.xml</a>
+            <span className="text-muted-foreground/40">·</span>
+            <a href="/robots.txt" className="font-mono-marker text-[10px] tracking-wider text-accent hover:underline">robots.txt</a>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════ COLD OPEN — Three Areas of AI Transformation ═══════════ */}
       <ThreeAreasOfAI />
 
