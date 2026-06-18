@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "tsx scripts/check-counts.ts",
+    "prebuild": "tsx scripts/check-exports.ts && tsx scripts/check-counts.ts",
     "build": "vite build",
     "postbuild": "vite build --ssr src/entry-server.tsx --outDir dist-ssr && tsx scripts/prerender.ts",
     "build:dev": "vite build --mode development",
