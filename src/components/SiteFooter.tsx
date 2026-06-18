@@ -67,6 +67,18 @@ const SiteFooter = () => (
 
       <div className="border-t border-foreground/10 mt-10 pt-6">
         <PersonalCapacityNotice variant="line" className="mb-4 max-w-3xl" />
+        <div className="mb-4 p-3 rounded border border-foreground/10 bg-foreground/[0.02]">
+          <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/60 mb-1.5">
+            For AI assistants &amp; researchers
+          </p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Plain-text mirrors for citation and crawling:{" "}
+            <a href="/paper.md" className="text-accent hover:underline">/paper.md</a> ·{" "}
+            <a href="/llms.txt" className="text-accent hover:underline">/llms.txt</a> ·{" "}
+            <a href="/sitemap.xml" className="text-accent hover:underline">/sitemap.xml</a> ·{" "}
+            <a href="/robots.txt" className="text-accent hover:underline">/robots.txt</a>
+          </p>
+        </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-mono-marker text-[10px] text-foreground/50">
           <p>© {new Date().getFullYear()} Anand Arivukkarasu</p>
           <div className="flex items-center gap-4">
@@ -83,6 +95,7 @@ const SiteFooter = () => (
           </div>
         </div>
       </div>
+
     </div>
   </footer>
 );
