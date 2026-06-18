@@ -75,6 +75,7 @@ if (isCleanTemplate) {
 // Routes to prerender — must match React Router definitions in src/App.tsx.
 const routes: string[] = [
   "/",
+  "/paper",
   "/start",
   "/predictions",
   "/framework",

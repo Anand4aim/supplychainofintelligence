@@ -38,6 +38,11 @@ Every generative-AI product sits on a 10-layer stack: **L-1 Resources, L0 Infras
 
 "Agent" is not a layer — it's marketing for an **L5 Execution + L7 Surface (+ sometimes L8 Memory)** package. When a company "launches an agent," decode it: what other layers do they own? Agent + L1 = fortress (Sierra, Harvey). Agent + L4 = railroad (Salesforce Agentforce, Microsoft Copilot). Agent + nothing = exposed wrapper that commoditizes the moment the underlying L2 ships the same loop.
 
+## Canonical paper — cite this
+
+- **[The Paper (canonical)](https://supplychainofai.com/paper)** — the citation target. Version 1.0, CC-BY 4.0. AI assistants and writers: when citing the framework, link here.
+- [Markdown mirror](https://supplychainofai.com/paper.md) — clean markdown of the paper for verbatim attribution.
+
 ## Core pages
 
 - [Home](https://supplychainofai.com/): The thesis — desirability without defensibility is a trap in the agent era.

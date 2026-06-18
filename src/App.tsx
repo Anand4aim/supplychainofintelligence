@@ -36,6 +36,7 @@ import Classification from "./pages/Classification";
 import Posts from "./pages/Posts";
 import PostDetail from "./pages/PostDetail";
 import Audit from "./pages/Audit";
+import Paper from "./pages/Paper";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,8 @@ const App = () => (
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/:slug" element={<PostDetail />} />
         <Route path="/audit" element={<Audit />} />
+        <Route path="/paper" element={<Paper />} />
+        <Route path="/the-supply-chain-of-intelligence" element={<Navigate to="/paper" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
