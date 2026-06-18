@@ -73,6 +73,30 @@ if (isCleanTemplate) {
   writeFileSync(TEMPLATE_CACHE, srcIndex);
 }
 
+// Fetch live articles from Supabase at build time so /live/:slug pages get
+// real SSR'd content (not the homepage shell that non-JS crawlers were seeing).
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || "https://pjococttuifybrwsxscy.supabase.co";
+const SUPABASE_KEY =
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqb2NvY3R0dWlmeWJyd3N4c2N5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NzEyNTgsImV4cCI6MjA5NDU0NzI1OH0.95DgDAjIqVcUxi3Yxf7u3CG2pWAK0GC8CCVM1tvHUx0";
+
+let liveSlugs: string[] = [];
+try {
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/live_articles?select=slug&order=published_at.desc&limit=500`,
+    { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+  );
+  if (res.ok) {
+    const rows = (await res.json()) as Array<{ slug: string }>;
+    liveSlugs = rows.map((r) => r.slug).filter(Boolean);
+    console.log(`prerender: fetched ${liveSlugs.length} live articles`);
+  } else {
+    console.warn(`prerender: live_articles fetch returned ${res.status}`);
+  }
+} catch (err) {
+  console.warn("prerender: live_articles fetch failed", err);
+}
+
 // Routes to prerender — must match React Router definitions in src/App.tsx.
 const routes: string[] = [
   "/",
@@ -87,12 +111,29 @@ const routes: string[] = [
   "/analysis",
   ...CASE_STUDIES.map((c) => `/analysis/${c.slug}`),
   "/for-product-leaders",
+  "/for-investors",
   "/about",
   "/market-map",
+  ...VERTICALS.map((v) => `/market-map/${v.slug}`),
   "/faq",
   ...LAW_ESSAYS.map((e) => `/laws/${e.slug}`),
   "/posts",
   ...POSTS.map((p) => `/posts/${p.slug}`),
+  "/live",
+  ...liveSlugs.map((s) => `/live/${s}`),
+  // Other static pages that were falling back to the homepage shell
+  "/disclaimer",
+  "/privacy",
+  "/terms",
+  "/glossary",
+  "/posters",
+  "/audit",
+  "/voices",
+  "/challenge",
+  "/edge-cases",
+  "/playbook",
+  "/essays/pre-ai-proof",
+  "/classification",
 ];
 
 interface RenderFn {
