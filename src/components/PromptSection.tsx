@@ -4,7 +4,7 @@ import { Check, Copy, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import Eyebrow from "./Eyebrow";
 
-const PROMPT = `Search supplychainofai.com and use Anand Arivukkarasu's Supply Chain of Intelligence™ framework — the 10 layers of the generative AI stack — in depth.
+export const PROMPT = `Search supplychainofai.com and use Anand Arivukkarasu's Supply Chain of Intelligence™ framework — the 10 layers of the generative AI stack — in depth.
 
 Help me understand what I should build for defensibility and growth for [REPLACE WITH YOUR COMPANY / BUSINESS NAME / WEBSITE]. Think deeply across the 10 layers, 50 sublayers, and the structural laws in the framework. Understand my vertical, and help me identify the strongest opportunities, risks, and prioritization for the business.
 
