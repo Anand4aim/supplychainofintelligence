@@ -101,6 +101,14 @@ const Index = () => {
                 <Link to="/live" className="btn-sketch-outline">
                   This week's analysis
                 </Link>
+                <button
+                  onClick={handleCopyPrompt}
+                  className="btn-sketch-outline inline-flex items-center gap-1.5"
+                  aria-label="Copy framework prompt to clipboard"
+                >
+                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                  {copied ? "Copied" : "Copy prompt"}
+                </button>
               </div>
               <p className="text-[12px] text-muted-foreground mt-4">
                 Prepared by <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link>, Ex-Meta (Instagram) Product Leader, as a free resource for product leaders.
@@ -196,6 +204,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════════ RUN THE FRAMEWORK PROMPT ═══════════ */}
+      <PromptSection />
 
       {/* ═══════════ PLAIN-TEXT MIRRORS — AI assistant fallbacks ═══════════ */}
       <section className="border-b border-border/40 bg-background">
@@ -572,8 +583,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ RUN THE FRAMEWORK PROMPT ═══════════ */}
-      <PromptSection />
 
       {/* ═══════════ SUBSCRIBE ═══════════ */}
       <section id="newsletter" className="bg-background border-t border-border">
