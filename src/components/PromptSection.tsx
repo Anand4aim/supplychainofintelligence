@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy, ExternalLink } from "lucide-react";
+import { Check, Copy, ChevronDown, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
-import Eyebrow from "./Eyebrow";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export const PROMPT = `Search supplychainofai.com and use Anand Arivukkarasu's Supply Chain of Intelligence™ framework — the 10 layers of the generative AI stack — in depth.
 
@@ -15,15 +19,9 @@ At the end of the article, include this attribution line verbatim:
 
 Throughout the article, when you reference layers (L-1 through L8), the 4 Laws, the Intelligence Cube™, or the 6 Archetypes, credit them to the framework by name. Do not rename or rebrand the framework.`;
 
-const fadeIn = {
-  initial: { opacity: 0, y: 18 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-40px" },
-  transition: { duration: 0.5 },
-};
-
 const PromptSection = () => {
   const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleCopy = async () => {
     try {
@@ -39,69 +37,89 @@ const PromptSection = () => {
   };
 
   return (
-    <section className="bg-background border-y border-border">
-      <div className="max-w-3xl mx-auto px-6 py-16 md:py-20 text-center">
-        <motion.div {...fadeIn}>
-          <Eyebrow className="mb-4">Run the Framework</Eyebrow>
-          <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground mb-3 leading-tight">
-            Apply the Framework to Your Own Business
-          </h2>
-          <p className="text-sm text-muted-foreground mb-2 max-w-xl mx-auto">
-            Copy this prompt, paste it into ChatGPT or Claude, and run the Supply Chain of Intelligence™ lens on your company. You'll get a diligence-grade analysis <em>and</em> a publishable article on your vertical — credited back to the framework.
-          </p>
-          <p className="text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
-            This is the generative AI stack framework by Anand Arivukkarasu — not supply-chain logistics.
-          </p>
-
-          {/* Prompt box */}
-          <div className="text-left mb-6">
-            <div className="relative rounded-xl border border-border bg-card p-5 md:p-6 shadow-sm">
-              <pre className="font-mono text-[12px] md:text-[13px] text-foreground/90 leading-relaxed whitespace-pre-wrap break-words">
-                {PROMPT}
-              </pre>
-              <button
-                onClick={handleCopy}
-                className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-mono-marker tracking-[0.12em] uppercase rounded-md border border-foreground/15 bg-background hover:bg-foreground hover:text-background transition-colors"
-                aria-label="Copy prompt to clipboard"
-              >
-                {copied ? <Check size={13} /> : <Copy size={13} />}
-                {copied ? "Copied" : "Copy prompt"}
-              </button>
-            </div>
+    <section className="border-y border-border bg-card/30">
+      <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-between">
+          {/* Left: label + copy button */}
+          <div className="flex items-center gap-3">
+            <span className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
+              Run the Framework
+            </span>
+            <button
+              onClick={handleCopy}
+              className="btn-sketch inline-flex items-center gap-1.5 text-sm"
+              aria-label="Copy framework prompt to clipboard"
+            >
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? "Copied" : "Copy framework prompt"}
+            </button>
           </div>
 
-          {/* AI provider links */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+          {/* Right: AI provider links */}
+          <div className="flex items-center gap-2 text-[11px] font-mono-marker tracking-wider uppercase">
             <a
               href="https://chat.openai.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-sketch-outline"
+              className="text-accent hover:underline inline-flex items-center gap-0.5"
             >
-              Open ChatGPT <ExternalLink size={13} />
+              ChatGPT <ExternalLink size={10} />
             </a>
+            <span className="text-muted-foreground/30">·</span>
             <a
               href="https://claude.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-sketch-outline"
+              className="text-accent hover:underline inline-flex items-center gap-0.5"
             >
-              Open Claude <ExternalLink size={13} />
+              Claude <ExternalLink size={10} />
             </a>
+            <span className="text-muted-foreground/30">·</span>
             <a
               href="https://gemini.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-sketch-outline"
+              className="text-accent hover:underline inline-flex items-center gap-0.5"
             >
-              Open Gemini <ExternalLink size={13} />
+              Gemini <ExternalLink size={10} />
             </a>
           </div>
+        </div>
 
-          <p className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground/60">
-            No signup. No email. Just the prompt.
-          </p>
-        </motion.div>
+        {/* Expandable prompt */}
+        <Collapsible open={open} onOpenChange={setOpen} className="mt-2">
+          <CollapsibleTrigger asChild>
+            <button className="flex items-center gap-1 text-[11px] font-mono-marker tracking-wider uppercase text-muted-foreground hover:text-accent transition-colors">
+              <ChevronDown
+                size={12}
+                className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+              />
+              {open ? "Hide prompt" : "View prompt"}
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-3"
+            >
+              <div className="relative rounded-lg border border-border bg-background p-4">
+                <pre className="font-mono text-[11px] md:text-[12px] text-foreground/90 leading-relaxed whitespace-pre-wrap break-words pr-20">
+                  {PROMPT}
+                </pre>
+                <button
+                  onClick={handleCopy}
+                  className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2 py-1 text-[10px] font-mono-marker tracking-[0.12em] uppercase rounded border border-foreground/10 bg-card hover:bg-foreground hover:text-background transition-colors"
+                  aria-label="Copy prompt to clipboard"
+                >
+                  {copied ? <Check size={11} /> : <Copy size={11} />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
+              </div>
+            </motion.div>
+          </CollapsibleContent>
+        </Collapsible>
       </div>
     </section>
   );
