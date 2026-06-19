@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 import SiteLayout from "@/components/SiteLayout";
@@ -26,7 +25,7 @@ import ThreeLayerProof from "@/components/home/ThreeLayerProof";
 import ContrastRow from "@/components/home/ContrastRow";
 import ThreeAreasOfAI from "@/components/home/ThreeAreasOfAI";
 import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
-import PromptSection, { PROMPT } from "@/components/PromptSection";
+import PromptSection from "@/components/PromptSection";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
