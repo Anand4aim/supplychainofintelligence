@@ -48,8 +48,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Supply Chain of Intelligence — Defensibility Map for AI"
-        description="Score any AI product across 10 layers — compute, data, models, workflows, surfaces, memory — to see whether it's a moat or a wrapper. The generative AI stack, not logistics."
+        title="Supply Chain of Intelligence™ — The Universal AI Economy Paradigm"
+        description="The universal paradigm for the generative AI economy. Adopted by product leaders and AI companies across all verticals. 10 layers, strong proof, real case studies."
         path="/"
       />
 
