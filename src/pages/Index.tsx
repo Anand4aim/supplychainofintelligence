@@ -25,6 +25,7 @@ import ThreeLayerProof from "@/components/home/ThreeLayerProof";
 import ContrastRow from "@/components/home/ContrastRow";
 import ThreeAreasOfAI from "@/components/home/ThreeAreasOfAI";
 import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
+import PromptSection from "@/components/PromptSection";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
