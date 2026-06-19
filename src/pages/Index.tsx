@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, BookOpen, Copy, Check } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
