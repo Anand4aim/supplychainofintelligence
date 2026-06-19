@@ -554,6 +554,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ RUN THE FRAMEWORK PROMPT ═══════════ */}
+      <PromptSection />
+
       {/* ═══════════ SUBSCRIBE ═══════════ */}
       <section id="newsletter" className="bg-background border-t border-border">
         <div className="max-w-xl mx-auto px-6 py-14 text-center">
