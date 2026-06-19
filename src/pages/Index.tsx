@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
-import { ArrowRight, BookOpen, Copy, Check } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { LAYERS } from "@/data/layers";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
@@ -27,7 +25,7 @@ import ThreeLayerProof from "@/components/home/ThreeLayerProof";
 import ContrastRow from "@/components/home/ContrastRow";
 import ThreeAreasOfAI from "@/components/home/ThreeAreasOfAI";
 import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
-import PromptSection, { PROMPT } from "@/components/PromptSection";
+import PromptSection from "@/components/PromptSection";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -37,21 +35,6 @@ const fadeIn = {
 };
 
 const Index = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyPrompt = async () => {
-    try {
-      await navigator.clipboard.writeText(PROMPT);
-      setCopied(true);
-      toast.success("Prompt copied — paste it into ChatGPT or Claude", {
-        description: "Replace [REPLACE WITH YOUR COMPANY] with your business name.",
-      });
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      toast.error("Couldn't access clipboard");
-    }
-  };
-
   const featuredSlugs = [
     "jasper-vs-grammarly-copilot",
     "chegg-collapse",
@@ -101,14 +84,6 @@ const Index = () => {
                 <Link to="/live" className="btn-sketch-outline">
                   This week's analysis
                 </Link>
-                <button
-                  onClick={handleCopyPrompt}
-                  className="btn-sketch-outline inline-flex items-center gap-1.5"
-                  aria-label="Copy framework prompt to clipboard"
-                >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
-                  {copied ? "Copied" : "Copy prompt"}
-                </button>
               </div>
               <p className="text-[12px] text-muted-foreground mt-4">
                 Prepared by <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link>, Ex-Meta (Instagram) Product Leader, as a free resource for product leaders.
