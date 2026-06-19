@@ -1,0 +1,14 @@
+title: The Supply Chain of Intelligence™
+description: The 10 layers of the generative AI stack — strategy docs and articles by Anand Arivukkarasu.
+author: Anand Arivukkarasu
+theme: jekyll-theme-cayman
+markdown: kramdown
+permalink: pretty
+
+# Canonical site (the React app)
+url: "https://supplychainofai.com"
+
+# Files Jekyll should ignore in this docs folder
+exclude:
+  - README.md~
+  - .DS_Store
