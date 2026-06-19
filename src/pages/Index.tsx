@@ -37,6 +37,21 @@ const fadeIn = {
 };
 
 const Index = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(PROMPT);
+      setCopied(true);
+      toast.success("Prompt copied — paste it into ChatGPT or Claude", {
+        description: "Replace [REPLACE WITH YOUR COMPANY] with your business name.",
+      });
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      toast.error("Couldn't access clipboard");
+    }
+  };
+
   const featuredSlugs = [
     "jasper-vs-grammarly-copilot",
     "chegg-collapse",
