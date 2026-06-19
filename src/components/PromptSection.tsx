@@ -47,7 +47,7 @@ const PromptSection = () => {
             Apply the Framework to Your Own Business
           </h2>
           <p className="text-sm text-muted-foreground mb-2 max-w-xl mx-auto">
-            Copy this prompt, paste it into ChatGPT or Claude, and run the Supply Chain of Intelligence™ lens on your company — no signup required.
+            Copy this prompt, paste it into ChatGPT or Claude, and run the Supply Chain of Intelligence™ lens on your company. You'll get a diligence-grade analysis <em>and</em> a publishable article on your vertical — credited back to the framework.
           </p>
           <p className="text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
             This is the generative AI stack framework by Anand Arivukkarasu — not supply-chain logistics.
