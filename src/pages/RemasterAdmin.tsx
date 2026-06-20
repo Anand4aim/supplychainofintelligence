@@ -212,7 +212,7 @@ export default function RemasterAdmin() {
   return (
     <>
       <Helmet>
-        <title>Remaster Queue — Admin</title>
+        <title>Remaster Queue, Admin</title>
         <meta name="robots" content="noindex,nofollow" />
       </Helmet>
       <div className="min-h-screen bg-background text-foreground">
@@ -271,7 +271,7 @@ export default function RemasterAdmin() {
               }>+ All Predictions ({PREDICTIONS.length})</Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              Bulk-enqueued items include their content payload, so the every-6h cron job can process them automatically — no need to keep this tab open.
+              Bulk-enqueued items include their content payload, so the every-6h cron job can process them automatically, no need to keep this tab open.
             </p>
           </section>
 
@@ -339,7 +339,7 @@ function CritiqueView({ result }: { result: any }) {
   return (
     <details className="text-sm border rounded p-3 bg-muted/30">
       <summary className="cursor-pointer font-medium">
-        Critic output — A {a.overall_score}/10 · B {b.overall_score}/10
+        Critic output, A {a.overall_score}/10 · B {b.overall_score}/10
         {result.ship_as_is && " · ✅ ship as-is"}
       </summary>
       <div className="mt-3 grid md:grid-cols-2 gap-4">

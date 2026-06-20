@@ -16,7 +16,7 @@
  *     for every layer in src/data/layers.ts and use the canonical slug
  *     that matches public/sitemap.xml.
  *  3. Every /framework/l* URL in sitemap.xml resolves to a layer
- *     (no stale slugs, no missing entries) — canonical drift guard.
+ *     (no stale slugs, no missing entries), canonical drift guard.
  *  4. llms.txt + sitemap.xml advertise "10 layers, 50 sublayers, 3 laws"
  *     and contain no "8 layers" copy.
  *  5. Google Search Console (via connector gateway): sitemap status
@@ -24,7 +24,7 @@
  *     and lastDownloaded is newer than our last lastmod.
  *
  * GSC check is skipped (with a warning, not a failure) when
- * LOVABLE_API_KEY or GOOGLE_SEARCH_CONSOLE_API_KEY are missing —
+ * LOVABLE_API_KEY or GOOGLE_SEARCH_CONSOLE_API_KEY are missing  - 
  * local devs can still run the offline checks (1-4).
  */
 
@@ -71,7 +71,7 @@ function checkIndexHtmlJsonLd() {
   );
 
   // The "10 layers / 50 sublayers / 3 laws" canonical numbers must appear
-  // in the DefinedTermSet block — that's the snippet crawlers will overwrite
+  // in the DefinedTermSet block, that's the snippet crawlers will overwrite
   // the stale "8 layers" mention with.
   const has10 = /\b10\b[\s\S]{0,200}layers/i.test(html);
   const has50 = /\b50\b[\s\S]{0,200}sublayers/i.test(html);
@@ -80,7 +80,7 @@ function checkIndexHtmlJsonLd() {
     `10:${has10} 50:${has50} 3:${has3}`);
 
   const has8 = /\b8\s*layers\b/i.test(
-    html.replace(/<!--[\s\S]*?-->/g, ""), // strip comments — the correction note legitimately mentions "8 layers"
+    html.replace(/<!--[\s\S]*?-->/g, ""), // strip comments, the correction note legitimately mentions "8 layers"
   );
   push("index.html has no stale '8 layers' copy (excl. comments)", !has8);
 }
@@ -133,7 +133,7 @@ async function checkGsc() {
   const gsc = process.env.GOOGLE_SEARCH_CONSOLE_API_KEY;
   if (!lov || !gsc) {
     push("GSC sitemap reports 0 errors", true,
-      "SKIPPED — LOVABLE_API_KEY / GOOGLE_SEARCH_CONSOLE_API_KEY not in env (offline run)");
+      "SKIPPED, LOVABLE_API_KEY / GOOGLE_SEARCH_CONSOLE_API_KEY not in env (offline run)");
     return;
   }
 
@@ -146,7 +146,7 @@ async function checkGsc() {
   try {
     const res = await fetch(url, { headers });
     if (!res.ok) {
-      push("GSC sitemap reports 0 errors", false, `HTTP ${res.status} — ${await res.text()}`);
+      push("GSC sitemap reports 0 errors", false, `HTTP ${res.status}, ${await res.text()}`);
       return;
     }
     const data: any = await res.json();

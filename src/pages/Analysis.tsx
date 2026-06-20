@@ -58,8 +58,8 @@ const Track = ({
 const AnalysisPage = () => (
   <SiteLayout>
     <Seo
-      title="AI Case Studies — Jasper, Chegg, Tempus, Deere, Waymo & More"
-      description="Real companies analyzed through the 10-layer stack — software, regulated verticals, and physical-world AI. Where each company sits in the Supply Chain of Intelligence."
+      title="AI Case Studies, Jasper, Chegg, Tempus, Deere, Waymo & More"
+      description="Real companies analyzed through the 10-layer stack, software, regulated verticals, and physical-world AI. Where each company sits in the Supply Chain of Intelligence."
       path="/analysis"
     />
     {/* Hero */}
@@ -72,7 +72,7 @@ const AnalysisPage = () => (
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
             Real companies. Real valuations. Real shifts. Every case mapped to the 10 layers,
-            the Intelligence Cube, and the Four Structural Laws — across software, regulated
+            the Intelligence Cube, and the Four Structural Laws, across software, regulated
             verticals, and the physical world.
           </p>
 
@@ -113,23 +113,23 @@ const AnalysisPage = () => (
         </h2>
         <p className="text-muted-foreground text-sm md:text-base max-w-3xl leading-relaxed mb-12">
           The 10-layer stack applies the same way to a SaaS app, an oncology platform, and a
-          tractor — but the layers that hold value, and the speed at which they compress, differ a
+          tractor, but the layers that hold value, and the speed at which they compress, differ a
           lot. The tracks below sort cases by where the structural action actually sits.
         </p>
 
         <Track
           eyebrow="Track 01 · Software & SaaS"
           title="Fast cycles, model layer dominates the story"
-          blurb="Classic L2–L7 dynamics — foundation models commoditize the surface, distribution becomes the moat, and L8 (memory + workflow) is the unbuilt layer everyone is racing toward. Cycles measured in quarters."
+          blurb="Classic L2–L7 dynamics, foundation models commoditize the surface, distribution becomes the moat, and L8 (memory + workflow) is the unbuilt layer everyone is racing toward. Cycles measured in quarters."
           cases={softwareCases}
         />
 
         <Track
           eyebrow="Track 02 · Vertical & Regulated"
           title="L8 sits above the model and slows commoditization"
-          blurb="Healthcare, legal, finance. The model is necessary but not sufficient — clinical workflow, regulatory clearance, billing codes, and liability assignment form an L8 that takes years to build and is hard to replicate from above."
+          blurb="Healthcare, legal, finance. The model is necessary but not sufficient, clinical workflow, regulatory clearance, billing codes, and liability assignment form an L8 that takes years to build and is hard to replicate from above."
           cases={verticalCases}
-          note="Structural reads through the 10-layer framework. The author is a product strategist applying the framework — not a domain expert in clinical medicine, law, or financial regulation."
+          note="Structural reads through the 10-layer framework. The author is a product strategist applying the framework, not a domain expert in clinical medicine, law, or financial regulation."
         />
 
         <Track
@@ -137,7 +137,7 @@ const AnalysisPage = () => (
           title="L-1 is the layer no AI-only entrant can replicate"
           blurb="Agriculture, robotics, autonomy, energy, manufacturing. The model is the easy layer. The hard layers are L-1 (physical assets + edge silicon + fleet density) and L8 (operating workflow + financing). Cycles measured in years, not quarters."
           cases={physicalCases}
-          note="Structural reads through the 10-layer framework. The author is a product strategist applying the framework — not a domain expert in robotics, autonomy, or industrial systems."
+          note="Structural reads through the 10-layer framework. The author is a product strategist applying the framework, not a domain expert in robotics, autonomy, or industrial systems."
         />
       </div>
     </section>

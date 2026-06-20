@@ -14,13 +14,13 @@ const SYSTEM_PROMPT = `${FRAMEWORK_CONTEXT}
 
 You are the lead analyst for "The Supply Chain of Intelligence". Your readers are senior product, strategy, and investing operators. They already know the headline. They are here for the WHY underneath it, written by someone who has actually shipped product at scale.
 
-You write like a master product leader doing a war-room teardown — not a journalist, not a McKinsey deck, not a LinkedIn influencer. You go SEVERAL LEVELS deeper than the obvious read.
+You write like a master product leader doing a war-room teardown, not a journalist, not a McKinsey deck, not a LinkedIn influencer. You go SEVERAL LEVELS deeper than the obvious read.
 
-VERDICTS: DOMINANT | SAFE | CONTESTED | DEAD (use sparingly — DOMINANT and DEAD are reserved for clearly settled outcomes; default to CONTESTED or SAFE when the picture is still forming).
+VERDICTS: DOMINANT | SAFE | CONTESTED | DEAD (use sparingly, DOMINANT and DEAD are reserved for clearly settled outcomes; default to CONTESTED or SAFE when the picture is still forming).
 
 VOICE: declarative, structural, analytical. Take a position, but ground it in the layer mechanics above rather than rhetoric. Short sentences land harder than long ones. Use them.
 
-Apply the FRAMEWORK CONTEXT above strictly. Use canonical layer names (L1 Data, L4 Access, L8 Memory — never "L1 Cloud", "L4 Agents", "L8 Continuity"). Cite the 3 Laws by their canonical titles. Respect the scoring discipline.`;
+Apply the FRAMEWORK CONTEXT above strictly. Use canonical layer names (L1 Data, L4 Access, L8 Memory, never "L1 Cloud", "L4 Agents", "L8 Continuity"). Cite the 3 Laws by their canonical titles. Respect the scoring discipline.`;
 
 
 const ANALYSIS_SCHEMA = {
@@ -43,7 +43,7 @@ const ANALYSIS_SCHEMA = {
           properties: {
             layer: { type: "string", description: "L-1, L0, L1, L2, L3, L4, L5, L6, L7, or L8" },
             owned: { type: "boolean", description: "Does the company own meaningful position in this layer?" },
-            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership. BE BRUTAL — most layers should be 0." },
+            intensity: { type: "integer", minimum: 0, maximum: 3, description: "0 = no presence, 1 = emerging, 2 = significant, 3 = core/dominant ownership. BE BRUTAL, most layers should be 0." },
             note: { type: "string", description: "8-15 words explaining. If intensity is 0, return empty string." },
             sublayers: {
               type: "array",
@@ -53,7 +53,7 @@ const ANALYSIS_SCHEMA = {
                 properties: {
                   name: { type: "string", description: "Short slice name e.g. 'contract review', 'agent inbox', 'eval harness'" },
                   impact: { type: "integer", minimum: 1, maximum: 3, description: "1 = touched, 2 = meaningful share, 3 = owns this sublayer" },
-                  who: { type: "string", description: "Who plays this sublayer slice TODAY — the company/role most threatened or most enabled. e.g. 'Harvey', 'Thomson Reuters CoCounsel', 'in-house legal ops'" }
+                  who: { type: "string", description: "Who plays this sublayer slice TODAY, the company/role most threatened or most enabled. e.g. 'Harvey', 'Thomson Reuters CoCounsel', 'in-house legal ops'" }
                 },
                 required: ["name", "impact", "who"]
               }
@@ -64,7 +64,7 @@ const ANALYSIS_SCHEMA = {
       },
       cube_position: {
         type: "object",
-        description: "Where this move sits in the Intelligence Cube (Functions × Verticals × Layers). Pick ONLY the axes truly touched — 1-3 functions, 1-3 verticals, 1-4 layers. Use EXACT names from the lists.",
+        description: "Where this move sits in the Intelligence Cube (Functions × Verticals × Layers). Pick ONLY the axes truly touched, 1-3 functions, 1-3 verticals, 1-4 layers. Use EXACT names from the lists.",
         properties: {
           functions: { type: "array", description: "Job functions touched. Allowed: Dev/Eng, Design, Product, PM/Proj, Ops, Mktg, Sales, CustCare, Strategy", items: { type: "string" } },
           verticals: { type: "array", description: "Verticals touched. Allowed: FinTech, EdTech, Legal, Health, Travel, eCom, Media, Gov, SaaS, Horizontal", items: { type: "string" } },
@@ -73,13 +73,13 @@ const ANALYSIS_SCHEMA = {
         required: ["functions", "verticals", "layers"]
       },
       why_now: { type: "string", description: "3-5 sentences. WHY did this ship this quarter, not 6 months ago and not 6 months from now? What changed in cost curves, model capability, regulation, distribution access, competitive pressure, or org structure that made this the right move at exactly this moment? Be specific." },
-      structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat — and the way the moat could break. This is the heart of the piece; do not be brief." },
+      structural_take: { type: "string", description: "6-9 sentences. Apply the 3 laws explicitly by name. Identify the scarcest layer being claimed. Explain the compounding mechanic across layers. Surface the moat, and the way the moat could break. This is the heart of the piece; do not be brief." },
       second_order_effects: { type: "string", description: "4-6 sentences. What happens 2-3 moves downstream that most people will miss? Pricing pressure on adjacent layers, partner rage, talent flow, sales-cycle shift, regulatory response, ecosystem rewiring. Be concrete." },
       who_wins: { type: "array", description: "3-5 specific named winners with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
       who_loses: { type: "array", description: "3-5 specific named losers with a 1-2 sentence reason each", items: { type: "object", properties: { name: { type: "string" }, reason: { type: "string" } }, required: ["name", "reason"] } },
       vertical_lens: { type: "string", description: "5-7 sentences. Inside the named vertical, walk through the actual buyer journey, the incumbent's defensive options, the realistic 12-month sales motion change, and which budget line this cannibalizes. Cite real product names and contract shapes." },
       deep_product_lens: { type: "string", description: "5-7 sentences. PURE product-leader teardown. What is the actual product surface that shipped? What primitives, defaults, packaging, system prompts, eval harness, latency budget, multi-tenancy choices, pricing/seat model, onboarding wedge, and integration shape? Where is the design intent vs the duct tape? What does the v2 roadmap obviously look like, and what is the wedge → expand → lock-in motion? Use builder language." },
-      deep_strategy_lens: { type: "string", description: "5-7 sentences. PURE strategy lens. Where does this sit on the value chain, what gatekeeping power does it create, what scarce resource does it claim (compute, data, distribution, trust, talent, regulation), what is the competitive response cost, and what does it force rivals to do within 4 quarters? Reference Porter / Hamilton Helmer 7 Powers / counter-positioning when relevant — by mechanism, not by name-drop." },
+      deep_strategy_lens: { type: "string", description: "5-7 sentences. PURE strategy lens. Where does this sit on the value chain, what gatekeeping power does it create, what scarce resource does it claim (compute, data, distribution, trust, talent, regulation), what is the competitive response cost, and what does it force rivals to do within 4 quarters? Reference Porter / Hamilton Helmer 7 Powers / counter-positioning when relevant, by mechanism, not by name-drop." },
       counter_thesis: { type: "string", description: "3-5 sentences. The strongest argument the analysis is WRONG. Steelman it. Then in one sentence, say why you still hold your position (or concede)." },
       what_to_watch: { type: "array", description: "3-5 specific signals to track in the next 90 days that would confirm or break the thesis. Each is a one-liner.", items: { type: "string" } },
       new_law_candidate: { type: "string", description: "If this news suggests a NEW structural law beyond the 3, state it as a one-line principle. Otherwise return empty string." },
@@ -93,7 +93,7 @@ const ANALYSIS_SCHEMA = {
 async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<string> {
   const systemMsg = topic
     ? "You are a research assistant. The user will name a specific AI product story. Return: (1) a clear factual summary of what shipped/was announced, key dates, products, partners; (2) 4-6 source URLs from reputable outlets (Bloomberg, WSJ, FT, The Information, Reuters, TechCrunch, official company blogs). Do not editorialize."
-    : "You surface the single most strategically important AI move from the past 24-48 HOURS made by a TIER-1 company only. Tier-1 means: OpenAI, Anthropic, Google/DeepMind, Microsoft, Meta, Amazon/AWS, Apple, NVIDIA, xAI, Salesforce, Oracle, ServiceNow, SAP, Adobe, Databricks, Snowflake, Palantir, Cloudflare, Stripe, Shopify, IBM, Cisco, Dell, HPE — or top-tier consulting/enterprise plays (McKinsey, BCG, Accenture, Deloitte, Bain, KPMG, PwC, EY) — or breakout AI-native scale leaders already at >$1B valuation and >$100M ARR (Sierra, Harvey, Glean, Perplexity, Cursor, Mistral, Cohere, Writer, Hugging Face). Reject: small startups, funding announcements, benchmark wins, minor feature updates, research papers without product impact, or anything below this bar. CRITICAL: avoid duplicates — if the only story is something obviously already covered (e.g. a small follow-up to yesterday's news), pick the next-biggest fresh angle from the past 72 hours instead.";
+    : "You surface the single most strategically important AI move from the past 24-48 HOURS made by a TIER-1 company only. Tier-1 means: OpenAI, Anthropic, Google/DeepMind, Microsoft, Meta, Amazon/AWS, Apple, NVIDIA, xAI, Salesforce, Oracle, ServiceNow, SAP, Adobe, Databricks, Snowflake, Palantir, Cloudflare, Stripe, Shopify, IBM, Cisco, Dell, HPE, or top-tier consulting/enterprise plays (McKinsey, BCG, Accenture, Deloitte, Bain, KPMG, PwC, EY), or breakout AI-native scale leaders already at >$1B valuation and >$100M ARR (Sierra, Harvey, Glean, Perplexity, Cursor, Mistral, Cohere, Writer, Hugging Face). Reject: small startups, funding announcements, benchmark wins, minor feature updates, research papers without product impact, or anything below this bar. CRITICAL: avoid duplicates, if the only story is something obviously already covered (e.g. a small follow-up to yesterday's news), pick the next-biggest fresh angle from the past 72 hours instead.";
   const userMsg = topic
     ? `Research this specific story in depth and return facts + sources: "${topic}". Include: what exactly shipped, when, the legal/vertical angle, named partners/customers, pricing or packaging details if public, and competitive context. Give 4-6 source URLs.`
     : "What is the single biggest AI product launch, platform shift, partnership, or executive transformation announcement from the past 24-48 hours made by a tier-1 company (per the system criteria)? Examples of the bar: 'OpenAI partners with McKinsey', 'Salesforce launches Agentforce 360', 'Sierra hits $10B valuation', 'Anthropic ships enterprise plugin', 'SAP CTO keynote on agents'. Give me: (1) the headline, (2) what shipped or was announced TODAY/YESTERDAY, (3) the company, (4) 3-5 source URLs from reputable outlets (Bloomberg, WSJ, FT, The Information, Reuters, TechCrunch, official company blogs). Pick the move with the largest structural implication.";
@@ -144,7 +144,7 @@ async function fetchLatestNews(perplexityKey: string, topic?: string): Promise<s
   return `${content}\n\nSources:\n${citations.join("\n")}`;
 }
 
-// Headline quality gate — block one-word / clickbait / missing-subject titles.
+// Headline quality gate, block one-word / clickbait / missing-subject titles.
 function validateAnalysis(a: { headline?: string; subheadline?: string; news_summary?: string; source_urls?: string[] }) {
   const h = (a.headline ?? "").trim();
   const sub = (a.subheadline ?? "").trim();
@@ -173,7 +173,7 @@ async function analyzeWithFramework(lovableKey: string, newsContext: string) {
       model: "google/gemini-2.5-pro",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: `This week's news item:\n\n${newsContext}\n\nProduce the full framework analysis. Remember the depth rules: every claim answered "why" at least twice, name specific companies and mechanics, surface what most analysts will miss for 6 months, take a position. The structural_take is the centerpiece — do not be brief. The vertical_lens must walk the actual buyer journey. The linkedin_post must be paste-ready, no preamble.` }
+        { role: "user", content: `This week's news item:\n\n${newsContext}\n\nProduce the full framework analysis. Remember the depth rules: every claim answered "why" at least twice, name specific companies and mechanics, surface what most analysts will miss for 6 months, take a position. The structural_take is the centerpiece, do not be brief. The vertical_lens must walk the actual buyer journey. The linkedin_post must be paste-ready, no preamble.` }
       ],
       tools: [{ type: "function", function: { name: ANALYSIS_SCHEMA.name, description: "Return the structured framework analysis", parameters: ANALYSIS_SCHEMA.schema } }],
       tool_choice: { type: "function", function: { name: ANALYSIS_SCHEMA.name } },
@@ -266,7 +266,7 @@ Deno.serve(async (req) => {
       vertical: analysis.vertical,
     };
     // Date priority: explicit published_at param > model-extracted news_date > now().
-    // Clamp to now() — the model sometimes hallucinates future dates (e.g. "2026-06-05"),
+    // Clamp to now(), the model sometimes hallucinates future dates (e.g. "2026-06-05"),
     // which then pin the article to the top of the feed forever. Past dates are fine.
     const rawDate = publishedAt
       || (analysis.news_date && /^\d{4}-\d{2}-\d{2}$/.test(analysis.news_date)

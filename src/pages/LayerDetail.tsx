@@ -37,13 +37,13 @@ const LayerDetailPage = () => {
     "@id": `${layerUrl}#term`,
     termCode: layer.id,
     name: `${layer.id} ${layer.name}`,
-    alternateName: [`Layer ${layer.id}`, `${layer.id} — ${layer.shortName}`],
+    alternateName: [`Layer ${layer.id}`, `${layer.id}, ${layer.shortName}`],
     description: `${layer.desc} ${layer.detail}`,
     url: layerUrl,
     inDefinedTermSet: {
       "@type": "DefinedTermSet",
       "@id": "https://supplychainofai.com/#framework",
-      name: "The Supply Chain of Intelligence™ — 10 Layers of the Generative AI Stack",
+      name: "The Supply Chain of Intelligence™, 10 Layers of the Generative AI Stack",
       url: "https://supplychainofai.com/framework",
       numberOfItems: 10,
     },
@@ -69,7 +69,7 @@ const LayerDetailPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${layer.id} ${layer.name} — Layer ${layer.id} of the Supply Chain of Intelligence`}
+        title={`${layer.id} ${layer.name}, Layer ${layer.id} of the Supply Chain of Intelligence`}
         description={`${layer.desc} ${layer.verdict}`}
         path={`/framework/${slugFor(layer.id)}`}
       />
@@ -181,7 +181,7 @@ const LayerDetailPage = () => {
                     className="font-mono-marker text-[11px] font-bold uppercase tracking-[0.18em] mb-2"
                     style={{ color: `hsl(${layer.color})` }}
                   >
-                    — Layer diagnostic card · SCOI v1
+                   , Layer diagnostic card · SCOI v1
                   </p>
                   <h2 className="font-display text-2xl md:text-[28px] font-bold text-foreground mb-3 leading-tight">
                     Is a company really at {layer.id}?

@@ -97,7 +97,7 @@ const LiveArticleDetail = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${article.headline} — Live Analysis`}
+        title={`${article.headline}, Live Analysis`}
         description={article.subheadline ?? article.news_summary.slice(0, 155)}
         path={`/live/${article.slug}`}
         article
@@ -149,13 +149,13 @@ const LiveArticleDetail = () => {
             )}
           </section>
 
-          {/* Layer scoring — chip + dot intensity matrix */}
+          {/* Layer scoring, chip + dot intensity matrix */}
           <section className="mb-12">
             <Eyebrow className="mb-4">Layer Scoring</Eyebrow>
 
             <ExportablePng
               fileName={`${article.slug}-layer-scoring`}
-              caption={`${article.headline} — Layer Scoring`}
+              caption={`${article.headline}, Layer Scoring`}
               exportBackground="hsl(40 30% 97%)"
             >
             <div
@@ -165,7 +165,7 @@ const LiveArticleDetail = () => {
                 border: "1px solid hsl(35 20% 88%)",
               }}
             >
-              {/* Chip header row — canonical "L# Short" */}
+              {/* Chip header row, canonical "L# Short" */}
               <div className="grid grid-cols-10 gap-1.5 mb-3">
                 {LAYER_ORDER.map((layer) => (
                   <div
@@ -204,7 +204,7 @@ const LiveArticleDetail = () => {
                 })}
               </div>
 
-              {/* Sublayer stack — tiles stacked under each layer column in lighter shades */}
+              {/* Sublayer stack, tiles stacked under each layer column in lighter shades */}
               <div className="grid grid-cols-10 gap-1.5 mt-1.5 pb-4 border-b border-foreground/10 items-start">
                 {LAYER_ORDER.map((layer) => {
                   const s = scoreMap.get(layer);
@@ -274,7 +274,7 @@ const LiveArticleDetail = () => {
             </ExportablePng>
           </section>
 
-          {/* Sublayer impact map — what specifically is touched and by what magnitude */}
+          {/* Sublayer impact map, what specifically is touched and by what magnitude */}
           {article.analysis.layer_scores.some(s => (s.intensity ?? 0) > 0 && (s.sublayers?.length ?? 0) > 0) && (
             <section className="mb-12">
               <Eyebrow className="mb-2">Sublayer Impact Map</Eyebrow>
@@ -285,12 +285,12 @@ const LiveArticleDetail = () => {
             </section>
           )}
 
-          {/* Intelligence Cube — 2D projection */}
+          {/* Intelligence Cube, 2D projection */}
           {article.analysis.cube_position && (
             <section className="mb-12">
               <Eyebrow className="mb-2">Intelligence Cube · 2D</Eyebrow>
               <p className="text-foreground/70 text-[14px] mb-4 italic">
-                The move's footprint across the three Cube axes — Functions, Verticals, Layers — flattened into two readable 2D projections.
+                The move's footprint across the three Cube axes, Functions, Verticals, Layers, flattened into two readable 2D projections.
               </p>
               <CubeProjection2D
                 functions={article.analysis.cube_position.functions}
@@ -327,7 +327,7 @@ const LiveArticleDetail = () => {
             <section className="mb-12 grid md:grid-cols-2 gap-6">
               {(article.analysis.who_wins?.length ?? 0) > 0 && (
                 <div className="border-l-4 border-[hsl(var(--verdict-fortified))] pl-4">
-                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-fortified))] mb-3">— Who Wins</p>
+                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-fortified))] mb-3"> -  Who Wins</p>
                   <ul className="space-y-3">
                     {article.analysis.who_wins!.map((w, i) => (
                       <li key={i} className="text-[15px] leading-snug">
@@ -340,7 +340,7 @@ const LiveArticleDetail = () => {
               )}
               {(article.analysis.who_loses?.length ?? 0) > 0 && (
                 <div className="border-l-4 border-[hsl(var(--verdict-exposed))] pl-4">
-                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3">— Who's Exposed</p>
+                  <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3"> -  Who's Exposed</p>
                   <ul className="space-y-3">
                     {article.analysis.who_loses!.map((w, i) => (
                       <li key={i} className="text-[15px] leading-snug">
@@ -383,7 +383,7 @@ const LiveArticleDetail = () => {
           {/* Counter thesis */}
           {article.analysis.counter_thesis && (
             <section className="mb-12 bg-card border-l-4 border-foreground/40 p-5">
-              <p className="font-sketch text-base font-bold text-foreground/70 mb-2">— Steelman: The Counter-Thesis</p>
+              <p className="font-sketch text-base font-bold text-foreground/70 mb-2"> -  Steelman: The Counter-Thesis</p>
               <p className="text-foreground/85 leading-relaxed text-[16px] whitespace-pre-line">{article.analysis.counter_thesis}</p>
             </section>
           )}
@@ -444,7 +444,7 @@ const LiveArticleDetail = () => {
             </p>
           </div>
 
-          {/* Inbox capture — last */}
+          {/* Inbox capture, last */}
           <ArticleFooterCTA
             source={`live:${article.slug}`}
             shareUrl={`https://supplychainofai.com/live/${article.slug}`}

@@ -9,7 +9,7 @@
 //      a full HTML file per route to dist/<path>/index.html.
 //
 // LLM/search crawlers get real, fully-rendered HTML for every route.
-// Real users get the SPA — main.tsx detects the prerender marker and
+// Real users get the SPA, main.tsx detects the prerender marker and
 // remounts cleanly so we don't fight a hydration mismatch.
 
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "fs";
@@ -27,7 +27,7 @@ const SSR_ENTRY = resolve("dist-ssr/entry-server.js");
 
 // Set up just enough browser-shaped globals so the SSR bundle can be IMPORTED
 // (Supabase reads localStorage; Sonner reads document at module load).
-// IMPORTANT: do NOT set `window` — react-helmet-async checks
+// IMPORTANT: do NOT set `window`, react-helmet-async checks
 // `typeof window !== 'undefined' && window.document` to decide whether it's
 // on the client. If true, it tries to mutate document.head via
 // requestAnimationFrame, which crashes in Node. Keeping window undefined
@@ -51,7 +51,7 @@ if (!existsSync(SSR_ENTRY)) {
 }
 
 // Read the template. After the first prerender run, dist/index.html holds
-// fully prerendered home content — that would poison every subsequent route.
+// fully prerendered home content, that would poison every subsequent route.
 // We cache a clean copy at dist/.prerender-template.html on the first build
 // when vite's output still has an empty <div id="root"></div>, and prefer
 // that cached copy on later runs.
@@ -65,7 +65,7 @@ if (isCleanTemplate) {
 } else if (existsSync(TEMPLATE_CACHE)) {
   template = readFileSync(TEMPLATE_CACHE, "utf8");
 } else {
-  // No cached template AND dist/index.html is already polluted — fall back to
+  // No cached template AND dist/index.html is already polluted, fall back to
   // the project's source index.html. This still works because we replace the
   // <div id="root"></div> with our prerendered content.
   const srcIndex = readFileSync(resolve("index.html"), "utf8");
@@ -97,7 +97,7 @@ try {
   console.warn("prerender: live_articles fetch failed", err);
 }
 
-// Routes to prerender — must match React Router definitions in src/App.tsx.
+// Routes to prerender, must match React Router definitions in src/App.tsx.
 const routes: string[] = [
   "/",
   "/paper",

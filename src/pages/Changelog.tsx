@@ -28,7 +28,7 @@ const fmtDate = (iso: string) =>
 const Changelog = () => (
   <SiteLayout>
     <Seo
-      title="Changelog — Every Re-review, Re-grade, and Framework Bump"
+      title="Changelog, Every Re-review, Re-grade, and Framework Bump"
       description="Public revision log for the Supply Chain of Intelligence™. Every map re-review, verdict change, and Paper revision is recorded here."
       path="/changelog"
     />
@@ -41,7 +41,7 @@ const Changelog = () => (
         <p className="text-lg text-muted-foreground leading-relaxed">
           Every re-review of a Map, every re-grade of a company, every revision
           of the Paper is recorded here in plain text. If a living surface
-          changes without an entry on this page, that's a bug — please flag it.
+          changes without an entry on this page, that's a bug, please flag it.
         </p>
         <p className="mt-4 text-sm text-muted-foreground">
           See <Link to="/methodology" className="text-accent hover:underline">the methodology</Link>{" "}

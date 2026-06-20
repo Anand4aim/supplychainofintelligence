@@ -46,10 +46,10 @@
     --paper-ink: 220 50% 12%;
 
     /* ─── Layer colors (deck spectrum) ──────────────────── */
-    /* Below the line — foundation, deliberately desaturated */
+    /* Below the line, foundation, deliberately desaturated */
     --layer-neg1: 263 35% 30%;
     --layer-0: 258 30% 38%;
-    /* Above the line — full spectrum */
+    /* Above the line, full spectrum */
     --layer-1: 273 51% 48%;
     --layer-2: 221 44% 41%;
     --layer-3: 207 44% 49%;
@@ -132,7 +132,7 @@
   }
 }
 
-/* ─── Engineering marker — the DWG / SHEET / mono labels ─── */
+/* ─── Engineering marker, the DWG / SHEET / mono labels ─── */
 .font-sketch {
   font-family: 'JetBrains Mono', 'SF Mono', monospace;
   font-weight: 600;
@@ -148,7 +148,7 @@
   text-transform: uppercase;
 }
 
-/* Blueprint paper — used by hero/proof boards */
+/* Blueprint paper, used by hero/proof boards */
 .sketch-paper {
   background: hsl(210 45% 97%);
   border: 1px solid hsl(var(--border));
@@ -164,7 +164,7 @@
   opacity: 0.05;
 }
 
-/* Blueprint frame — double-line drafting border */
+/* Blueprint frame, double-line drafting border */
 .sketch-border {
   border-radius: 4px;
   position: relative;
@@ -189,7 +189,7 @@
 .verdict-consolidating { border-left: 3px solid hsl(var(--verdict-consolidating)); }
 .verdict-dominant { border-left: 3px solid hsl(var(--verdict-dominant)); }
 
-/* Buttons — engineering-stamp feel */
+/* Buttons, engineering-stamp feel */
 .btn-sketch {
   @apply inline-flex items-center gap-2 px-4 py-2 text-[12px] font-semibold rounded-sm transition-all duration-200;
   font-family: 'JetBrains Mono', monospace;

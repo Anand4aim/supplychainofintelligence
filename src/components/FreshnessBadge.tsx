@@ -5,13 +5,13 @@ import { Clock } from "lucide-react";
  * Editorial freshness badge for LIVING surfaces (Market Maps, Vertical Maps,
  * Teardowns, Predictions, Verdicts). Evergreen surfaces (10 layers, 50
  * sublayers, 4 Laws, Intelligence Cube, archetypes, the Paper) MUST NOT
- * carry this badge — dating them weakens the framework.
+ * carry this badge, dating them weakens the framework.
  *
  * Two-register cadence contract: see /methodology.
  *
- * `asOf` — human-readable month string (e.g. "As of Jun 2026", "Jun 2026").
+ * `asOf`, human-readable month string (e.g. "As of Jun 2026", "Jun 2026").
  *           Normalised to "As of <month>" when prefix missing.
- * `tone` — "fresh" (<35 days) renders accent; "stale" renders amber warning.
+ * `tone`, "fresh" (<35 days) renders accent; "stale" renders amber warning.
  *           Caller decides; default fresh.
  */
 interface Props {
@@ -31,7 +31,7 @@ const FreshnessBadge = ({ asOf, tone = "fresh", className = "", hideLink = false
           ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300"
           : "border-foreground/15 bg-background text-muted-foreground"
       } ${className}`}
-      title="This is a living reading of the market — re-reviewed monthly."
+      title="This is a living reading of the market, re-reviewed monthly."
     >
       <Clock size={11} className={isStale ? "text-amber-600 dark:text-amber-400" : "text-accent"} />
       <span>{label}</span>

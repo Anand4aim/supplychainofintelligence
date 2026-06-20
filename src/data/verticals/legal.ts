@@ -1,4 +1,4 @@
-// Legal AI — full 10×50 sublayer placement dataset.
+// Legal AI, full 10×50 sublayer placement dataset.
 // Ported from Anand's editorial map (May 2026). Companies are placed at the
 // specific sublayer cells they structurally occupy, with primary/secondary
 // distinction and a GAP annotation for every empty cell explaining *why*
@@ -21,7 +21,7 @@ export interface VerticalCompany {
 export type GapKind = "ws" | "feat" | "horiz";
 
 export interface SublayerPlacement {
-  /** Sublayer id, lower-case (matches src/data/layers.ts) — e.g. "L5a". */
+  /** Sublayer id, lower-case (matches src/data/layers.ts), e.g. "L5a". */
   id: string;
   primary?: string[];   // company keys
   secondary?: string[]; // company keys
@@ -60,13 +60,13 @@ const C = (
 const COMPANIES = Object.fromEntries([
   // Tier 1 / Growth
   C("harvey", "Harvey", "Execution platform", "growth",
-    "Aspiring operating system for legal work — drafting, due diligence, research, review, agents.",
+    "Aspiring operating system for legal work, drafting, due diligence, research, review, agents.",
     "Primary L5a Domain Execution & Tool Use · Secondary L6b/L6c · Future moat L8d",
     "~$200M at $11B (Mar 2026, GIC+Sequoia). >$1B total. 100k+ lawyers, ~1,300 orgs.",
     "Sells execution, not a model. Bets usage compounds into ownable institutional memory (L8d).",
     "Contested (Jun 2026): re-graded from Fortress → Agent. Multi-layer position holds, but frontier models + LexisNexis/vLex/Westlaw/Legora closed the citation-and-workflow gap faster than expected. Counter-move: deepen L1 (proprietary case corpus) or L3 (jurisdictional gates). Lead is years, not decades."),
   C("legora", "Legora", "Execution platform", "growth",
-    "Collaborative legal execution (formerly Leya) — multi-lawyer workflows, agentic research, Word.",
+    "Collaborative legal execution (formerly Leya), multi-lawyer workflows, agentic research, Word.",
     "Primary L5a Domain Execution & Tool Use · Secondary L6c · Future moat L8d",
     "$550M Series D at $5.55B (Mar 2026, Accel); ~$5.6B extension (Apr 2026). >$100M ARR.",
     "Clearest Harvey challenger; leans into collaborative execution + European base."),
@@ -80,7 +80,7 @@ const COMPANIES = Object.fromEntries([
     "Primary L5a · L1d Outcome Data · Secondary L6c",
     "$60M Series B (May 2025, Sapphire; Mayfield, TR Ventures). ~$91M total.",
     "Vertical PI execution + compounding outcome data.",
-    "Disregard the circulating '$3B / $400M Series E' figure — not supported by primary sources."),
+    "Disregard the circulating '$3B / $400M Series E' figure, not supported by primary sources."),
   C("eve", "Eve", "Vertical · plaintiff", "growth",
     "AI platform for plaintiff-side firms.",
     "Primary L5a · Secondary L6c",
@@ -90,7 +90,7 @@ const COMPANIES = Object.fromEntries([
     "'Legal-Grade™' proprietary model for contract analysis & negotiation; agents.",
     "Primary L2b Specialized & Fine-Tuned Models · Secondary L5a",
     "$75M Series C (Feb 2025, Point72; Forestay). ~$165M total. UK/Europe.",
-    "One of few pure-plays on a proprietary legal model — contested by foundation-model capability."),
+    "One of few pure-plays on a proprietary legal model, contested by foundation-model capability."),
   C("gcai", "GC AI", "Reasoning · in-house", "growth",
     "AI for in-house / GC teams; cited for real reasoning depth.",
     "Primary L5b Reasoning Scaffolds · Secondary L3b",
@@ -107,7 +107,7 @@ const COMPANIES = Object.fromEntries([
     "Fast, accuracy-first legal research & drafting.",
     "Primary L5c RAG Workflows · Secondary L3b Quality Gates",
     "$22M Series A (Jan 2025, Unusual Ventures). ~$28M total.",
-    "Competes on trust — claims 94% non-hallucination on the Stanford legal benchmark."),
+    "Competes on trust, claims 94% non-hallucination on the Stanford legal benchmark."),
   C("alexi", "Alexi", "Research · litigation", "early",
     "Litigation research / case-law retrieval for litigators.",
     "Primary L5c · Secondary L8d",
@@ -142,40 +142,40 @@ const COMPANIES = Object.fromEntries([
     "UK consumer/SMB legal marketplace + AI assistant 'Lawrence'.",
     "Primary L7c / L5a",
     "$40M Series A (GV; ~£49M total).",
-    "Demand-side play — owns the consumer relationship, not just the tooling."),
+    "Demand-side play, owns the consumer relationship, not just the tooling."),
   C("pincites", "Pincites †", "Contract negotiation (exited)", "exit",
     "Contract-negotiation playbooks / auto-redlining in Word.",
     "Primary L7c",
     "Seed $3M (Friedman/Gross, YC) → acquired by Filevine (Dec 2025).",
-    "Early exit — a copilot getting absorbed into a broader platform. Pattern to watch."),
+    "Early exit, a copilot getting absorbed into a broader platform. Pattern to watch."),
 
   // Compliance / RegTech
   C("norm", "Norm Ai", "Compliance / RegTech", "early",
-    "Regulatory AI agents — converts regulations into operational code.",
+    "Regulatory AI agents, converts regulations into operational code.",
     "Primary L3a Compliance & Export Controls · Secondary L1b",
     "$27M Series A (Coatue; Citi, Bain, Blackstone). ~$38M total.",
-    "Strongest L3a thesis — regulation-as-code is upstream, recurring, defensible."),
+    "Strongest L3a thesis, regulation-as-code is upstream, recurring, defensible."),
   C("delve", "Delve", "Compliance / RegTech", "early",
     "Agentic compliance (SOC2/HIPAA/GDPR) for startups.",
     "Primary L3a Compliance & Export Controls",
     "$32M Series A at $300M (Insight Partners).",
     "Compliance automation as a fast-growing wedge; high valuation for stage."),
   C("greenlite", "Greenlite AI", "Compliance / RegTech", "early",
-    "AI compliance agents — KYC/AML/sanctions for banks & broker-dealers.",
+    "AI compliance agents, KYC/AML/sanctions for banks & broker-dealers.",
     "Primary L3a Compliance & Export Controls",
     "$15M Series A (Greylock; Thomson Reuters Ventures). ~$20M total.",
-    "Regulated-finance compliance — sticky, audit-grade buyers."),
+    "Regulated-finance compliance, sticky, audit-grade buyers."),
   C("hadrius", "Hadrius", "Compliance / RegTech (fintech-adjacent)", "early",
-    "AI SEC/RIA compliance for financial firms — comms review, archiving, trade monitoring.",
+    "AI SEC/RIA compliance for financial firms, comms review, archiving, trade monitoring.",
     "Primary L3a Compliance & Export Controls",
     "$2M seed (YC, 2023); ~$6M total raised. Smaller / earlier than the L3a leaders.",
-    "Financial-compliance focus places it adjacent to legal — included for completeness.",
+    "Financial-compliance focus places it adjacent to legal, included for completeness.",
     "More fintech-compliance than legal; ~$6M total figure unverified."),
   C("vesence", "Vesence", "Quality / review agent", "early",
-    "AI review/QC agent in Word & Outlook — style guides, consistency, fact-validation.",
+    "AI review/QC agent in Word & Outlook, style guides, consistency, fact-validation.",
     "Primary L3b Quality Gates · Secondary L7c",
     "$9M seed (Oct 2025, led by Emergence; Creandum, YC, 20VC, Paul Graham). SF.",
-    "Positions as the accuracy/verification layer — a 'Legora rival' but wedge is quality-gating."),
+    "Positions as the accuracy/verification layer, a 'Legora rival' but wedge is quality-gating."),
 
   // IP / Patent
   C("deepip", "DeepIP", "IP / Patent", "growth",
@@ -184,7 +184,7 @@ const COMPANIES = Object.fromEntries([
     "$25M Series B (Korelya, Serena). ~$40M total in nine months.",
     "Workflow-native (in-Word) patent drafting; standardizing across IP teams."),
   C("patlytics", "Patlytics", "IP / Patent", "growth",
-    "End-to-end patent platform — disclosure, drafting, prosecution, infringement, litigation.",
+    "End-to-end patent platform, disclosure, drafting, prosecution, infringement, litigation.",
     "Primary L5a · Secondary L5c",
     "$40M Series B (SignalFire).",
     "Full-lifecycle patent coverage; 'hallucination-free,' citation-backed."),
@@ -192,7 +192,7 @@ const COMPANIES = Object.fromEntries([
     "AI patent drafting & prosecution.",
     "Primary L5a",
     "$40M Series B (Dec 2025).",
-    "Direct DeepIP/Patlytics competitor — patent is its own well-funded sub-market."),
+    "Direct DeepIP/Patlytics competitor, patent is its own well-funded sub-market."),
   C("nlpatent", "NLPatent", "IP / Patent research", "early",
     "AI patent research & search.",
     "Primary L5c · Secondary L1b",
@@ -204,17 +204,17 @@ const COMPANIES = Object.fromEntries([
     "Mines public documents to detect & originate class-action lawsuits.",
     "Primary L1d Outcome Data · Secondary L1a Public Data",
     "~$60M total ($35M Series B, Georgian; NFX, YC).",
-    "Owns a proprietary lead-origination data engine — a true data moat, not a workflow."),
+    "Owns a proprietary lead-origination data engine, a true data moat, not a workflow."),
   C("theo", "Theo Ai", "Litigation outcome prediction", "early",
     "Predicts case outcomes / ranks claims by exposure & likely value.",
     "Primary L8e Learned World Models · Secondary L1d Outcome Data",
     "~$10M total ($4.2M seed May 2025 + $3.4M, Run Ventures).",
-    "Closest thing to a 'learned world model' for litigation — claims 85% vs ~60-65% human accuracy."),
+    "Closest thing to a 'learned world model' for litigation, claims 85% vs ~60-65% human accuracy."),
   C("wexler", "Wexler.ai", "Litigation fact-checking", "early",
     "Real-time fact-checking & dispute analysis for complex litigation at large firms.",
     "Primary L3b Quality Gates · Secondary L5c",
     "$5.3M seed (Sep 2025, Pear VC; Seedcamp, LegalTech Fund).",
-    "Accuracy/verification layer for high-stakes litigation — quality-gate positioning."),
+    "Accuracy/verification layer for high-stakes litigation, quality-gate positioning."),
 
   // Research challengers
   C("midpage", "Midpage", "Legal research", "early",
@@ -231,7 +231,7 @@ const COMPANIES = Object.fromEntries([
 
   // Immigration
   C("legalos", "LegalOS", "AI-native immigration firm", "early",
-    "AI-native immigration law firm — USCIS-ready petitions in 24-48h.",
+    "AI-native immigration law firm, USCIS-ready petitions in 24-48h.",
     "Vertically integrated L3→L5→L7 (immigration)",
     "YC W26.",
     "Studied 12,000 petitions; AI agents draft narratives, compile evidence, anticipate objections."),
@@ -248,27 +248,27 @@ const COMPANIES = Object.fromEntries([
 
   // AI-native firms
   C("crosby", "Crosby", "AI-native law firm", "growth",
-    "Hybrid AI law firm — contract review via Slack in <1h. Clients: Cursor, Clay, Unify.",
+    "Hybrid AI law firm, contract review via Slack in <1h. Clients: Cursor, Clay, Unify.",
     "Vertically integrated L3→L5→L7 + delivery",
     "Seed $5.8M (Sequoia) + $20M Series A (Oct 2025, Cooley invests). ~$25.8M total.",
-    "Sells legal *services*, not software — captures full margin + the resulting data."),
+    "Sells legal *services*, not software, captures full margin + the resulting data."),
   C("garfield", "Garfield AI", "AI-native law firm", "early",
     "First SRA-authorized purely AI-based law firm (UK). Debt recovery / small claims.",
     "Vertically integrated L3→L5→L7 + delivery",
     "Seed-stage; ~£2 letters, ~£50 filings.",
-    "Replaces the firm itself — collapses several SCOI layers into one entity."),
+    "Replaces the firm itself, collapses several SCOI layers into one entity."),
 
   // Data layer
   C("vlex", "vLex / Vincent AI", "Data layer (acquired)", "exit",
     "1B+ editorially enriched legal docs across 110 jurisdictions + Vincent AI.",
     "Primary L1b Proprietary Data · Secondary L5c",
     "Acquired by Clio for ~$1B (Nov 2025); Clio raised $500M Series G @ $5B.",
-    "Proof the data layer is scarce — a billion-doc corpus gets bought, not rebuilt."),
+    "Proof the data layer is scarce, a billion-doc corpus gets bought, not rebuilt."),
   C("regbase", "Regbase", "Emerging · compliance data", "early",
     "Regulatory acquisition / monitoring / compliance intelligence.",
     "Primary L1b Proprietary Data · Secondary L3a",
-    "Public data thin — flagged unverified.",
-    "Closer to Bloomberg than Harvey — an upstream compliance-data layer.",
+    "Public data thin, flagged unverified.",
+    "Closer to Bloomberg than Harvey, an upstream compliance-data layer.",
     "Limited public data; positioning inferred."),
   C("robin", "Robin AI †", "Cautionary tale (exited)", "exit",
     "Contract review & drafting copilot (former independent).",
@@ -290,7 +290,7 @@ const placements: SublayerPlacement[] = [
   { id: "L7a", gap: { kind: "horiz", note: "Commoditized by ChatGPT et al." } },
   { id: "L7b", gap: { kind: "horiz", note: "Horizontal media tools" } },
   { id: "L7c", primary: ["spellbook", "genie", "definely", "pincites", "robin"], secondary: ["deepip", "lawhive", "vesence"] },
-  { id: "L7d", gap: { kind: "ws", note: "⌁ Transaction surface — held by DocuSign/Ironclad; AI-native version unbuilt" } },
+  { id: "L7d", gap: { kind: "ws", note: "⌁ Transaction surface, held by DocuSign/Ironclad; AI-native version unbuilt" } },
   { id: "L7e", gap: { kind: "ws", note: "⌁ Emerging ambient surface" } },
 
   // L6 Orchestration
@@ -304,7 +304,7 @@ const placements: SublayerPlacement[] = [
   { id: "L5a", primary: ["harvey", "legora", "evenup", "supio", "eve", "ivo", "wordsmith", "legalfly", "deepip", "patlytics", "solve", "parley", "gale"], secondary: ["luminance", "spellbook", "definely", "lawhive", "crosby", "garfield", "legalos"] },
   { id: "L5b", primary: ["gcai"] },
   { id: "L5c", primary: ["paxton", "alexi", "midpage", "blueshoe", "nlpatent"], secondary: ["vlex", "wexler", "patlytics"] },
-  { id: "L5d", gap: { kind: "ws", note: "⌁ Firm-specific playbooks — under-built" } },
+  { id: "L5d", gap: { kind: "ws", note: "⌁ Firm-specific playbooks, under-built" } },
   { id: "L5e", gap: { kind: "feat", note: "Feature inside L5a/L7c products" } },
 
   // L4 Access
@@ -312,7 +312,7 @@ const placements: SublayerPlacement[] = [
   { id: "L4b", gap: { kind: "horiz", note: "Cross-industry protocol (emerging)" } },
   { id: "L4c", gap: { kind: "feat", note: "Platform feature" } },
   { id: "L4d", gap: { kind: "horiz", note: "Horizontal infra" } },
-  { id: "L4e", gap: { kind: "ws", note: "⌁ Agent identity / provenance — open" } },
+  { id: "L4e", gap: { kind: "ws", note: "⌁ Agent identity / provenance, open" } },
 
   // L3 Gates
   { id: "L3a", whitespace: true, primary: ["norm", "delve", "greenlite", "hadrius"], secondary: ["regbase"] },
@@ -331,9 +331,9 @@ const placements: SublayerPlacement[] = [
   // L1 Data
   { id: "L1a", secondary: ["darrow"] },
   { id: "L1b", primary: ["vlex", "regbase"], secondary: ["norm", "blueshoe", "nlpatent"] },
-  { id: "L1c", gap: { kind: "ws", note: "⌁ Legal behavioral data — under-exploited" } },
+  { id: "L1c", gap: { kind: "ws", note: "⌁ Legal behavioral data, under-exploited" } },
   { id: "L1d", whitespace: true, primary: ["evenup", "supio", "darrow"], secondary: ["eve", "theo", "gale"] },
-  { id: "L1e", gap: { kind: "ws", note: "⌁ Synthetic legal data — emerging" } },
+  { id: "L1e", gap: { kind: "ws", note: "⌁ Synthetic legal data, emerging" } },
 ];
 
 export const LEGAL_MAP: VerticalMapData = {
@@ -341,12 +341,12 @@ export const LEGAL_MAP: VerticalMapData = {
   label: "Legal",
   asOf: "AI-first companies · incl. early-stage · May 2026",
   thesis:
-    "Value is bifurcating to L5 Domain Execution at the top (Harvey, Legora) and L1 Data underneath (outcome data + proprietary corpora). At the early stage, L5a is already crowded — differentiation must come from a vertical data moat, not the workflow. The fundable open layers are L3a Compliance & Export Controls, L1d / L8e litigation-outcome data, and the AI-native firm model.",
+    "Value is bifurcating to L5 Domain Execution at the top (Harvey, Legora) and L1 Data underneath (outcome data + proprietary corpora). At the early stage, L5a is already crowded, differentiation must come from a vertical data moat, not the workflow. The fundable open layers are L3a Compliance & Export Controls, L1d / L8e litigation-outcome data, and the AI-native firm model.",
   whitespace: [
-    { title: "L8d Institutional Knowledge — the unclaimed crown.", body: "Turn execution exhaust into structured, queryable memory. Everyone aspires; nobody owns it." },
+    { title: "L8d Institutional Knowledge, the unclaimed crown.", body: "Turn execution exhaust into structured, queryable memory. Everyone aspires; nobody owns it." },
     { title: "L1d / L8e litigation-outcome data.", body: "Theo Ai & Darrow are nearly alone in owning hard-to-copy case-outcome data. Outcome data beyond personal injury is wide open." },
-    { title: "L3a Compliance & Export Controls.", body: "Norm Ai, Delve, Greenlite are early and few — an upstream, recurring, Bloomberg-shaped layer." },
-    { title: "The AI-native firm (Crosby, Garfield, LegalOS).", body: "Doesn't sell software — replaces the firm. Captures full margin + outcome data. Highest variance." },
+    { title: "L3a Compliance & Export Controls.", body: "Norm Ai, Delve, Greenlite are early and few, an upstream, recurring, Bloomberg-shaped layer." },
+    { title: "The AI-native firm (Crosby, Garfield, LegalOS).", body: "Doesn't sell software, replaces the firm. Captures full margin + outcome data. Highest variance." },
   ],
   scorecard: [
     { sublayer: "L1b Proprietary Data", occupants: "vLex/Vincent (acq. Clio), Regbase, Blueshoe", state: "scarce" },
@@ -362,8 +362,8 @@ export const LEGAL_MAP: VerticalMapData = {
   companies: COMPANIES,
   placements,
   genericLayers: [
-    { id: "L0", note: "Vertical-agnostic — shared GPUs / silicon / data centers / cloud. Not legal-specific." },
-    { id: "L-1", note: "Vertical-agnostic — energy, materials, fabrication. Not legal-specific." },
+    { id: "L0", note: "Vertical-agnostic, shared GPUs / silicon / data centers / cloud. Not legal-specific." },
+    { id: "L-1", note: "Vertical-agnostic, energy, materials, fabrication. Not legal-specific." },
   ],
   notes:
     "† Pincites → acquired by Filevine (Dec 2025); Robin AI → distressed sale to Microsoft (Mar 2026). Funding from primary announcements + TechCrunch, Bloomberg, LawNext/LawSites, Artificial Lawyer, Sifted, Crunchbase. Valuations point-in-time (2025-26).",

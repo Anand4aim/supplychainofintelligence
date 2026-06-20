@@ -2,11 +2,11 @@ import { LAYERS, layerColor } from "@/data/layers";
 import { Link } from "react-router-dom";
 
 /**
- * IntelligenceGrid — the canonical 10×5 grid of the Supply Chain of Intelligence.
+ * IntelligenceGrid, the canonical 10×5 grid of the Supply Chain of Intelligence.
  * Two modes:
  *   - "blank":  pure framework template. Anyone can screenshot, print, mark up.
  *   - "audit":  per-sublayer depth dots (0–5) overlaid for a specific company.
- *               Cells stay desaturated so the dots — not the colors — carry the signal.
+ *               Cells stay desaturated so the dots, not the colors, carry the signal.
  *
  * Strategic note: this is the single most shareable artifact on the site. Whether
  * blank or filled, it must read in 3 seconds at 1024px and survive a screenshot.
@@ -63,7 +63,7 @@ const IntelligenceGrid = ({
   const defaultCaption =
     mode === "audit"
       ? "Self-mapped from user-provided inputs + public footprint. Not verified. Not an endorsement."
-      : "Print it. Mark it up. Map your own — or any company you cover.";
+      : "Print it. Mark it up. Map your own, or any company you cover.";
 
   return (
     <div
@@ -77,7 +77,7 @@ const IntelligenceGrid = ({
       <div className="mb-4 flex items-end justify-between gap-4 border-b border-foreground/15 pb-3 flex-wrap">
         <div className="min-w-0">
           <p className="font-mono-marker text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-accent">
-            {mode === "audit" ? "Where they play — and where they don't" : "The Supply Chain of Intelligence™"}
+            {mode === "audit" ? "Where they play, and where they don't" : "The Supply Chain of Intelligence™"}
           </p>
           <h3 className="font-display text-xl md:text-2xl leading-tight text-foreground mt-1">
             {title ?? "The 10 layers × 50 sublayers of the generative AI stack."}
@@ -120,7 +120,7 @@ const IntelligenceGrid = ({
               key={layer.id}
               className="grid grid-cols-[96px_1fr] md:grid-cols-[130px_1fr] gap-[5px] items-stretch"
             >
-              {/* Layer chip — keeps its full saturated color. The chip is the legend. */}
+              {/* Layer chip, keeps its full saturated color. The chip is the legend. */}
               <div
                 className="rounded-md px-2.5 py-2 flex flex-col justify-center"
                 style={{ background: c }}
@@ -145,7 +145,7 @@ const IntelligenceGrid = ({
 
                   const cellInner = (
                     <>
-                      {/* ID on top, full name below — wraps to 2 lines so nothing clips */}
+                      {/* ID on top, full name below, wraps to 2 lines so nothing clips */}
                       <div className="min-w-0">
                         <div className="flex items-center gap-1">
                           <span className="font-mono-marker text-[9px] md:text-[10px] tracking-wider font-bold text-foreground/55">
@@ -174,7 +174,7 @@ const IntelligenceGrid = ({
                       to={`/framework#${layer.id}`}
                       className={`${className} hover:bg-foreground/[0.03] transition-colors`}
                       style={{ background: bg, borderColor: borderCol, minHeight: 72 }}
-                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? `, depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </Link>
@@ -183,7 +183,7 @@ const IntelligenceGrid = ({
                       key={s.id}
                       className={className}
                       style={{ background: bg, borderColor: borderCol, minHeight: 72 }}
-                      title={`${s.id} ${s.name}${isAudit ? ` — depth ${depth}/5` : ""}`}
+                      title={`${s.id} ${s.name}${isAudit ? `, depth ${depth}/5` : ""}`}
                     >
                       {cellInner}
                     </div>

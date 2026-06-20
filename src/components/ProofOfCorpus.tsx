@@ -10,7 +10,7 @@ import Eyebrow from "./Eyebrow";
 const CASE_COUNT = CASE_STUDIES.length;
 const LAYER_PAGE_COUNT = LAYERS.length; // L-1 → L8
 
-// Featured "recently analyzed" companies — verdict + slug pulled from the
+// Featured "recently analyzed" companies, verdict + slug pulled from the
 // case-study corpus. Order chosen to span Fortress / Wrapper / Ambiguous so
 // readers immediately see the framework producing different verdicts.
 const FEATURED: Array<{ slug: string; company: string; verdict: string; tier: "fortress" | "exposed" | "mixed" }> = [
@@ -29,7 +29,7 @@ const tierClasses: Record<typeof FEATURED[number]["tier"], string> = {
 };
 
 /**
- * Proof-of-corpus strip — shown right under the hero so first-time visitors
+ * Proof-of-corpus strip, shown right under the hero so first-time visitors
  * (and crawlers that only fetch the homepage) immediately see that the site
  * is a body of work, not a single-page manifesto.
  */

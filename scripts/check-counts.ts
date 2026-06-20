@@ -1,5 +1,5 @@
 /**
- * check-counts.ts — guards against count drift across the site.
+ * check-counts.ts, guards against count drift across the site.
  *
  * Source of truth: src/data/{layers,caseStudies,lawEssays}.ts
  * Enforced patterns (case-insensitive):
@@ -74,7 +74,7 @@ const RULES: Rule[] = [
   {
     name: "laws-enumeration",
     // Lookbehind: only capture the number so replacement is unambiguous.
-    pattern: /(?<=[·,—-]\s)(\d+)\s+laws\b/gi,
+    pattern: /(?<=[·, - -]\s)(\d+)\s+laws\b/gi,
     numericCaptures: [0],
     canon: ["laws"],
     replace: swapNumbers,
@@ -92,7 +92,7 @@ const RULES: Rule[] = [
     numericCaptures: [0],
     canon: ["caseStudies"],
     replace: swapNumbers,
-    skipIfLineHas: ["per ", "each ", "inside", "worked case studies", "–", "—"],
+    skipIfLineHas: ["per ", "each ", "inside", "worked case studies", "–", " - "],
   },
   {
     name: "layers-and-sublayers",

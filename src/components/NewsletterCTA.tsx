@@ -25,7 +25,7 @@ const NewsletterCTA = ({ source = "site", compact = false, variant = "card" }: P
       .from("newsletter_subscribers")
       .insert({ email: email.toLowerCase().trim(), source, status: "pending" });
     if (error) {
-      // Duplicate is fine — treat as success
+      // Duplicate is fine, treat as success
       if (error.code === "23505") {
         setStatus("success");
         setMsg("You're already on the list.");
@@ -96,7 +96,7 @@ const NewsletterCTA = ({ source = "site", compact = false, variant = "card" }: P
           </h3>
           {!compact && (
             <p className="text-sm text-muted-foreground mt-1">
-              One issue when something structurally important happens — usually weekly. No spam, no
+              One issue when something structurally important happens, usually weekly. No spam, no
               filler, unsubscribe anytime.
             </p>
           )}

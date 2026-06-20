@@ -2,7 +2,7 @@ import { LAYERS, layerColor } from "@/data/layers";
 import ExportablePng from "@/components/ExportablePng";
 
 /**
- * HeroBrandPoster — the magazine-cover hero. Dark navy, gold accent,
+ * HeroBrandPoster, the magazine-cover hero. Dark navy, gold accent,
  * 10 layer chips in a single row, with the "above / below the line"
  * mental model drawn underneath. This is the canonical scroll-stopper
  * for LinkedIn / X.
@@ -91,7 +91,7 @@ const HeroBrandPoster = () => {
               className="mt-3 text-[11px] md:text-[13px] italic"
               style={{ color: GOLD, fontFamily: "'Playfair Display', serif" }}
             >
-              above the line — where intelligence compounds
+              above the line, where intelligence compounds
             </p>
           </div>
         </div>

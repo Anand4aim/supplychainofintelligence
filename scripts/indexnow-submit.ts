@@ -1,11 +1,11 @@
 /**
- * IndexNow submission — pings Bing + Yandex (and downstream consumers
+ * IndexNow submission, pings Bing + Yandex (and downstream consumers
  * like DuckDuckGo and ChatGPT search via Bing's index) with every URL
  * in public/sitemap.xml so they recrawl now instead of on their own
  * cadence.
  *
  * Prerequisite: public/ae61abb56a664b2b8f993b8fa0988b19.txt must be
- * Published and reachable at the domain root — IndexNow rejects the
+ * Published and reachable at the domain root, IndexNow rejects the
  * batch with 403 if it can't fetch the key file.
  *
  * Usage:
@@ -61,7 +61,7 @@ if (!keyCheck.ok) {
 }
 const keyBody = (await keyCheck.text()).trim();
 if (keyBody !== KEY) {
-  console.error(`\n✗ Key file contents mismatch — expected "${KEY}", got "${keyBody.slice(0, 40)}…"`);
+  console.error(`\n✗ Key file contents mismatch, expected "${KEY}", got "${keyBody.slice(0, 40)}…"`);
   process.exit(2);
 }
 console.log(`  ✓ key file verified live (${keyBody})`);
@@ -80,7 +80,7 @@ for (const endpoint of ENDPOINTS) {
     if (res.status === 200 || res.status === 202) {
       console.log(`✓ HTTP ${res.status}`);
     } else {
-      console.log(`✗ HTTP ${res.status}${body ? ` — ${body.slice(0, 200)}` : ""}`);
+      console.log(`✗ HTTP ${res.status}${body ? `, ${body.slice(0, 200)}` : ""}`);
       allOk = false;
     }
   } catch (e: any) {
@@ -89,5 +89,5 @@ for (const endpoint of ENDPOINTS) {
   }
 }
 
-console.log(allOk ? "\nAll endpoints accepted the batch." : "\nOne or more endpoints failed — see above.");
+console.log(allOk ? "\nAll endpoints accepted the batch." : "\nOne or more endpoints failed, see above.");
 process.exit(allOk ? 0 : 1);

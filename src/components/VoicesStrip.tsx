@@ -103,7 +103,7 @@ const VoicesStrip: React.FC<Props> = ({ limit = 12 }) => {
             </h2>
             <p className="text-foreground/70 text-[15px] leading-relaxed mt-3 max-w-2xl">
               Reactions from workshops, 1:1 reviews, and LinkedIn exchanges. Names and
-              quotes are listed with permission pending sign-off — not a marketing wall.
+              quotes are listed with permission pending sign-off, not a marketing wall.
             </p>
           </div>
           <Link

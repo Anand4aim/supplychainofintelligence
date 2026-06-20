@@ -10,7 +10,7 @@ const LAYER_ORDER = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"
 
 interface Props {
   layer_scores?: LayerScore[];
-  fallback_layers?: string[]; // existing CaseStudy.layers — used if no layer_scores
+  fallback_layers?: string[]; // existing CaseStudy.layers, used if no layer_scores
   cube_position?: CubePosition;
   timeline?: TimelinePoint[];
   who_wins?: WinnerLoser[];
@@ -135,7 +135,7 @@ const DepthModules: React.FC<Props> = ({
         <section>
           <Eyebrow className="mb-2">Intelligence Cube · 2D</Eyebrow>
           <p className="text-foreground/70 text-[14px] mb-4 italic">
-            Footprint across Functions × Verticals × Layers — the three axes that determine structural fate.
+            Footprint across Functions × Verticals × Layers, the three axes that determine structural fate.
           </p>
           <CubeProjection2D
             functions={cube_position!.functions}
@@ -175,7 +175,7 @@ const DepthModules: React.FC<Props> = ({
         <section className="grid md:grid-cols-2 gap-6">
           {(who_wins?.length ?? 0) > 0 && (
             <div className="border-l-4 border-[hsl(var(--verdict-fortified))] pl-4">
-              <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-fortified))] mb-3">— Who Wins</p>
+              <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-fortified))] mb-3"> -  Who Wins</p>
               <ul className="space-y-3">
                 {who_wins!.map((w, i) => (
                   <li key={i} className="text-[15px] leading-snug">
@@ -188,7 +188,7 @@ const DepthModules: React.FC<Props> = ({
           )}
           {(who_loses?.length ?? 0) > 0 && (
             <div className="border-l-4 border-[hsl(var(--verdict-exposed))] pl-4">
-              <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3">— Who Loses</p>
+              <p className="font-sketch text-base font-bold text-[hsl(var(--verdict-exposed))] mb-3"> -  Who Loses</p>
               <ul className="space-y-3">
                 {who_loses!.map((w, i) => (
                   <li key={i} className="text-[15px] leading-snug">
@@ -204,7 +204,7 @@ const DepthModules: React.FC<Props> = ({
 
       {counter_thesis && (
         <section className="bg-card border-l-4 border-foreground/40 p-5">
-          <p className="font-sketch text-base font-bold text-foreground/70 mb-2">— Steelman: The Counter-Thesis</p>
+          <p className="font-sketch text-base font-bold text-foreground/70 mb-2"> -  Steelman: The Counter-Thesis</p>
           <p className="text-foreground/85 leading-relaxed text-[16px] whitespace-pre-line">{counter_thesis}</p>
         </section>
       )}

@@ -3,7 +3,7 @@ import { LAYERS } from "@/data/layers";
 
 /**
  * The "what is this framework" poster. Designed for first-time visitors to
- * screenshot and share — 10 layers with a one-liner each + 4 laws strip +
+ * screenshot and share, 10 layers with a one-liner each + 4 laws strip +
  * tagline + URL. Editorial, copyable, no author promo.
  */
 
@@ -24,7 +24,7 @@ const FrameworkSummaryPoster = () => {
   return (
     <ExportablePng
       fileName="scoi-framework-at-a-glance"
-      caption="The Framework — At a Glance"
+      caption="The Framework, At a Glance"
       exportBackground={INK}
     >
       <div
@@ -53,7 +53,7 @@ const FrameworkSummaryPoster = () => {
             className="mt-2 text-[12px] md:text-[14px]"
             style={{ color: "#CBD5E1", fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
           >
-            The 10 layers of the generative AI stack — not logistics, not freight.
+            The 10 layers of the generative AI stack, not logistics, not freight.
           </p>
         </div>
 

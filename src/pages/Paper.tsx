@@ -10,12 +10,12 @@ import { Download, FileText } from "lucide-react";
 
 const PAPER_VERSION = "v1.0";
 const PAPER_DATE = "2026-01-04";
-const PAPER_TITLE = "The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack";
+const PAPER_TITLE = "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack";
 const PAPER_PATH = "/paper";
 const PAPER_URL = `https://supplychainofai.com${PAPER_PATH}`;
 
 /**
- * /paper — the canonical citation target.
+ * /paper, the canonical citation target.
  *
  * Stratechery has Aggregation Theory. Christensen has JTBD. This is ours.
  * Every link in the wild should point here. Every poster, every teardown,
@@ -32,7 +32,7 @@ const Paper = () => {
     headline: PAPER_TITLE,
     name: PAPER_TITLE,
     description:
-      "The canonical paper defining The Supply Chain of Intelligence™ — a 10-layer structural framework for the generative AI stack, with 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube.",
+      "The canonical paper defining The Supply Chain of Intelligence™, a 10-layer structural framework for the generative AI stack, with 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube.",
     url: PAPER_URL,
     mainEntityOfPage: PAPER_URL,
     datePublished: PAPER_DATE,
@@ -90,7 +90,7 @@ const Paper = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Supply Chain of Intelligence™ — the canonical paper"
+        title="The Supply Chain of Intelligence™, the canonical paper"
         description="The canonical paper defining the 10-layer Supply Chain of Intelligence™ framework: 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube. By Anand Arivukkarasu."
         path={PAPER_PATH}
         article
@@ -133,7 +133,7 @@ const Paper = () => {
               transform: "rotate(-0.3deg)",
             }}
           >
-            The 10 layers of the generative AI stack — where value is created,
+            The 10 layers of the generative AI stack, where value is created,
             captured, and defended.
           </p>
 
@@ -159,7 +159,7 @@ const Paper = () => {
             <CiteThis title={PAPER_TITLE} path={PAPER_PATH} date={PAPER_DATE} />
           </div>
 
-          {/* Definition — three registers, canonical block */}
+          {/* Definition, three registers, canonical block */}
           <section id="definition" className="mb-12 scroll-mt-24">
             <Eyebrow size="sm" tone="muted" className="mb-3">§ Definition</Eyebrow>
             <CanonicalDefinition variant="full" surface="cream" />
@@ -173,12 +173,12 @@ const Paper = () => {
               Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping,
               L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8
               Memory</strong>. The layers are the supply side. Across them flow
-              <strong> three Currents</strong> — Demand Gravity, Attention Economics,
-              Capital Flows — which decide whether a position at any layer compounds
+              <strong> three Currents</strong>, Demand Gravity, Attention Economics,
+              Capital Flows, which decide whether a position at any layer compounds
               into a business or starves. <strong>Four structural laws</strong> govern
               how value migrates through the stack under those Currents. The <strong>Defensible
-              Triangle</strong> — L1b Proprietary Data + L5 Deep Skills & Playbooks +
-              L8 Compounding Memory — is the most common application-layer fortress.
+              Triangle</strong>, L1b Proprietary Data + L5 Deep Skills & Playbooks +
+              L8 Compounding Memory, is the most common application-layer fortress.
               The word "agent" is not a layer; it is marketing for an L5 + L6 (+ L7 /
               + L8) package and must be decoded before it can be analysed.
             </p>
@@ -197,25 +197,25 @@ const Paper = () => {
               Stacks imply order. Supply chains expose bottlenecks.
             </h2>
             <p className="text-[17px] leading-[1.78] text-foreground/85">
-              "AI stack" diagrams treat the industry as a tidy layer cake — chips on
-              the bottom, models in the middle, apps on top — and imply that value
+              "AI stack" diagrams treat the industry as a tidy layer cake, chips on
+              the bottom, models in the middle, apps on top, and imply that value
               flows cleanly upward. It does not. Value in generative AI behaves like
               value in any real industrial supply chain: it concentrates at scarcity,
               gets squeezed at bottlenecks, and migrates the moment a layer below you
               commoditises what you were charging for. Calling it a <strong>supply
-              chain</strong> forces the right questions — who owns the scarce input,
+              chain</strong> forces the right questions, who owns the scarce input,
               who controls the gate, who captures the margin when the layer above
               collapses in price.
             </p>
             <p className="text-[17px] leading-[1.78] text-foreground/85 mt-3">
               The 10 layers below are the supply side. They describe what is being
               produced and consumed at each step from raw resources up to the surface
-              a user touches. They are deliberately granular — 50 sublayers in total —
+              a user touches. They are deliberately granular, 50 sublayers in total  - 
               because most of the interesting moats live one level below the layer name.
             </p>
           </section>
 
-          {/* The 10 layers — quick reference */}
+          {/* The 10 layers, quick reference */}
           <section id="layers" className="mb-14 scroll-mt-24">
             <Eyebrow size="sm" tone="muted" className="mb-2">§ 2 · The 10 layers</Eyebrow>
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">
@@ -258,7 +258,7 @@ const Paper = () => {
               Horizontal forces across the chain
             </h2>
             <p className="text-[17px] leading-[1.78] text-foreground/85 mb-5">
-              The 10 layers are vertical. The Currents are horizontal — they flow
+              The 10 layers are vertical. The Currents are horizontal, they flow
               across every layer and decide whether a defensible position is also a
               viable business. Geopolitics and regulation are <strong>not</strong>{" "}
               Currents; they live at their native layers (L-1 and L3 respectively).
@@ -266,16 +266,16 @@ const Paper = () => {
             </p>
             <div className="space-y-5 text-[17px] leading-[1.78] text-foreground/85">
               <div>
-                <h3 className="font-display text-xl font-bold mb-1">Current I — Demand Gravity</h3>
-                <p>Where the budget actually sits and what it pulls toward. As L2 capability commoditises, discretionary AI spend migrates from "buy a model" to "buy an outcome" — L5 execution, L8 memory, L3 verification, L1 proprietary data. A defensible layer with no buyer is worth zero.</p>
+                <h3 className="font-display text-xl font-bold mb-1">Current I, Demand Gravity</h3>
+                <p>Where the budget actually sits and what it pulls toward. As L2 capability commoditises, discretionary AI spend migrates from "buy a model" to "buy an outcome", L5 execution, L8 memory, L3 verification, L1 proprietary data. A defensible layer with no buyer is worth zero.</p>
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold mb-1">Current II — Attention Economics</h3>
+                <h3 className="font-display text-xl font-bold mb-1">Current II, Attention Economics</h3>
                 <p>When generation becomes infinite, the eyeball becomes scarce. Default placement, OS integration, browser real estate, habit loops, and on-ramp ownership decide which intelligence actually gets used. Apple, Google, Microsoft, Meta, and the major model labs operate as L7 landlords charging rent in attention.</p>
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold mb-1">Current III — Capital Flows</h3>
-                <p>Funding is reflexive — rounds reshape the layers they fund. Tens of billions into L2 created a generation glut and pulled talent away from L-1, which is now the binding constraint on the whole industry. Read the funding map as a distortion field, not as a value signal.</p>
+                <h3 className="font-display text-xl font-bold mb-1">Current III, Capital Flows</h3>
+                <p>Funding is reflexive, rounds reshape the layers they fund. Tens of billions into L2 created a generation glut and pulled talent away from L-1, which is now the binding constraint on the whole industry. Read the funding map as a distortion field, not as a value signal.</p>
               </div>
             </div>
             <p className="text-[15px] leading-[1.7] text-foreground/65 mt-5 italic">
@@ -292,23 +292,23 @@ const Paper = () => {
             </h2>
             <div className="space-y-7 text-[17px] leading-[1.78] text-foreground/85">
               <div id="law-1" className="scroll-mt-24">
-                <h3 className="font-display text-xl font-bold mb-1">Law I — Intelligence Commoditises Downward</h3>
-                <p>If a product depends only on generic model capability, the platform layer beneath it eventually absorbs the value. Wrappers don't survive — wrappers become features. The clock starts the moment the underlying L2 ships the same loop as a default behaviour.</p>
-                <p className="text-[15px] text-foreground/70 mt-2">Jasper fell from a $1.5B valuation to roughly $300M once ChatGPT shipped the same capability inside the surface most users already had open. The product did not get worse — the layer beneath it absorbed what the product was charging for. <Link to="/laws/intelligence-commoditizes-downward" className="text-accent hover:underline">Read the essay →</Link></p>
+                <h3 className="font-display text-xl font-bold mb-1">Law I, Intelligence Commoditises Downward</h3>
+                <p>If a product depends only on generic model capability, the platform layer beneath it eventually absorbs the value. Wrappers don't survive, wrappers become features. The clock starts the moment the underlying L2 ships the same loop as a default behaviour.</p>
+                <p className="text-[15px] text-foreground/70 mt-2">Jasper fell from a $1.5B valuation to roughly $300M once ChatGPT shipped the same capability inside the surface most users already had open. The product did not get worse, the layer beneath it absorbed what the product was charging for. <Link to="/laws/intelligence-commoditizes-downward" className="text-accent hover:underline">Read the essay →</Link></p>
               </div>
               <div id="law-2" className="scroll-mt-24">
-                <h3 className="font-display text-xl font-bold mb-1">Law II — Value Accrues at Bottlenecks</h3>
-                <p>Durable value rarely sits in the model or the UI. It sits at the scarce layer — proprietary data (L1b), workflow control (L5), verification (L3), distribution (L4), memory (L8c–e), compliance (L3a), and at the moment, energy and fabs (L-1). The exercise for any company is to name, in one sentence, which bottleneck it owns. If the sentence does not write itself, the company does not own one.</p>
+                <h3 className="font-display text-xl font-bold mb-1">Law II, Value Accrues at Bottlenecks</h3>
+                <p>Durable value rarely sits in the model or the UI. It sits at the scarce layer, proprietary data (L1b), workflow control (L5), verification (L3), distribution (L4), memory (L8c–e), compliance (L3a), and at the moment, energy and fabs (L-1). The exercise for any company is to name, in one sentence, which bottleneck it owns. If the sentence does not write itself, the company does not own one.</p>
                 <p className="text-[15px] text-foreground/70 mt-2">NVIDIA owns L0 silicon. Vanta owns the L3 compliance gate above hyperscaler infrastructure. Bloomberg owns L1b proprietary financial data and has survived three platform shifts on the strength of that single position. <Link to="/laws/value-accrues-at-bottlenecks" className="text-accent hover:underline">Read the essay →</Link></p>
               </div>
               <div id="law-3" className="scroll-mt-24">
-                <h3 className="font-display text-xl font-bold mb-1">Law III — The Surface Captures Attention; the Chain Captures Power</h3>
-                <p>A beautiful UI may win the first cohort of users. Durable companies own a deeper layer of the chain — data, execution, memory, gates. Surface without depth is structurally exposed: the moment a larger surface with deeper layers chooses to compete, the thinner stack compresses.</p>
+                <h3 className="font-display text-xl font-bold mb-1">Law III, The Surface Captures Attention; the Chain Captures Power</h3>
+                <p>A beautiful UI may win the first cohort of users. Durable companies own a deeper layer of the chain, data, execution, memory, gates. Surface without depth is structurally exposed: the moment a larger surface with deeper layers chooses to compete, the thinner stack compresses.</p>
                 <p className="text-[15px] text-foreground/70 mt-2">Gamma owns L7 in the presentation category. Replit owns L4 + L5 + L6 + L8 in the developer category. Both are good products. Only one of them gets harder to displace every month it operates. <Link to="/laws/surface-captures-attention-chain-captures-power" className="text-accent hover:underline">Read the essay →</Link></p>
               </div>
               <div id="law-4" className="scroll-mt-24">
-                <h3 className="font-display text-xl font-bold mb-1">Law IV — Generation and Verification Must Be Separate</h3>
-                <p>Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. Markets force the separation eventually; regulators force it sooner; insurers force it permanently. L3 above L2/L5 is structurally non-absorbable in those industries — no matter how capable the model becomes.</p>
+                <h3 className="font-display text-xl font-bold mb-1">Law IV, Generation and Verification Must Be Separate</h3>
+                <p>Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator (L2/L5) and the verifier (L3) must be separate economic entities. Markets force the separation eventually; regulators force it sooner; insurers force it permanently. L3 above L2/L5 is structurally non-absorbable in those industries, no matter how capable the model becomes.</p>
                 <p className="text-[15px] text-foreground/70 mt-2">Vanta sits above AWS. Snyk sits above Copilot. Big-4 audit sits above SAP. The FDA sits above Pfizer. None of these L3 incumbents are vulnerable to the L2/L5 capability beneath them getting better; if anything, they become more necessary as that capability scales. <Link to="/laws/generation-and-verification-must-be-separate" className="text-accent hover:underline">Read the essay →</Link></p>
               </div>
             </div>
@@ -318,7 +318,7 @@ const Paper = () => {
           <section id="defensible-triangle" className="mb-14 scroll-mt-24">
             <Eyebrow size="sm" tone="muted" className="mb-2">§ 5 · The Defensible Triangle</Eyebrow>
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
-              L1b + L5 + L8 — the application-layer fortress
+              L1b + L5 + L8, the application-layer fortress
             </h2>
             <p className="text-[17px] leading-[1.78] text-foreground/85">
               The most common application-layer fortress is a three-layer stack:
@@ -350,16 +350,16 @@ const Paper = () => {
             <p className="text-[17px] leading-[1.78] text-foreground/85">
               "Agent" is marketing for a package whose minimum viable composition is
               <strong> L5 Execution + L6 Orchestration</strong>, almost always bundled
-              with <strong>L7 Surface</strong>, and — if the system remembers across
-              sessions — <strong>L8 Memory</strong>. L4 Access is the substrate the
+              with <strong>L7 Surface</strong>, and, if the system remembers across
+              sessions, <strong>L8 Memory</strong>. L4 Access is the substrate the
               agent rides on (connectors, protocols, permissions), not the agent
               itself. Tagging an agent story as "an L4 play" is a category error that
               recurs in roughly half the analyses written in 2025.
             </p>
             <p className="text-[17px] leading-[1.78] text-foreground/85 mt-3">
               When a company launches an agent, decode it in three steps. First, name
-              the L5 capability — what work does it actually do, and is the work
-              generic or domain-specific. Second, name the other layers it bundles —
+              the L5 capability, what work does it actually do, and is the work
+              generic or domain-specific. Second, name the other layers it bundles  - 
               L1 proprietary data, L4 platform access, L8 cross-customer learning.
               Third, ask whether any of those bundled layers are structurally hard
               for the underlying L2 to replicate. If the answer is no, the agent is a

@@ -2,7 +2,7 @@ import { LAYERS, layerColor } from "@/data/layers";
 import ExportablePng from "@/components/ExportablePng";
 
 /**
- * StackPosterFull — the dense, shareable "whole stack on one page" artifact.
+ * StackPosterFull, the dense, shareable "whole stack on one page" artifact.
  * Each row = one layer (chip on the left, 5 sublayer cells on the right) in
  * the layer's color tinted shades. Designed for LinkedIn/X share + as a
  * pin-on-the-wall reference. Reads from src/data/layers.ts.
@@ -69,14 +69,14 @@ const StackPosterFull = () => {
                   </div>
                 </div>
 
-                {/* 5 Sublayer cells (right) — progressively lighter shades of layer color */}
+                {/* 5 Sublayer cells (right), progressively lighter shades of layer color */}
                 <div className="grid grid-cols-5 gap-[5px]">
                   {layer.sublayers.slice(0, 5).map((s, idx) => {
-                    // Only the BACKGROUND shifts in shade — text stays in
+                    // Only the BACKGROUND shifts in shade, text stays in
                     // readable foreground tones so the sublayer name is always
                     // legible. Lighter as you move right (0.28 → 0.10).
                     const bgAlpha = 0.38 - idx * 0.055; // 0.38 → 0.16
-                    // Build hsl(var(--layer-X) / alpha) — must replace the
+                    // Build hsl(var(--layer-X) / alpha), must replace the
                     // LAST ')' so the alpha sits inside the outer hsl(...).
                     const tinted = `hsla(0,0%,0%,0)`; // fallback
                     const inner = layer.id === "L-1" ? "neg1" : layer.id.replace("L", "");

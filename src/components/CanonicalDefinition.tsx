@@ -14,7 +14,7 @@ interface Props {
 
 /**
  * The canonical Definition block. Single source of truth for how the
- * Supply Chain of Intelligence™ is defined — used on Home, Paper,
+ * Supply Chain of Intelligence™ is defined, used on Home, Paper,
  * Framework, Methodology, About. Never inline these strings; import
  * from src/data/definition.ts or use this component.
  */

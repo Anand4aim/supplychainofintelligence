@@ -16,7 +16,7 @@ import {
 import { LAYERS, layerColor } from "@/data/layers";
 
 /**
- * GoldMiningAnchor — Tier-1 anchor (Home only).
+ * GoldMiningAnchor, Tier-1 anchor (Home only).
  *
  * One-line metaphor + full 10-layer parallel snapshot:
  * Gold flow on top, AI Layer beneath, color-coded by layer.
@@ -24,7 +24,7 @@ import { LAYERS, layerColor } from "@/data/layers";
  * Full per-layer mapping lives on /framework#gold-mining.
  */
 
-// Short gold word per layer — matches the deck. Kept ≤2 words so all
+// Short gold word per layer, matches the deck. Kept ≤2 words so all
 // 10 columns fit a single horizontal strip.
 const GOLD_SHORT: Record<string, string> = {
   "L-1": "Ground",
@@ -55,7 +55,7 @@ const GOLD_ICON: Record<string, LucideIcon> = {
 
 const GoldMiningAnchor = () => (
   <section
-    aria-label="Gold mining analogy — one-line anchor"
+    aria-label="Gold mining analogy, one-line anchor"
     className="bg-background border-y border-foreground/10"
   >
     <div className="max-w-6xl mx-auto px-6 py-10 md:py-14 space-y-8">
@@ -63,7 +63,7 @@ const GoldMiningAnchor = () => (
         <p className="font-display text-[18px] md:text-[22px] text-foreground/90 leading-snug max-w-3xl">
           AI is a supply chain. <span className="text-accent font-semibold">Like gold:</span>{" "}
           ore in the ground, refining, assay, retail, the ring on a finger.
-          Value moves through 10 layers — most products sit on one,
+          Value moves through 10 layers, most products sit on one,
           usually the wrong one.
         </p>
         <Link
@@ -74,7 +74,7 @@ const GoldMiningAnchor = () => (
         </Link>
       </div>
 
-      {/* Full 10-layer parallel strip — color-coded, scrolls on mobile. */}
+      {/* Full 10-layer parallel strip, color-coded, scrolls on mobile. */}
       <div className="rounded-xl border border-foreground/10 bg-foreground/[0.02] p-4 md:p-6 overflow-x-auto">
         <div className="min-w-[900px]">
           {/* Row label: Gold */}
@@ -136,7 +136,7 @@ const GoldMiningAnchor = () => (
             ))}
           </div>
 
-          {/* AI row — color-coded by layer */}
+          {/* AI row, color-coded by layer */}
           <div
             className="grid gap-1.5"
             style={{ gridTemplateColumns: `repeat(${LAYERS.length}, minmax(0, 1fr))` }}

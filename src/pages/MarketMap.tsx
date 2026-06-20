@@ -84,7 +84,7 @@ const MarketMap = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Market Map — AI Companies on the 10-Layer Stack"
+        title="Market Map, AI Companies on the 10-Layer Stack"
         description="A visual map of where every notable AI company sits on the Supply Chain of Intelligence™. Filter by vertical. Click any company for the structural read."
         path="/market-map"
       />
@@ -101,7 +101,7 @@ const MarketMap = () => {
               Every notable AI company, <br />plotted on the 10 layers.
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              A single picture of the AI stack. Each company sits at the layer(s) it actually owns —
+              A single picture of the AI stack. Each company sits at the layer(s) it actually owns  - 
               not the layer it markets. Filter by vertical. Click any company with a case study for
               the full structural read.
             </p>
@@ -234,9 +234,9 @@ const MarketMap = () => {
           <div className="border-t border-foreground/10 pt-6 text-[11px] text-muted-foreground leading-relaxed max-w-3xl">
             <strong className="text-foreground">How to read this map.</strong> A company appears at
             every layer it <em>structurally owns</em>, not every layer it touches. Archetype dots
-            are editorial reads — defensible stacks own multiple layers, thin stacks sit on a
+            are editorial reads, defensible stacks own multiple layers, thin stacks sit on a
             single surface and have a counter-move available (deepen into L1, L5, or L8). The list
-            is curated, not exhaustive — suggest additions via the contact page.
+            is curated, not exhaustive, suggest additions via the contact page.
           </div>
         </div>
       </section>

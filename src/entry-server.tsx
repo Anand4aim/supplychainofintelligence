@@ -1,4 +1,4 @@
-// SSR entry — called by scripts/prerender.ts to generate static HTML per route.
+// SSR entry, called by scripts/prerender.ts to generate static HTML per route.
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { HelmetProvider, HelmetServerState } from "react-helmet-async";

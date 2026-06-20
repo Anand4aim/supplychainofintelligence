@@ -1,7 +1,7 @@
 import { SketchBox, SketchLabel } from "@/components/sketch/SketchElements";
 
 /**
- * AuthorNote — an editorial-register callout box. Drop into any page
+ * AuthorNote, an editorial-register callout box. Drop into any page
  * (including reference pages) when Anand's personal voice should break
  * through the surrounding copy. Bounded so the register switch is
  * intentional and does not bleed into adjacent content.
@@ -11,7 +11,7 @@ import { SketchBox, SketchLabel } from "@/components/sketch/SketchElements";
  *   <AuthorNote label="Anand, off the record">…</AuthorNote>
  *
  * In post bodies, the `^^ ` line prefix in posts.ts renders as one of
- * these automatically — see src/pages/PostDetail.tsx.
+ * these automatically, see src/pages/PostDetail.tsx.
  */
 interface AuthorNoteProps {
   children: React.ReactNode;

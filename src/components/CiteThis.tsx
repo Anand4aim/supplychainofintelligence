@@ -6,7 +6,7 @@ const SITE = "https://supplychainofai.com";
 const AUTHOR = "Anand Arivukkarasu";
 
 interface Props {
-  /** Page title being cited (e.g. "Law I — Intelligence Commoditizes Downward"). */
+  /** Page title being cited (e.g. "Law I, Intelligence Commoditizes Downward"). */
   title: string;
   /** Path on the site (e.g. "/paper", "/laws/intelligence-commoditizes-downward"). */
   path: string;
@@ -31,8 +31,8 @@ const formats = (title: string, path: string, date: string, url: string) => {
   return {
     APA: `Arivukkarasu, A. (${year}). ${title}. ${FRAMEWORK_NAME}. ${url}`,
     MLA: `Arivukkarasu, Anand. "${title}." ${FRAMEWORK_NAME}, ${monthDay}, ${url}.`,
-    LinkedIn: `${title} — from ${FRAMEWORK_NAME} by ${AUTHOR}.\n\nRead the full piece: ${url}`,
-    HTML: `<a href="${url}">${title}</a> — from ${FRAMEWORK_NAME} by ${AUTHOR}.`,
+    LinkedIn: `${title}, from ${FRAMEWORK_NAME} by ${AUTHOR}.\n\nRead the full piece: ${url}`,
+    HTML: `<a href="${url}">${title}</a>, from ${FRAMEWORK_NAME} by ${AUTHOR}.`,
     BibTeX: `@misc{arivukkarasu${year}scoi,\n  author = {Arivukkarasu, Anand},\n  title  = {${title}},\n  year   = {${year}},\n  note   = {${FRAMEWORK_NAME}},\n  url    = {${url}}\n}`,
   };
 };
@@ -75,7 +75,7 @@ const CiteThis = ({ title, path, date, anchor, compact = false, className = "" }
       {open && (
         <div className="mt-3 bg-card border border-border rounded-lg p-4 md:p-5 max-w-xl shadow-sm">
           <p className="text-xs font-mono-marker uppercase tracking-[0.14em] text-muted-foreground mb-3">
-            How to cite — pick a format
+            How to cite, pick a format
           </p>
           <div className="space-y-3">
             {Object.entries(all).map(([key, value]) => (

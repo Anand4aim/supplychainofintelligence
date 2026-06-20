@@ -1,7 +1,7 @@
 // Soft display labels for raw verdict tokens used in the DB / generation pipeline.
 // Editorial rule (mem://preferences/tone): the site is a counter-move site, not a
 // crystal ball. Never display "DEAD" / "DOOMED" / "EXPOSED" as a verdict to the
-// reader — translate to directional, structural language.
+// reader, translate to directional, structural language.
 
 export type VerdictToken =
   | "DOMINANT"

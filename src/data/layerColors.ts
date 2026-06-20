@@ -1,7 +1,7 @@
 /**
  * SINGLE SOURCE OF TRUTH for layer colors as hex.
  * Mirrors the HSL tokens in src/index.css (--layer-neg1 … --layer-8).
- * Use this in any context that can't read CSS variables — PDFs, SVG exports,
+ * Use this in any context that can't read CSS variables, PDFs, SVG exports,
  * social-image generators, embeddable widgets.
  *
  * In React components, prefer layerColor(id) / layerVar(id) from ./layers.ts
@@ -33,12 +33,12 @@ export const LAYER_HEX_TINT: Record<string, string> = {
   L8: "#f3e0e8",
 };
 
-// Paper canvas (sandalwood) — for any artifact (PDF/SVG/canvas) that needs
+// Paper canvas (sandalwood), for any artifact (PDF/SVG/canvas) that needs
 // the same surface the web Stack page uses.
 export const PAPER = {
   bg: "#ede5d3",       // hsl(38 30% 92%)
   bgDeep: "#dcd1ba",   // hsl(36 22% 86%)
   rule: "#c8bba0",     // hsl(36 18% 78%)
-  ink: "#0f172a",      // hsl(220 50% 12%) — navy
+  ink: "#0f172a",      // hsl(220 50% 12%), navy
   gold: "#b08a3a",     // accent
 };

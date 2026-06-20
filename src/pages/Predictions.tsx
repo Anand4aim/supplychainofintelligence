@@ -29,12 +29,12 @@ import {
 } from "@/data/predictions";
 
 /**
- * /predictions — The track record.
+ * /predictions, The track record.
  *
  * Two-axis scoring: every call is judged on STRUCTURAL (did the framework
  * identify the right layer exposure?) and TIMING (did it arrive on the
  * expected horizon?). Conflating those two is the most common way a
- * framework loses credibility — separating them is how it earns trust.
+ * framework loses credibility, separating them is how it earns trust.
  */
 
 type PillMeta = {
@@ -155,7 +155,7 @@ const Predictions = () => {
     });
   }, [query, filter, sorted]);
 
-  // Quick-jump anchors — one chip per company, scrolls to that prediction.
+  // Quick-jump anchors, one chip per company, scrolls to that prediction.
   const jumpTo = (id: string) => {
     setQuery("");
     setFilter("all");
@@ -169,7 +169,7 @@ const Predictions = () => {
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "The Board — Predictions & track record · The Supply Chain of Intelligence™",
+    name: "The Board, Predictions & track record · The Supply Chain of Intelligence™",
     description:
       "Dated, layer-tagged structural calls on the 10-layer generative AI stack (not logistics/freight), each scored on structural accuracy, timing, and the counter-move the subject could still play.",
     numberOfItems: PREDICTIONS.length,
@@ -178,7 +178,7 @@ const Predictions = () => {
       "@type": "ListItem",
       position: i + 1,
       url: `https://supplychainofai.com/predictions#${p.id}`,
-      name: `${p.subject} — ${STRUCTURAL_META[p.structural].label.replace("Structural · ", "")} · ${TIMING_META[p.timing].label.replace("Timing · ", "")}`,
+      name: `${p.subject}, ${STRUCTURAL_META[p.structural].label.replace("Structural · ", "")} · ${TIMING_META[p.timing].label.replace("Timing · ", "")}`,
       item: {
         "@type": "CreativeWork",
         name: p.subject,
@@ -194,8 +194,8 @@ const Predictions = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Board — AI Predictions & Track Record"
-        description="Dated, layer-tagged calls on AI moves — scored on structural accuracy, timing, and counter-moves. Directional reads on the 10-layer AI stack."
+        title="The Board, AI Predictions & Track Record"
+        description="Dated, layer-tagged calls on AI moves, scored on structural accuracy, timing, and counter-moves. Directional reads on the 10-layer AI stack."
         path="/predictions"
       />
       <script
@@ -220,7 +220,7 @@ const Predictions = () => {
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
           Think of this page as a chess board, not a crystal ball. Every call
           names the <strong className="text-foreground">layer exposure</strong> a
-          company is sitting on — the square under attack. The juggernaut still
+          company is sitting on, the square under attack. The juggernaut still
           has a move. A master stroke (acquire L1, ship L3, lock the L5
           workflow) can flip the ending. Most don't make it. That's the read.
         </p>
@@ -230,8 +230,8 @@ const Predictions = () => {
           identify the right moat or exposure?) and
           <strong className="text-foreground"> Timing</strong> (did it arrive
           on the expected horizon?). Conflating those two is how frameworks
-          lose credibility. Separating them — and naming the counter-move the
-          subject could still play — is how this one earns trust.
+          lose credibility. Separating them, and naming the counter-move the
+          subject could still play, is how this one earns trust.
         </p>
 
         <div className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl">
@@ -304,7 +304,7 @@ const Predictions = () => {
         </div>
       </section>
 
-      {/* The Chess Board of Intelligence — piece-value mapping of the 10 squares */}
+      {/* The Chess Board of Intelligence, piece-value mapping of the 10 squares */}
       <section className="max-w-5xl mx-auto px-6">
         <ChessBoardOfIntelligence />
       </section>
@@ -420,11 +420,11 @@ const Predictions = () => {
 
         <div className="mt-12 p-6 border border-foreground/15 rounded-lg bg-foreground/[0.02] space-y-4">
           <h3 className="font-display text-xl font-semibold text-foreground">
-            On honesty — structural vs. timing
+            On honesty, structural vs. timing
           </h3>
           <p className="text-foreground/75 leading-relaxed">
             A framework's job is to identify <em>where</em> value compresses and
-            <em> where</em> it accrues. Its job is not to predict <em>when</em> —
+            <em> where</em> it accrues. Its job is not to predict <em>when</em>  - 
             that depends on frontier-model release cadence, regulatory shocks,
             distribution deals, and cap-table accidents the lens does not see.
           </p>
@@ -434,7 +434,7 @@ const Predictions = () => {
             (Harvey, Jasper, Devin) or slower than expected. Christensen, Porter, and
             JTBD all called direction correctly and timing wrong on multiple cases.
             Naming the variable the framework can't control is how it stays
-            intellectually serious — and how it survives the cases it gets wrong.
+            intellectually serious, and how it survives the cases it gets wrong.
           </p>
           <p className="text-foreground/75 leading-relaxed">
             Calls stay on this page whether they age well or not. Anything that
@@ -452,12 +452,12 @@ const Predictions = () => {
             <strong className="text-foreground/85"> descriptively, for
             editorial analysis</strong>, and remain the trademarks of their
             respective owners. Their inclusion does not imply endorsement,
-            affiliation, or sponsorship — in either direction.
+            affiliation, or sponsorship, in either direction.
           </p>
           <p>
             Every reference is drawn from <strong className="text-foreground/85">
-            publicly reported information</strong> — press, earnings, primary
-            documents, official blogs — and treated as a journalistic / blog
+            publicly reported information</strong>, press, earnings, primary
+            documents, official blogs, and treated as a journalistic / blog
             source. Figures (valuations, ARR, headcount, funding) are reported
             as of the cited date and may change. We are not responsible for the
             accuracy of third-party reporting, nor for the real-world business
@@ -466,7 +466,7 @@ const Predictions = () => {
           <p>
             We are not ranking companies as "good" or "bad," "winners" or
             "losers." This is a <strong className="text-foreground/85">lens</strong>,
-            not a verdict. The framework identifies <em>layer exposure</em> —
+            not a verdict. The framework identifies <em>layer exposure</em>  - 
             which squares a company is sitting on. The company itself decides
             what to do about it. That's the whole point of the counter-move.
           </p>

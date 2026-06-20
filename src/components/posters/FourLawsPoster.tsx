@@ -115,7 +115,7 @@ const FourLawsPoster = () => {
         {/* Footer */}
         <div className="mt-10 pt-4 flex flex-wrap items-baseline justify-between gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
           <p className="text-[11px] md:text-xs italic" style={{ color: MUTED, fontFamily: "'Playfair Display', serif" }}>
-            Laws describe what the market will do — not what you wish it would do.
+            Laws describe what the market will do, not what you wish it would do.
           </p>
           <p
             className="text-[9px] md:text-[10px] font-bold uppercase"

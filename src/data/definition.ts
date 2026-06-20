@@ -1,17 +1,17 @@
 /**
  * The canonical Definition of the Supply Chain of Intelligence™.
  *
- * THREE REGISTERS — never collapse them:
+ * THREE REGISTERS, never collapse them:
  *
- *   1. DEFINITION (evergreen, never changes) — the idea itself.
+ *   1. DEFINITION (evergreen, never changes), the idea itself.
  *      Same altitude as Christensen's "people hire products to get a job done."
  *      Names no technology, no company, no layer. Cannot go stale.
  *
- *   2. APPLICATION (evergreen structure) — the contribution.
+ *   2. APPLICATION (evergreen structure), the contribution.
  *      The vocabulary: 10 layers, 50 sublayers, 4 laws, 3 currents, the Cube.
  *      Number and names of layers are part of the framework; a new layer = major version bump.
  *
- *   3. READING (living, monthly cadence) — readings of the market.
+ *   3. READING (living, monthly cadence), readings of the market.
  *      Which company sits in which layer. Verdicts. Predictions. Re-reviewed monthly.
  *      See /methodology for the cadence contract.
  *

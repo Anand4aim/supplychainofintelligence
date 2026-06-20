@@ -72,7 +72,7 @@ const PostDetail = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${post.title} — The Supply Chain of Intelligence`}
+        title={`${post.title}, The Supply Chain of Intelligence`}
         description={post.excerpt}
         path={`/posts/${post.slug}`}
         article
@@ -193,7 +193,7 @@ const PostDetail = () => {
           </div>
 
 
-          {/* Tail CTA — drive back to framework + LinkedIn */}
+          {/* Tail CTA, drive back to framework + LinkedIn */}
           <div className="mt-14 pt-8 border-t border-border">
             <p className="text-sm text-muted-foreground mb-4">
               Originally posted on <strong className="text-foreground">{post.channel}</strong>.

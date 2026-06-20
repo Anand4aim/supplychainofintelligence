@@ -38,10 +38,10 @@ type AuditResult = {
 
 const tierMeta: Record<AuditResult["verdict_tier"], { label: string; color: string; bg: string; icon: typeof Shield }> = {
   fortress: { label: "Defensible", color: "hsl(var(--verdict-fortified))", bg: "hsl(var(--verdict-fortified) / 0.08)", icon: Shield },
-  tilting_fortress: { label: "Defensible — Tilting", color: "hsl(var(--verdict-fortified))", bg: "hsl(var(--verdict-fortified) / 0.06)", icon: Shield },
+  tilting_fortress: { label: "Defensible, Tilting", color: "hsl(var(--verdict-fortified))", bg: "hsl(var(--verdict-fortified) / 0.06)", icon: Shield },
   mixed: { label: "Contested", color: "hsl(var(--foreground))", bg: "hsl(var(--foreground) / 0.05)", icon: HelpCircle },
   exposed: { label: "At Risk", color: "hsl(var(--verdict-exposed))", bg: "hsl(var(--verdict-exposed) / 0.07)", icon: AlertTriangle },
-  wrapper_at_risk: { label: "Wrapper — At Risk", color: "hsl(var(--verdict-exposed))", bg: "hsl(var(--verdict-exposed) / 0.08)", icon: AlertTriangle },
+  wrapper_at_risk: { label: "Wrapper, At Risk", color: "hsl(var(--verdict-exposed))", bg: "hsl(var(--verdict-exposed) / 0.08)", icon: AlertTriangle },
   insufficient_data: { label: "Not Enough Signal", color: "hsl(var(--muted-foreground))", bg: "hsl(var(--muted-foreground) / 0.05)", icon: HelpCircle },
 };
 
@@ -209,7 +209,7 @@ const AuditPage = () => {
   const gapSet = useMemo(() => new Set((result?.sublayer_gaps ?? []).map((g) => g.sublayer)), [result]);
   const rentedSet = useMemo(() => new Set(result?.layers_rented ?? []), [result]);
 
-  // "What they own" — top 3-4 sublayers by depth (counts-ok)
+  // "What they own", top 3-4 sublayers by depth (counts-ok)
   const ownedTop = useMemo(() => {
     return Object.entries(depth)
       .filter(([, d]) => d >= 3)
@@ -221,8 +221,8 @@ const AuditPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="AI Defensibility Map — Where a Company Sits on the 10-Layer Stack"
-        description="Type a company. Get a one-page map of where it sits on the 10×5 generative AI stack — what it owns, where it's exposed, the counter-moves, and who collides with it. Two models cross-check."
+        title="AI Defensibility Map, Where a Company Sits on the 10-Layer Stack"
+        description="Type a company. Get a one-page map of where it sits on the 10×5 generative AI stack, what it owns, where it's exposed, the counter-moves, and who collides with it. Two models cross-check."
         path="/audit"
       />
 
@@ -234,7 +234,7 @@ const AuditPage = () => {
           </h1>
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Type a company. Two models read its public footprint and plot it on the 10×5 Supply
-            Chain of Intelligence™ — what it owns, what it rents, the open cells where a
+            Chain of Intelligence™, what it owns, what it rents, the open cells where a
             counter-move lives, and the juggernauts about to compress it.
           </p>
         </div>
@@ -364,7 +364,7 @@ const AuditPage = () => {
                       <div className="flex flex-wrap gap-1.5 mb-3">
                         {(result.layers_rented ?? []).map((l) => <LayerTag key={l} id={l} variant="chip" link />)}
                         {(!result.layers_rented || result.layers_rented.length === 0) && (
-                          <span className="text-xs text-muted-foreground italic">—</span>
+                          <span className="text-xs text-muted-foreground italic"> - </span>
                         )}
                       </div>
                       {juggernauts.length > 0 && (
@@ -526,7 +526,7 @@ const AuditPage = () => {
                     >
                       <div className="p-6 bg-background">
                         <div className="text-center text-[12px] text-muted-foreground italic">
-                          Preview of the share card — use the PNG / PDF buttons above to download A4 landscape.
+                          Preview of the share card, use the PNG / PDF buttons above to download A4 landscape.
                         </div>
                       </div>
                     </ExportablePng>

@@ -32,7 +32,7 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
       >
         {initial}
       </span>
-      {/* Display logo — Google (best coverage, no CORS) */}
+      {/* Display logo, Google (best coverage, no CORS) */}
       <img
         data-export-logo-img
         src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
@@ -44,7 +44,7 @@ const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: s
         className="relative shrink-0 object-contain"
         style={{ height: innerSize, width: innerSize }}
       />
-      {/* Export logo — same-origin copy, so html-to-image can read pixels. */}
+      {/* Export logo, same-origin copy, so html-to-image can read pixels. */}
       <img
         data-export-logo-cors
         src={`/company-logos/${companyKey}.png`}
@@ -106,7 +106,7 @@ const Chip = ({
       <button
         type="button"
         onClick={onClick}
-        title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
+        title={`${co.name}, ${STAGE_LABEL[co.stage]}`}
         className={`relative inline-flex items-center justify-center rounded-md border transition-colors ${
           secondary
             ? "border-foreground/15 bg-background/60 opacity-80"
@@ -132,7 +132,7 @@ const Chip = ({
           : "border-foreground/25 bg-background text-foreground hover:border-accent"
       }`}
       style={{ borderLeftWidth: 3, borderLeftColor: STAGE_COLOR[co.stage] }}
-      title={`${co.name} — ${STAGE_LABEL[co.stage]}`}
+      title={`${co.name}, ${STAGE_LABEL[co.stage]}`}
     >
       <LogoMark companyKey={co.key} name={co.name} size={20} />
       <span className="font-mono-marker text-[8px] tracking-tight truncate min-w-0 text-muted-foreground">
@@ -240,7 +240,7 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false, pa
   const [stage, setStage] = useState<CompanyStage | "all">("all");
   const [picked, setPicked] = useState<VerticalCompany | null>(null);
 
-  // Stage filter — hide companies whose stage doesn't match (kept simple: dim chips)
+  // Stage filter, hide companies whose stage doesn't match (kept simple: dim chips)
   const filtered = useMemo(() => {
     if (stage === "all") return data;
     const allow = (k: string) => data.companies[k]?.stage === stage;
@@ -304,7 +304,7 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false, pa
         </>
       )}
 
-      {/* Packed view — one row per layer, logos flow freely */}
+      {/* Packed view, one row per layer, logos flow freely */}
       {packed ? (
         <div className="w-full space-y-1">
           {orderedLayers.map((layer) => {
@@ -444,7 +444,7 @@ const SublayerGrid = ({ data, compact = false, hideLayers, logoFirst = false, pa
 
       <div className="mt-6">
         <h3 className="font-display text-lg font-bold text-foreground mb-2">
-          Layer scorecard — contested vs. open
+          Layer scorecard, contested vs. open
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full text-[12px] border-collapse">

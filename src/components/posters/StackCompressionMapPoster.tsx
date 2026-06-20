@@ -42,7 +42,7 @@ const StackCompressionMapPoster = () => {
             The Stack Compression Map.
           </h2>
           <p className="text-[12px] md:text-sm text-muted-foreground mt-2">
-            When the model layer ships your feature for free — who holds, and where the counter-move sits.
+            When the model layer ships your feature for free, who holds, and where the counter-move sits.
           </p>
         </div>
 

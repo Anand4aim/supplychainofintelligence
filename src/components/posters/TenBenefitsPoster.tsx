@@ -1,13 +1,13 @@
 import ExportablePng from "@/components/ExportablePng";
 
 const BENEFITS = [
-  { n: "01", t: "A Common Language", d: "Replaces vague words — 'agentic', 'wrapper', 'AI-native' — with layer-level precision." },
+  { n: "01", t: "A Common Language", d: "Replaces vague words, 'agentic', 'wrapper', 'AI-native', with layer-level precision." },
   { n: "02", t: "Predicts Who Gets Absorbed", d: "Law I: surface-only products become features inside the model layer below them." },
-  { n: "03", t: "Names the Bottleneck", d: "Law II: durable value sits at the scarce layer — data, trust, distribution, memory." },
+  { n: "03", t: "Names the Bottleneck", d: "Law II: durable value sits at the scarce layer, data, trust, distribution, memory." },
   { n: "04", t: "Decodes 'Agent'", d: "An agent is not a layer. It is L5 + L7 (+L8) packaging. Decode it; never quote it." },
   { n: "05", t: "Separates Surface From Chain", d: "Beautiful UIs capture attention. Deep chains capture power. The framework draws the line." },
   { n: "06", t: "Shows Where Intelligence Compounds", d: "L1 → L8 is gravity-fed downward, value-fed upward. Memory (L8) is the strongest moat." },
-  { n: "07", t: "Maps Trust to a Layer", d: "L3 is not a feature — it is a structural gate that the model layer cannot legally cross." },
+  { n: "07", t: "Maps Trust to a Layer", d: "L3 is not a feature, it is a structural gate that the model layer cannot legally cross." },
   { n: "08", t: "Forces an Honest Moat Conversation", d: "Founders, investors, PMs ask: 'which layers do we actually own?' No more hand-waving." },
   { n: "09", t: "Replaces Hype With Diagnosis", d: "Every announcement maps to a layer. Every threat maps to a law. Every category maps to an archetype." },
   { n: "10", t: "Shifts From Generation To Accumulation", d: "Most AI thinking optimizes for output. The framework optimizes for what persists." },

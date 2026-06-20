@@ -2,7 +2,7 @@ import LogoTile from "@/components/LogoTile";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * ContrastRow — Jasper vs Cursor stakes panel (plan v3 §4A.4).
+ * ContrastRow, Jasper vs Cursor stakes panel (plan v3 §4A.4).
  *
  * The "why should I care" beat on Home. Same job (writing software /
  * writing copy with AI). Different layers owned. Different fate.
@@ -10,7 +10,7 @@ import Eyebrow from "@/components/Eyebrow";
 
 const ContrastRow = () => (
   <section
-    aria-label="Jasper vs Cursor — same job, different layers, different fate"
+    aria-label="Jasper vs Cursor, same job, different layers, different fate"
     className="bg-background border-b border-foreground/10"
   >
     <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
@@ -22,7 +22,7 @@ const ContrastRow = () => (
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {/* Jasper — single layer, collapsed */}
+        {/* Jasper, single layer, collapsed */}
         <div className="rounded-xl border border-border bg-card p-6 md:p-7">
           <div className="flex items-start gap-4 mb-4">
             <LogoTile name="Jasper" layer="L7" size="sm" />
@@ -45,7 +45,7 @@ const ContrastRow = () => (
           </p>
         </div>
 
-        {/* Cursor — four layers, compounding */}
+        {/* Cursor, four layers, compounding */}
         <div className="rounded-xl border border-accent/40 bg-card p-6 md:p-7">
           <div className="flex items-start gap-4 mb-4">
             <LogoTile name="Cursor" layer="L5" size="sm" />
@@ -60,7 +60,7 @@ const ContrastRow = () => (
           </div>
           <p className="text-[14px] text-foreground/80 leading-relaxed">
             Owns the IDE workflow, the indexing pipeline, the agent loop,
-            and the project memory. Every layer reinforces the others —
+            and the project memory. Every layer reinforces the others  - 
             the model is the only commodity in the stack.
           </p>
           <p className="mt-4 pt-4 border-t border-border font-mono-marker text-[10px] tracking-[0.14em] text-muted-foreground">

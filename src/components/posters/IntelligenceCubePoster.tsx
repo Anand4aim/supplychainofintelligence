@@ -2,11 +2,11 @@ import ExportablePng from "@/components/ExportablePng";
 import { layerColor } from "@/data/layers";
 
 /**
- * The Intelligence Cube™ — three axes: Layer × Sublayer × Depth.
+ * The Intelligence Cube™, three axes: Layer × Sublayer × Depth.
  * Rendered as an isometric cube made from layer-colored cells.
  */
 const IntelligenceCubePoster = () => {
-  // Layer colors from L1 to L8 (above the line — where intelligence
+  // Layer colors from L1 to L8 (above the line, where intelligence
   // actually compounds). Cube renders an 8-deep isometric stack.
   const layers = ["L8", "L7", "L6", "L5", "L4", "L3", "L2", "L1"];
 
@@ -36,7 +36,7 @@ const IntelligenceCubePoster = () => {
         {/* Cube */}
         <div className="flex-1 flex items-center justify-center">
           <svg viewBox="0 0 600 500" className="w-full h-full max-h-[400px]">
-            {/* Isometric cube — built from 8 horizontal layer slabs */}
+            {/* Isometric cube, built from 8 horizontal layer slabs */}
             {layers.map((lid, i) => {
               const c = layerColor(lid);
               const yTop = 80 + i * 36;

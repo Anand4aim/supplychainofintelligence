@@ -33,7 +33,7 @@ interface Props {
 const ISSUE_TYPES = [
   { value: "broken-link", label: "Broken / dead link" },
   { value: "wrong-source", label: "Wrong source for this claim" },
-  { value: "outdated", label: "Outdated — newer info exists" },
+  { value: "outdated", label: "Outdated, newer info exists" },
   { value: "misattribution", label: "Misattribution / quoted incorrectly" },
   { value: "other", label: "Other" },
 ] as const;
@@ -87,10 +87,10 @@ const ReportCitationDialog = ({ subjectId, subject, sourceUrl, sourceLabel }: Pr
     });
     setSubmitting(false);
     if (error) {
-      toast.error("Couldn't submit — please try again");
+      toast.error("Couldn't submit, please try again");
       return;
     }
-    toast.success("Thanks — we'll review and correct if needed.");
+    toast.success("Thanks, we'll review and correct if needed.");
     setMessage("");
     setEmail("");
     setIssueType("broken-link");
@@ -151,7 +151,7 @@ const ReportCitationDialog = ({ subjectId, subject, sourceUrl, sourceLabel }: Pr
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com — only if you want a reply"
+              placeholder="you@example.com, only if you want a reply"
               maxLength={255}
             />
           </div>

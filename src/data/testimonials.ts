@@ -1,6 +1,6 @@
 // Voices: framework testimonials.
 // IMPORTANT: All quotes are paraphrased reactions captured during workshops and
-// peer conversations. Names are listed with permission pending — each person
+// peer conversations. Names are listed with permission pending, each person
 // will confirm their quote before this page is promoted publicly. Treat this
 // as a private beta wall of voices until then.
 //
@@ -28,7 +28,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Indeed (AI Agents & Evals)",
     industry: "Product Leadership",
     quote:
-      "JTBD tells you the length of the customer need. The Supply Chain of Intelligence tells you the depth of the answer — how many layers you have to own to deliver it durably. 'Trust the output' is one job; you can answer it shallow with a verifier widget, or deep with an L3 gatekeeping layer baked in. The framework finally gave me a vocabulary for that trade-off.",
+      "JTBD tells you the length of the customer need. The Supply Chain of Intelligence tells you the depth of the answer, how many layers you have to own to deliver it durably. 'Trust the output' is one job; you can answer it shallow with a verifier widget, or deep with an L3 gatekeeping layer baked in. The framework finally gave me a vocabulary for that trade-off.",
     layerTag: "JTBD × Chain",
     source: "1:1",
     linkedin: "https://linkedin.com/in/leece",
@@ -40,7 +40,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Investor · Venture & Private Markets Commentator",
     industry: "Venture",
     quote:
-      "I have sat through a hundred 'AI strategy' decks. This is the first one that told me which layer a product was actually on — and which layer it had to move to before the model layer ate it. The diagnostic is brutal in a useful way.",
+      "I have sat through a hundred 'AI strategy' decks. This is the first one that told me which layer a product was actually on, and which layer it had to move to before the model layer ate it. The diagnostic is brutal in a useful way.",
     layerTag: "Filter",
     source: "1:1",
     linkedin: "https://linkedin.com/in/ruthzimmer",
@@ -53,7 +53,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "CEO, Stackforce",
     industry: "Consumer + Enterprise SaaS",
     quote:
-      "We were calling ourselves an 'AI platform' and the framework made us see we were a thin L7 surface on top of someone else's L2. We rewrote the roadmap inside a week to compound on L1b proprietary data instead. The language travels — engineering and GTM both speak it.",
+      "We were calling ourselves an 'AI platform' and the framework made us see we were a thin L7 surface on top of someone else's L2. We rewrote the roadmap inside a week to compound on L1b proprietary data instead. The language travels, engineering and GTM both speak it.",
     layerTag: "L7 → L1b",
     source: "workshop",
     linkedin: "https://www.linkedin.com/in/newell-carmen",
@@ -66,7 +66,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Intelagen (Google Cloud Agentic AI partner)",
     industry: "Enterprise AI / GTM",
     quote:
-      "The 'wrappers become features' line should be tattooed on every CMO budgeting AI spend right now. We re-scoped two GTM motions after applying Law I — both were heading straight into the next Copilot release.",
+      "The 'wrappers become features' line should be tattooed on every CMO budgeting AI spend right now. We re-scoped two GTM motions after applying Law I, both were heading straight into the next Copilot release.",
     layerTag: "L7",
     source: "1:1",
     linkedin: "https://linkedin.com/in/anneschoofs",
@@ -117,7 +117,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: "Product Leader · AI",
     industry: "AI / Developer Tools",
     quote:
-      "The Defensible Triangle — L1b + L5 + L8 — is the clearest articulation I have seen of why some AI products will compound and most will not. We rewrote our own positioning around it.",
+      "The Defensible Triangle, L1b + L5 + L8, is the clearest articulation I have seen of why some AI products will compound and most will not. We rewrote our own positioning around it.",
     layerTag: "L1b + L5 + L8",
     source: "workshop",
     approved: false,
@@ -129,7 +129,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "LLM Recommend",
     industry: "MarTech / AI Visibility",
     quote:
-      "We are building an AI visibility engine — which is exactly the L7 surface layer the framework warns will compress. The 10-layer map forced us to ask which L1b data and L8 memory we own that the model layer cannot replicate. That question reshaped the roadmap.",
+      "We are building an AI visibility engine, which is exactly the L7 surface layer the framework warns will compress. The 10-layer map forced us to ask which L1b data and L8 memory we own that the model layer cannot replicate. That question reshaped the roadmap.",
     layerTag: "L1b + L7 + L8",
     source: "1:1",
     linkedin: "https://www.linkedin.com/company/dhe-castle",
@@ -142,7 +142,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "LLM Recommend",
     industry: "B2B SaaS Marketing",
     quote:
-      "I have run revenue ops at three category-defining SaaS companies. The Supply Chain of Intelligence is the first framework that gives marketing leaders a way to talk to engineering about where the moat actually lives — not 'AI features' but layer ownership. Law I alone will save CMOs from a lot of wasted budget.",
+      "I have run revenue ops at three category-defining SaaS companies. The Supply Chain of Intelligence is the first framework that gives marketing leaders a way to talk to engineering about where the moat actually lives, not 'AI features' but layer ownership. Law I alone will save CMOs from a lot of wasted budget.",
     layerTag: "L4 + L7",
     source: "1:1",
     linkedin: "https://linkedin.com/in/go-krish",
@@ -155,7 +155,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "GitHits (ex-Softlandia CCO)",
     industry: "AI Dev Tools · Europe",
     quote:
-      "Code examples for coding agents is an L1b play dressed up as a developer tool — and the framework is what made that clear to me. The 10 layers gave us a vocabulary to explain to investors why proprietary corpus is the wedge, not the model.",
+      "Code examples for coding agents is an L1b play dressed up as a developer tool, and the framework is what made that clear to me. The 10 layers gave us a vocabulary to explain to investors why proprietary corpus is the wedge, not the model.",
     layerTag: "L1b + L5",
     source: "1:1",
     linkedin: "https://linkedin.com/in/jtimonen",
@@ -193,7 +193,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Meta (ex-Microsoft)",
     industry: "Consumer AI / Ads",
     quote:
-      "Working on AI and ads inside a platform company, you feel the layer compression in real time — what was an app last quarter is a feature this quarter. The 10-layer map is the first framework that names that dynamic instead of describing it after the fact.",
+      "Working on AI and ads inside a platform company, you feel the layer compression in real time, what was an app last quarter is a feature this quarter. The 10-layer map is the first framework that names that dynamic instead of describing it after the fact.",
     layerTag: "L7 → L4",
     source: "1:1",
     linkedin: "https://linkedin.com/in/mahekhooda",
@@ -206,7 +206,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Meta",
     industry: "Platform / API Products",
     quote:
-      "Platform PMs live at the seam between L4 distribution and L5 execution — and most AI strategy decks pretend that seam does not exist. The 10-layer map gives me a way to tell partners exactly which layer we are opening up and which one stays ours.",
+      "Platform PMs live at the seam between L4 distribution and L5 execution, and most AI strategy decks pretend that seam does not exist. The 10-layer map gives me a way to tell partners exactly which layer we are opening up and which one stays ours.",
     layerTag: "L4 + L5",
     source: "1:1",
     linkedin: "https://linkedin.com/in/sidroy83",

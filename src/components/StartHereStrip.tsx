@@ -9,7 +9,7 @@ import Eyebrow from "@/components/Eyebrow";
  * reader (PE partner, board member, founder) who needs to know in 15 seconds
  * what this site is, who it's for, and what action it asks of them.
  *
- * The five beats — problem, insight, map, test, outcome — are the spine
+ * The five beats, problem, insight, map, test, outcome, are the spine
  * of the framework's narrative. Each card deep-links to the page that
  * proves it. Order is fixed; do not reshuffle without rewriting copy.
  */
@@ -40,7 +40,7 @@ const BEATS: Beat[] = [
   {
     n: "03",
     kicker: "Map",
-    line: "AI value moves through 10 layers — compute to memory.",
+    line: "AI value moves through 10 layers, compute to memory.",
     to: "/framework",
     cta: "Walk the stack",
   },
@@ -62,7 +62,7 @@ const BEATS: Beat[] = [
 
 const StartHereStrip = () => (
   <section
-    aria-label="Start Here — the framework in five beats"
+    aria-label="Start Here, the framework in five beats"
     className="bg-background border-y border-foreground/10"
   >
     <div className="max-w-6xl mx-auto px-6 py-14 md:py-18">

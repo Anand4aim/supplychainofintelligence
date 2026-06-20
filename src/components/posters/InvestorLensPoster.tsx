@@ -2,7 +2,7 @@ import ExportablePng from "@/components/ExportablePng";
 
 /**
  * Thematic poster for investors to share alongside their own diligence POV posts.
- * The "rent vs. own" lens across the 10 layers — what compounds, what commoditizes,
+ * The "rent vs. own" lens across the 10 layers, what compounds, what commoditizes,
  * and the five questions every AI deal memo should answer.
  */
 
@@ -24,7 +24,7 @@ const QUESTIONS = [
   "What does the L2 roadmap make free in 18 months?",
   "Where does proprietary data come from, structurally?",
   "What compounds the longer customers stay?",
-  "If a 'gate' exists above it — who owns the gate?",
+  "If a 'gate' exists above it, who owns the gate?",
 ];
 
 const InvestorLensPoster = () => {
@@ -63,7 +63,7 @@ const InvestorLensPoster = () => {
             Rent or own? <span style={{ color: GOLD }}>A 10-layer diligence map.</span>
           </h2>
           <p className="text-[12px] md:text-sm mt-3 max-w-2xl" style={{ color: "#CBD5E1" }}>
-            Every AI cap-table claim collapses to one question — which layers does this company
+            Every AI cap-table claim collapses to one question, which layers does this company
             structurally <em>own</em>, and which is it merely renting from the layer below?
           </p>
         </div>
@@ -138,7 +138,7 @@ const InvestorLensPoster = () => {
         {/* Footer */}
         <div className="mt-8 pt-4 flex flex-wrap items-baseline justify-between gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
           <p className="text-[11px] italic" style={{ color: MUTED, fontFamily: "'Playfair Display', serif" }}>
-            The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
+            The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
           </p>
           <p
             className="text-[9px] md:text-[10px] font-bold uppercase"

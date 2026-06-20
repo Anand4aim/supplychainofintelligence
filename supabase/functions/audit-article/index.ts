@@ -25,12 +25,12 @@ const ALL_SUBLAYERS = [
 
 // Ten critical lenses scored 0-100 each. Composite score = weighted blend.
 const DIMENSIONS = [
-  { id: "framework_fidelity",  weight: 0.18, desc: "Are the 10 layers, 50 sublayers, and 4 Laws applied correctly? Agent decoded to L5+L6? Trust to L3? Memory to L8? No invented IDs. Foundational — wrong here drags everything." },
+  { id: "framework_fidelity",  weight: 0.18, desc: "Are the 10 layers, 50 sublayers, and 4 Laws applied correctly? Agent decoded to L5+L6? Trust to L3? Memory to L8? No invented IDs. Foundational, wrong here drags everything." },
   { id: "thesis_sharpness",    weight: 0.12, desc: "Is the central claim crisp, non-obvious, and falsifiable? Can you state it in one sentence? Or is it mush, restating the news?" },
-  { id: "evidence_rigor",      weight: 0.11, desc: "Are claims grounded in specifics — named companies, numbers, primary sources? Or hand-wave and adjectives?" },
+  { id: "evidence_rigor",      weight: 0.11, desc: "Are claims grounded in specifics, named companies, numbers, primary sources? Or hand-wave and adjectives?" },
   { id: "predictive_power",    weight: 0.10, desc: "Does the article make a forecast that could be checked later? Does it hold a view the consensus doesn't? Or is it pure post-hoc narration?" },
   { id: "originality",         weight: 0.10, desc: "Is the insight differentiated vs. the commodity hot-take you'd read on TechCrunch / Twitter? Or recycled consensus dressed in layer tags?" },
-  { id: "strategic_depth",     weight: 0.12, desc: "Does it work the cross-layer dynamics — moats, gatekeeping, separation of generation/verification, second-order effects, who captures value where?" },
+  { id: "strategic_depth",     weight: 0.12, desc: "Does it work the cross-layer dynamics, moats, gatekeeping, separation of generation/verification, second-order effects, who captures value where?" },
   { id: "tone_discipline",     weight: 0.07, desc: "Stratechery + McKinsey voice. No hype, no clickbait, no breathless 'agent revolution'. Authoritative, calm, specific. Penalize bombast." },
   { id: "editorial_craft",     weight: 0.07, desc: "Prose quality, paragraph rhythm, headline-sub-body alignment, no filler. Would a paying subscriber respect this?" },
   { id: "actionability",       weight: 0.07, desc: "Does a PM, founder, or investor walk away with a decision, a watchlist item, or a sharpened mental model? Or just vibes?" },
@@ -115,7 +115,7 @@ const SYSTEM_PROMPT = `${FRAMEWORK_CONTEXT}
 
 === YOUR ROLE: SENIOR FRAMEWORK CRITIC ===
 
-You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article — you are grading it.
+You are auditing a previously published article on supplychainofai.com against the canonical Supply Chain of Intelligence™ framework. You are NOT writing a new article, you are grading it.
 
 You will score the article on TEN INDEPENDENT LENSES (0-100 each), each with a short evidence-grounded rationale:
 
@@ -129,14 +129,14 @@ The composite \`score\` MUST equal the weighted average of the ten dimension sco
 
 Also do the framework work:
 1. Walk the article's substance against the 10 layers and all 50 sublayers; emit proposed_layers and a tight 3-8 proposed_sublayers.
-2. Identify EVERY framework mis-mapping. The #1 trap is agent→L4 without L5+L6 — flag it critical every time.
+2. Identify EVERY framework mis-mapping. The #1 trap is agent→L4 without L5+L6, flag it critical every time.
 3. Ground every flaw in a verbatim quote. No flaw without evidence.
 4. Propose CONCRETE fixes (add/remove layer tags, rewrite headline/sub, change verdict).
 5. Confirm or challenge the verdict (DOMINANT/SAFE/CONTESTED/DEAD).
 6. Check which of the 4 Laws the article applies, and which it MISSED.
 
 Discipline:
-- Be brutal but specific. Vague critique is worse than no critique. 100 is reserved for elite — most lenses on most articles land 55-75.
+- Be brutal but specific. Vague critique is worse than no critique. 100 is reserved for elite, most lenses on most articles land 55-75.
 - Use canonical IDs only (L-1, L0…L8 and L-1a…L8e). Never invent IDs.
 - Do NOT inflate scores to be polite. A pretty article with a hollow thesis should score thesis_sharpness < 50 even if editorial_craft is 80.`;
 
@@ -145,7 +145,7 @@ async function callCritic(model: string, lovableKey: string, article: any) {
 HEADLINE: ${article.headline}
 SUBHEADLINE: ${article.subheadline ?? ""}
 VERDICT (current): ${article.verdict}
-VERTICAL (current): ${article.vertical ?? "—"}
+VERTICAL (current): ${article.vertical ?? " - "}
 CURRENT LAYER TAGS: ${JSON.stringify(article.analysis?.cube_position?.layers ?? [])}
 CURRENT FUNCTIONS: ${JSON.stringify(article.analysis?.cube_position?.functions ?? [])}
 CURRENT VERTICALS: ${JSON.stringify(article.analysis?.cube_position?.verticals ?? [])}

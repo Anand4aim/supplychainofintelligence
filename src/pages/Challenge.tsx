@@ -42,7 +42,7 @@ const Challenge = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Challenge the framework — submit a counter-case"
+        title="Challenge the framework, submit a counter-case"
         description="The Supply Chain of Intelligence™ gets sharper when challenged. Submit counter-cases, edge cases, fuzzy layer boundaries, or disagreements. Open critique inbox."
         path="/challenge"
       />
@@ -54,18 +54,18 @@ const Challenge = () => {
             Challenge the framework.
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            The 10 layers are a model — useful, opinionated, and incomplete. The fastest way to make it sharper is
+            The 10 layers are a model, useful, opinionated, and incomplete. The fastest way to make it sharper is
             for operators, investors, and researchers to break it in public. Counter-cases especially welcome.
           </p>
 
           <SketchBoard className="mb-10 p-5">
             <p className="font-mono-marker text-[10px] tracking-[0.18em] text-muted-foreground mb-2">WHAT TO SUBMIT</p>
             <ul className="text-sm text-foreground/80 leading-relaxed space-y-1.5 list-disc pl-5">
-              <li><strong>Counter-cases</strong> — a company that should have died under Law I and didn&apos;t, or vice versa.</li>
-              <li><strong>Fuzzy boundaries</strong> — places where L5/L6/L7 or L1/L8 collapse into each other in practice.</li>
-              <li><strong>Missing layers</strong> — something the 10-layer map fails to capture.</li>
-              <li><strong>Better precedents</strong> — prior strategy thinking that anticipates one of the four Laws.</li>
-              <li><strong>Real-world receipts</strong> — you applied the framework to a roadmap or thesis and it broke (or compounded).</li>
+              <li><strong>Counter-cases</strong>, a company that should have died under Law I and didn&apos;t, or vice versa.</li>
+              <li><strong>Fuzzy boundaries</strong>, places where L5/L6/L7 or L1/L8 collapse into each other in practice.</li>
+              <li><strong>Missing layers</strong>, something the 10-layer map fails to capture.</li>
+              <li><strong>Better precedents</strong>, prior strategy thinking that anticipates one of the four Laws.</li>
+              <li><strong>Real-world receipts</strong>, you applied the framework to a roadmap or thesis and it broke (or compounded).</li>
             </ul>
           </SketchBoard>
 

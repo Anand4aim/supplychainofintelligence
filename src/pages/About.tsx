@@ -19,7 +19,7 @@ const personSchema = {
   jobTitle: "Product Leader & AI Product Architect",
   url: "https://supplychainofai.com/about",
   description:
-    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of The Supply Chain of Intelligence™ — a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
+    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of The Supply Chain of Intelligence™, a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
   alumniOf: [
     { "@type": "Organization", name: "Meta (Instagram)" },
     { "@type": "Organization", name: "Vungle" },
@@ -33,7 +33,7 @@ const ROLES: { era: string; org: string; role: string }[] = [
   { era: "Now", org: "Ideas2IT", role: "Product leader (primary employment, separate from this site)" },
   { era: "Prior", org: "Refersion", role: "VP, Product Management" },
   { era: "Prior", org: "GRIN", role: "VP, Product Management & Advisor" },
-  { era: "2016–2019", org: "Meta (Instagram & Messenger)", role: "Product Growth Leader — Messenger business platform, IG monetization" },
+  { era: "2016–2019", org: "Meta (Instagram & Messenger)", role: "Product Growth Leader, Messenger business platform, IG monetization" },
   { era: "Earlier", org: "Vungle · Pinsight Media", role: "Lead Product Manager" },
 ];
 
@@ -54,7 +54,7 @@ const TALKS = [
 const AboutPage = () => (
   <SiteLayout>
     <Seo
-      title="About Anand Arivukkarasu — Framework Author"
+      title="About Anand Arivukkarasu, Framework Author"
       description="Ex-Meta (Instagram) product leader. VP/Head of Product at Ideas2IT, Refersion, GRIN. Angel investor. Creator of the 10-layer framework for where AI value accrues."
       path="/about"
     />
@@ -77,7 +77,7 @@ const AboutPage = () => (
           >
             <img
               src={anandPortrait}
-              alt="Anand Arivukkarasu — Ex-Meta product leader, creator of The Supply Chain of Intelligence"
+              alt="Anand Arivukkarasu, Ex-Meta product leader, creator of The Supply Chain of Intelligence"
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -125,7 +125,7 @@ const AboutPage = () => (
         <div className="prose prose-lg max-w-none space-y-5 text-foreground/85 text-[17px] leading-[1.85]">
           <p>
 
-            I'm a product leader and architect focused on designing and scaling AI-first products — from 0→1 foundations to the
+            I'm a product leader and architect focused on designing and scaling AI-first products, from 0→1 foundations to the
             growth systems that hold up at scale. I spent a decade shipping product across consumer and B2B SaaS,
             including three years at <strong className="text-foreground">Meta</strong> leading product and growth for
             the Messenger business platform and Instagram monetization surfaces.
@@ -136,8 +136,8 @@ const AboutPage = () => (
             <strong className="text-foreground">GRIN</strong>, and{" "}
             <strong className="text-foreground">Refersion</strong>. Today my primary role is at{" "}
             <strong className="text-foreground">Ideas2IT</strong> as a product leader. Across a decade
-            of building AI-first products, the same question kept surfacing —{" "}
-            <em>"what does AI mean for this surface?"</em> — and the honest answer was usually{" "}
+            of building AI-first products, the same question kept surfacing  - {" "}
+            <em>"what does AI mean for this surface?"</em>, and the honest answer was usually{" "}
             <em>"we don't have a framework that explains it."</em> So I started writing one down, on
             evenings and weekends, as a personal project. This site is that project.
           </p>
@@ -145,23 +145,23 @@ const AboutPage = () => (
             JTBD told us <strong className="text-foreground">what users want</strong>. It never told us whether a model
             release, a hyperscaler bundle, or a productivity-suite plugin would erase the entire feature six months
             later. After watching Jasper collapse, Chegg lose 99%, Stack Overflow bleed traffic, and Grammarly get
-            squeezed by Copilot — all predictable structurally, none predictable by demand alone — I started writing
+            squeezed by Copilot, all predictable structurally, none predictable by demand alone, I started writing
             this framework down.
           </p>
           <p>
             <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
             layers, fifty sublayers, four structural laws, one diagnostic cube. It is opinionated, it is portable
-            across categories, and it is free — a give-back to the product community.
+            across categories, and it is free, a give-back to the product community.
           </p>
           <div className="not-prose my-8">
             <CanonicalDefinition variant="full" />
           </div>
           <p>
-            I spent two decades building products inside Meta, Vungle, and others, and the frameworks I leaned on most — JTBD, Wardley Maps, the Innovator's Dilemma — were all given away by their authors. This is my contribution back. Use it, cite it, fork it, disagree with it in public. That's the whole point.
+            I spent two decades building products inside Meta, Vungle, and others, and the frameworks I leaned on most, JTBD, Wardley Maps, the Innovator's Dilemma, were all given away by their authors. This is my contribution back. Use it, cite it, fork it, disagree with it in public. That's the whole point.
           </p>
           <p>
-            I grew up a <strong className="text-foreground">competitive chess player</strong> — a former
-            higher-level junior champion — and that is how I read the AI market. It is a board, not a forecast.
+            I grew up a <strong className="text-foreground">competitive chess player</strong>, a former
+            higher-level junior champion, and that is how I read the AI market. It is a board, not a forecast.
             Every company on this site is sitting on a square. The framework names the square. The juggernaut
             still has a move. The Predictions page tracks who saw the fork and who didn't.
           </p>
@@ -174,7 +174,7 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* JTBD × SUPPLY CHAIN — length vs depth */}
+    {/* JTBD × SUPPLY CHAIN, length vs depth */}
     <section className="bg-background border-t border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <Eyebrow className="mb-3">How the framework relates to JTBD</Eyebrow>
@@ -204,19 +204,19 @@ const AboutPage = () => (
               <tr>
                 <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Trust what the AI generated."</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">An L7 "verifier" widget bolted onto the output.</td>
-                <td className="px-4 py-3 text-foreground/85 align-top">Bake an <strong className="text-foreground">L3 Gatekeeping</strong> layer into the pipeline — provenance, citation, policy, audit trail.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Bake an <strong className="text-foreground">L3 Gatekeeping</strong> layer into the pipeline, provenance, citation, policy, audit trail.</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">Any competitor can ship the widget in a weekend. Almost none can ship a gate that regulators and buyers accept.</td>
               </tr>
               <tr>
                 <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Let the AI actually do the thing."</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">A button that opens a confirmation modal.</td>
-                <td className="px-4 py-3 text-foreground/85 align-top">Own <strong className="text-foreground">L4 Access</strong> + <strong className="text-foreground">L5 Execution</strong> — auth, identity, write-permissions into the system of record.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Own <strong className="text-foreground">L4 Access</strong> + <strong className="text-foreground">L5 Execution</strong>, auth, identity, write-permissions into the system of record.</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">Execution requires earned trust with the underlying system. That is a contract, not a feature flag.</td>
               </tr>
               <tr>
                 <td className="px-4 py-3 font-display font-bold text-foreground align-top">"Remember me. Get smarter for me."</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">Local chat history in the sidebar.</td>
-                <td className="px-4 py-3 text-foreground/85 align-top">Build an <strong className="text-foreground">L8 Memory</strong> layer — user, org, and network-level state that compounds across sessions.</td>
+                <td className="px-4 py-3 text-foreground/85 align-top">Build an <strong className="text-foreground">L8 Memory</strong> layer, user, org, and network-level state that compounds across sessions.</td>
                 <td className="px-4 py-3 text-foreground/75 align-top">The shallow version resets every time the model resets. The deep version becomes switching cost.</td>
               </tr>
               <tr>
@@ -230,7 +230,7 @@ const AboutPage = () => (
         </div>
 
         <p className="text-foreground/70 text-[14px] leading-relaxed mt-5 max-w-3xl">
-          Rule of thumb: when a customer need shows up, do not just ask "what feature ships this?" — ask{" "}
+          Rule of thumb: when a customer need shows up, do not just ask "what feature ships this?", ask{" "}
           <strong className="text-foreground">"which layer of the chain do we have to own to make this durable?"</strong>{" "}
           Most AI products die because they answered the right job at the wrong depth.
         </p>
@@ -247,7 +247,7 @@ const AboutPage = () => (
     </section>
 
 
-    {/* WHY — INDUSTRY STANDARD VOCABULARY */}
+    {/* WHY, INDUSTRY STANDARD VOCABULARY */}
     <section className="bg-background border-t border-border">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <Eyebrow className="mb-3">Why I'm really doing this</Eyebrow>
@@ -273,7 +273,7 @@ const AboutPage = () => (
           <p>
             Generative AI doesn't have that yet. So a product team ships a feature thinking they own a moat, and an
             investor funds a "platform" thinking it's defensible, and six months later a hyperscaler ships the same
-            capability as a checkbox — because nobody named which <em>layer</em> the work was actually living on.
+            capability as a checkbox, because nobody named which <em>layer</em> the work was actually living on.
           </p>
           <p>
             <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is my attempt at that
@@ -316,7 +316,7 @@ const AboutPage = () => (
         <div className="mt-10 bg-secondary/40 border border-border rounded-xl p-6">
           <p className="font-mono-marker text-[11px] uppercase tracking-wider text-accent mb-3">The ask</p>
           <p className="text-foreground/85 text-[16px] leading-[1.75] mb-4">
-            If you're a founder, PM, or investor — try using the layer notation in your next memo, review, or
+            If you're a founder, PM, or investor, try using the layer notation in your next memo, review, or
             pitch. Say <strong className="text-foreground">L5</strong> instead of "the AI doing the work". Say{" "}
             <strong className="text-foreground">L8</strong> instead of "it remembers stuff". Say{" "}
             <strong className="text-foreground">L3</strong> instead of "trust and safety". The framework is{" "}
@@ -335,7 +335,7 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* WHY THIS FRAMEWORK EXISTS — what disappears without it */}
+    {/* WHY THIS FRAMEWORK EXISTS, what disappears without it */}
     <section id="why-this-exists" className="bg-background border-t border-border scroll-mt-24">
       <div className="max-w-5xl mx-auto px-6 py-16">
         <Eyebrow className="mb-3">Why this framework exists</Eyebrow>
@@ -343,7 +343,7 @@ const AboutPage = () => (
           Six things the AI conversation <span className="text-accent">cannot do</span> without this lens.
         </h2>
         <p className="text-foreground/80 text-[16px] leading-[1.75] max-w-3xl mb-8">
-          Every row below names a sentence you hear in board rooms, pitch decks, and Twitter threads —
+          Every row below names a sentence you hear in board rooms, pitch decks, and Twitter threads  - 
           and the precise instrument the framework gives you to replace it with. If none of these
           gaps existed, the framework would not need to exist.
         </p>
@@ -364,7 +364,7 @@ const AboutPage = () => (
                   Vague labels. Two companies with the same label have completely different fates.
                 </td>
                 <td className="px-4 py-3 text-foreground/85 align-top">
-                  A <strong className="text-foreground">precise vocabulary</strong> — 10 layers, 50 sublayers — so
+                  A <strong className="text-foreground">precise vocabulary</strong>, 10 layers, 50 sublayers, so
                   "L1b moat + L2 MCP + receding L7" replaces "AI-native". Same words, everywhere, every room.
                 </td>
                 <td className="px-4 py-3 align-top">
@@ -377,7 +377,7 @@ const AboutPage = () => (
                   Descriptive vibes. No way to test if it survives the next platform release.
                 </td>
                 <td className="px-4 py-3 text-foreground/85 align-top">
-                  A <strong className="text-foreground">diagnostic instrument</strong> — Defensibility Audit + Triangle —
+                  A <strong className="text-foreground">diagnostic instrument</strong>, Defensibility Audit + Triangle  - 
                   that a product can actually fail. Which layer creates value, captures margin, is vulnerable to absorption.
                 </td>
                 <td className="px-4 py-3 align-top">
@@ -387,10 +387,10 @@ const AboutPage = () => (
               <tr>
                 <td className="px-4 py-3 text-foreground/75 align-top">
                   <span className="font-display font-bold text-foreground block mb-1">"It's an agent."</span>
-                  Used for chatbots, copilots, automations, tool-callers — seven different architectures, one word.
+                  Used for chatbots, copilots, automations, tool-callers, seven different architectures, one word.
                 </td>
                 <td className="px-4 py-3 text-foreground/85 align-top">
-                  The <strong className="text-foreground">Agent Decoder</strong> — every "agent" decomposes into{" "}
+                  The <strong className="text-foreground">Agent Decoder</strong>, every "agent" decomposes into{" "}
                   <LayerTag id="L5" /> + <LayerTag id="L6" /> + optional <LayerTag id="L4" /> / <LayerTag id="L7" /> / <LayerTag id="L8" />.
                   Stops the conflation.
                 </td>
@@ -405,7 +405,7 @@ const AboutPage = () => (
                 </td>
                 <td className="px-4 py-3 text-foreground/85 align-top">
                   <strong className="text-foreground">Generation ≠ Verification</strong> (Law IV). Explains why{" "}
-                  <LayerTag id="L3" /> stays economically durable — compliance, trust, ranking, fiduciary review —
+                  <LayerTag id="L3" /> stays economically durable, compliance, trust, ranking, fiduciary review  - 
                   even when generation goes to zero.
                 </td>
                 <td className="px-4 py-3 align-top">
@@ -418,7 +418,7 @@ const AboutPage = () => (
                   Binary verdict. Doesn't say which layer compresses, which compounds, which becomes a choke point.
                 </td>
                 <td className="px-4 py-3 text-foreground/85 align-top">
-                  A <strong className="text-foreground">layer-by-layer value-migration map</strong> — surfaces collapse,
+                  A <strong className="text-foreground">layer-by-layer value-migration map</strong>, surfaces collapse,
                   infrastructure commoditizes, orchestration becomes strategic, memory compounds. Each layer on its own clock.
                 </td>
                 <td className="px-4 py-3 align-top">
@@ -508,11 +508,11 @@ const AboutPage = () => (
       </div>
     </section>
 
-    {/* READ MORE STRIP — no services, just where to read next */}
+    {/* READ MORE STRIP, no services, just where to read next */}
     <section className="bg-foreground text-background">
       <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
         <div>
-          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Read & follow</p>
+          <p className="font-mono-marker text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em] text-accent mb-2"> -  Read & follow</p>
           <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
             The framework is free. Use it, cite it, push back on it.
           </h3>

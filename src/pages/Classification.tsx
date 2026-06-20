@@ -18,7 +18,7 @@ const LAYER_ORDER = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"
 const dominanceOf = (layers: string[]) => layers[0] ?? "";
 
 const SEO_DESC =
-  "The canonical SCOI v1 classification table. Every notable AI company plotted across the 10 layers of The Supply Chain of Intelligence™ — sortable by dominant layer, archetype, and vertical, with citations to the live case studies. Not logistics — the generative AI stack.";
+  "The canonical SCOI v1 classification table. Every notable AI company plotted across the 10 layers of The Supply Chain of Intelligence™, sortable by dominant layer, archetype, and vertical, with citations to the live case studies. Not logistics, the generative AI stack.";
 
 const ClassificationPage = () => {
   const [query, setQuery] = useState("");
@@ -61,7 +61,7 @@ const ClassificationPage = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "SCOI v1 — Canonical AI-Company Classification",
+    name: "SCOI v1, Canonical AI-Company Classification",
     description: SEO_DESC,
     url: "https://supplychainofai.com/classification",
     creator: {
@@ -81,7 +81,7 @@ const ClassificationPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Classification — 60+ AI Companies on 10 Layers"
+        title="Classification, 60+ AI Companies on 10 Layers"
         description={SEO_DESC}
         path="/classification"
       />
@@ -99,7 +99,7 @@ const ClassificationPage = () => {
           <p className="text-foreground/80 text-[17px] leading-[1.75] max-w-2xl mb-8">
             One sortable, citation-grade table. Each row is a company's primary
             structural position across the 10 layers of The Supply Chain of
-            Intelligence™ — with its archetype (fortress, refinery, surface,
+            Intelligence™, with its archetype (fortress, refinery, surface,
             graveyard…) and a link to the long-form case study where one exists.
           </p>
 
@@ -207,7 +207,7 @@ const ClassificationPage = () => {
                         ) : c.note ? (
                           <span className="text-xs text-muted-foreground italic">{c.note.slice(0, 80)}{c.note.length > 80 ? "…" : ""}</span>
                         ) : (
-                          <span className="text-xs text-muted-foreground">—</span>
+                          <span className="text-xs text-muted-foreground"> - </span>
                         )}
                       </td>
                     </tr>
@@ -218,7 +218,7 @@ const ClassificationPage = () => {
           </div>
 
           <p className="text-xs text-muted-foreground mt-4 italic">
-            Layer assignments reflect a company's <em>primary</em> structural position(s), not every layer they touch. Edits, dissents, and additions welcome — challenge any classification on the <Link to="/challenge" className="text-accent hover:underline">Challenge page</Link>.
+            Layer assignments reflect a company's <em>primary</em> structural position(s), not every layer they touch. Edits, dissents, and additions welcome, challenge any classification on the <Link to="/challenge" className="text-accent hover:underline">Challenge page</Link>.
           </p>
         </div>
       </section>
@@ -227,7 +227,7 @@ const ClassificationPage = () => {
       <section className="bg-foreground text-background">
         <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
           <div>
-            <p className="font-mono-marker text-[11px] font-bold uppercase tracking-[0.18em] text-accent mb-2">— Diagnose, don't describe</p>
+            <p className="font-mono-marker text-[11px] font-bold uppercase tracking-[0.18em] text-accent mb-2"> -  Diagnose, don't describe</p>
             <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
               Every classification stands on a per-layer diagnostic test.
             </h3>
