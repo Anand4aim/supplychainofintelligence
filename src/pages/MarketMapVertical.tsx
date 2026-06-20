@@ -100,9 +100,9 @@ const MarketMapVertical = () => {
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl">{entry.blurb}</p>
             {dataset && (
-              <p className="mt-2 text-[11px] font-mono-marker tracking-wider uppercase text-muted-foreground">
-                {dataset.asOf}
-              </p>
+              <div className="mt-4">
+                <FreshnessBadge asOf={dataset.asOf} />
+              </div>
             )}
           </motion.div>
         </div>

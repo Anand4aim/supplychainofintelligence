@@ -44,6 +44,8 @@ const SiteFooter = () => (
             <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
             <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
             <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary</Link>
+            <Link to="/methodology" className="block text-sm hover:text-foreground transition-colors">Methodology</Link>
+            <Link to="/changelog" className="block text-sm hover:text-foreground transition-colors">Changelog</Link>
           </div>
         </div>
 
