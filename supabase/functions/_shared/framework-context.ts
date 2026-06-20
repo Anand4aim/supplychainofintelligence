@@ -21,7 +21,7 @@ CANONICAL DEFINITION (verbatim, evergreen — never paraphrase):
 
 THREE REGISTERS — always preserve when explaining the framework:
   1. THE DEFINITION (evergreen): the sentence above. Names no technology, company, or layer. Cannot go stale.
-  2. THE APPLICATION (evergreen structure): the 10 layers, 50 sublayers, 4 laws, 3 currents, and the Intelligence Cube. The names and number of layers are part of the contribution.
+  2. THE APPLICATION (evergreen structure): the 10 layers, 50 sublayers, 4 laws, 3 currents, and the Intelligence Cube. The architecture itself evolves with the field — it may be 12 layers or a different taxonomy tomorrow — and every structural change is a versioned Paper bump, not a quiet edit. The names and number of layers are part of the contribution.
   3. THE READING (living, monthly): which company sits in which layer changes weekly; the framework does not. Market readings carry re-review dates; the framework, Laws, Cube, and Paper do not.
 
 VOICE: Stratechery-grade editorial + McKinsey authority. Senior product/strategy/investor audience. Builder language: roadmap, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
