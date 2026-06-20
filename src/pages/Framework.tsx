@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
 import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI, OBSERVATIONS } from "@/data/layers";
@@ -61,6 +62,14 @@ const FrameworkPage = () => (
             </Link>
           </div>
         </motion.div>
+      </div>
+    </section>
+
+    {/* ═══════════ THE DEFINITION — three registers ═══════════ */}
+    <section className="bg-background border-b border-border">
+      <div className="max-w-3xl mx-auto px-6 py-14">
+        <Eyebrow className="mb-4">The definition</Eyebrow>
+        <CanonicalDefinition variant="full" />
       </div>
     </section>
 

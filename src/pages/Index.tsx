@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 import SiteLayout from "@/components/SiteLayout";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
 import Seo from "@/components/Seo";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -180,6 +181,18 @@ const Index = () => {
             </motion.div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════ THE DEFINITION — three registers, canonical block ═══════════ */}
+      <section className="bg-background border-b border-border/40">
+        <div className="max-w-3xl mx-auto px-6 py-12 md:py-16">
+          <Eyebrow className="mb-4">The definition</Eyebrow>
+          <CanonicalDefinition variant="full" />
+          <p className="text-[12px] text-muted-foreground mt-4">
+            The definition is evergreen. The 10 layers and 50 sublayers are the
+            application. Which company sits where is a <Link to="/methodology" className="text-accent hover:underline">monthly reading</Link>.
+          </p>
         </div>
       </section>
 

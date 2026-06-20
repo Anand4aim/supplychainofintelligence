@@ -3,6 +3,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import FreshnessBadge from "@/components/FreshnessBadge";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section className="border-t border-foreground/10 pt-8 mt-8">
