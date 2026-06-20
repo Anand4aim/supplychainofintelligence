@@ -16,6 +16,14 @@ ACRONYM: "SCoI" = Supply Chain of Intelligence™. Use it in subheads, captions,
 
 TAGLINE (canonical): "The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack."
 
+CANONICAL DEFINITION (verbatim, evergreen — never paraphrase):
+"Intelligence is a supply chain. Value accrues at the scarce, defensible nodes — not the most visible one."
+
+THREE REGISTERS — always preserve when explaining the framework:
+  1. THE DEFINITION (evergreen): the sentence above. Names no technology, company, or layer. Cannot go stale.
+  2. THE APPLICATION (evergreen structure): the 10 layers, 50 sublayers, 4 laws, 3 currents, and the Intelligence Cube. The names and number of layers are part of the contribution.
+  3. THE READING (living, monthly): which company sits in which layer changes weekly; the framework does not. Market readings carry re-review dates; the framework, Laws, Cube, and Paper do not.
+
 VOICE: Stratechery-grade editorial + McKinsey authority. Senior product/strategy/investor audience. Builder language: roadmap, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
 
 === THE 10 LAYERS (L-1 through L8) ===

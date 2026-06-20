@@ -8,6 +8,7 @@ import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
 import PersonalCapacityNotice from "@/components/PersonalCapacityNotice";
 import anandPortrait from "@/assets/anand-portrait.png";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
 
 const LINKEDIN = "https://www.linkedin.com/in/anandarivu";
 
@@ -152,6 +153,9 @@ const AboutPage = () => (
             layers, fifty sublayers, four structural laws, one diagnostic cube. It is opinionated, it is portable
             across categories, and it is free — a give-back to the product community.
           </p>
+          <div className="not-prose my-8">
+            <CanonicalDefinition variant="full" />
+          </div>
           <p>
             I spent two decades building products inside Meta, Vungle, and others, and the frameworks I leaned on most — JTBD, Wardley Maps, the Innovator's Dilemma — were all given away by their authors. This is my contribution back. Use it, cite it, fork it, disagree with it in public. That's the whole point.
           </p>

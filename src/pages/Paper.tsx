@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
 import CiteThis from "@/components/CiteThis";
 import { LAYERS } from "@/data/layers";
 import { Download, FileText } from "lucide-react";
@@ -157,6 +158,12 @@ const Paper = () => {
             </a>
             <CiteThis title={PAPER_TITLE} path={PAPER_PATH} date={PAPER_DATE} />
           </div>
+
+          {/* Definition — three registers, canonical block */}
+          <section id="definition" className="mb-12 scroll-mt-24">
+            <Eyebrow size="sm" tone="muted" className="mb-3">§ Definition</Eyebrow>
+            <CanonicalDefinition variant="full" surface="cream" />
+          </section>
 
           {/* Abstract */}
           <section id="abstract" className="mb-12 scroll-mt-24">

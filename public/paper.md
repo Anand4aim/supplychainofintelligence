@@ -7,6 +7,18 @@
 
 ---
 
+## Definition
+
+> **Intelligence is a supply chain. Value accrues at the scarce, defensible nodes — not the most visible one.**
+
+This is the canonical definition. It is evergreen — it names no technology, no company, no layer. The rest of this paper is structured in three registers:
+
+1. **The Definition (evergreen):** the sentence above.
+2. **The Application (evergreen structure):** the 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube. The names and number of layers are part of the contribution; a new layer is a major version bump recorded on `/changelog`.
+3. **The Reading (living, monthly):** which company sits in which layer changes weekly; the framework does not. Market readings carry a re-review date; the framework, the Laws, the Cube, and this Paper do not. See `/methodology`.
+
+---
+
 ## Abstract
 
 Every generative-AI product sits on a 10-layer supply chain: **L-1 Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory.** The layers are the supply side. Across them flow **three Currents** — Demand Gravity, Attention Economics, Capital Flows — which decide whether a position at any layer compounds into a business or starves. **Four structural laws** govern how value migrates through the stack under those Currents. The **Defensible Triangle** — L1b Proprietary Data + L5 Deep Skills & Playbooks + L8 Compounding Memory — is the most common application-layer fortress. The word "agent" is not a layer; it is marketing for an L5 + L6 (+ L7 / + L8) package and must be decoded before it can be analysed. This document is the canonical reference; cite it directly.
