@@ -18,6 +18,7 @@ import Seo from "@/components/Seo";
 import ChessBoardOfIntelligence from "@/components/ChessBoardOfIntelligence";
 import SourcesSection from "@/components/SourcesSection";
 import Eyebrow from "@/components/Eyebrow";
+import FreshnessBadge from "@/components/FreshnessBadge";
 import LayerTag from "@/components/LayerTag";
 import {
   PREDICTIONS,
@@ -213,6 +214,9 @@ const Predictions = () => {
         >
           The Board.
         </motion.h1>
+        <div className="mt-4">
+          <FreshnessBadge asOf="Jun 2026" />
+        </div>
         <p className="mt-6 text-lg text-foreground/75 max-w-3xl leading-relaxed">
           Think of this page as a chess board, not a crystal ball. Every call
           names the <strong className="text-foreground">layer exposure</strong> a

@@ -38,6 +38,8 @@ import Posts from "./pages/Posts";
 import PostDetail from "./pages/PostDetail";
 import Audit from "./pages/Audit";
 import Paper from "./pages/Paper";
+import Methodology from "./pages/Methodology";
+import Changelog from "./pages/Changelog";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +84,8 @@ const App = () => (
         <Route path="/posts/:slug" element={<PostDetail />} />
         <Route path="/audit" element={<Audit />} />
         <Route path="/paper" element={<Paper />} />
+        <Route path="/methodology" element={<Methodology />} />
+        <Route path="/changelog" element={<Changelog />} />
         <Route path="/the-supply-chain-of-intelligence" element={<Navigate to="/paper" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

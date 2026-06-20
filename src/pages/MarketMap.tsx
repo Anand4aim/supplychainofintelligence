@@ -15,6 +15,7 @@ import {
   type MapCompany,
 } from "@/data/marketMap";
 import Eyebrow from "@/components/Eyebrow";
+import FreshnessBadge from "@/components/FreshnessBadge";
 
 const VERTICALS: ("all" | Vertical)[] = [
   "all", "horizontal", "code", "finance", "legal", "health", "cx", "creative", "sales", "edu", "infra",
@@ -104,6 +105,9 @@ const MarketMap = () => {
               not the layer it markets. Filter by vertical. Click any company with a case study for
               the full structural read.
             </p>
+            <div className="mt-5">
+              <FreshnessBadge asOf="Jun 2026" />
+            </div>
           </motion.div>
 
           {/* Archetype legend */}

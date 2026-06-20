@@ -7,6 +7,7 @@ import { Map, ChevronRight, Lock, PanelLeftClose, PanelLeftOpen } from "lucide-r
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
+import FreshnessBadge from "@/components/FreshnessBadge";
 import ExportablePng from "@/components/ExportablePng";
 import SublayerGrid from "@/components/SublayerGrid";
 import MarketMapShareCard from "@/components/MarketMapShareCard";
@@ -99,9 +100,9 @@ const MarketMapVertical = () => {
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl">{entry.blurb}</p>
             {dataset && (
-              <p className="mt-2 text-[11px] font-mono-marker tracking-wider uppercase text-muted-foreground">
-                {dataset.asOf}
-              </p>
+              <div className="mt-4">
+                <FreshnessBadge asOf={dataset.asOf} />
+              </div>
             )}
           </motion.div>
         </div>
