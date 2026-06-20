@@ -43,7 +43,7 @@ const LayerDetailPage = () => {
     inDefinedTermSet: {
       "@type": "DefinedTermSet",
       "@id": "https://supplychainofai.com/#framework",
-      name: "The Supply Chain of Intelligence™, 10 Layers of the Generative AI Stack",
+      name: "Supply Chain of Intelligence™, 10 Layers of the Generative AI Stack",
       url: "https://supplychainofai.com/framework",
       numberOfItems: 10,
     },
@@ -69,7 +69,7 @@ const LayerDetailPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${layer.id} ${layer.name}, Layer ${layer.id} of the Supply Chain of Intelligence`}
+        title={`${layer.id} ${layer.name}, Layer ${layer.id} of Supply Chain of Intelligence`}
         description={`${layer.desc} ${layer.verdict}`}
         path={`/framework/${slugFor(layer.id)}`}
       />

@@ -11,7 +11,7 @@ import { GLOSSARY, GLOSSARY_CATEGORIES, type GlossaryCategory } from "@/data/glo
 type Filter = GlossaryCategory | "all";
 
 const SEO_DESC =
-  "What does 'wrapper' actually mean? 'Agent'? 'Copilot'? 'RAG'? 'MCP'? Precise definitions for every term in the generative AI stack, mapped to the 10 layers (L-1 through L8) of The Supply Chain of Intelligence™. Not logistics, AI strategy.";
+  "What does 'wrapper' actually mean? 'Agent'? 'Copilot'? 'RAG'? 'MCP'? Precise definitions for every term in the generative AI stack, mapped to the 10 layers (L-1 through L8) of Supply Chain of Intelligence™. Not logistics, AI strategy.";
 
 const GlossaryPage = () => {
   const [query, setQuery] = useState("");
@@ -43,7 +43,7 @@ const GlossaryPage = () => {
   const definedTermSet = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    name: "The Supply Chain of Intelligence™, Generative AI Stack Glossary",
+    name: "Supply Chain of Intelligence™, Generative AI Stack Glossary",
     description: SEO_DESC,
     url: "https://supplychainofai.com/glossary",
     hasDefinedTerm: GLOSSARY.map((g) => ({

@@ -1,4 +1,4 @@
-# The Supply Chain of Intelligence™
+# Supply Chain of Intelligence™
 ## The 10 layers of the generative AI stack
 **Version 1.0, January 4, 2026**
 **Author:** Anand Arivukkarasu, Ex-Meta (Instagram) Product Leader & AI Product Architect
@@ -121,17 +121,17 @@ The framework is intentionally boring in places. Supply chains are boring. That 
 
 ## How to cite
 
-**APA:** Arivukkarasu, A. (2026). *The Supply Chain of Intelligence™, the 10 layers of the generative AI stack* (Version 1.0). https://supplychainofai.com/paper
+**APA:** Arivukkarasu, A. (2026). *Supply Chain of Intelligence™, the 10 layers of the generative AI stack* (Version 1.0). https://supplychainofai.com/paper
 
-**MLA:** Arivukkarasu, Anand. "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack." Version 1.0, January 4, 2026, https://supplychainofai.com/paper.
+**MLA:** Arivukkarasu, Anand. "Supply Chain of Intelligence™, the 10 layers of the generative AI stack." Version 1.0, January 4, 2026, https://supplychainofai.com/paper.
 
-**LinkedIn-ready:** *The Supply Chain of Intelligence™, the 10 layers of the generative AI stack, by Anand Arivukkarasu. https://supplychainofai.com/paper*
+**LinkedIn-ready:** *Supply Chain of Intelligence™, the 10 layers of the generative AI stack, by Anand Arivukkarasu. https://supplychainofai.com/paper*
 
 **BibTeX:**
 ```
 @misc{arivukkarasu2026scoi,
   author = {Arivukkarasu, Anand},
-  title  = {The Supply Chain of Intelligence: the 10 layers of the generative AI stack},
+  title  = {Supply Chain of Intelligence: the 10 layers of the generative AI stack},
   year   = {2026},
   month  = {1},
   note   = {Version 1.0},
@@ -141,4 +141,4 @@ The framework is intentionally boring in places. Supply chains are boring. That 
 
 ---
 
-The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu. Licensed under CC-BY 4.0.
+Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu. Licensed under CC-BY 4.0.

@@ -25,7 +25,7 @@ export const POSTS: Post[] = [
     slug: "why-workflows-and-distribution-are-not-new-layers",
     title: "Why Workflows and Distribution Are Not New Layers in SCoI.",
     subtitle:
-      "Every few weeks someone proposes an L9 Workflows or an L10 Distribution sitting above Memory. The Supply Chain of Intelligence™ (SCoI) already absorbs both, and the reason it doesn't add them is the same reason the framework works at all.",
+      "Every few weeks someone proposes an L9 Workflows or an L10 Distribution sitting above Memory. Supply Chain of Intelligence™ (SCoI) already absorbs both, and the reason it doesn't add them is the same reason the framework works at all.",
     excerpt:
       "The 10-layer stack stops at Memory on purpose. Workflows are not a layer above L8, they're L6 Orchestration plus L5d Operating Playbooks doing their job. Distribution is not a layer above L7, it's a horizontal force already split across L3e, L7, and two of the Three Currents. Adding either as a new floor breaks the stack logic. Here's the decode.",
     publishedAt: "2026-05-22",
@@ -35,7 +35,7 @@ export const POSTS: Post[] = [
     heroPoster: "no-new-layers",
     body: [
       ">> “Shouldn't there be an L9 for workflows? And an L10 for distribution?”",
-      "It's the single most common framework question I get, and it's a good one. Both concepts are real. Both matter. Both already exist inside the Supply Chain of Intelligence™ (SCoI), just not as new floors stacked on top of Memory. This post is the explicit decode, because the answer is more interesting than “no.”",
+      "It's the single most common framework question I get, and it's a good one. Both concepts are real. Both matter. Both already exist inside Supply Chain of Intelligence™ (SCoI), just not as new floors stacked on top of Memory. This post is the explicit decode, because the answer is more interesting than “no.”",
       "The short version: **SCoI is not a linear path from raw resources to a product surface.** It's a vertical stack of intelligence layers crossed by horizontal forces. Workflows and Distribution are real, but they don't live on the vertical axis. Treating them as L9 and L10 collapses the framework's most important property, the boundary between intelligence and business.",
 
       "## What the 10 layers actually are",
@@ -93,7 +93,7 @@ export const POSTS: Post[] = [
     slug: "software-for-one-still-rides-shared-rails",
     title: "The Next Wave of Software Will Be Built for One. It Will Still Ride Shared Rails.",
     subtitle:
-      "Personal agents are the new surface. Stripe, Cloudflare, and the L2 providers are still the substrate. The Supply Chain of Intelligence™ (SCoI) explains why both halves of that sentence have to be true at once.",
+      "Personal agents are the new surface. Stripe, Cloudflare, and the L2 providers are still the substrate. Supply Chain of Intelligence™ (SCoI) explains why both halves of that sentence have to be true at once.",
     excerpt:
       "Every personal agent, one user, one context, one memory, still terminates at someone else's payment rail, someone else's edge, someone else's model. That's not a contradiction. It's Law II: value accrues at bottlenecks, and the bottlenecks for a million single-user agents are exactly the layers that aggregate across all of them.",
     publishedAt: "2026-05-08",
@@ -109,7 +109,7 @@ export const POSTS: Post[] = [
  
       "## What “software for one” actually is, in framework terms",
  
-      "“An agent built for one user” is a packaging story. Decoded into the Supply Chain of Intelligence™ (SCoI), it's a specific stack:",
+      "“An agent built for one user” is a packaging story. Decoded into Supply Chain of Intelligence™ (SCoI), it's a specific stack:",
       "**L7 Surface**, personal, often ambient or async. Not a SaaS dashboard. A chat thread, a voice loop, an inbox listener, a home-screen tile. **L7a** and **L7e** carry most of these.",
       "**L8 Memory**, the part that makes “for one” meaningful. **L8a** session memory, **L8b** entity profile (you), and over time **L8d** institutional knowledge of your life. Without L8, the agent is just a prompt with your name in it.",
       "**L5 Execution**, the actual work: book the thing, draft the reply, reconcile the spend, prep the meeting. **L5a** tool use, **L5d** an operating playbook for _your_ patterns. This is where the agent earns its keep.",
@@ -219,7 +219,7 @@ export const POSTS: Post[] = [
     subtitle:
       "An honest, side-by-side look at the five frameworks I see actually used in AI strategy rooms, and which question each one was built to answer.",
     excerpt:
-      "JTBD, Wardley Mapping, Aggregation Theory, AI TRiSM, and the Supply Chain of Intelligence™. Five frameworks, five different lenses, user, evolution, distribution, risk, and the stack itself. Here's where each one wins, where each one breaks, and how to use them together.",
+      "JTBD, Wardley Mapping, Aggregation Theory, AI TRiSM, and Supply Chain of Intelligence™. Five frameworks, five different lenses, user, evolution, distribution, risk, and the stack itself. Here's where each one wins, where each one breaks, and how to use them together.",
     publishedAt: "2026-04-10",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
@@ -236,7 +236,7 @@ export const POSTS: Post[] = [
       "**2. Wardley Mapping.** Simon Wardley, 2005. The _evolution / strategy_ lens. The question it answers best: **as this technology evolves from custom to commodity, where should we play and where should we partner?** Wardley is the right map when components are migrating across the genesis → custom → product → commodity axis (which is exactly what model layers are doing right now). It is heavy machinery and most teams use a sketchy version.",
       "**3. Aggregation Theory.** Ben Thompson, 2015. The _demand / distribution_ lens. The question it answers best: **on the internet, who owns the user relationship and aggregates demand?** It explained Google, Facebook, Netflix, and Uber better than anything else. In the AI era, it explains why ChatGPT and Perplexity are dangerous to vertical apps, distribution is collapsing again, and aggregation is the structural reason.",
       "**4. AI TRiSM (Trust, Risk & Security Management).** Gartner, 2023. The _risk / governance_ lens. The question it answers best: **what are the trust, safety, compliance, and explainability gates we have to clear?** It is the framework regulated buyers (healthcare, finance, government) actually live inside. It is also the framework most product teams discover too late, after a procurement review kills the deal.",
-      "**5. The Supply Chain of Intelligence™ (SCOI).** What I've been building over the last year. The _stack & intelligence_ lens. The question it answers best: **which layer of the AI stack do we actually own, and what will compress us when the platforms ship the same feature for free?** 10 layers, 50 sublayers, 4 structural laws. Built specifically for the generative-AI era, the others were not.",
+      "**5. Supply Chain of Intelligence™ (SCOI).** What I've been building over the last year. The _stack & intelligence_ lens. The question it answers best: **which layer of the AI stack do we actually own, and what will compress us when the platforms ship the same feature for free?** 10 layers, 50 sublayers, 4 structural laws. Built specifically for the generative-AI era, the others were not.",
 
       "[[poster:framework-coverage]]",
 
@@ -317,7 +317,7 @@ export const POSTS: Post[] = [
 
       "At some point, I stopped thinking about AI as “just software” and started thinking about it more like a supply chain. Oddly enough, the mental model that clarified it for me was gold.",
       "Before somebody wears a gold ring, there is an entire chain underneath it: mining, refining, transport, verification, crafting, distribution, retail, and eventually memory about the customer itself. The visible experience is only the final layer.",
-      "That idea stayed in my head for months and eventually became part of why I called this framework **The Supply Chain of Intelligence™**. I'll write separately about the full analogy, it ended up being one of the clearest ways to explain how AI value actually moves through the stack.",
+      "That idea stayed in my head for months and eventually became part of why I called this framework **Supply Chain of Intelligence™**. I'll write separately about the full analogy, it ended up being one of the clearest ways to explain how AI value actually moves through the stack.",
 
       "## The companies that compressed, and the ones that adapted",
 
@@ -332,7 +332,7 @@ export const POSTS: Post[] = [
       "The more I observed these patterns, the more I realized something important: **most AI discussions were happening at the wrong layer of the stack.**",
       "People were talking about prompts, models, copilots, agents, interfaces. But the real strategic questions were deeper:",
       "_Which layer do you actually own? Which layer can compress you? Which layer compounds over time? Which layer is rented from somebody else? Which layer survives when the foundation model companies move upward?_",
-      "That eventually became the foundation for what I now call **The Supply Chain of Intelligence™**, a framework that maps where AI value is created, captured, compressed, defended, and accumulated across the stack. **10 layers. 50 sublayers. 4 structural laws.**",
+      "That eventually became the foundation for what I now call **Supply Chain of Intelligence™**, a framework that maps where AI value is created, captured, compressed, defended, and accumulated across the stack. **10 layers. 50 sublayers. 4 structural laws.**",
 
       "[[poster:four-laws]]",
 
@@ -362,7 +362,7 @@ export const POSTS: Post[] = [
 
       "---",
 
-      "That is why I built **The Supply Chain of Intelligence™.** Not as another AI buzzword framework, but as an attempt to create better structural language for how AI businesses actually evolve.",
+      "That is why I built **Supply Chain of Intelligence™.** Not as another AI buzzword framework, but as an attempt to create better structural language for how AI businesses actually evolve.",
       "My hope is that over time it becomes useful the same way JTBD became useful: not as something people admire, but as a language founders, PMs, and investors naturally think in.",
       "Because the next generation of AI winners probably will not be determined only by who generates intelligence best. It will be determined by **who structurally owns the deepest parts of the chain**.",
       "The full framework, 10 layers, 50 sublayers, the four laws, the case studies, the live market map, and the downloadable posters, is free at **supplychainofai.com**. No signup. Take what is useful. Cite it where it helps.",
@@ -385,7 +385,7 @@ export const POSTS: Post[] = [
 
       "Boards ask about models. Founders pitch agents. Analysts count tokens. Meanwhile the actual value, the part that compounds, the part competitors can't copy, the part that survives the next model release, is sitting two layers below, unowned, undefended, and usually invisible on the roadmap.",
 
-      "I spent the last year mapping why. The answer turned into a framework I'm calling **The Supply Chain of Intelligence™**, ten layers, fifty sublayers, and four structural laws that explain where AI value is created, where it gets captured, and where it gets erased.",
+      "I spent the last year mapping why. The answer turned into a framework I'm calling **Supply Chain of Intelligence™**, ten layers, fifty sublayers, and four structural laws that explain where AI value is created, where it gets captured, and where it gets erased.",
 
       "Here is the short version. The long version, with case studies and posters, is at supplychainofai.com.",
 

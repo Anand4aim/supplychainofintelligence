@@ -27,7 +27,7 @@ Your job is NOT to rewrite, the author will apply fixes by hand. Your job is to 
 5. Missing depth: claims that lack a specific named company, mechanism, or unit-economics reason
 6. Vocabulary drift from the canonical framework
 7. Author bio violations (e.g. "Ex-Google", Anand was at Meta/Instagram, never Google)
-8. Tagline drift (canonical: "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.")
+8. Tagline drift (canonical: "Supply Chain of Intelligence™, the 10 layers of the generative AI stack.")
 
 For each issue: quote the offending excerpt verbatim, explain why it's wrong, and propose a tight rewrite that respects framework vocabulary. Be specific and ruthless, minor cosmetic issues count too, but flag them as "minor".`;
 

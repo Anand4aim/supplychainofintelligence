@@ -19,7 +19,7 @@ const personSchema = {
   jobTitle: "Product Leader & AI Product Architect",
   url: "https://supplychainofai.com/about",
   description:
-    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of The Supply Chain of Intelligence™, a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
+    "Ex-Meta (Instagram) product leader and former higher-level junior chess champion. Creator of Supply Chain of Intelligence™, a structural framework for where AI value accrues, where moats form, and which AI products survive the platform era. VP / Head of Product roles at Ideas2IT, Refersion, GRIN. Angel investor and advisor.",
   alumniOf: [
     { "@type": "Organization", name: "Meta (Instagram)" },
     { "@type": "Organization", name: "Vungle" },
@@ -77,7 +77,7 @@ const AboutPage = () => (
           >
             <img
               src={anandPortrait}
-              alt="Anand Arivukkarasu, Ex-Meta product leader, creator of The Supply Chain of Intelligence"
+              alt="Anand Arivukkarasu, Ex-Meta product leader, creator of Supply Chain of Intelligence"
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -149,7 +149,7 @@ const AboutPage = () => (
             this framework down.
           </p>
           <p>
-            <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is that framework. Ten
+            <strong className="text-foreground">Supply Chain of Intelligence™</strong> is that framework. Ten
             layers, fifty sublayers, four structural laws, one diagnostic cube. It is opinionated, it is portable
             across categories, and it is free, a give-back to the product community.
           </p>
@@ -185,7 +185,7 @@ const AboutPage = () => (
         <p className="text-foreground/80 text-[16px] leading-[1.75] max-w-3xl mb-8">
           Credit to <strong className="text-foreground">Bill Leece (Ex-Google product leader)</strong> for the
           sharpest one-line framing of this. JTBD tells you <em>what job</em> the customer is hiring the product
-          to do. The Supply Chain of Intelligence tells you <em>how many layers</em> of the AI stack you have to
+          to do. Supply Chain of Intelligence tells you <em>how many layers</em> of the AI stack you have to
           own to deliver that job durably. Same job can be answered <em>shallow</em> (one layer, fast, fragile)
           or <em>deep</em> (multiple layers, slow, defensible). Surface looks identical. Fate is not.
         </p>
@@ -276,7 +276,7 @@ const AboutPage = () => (
             capability as a checkbox, because nobody named which <em>layer</em> the work was actually living on.
           </p>
           <p>
-            <strong className="text-foreground">The Supply Chain of Intelligence™</strong> is my attempt at that
+            <strong className="text-foreground">Supply Chain of Intelligence™</strong> is my attempt at that
             naming layer. Ten layers. Fifty sublayers. Four laws. One cube. Precise enough that a Series B founder, a
             corp-dev lead at a hyperscaler, and a PM at a vertical SaaS can all point at the same square on the board
             and mean the same thing.

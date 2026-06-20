@@ -80,7 +80,7 @@ const LawEssayPage = () => {
           </p>
 
           <p className="text-sm text-muted-foreground mb-10">
-            By <strong className="text-foreground">Anand Arivukkarasu</strong> · Creator of The Supply Chain of Intelligence™
+            By <strong className="text-foreground">Anand Arivukkarasu</strong> · Creator of Supply Chain of Intelligence™
           </p>
 
           <motion.div
@@ -163,7 +163,7 @@ const LawEssayPage = () => {
               <p className="text-sm text-foreground/80 leading-relaxed">
                 Law I predicts who gets absorbed. Law II predicts where value migrates.
                 Law III predicts who survives the platform era. Together they form the
-                predictive engine of the Supply Chain of Intelligence™.
+                predictive engine of Supply Chain of Intelligence™.
               </p>
             </SketchBoard>
 

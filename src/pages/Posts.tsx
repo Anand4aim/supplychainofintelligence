@@ -23,7 +23,7 @@ const Posts = () => {
     <SiteLayout>
       <Seo
         title="Posted, Long-Form Essays on the Generative AI Stack"
-        description="Long-form essays on the Supply Chain of Intelligence™, the 10-layer generative AI stack (not logistics). Archived here as the canonical version."
+        description="Long-form essays on Supply Chain of Intelligence™, the 10-layer generative AI stack (not logistics). Archived here as the canonical version."
         path="/posts"
       />
 
@@ -39,7 +39,7 @@ const Posts = () => {
               Essays, in the wild.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              Long-form arguments around the Supply Chain of Intelligence™, originally posted to LinkedIn
+              Long-form arguments around Supply Chain of Intelligence™, originally posted to LinkedIn
               and archived here as the canonical version. The framework itself lives at{" "}
               <Link to="/framework" className="text-accent hover:underline">/framework</Link>.
             </p>

@@ -1,5 +1,5 @@
 # =============================================================================
-# robots.txt, The Supply Chain of Intelligence™
+# robots.txt, Supply Chain of Intelligence™
 # Site:    https://supplychainofai.com
 # Author:  Anand Arivukkarasu
 # Topic:   Generative AI software architecture, SaaS strategy, AI defensibility.

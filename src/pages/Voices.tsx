@@ -8,7 +8,7 @@ const Voices = () => (
   <SiteLayout>
     <Seo
       title="Voices, what operators say about the framework"
-      description="Product leaders, founders, and investors on how the Supply Chain of Intelligence™, the 10 layers of the generative AI stack, changed how they reason about AI strategy."
+      description="Product leaders, founders, and investors on how Supply Chain of Intelligence™, the 10 layers of the generative AI stack, changed how they reason about AI strategy."
       path="/voices"
     />
 
@@ -19,7 +19,7 @@ const Voices = () => (
           Operators on the framework.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-          The Supply Chain of Intelligence™ has been pressure-tested in 1:1 strategy sessions, a 25-person product
+          Supply Chain of Intelligence™ has been pressure-tested in 1:1 strategy sessions, a 25-person product
           leadership workshop, and dozens of conversations with founders, PMs, and investors across FinTech,
           Healthtech, Legal, Media, GovTech, and AI infrastructure. These are their reactions.
         </p>

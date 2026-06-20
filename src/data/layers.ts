@@ -232,7 +232,7 @@ export const displayLayerId = (id: string): string =>
 export const DEFENSIBLE_TRIANGLE = "L1b + L5a/b/d + L8c/d/e";
 
 // ─── The Four Structural Laws ──────────────────────────────────────
-// JTBD tells you what users want. The Supply Chain of Intelligence
+// JTBD tells you what users want. Supply Chain of Intelligence
 // tells you where value accrues, and who can fire you.
 export interface StructuralLaw {
   num: string;

@@ -482,7 +482,7 @@ Deno.serve(async (req) => {
 
     const system = `${FRAMEWORK_CONTEXT}
 
-You are auditing a single company against the Supply Chain of Intelligence framework. Be brutal, specific, layer-native. Never invent facts not in the research. If a layer claim isn't backed by the research or user context, do not make it. Most companies own 1-3 layers, not 6. Score reflects DEFENSIBILITY, not size or revenue.`;
+You are auditing a single company against Supply Chain of Intelligence framework. Be brutal, specific, layer-native. Never invent facts not in the research. If a layer claim isn't backed by the research or user context, do not make it. Most companies own 1-3 layers, not 6. Score reflects DEFENSIBILITY, not size or revenue.`;
 
     const userPrompt = `COMPANY: ${co}
 ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}

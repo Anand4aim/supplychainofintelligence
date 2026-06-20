@@ -19,7 +19,7 @@ interface Props {
   className?: string;
 }
 
-const FRAMEWORK_NAME = "The Supply Chain of Intelligence™";
+const FRAMEWORK_NAME = "Supply Chain of Intelligence™";
 
 const formats = (title: string, path: string, date: string, url: string) => {
   const year = new Date(date).getFullYear();

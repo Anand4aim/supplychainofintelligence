@@ -10,7 +10,7 @@ import { Download, FileText } from "lucide-react";
 
 const PAPER_VERSION = "v1.0";
 const PAPER_DATE = "2026-01-04";
-const PAPER_TITLE = "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack";
+const PAPER_TITLE = "Supply Chain of Intelligence™, the 10 layers of the generative AI stack";
 const PAPER_PATH = "/paper";
 const PAPER_URL = `https://supplychainofai.com${PAPER_PATH}`;
 
@@ -32,7 +32,7 @@ const Paper = () => {
     headline: PAPER_TITLE,
     name: PAPER_TITLE,
     description:
-      "The canonical paper defining The Supply Chain of Intelligence™, a 10-layer structural framework for the generative AI stack, with 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube.",
+      "The canonical paper defining Supply Chain of Intelligence™, a 10-layer structural framework for the generative AI stack, with 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube.",
     url: PAPER_URL,
     mainEntityOfPage: PAPER_URL,
     datePublished: PAPER_DATE,
@@ -62,13 +62,13 @@ const Paper = () => {
     about: [
       {
         "@type": "DefinedTerm",
-        name: "The Supply Chain of Intelligence",
+        name: "Supply Chain of Intelligence",
         alternateName: ["SCoI", "Supply Chain of Intelligence framework"],
         description:
           "A 10-layer structural framework (L-1 Resources → L8 Memory) that maps where generative AI value is created, captured, and defended.",
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
-          name: "The Supply Chain of Intelligence",
+          name: "Supply Chain of Intelligence",
           url: PAPER_URL,
         },
       },
@@ -90,7 +90,7 @@ const Paper = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Supply Chain of Intelligence™, the canonical paper"
+        title="Supply Chain of Intelligence™, the canonical paper"
         description="The canonical paper defining the 10-layer Supply Chain of Intelligence™ framework: 50 sublayers, 4 laws, 5 observations, the Defensible Triangle, and the Intelligence Cube. By Anand Arivukkarasu."
         path={PAPER_PATH}
         article
@@ -123,7 +123,7 @@ const Paper = () => {
             The Paper · {PAPER_VERSION} · {new Date(PAPER_DATE).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
           </Eyebrow>
           <h1 className="font-display text-[34px] md:text-[52px] font-bold leading-[1.06] mb-5 text-foreground">
-            The Supply Chain of Intelligence™
+            Supply Chain of Intelligence™
           </h1>
           <p
             className="font-sketch text-xl md:text-2xl text-foreground/85 leading-snug mb-7 pl-4"

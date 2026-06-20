@@ -77,7 +77,7 @@ const ForInvestors = () => (
           </h1>
           <p className="text-lg text-foreground/85 leading-relaxed max-w-3xl mb-6">
             Most AI diligence still leans on TAM, growth rate, and a vibes-based read of the founder.
-            That's how you end up funding a wrapper. The Supply Chain of Intelligence™ scores every AI
+            That's how you end up funding a wrapper. Supply Chain of Intelligence™ scores every AI
             product across 10 layers, compute, data, models, workflows, surfaces, memory, and tells
             you, in one page, whether value is accruing to the company or leaking to the platform above it.
           </p>

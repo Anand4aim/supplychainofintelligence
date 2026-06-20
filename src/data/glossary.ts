@@ -402,7 +402,7 @@ export const GLOSSARY: GlossaryTerm[] = [
     category: "framework",
     shortDef: "One of the ten structural slices of the generative-AI stack, L-1 (Resources) through L8 (Memory).",
     longDef:
-      "A 'layer' is the canonical unit of the Supply Chain of Intelligence™. There are exactly ten: L-1 Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. Every AI company occupies one or more layers. Defensibility is a function of which layers they own.",
+      "A 'layer' is the canonical unit of Supply Chain of Intelligence™. There are exactly ten: L-1 Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. Every AI company occupies one or more layers. Defensibility is a function of which layers they own.",
     layerMapping: ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"],
     primaryLayer: "L5",
     examples: ["Bloomberg = L1b + L5a", "OpenAI = L2 + L7", "NVIDIA = L0a + L0b"],
@@ -557,7 +557,7 @@ GLOSSARY.push({
   ],
   category: "framework",
   shortDef:
-    "L# = one of the 10 layers in The Supply Chain of Intelligence™ (L−1 through L8). L#x (e.g. L1a, L5b, L8c) = the lettered sublayer inside that layer. L−1 uses a true minus, not a hyphen.",
+    "L# = one of the 10 layers in Supply Chain of Intelligence™ (L−1 through L8). L#x (e.g. L1a, L5b, L8c) = the lettered sublayer inside that layer. L−1 uses a true minus, not a hyphen.",
   longDef:
     "The notation is a compressed coordinate system for diagnosing where value sits in any AI product. The capital L stands for Layer. The number identifies the layer: L−1 Resources (physical inputs), L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory. The lowercase letter (a, b, c, d, e) identifies one of the 5 sublayers inside that layer, for example L1a Public & Open Data, L1b Proprietary Data, L1c Behavioral & Sensor Data, L1d Outcome Data, L1e Synthetic & Simulation Data. Always read it left to right as 'L-one-a', 'L-five-b', 'L-minus-one'. Stacking layers with '+' (e.g. 'L1b + L5a + L8c') is the canonical way to describe a defensible position. The dash in L−1 is a Unicode minus (U+2212), not an ASCII hyphen, it is read 'L minus one'.",
   layerMapping: ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"],
@@ -584,7 +584,7 @@ GLOSSARY.push({
   shortDef:
     "Current I of three. Where the budget actually sits (CFO / CIO / LOB / CEO discretionary) and what it pulls toward as L2 prices collapse.",
   longDef:
-    "Demand Gravity is the first of three horizontal Currents that flow across the 10 layers. The Supply Chain of Intelligence™ describes how intelligence is produced and delivered; Demand Gravity describes who has the budget to pay for it. As L2 generation costs fall toward zero, willingness-to-pay drains away from raw generation and accumulates at outcomes (L5+L8), verification (L3), and proprietary data access (L1). A defensible layer position with no buyer on the other side is structurally zero, moat without demand does not compound. Before defending any layer, name the buyer, the budget line, and what they will stop paying for once L2 is free.",
+    "Demand Gravity is the first of three horizontal Currents that flow across the 10 layers. Supply Chain of Intelligence™ describes how intelligence is produced and delivered; Demand Gravity describes who has the budget to pay for it. As L2 generation costs fall toward zero, willingness-to-pay drains away from raw generation and accumulates at outcomes (L5+L8), verification (L3), and proprietary data access (L1). A defensible layer position with no buyer on the other side is structurally zero, moat without demand does not compound. Before defending any layer, name the buyer, the budget line, and what they will stop paying for once L2 is free.",
   layerMapping: ["L1", "L3", "L5", "L7", "L8"],
   primaryLayer: "L5",
   commonMistake:

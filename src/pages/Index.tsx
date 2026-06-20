@@ -73,13 +73,13 @@ const Index = () => {
                 A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
               </h1>
               <p className="text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl mb-4">
-                Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong>, from compute and data to workflows, surfaces, and memory, and tells you where value actually accrues.
+                Is your product a moat, a workflow, or a wrapper a platform will absorb? Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong>, from compute and data to workflows, surfaces, and memory, and tells you where value actually accrues.
               </p>
               <p className="font-display text-[15px] md:text-[16px] text-foreground/90 leading-relaxed max-w-xl mb-3 border-l-2 border-accent pl-3">
                 Designed as a universal industry paradigm for the entire AI economy, across all verticals and companies.
               </p>
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
-                The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
+                Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
@@ -103,7 +103,7 @@ const Index = () => {
             >
               <div className="mb-3">
                 <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent">
-                  The Supply Chain of Intelligence™ <span style={{ textTransform: 'none' }}>(SCoI)</span>
+                  Supply Chain of Intelligence™ <span style={{ textTransform: 'none' }}>(SCoI)</span>
                 </p>
               </div>
               <div

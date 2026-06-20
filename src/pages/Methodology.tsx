@@ -18,7 +18,7 @@ const Methodology = () => (
   <SiteLayout>
     <Seo
       title="Methodology, Two Registers, Monthly Cadence"
-      description="How the Supply Chain of Intelligence™ stays current: evergreen framework (the 10 layers) vs living market readings (placements, verdicts, predictions) re-reviewed monthly."
+      description="How Supply Chain of Intelligence™ stays current: evergreen framework (the 10 layers) vs living market readings (placements, verdicts, predictions) re-reviewed monthly."
       path="/methodology"
     />
     <section className="bg-background border-b border-foreground/10">

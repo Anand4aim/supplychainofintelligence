@@ -2,7 +2,7 @@ import { LAYERS, layerColor } from "@/data/layers";
 import { Link } from "react-router-dom";
 
 /**
- * IntelligenceGrid, the canonical 10×5 grid of the Supply Chain of Intelligence.
+ * IntelligenceGrid, the canonical 10×5 grid of Supply Chain of Intelligence.
  * Two modes:
  *   - "blank":  pure framework template. Anyone can screenshot, print, mark up.
  *   - "audit":  per-sublayer depth dots (0–5) overlaid for a specific company.
@@ -77,7 +77,7 @@ const IntelligenceGrid = ({
       <div className="mb-4 flex items-end justify-between gap-4 border-b border-foreground/15 pb-3 flex-wrap">
         <div className="min-w-0">
           <p className="font-mono-marker text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-accent">
-            {mode === "audit" ? "Where they play, and where they don't" : "The Supply Chain of Intelligence™"}
+            {mode === "audit" ? "Where they play, and where they don't" : "Supply Chain of Intelligence™"}
           </p>
           <h3 className="font-display text-xl md:text-2xl leading-tight text-foreground mt-1">
             {title ?? "The 10 layers × 50 sublayers of the generative AI stack."}

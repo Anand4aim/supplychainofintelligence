@@ -47,7 +47,7 @@ const FrameworkSummaryPoster = () => {
               color: PAPER,
             }}
           >
-            The Supply Chain of Intelligence™
+            Supply Chain of Intelligence™
           </h2>
           <p
             className="mt-2 text-[12px] md:text-[14px]"

@@ -37,14 +37,14 @@ const FrameworkPage = () => (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <Eyebrow className="mb-6">The Framework</Eyebrow>
           <h1 className="font-display text-3xl md:text-[44px] font-bold text-foreground leading-[1.1] mb-1">
-            The Supply Chain of Intelligence™
+            Supply Chain of Intelligence™
           </h1>
           <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
             <span style={{ textTransform: 'none' }}>SCoI</span>, the 10 layers of the generative AI stack
           </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
             <strong className="text-foreground">JTBD tells you what users want.</strong>{" "}
-            The Supply Chain of Intelligence tells you{" "}
+            Supply Chain of Intelligence tells you{" "}
             <strong className="text-foreground">where value accrues</strong>, and which AI
             companies a foundation model, hyperscaler, or productivity suite can erase next quarter.
           </p>
@@ -322,7 +322,7 @@ const FrameworkPage = () => (
                 <span className="not-italic font-bold text-foreground">
                   why a user will hire your product
                 </span>
-                . The Supply Chain of Intelligence answers{" "}
+                . Supply Chain of Intelligence answers{" "}
                 <span className="not-italic font-bold text-accent">
                   why OpenAI, Google, Anthropic and other AI juggernauts won't erase it
                 </span>
@@ -358,7 +358,7 @@ const FrameworkPage = () => (
               </p>
             </div>
           </div>
-          <ExportablePng fileName="scoi-10x50-grid" caption="The Supply Chain of Intelligence, 10 × 50 grid">
+          <ExportablePng fileName="scoi-10x50-grid" caption="Supply Chain of Intelligence, 10 × 50 grid">
             <IntelligenceGrid mode="blank" />
           </ExportablePng>
         </motion.div>
@@ -790,7 +790,7 @@ const FrameworkPage = () => (
         {/* JTBD vs SCoI line */}
         <div className="mt-10 p-5 rounded-xl bg-accent/5 border border-accent/20 text-center">
           <p className="font-display text-base md:text-lg text-foreground leading-relaxed">
-            <strong>JTBD finds demand.</strong> The Supply Chain of Intelligence{" "}
+            <strong>JTBD finds demand.</strong> Supply Chain of Intelligence{" "}
             <strong>finds defensibility.</strong>
           </p>
         </div>

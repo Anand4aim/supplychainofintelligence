@@ -22,7 +22,7 @@ const SoftwareForOnePoster = () => {
       >
         <img
           src={heroImg}
-          alt="Diagram: a personal AI agent peeled back to show the Supply Chain of Intelligence layers underneath. Top layers (L5–L8) are owned by the agent; bottom layers (L0–L4) are shared rails like Stripe, Cloudflare, and frontier models."
+          alt="Diagram: a personal AI agent peeled back to show Supply Chain of Intelligence layers underneath. Top layers (L5–L8) are owned by the agent; bottom layers (L0–L4) are shared rails like Stripe, Cloudflare, and frontier models."
           className="w-full h-auto block"
           loading="lazy"
         />

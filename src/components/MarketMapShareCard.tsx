@@ -57,7 +57,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
               fontWeight: 600,
             }}
           >
-            The Supply Chain of Intelligence™, Vertical Market Map
+            Supply Chain of Intelligence™, Vertical Market Map
           </div>
           <h1
             style={{

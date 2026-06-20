@@ -98,7 +98,7 @@ const ThreeAreasOfAI = () => (
       </ol>
 
       <p className="mt-8 text-[13.5px] md:text-[14px] text-muted-foreground leading-relaxed max-w-3xl">
-        The Supply Chain of Intelligence™ is a framework for{" "}
+        Supply Chain of Intelligence™ is a framework for{" "}
         <span className="text-foreground font-semibold">area 03, Core Product</span>.
         It does not score your internal copilots or your marketing automation.
         It scores whether the AI <em>inside what you sell</em> is defensible.

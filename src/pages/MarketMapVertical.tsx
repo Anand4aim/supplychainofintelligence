@@ -79,7 +79,7 @@ const MarketMapVertical = () => {
     <SiteLayout>
       <Seo
         title={`${entry.label} AI Market Map, 10 Layers × 50 Sublayers`}
-        description={`Every AI-native ${entry.label.toLowerCase()} company placed on the Supply Chain of Intelligence™, 10 layers × 50 sublayers. ${entry.blurb}`}
+        description={`Every AI-native ${entry.label.toLowerCase()} company placed on Supply Chain of Intelligence™, 10 layers × 50 sublayers. ${entry.blurb}`}
         path={`/market-map/${entry.slug}`}
       />
 

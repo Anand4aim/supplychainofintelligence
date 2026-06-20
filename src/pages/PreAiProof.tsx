@@ -28,7 +28,7 @@ const PreAiProof = () => (
         </p>
 
         <p className="text-sm text-muted-foreground mb-10">
-          By <strong className="text-foreground">Anand Arivukkarasu</strong> · Creator of The Supply Chain of Intelligence™
+          By <strong className="text-foreground">Anand Arivukkarasu</strong> · Creator of Supply Chain of Intelligence™
         </p>
 
         <div className="prose-essay space-y-6 text-[17px] md:text-[18px] leading-[1.75] text-foreground/85">

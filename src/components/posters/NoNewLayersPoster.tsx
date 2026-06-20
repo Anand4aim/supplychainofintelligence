@@ -22,7 +22,7 @@ const NoNewLayersPoster = () => {
       >
         <img
           src={heroImg}
-          alt="Hand-drawn whiteboard sketch of the Supply Chain of Intelligence 10-layer stack. Two extra boxes for L9 Workflows and L10 Distribution sit above the stack with big red X marks, and red arrows curve back down to L6 Orchestration, L3 Gates, and L7 Surface, showing the framework already absorbs both."
+          alt="Hand-drawn whiteboard sketch of Supply Chain of Intelligence 10-layer stack. Two extra boxes for L9 Workflows and L10 Distribution sit above the stack with big red X marks, and red arrows curve back down to L6 Orchestration, L3 Gates, and L7 Surface, showing the framework already absorbs both."
           className="w-full h-auto block"
           loading="lazy"
         />

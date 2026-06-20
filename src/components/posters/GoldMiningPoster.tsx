@@ -28,7 +28,7 @@ const GoldMiningPoster = () => {
             For Non-Technical Readers
           </p>
           <h2 className="font-display text-2xl md:text-[34px] leading-[1.1] text-foreground mt-1 font-bold">
-            The Supply Chain of Intelligence,<br className="hidden md:block" /> told as a gold mine.
+            Supply Chain of Intelligence,<br className="hidden md:block" /> told as a gold mine.
           </h2>
         </div>
 

@@ -169,7 +169,7 @@ const Predictions = () => {
   const itemListLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "The Board, Predictions & track record · The Supply Chain of Intelligence™",
+    name: "The Board, Predictions & track record · Supply Chain of Intelligence™",
     description:
       "Dated, layer-tagged structural calls on the 10-layer generative AI stack (not logistics/freight), each scored on structural accuracy, timing, and the counter-move the subject could still play.",
     numberOfItems: PREDICTIONS.length,
@@ -448,7 +448,7 @@ const Predictions = () => {
           </h3>
           <p>
             All company, product, and service names referenced on this page
-            (and across <em>The Supply Chain of Intelligence™</em>) are used
+            (and across <em>Supply Chain of Intelligence™</em>) are used
             <strong className="text-foreground/85"> descriptively, for
             editorial analysis</strong>, and remain the trademarks of their
             respective owners. Their inclusion does not imply endorsement,
