@@ -39,7 +39,15 @@ const Methodology = () => (
     </section>
 
     <section className="bg-background">
-      <div className="max-w-3xl mx-auto px-6 pb-20">
+      <div className="max-w-3xl mx-auto px-6 pb-20 pt-10">
+        <div className="mb-10">
+          <CanonicalDefinition variant="full" />
+          <p className="text-xs text-muted-foreground mt-3">
+            The three registers below — Evergreen, Living, Cadence — are how
+            this site keeps the definition stable while the readings stay fresh.
+          </p>
+        </div>
+
         <Section title="1. Evergreen — the framework">
           <p>
             The <strong>10 layers</strong>, the <strong>50 sublayers</strong>,
