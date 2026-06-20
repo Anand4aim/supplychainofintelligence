@@ -31,7 +31,7 @@ const CanonicalDefinition = ({
   return (
     <aside
       className={`${wrap} ${className}`}
-      aria-label="Canonical definition of the Supply Chain of Intelligence"
+      aria-label="Canonical definition of Supply Chain of Intelligence"
     >
       <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-3">
         The Definition

@@ -518,7 +518,7 @@ const AuditPage = () => {
                               ))}
                             </div>
                             <p className="font-mono-marker text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                              The Supply Chain of Intelligence™ · supplychainofai.com
+                              Supply Chain of Intelligence™ · supplychainofai.com
                             </p>
                           </div>
                         </div>

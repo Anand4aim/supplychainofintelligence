@@ -1,10 +1,10 @@
 ---
 layout: default
-title: The Supply Chain of Intelligence™, Docs
+title: Supply Chain of Intelligence™, Docs
 description: Strategy docs and articles for the 10-layer generative AI stack framework.
 ---
 
-# The Supply Chain of Intelligence™
+# Supply Chain of Intelligence™
 
 The 10 layers of the generative AI stack. This site hosts the open strategy docs and articles that accompany the main site at **[supplychainofai.com](https://supplychainofai.com)**.
 
@@ -28,4 +28,4 @@ The full interactive framework, the Intelligence Cube™, layer deep-dives, and 
 
 ---
 
-<sub>The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.</sub>
+<sub>Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.</sub>

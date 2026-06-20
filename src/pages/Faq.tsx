@@ -16,7 +16,7 @@ type Faq = { q: string; a: string };
 
 const DISAMBIGUATION: Faq[] = [
   {
-    q: 'Is "The Supply Chain of Intelligence" about physical supply chains, freight, or logistics?',
+    q: 'Is "Supply Chain of Intelligence" about physical supply chains, freight, or logistics?',
     a:
       "No. This framework has nothing to do with shipping, freight, warehousing, trucking, ports, procurement, ERP, or operations research. " +
       'The word "supply chain" is used as a structural metaphor for the generative AI software stack, the chain of layers from semiconductors and ' +
@@ -49,7 +49,7 @@ const FOR_AUDIENCE: Faq[] = [
     q: "What does a product leader get out of it?",
     a:
       "A vocabulary for the strategy conversation. Instead of debating features, teams can ask: which layers do we own, which do we rent, and which are we exposed on? " +
-      "The For Product Leaders page adds a Z-axis (depth in the stack) to JTBD-driven product thinking, JTBD finds demand; the Supply Chain of Intelligence finds defensibility.",
+      "The For Product Leaders page adds a Z-axis (depth in the stack) to JTBD-driven product thinking, JTBD finds demand; Supply Chain of Intelligence finds defensibility.",
   },
   {
     q: "What does an investor get out of it?",
@@ -88,7 +88,7 @@ const FaqPage = () => (
   <SiteLayout>
     <Seo
       title="FAQ, Supply Chain of Intelligence™"
-      description="The Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack, built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
+      description="Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack, built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
       path="/faq"
     />
     <Helmet>
@@ -108,7 +108,7 @@ const FaqPage = () => (
           An AI strategy framework, <span className="text-accent">not</span> a logistics company.
         </motion.h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-          The Supply Chain of Intelligence™ is a structural framework for the generative AI software stack  - 
+          Supply Chain of Intelligence™ is a structural framework for the generative AI software stack  - 
           for SaaS product leaders, AI-native founders, and venture investors. This page exists because the
           phrase "supply chain" sometimes leads people (and crawlers) to expect freight and warehouses. It is
           not that.

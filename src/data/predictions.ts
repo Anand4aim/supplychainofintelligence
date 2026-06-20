@@ -1,5 +1,5 @@
 /**
- * Predictions archive, public track record for The Supply Chain of Intelligence™.
+ * Predictions archive, public track record for Supply Chain of Intelligence™.
  *
  * Every entry is scored on TWO independent axes, because conflating them is
  * the most common way frameworks lose credibility:

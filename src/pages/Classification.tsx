@@ -18,7 +18,7 @@ const LAYER_ORDER = ["L-1", "L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8"
 const dominanceOf = (layers: string[]) => layers[0] ?? "";
 
 const SEO_DESC =
-  "The canonical SCOI v1 classification table. Every notable AI company plotted across the 10 layers of The Supply Chain of Intelligence™, sortable by dominant layer, archetype, and vertical, with citations to the live case studies. Not logistics, the generative AI stack.";
+  "The canonical SCOI v1 classification table. Every notable AI company plotted across the 10 layers of Supply Chain of Intelligence™, sortable by dominant layer, archetype, and vertical, with citations to the live case studies. Not logistics, the generative AI stack.";
 
 const ClassificationPage = () => {
   const [query, setQuery] = useState("");

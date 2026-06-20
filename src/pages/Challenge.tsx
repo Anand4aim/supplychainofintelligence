@@ -43,7 +43,7 @@ const Challenge = () => {
     <SiteLayout>
       <Seo
         title="Challenge the framework, submit a counter-case"
-        description="The Supply Chain of Intelligence™ gets sharper when challenged. Submit counter-cases, edge cases, fuzzy layer boundaries, or disagreements. Open critique inbox."
+        description="Supply Chain of Intelligence™ gets sharper when challenged. Submit counter-cases, edge cases, fuzzy layer boundaries, or disagreements. Open critique inbox."
         path="/challenge"
       />
 

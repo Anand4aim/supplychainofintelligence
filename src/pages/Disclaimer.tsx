@@ -11,7 +11,7 @@ const Disclaimer = () => (
   <SiteLayout>
     <Seo
       title="Disclaimer, Editorial Use & Trademarks"
-      description="Editorial-use disclaimer for The Supply Chain of Intelligence™, descriptive trademark use, public-source reporting, and lens-not-verdict policy across the 10-layer generative AI stack (not logistics/freight)."
+      description="Editorial-use disclaimer for Supply Chain of Intelligence™, descriptive trademark use, public-source reporting, and lens-not-verdict policy across the 10-layer generative AI stack (not logistics/freight)."
       path="/disclaimer"
     />
 
@@ -53,7 +53,7 @@ const Disclaimer = () => (
             partnership, or sponsorship in either direction.
           </p>
           <p className="mt-3">
-            <em>The Supply Chain of Intelligence™</em> and{" "}
+            <em>Supply Chain of Intelligence™</em> and{" "}
             <em>The Intelligence Cube™</em> are trademarks of Anand
             Arivukkarasu. Other headings used within the analysis, for
             example, "The Chess Board of Intelligence", are{" "}

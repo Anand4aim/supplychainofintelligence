@@ -218,7 +218,7 @@ const LivePage = () => {
     <SiteLayout>
       <Seo
         title="The Live Feed, Every Important AI Move, Tracked & Scored"
-        description="Always-on analysis of every consequential AI launch, funding round, and structural shift, scored on the Supply Chain of Intelligence™ 10-layer framework."
+        description="Always-on analysis of every consequential AI launch, funding round, and structural shift, scored on Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
 

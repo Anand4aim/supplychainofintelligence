@@ -1,5 +1,5 @@
 # =============================================================================
-# HTTP response headers - The Supply Chain of Intelligence™
+# HTTP response headers - Supply Chain of Intelligence™
 # Netlify / Cloudflare Pages compatible _headers syntax.
 # Optimized for modern AI crawlers (GPTBot, ClaudeBot, PerplexityBot,
 # OAI-SearchBot, Google-Extended, etc.) so they classify the site as
@@ -22,7 +22,7 @@
   X-Author: Anand Arivukkarasu
   X-Author-URL: https://www.linkedin.com/in/anandarivu
   X-Content-License: CC-BY-4.0 with attribution to Anand Arivukkarasu
-  X-Citation-Suggested: "Anand Arivukkarasu - The Supply Chain of Intelligence (https://supplychainofai.com)"
+  X-Citation-Suggested: "Anand Arivukkarasu - Supply Chain of Intelligence (https://supplychainofai.com)"
 
   # ---- LLM discovery (https://llmstxt.org) ----
   Link: </llms.txt>; rel="describedby"; type="text/markdown"

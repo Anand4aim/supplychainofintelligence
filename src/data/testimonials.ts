@@ -28,7 +28,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "Indeed (AI Agents & Evals)",
     industry: "Product Leadership",
     quote:
-      "JTBD tells you the length of the customer need. The Supply Chain of Intelligence tells you the depth of the answer, how many layers you have to own to deliver it durably. 'Trust the output' is one job; you can answer it shallow with a verifier widget, or deep with an L3 gatekeeping layer baked in. The framework finally gave me a vocabulary for that trade-off.",
+      "JTBD tells you the length of the customer need. Supply Chain of Intelligence tells you the depth of the answer, how many layers you have to own to deliver it durably. 'Trust the output' is one job; you can answer it shallow with a verifier widget, or deep with an L3 gatekeeping layer baked in. The framework finally gave me a vocabulary for that trade-off.",
     layerTag: "JTBD × Chain",
     source: "1:1",
     linkedin: "https://linkedin.com/in/leece",
@@ -142,7 +142,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "LLM Recommend",
     industry: "B2B SaaS Marketing",
     quote:
-      "I have run revenue ops at three category-defining SaaS companies. The Supply Chain of Intelligence is the first framework that gives marketing leaders a way to talk to engineering about where the moat actually lives, not 'AI features' but layer ownership. Law I alone will save CMOs from a lot of wasted budget.",
+      "I have run revenue ops at three category-defining SaaS companies. Supply Chain of Intelligence is the first framework that gives marketing leaders a way to talk to engineering about where the moat actually lives, not 'AI features' but layer ownership. Law I alone will save CMOs from a lot of wasted budget.",
     layerTag: "L4 + L7",
     source: "1:1",
     linkedin: "https://linkedin.com/in/go-krish",
@@ -168,7 +168,7 @@ export const TESTIMONIALS: Testimonial[] = [
     company: "GKS Partners",
     industry: "Executive Advisory",
     quote:
-      "The boards I advise keep asking the same question: 'are we an AI company or are we a company that uses AI?' The Supply Chain of Intelligence finally lets a CEO answer that with a layer number instead of a hand-wave.",
+      "The boards I advise keep asking the same question: 'are we an AI company or are we a company that uses AI?' Supply Chain of Intelligence finally lets a CEO answer that with a layer number instead of a hand-wave.",
     layerTag: "Filter",
     source: "1:1",
     approved: false,

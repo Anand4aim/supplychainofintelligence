@@ -29,7 +29,7 @@ const Changelog = () => (
   <SiteLayout>
     <Seo
       title="Changelog, Every Re-review, Re-grade, and Framework Bump"
-      description="Public revision log for the Supply Chain of Intelligence™. Every map re-review, verdict change, and Paper revision is recorded here."
+      description="Public revision log for Supply Chain of Intelligence™. Every map re-review, verdict change, and Paper revision is recorded here."
       path="/changelog"
     />
     <section className="bg-background border-b border-foreground/10">

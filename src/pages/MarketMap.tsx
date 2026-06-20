@@ -85,7 +85,7 @@ const MarketMap = () => {
     <SiteLayout>
       <Seo
         title="Market Map, AI Companies on the 10-Layer Stack"
-        description="A visual map of where every notable AI company sits on the Supply Chain of Intelligence™. Filter by vertical. Click any company for the structural read."
+        description="A visual map of where every notable AI company sits on Supply Chain of Intelligence™. Filter by vertical. Click any company for the structural read."
         path="/market-map"
       />
 

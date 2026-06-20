@@ -33,7 +33,7 @@ const TenBenefitsPoster = () => {
             Why The Framework Exists
           </p>
           <h2 className="font-display text-2xl md:text-[34px] leading-[1.1] text-foreground mt-2 font-bold">
-            10 things you cannot say<br className="hidden md:block" /> without the Supply Chain of Intelligence™.
+            10 things you cannot say<br className="hidden md:block" /> without Supply Chain of Intelligence™.
           </h2>
         </div>
 

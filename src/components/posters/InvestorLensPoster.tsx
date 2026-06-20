@@ -138,7 +138,7 @@ const InvestorLensPoster = () => {
         {/* Footer */}
         <div className="mt-8 pt-4 flex flex-wrap items-baseline justify-between gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
           <p className="text-[11px] italic" style={{ color: MUTED, fontFamily: "'Playfair Display', serif" }}>
-            The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
+            Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
           </p>
           <p
             className="text-[9px] md:text-[10px] font-bold uppercase"

@@ -59,7 +59,7 @@ const AnalysisPage = () => (
   <SiteLayout>
     <Seo
       title="AI Case Studies, Jasper, Chegg, Tempus, Deere, Waymo & More"
-      description="Real companies analyzed through the 10-layer stack, software, regulated verticals, and physical-world AI. Where each company sits in the Supply Chain of Intelligence."
+      description="Real companies analyzed through the 10-layer stack, software, regulated verticals, and physical-world AI. Where each company sits in Supply Chain of Intelligence."
       path="/analysis"
     />
     {/* Hero */}

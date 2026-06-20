@@ -1,6 +1,6 @@
 # Strategy Docs
 
-This folder contains distribution, positioning, and operational strategy for The Supply Chain of Intelligence™ framework.
+This folder contains distribution, positioning, and operational strategy for Supply Chain of Intelligence™ framework.
 
 ## Files
 

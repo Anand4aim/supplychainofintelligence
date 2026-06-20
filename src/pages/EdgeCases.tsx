@@ -124,7 +124,7 @@ const EdgeCases = () => (
   <SiteLayout>
     <Seo
       title="Edge Cases, resolving fuzzy layer boundaries"
-      description="L5 vs L6 vs L7. L1 vs L8. L4 vs L6. Worked examples that resolve the most common ambiguities in the Supply Chain of Intelligence™ framework."
+      description="L5 vs L6 vs L7. L1 vs L8. L4 vs L6. Worked examples that resolve the most common ambiguities in Supply Chain of Intelligence™ framework."
       path="/edge-cases"
     />
 

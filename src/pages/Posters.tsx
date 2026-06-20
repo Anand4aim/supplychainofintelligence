@@ -65,7 +65,7 @@ const PosterBlock = ({ num, eyebrow, title, blurb, children, tone = "light" }: P
 const Posters = () => (
   <SiteLayout>
     <Seo
-      title="Posters, The Supply Chain of Intelligence™"
+      title="Posters, Supply Chain of Intelligence™"
       description="Twenty shareable posters of the 10-layer generative AI stack, the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
       path="/posters"
     />

@@ -81,7 +81,7 @@ const FrameworkComparisonHero = () => {
                 className="font-display font-bold leading-tight mb-1"
                 style={{ fontSize: "clamp(20px, 2.8vw, 32px)", color: "#F1E9D8" }}
               >
-                The Supply Chain of Intelligence™
+                Supply Chain of Intelligence™
               </h4>
               <p
                 className="text-sm md:text-base italic"

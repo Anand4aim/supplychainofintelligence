@@ -72,7 +72,7 @@ const PostDetail = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${post.title}, The Supply Chain of Intelligence`}
+        title={`${post.title}, Supply Chain of Intelligence`}
         description={post.excerpt}
         path={`/posts/${post.slug}`}
         article

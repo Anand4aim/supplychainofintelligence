@@ -42,7 +42,7 @@ const buildFallback = (fb?: Props["fallback"]): ForYou => {
   return {
     product_leader: `Map your product to the layers it actually owns vs. rents. The rented ones are where the counter-move work belongs.`,
     investor: `Underwrite layer ownership, not feature count. The Cube footprint is the moat.`,
-    operator: `Audit your stack against the Supply Chain of Intelligence. Anything sitting only at L7 is the layer to watch.`,
+    operator: `Audit your stack against Supply Chain of Intelligence. Anything sitting only at L7 is the layer to watch.`,
   };
 };
 

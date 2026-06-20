@@ -18,7 +18,7 @@ const SiteFooter = () => (
             ))}
           </div>
           <h3 className="font-display text-lg font-bold text-foreground mb-1">
-            The Supply Chain of Intelligence<span className="text-accent">™</span>
+            Supply Chain of Intelligence<span className="text-accent">™</span>
             <span className="font-mono-marker text-[10px] text-foreground/40 ml-1 tracking-wider" style={{ textTransform: 'none' }}>(SCoI)</span>
           </h3>
           <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent mb-3">

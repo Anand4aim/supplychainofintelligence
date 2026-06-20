@@ -1,13 +1,13 @@
 # SupplyChainOfIntelligence.com
 
-> **The Supply Chain of Intelligence™**, the 10 layers of the generative AI stack.  
+> **Supply Chain of Intelligence™**, the 10 layers of the generative AI stack.  
 > Canonical site: [https://supplychainofai.com](https://supplychainofai.com)
 
 ---
 
 ## What this is
 
-A React + Vite application that hosts the canonical framework, papers, teardowns, and case studies for **The Supply Chain of Intelligence™**, a 10-layer model for understanding how value moves through the generative-AI stack.
+A React + Vite application that hosts the canonical framework, papers, teardowns, and case studies for **Supply Chain of Intelligence™**, a 10-layer model for understanding how value moves through the generative-AI stack.
 
 Key pages:
 - **Home**, Magazine-cover hero, interactive stack, sales matrix, audit tool, proof of corpus, Intelligence Cube preview

@@ -3,7 +3,7 @@ import { Check, Copy } from "lucide-react";
 import { toast } from "sonner";
 
 const SITE = "https://supplychainofai.com";
-const ATTRIBUTION = "Source: The Supply Chain of Intelligence™ (supplychainofai.com)";
+const ATTRIBUTION = "Source: Supply Chain of Intelligence™ (supplychainofai.com)";
 
 interface Props {
   /** The pre-formatted snippet body, typically 80-150 words, LinkedIn-ready. */
@@ -24,7 +24,7 @@ const CopySnippet = ({ text, path, label, variant = "default", className = "" }:
   const handleCopy = async () => {
     const fullUrl = path ? `${SITE}${path}` : SITE;
     const attribution = path
-      ? `Source: The Supply Chain of Intelligence™, ${fullUrl}`
+      ? `Source: Supply Chain of Intelligence™, ${fullUrl}`
       : ATTRIBUTION;
     const payload = `${text.trim()}\n\n -  ${attribution}`;
     try {
