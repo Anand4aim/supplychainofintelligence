@@ -14,7 +14,7 @@
 This is the canonical definition. It is evergreen — it names no technology, no company, no layer. The rest of this paper is structured in three registers:
 
 1. **The Definition (evergreen):** the sentence above.
-2. **The Application (evergreen structure):** the 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube. The names and number of layers are part of the contribution; a new layer is a major version bump recorded on `/changelog`.
+2. **The Application (evergreen structure):** the 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube. The architecture itself evolves with the field — it may be 12 layers or a different taxonomy tomorrow — and every structural change is a versioned Paper bump recorded on `/changelog`.
 3. **The Reading (living, monthly):** which company sits in which layer changes weekly; the framework does not. Market readings carry a re-review date; the framework, the Laws, the Cube, and this Paper do not. See `/methodology`.
 
 ---
