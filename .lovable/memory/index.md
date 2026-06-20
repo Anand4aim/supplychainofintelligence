@@ -2,8 +2,8 @@
 
 ## Core
 Navy (#0F172A) + Indigo (#4F46E5) palette. Playfair Display headings, Inter body.
-The Supply Chain of Intelligence™ and The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
-Use SCoI (Supply Chain of Intelligence) as a subtle acronym after the trademarked name in headers, footers, posters, and metadata; keep the first mention per piece as the full "The Supply Chain of Intelligence™".
+NAME: "Supply Chain of Intelligence" (no leading "The"). Trademark applied 2026-06-20. Render as "Supply Chain of Intelligence™" on first mention per piece; never prefix with "The". Readers may colloquially add "The", we do not. The Intelligence Cube™ is also a trademark of Anand Arivukkarasu.
+Use SCoI (Supply Chain of Intelligence) as a subtle acronym after the trademarked name in headers, footers, posters, and metadata; keep the first mention per piece as the full "Supply Chain of Intelligence™".
 Stratechery-style editorial + McKinsey authority. 8-layer color system is signature visual language.
 Owner: Anand Arivukkarasu, Ex-Meta Product Leader, former higher-level junior chess champion. Domain: SupplyChainOfAI.com.
 Editorial tone: lighter, factual, layer-based. Avoid strong verdicts ("fortress", "safe", "eaten", "doomed"). Prefer hedged, dated, structural language. See mem://preferences/tone.
