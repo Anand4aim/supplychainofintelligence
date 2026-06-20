@@ -9,7 +9,7 @@
 
 ## Definition
 
-> **Intelligence is a supply chain. Value accrues at the scarce, defensible nodes, not the most visible one.**
+> **Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node.**
 
 This is the canonical definition. It is evergreen, it names no technology, no company, no layer. The rest of this paper is structured in three registers:
 

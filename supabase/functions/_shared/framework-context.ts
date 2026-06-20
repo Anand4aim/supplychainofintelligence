@@ -17,7 +17,7 @@ ACRONYM: "SCoI" = Supply Chain of Intelligence™. Use it in subheads, captions,
 TAGLINE (canonical): "Supply Chain of Intelligence™, the 10 layers of the generative AI stack."
 
 CANONICAL DEFINITION (verbatim, evergreen, never paraphrase):
-"Intelligence is a supply chain. Value accrues at the scarce, defensible nodes, not the most visible one."
+"Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node."
 
 THREE REGISTERS, always preserve when explaining the framework:
   1. THE DEFINITION (evergreen): the sentence above. Names no technology, company, or layer. Cannot go stale.
