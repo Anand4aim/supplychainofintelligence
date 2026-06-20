@@ -7,6 +7,7 @@ import { Map, ChevronRight, Lock, PanelLeftClose, PanelLeftOpen } from "lucide-r
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
+import FreshnessBadge from "@/components/FreshnessBadge";
 import ExportablePng from "@/components/ExportablePng";
 import SublayerGrid from "@/components/SublayerGrid";
 import MarketMapShareCard from "@/components/MarketMapShareCard";
