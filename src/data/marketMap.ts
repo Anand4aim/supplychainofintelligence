@@ -85,7 +85,12 @@ export const MAP_COMPANIES: MapCompany[] = [
   c("Stability AI", "stability.ai", ["L2"], ["creative"], "graveyard", { caseStudy: "stability-ai-open-model-trap" }),
 
   // L3 Trust & Gates
-  c("Harvey AI", "harvey.ai", ["L1", "L3", "L5", "L8"], ["legal"], "fortress", { caseStudy: "harvey-vs-generic-legal" }),
+  // Re-graded Jun 2026: was "fortress", now "agent" — multi-layer position holds but
+  // the lead is years not decades. Frontier models + general legal agents (LexisNexis,
+  // vLex, Westlaw, Legora) closed the citation+workflow gap faster than expected.
+  // Counter-move: deepen L1 (proprietary case corpus) or L3 (jurisdictional gates).
+  // See /changelog for the full re-grade note.
+  c("Harvey AI", "harvey.ai", ["L1", "L3", "L5", "L8"], ["legal"], "agent", { caseStudy: "harvey-vs-generic-legal", note: "Contested (Jun 2026) — re-graded from Fortress. Counter-move: deepen L1 corpus or L3 jurisdictional gates." }),
   c("Hippocratic AI", "hippocraticai.com", ["L3", "L5"], ["health"], "fortress"),
   c("Vanta", "vanta.com", ["L3"], ["horizontal"], "fortress"),
   c("Drata", "drata.com", ["L3"], ["horizontal"], "refinery"),
