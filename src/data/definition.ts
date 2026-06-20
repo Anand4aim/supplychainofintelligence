@@ -26,7 +26,7 @@ export const DEFINITION_LONG =
   "The Supply Chain of Intelligence™ is a structural definition of generative AI: intelligence is a supply chain, and — like every supply chain — value accrues at the scarce, defensible nodes, not the most visible one. JTBD told us what users want. The Supply Chain of Intelligence tells us where AI value accrues, and which products a foundation model, hyperscaler, or productivity suite can absorb.";
 
 export const APPLICATION_LINE =
-  "The framework resolves that idea into a working map: 10 layers (L-1 Resources → L8 Memory), 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.";
+  "The framework resolves that idea into a working map: 10 layers (L-1 Resources → L8 Memory), 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube. The architecture itself evolves with the field — it may be 12 layers or a different taxonomy tomorrow — and every structural change is a versioned Paper bump, not a quiet edit.";
 
 export const READING_LINE =
   "Which company sits in which layer changes weekly. The framework does not. Market readings carry a re-review date; the framework does not.";
