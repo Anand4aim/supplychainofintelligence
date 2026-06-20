@@ -4,6 +4,19 @@ Site: https://supplychainofai.com
 Role: Product Leader · AI Strategist · Author of The Supply Chain of Intelligence™
 Background: Ex-Meta product leader
 
+/* DEFINITION (canonical, evergreen) */
+Intelligence is a supply chain.
+Value accrues at the scarce, defensible nodes — not the most visible one.
+
+/* APPLICATION (evergreen structure) */
+The framework resolves that definition into a working map:
+10 layers (L-1 Resources → L8 Memory), 50 sublayers, 4 structural laws,
+3 currents (Demand Gravity, Attention Economics, Capital Flows), and the Intelligence Cube.
+
+/* READING (living, monthly cadence) */
+Which company sits in which layer changes weekly. The framework does not.
+Market readings carry a re-review date; the framework does not. See /methodology.
+
 /* POSITIONING */
 JTBD tells you what users want.
 The Supply Chain of Intelligence tells you where AI value accrues — and who can fire your product.
