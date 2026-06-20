@@ -23,7 +23,7 @@ const ROADMAP_MOVES = [
     exposure: "Your differentiation depends on data anyone can scrape.",
     moves: [
       "Identify the one data type you can collect that the model layer cannot license. Make collection a product feature, not a backend job.",
-      "Instrument outcome data (L1d) — what worked, what didn't, with attribution. This is the most defensible sub-layer.",
+      "Instrument outcome data (L1d), what worked, what didn't, with attribution. This is the most defensible sub-layer.",
       "Negotiate exclusive feeds with design partners before product-market fit, not after.",
     ],
   },
@@ -32,16 +32,16 @@ const ROADMAP_MOVES = [
     exposure: "You are renting intelligence from a vendor that can deprecate, reprice, or compete with you.",
     moves: [
       "Abstract model calls behind a router from day one. Never hard-code a vendor.",
-      "Fine-tune or post-train only on the slice where generic models measurably underperform — not as a vanity moat.",
+      "Fine-tune or post-train only on the slice where generic models measurably underperform, not as a vanity moat.",
       "Build evals before you ship features. Without evals you cannot detect when the next frontier release deletes your edge.",
     ],
   },
   {
     layer: "L3 Gatekeeping",
-    exposure: "Your buyer is regulated, audited, or risk-averse — and you have not earned the gate.",
+    exposure: "Your buyer is regulated, audited, or risk-averse, and you have not earned the gate.",
     moves: [
       "Start SOC 2 / ISO / HIPAA / industry-specific compliance in the first 90 days. It is a 9-month process; do not start it in month 9.",
-      "Treat editorial / safety review as a product surface, not a compliance burden — it is the layer enterprise buyers actually evaluate.",
+      "Treat editorial / safety review as a product surface, not a compliance burden, it is the layer enterprise buyers actually evaluate.",
       "Publish a public trust page with audit dates, incident history, and data handling. This is sales infrastructure.",
     ],
   },
@@ -50,8 +50,8 @@ const ROADMAP_MOVES = [
     exposure: "You sit on top of platforms that own the distribution and the permission model.",
     moves: [
       "Identify the one system of record your customer cannot move off of. Integrate there first, deepest, two-way.",
-      "Adopt agent protocols (MCP, etc.) early — they will determine who agents call by default in 2026.",
-      "Ship an Identity & Provenance story (L4e) before scaled deployment — enterprises will block agents without it.",
+      "Adopt agent protocols (MCP, etc.) early, they will determine who agents call by default in 2026.",
+      "Ship an Identity & Provenance story (L4e) before scaled deployment, enterprises will block agents without it.",
     ],
   },
   {
@@ -59,7 +59,7 @@ const ROADMAP_MOVES = [
     exposure: "You sell 'doing the work' but the work is shallow enough to be absorbed.",
     moves: [
       "Pick one workflow and go three levels deeper than any horizontal model can. Depth is the moat; breadth is the trap.",
-      "Codify the decision frameworks (L5b) and playbooks (L5d) of senior practitioners into the product — that is what compounds.",
+      "Codify the decision frameworks (L5b) and playbooks (L5d) of senior practitioners into the product, that is what compounds.",
       "Measure outcome quality (jobs completed, hours saved, revenue produced) not capability (tasks attempted). Outcome data is the moat.",
     ],
   },
@@ -68,8 +68,8 @@ const ROADMAP_MOVES = [
     exposure: "Your product is a workflow engine in a category being absorbed into the model layer.",
     moves: [
       "Do not sell orchestration as a product. Sell it as the invisible engine inside a vertical L5 product.",
-      "Invest disproportionately in human-in-the-loop (L6b) — that is the sub-layer enterprises will pay for and platforms will not bundle.",
-      "Build runtime assurance and learning loops (L6e) — orchestration without measurement is a demo, not a product.",
+      "Invest disproportionately in human-in-the-loop (L6b), that is the sub-layer enterprises will pay for and platforms will not bundle.",
+      "Build runtime assurance and learning loops (L6e), orchestration without measurement is a demo, not a product.",
     ],
   },
   {
@@ -77,7 +77,7 @@ const ROADMAP_MOVES = [
     exposure: "You are a beautiful interface on top of someone else's intelligence.",
     moves: [
       "Pair every surface investment with at least one bottom-of-stack investment (L1, L5, L8). Surface alone is Law I.",
-      "Treat embedded / copilot (L7c) as more defensible than standalone chat (L7a) — the surrounding context is the moat.",
+      "Treat embedded / copilot (L7c) as more defensible than standalone chat (L7a), the surrounding context is the moat.",
       "Resist the urge to expand modalities. Modality is commodity. Context is moat.",
     ],
   },
@@ -86,8 +86,8 @@ const ROADMAP_MOVES = [
     exposure: "Your product does not remember what your users did yesterday.",
     moves: [
       "Add user/entity profile (L8b) before adding new features. Personalization is table stakes by 2026.",
-      "Design for institutional knowledge (L8d) explicitly — every team output should become a reusable artifact.",
-      "Aggregated network learning (L8c) is the highest-leverage sub-layer — every customer makes the product better for every other customer.",
+      "Design for institutional knowledge (L8d) explicitly, every team output should become a reusable artifact.",
+      "Aggregated network learning (L8c) is the highest-leverage sub-layer, every customer makes the product better for every other customer.",
     ],
   },
 ];
@@ -98,10 +98,10 @@ const BUILD_VS_RENT = [
   { layer: "L2 Models", build: "Only above ~$100M ARR or a defensible vertical slice", rent: "Foundation models, embeddings, routing", note: "Building before scale is a vanity moat." },
   { layer: "L3 Gates", build: "Always for editorial/distribution gates (L3d, L3e)", rent: "Compliance tooling (Vanta, Drata)", note: "Trust must be earned in-house; tooling can be bought." },
   { layer: "L4 Access", build: "API surface, identity, provenance", rent: "Generic integration plumbing", note: "Own the integration with your category's system of record." },
-  { layer: "L5 Execution", build: "Always — this is your moat", rent: "Never the core skill; rent only adjacent capabilities", note: "If you rent L5, you have no company." },
+  { layer: "L5 Execution", build: "Always, this is your moat", rent: "Never the core skill; rent only adjacent capabilities", note: "If you rent L5, you have no company." },
   { layer: "L6 Orchestration", build: "The parts that encode your judgment", rent: "Generic agent loops, retries, queue infra", note: "Bundle orchestration into the L5 product. Do not sell it." },
   { layer: "L7 Surface", build: "Only the embedded/contextual sub-layers (L7c, L7d)", rent: "Chat surfaces are nearly free to assemble", note: "Surface is a wrapper on whatever you own below it." },
-  { layer: "L8 Memory", build: "Always — this is your moat", rent: "Short-term session memory only", note: "Memory must accrue inside your product, not a vendor's." },
+  { layer: "L8 Memory", build: "Always, this is your moat", rent: "Short-term session memory only", note: "Memory must accrue inside your product, not a vendor's." },
 ];
 
 const DISCOVERY_QUESTIONS = [
@@ -111,7 +111,7 @@ const DISCOVERY_QUESTIONS = [
   "What would the customer have to rebuild if they left us? Name it in one sentence.",
   "Which sub-layer (1 of 50) is our single biggest moat? Which is our single biggest exposure?",
   "If we paste our product description into the framework, do the layers we claim match the layers we actually invest in?",
-  "What is our L8 strategy — what does the product remember tomorrow that it did not yesterday?",
+  "What is our L8 strategy, what does the product remember tomorrow that it did not yesterday?",
   "Which gatekeeper (regulator, platform, editor, distributor) can shut us off? Are we earning that gate or ignoring it?",
   "If our category gets absorbed in 18 months, which adjacent layer do we sprint into?",
   "Which of the Four Laws is most likely to delete us? Write the post-mortem now.",
@@ -120,7 +120,7 @@ const DISCOVERY_QUESTIONS = [
 const Playbook = () => (
   <SiteLayout>
     <Seo
-      title="The Playbook — turn the 10 layers into a roadmap"
+      title="The Playbook, turn the 10 layers into a roadmap"
       description="From strategic lens to PRD-shaped moves. Layer → Roadmap translator, Build vs Rent decision tree, and a 10-question discovery bank for week-1 AI product work."
       path="/playbook"
     />
@@ -165,7 +165,7 @@ const Playbook = () => (
     <section id="build-vs-rent" className="bg-card/30 border-y border-foreground/10">
       <div className="max-w-5xl mx-auto px-6 py-14">
         <Eyebrow tone="muted" className="mb-2">Part 2</Eyebrow>
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Build vs Rent — per layer</h2>
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Build vs Rent, per layer</h2>
         <p className="text-muted-foreground mb-8 max-w-3xl">
           A decision tree. The defaults are opinionated. Deviate only when you have a structural reason.
         </p>
@@ -201,7 +201,7 @@ const Playbook = () => (
         <Eyebrow tone="muted" className="mb-2">Part 3</Eyebrow>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Week-1 discovery questions</h2>
         <p className="text-muted-foreground mb-8 max-w-3xl">
-          Ten questions to run in the first week of any new AI product — alone, with your co-founder, or with your team.
+          Ten questions to run in the first week of any new AI product, alone, with your co-founder, or with your team.
           If you cannot answer at least eight, you are not ready to write the PRD.
         </p>
         <SketchBoard className="p-6 md:p-8">

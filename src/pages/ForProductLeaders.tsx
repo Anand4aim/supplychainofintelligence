@@ -9,8 +9,8 @@ import Eyebrow from "@/components/Eyebrow";
 const ForProductLeaders = () => (
   <SiteLayout>
     <Seo
-      title="AI Strategy for Product Leaders — Add the Depth Axis"
-      description="JTBD covers the customer axis. In the AI era, you also need the Z-axis — where in the intelligence stack your product sits — or it gets commoditized."
+      title="AI Strategy for Product Leaders, Add the Depth Axis"
+      description="JTBD covers the customer axis. In the AI era, you also need the Z-axis, where in the intelligence stack your product sits, or it gets commoditized."
       path="/for-product-leaders"
     />
     <SketchFilters />
@@ -28,7 +28,7 @@ const ForProductLeaders = () => (
           </h1>
           <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
             Great product leaders understand JTBD, customer depth, the Y-axis. In the AI era, you also 
-            need the Z-axis — where in the intelligence stack your product actually sits — or you'll 
+            need the Z-axis, where in the intelligence stack your product actually sits, or you'll 
             build something customers love today that gets commoditized tomorrow.
           </p>
         </motion.div>
@@ -51,7 +51,7 @@ const ForProductLeaders = () => (
               Customer needs, JTBD, user research, product-market fit. The vertical dimension.
             </p>
             <p className="font-sketch text-sm text-muted-foreground italic">
-              Necessary — but no longer sufficient.
+              Necessary, but no longer sufficient.
             </p>
           </div>
 
@@ -71,7 +71,7 @@ const ForProductLeaders = () => (
           <p className="text-sm text-foreground leading-relaxed italic">
             "JTBD tells you what to build. The stack tells you whether it survives."
           </p>
-          <p className="mt-2 font-sketch text-base text-muted-foreground">— Anand Arivukkarasu</p>
+          <p className="mt-2 font-sketch text-base text-muted-foreground"> -  Anand Arivukkarasu</p>
         </div>
       </div>
     </section>
@@ -86,8 +86,8 @@ const ForProductLeaders = () => (
 
         <div className="space-y-6">
           {[
-            { icon: <Compass size={22} />, title: "Roadmap Decisions", desc: "Before building a feature, map it to a sublayer. Is it L7a (surface, easily replicated) or L5d (company playbook, defensible)?", example: "Example: Building an AI summarizer? That's L5a — generic, model absorbs it. Building compliance audit trails? That's L3a — slow moat, hard to replicate." },
-            { icon: <GitBranch size={22} />, title: "Build vs Buy vs Rent", desc: "Rent L2 (models) — they commoditize. Build L5b/c/d (domain skills) — they compound. Buy L4b (deep integrations) — they create switching costs.", example: "Example: Rent GPT-4 for reasoning. Build your own contract analysis engine (L5b). Buy Twilio for communications (L4b)." },
+            { icon: <Compass size={22} />, title: "Roadmap Decisions", desc: "Before building a feature, map it to a sublayer. Is it L7a (surface, easily replicated) or L5d (company playbook, defensible)?", example: "Example: Building an AI summarizer? That's L5a, generic, model absorbs it. Building compliance audit trails? That's L3a, slow moat, hard to replicate." },
+            { icon: <GitBranch size={22} />, title: "Build vs Buy vs Rent", desc: "Rent L2 (models), they commoditize. Build L5b/c/d (domain skills), they compound. Buy L4b (deep integrations), they create switching costs.", example: "Example: Rent GPT-4 for reasoning. Build your own contract analysis engine (L5b). Buy Twilio for communications (L4b)." },
             { icon: <Target size={22} />, title: "Competitive Analysis", desc: "Map competitors to sublayers. Find the gaps. If everyone is at L7 (surfaces), go deeper to L5 (skills) or L8 (memory).", example: "Example: Your competitor offers AI chat (L7a). You build AI that remembers every customer interaction (L8b+L8c)." },
             { icon: <Layers size={22} />, title: "Org Design & Hiring", desc: "Each layer requires different expertise. L1 needs data engineers. L3 needs compliance specialists. L5 needs domain experts. L8 needs ML engineers.", example: "Example: If your strategy is to own L5+L8, you need domain experts who can encode SOPs (L5d) and ML engineers who can build feedback loops (L8c)." },
           ].map((item, i) => (
@@ -112,7 +112,7 @@ const ForProductLeaders = () => (
           Run the framework on your own roadmap.
         </h2>
         <p className="text-muted-foreground text-sm mb-6 max-w-lg mx-auto">
-          Audit your roadmap, your competitive position, and your structural defensibility —
+          Audit your roadmap, your competitive position, and your structural defensibility  - 
           sublayer by sublayer.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">

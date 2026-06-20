@@ -6,7 +6,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { POSTS } from "@/data/posts";
 
-// Posted — long-form essays. Shares the Live Feed visual vocabulary
+// Posted, long-form essays. Shares the Live Feed visual vocabulary
 // (mono-marker eyebrows, color-rail spine, secondary/30 section bg, issue
 // indexing) but adopts a magazine rhythm: one featured cover essay + a
 // generous 2-col list. Essays earn the visual gravity that Live's river
@@ -22,12 +22,12 @@ const Posts = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Posted — Long-Form Essays on the Generative AI Stack"
-        description="Long-form essays on the Supply Chain of Intelligence™ — the 10-layer generative AI stack (not logistics). Archived here as the canonical version."
+        title="Posted, Long-Form Essays on the Generative AI Stack"
+        description="Long-form essays on the Supply Chain of Intelligence™, the 10-layer generative AI stack (not logistics). Archived here as the canonical version."
         path="/posts"
       />
 
-      {/* Header — mirrors Live header shape */}
+      {/* Header, mirrors Live header shape */}
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -39,7 +39,7 @@ const Posts = () => {
               Essays, in the wild.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              Long-form arguments around the Supply Chain of Intelligence™ — originally posted to LinkedIn
+              Long-form arguments around the Supply Chain of Intelligence™, originally posted to LinkedIn
               and archived here as the canonical version. The framework itself lives at{" "}
               <Link to="/framework" className="text-accent hover:underline">/framework</Link>.
             </p>
@@ -50,11 +50,11 @@ const Posts = () => {
         </div>
       </section>
 
-      {/* Body — matches Live's secondary/30 + border-y body band */}
+      {/* Body, matches Live's secondary/30 + border-y body band */}
       <section className="bg-secondary/30 border-y border-foreground/10">
         <div className="max-w-5xl mx-auto px-6 py-16">
 
-          {/* Featured cover essay — shares the Live "Latest Issue" card grammar */}
+          {/* Featured cover essay, shares the Live "Latest Issue" card grammar */}
           {featured && (
             <div className="mb-12">
               <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">
@@ -112,7 +112,7 @@ const Posts = () => {
             </div>
           )}
 
-          {/* The rest — 2-col magazine list */}
+          {/* The rest, 2-col magazine list */}
           {rest.length > 0 && (
             <div>
               <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">

@@ -2,7 +2,7 @@ import { LAYERS, layerColor } from "@/data/layers";
 import ExportablePng from "@/components/ExportablePng";
 
 /**
- * Above / Below the line — the single most teachable diagram in the
+ * Above / Below the line, the single most teachable diagram in the
  * framework. Foundation (L-1, L0) sits below the line; everything
  * above compounds into intelligence.
  */
@@ -38,7 +38,7 @@ const AboveBelowLinePoster = () => {
         <div className="mb-6">
           <div className="flex items-baseline justify-between mb-3">
             <p className="font-mono-marker text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-accent font-bold">
-              ▲ Above — value compounds
+              ▲ Above, value compounds
             </p>
             <p className="font-sketch text-[11px] italic text-muted-foreground">
               data · trust · distribution · workflow · context · surface · memory
@@ -85,7 +85,7 @@ const AboveBelowLinePoster = () => {
         <div>
           <div className="flex items-baseline justify-between mb-3">
             <p className="font-mono-marker text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-muted-foreground font-bold">
-              ▼ Below — inputs the chain consumes
+              ▼ Below, inputs the chain consumes
             </p>
             <p className="font-sketch text-[11px] italic text-muted-foreground">
               power · water · fabs · chips · data centers

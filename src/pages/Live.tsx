@@ -53,7 +53,7 @@ const FeaturedLayerStrip: React.FC<{ layers: string[]; functions?: string[]; ver
                   border: hit ? `1px solid hsl(var(${cssVar}))` : `1px solid hsl(var(${cssVar}) / 0.18)`,
                   boxShadow: hit ? `0 2px 10px -3px hsl(var(${cssVar}) / 0.6)` : "none",
                 }}
-                title={`${id} ${LAYER_SHORT_LABEL[id] ?? ""}${hit ? " — touched" : ""}`}
+                title={`${id} ${LAYER_SHORT_LABEL[id] ?? ""}${hit ? ", touched" : ""}`}
               />
               <span
                 className="font-mono-marker text-[8px] leading-none"
@@ -217,8 +217,8 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Live Feed — Every Important AI Move, Tracked & Scored"
-        description="Always-on analysis of every consequential AI launch, funding round, and structural shift — scored on the Supply Chain of Intelligence™ 10-layer framework."
+        title="The Live Feed, Every Important AI Move, Tracked & Scored"
+        description="Always-on analysis of every consequential AI launch, funding round, and structural shift, scored on the Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
 
@@ -230,10 +230,10 @@ const LivePage = () => {
               <Eyebrow>The Live Feed</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
-              Every important AI move — <br />watched, tracked, analyzed, and scored.
+              Every important AI move, <br />watched, tracked, analyzed, and scored.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              An always-on read of the AI market — every consequential launch, funding round, and structural shift run through the
+              An always-on read of the AI market, every consequential launch, funding round, and structural shift run through the
               Supply Chain of Intelligence™ framework, the four laws, and the vertical lens that matters.
             </p>
             <p className="text-sm text-muted-foreground/80 italic mb-6">
@@ -334,7 +334,7 @@ const LivePage = () => {
             </div>
           ) : articles.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-muted-foreground">No articles yet — the first edition publishes Monday.</p>
+              <p className="text-muted-foreground">No articles yet, the first edition publishes Monday.</p>
             </div>
           ) : (
             <>
@@ -483,7 +483,7 @@ const LivePage = () => {
         </div>
       </section>
 
-      {/* ═══════════ INBOX CAPTURE — LAST ═══════════ */}
+      {/* ═══════════ INBOX CAPTURE, LAST ═══════════ */}
       {!loading && articles.length > 0 && (
         <section className="bg-background border-t border-foreground/10">
           <div className="max-w-3xl mx-auto px-6 py-20">

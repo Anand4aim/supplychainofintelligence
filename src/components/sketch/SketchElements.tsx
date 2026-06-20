@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * SVG filter that adds hand-drawn wobble to strokes.
- * Consistent, subtle wobble — educational, not chaotic.
+ * Consistent, subtle wobble, educational, not chaotic.
  */
 export const SketchFilters = () => (
   <svg className="absolute w-0 h-0" aria-hidden="true">
@@ -16,7 +16,7 @@ export const SketchFilters = () => (
 );
 
 /**
- * Whiteboard wrapper — warm paper background with subtle sketch feel.
+ * Whiteboard wrapper, warm paper background with subtle sketch feel.
  */
 export const SketchBoard = ({
   children,
@@ -46,7 +46,7 @@ export const SketchBoard = ({
 );
 
 /**
- * Sketch arrow — consistent 2px stroke, red accent
+ * Sketch arrow, consistent 2px stroke, red accent
  */
 export const SketchArrow = ({
   direction = "right",
@@ -87,7 +87,7 @@ export const SketchArrow = ({
 };
 
 /**
- * Sketch circle — hand-drawn emphasis circle, consistent 1.5px stroke
+ * Sketch circle, hand-drawn emphasis circle, consistent 1.5px stroke
  */
 export const SketchCircle = ({
   children,
@@ -119,7 +119,7 @@ export const SketchCircle = ({
 );
 
 /**
- * Sketch underline — wavy hand-drawn underline, consistent 1.5px
+ * Sketch underline, wavy hand-drawn underline, consistent 1.5px
  */
 export const SketchUnderline = ({
   children,
@@ -150,7 +150,7 @@ export const SketchUnderline = ({
 );
 
 /**
- * Sketch box — hand-drawn rectangle border, consistent 1.5px
+ * Sketch box, hand-drawn rectangle border, consistent 1.5px
  */
 export const SketchBox = ({
   children,
@@ -184,7 +184,7 @@ export const SketchBox = ({
 );
 
 /**
- * Sketch label — Caveat annotation, consistent sizing
+ * Sketch label, Caveat annotation, consistent sizing
  */
 export const SketchLabel = ({
   children,
@@ -210,7 +210,7 @@ export const SketchLabel = ({
 );
 
 /**
- * Sketch connector — line with optional arrow, consistent 1.5px
+ * Sketch connector, line with optional arrow, consistent 1.5px
  */
 export const SketchConnector = ({
   className = "",

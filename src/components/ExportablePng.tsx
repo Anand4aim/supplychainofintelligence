@@ -8,12 +8,12 @@ interface Props {
   children: React.ReactNode;
   /** Filename without extension. */
   fileName: string;
-  /** Optional title rendered into the corner watermark (e.g. "Sales & Marketing Tech — Layer Matrix"). */
+  /** Optional title rendered into the corner watermark (e.g. "Sales & Marketing Tech, Layer Matrix"). */
   caption?: string;
   /**
    * Optional fixed-dimension share card rendered offscreen and rasterized
    * on export. When provided, the export captures THIS instead of the
-   * visible children — producing a consistent A4-landscape PNG/PDF that's
+   * visible children, producing a consistent A4-landscape PNG/PDF that's
    * LinkedIn-friendly regardless of how the page looks on screen.
    */
   exportSlot?: React.ReactNode;
@@ -101,7 +101,7 @@ const ExportablePng = ({
       link.href = dataUrl;
       link.click();
       setDone("png");
-      toast.success("PNG downloaded — ready for LinkedIn", {
+      toast.success("PNG downloaded, ready for LinkedIn", {
         description: "A4-landscape, watermarked, single-image.",
       });
       setTimeout(() => setDone(false), 2200);
@@ -138,7 +138,7 @@ const ExportablePng = ({
       }
       pdf.save(`${fileName}.pdf`);
       setDone("pdf");
-      toast.success("PDF downloaded — A4 landscape");
+      toast.success("PDF downloaded, A4 landscape");
       setTimeout(() => setDone(false), 2200);
     } catch (err) {
       console.error(err);
@@ -233,7 +233,7 @@ const ExportablePng = ({
         {children}
       </div>
 
-      {/* Offscreen share card — only rendered when exportSlot is provided.
+      {/* Offscreen share card, only rendered when exportSlot is provided.
           Positioned far off-canvas so it never affects layout but is still
           rasterizable by html-to-image. */}
       {exportSlot && (

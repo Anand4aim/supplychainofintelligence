@@ -4,14 +4,14 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * /disclaimer — editorial-use disclaimer linked from the site footer.
+ * /disclaimer, editorial-use disclaimer linked from the site footer.
  * Single source of truth for the trademark + sourcing + lens-not-verdict language.
  */
 const Disclaimer = () => (
   <SiteLayout>
     <Seo
-      title="Disclaimer — Editorial Use & Trademarks"
-      description="Editorial-use disclaimer for The Supply Chain of Intelligence™ — descriptive trademark use, public-source reporting, and lens-not-verdict policy across the 10-layer generative AI stack (not logistics/freight)."
+      title="Disclaimer, Editorial Use & Trademarks"
+      description="Editorial-use disclaimer for The Supply Chain of Intelligence™, descriptive trademark use, public-source reporting, and lens-not-verdict policy across the 10-layer generative AI stack (not logistics/freight)."
       path="/disclaimer"
     />
 
@@ -44,9 +44,9 @@ const Disclaimer = () => (
             Trademarks &amp; descriptive use
           </h2>
           <p>
-            All company, product, and service names referenced on this site —
+            All company, product, and service names referenced on this site  - 
             including but not limited to those in case studies, the live feed,
-            the market map, and the Board — are used{" "}
+            the market map, and the Board, are used{" "}
             <strong className="text-foreground">descriptively, for editorial
             analysis</strong>, and remain the trademarks of their respective
             owners. Their inclusion does not imply endorsement, affiliation,
@@ -55,8 +55,8 @@ const Disclaimer = () => (
           <p className="mt-3">
             <em>The Supply Chain of Intelligence™</em> and{" "}
             <em>The Intelligence Cube™</em> are trademarks of Anand
-            Arivukkarasu. Other headings used within the analysis — for
-            example, "The Chess Board of Intelligence" — are{" "}
+            Arivukkarasu. Other headings used within the analysis, for
+            example, "The Chess Board of Intelligence", are{" "}
             <strong className="text-foreground">descriptive editorial
             framings</strong> and are not claimed as trademarks.
           </p>
@@ -77,9 +77,9 @@ const Disclaimer = () => (
           <p>
             Every company reference, figure, and quote on this site is drawn
             from <strong className="text-foreground">publicly reported
-            information</strong> — press, earnings releases, primary
+            information</strong>, press, earnings releases, primary
             documents, regulatory filings, official company blogs, and
-            news sources — and is treated as a journalistic / blog
+            news sources, and is treated as a journalistic / blog
             source. Where possible, sources are linked inline.
           </p>
           <p className="mt-3">
@@ -100,12 +100,12 @@ const Disclaimer = () => (
             This site is not ranking companies as "good" or "bad," "winners"
             or "losers." It is a{" "}
             <strong className="text-foreground">structural lens</strong> that
-            identifies <em>layer exposure</em> — which of the 10 layers (the
+            identifies <em>layer exposure</em>, which of the 10 layers (the
             10 squares on the Chess Board of Intelligence) a company is
             sitting on. Where the lens names risk, the company itself
             decides what to do about it. Every prediction on this site
             carries a <strong className="text-foreground">counter-move</strong>{" "}
-            field for exactly that reason — the framework is directional, not
+            field for exactly that reason, the framework is directional, not
             deterministic.
           </p>
         </section>
@@ -135,8 +135,8 @@ const Disclaimer = () => (
             <Link to="/predictions" className="text-accent hover:underline">
               Board
             </Link>{" "}
-            page rather than deleted. That public record — including
-            structural / timing scoring and counter-moves — is the
+            page rather than deleted. That public record, including
+            structural / timing scoring and counter-moves, is the
             framework's accountability.
           </p>
         </section>

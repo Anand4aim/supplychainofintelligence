@@ -2,10 +2,10 @@
 
 This folder is published to **GitHub Pages** automatically via `.github/workflows/pages.yml`.
 
-- `index.md` — landing page
-- `strategy/` — strategy docs (roadmap, etc.)
-- `articles/` — long-form articles and teardowns
-- `_config.yml` — Jekyll config (theme, metadata)
+- `index.md`, landing page
+- `strategy/`, strategy docs (roadmap, etc.)
+- `articles/`, long-form articles and teardowns
+- `_config.yml`, Jekyll config (theme, metadata)
 
 ## How to enable GitHub Pages (one-time)
 

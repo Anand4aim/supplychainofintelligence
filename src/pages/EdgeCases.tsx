@@ -13,16 +13,16 @@ type EdgeCase = {
 
 const CASES: EdgeCase[] = [
   {
-    pair: "L5 vs L6 — Execution vs Orchestration",
+    pair: "L5 vs L6, Execution vs Orchestration",
     question:
       "When a product does multi-step work, is that one deep skill (L5) or routing across skills (L6)?",
     ruling:
-      "L5 is the skill itself — the model + scaffold + playbook that produces one specific outcome (a contract draft, a sales email, a code change). L6 is the routing logic that decides which L5 skill runs, in what order, with what context, and when to hand off to a human. If you removed every other skill and the product still worked, you are at L5. If the product is the choreography of multiple skills, you are at L6.",
+      "L5 is the skill itself, the model + scaffold + playbook that produces one specific outcome (a contract draft, a sales email, a code change). L6 is the routing logic that decides which L5 skill runs, in what order, with what context, and when to hand off to a human. If you removed every other skill and the product still worked, you are at L5. If the product is the choreography of multiple skills, you are at L6.",
     examples: [
       {
         name: "Cursor",
         verdict:
-          "Primarily L5 (code-execution depth) with light L6. The skill itself — apply a diff, run a test, fix the failure — is the product. Orchestration is shallow.",
+          "Primarily L5 (code-execution depth) with light L6. The skill itself, apply a diff, run a test, fix the failure, is the product. Orchestration is shallow.",
       },
       {
         name: "Devin (Cognition)",
@@ -42,11 +42,11 @@ const CASES: EdgeCase[] = [
     ],
   },
   {
-    pair: "L6 vs L7 — Orchestration vs Surface",
+    pair: "L6 vs L7, Orchestration vs Surface",
     question:
       "When a product exposes an agent loop to the user, is the loop the product (L6) or the surface around it (L7)?",
     ruling:
-      "L7 is what the user sees and interacts with — chat, canvas, embedded copilot. L6 is what runs underneath: planning, tool selection, state management, retries. A product is L7 if a competitor could swap out the orchestration engine and the user experience would be identical. It is L6 if changing the orchestration changes what is possible. Most 'agent' products today are L7 + thin L6.",
+      "L7 is what the user sees and interacts with, chat, canvas, embedded copilot. L6 is what runs underneath: planning, tool selection, state management, retries. A product is L7 if a competitor could swap out the orchestration engine and the user experience would be identical. It is L6 if changing the orchestration changes what is possible. Most 'agent' products today are L7 + thin L6.",
     examples: [
       {
         name: "ChatGPT",
@@ -61,21 +61,21 @@ const CASES: EdgeCase[] = [
       {
         name: "Generic 'GPT wrapper' chat app",
         verdict:
-          "Pure L7. The orchestration is one API call. Law I applies — the model owner ships the same surface for free.",
+          "Pure L7. The orchestration is one API call. Law I applies, the model owner ships the same surface for free.",
       },
     ],
   },
   {
-    pair: "L1 vs L8 — Data vs Memory",
+    pair: "L1 vs L8, Data vs Memory",
     question:
       "When a product gets smarter the longer a customer uses it, is that proprietary data (L1) or compounding memory (L8)?",
     ruling:
-      "L1 is data that exists independently of the user — it was collected, licensed, or generated and now sits in a store. L8 is data that only exists because the user kept showing up — preferences, context, prior decisions, organizational knowledge that accreted inside the product. L1 can be sold. L8 cannot be migrated. If a competitor with the same L1 corpus could rebuild your product in a quarter, your moat is actually at L8.",
+      "L1 is data that exists independently of the user, it was collected, licensed, or generated and now sits in a store. L8 is data that only exists because the user kept showing up, preferences, context, prior decisions, organizational knowledge that accreted inside the product. L1 can be sold. L8 cannot be migrated. If a competitor with the same L1 corpus could rebuild your product in a quarter, your moat is actually at L8.",
     examples: [
       {
         name: "Bloomberg Terminal",
         verdict:
-          "L1b-dominant with L8 layered on top. The financial corpus is the moat. User-specific watchlists and shortcuts are L8 — meaningful, but not the primary defense.",
+          "L1b-dominant with L8 layered on top. The financial corpus is the moat. User-specific watchlists and shortcuts are L8, meaningful, but not the primary defense.",
       },
       {
         name: "Notion AI",
@@ -95,11 +95,11 @@ const CASES: EdgeCase[] = [
     ],
   },
   {
-    pair: "L4 vs L6 — Access vs Orchestration",
+    pair: "L4 vs L6, Access vs Orchestration",
     question:
       "When a product connects systems and triggers actions, is it access infrastructure (L4) or workflow orchestration (L6)?",
     ruling:
-      "L4 is the plumbing — APIs, auth, permissions, the pipes intelligence flows through. L6 is the decision-making about which pipe to use, when, and in what sequence. Zapier was historically L4 (connectors). Modern AI workflow tools are L6 (the model decides the sequence). The reason this matters: L4 commoditizes when standards converge (MCP, agent protocols). L6 is contested but harder to standardize because it requires judgment.",
+      "L4 is the plumbing, APIs, auth, permissions, the pipes intelligence flows through. L6 is the decision-making about which pipe to use, when, and in what sequence. Zapier was historically L4 (connectors). Modern AI workflow tools are L6 (the model decides the sequence). The reason this matters: L4 commoditizes when standards converge (MCP, agent protocols). L6 is contested but harder to standardize because it requires judgment.",
     examples: [
       {
         name: "Zapier (classic)",
@@ -109,7 +109,7 @@ const CASES: EdgeCase[] = [
       {
         name: "LangChain / CrewAI",
         verdict:
-          "L6-dominant. The framework is the orchestration model. Becoming a feature, not a product — they are libraries inside someone else's L6.",
+          "L6-dominant. The framework is the orchestration model. Becoming a feature, not a product, they are libraries inside someone else's L6.",
       },
       {
         name: "Salesforce Agentforce",
@@ -123,7 +123,7 @@ const CASES: EdgeCase[] = [
 const EdgeCases = () => (
   <SiteLayout>
     <Seo
-      title="Edge Cases — resolving fuzzy layer boundaries"
+      title="Edge Cases, resolving fuzzy layer boundaries"
       description="L5 vs L6 vs L7. L1 vs L8. L4 vs L6. Worked examples that resolve the most common ambiguities in the Supply Chain of Intelligence™ framework."
       path="/edge-cases"
     />
@@ -135,7 +135,7 @@ const EdgeCases = () => (
           Edge cases that resolve the fuzz.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          A fair critique of the 10-layer framework is that some boundaries can feel fuzzy in practice — especially
+          A fair critique of the 10-layer framework is that some boundaries can feel fuzzy in practice, especially
           L5/L6/L7 and L1/L8. This page is the worked-example resolution: ruling, examples, and verdict per pair.
         </p>
       </div>

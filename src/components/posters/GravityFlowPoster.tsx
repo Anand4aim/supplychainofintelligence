@@ -37,7 +37,7 @@ const GravityFlowPoster = () => {
           </h2>
         </div>
 
-        {/* Body — 3 columns: data-arrow | stack | value-arrow */}
+        {/* Body, 3 columns: data-arrow | stack | value-arrow */}
         <div className="flex-1 grid grid-cols-[60px_1fr_60px] md:grid-cols-[80px_1fr_80px] gap-3 md:gap-4 items-stretch">
           {/* Data arrow (down) */}
           <div className="flex flex-col items-center justify-between py-2">
@@ -98,9 +98,9 @@ const GravityFlowPoster = () => {
         {/* Legend */}
         <div className="mt-6 grid grid-cols-3 gap-3 md:gap-4">
           {[
-            { sym: "↓", k: "DATA",   v: "flows down — training, fine-tuning, context fill." },
-            { sym: "↑", k: "VALUE",  v: "flows up — margin accrues at orchestration & surface." },
-            { sym: "↻", k: "MEMORY", v: "compounds — every interaction makes leaving more painful." },
+            { sym: "↓", k: "DATA",   v: "flows down, training, fine-tuning, context fill." },
+            { sym: "↑", k: "VALUE",  v: "flows up, margin accrues at orchestration & surface." },
+            { sym: "↻", k: "MEMORY", v: "compounds, every interaction makes leaving more painful." },
           ].map((row) => (
             <div
               key={row.k}

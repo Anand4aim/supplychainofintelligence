@@ -4,7 +4,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * /privacy — Privacy policy covering cookies, data collection, and third-party analytics.
+ * /privacy, Privacy policy covering cookies, data collection, and third-party analytics.
  */
 const Privacy = () => (
   <SiteLayout>
@@ -55,7 +55,7 @@ const Privacy = () => (
             </li>
             <li>
               <strong className="text-foreground">Anonymous analytics.</strong>{" "}
-              Standard web analytics — page views, referrer, country-level
+              Standard web analytics, page views, referrer, country-level
               location, device type, approximate session duration. No names,
               no precise location, no cross-site tracking profile.
             </li>
@@ -104,7 +104,7 @@ const Privacy = () => (
             <li>
               <strong className="text-foreground">Embeds.</strong>{" "}
               Outbound links to LinkedIn, news sources, arXiv, company sites,
-              and similar — those destinations have their own privacy policies
+              and similar, those destinations have their own privacy policies
               once you click through.
             </li>
           </ul>
@@ -136,8 +136,8 @@ const Privacy = () => (
             Children
           </h2>
           <p>
-            The site is written for an adult professional audience — product
-            leaders, founders, investors, researchers — and is not directed at
+            The site is written for an adult professional audience, product
+            leaders, founders, investors, researchers, and is not directed at
             children under 13. We do not knowingly collect data from children.
           </p>
         </section>

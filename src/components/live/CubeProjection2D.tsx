@@ -108,7 +108,7 @@ const Grid: React.FC<{
                       filled
                         ? `${y} × ${x}`
                         : dormantFilled
-                        ? `${y} × ${x} — dormant / adjacent`
+                        ? `${y} × ${x}, dormant / adjacent`
                         : undefined
                     }
                   />
@@ -138,7 +138,7 @@ const Grid: React.FC<{
           </div>
           {emptyAxis && (
             <p className="font-mono-marker text-[10px] text-foreground/50 italic mt-3">
-              Axis-agnostic on {xLabel.toLowerCase()} — this move reshapes the stack itself, not a specific {xLabel.toLowerCase().replace(/s$/, "")}.
+              Axis-agnostic on {xLabel.toLowerCase()}, this move reshapes the stack itself, not a specific {xLabel.toLowerCase().replace(/s$/, "")}.
             </p>
           )}
         </div>
@@ -153,7 +153,7 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
   const vertHits = matchIndex(VERTICALS, verticals);
   const cellColorFor = (layerIdx: number) => `hsl(var(${layerVar(LAYERS[layerIdx])}) / 0.7)`;
 
-  // Dormant footprint — when a position only touches 1–2 layers, faintly project
+  // Dormant footprint, when a position only touches 1–2 layers, faintly project
   // the two adjacent layers so the cube doesn't look empty for sparse moves.
   const layerCount = layerHits.filter(Boolean).length;
   const dormantLayerHits = [...layerHits];
@@ -171,7 +171,7 @@ const CubeProjection2D: React.FC<Props> = ({ functions = [], verticals = [], lay
   return (
     <ExportablePng
       fileName="scoi-cube-projection-2d"
-      caption="Intelligence Cube — 2D Projection"
+      caption="Intelligence Cube, 2D Projection"
       exportBackground="hsl(40 30% 97%)"
     >
       <div

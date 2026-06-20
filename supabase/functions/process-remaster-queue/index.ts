@@ -1,7 +1,7 @@
 // Pops the next queued item from remaster_queue and processes it.
 // - live_article  → calls refine-live-article (in-place rewrite via critic loop)
 // - everything else → critic-only pass; result stored in remaster_queue.result
-//   (static content in /src/data/* — we never auto-rewrite files; author applies fixes)
+//   (static content in /src/data/*, we never auto-rewrite files; author applies fixes)
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { FRAMEWORK_CONTEXT } from "../_shared/framework-context.ts";
 
@@ -19,17 +19,17 @@ const STATIC_CRITIC_SYSTEM = `${FRAMEWORK_CONTEXT}
 
 You are reviewing a piece of EXISTING PUBLISHED content (case study, law essay, prediction, layer page, or marketing page) against the FRAMEWORK CONTEXT above.
 
-Your job is NOT to rewrite — the author will apply fixes by hand. Your job is to surface:
+Your job is NOT to rewrite, the author will apply fixes by hand. Your job is to surface:
 1. Wrong layer names (e.g. "L1 Cloud" instead of "L1 Data", "L4 Agents" instead of "L4 Access", "L8 Memory & Continuity" instead of "L8 Memory")
 2. Wrong or made-up law titles (must be exactly: "Intelligence Commoditizes Downward", "Value Accrues at Bottlenecks", "Surface Captures Attention, Chain Captures Power")
 3. "Agent" used as if it were a layer instead of decoded as L5+L7(+L8)
 4. Loaded / non-structural language (hype, marketing fluff, vague hedges)
 5. Missing depth: claims that lack a specific named company, mechanism, or unit-economics reason
 6. Vocabulary drift from the canonical framework
-7. Author bio violations (e.g. "Ex-Google" — Anand was at Meta/Instagram, never Google)
-8. Tagline drift (canonical: "The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.")
+7. Author bio violations (e.g. "Ex-Google", Anand was at Meta/Instagram, never Google)
+8. Tagline drift (canonical: "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.")
 
-For each issue: quote the offending excerpt verbatim, explain why it's wrong, and propose a tight rewrite that respects framework vocabulary. Be specific and ruthless — minor cosmetic issues count too, but flag them as "minor".`;
+For each issue: quote the offending excerpt verbatim, explain why it's wrong, and propose a tight rewrite that respects framework vocabulary. Be specific and ruthless, minor cosmetic issues count too, but flag them as "minor".`;
 
 const STATIC_CRITIQUE_SCHEMA = {
   name: "static_critique",
@@ -136,10 +136,10 @@ Deno.serve(async (req) => {
           { headers: { ...corsHeaders, "Content-Type": "application/json" } });
       }
 
-      // Static content critic-only pass — prefer caller-supplied payload, fall back to row.content
+      // Static content critic-only pass, prefer caller-supplied payload, fall back to row.content
       const content = payload?.content ?? (typeof item.content === "string" ? item.content : null);
       if (!content) throw new Error("no content available (pass payload.content or store content on the queue row)");
-      const userMsg = `TARGET: ${item.target_type} — ${item.target_label}\nID: ${item.target_id}\n\n=== CONTENT ===\n${content}`;
+      const userMsg = `TARGET: ${item.target_type}, ${item.target_label}\nID: ${item.target_id}\n\n=== CONTENT ===\n${content}`;
       const [a, b] = await Promise.all([
         callGateway(CRITIC_MODEL_A, STATIC_CRITIC_SYSTEM, userMsg, STATIC_CRITIQUE_SCHEMA, lovableKey),
         callGateway(CRITIC_MODEL_B, STATIC_CRITIC_SYSTEM, userMsg, STATIC_CRITIQUE_SCHEMA, lovableKey),

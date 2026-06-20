@@ -6,7 +6,7 @@
 import type { Vertical } from "./marketMap";
 
 export interface VerticalEntry {
-  /** URL slug — /market-map/<slug> */
+  /** URL slug, /market-map/<slug> */
   slug: string;
   /** Display name for the sidebar + page H1. */
   label: string;

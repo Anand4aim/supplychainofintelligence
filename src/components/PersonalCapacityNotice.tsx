@@ -19,7 +19,7 @@ const PersonalCapacityNotice = ({ variant = "line", className = "" }: Props) => 
         </p>
         <p>
           JTBD, Wardley Maps, and Christensen's work were given away by their authors.
-          This framework is mine, in the same spirit — <strong className="text-foreground">free to use, cite, argue with, and improve</strong>.
+          This framework is mine, in the same spirit, <strong className="text-foreground">free to use, cite, argue with, and improve</strong>.
         </p>
         <p className="mt-2 text-[13px] text-muted-foreground">
           More on the{" "}

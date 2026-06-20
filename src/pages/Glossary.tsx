@@ -11,7 +11,7 @@ import { GLOSSARY, GLOSSARY_CATEGORIES, type GlossaryCategory } from "@/data/glo
 type Filter = GlossaryCategory | "all";
 
 const SEO_DESC =
-  "What does 'wrapper' actually mean? 'Agent'? 'Copilot'? 'RAG'? 'MCP'? Precise definitions for every term in the generative AI stack, mapped to the 10 layers (L-1 through L8) of The Supply Chain of Intelligence™. Not logistics — AI strategy.";
+  "What does 'wrapper' actually mean? 'Agent'? 'Copilot'? 'RAG'? 'MCP'? Precise definitions for every term in the generative AI stack, mapped to the 10 layers (L-1 through L8) of The Supply Chain of Intelligence™. Not logistics, AI strategy.";
 
 const GlossaryPage = () => {
   const [query, setQuery] = useState("");
@@ -43,7 +43,7 @@ const GlossaryPage = () => {
   const definedTermSet = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    name: "The Supply Chain of Intelligence™ — Generative AI Stack Glossary",
+    name: "The Supply Chain of Intelligence™, Generative AI Stack Glossary",
     description: SEO_DESC,
     url: "https://supplychainofai.com/glossary",
     hasDefinedTerm: GLOSSARY.map((g) => ({
@@ -60,7 +60,7 @@ const GlossaryPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="AI Stack Glossary — Wrapper, Agent, RAG, MCP Decoded"
+        title="AI Stack Glossary, Wrapper, Agent, RAG, MCP Decoded"
         description={SEO_DESC}
         path="/glossary"
       />
@@ -76,8 +76,8 @@ const GlossaryPage = () => {
             What people <span className="text-accent">say</span> vs. what they <span className="text-accent">mean</span>.
           </h1>
           <p className="text-foreground/80 text-[17px] leading-[1.75] max-w-2xl mb-8">
-            Type any fuzzy word the AI industry actually uses — <em>"wrapper"</em>, <em>"agent"</em>,{" "}
-            <em>"copilot"</em>, <em>"RAG"</em>, <em>"MCP"</em>, <em>"voice AI"</em>, <em>"moat"</em> — and get
+            Type any fuzzy word the AI industry actually uses, <em>"wrapper"</em>, <em>"agent"</em>,{" "}
+            <em>"copilot"</em>, <em>"RAG"</em>, <em>"MCP"</em>, <em>"voice AI"</em>, <em>"moat"</em>, and get
             the precise <strong className="text-foreground">L# / L#x</strong> layer notation, a clarity-grade
             definition, the common mis-mapping, and a citation-ready one-liner you can paste into any memo.
           </p>
@@ -138,7 +138,7 @@ const GlossaryPage = () => {
             <div className="bg-card border border-border rounded-xl p-8 text-center">
               <p className="font-display text-lg font-bold text-foreground mb-2">No match yet.</p>
               <p className="text-foreground/70 text-[15px] leading-snug mb-5 max-w-md mx-auto">
-                The decoder is intentionally curated, not exhaustive. If a term belongs here, suggest it — it
+                The decoder is intentionally curated, not exhaustive. If a term belongs here, suggest it, it
                 will be added with full L# mapping and citation.
               </p>
               <Link to="/challenge" className="btn-sketch inline-flex items-center gap-2 text-sm">
@@ -160,7 +160,7 @@ const GlossaryPage = () => {
         <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
           <div>
             <p className="font-mono-marker text-[11px] font-bold uppercase tracking-[0.18em] text-accent mb-2">
-              — Use the vocabulary
+             , Use the vocabulary
             </p>
             <h3 className="font-display text-xl md:text-2xl font-bold leading-snug">
               Standards become standards when enough people use them.

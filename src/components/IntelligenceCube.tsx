@@ -13,7 +13,7 @@ const layerVar = (l: string) => `--layer-${l === "L-1" ? "neg1" : l.replace("L",
 interface CompanyPlot {
   name: string;
   color: string;
-  /** Indices into FUNCTIONS, VERTICALS, LAYERS — explicit cells, not ranges. */
+  /** Indices into FUNCTIONS, VERTICALS, LAYERS, explicit cells, not ranges. */
   functions: number[];
   verticals: number[];
   layers: number[];
@@ -32,7 +32,7 @@ const COMPANIES: CompanyPlot[] = [
     functions: [6, 7],
     verticals: [0, 3, 5],
     layers: [2, 4, 6, 7, 8, 9],
-    verdict: "CX agent fortress — owns L1 data, L3 gates, L5 skills, L6 orchestration, L8 memory.",
+    verdict: "CX agent fortress, owns L1 data, L3 gates, L5 skills, L6 orchestration, L8 memory.",
   },
   {
     name: "Gamma",
@@ -42,7 +42,7 @@ const COMPANIES: CompanyPlot[] = [
     functions: [1, 2],
     verticals: [9],
     layers: [3, 6, 8],
-    verdict: "Thin L7 surface + light L5 templating on rented L2 — vulnerable to platform absorb.",
+    verdict: "Thin L7 surface + light L5 templating on rented L2, vulnerable to platform absorb.",
   },
   {
     name: "Harvey",
@@ -52,7 +52,7 @@ const COMPANIES: CompanyPlot[] = [
     functions: [0, 8],
     verticals: [2],
     layers: [2, 4, 6, 8, 9],
-    verdict: "Vertical spike in Legal — L1 corpus, L3 citation gates, L5 workflows, L8 matter memory.",
+    verdict: "Vertical spike in Legal, L1 corpus, L3 citation gates, L5 workflows, L8 matter memory.",
   },
 ];
 
@@ -127,7 +127,7 @@ const ComparisonGrid: React.FC<{
                     }}
                     title={
                       has
-                        ? `${y} × ${x} — ${present.map((c) => c.name).join(", ")}`
+                        ? `${y} × ${x}, ${present.map((c) => c.name).join(", ")}`
                         : undefined
                     }
                   >
@@ -242,8 +242,8 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
 
   return (
     <svg viewBox="-50 80 660 560" className="w-full max-w-[720px] mx-auto block">
-      {/* ─── 3 visible cube faces — translucent, drawn back-to-front ─── */}
-      {/* Back-left wall (V = N plane) — lightest tint */}
+      {/* ─── 3 visible cube faces, translucent, drawn back-to-front ─── */}
+      {/* Back-left wall (V = N plane), lightest tint */}
       <polygon
         points={`${point(0, N, 0)} ${point(N, N, 0)} ${point(N, N, N)} ${point(0, N, N)}`}
         fill="hsl(40 30% 99% / 0.65)"
@@ -257,7 +257,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         stroke="hsl(var(--foreground) / 0.1)"
         strokeWidth={0.6}
       />
-      {/* Floor (L = 0 plane) — soft cream */}
+      {/* Floor (L = 0 plane), soft cream */}
       <polygon
         points={`${point(0, 0, 0)} ${point(N, 0, 0)} ${point(N, N, 0)} ${point(0, N, 0)}`}
         fill="hsl(38 32% 93% / 0.8)"
@@ -265,7 +265,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         strokeWidth={0.6}
       />
 
-      {/* Floor grid (L = 0 plane) — faint */}
+      {/* Floor grid (L = 0 plane), faint */}
       {Array.from({ length: N + 1 }).map((_, i) => (
         <React.Fragment key={`fl-${i}`}>
           <line
@@ -287,7 +287,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </React.Fragment>
       ))}
 
-      {/* Layer "shelves" — colored horizontal stripes across BOTH back walls */}
+      {/* Layer "shelves", colored horizontal stripes across BOTH back walls */}
       {LAYERS.map((l, i) => (
         <React.Fragment key={`shelf-${l}`}>
           {/* on V=N back wall */}
@@ -311,13 +311,13 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </React.Fragment>
       ))}
 
-      {/* Cube wireframe — 12 edges. Dashed = hidden behind. */}
-      {/* bottom rectangle — front 2 edges solid, back 2 dashed-ish but visible since floor is faint */}
+      {/* Cube wireframe, 12 edges. Dashed = hidden behind. */}
+      {/* bottom rectangle, front 2 edges solid, back 2 dashed-ish but visible since floor is faint */}
       {edge(0, 0, 0, N, 0, 0)}
       {edge(0, 0, 0, 0, N, 0)}
       {edge(N, 0, 0, N, N, 0)}
       {edge(0, N, 0, N, N, 0)}
-      {/* verticals — back-most (f=N,v=N) is the hidden edge */}
+      {/* verticals, back-most (f=N,v=N) is the hidden edge */}
       {edge(0, 0, 0, 0, 0, N)}
       {edge(N, 0, 0, N, 0, N)}
       {edge(0, N, 0, 0, N, N)}
@@ -328,7 +328,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
       {edge(N, 0, N, N, N, N)}
       {edge(0, N, N, N, N, N)}
 
-      {/* Axis labels — OUTSIDE the cube */}
+      {/* Axis labels, OUTSIDE the cube */}
       <text
         x={isoX(N, 0) + 30}
         y={isoY(N, 0, 0) + 48}
@@ -363,7 +363,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         LAYERS ↑
       </text>
 
-      {/* Layer ticks on the FRONT vertical edge (f=0, v=0) — closest to viewer */}
+      {/* Layer ticks on the FRONT vertical edge (f=0, v=0), closest to viewer */}
       {LAYERS.map((l, i) => (
         <text
           key={`lt-${l}`}
@@ -379,7 +379,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         </text>
       ))}
 
-      {/* FUNCTIONS tick labels — sit on the front-right floor edge, rotated +60° down-right */}
+      {/* FUNCTIONS tick labels, sit on the front-right floor edge, rotated +60° down-right */}
       {FUNCTIONS_SHORT.map((name, i) => {
         const tx = isoX(i + 0.5, 0) + 2;
         const ty = isoY(i + 0.5, 0, 0) + 6;
@@ -400,7 +400,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         );
       })}
 
-      {/* VERTICALS tick labels — sit on the front-left floor edge, rotated -60° down-left */}
+      {/* VERTICALS tick labels, sit on the front-left floor edge, rotated -60° down-left */}
       {VERTICALS_SHORT.map((name, i) => {
         const tx = isoX(0, i + 0.5) - 2;
         const ty = isoY(0, i + 0.5, 0) + 6;
@@ -421,7 +421,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         );
       })}
 
-      {/* The dots — depth-sorted, with drop lines to floor for spatial anchor */}
+      {/* The dots, depth-sorted, with drop lines to floor for spatial anchor */}
       {dots.map((d, idx) => {
         const key = `${d.f}-${d.v}-${d.l}`;
         const stackIdx = offsetFor(key);
@@ -430,7 +430,7 @@ const IsoCube: React.FC<{ visible: Record<string, boolean> }> = ({ visible }) =>
         const floorY = isoY(d.f + 0.5, d.v + 0.5, 0);
         return (
           <g key={idx}>
-            {/* drop line to floor — only for first occupant of a cell */}
+            {/* drop line to floor, only for first occupant of a cell */}
             {stackIdx === 0 && (
               <line
                 x1={cx}
@@ -541,7 +541,7 @@ const IntelligenceCube = () => {
       {/* Visualization panel */}
       <ExportablePng
         fileName={view === "cube" ? "scoi-intelligence-cube-3d" : "scoi-intelligence-cube-grids"}
-        caption={view === "cube" ? "The Intelligence Cube — 3D" : "The Intelligence Cube — Flat Grids"}
+        caption={view === "cube" ? "The Intelligence Cube, 3D" : "The Intelligence Cube, Flat Grids"}
         exportBackground="hsl(40 30% 97%)"
       >
         <motion.div
@@ -610,7 +610,7 @@ const IntelligenceCube = () => {
       </div>
 
       <p className="font-mono-marker text-[11px] text-muted-foreground text-center uppercase tracking-wider">
-        The Intelligence Cube — Volume = Layers × Verticals × Functions = structural durability
+        The Intelligence Cube, Volume = Layers × Verticals × Functions = structural durability
       </p>
     </div>
   );

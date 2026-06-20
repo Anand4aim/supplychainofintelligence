@@ -4,14 +4,14 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * /terms — Terms of Use for SupplyChainOfAI.com.
+ * /terms, Terms of Use for SupplyChainOfAI.com.
  * Editorial site; light terms covering acceptable use, IP, citations, no warranty.
  */
 const Terms = () => (
   <SiteLayout>
     <Seo
       title="Terms of Use | Supply Chain of Intelligence™"
-      description="Terms of Use for SupplyChainOfAI.com — acceptable use, intellectual property, citation policy, and no-warranty terms for the 10-layer generative AI stack site (not logistics/freight)."
+      description="Terms of Use for SupplyChainOfAI.com, acceptable use, intellectual property, citation policy, and no-warranty terms for the 10-layer generative AI stack site (not logistics/freight)."
       path="/terms"
     />
 
@@ -52,8 +52,8 @@ const Terms = () => (
             Editorial purpose
           </h2>
           <p>
-            The Site publishes a structural framework — The Supply Chain of
-            Intelligence™ — and related analysis, case studies, and a live
+            The Site publishes a structural framework, The Supply Chain of
+            Intelligence™, and related analysis, case studies, and a live
             feed about the generative AI stack (not logistics or freight).
             Everything here is editorial commentary and strategic analysis. It
             is not investment, legal, tax, or professional advice, and it is
@@ -77,7 +77,7 @@ const Terms = () => (
           <p>
             Third-party names, logos, and marks referenced in analysis remain
             the property of their respective owners and are used descriptively
-            for editorial commentary — see the{" "}
+            for editorial commentary, see the{" "}
             <Link to="/disclaimer" className="underline underline-offset-4 hover:text-foreground">
               Disclaimer
             </Link>{" "}
@@ -91,7 +91,7 @@ const Terms = () => (
           </h2>
           <p className="mb-3">
             You may read, quote, and reference the framework in your own work
-            — decks, essays, internal memos, talks, research — provided you:
+           , decks, essays, internal memos, talks, research, provided you:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Attribute the source ("Anand Arivukkarasu, Supply Chain of Intelligence™, SupplyChainOfAI.com")</li>
@@ -122,7 +122,7 @@ const Terms = () => (
           </h2>
           <p>
             The Site is provided "as is" and "as available." We make no
-            warranties — express or implied — about accuracy, completeness,
+            warranties, express or implied, about accuracy, completeness,
             timeliness, fitness for a particular purpose, or non-infringement.
             The market map, case studies, predictions, and live feed reflect
             judgments based on public information at a point in time and may
@@ -138,7 +138,7 @@ const Terms = () => (
             To the maximum extent permitted by law, neither Anand Arivukkarasu
             nor the Site shall be liable for any indirect, incidental,
             consequential, or punitive damages arising from your use of the
-            Site or reliance on its content — including investment decisions,
+            Site or reliance on its content, including investment decisions,
             business decisions, or actions taken based on any essay or
             prediction published here.
           </p>
@@ -149,7 +149,7 @@ const Terms = () => (
             Third-party links
           </h2>
           <p>
-            The Site links to third-party sources — news outlets, company
+            The Site links to third-party sources, news outlets, company
             sites, arXiv, LinkedIn, and others. We don't control those
             destinations and aren't responsible for their content, policies,
             or availability.

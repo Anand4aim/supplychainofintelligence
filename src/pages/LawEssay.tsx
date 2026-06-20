@@ -11,7 +11,7 @@ import CopySnippet from "@/components/CopySnippet";
 
 const TASTE_SNIPPET = `We aren't entering an era where AI replaces creators. We're entering an era where taste becomes the moat.
 
-Because once generation collapses into L2, the scarce input is no longer who can produce — it's who can choose.
+Because once generation collapses into L2, the scarce input is no longer who can produce, it's who can choose.
 
 Taste isn't a single layer. It's an L1c (behavioral history) + L5b (curation playbook) + L8b/c/d (compounding profile of what worked) package. That stack is where the value Law I displaces eventually lands.`;
 
@@ -19,7 +19,7 @@ const TASTE_SNIPPET_X = `We aren't entering an era where AI replaces creators.
 
 We're entering an era where taste becomes the moat.
 
-Once generation collapses into L2, the scarce input isn't who can produce — it's who can choose.
+Once generation collapses into L2, the scarce input isn't who can produce, it's who can choose.
 
 Taste = L1c + L5b + L8b/c/d.`;
 
@@ -72,7 +72,7 @@ const LawEssayPage = () => {
           </Eyebrow>
 
           <h1 className="font-display text-[34px] md:text-[46px] font-bold text-foreground leading-[1.1] mb-4">
-            Law {essay.num} — {essay.title}
+            Law {essay.num}, {essay.title}
           </h1>
 
           <p className="font-display text-lg md:text-xl text-accent italic leading-snug mb-8 border-l-2 border-accent/60 pl-4">
@@ -142,7 +142,7 @@ const LawEssayPage = () => {
                 {PRECEDENTS_BY_LAW[essay.slug].map((p, i) => (
                   <li key={i} className="border-l-2 border-accent/40 pl-4">
                     <div className="font-display font-semibold text-foreground">
-                      {p.thinker} <span className="font-normal text-muted-foreground">— {p.work}{p.year ? ` (${p.year})` : ""}</span>
+                      {p.thinker} <span className="font-normal text-muted-foreground"> -  {p.work}{p.year ? ` (${p.year})` : ""}</span>
                     </div>
                     <p className="text-sm text-foreground/80 leading-relaxed mt-1">{p.echo}</p>
                   </li>
@@ -179,7 +179,7 @@ const LawEssayPage = () => {
                       PREVIOUS LAW
                     </div>
                     <div className="font-display text-sm font-semibold text-foreground leading-tight">
-                      Law {prev.num} — {prev.title}
+                      Law {prev.num}, {prev.title}
                     </div>
                   </div>
                 </Link>
@@ -197,7 +197,7 @@ const LawEssayPage = () => {
                       NEXT LAW
                     </div>
                     <div className="font-display text-sm font-semibold text-foreground leading-tight">
-                      Law {next.num} — {next.title}
+                      Law {next.num}, {next.title}
                     </div>
                   </div>
                 </Link>

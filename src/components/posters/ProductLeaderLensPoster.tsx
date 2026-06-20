@@ -33,7 +33,7 @@ const QUESTIONS = [
   },
   {
     n: "05",
-    q: "Is the surface the moat — or just the doorway?",
+    q: "Is the surface the moat, or just the doorway?",
     why: "Beautiful UI gets users. Deep chain keeps them.",
     tag: "L7 alone ≠ defensible",
   },
@@ -137,7 +137,7 @@ const ProductLeaderLensPoster = () => {
         {/* Footer */}
         <div className="mt-6 pt-4 flex flex-wrap items-baseline justify-between gap-3" style={{ borderTop: "1px solid rgba(15,23,42,0.15)" }}>
           <p className="text-[11px] italic" style={{ color: MUTED, fontFamily: "'Playfair Display', serif" }}>
-            The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
+            The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
           </p>
           <p
             className="text-[9px] md:text-[10px] font-bold uppercase"

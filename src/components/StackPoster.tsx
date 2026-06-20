@@ -2,13 +2,13 @@ import { LAYERS, layerColor } from "@/data/layers";
 import ExportablePng from "@/components/ExportablePng";
 
 /**
- * StackPoster — 1:1 square hero artifact showing all 10 layers as chips
+ * StackPoster, 1:1 square hero artifact showing all 10 layers as chips
  * with the canonical tagline. Designed to be downloaded and posted to
  * LinkedIn / X as the cold-scroll hook. Reads from src/data/layers.ts
  * so it can never drift from the framework.
  */
 const StackPoster = () => {
-  // Reverse so L8 (Memory) is at the top, L-1 (Resources) at the bottom —
+  // Reverse so L8 (Memory) is at the top, L-1 (Resources) at the bottom  - 
   // matches the "stack" mental model on /stack and /framework.
   const ordered = [...LAYERS].reverse();
 

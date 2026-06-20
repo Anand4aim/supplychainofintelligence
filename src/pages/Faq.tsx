@@ -7,7 +7,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 
 // -----------------------------------------------------------------------------
-// FAQ content — every Q&A explicitly disambiguates the framework from
+// FAQ content, every Q&A explicitly disambiguates the framework from
 // physical supply chain / freight / logistics, while reinforcing the AI
 // strategy positioning for SaaS product leaders, AI founders, and investors.
 // -----------------------------------------------------------------------------
@@ -19,21 +19,21 @@ const DISAMBIGUATION: Faq[] = [
     q: 'Is "The Supply Chain of Intelligence" about physical supply chains, freight, or logistics?',
     a:
       "No. This framework has nothing to do with shipping, freight, warehousing, trucking, ports, procurement, ERP, or operations research. " +
-      'The word "supply chain" is used as a structural metaphor for the generative AI software stack — the chain of layers from semiconductors and ' +
+      'The word "supply chain" is used as a structural metaphor for the generative AI software stack, the chain of layers from semiconductors and ' +
       "foundation models to agents and memory. If you arrived here looking for logistics, SCM, 3PL, or transportation analytics, this is not that site.",
   },
   {
     q: "Then what is it actually about?",
     a:
-      "It is a 10-layer architectural framework for generative AI products. It maps where AI value is created, captured, and defended — from L-1 (semiconductors and energy) " +
+      "It is a 10-layer architectural framework for generative AI products. It maps where AI value is created, captured, and defended, from L-1 (semiconductors and energy) " +
       "through L8 (memory and learning loops). Each layer has its own economics, defensibility profile, and strategic playbook. The framework is built for SaaS product leaders, " +
       "AI founders, and venture investors deciding which layer to own and which to rent.",
   },
   {
     q: "Why use the phrase \"supply chain\" at all if it gets confused with logistics?",
     a:
-      "Because the structural insight is identical to a physical supply chain — value accrues at bottlenecks, margins compress at commoditized stages, and whoever controls the " +
-      "constrained input controls the chain — but the substrate is software, models, data, and distribution rather than goods and freight. The framework is sometimes called " +
+      "Because the structural insight is identical to a physical supply chain, value accrues at bottlenecks, margins compress at commoditized stages, and whoever controls the " +
+      "constrained input controls the chain, but the substrate is software, models, data, and distribution rather than goods and freight. The framework is sometimes called " +
       'the "Generative AI Stack" or "AI Defensibility Map" for the same reason; the supply chain framing is the one that reveals where power actually accumulates.',
   },
 ];
@@ -43,18 +43,18 @@ const FOR_AUDIENCE: Faq[] = [
     q: "Who is this framework for?",
     a:
       "Three audiences. (1) SaaS product leaders deciding whether to build, buy, or wrap AI capabilities. (2) AI-native founders choosing which layer to compete at and where their moat actually lives. " +
-      "(3) Venture investors evaluating defensibility before a check — separating fortresses from wrappers that will be absorbed by the model layer in the next release cycle.",
+      "(3) Venture investors evaluating defensibility before a check, separating fortresses from wrappers that will be absorbed by the model layer in the next release cycle.",
   },
   {
     q: "What does a product leader get out of it?",
     a:
       "A vocabulary for the strategy conversation. Instead of debating features, teams can ask: which layers do we own, which do we rent, and which are we exposed on? " +
-      "The For Product Leaders page adds a Z-axis (depth in the stack) to JTBD-driven product thinking — JTBD finds demand; the Supply Chain of Intelligence finds defensibility.",
+      "The For Product Leaders page adds a Z-axis (depth in the stack) to JTBD-driven product thinking, JTBD finds demand; the Supply Chain of Intelligence finds defensibility.",
   },
   {
     q: "What does an investor get out of it?",
     a:
-      "The Defensibility Audit — a layer-by-layer scorecard derived from the framework — that separates structural moats (proprietary data, workflow lock-in, distribution, memory, compliance) " +
+      "The Defensibility Audit, a layer-by-layer scorecard derived from the framework, that separates structural moats (proprietary data, workflow lock-in, distribution, memory, compliance) " +
       "from rented capabilities that disappear the moment the underlying model ships the same loop. Used to pressure-test AI investments before and after term sheet.",
   },
   {
@@ -87,8 +87,8 @@ const FAQ_SCHEMA = {
 const FaqPage = () => (
   <SiteLayout>
     <Seo
-      title="FAQ — Supply Chain of Intelligence™"
-      description="The Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack — built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
+      title="FAQ, Supply Chain of Intelligence™"
+      description="The Supply Chain of Intelligence™ is a 10-layer framework for the generative AI stack, built for SaaS product leaders, AI founders, and VC investors. Explicitly not about freight, warehousing, or logistics operations."
       path="/faq"
     />
     <Helmet>
@@ -105,10 +105,10 @@ const FaqPage = () => (
           transition={{ duration: 0.5 }}
           className="font-display text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6"
         >
-          An AI strategy framework — <span className="text-accent">not</span> a logistics company.
+          An AI strategy framework, <span className="text-accent">not</span> a logistics company.
         </motion.h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-          The Supply Chain of Intelligence™ is a structural framework for the generative AI software stack —
+          The Supply Chain of Intelligence™ is a structural framework for the generative AI software stack  - 
           for SaaS product leaders, AI-native founders, and venture investors. This page exists because the
           phrase "supply chain" sometimes leads people (and crawlers) to expect freight and warehouses. It is
           not that.
@@ -116,7 +116,7 @@ const FaqPage = () => (
       </div>
     </section>
 
-    {/* THIS vs THAT — explicit disambiguation table */}
+    {/* THIS vs THAT, explicit disambiguation table */}
     <section className="py-16 px-6 bg-foreground/[0.02] border-b border-foreground/10">
       <div className="max-w-5xl mx-auto">
         <Eyebrow>This site is about · this site is not about</Eyebrow>
@@ -175,7 +175,7 @@ const FaqPage = () => (
       <div className="max-w-4xl mx-auto">
         <Eyebrow>Disambiguation</Eyebrow>
         <h2 className="font-display text-3xl font-bold text-foreground mb-10">
-          "Wait — is this about logistics?"
+          "Wait, is this about logistics?"
         </h2>
         <div className="space-y-8">
           {DISAMBIGUATION.map((f) => (

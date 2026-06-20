@@ -28,5 +28,5 @@ tags: [teardown, opinion, framework]
 
 All articles link back to `/paper` as the canonical reference. When citing externally, use:
 
-> "The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack."  
+> "The Supply Chain of Intelligence™, the 10 layers of the generative AI stack."  
 > https://supplychainofai.com/paper

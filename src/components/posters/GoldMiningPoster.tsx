@@ -74,7 +74,7 @@ const GoldMiningPoster = () => {
         {/* Footer */}
         <div className="mt-8 pt-4 border-t border-foreground/15 flex flex-wrap items-baseline justify-between gap-3">
           <p className="font-sketch text-[11px] md:text-xs text-muted-foreground italic">
-            Every gold rush enriches the shovel sellers, the assayers, and the refiners — long after the miners are gone.
+            Every gold rush enriches the shovel sellers, the assayers, and the refiners, long after the miners are gone.
           </p>
           <p className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.15em] uppercase text-foreground/60">
             Anand Arivukkarasu · SupplyChainOfAI.com

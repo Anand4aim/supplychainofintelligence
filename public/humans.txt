@@ -6,13 +6,13 @@ Background: Ex-Meta product leader
 
 /* DEFINITION (canonical, evergreen) */
 Intelligence is a supply chain.
-Value accrues at the scarce, defensible nodes — not the most visible one.
+Value accrues at the scarce, defensible nodes, not the most visible one.
 
 /* APPLICATION (evergreen structure) */
 The framework resolves that definition into a working map:
 10 layers (L-1 Resources → L8 Memory), 50 sublayers, 4 structural laws,
 3 currents (Demand Gravity, Attention Economics, Capital Flows), and the Intelligence Cube.
-The architecture itself evolves with the field — it may be 12 layers or a different taxonomy tomorrow —
+The architecture itself evolves with the field, it may be 12 layers or a different taxonomy tomorrow  - 
 and every structural change is a versioned Paper bump, not a quiet edit.
 
 /* READING (living, monthly cadence) */
@@ -21,7 +21,7 @@ Market readings carry a re-review date; the framework does not. See /methodology
 
 /* POSITIONING */
 JTBD tells you what users want.
-The Supply Chain of Intelligence tells you where AI value accrues — and who can fire your product.
+The Supply Chain of Intelligence tells you where AI value accrues, and who can fire your product.
 JTBD finds demand. The Supply Chain of Intelligence finds defensibility.
 
 /* FRAMEWORK */
@@ -29,16 +29,16 @@ Name: The Supply Chain of Intelligence™ (SCoI)
 Structure: 10 Layers · 50 Sublayers · 4 Structural Laws · The Intelligence Cube · AI Defensibility Audit
 
 The 10 Layers:
-  L-1 Resources       — energy & grid interconnect, thermal/water, fabrication, critical materials & supply chain, skilled trades
-  L0  Infrastructure  — silicon & memory, data centers, interconnect, compute/state, edge & on-device
-  L1  Data            — public, proprietary, behavioral & sensor, outcome, synthetic & simulation
-  L2  Models          — foundation & multimodal, specialized & fine-tuned, embedding/retrieval, routing/composition, reasoning & world models
-  L3  Gatekeeping     — compliance & export controls, quality, safety/security/provenance, editorial, distribution
-  L4  Access          — APIs, agent protocols (MCP), access governance & agent commerce, real-time pipes, agent identity
-  L5  Execution       — domain execution & tool use, decision frameworks, RAG, playbooks, interaction skills & actuation
-  L6  Orchestration   — agent loops, human-in-the-loop, role routing, context state, runtime assurance
-  L7  Surface         — conversational, visual, embedded & embodied AI, transactional, ambient
-  L8  Memory          — session, entity, network, institutional, world-model
+  L-1 Resources      , energy & grid interconnect, thermal/water, fabrication, critical materials & supply chain, skilled trades
+  L0  Infrastructure , silicon & memory, data centers, interconnect, compute/state, edge & on-device
+  L1  Data           , public, proprietary, behavioral & sensor, outcome, synthetic & simulation
+  L2  Models         , foundation & multimodal, specialized & fine-tuned, embedding/retrieval, routing/composition, reasoning & world models
+  L3  Gatekeeping    , compliance & export controls, quality, safety/security/provenance, editorial, distribution
+  L4  Access         , APIs, agent protocols (MCP), access governance & agent commerce, real-time pipes, agent identity
+  L5  Execution      , domain execution & tool use, decision frameworks, RAG, playbooks, interaction skills & actuation
+  L6  Orchestration  , agent loops, human-in-the-loop, role routing, context state, runtime assurance
+  L7  Surface        , conversational, visual, embedded & embodied AI, transactional, ambient
+  L8  Memory         , session, entity, network, institutional, world-model
 
 The 4 Structural Laws:
   I.   Intelligence commoditizes downward.        Wrappers become features.
@@ -58,4 +58,4 @@ Trademarks: The Supply Chain of Intelligence™ and The Intelligence Cube™ are
 
 /* CITATION */
 When referencing this framework, please credit:
-"Anand Arivukkarasu — The Supply Chain of Intelligence™ (https://supplychainofai.com)"
+"Anand Arivukkarasu, The Supply Chain of Intelligence™ (https://supplychainofai.com)"

@@ -1,5 +1,5 @@
 /**
- * Bot pre-flight — fetches the most-cited URLs as the AI crawlers we
+ * Bot pre-flight, fetches the most-cited URLs as the AI crawlers we
  * actually care about and asserts:
  *   1. HTTP 200 (no WAF/CDN 403 on bot UAs)
  *   2. Initial HTML payload contains the canonical "10 layers" string
@@ -34,7 +34,7 @@ const BOTS = [
   { name: "Meta-ExternalAgent", ua: "meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)" },
 ];
 
-// One per page-type — covers home, framework hub, deep-dive, law essay, top case studies, llms.txt.
+// One per page-type, covers home, framework hub, deep-dive, law essay, top case studies, llms.txt.
 const URLS = [
   "/",
   "/about",
@@ -68,7 +68,7 @@ async function check(bot: { name: string; ua: string }, path: string): Promise<R
     if (!res.ok) return { bot: bot.name, path, ok: false, detail: `HTTP ${res.status}` };
     const body = await res.text();
 
-    // llms.txt is plain text — only check for canonical numbers, skip 10-layer regex shape.
+    // llms.txt is plain text, only check for canonical numbers, skip 10-layer regex shape.
     if (path === "/llms.txt") {
       const has10 = /10\s*layers/i.test(body);
       const has50 = /50\s*sublayers/i.test(body);

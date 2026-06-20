@@ -10,7 +10,7 @@ import { SketchBoard, SketchUnderline } from "@/components/sketch/SketchElements
 import VoicesStrip from "@/components/VoicesStrip";
 
 /**
- * /for-investors — an editorial lens on AI defensibility for PE partners,
+ * /for-investors, an editorial lens on AI defensibility for PE partners,
  * growth investors, and boards.
  *
  * This page is NOT a service offering. It is a public, free reading of how
@@ -40,7 +40,7 @@ const USE_CASES = [
     kicker: "Portfolio read",
     title: "AI Roadmap Audit",
     body:
-      "A one-page scorecard pattern per portfolio company. Audit / 100, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized — use it on your own portfolio.",
+      "A one-page scorecard pattern per portfolio company. Audit / 100, layer-by-layer verdict, and a 90-day deepening plan. The framework surfaces which assets are compounding and which are about to be commoditized, use it on your own portfolio.",
     layers: ["L2", "L6", "L7"],
   },
   {
@@ -48,22 +48,22 @@ const USE_CASES = [
     kicker: "Board read",
     title: "AI Strategy at the Board Level",
     body:
-      "The 10 layers, the structural laws, and where each portfolio bet sits on the map — the language a board needs to translate AI hype into moats, margins, and capex. The framework is public; bring it into your own board packs.",
+      "The 10 layers, the structural laws, and where each portfolio bet sits on the map, the language a board needs to translate AI hype into moats, margins, and capex. The framework is public; bring it into your own board packs.",
     layers: ["L0", "L3", "L4"],
   },
 ];
 
 const VERDICTS = [
-  { tier: "Defensible stack", color: "verdict-fortified", desc: "L1 + L5 + L8 — owns data, workflow, and memory. Compounds over time." },
-  { tier: "Workflow", color: "verdict-consolidating", desc: "L5/L6 — earns its keep, but exposed if the platform layer above absorbs the surface. Counter-move exists." },
-  { tier: "Thin stack", color: "verdict-exposed", desc: "L7-only on someone else's L2. One platform release away from being absorbed — counter-move is to deepen into L1, L5, or L8." },
+  { tier: "Defensible stack", color: "verdict-fortified", desc: "L1 + L5 + L8, owns data, workflow, and memory. Compounds over time." },
+  { tier: "Workflow", color: "verdict-consolidating", desc: "L5/L6, earns its keep, but exposed if the platform layer above absorbs the surface. Counter-move exists." },
+  { tier: "Thin stack", color: "verdict-exposed", desc: "L7-only on someone else's L2. One platform release away from being absorbed, counter-move is to deepen into L1, L5, or L8." },
 ];
 
 const ForInvestors = () => (
   <SiteLayout>
     <Seo
-      title="For PE & Investors — AI Defensibility Lens"
-      description="A public, free lens for reading AI defensibility across the 10 layers of the generative AI stack — for PE partners, growth investors, and boards. Editorial, not a service offering. Not logistics."
+      title="For PE & Investors, AI Defensibility Lens"
+      description="A public, free lens for reading AI defensibility across the 10 layers of the generative AI stack, for PE partners, growth investors, and boards. Editorial, not a service offering. Not logistics."
       path="/for-investors"
     />
 
@@ -78,7 +78,7 @@ const ForInvestors = () => (
           <p className="text-lg text-foreground/85 leading-relaxed max-w-3xl mb-6">
             Most AI diligence still leans on TAM, growth rate, and a vibes-based read of the founder.
             That's how you end up funding a wrapper. The Supply Chain of Intelligence™ scores every AI
-            product across 10 layers — compute, data, models, workflows, surfaces, memory — and tells
+            product across 10 layers, compute, data, models, workflows, surfaces, memory, and tells
             you, in one page, whether value is accruing to the company or leaking to the platform above it.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -90,7 +90,7 @@ const ForInvestors = () => (
             </Link>
           </div>
           <p className="text-[12px] text-muted-foreground mt-5">
-            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link> — Ex-Meta (Instagram) Product Leader &amp; AI Product Architect. Personal thinking, shared freely.
+            By <Link to="/about" className="underline-offset-2 hover:underline">Anand Arivukkarasu</Link>, Ex-Meta (Instagram) Product Leader &amp; AI Product Architect. Personal thinking, shared freely.
           </p>
         </motion.div>
       </div>
@@ -105,7 +105,7 @@ const ForInvestors = () => (
             JTBD finds demand. It doesn't prove defensibility.
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
-            A product can be desirable and still be erased — by the foundation model below it, the
+            A product can be desirable and still be erased, by the foundation model below it, the
             distribution layer above it, or the workflow giant beside it. Without a layer map, you
             cannot tell which is which.
           </p>
@@ -171,7 +171,7 @@ const ForInvestors = () => (
       </div>
     </section>
 
-    {/* VALUATION PROTECTION & EXPANSION — the PE playbook */}
+    {/* VALUATION PROTECTION & EXPANSION, the PE playbook */}
     <section className="bg-background border-b border-border">
       <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <motion.div {...fadeIn} className="mb-10">
@@ -181,10 +181,10 @@ const ForInvestors = () => (
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
             Private equity does not buy architecture. It buys structural insulation against margin
-            compression — multiple expansion, churn reduction, NRR, gross-margin protection. The
+            compression, multiple expansion, churn reduction, NRR, gross-margin protection. The
             Supply Chain of Intelligence™ translates each of those into specific moves on the stack.
             Any L7-heavy portfolio company (orchestration, workflow, dashboard, &quot;agent&quot;
-            wrapper) faces the same threat: Law I — intelligence commoditizes downward — and the
+            wrapper) faces the same threat: Law I, intelligence commoditizes downward, and the
             native platform below compresses the surface above. The defense is to climb down the
             stack into layers the platform cannot absorb.
           </p>
@@ -198,7 +198,7 @@ const ForInvestors = () => (
             away from being absorbed. Foundation models below (<LayerTag id="L2" />) and native
             ecosystems above (<LayerTag id="L3" />, <LayerTag id="L7" />) are building intelligent
             agents that talk directly to APIs. If a buyer can route around the interface, the
-            interface is a feature, not a moat — and the counter-move is to add a deeper layer (L1, L5, or L8) before multiples reprice.
+            interface is a feature, not a moat, and the counter-move is to add a deeper layer (L1, L5, or L8) before multiples reprice.
           </p>
         </div>
 
@@ -217,7 +217,7 @@ const ForInvestors = () => (
               kicker: "Move 1 · Weaponize Access",
               title: "Turn the MCP / API layer into a tollbooth.",
               action:
-                "Position the company's MCP server or access layer as the only compliance, guardrail, and governance pipe for enterprise AI agents acting in your domain. Internal AI buyers do not connect to the upstream platform directly — they route through your layer to enforce budget pacing, brand safety, policy, and cross-channel rules.",
+                "Position the company's MCP server or access layer as the only compliance, guardrail, and governance pipe for enterprise AI agents acting in your domain. Internal AI buyers do not connect to the upstream platform directly, they route through your layer to enforce budget pacing, brand safety, policy, and cross-channel rules.",
               outcome:
                 "Churn collapses toward zero. Turning off the product means breaking the enterprise's internal AI architecture. Critical infrastructure, not a dashboard.",
             },
@@ -235,7 +235,7 @@ const ForInvestors = () => (
               kicker: "Move 3 · Compound Memory",
               title: "Build institutional memory the platform cannot replicate.",
               action:
-                "Every automated decision, every override, every seasonal pivot the system executes feeds a compounding graph of why. Context drift — the largest enterprise AI failure mode — gets solved on your side of the wall.",
+                "Every automated decision, every override, every seasonal pivot the system executes feeds a compounding graph of why. Context drift, the largest enterprise AI failure mode, gets solved on your side of the wall.",
               outcome:
                 "A data moat measured in years, not features. A cheaper UI or a faster orchestrator cannot copy compounded memory. Multiple expansion at exit.",
             },
@@ -275,7 +275,7 @@ const ForInvestors = () => (
             </li>
             <li>
               <span className="font-bold text-foreground">2. Name the structural fix.</span> The
-              three moves above are a product blueprint to defend NRR and gross margin — not a
+              three moves above are a product blueprint to defend NRR and gross margin, not a
               re-platforming project.
             </li>
             <li>
@@ -309,7 +309,7 @@ const ForInvestors = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             ["Layer-by-layer scorecard", "All 10 layers · 50 sublayers · score / 100 with verdict band. Run it on the audit page."],
-            ["Defensibility verdict", "Fortress / Workflow / Wrapper — with the structural reason cited."],
+            ["Defensibility verdict", "Fortress / Workflow / Wrapper, with the structural reason cited."],
             ["Platform compression risk", "Which layers above and below are about to absorb a product."],
             ["90-day deepening plan", "The two or three layer moves that meaningfully change the verdict."],
             ["Comparable mapping", "How a target sits next to the 24 worked case studies in the public corpus."],

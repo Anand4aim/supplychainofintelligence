@@ -31,7 +31,7 @@ type Group = "live" | "market-map" | "analysis" | "laws" | "posts" | "framework"
 interface RouteRow {
   path: string;
   group: Group;
-  /** Substring expected in the rendered HTML — usually the headline. */
+  /** Substring expected in the rendered HTML, usually the headline. */
   expect?: string;
 }
 
@@ -224,7 +224,7 @@ export default function CrawlAdmin() {
       else if (r.path !== "/" && matchesShell) { status = "fail"; reason = "byte-identical to homepage shell"; }
       else if (expectFound === false) { status = "fail"; reason = `expected "${r.expect}" not in HTML`; }
       else if (r.path !== "/" && title && title === baseline.title) {
-        status = "fail"; reason = "title matches homepage — SPA fallback";
+        status = "fail"; reason = "title matches homepage, SPA fallback";
       } else {
         reason = expectFound ? `found "${r.expect}"` : "title present, differs from home";
       }
@@ -252,7 +252,7 @@ export default function CrawlAdmin() {
       const baseline = { bytes: homeHtml.length, title: titleFrom(homeHtml) };
       setHomeBaseline(baseline);
 
-      // Bounded concurrency — 6 in flight is enough for a few hundred routes
+      // Bounded concurrency, 6 in flight is enough for a few hundred routes
       // without hammering the edge.
       const queue = [...routes];
       let done = 0;
@@ -269,7 +269,7 @@ export default function CrawlAdmin() {
       });
       await Promise.all(workers);
       const fails = Object.values(results).filter((r) => r.status === "fail").length;
-      toast.success(`Crawl complete — ${done} routes checked${fails ? `, ${fails} failing` : ""}`);
+      toast.success(`Crawl complete, ${done} routes checked${fails ? `, ${fails} failing` : ""}`);
     } finally {
       setRunning(false);
     }
@@ -319,7 +319,7 @@ export default function CrawlAdmin() {
   }, [routes, results, filter, groupFilter]);
 
   function fmtTime(iso?: string) {
-    if (!iso) return "—";
+    if (!iso) return " - ";
     const d = new Date(iso);
     return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
   }
@@ -339,7 +339,7 @@ export default function CrawlAdmin() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Crawl Admin — SCoAI</title>
+        <title>Crawl Admin, SCoAI</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <div className="max-w-7xl mx-auto px-6 py-10">

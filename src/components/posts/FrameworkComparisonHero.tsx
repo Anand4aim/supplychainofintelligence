@@ -2,7 +2,7 @@ import { layerVar } from "@/data/layers";
 
 // Editorial hero visual for the "5 Frameworks Every AI Product Leader Should Know" post.
 // SCOI sits on top as the largest, multi-layered band (showing the 10-layer DNA).
-// The other four frameworks render as quieter, monochrome bands beneath it —
+// The other four frameworks render as quieter, monochrome bands beneath it  - 
 // each labeled with the strategic *lens* it uses.
 //
 // Pure CSS / design tokens, no raster image. Safe for dark + light + SSR.
@@ -41,7 +41,7 @@ const FrameworkComparisonHero = () => {
           underneath.
         </p>
 
-        {/* SCOI band — the hero */}
+        {/* SCOI band, the hero */}
         <div className="mb-3 relative">
           <div
             className="relative rounded-md overflow-hidden border"
@@ -87,13 +87,13 @@ const FrameworkComparisonHero = () => {
                 className="text-sm md:text-base italic"
                 style={{ color: "#C7D2FE" }}
               >
-                Stack &amp; Intelligence lens — 10 layers, 50 sublayers, 4 structural laws.
+                Stack &amp; Intelligence lens, 10 layers, 50 sublayers, 4 structural laws.
               </p>
             </div>
           </div>
         </div>
 
-        {/* The other four — quieter, monochrome */}
+        {/* The other four, quieter, monochrome */}
         <div className="space-y-2">
           {FRAMEWORKS.map((f) => (
             <div

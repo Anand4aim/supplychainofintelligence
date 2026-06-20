@@ -52,7 +52,7 @@ const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
       })}
     </nav>
     <div className="mt-4 text-[11px] text-muted-foreground leading-snug">
-      Two verticals published. Twenty-two more in the queue — each researched on the same 10×5 grid.
+      Two verticals published. Twenty-two more in the queue, each researched on the same 10×5 grid.
     </div>
   </aside>
 );
@@ -78,8 +78,8 @@ const MarketMapVertical = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${entry.label} AI Market Map — 10 Layers × 50 Sublayers`}
-        description={`Every AI-native ${entry.label.toLowerCase()} company placed on the Supply Chain of Intelligence™ — 10 layers × 50 sublayers. ${entry.blurb}`}
+        title={`${entry.label} AI Market Map, 10 Layers × 50 Sublayers`}
+        description={`Every AI-native ${entry.label.toLowerCase()} company placed on the Supply Chain of Intelligence™, 10 layers × 50 sublayers. ${entry.blurb}`}
         path={`/market-map/${entry.slug}`}
       />
 
@@ -93,7 +93,7 @@ const MarketMapVertical = () => {
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-2 mb-3">
               <Map size={16} className="text-accent" />
-              <Eyebrow>Vertical Market Map · {entry.slug === "legal" ? "1" : entry.slug === "wealth" ? "2" : "—"} of 24</Eyebrow>
+              <Eyebrow>Vertical Market Map · {entry.slug === "legal" ? "1" : entry.slug === "wealth" ? "2" : " - "} of 24</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[44px] font-bold text-foreground leading-[1.05] mb-3">
               {entry.label} AI, mapped across 10 layers &amp; 50 sublayers.
@@ -134,10 +134,10 @@ const MarketMapVertical = () => {
             {dataset ? (
               <ExportablePng
                 fileName={`scoi-${entry.slug}-market-map`}
-                caption={`${entry.label} — Supply Chain of Intelligence™`}
+                caption={`${entry.label}, Supply Chain of Intelligence™`}
                 exportSlot={
                   <MarketMapShareCard
-                    title={`${entry.label} AI — Supply Chain of Intelligence Map`}
+                    title={`${entry.label} AI, Supply Chain of Intelligence Map`}
                     subtitle={dataset.thesis}
                     dataset={dataset}
                   />

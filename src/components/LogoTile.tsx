@@ -2,7 +2,7 @@ import { useState } from "react";
 import { layerVar } from "@/data/layers";
 
 /**
- * LogoTile — real logo via Clearbit, with a monogram fallback.
+ * LogoTile, real logo via Clearbit, with a monogram fallback.
  *
  * Renders the company's actual logo (Clearbit Logo API), with the layer-color
  * stripe on top so the framework's visual language stays visible.

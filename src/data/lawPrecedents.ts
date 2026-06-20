@@ -16,7 +16,7 @@ export const PRECEDENTS_BY_LAW: Record<string, Precedent[]> = {
       work: "The Law of Conservation of Attractive Profits",
       year: "2003",
       echo:
-        "Christensen's observation that profit migrates to whichever layer is integrated when the layer above it modularizes. Law I is the AI-stack-specific case: as model capability modularizes, profit migrates downward into L0 silicon and upward into L8 memory — but evaporates from L7 wrappers.",
+        "Christensen's observation that profit migrates to whichever layer is integrated when the layer above it modularizes. Law I is the AI-stack-specific case: as model capability modularizes, profit migrates downward into L0 silicon and upward into L8 memory, but evaporates from L7 wrappers.",
     },
     {
       thinker: "Ben Thompson",

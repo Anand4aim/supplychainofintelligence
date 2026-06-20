@@ -3,11 +3,11 @@ import { ArrowRight } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * TwoLensesOnCoreProduct — cold-open slide 2.
+ * TwoLensesOnCoreProduct, cold-open slide 2.
  *
  * On Core Product, you need TWO lenses, not one. Most teams only use the
  * first (user-side / JTBD) and end up with a real user but a wrapper that
- * a platform absorbs in a release cycle. The second lens — Intelligence —
+ * a platform absorbs in a release cycle. The second lens, Intelligence  - 
  * is what this framework adds.
  *
  * Single most important section on the site: in one screen, it tells you
@@ -24,7 +24,7 @@ const TwoLensesOnCoreProduct = () => (
         <Eyebrow tone="accent" className="mb-3">Two Lenses · 02</Eyebrow>
         <h2 className="font-display text-[26px] md:text-[36px] font-bold text-foreground leading-[1.15]">
           On Core Product, you need{" "}
-          <span className="text-accent">two lenses — not one.</span>
+          <span className="text-accent">two lenses, not one.</span>
         </h2>
         <p className="text-foreground/75 mt-3 text-[15px] md:text-[16px] leading-relaxed">
           Most teams only use the first lens. They ship a real user need,
@@ -34,7 +34,7 @@ const TwoLensesOnCoreProduct = () => (
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-stretch">
-        {/* Lens 1 — User */}
+        {/* Lens 1, User */}
         <div className="p-6 md:p-7 rounded-xl border border-border bg-card flex flex-col">
           <div className="flex items-baseline justify-between mb-4">
             <span className="font-mono-marker text-[11px] tracking-[0.18em] text-muted-foreground">
@@ -70,7 +70,7 @@ const TwoLensesOnCoreProduct = () => (
           +
         </div>
 
-        {/* Lens 2 — Intelligence */}
+        {/* Lens 2, Intelligence */}
         <div className="p-6 md:p-7 rounded-xl border-2 border-accent bg-accent/5 flex flex-col shadow-[0_8px_30px_-12px_hsl(var(--accent)/0.35)]">
           <div className="flex items-baseline justify-between mb-4">
             <span className="font-mono-marker text-[11px] tracking-[0.18em] text-accent">

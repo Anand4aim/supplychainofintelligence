@@ -4,12 +4,12 @@ import Eyebrow from "@/components/Eyebrow";
 import LogoTile from "@/components/LogoTile";
 
 /**
- * ThreeLayerProof — the new spine of the Home page (plan v3 §4A.3).
+ * ThreeLayerProof, the new spine of the Home page (plan v3 §4A.3).
  *
  * Tier 1 → 2 → 3 ordering:
  *   1. Plain-English headline (stakes first)
  *   2. Three logo tiles: Bloomberg, Harvey, Sierra
- *   3. Tiny caption naming the codes (L1 · L5 · L8) — reference grammar
+ *   3. Tiny caption naming the codes (L1 · L5 · L8), reference grammar
  *
  * This replaces the old "Start Here · 5 beats" strip as the first
  * concept the reader meets after the hero + gold-mining anchor.
@@ -26,7 +26,7 @@ const VERTICES = [
     name: "Harvey",
     layer: "L5",
     role: "the work",
-    caption: "Built deep inside the legal workflow — still contested by Claude.",
+    caption: "Built deep inside the legal workflow, still contested by Claude.",
   },
   {
     name: "Sierra",
@@ -38,7 +38,7 @@ const VERTICES = [
 
 const ThreeLayerProof = () => (
   <section
-    aria-label="Three-layer proof — Bloomberg, Harvey, Sierra"
+    aria-label="Three-layer proof, Bloomberg, Harvey, Sierra"
     className="bg-secondary/30 border-y border-foreground/10"
   >
     <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
@@ -66,7 +66,7 @@ const ThreeLayerProof = () => (
         ))}
       </div>
 
-      {/* Tier 3 — codes, small, last */}
+      {/* Tier 3, codes, small, last */}
       <p className="mt-10 text-[13px] md:text-[14px] text-muted-foreground leading-relaxed max-w-3xl">
         In the framework:{" "}
         <span className="font-mono-marker tracking-[0.08em]">L1 Data</span> ·{" "}

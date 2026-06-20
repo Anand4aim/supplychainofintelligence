@@ -6,13 +6,13 @@ const SITE = "https://supplychainofai.com";
 const ATTRIBUTION = "Source: The Supply Chain of Intelligence™ (supplychainofai.com)";
 
 interface Props {
-  /** The pre-formatted snippet body — typically 80-150 words, LinkedIn-ready. */
+  /** The pre-formatted snippet body, typically 80-150 words, LinkedIn-ready. */
   text: string;
-  /** Path on the site (e.g. "/analysis/apollo-thin-stack") — used to build a deep-link in the attribution. */
+  /** Path on the site (e.g. "/analysis/apollo-thin-stack"), used to build a deep-link in the attribution. */
   path?: string;
   /** Button label override. */
   label?: string;
-  /** Shorter "quote" mode — smaller, less padding, secondary styling. */
+  /** Shorter "quote" mode, smaller, less padding, secondary styling. */
   variant?: "default" | "quote";
   /** Optional className override. */
   className?: string;
@@ -24,13 +24,13 @@ const CopySnippet = ({ text, path, label, variant = "default", className = "" }:
   const handleCopy = async () => {
     const fullUrl = path ? `${SITE}${path}` : SITE;
     const attribution = path
-      ? `Source: The Supply Chain of Intelligence™ — ${fullUrl}`
+      ? `Source: The Supply Chain of Intelligence™, ${fullUrl}`
       : ATTRIBUTION;
-    const payload = `${text.trim()}\n\n— ${attribution}`;
+    const payload = `${text.trim()}\n\n -  ${attribution}`;
     try {
       await navigator.clipboard.writeText(payload);
       setCopied(true);
-      toast.success("Copied — ready to paste on LinkedIn", {
+      toast.success("Copied, ready to paste on LinkedIn", {
         description: "Attribution included. Paste anywhere.",
       });
       setTimeout(() => setCopied(false), 2200);

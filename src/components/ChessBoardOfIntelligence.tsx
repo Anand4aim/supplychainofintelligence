@@ -2,11 +2,11 @@ import { layerColor } from "@/data/layers";
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * The Chess Board of Intelligence — the 10 squares (layers) on your side
+ * The Chess Board of Intelligence, the 10 squares (layers) on your side
  * of the board, with chess-piece value mapping. Used inside /predictions
  * to frame why every call carries a counter-move.
  *
- * Pieces use unicode glyphs (♛♜♝♞♟♚) — editorial feel, no extra deps.
+ * Pieces use unicode glyphs (♛♜♝♞♟♚), editorial feel, no extra deps.
  */
 
 interface Square {
@@ -28,7 +28,7 @@ const SQUARES: Square[] = [
     piece: "♚",
     pieceName: "Clock",
     value: "∞",
-    why: "Not a piece — the clock on the wall. Decides how long any side can play. Megawatts, fab capacity, permits.",
+    why: "Not a piece, the clock on the wall. Decides how long any side can play. Megawatts, fab capacity, permits.",
     moveSpeed: "Slow",
   },
   {
@@ -58,7 +58,7 @@ const SQUARES: Square[] = [
     piece: "♞",
     pieceName: "Knight",
     value: "3",
-    why: "Jumps over other pieces. Powerful but swap-able — GPT, Claude, Gemini, Llama. Knight today is not the queen tomorrow.",
+    why: "Jumps over other pieces. Powerful but swap-able, GPT, Claude, Gemini, Llama. Knight today is not the queen tomorrow.",
     moveSpeed: "Fast",
   },
   {
@@ -68,7 +68,7 @@ const SQUARES: Square[] = [
     piece: "♝",
     pieceName: "Bishop",
     value: "3",
-    why: "Cuts diagonally across the board. Invisible until it pins the opponent — HIPAA, SOC2, audit, brand voice, indemnification.",
+    why: "Cuts diagonally across the board. Invisible until it pins the opponent, HIPAA, SOC2, audit, brand voice, indemnification.",
     moveSpeed: "Slow",
   },
   {
@@ -138,7 +138,7 @@ const RULES = [
   {
     n: "II",
     title: "Some squares are hard to move into.",
-    body: "L0 (fabs), L\u22121 (energy permits), L3 (regulator trust) are multi-year moves. L7 (surface) is a weekend. Time and money are the budget — pick the squares your clock can afford.",
+    body: "L0 (fabs), L\u22121 (energy permits), L3 (regulator trust) are multi-year moves. L7 (surface) is a weekend. Time and money are the budget, pick the squares your clock can afford.",
   },
   {
     n: "III",
@@ -161,12 +161,12 @@ const ChessBoardOfIntelligence = () => {
         Think of the 10 layers as 10 squares on your side of a chess board.
         Some are queens (move in any direction, compound forever). Some are
         pawns (one direction, easy to lose). You play these squares against
-        competitors <em>and</em> against the juggernauts — high-Elo players
+        competitors <em>and</em> against the juggernauts, high-Elo players
         with money, compute, and frontier intelligence on the other side of
         the board.
       </p>
 
-      {/* The 10 squares — piece-value mapping */}
+      {/* The 10 squares, piece-value mapping */}
       <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-3">
         {SQUARES.map((s) => {
           const color = layerColor(s.layerId);
@@ -239,8 +239,8 @@ const ChessBoardOfIntelligence = () => {
       <p className="mt-10 text-foreground/65 text-sm italic max-w-3xl">
         Piece values borrow from chess convention (queen 9, rook 5, bishop &
         knight 3, pawn 1). They describe the layer's structural leverage, not
-        the company's revenue. A pawn on a great file can still promote — Cursor
-        did. A queen left undefended still loses — see BloombergGPT on L2.
+        the company's revenue. A pawn on a great file can still promote, Cursor
+        did. A queen left undefended still loses, see BloombergGPT on L2.
       </p>
     </section>
   );

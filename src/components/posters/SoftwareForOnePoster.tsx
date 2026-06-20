@@ -2,7 +2,7 @@ import ExportablePng from "@/components/ExportablePng";
 import heroImg from "@/assets/software-for-one-shared-rails.png";
 
 /**
- * SoftwareForOnePoster — the hero image for the "built for one" article.
+ * SoftwareForOnePoster, the hero image for the "built for one" article.
  * Shows a personal AI agent shell peeled back to reveal the SCoI layers
  * underneath, with the bottom layers marked as shared/rented rails.
  */
@@ -10,7 +10,7 @@ const SoftwareForOnePoster = () => {
   return (
     <ExportablePng
       fileName="software-for-one-shared-rails"
-      caption="Software for One — Still Rides Shared Rails"
+      caption="Software for One, Still Rides Shared Rails"
       exportBackground="hsl(40 30% 97%)"
     >
       <div

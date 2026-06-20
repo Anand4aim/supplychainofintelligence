@@ -28,7 +28,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
         fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
-      {/* Top brand bar — 10-layer colour spectrum */}
+      {/* Top brand bar, 10-layer colour spectrum */}
       <div style={{ display: "flex", height: 6, width: "100%" }}>
         {["neg1", "0", "1", "2", "3", "4", "5", "6", "7", "8"].map((n) => (
           <div key={n} style={{ flex: 1, background: `hsl(var(--layer-${n}))` }} />
@@ -57,7 +57,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
               fontWeight: 600,
             }}
           >
-            The Supply Chain of Intelligence™ — Vertical Market Map
+            The Supply Chain of Intelligence™, Vertical Market Map
           </div>
           <h1
             style={{
@@ -110,7 +110,7 @@ const MarketMapShareCard = ({ title, subtitle, dataset }: Props) => {
         </div>
       </div>
 
-      {/* Grid — fills the remaining space */}
+      {/* Grid, fills the remaining space */}
       <div
         style={{
           flex: 1,

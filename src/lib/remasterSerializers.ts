@@ -37,10 +37,10 @@ export function layerToText(l: Layer): string {
     `NAME: ${l.name} (short: ${l.shortName})`,
     `DESC: ${l.desc}`,
     `DETAIL: ${l.detail}`,
-    `GOLD ANALOGY: ${l.goldTitle} — ${l.goldAnalogy}`,
+    `GOLD ANALOGY: ${l.goldTitle}, ${l.goldAnalogy}`,
     `PLAYERS: ${(l.players ?? []).join(", ")}`,
     `VERDICT: ${l.verdict}`,
-    `SUBLAYERS:\n${l.sublayers.map((s) => `- ${s.id} ${s.name}${s.defensible ? " ★" : ""} — ${s.desc}`).join("\n")}`,
+    `SUBLAYERS:\n${l.sublayers.map((s) => `- ${s.id} ${s.name}${s.defensible ? " ★" : ""}, ${s.desc}`).join("\n")}`,
   ].join("\n\n");
 }
 

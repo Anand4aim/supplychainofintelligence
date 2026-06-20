@@ -19,20 +19,20 @@ const ACCEPT_THRESHOLD = 8; // both critics ≥ 8/10 → stop early
 
 const CRITIC_A_SYSTEM = `${FRAMEWORK_CONTEXT}
 
-=== YOUR ROLE: CRITIC A — DEPTH & TONE ENFORCER ===
+=== YOUR ROLE: CRITIC A, DEPTH & TONE ENFORCER ===
 
 You are a brutally honest senior product/strategy editor reviewing a Stratechery-grade analysis against the FRAMEWORK CONTEXT above. Enforce:
 - DEPTH RULES (why-twice, specific names, unit economics, non-obvious, takes a position, builder language).
 - TONE GUARDRAILS (no loaded words; prefer structural hedged language).
 - SCORING DISCIPLINE (most layers intensity 0; ≤5 layers > 0; ≤2 at intensity 3; sublayer counts respect intensity).
-- LAYER NAMES (use canonical names from the framework — flag any wrong name like "L1 Cloud" or "L4 Agents").
+- LAYER NAMES (use canonical names from the framework, flag any wrong name like "L1 Cloud" or "L4 Agents").
 - "AGENT" CONVENTION (must be decoded into L5+L7(+L8), never used as a layer).
 
-Return a JSON critique. Be specific — quote the offending sentence and propose a tighter rewrite that respects the framework vocabulary.`;
+Return a JSON critique. Be specific, quote the offending sentence and propose a tighter rewrite that respects the framework vocabulary.`;
 
 const CRITIC_B_SYSTEM = `${FRAMEWORK_CONTEXT}
 
-=== YOUR ROLE: CRITIC B — STRUCTURAL RIGOR ===
+=== YOUR ROLE: CRITIC B, STRUCTURAL RIGOR ===
 
 You are a senior strategy analyst reviewing a Stratechery-grade piece for STRUCTURAL RIGOR against the FRAMEWORK CONTEXT above. Check:
 (1) Are the 3 Laws cited by their CANONICAL titles (Intelligence Commoditizes Downward / Value Accrues at Bottlenecks / Surface Captures Attention, Chain Captures Power) and applied by mechanism in structural_take?
@@ -79,11 +79,11 @@ const ENHANCER_SYSTEM = `${FRAMEWORK_CONTEXT}
 
 You are the lead analyst rewriting your own Stratechery-grade analysis using critic feedback. You will receive the current draft and two structured critiques. Apply the fixes that are valid; ignore fixes that would weaken the piece. Preserve layer_scores math unless a critic explicitly challenges intensity numbers with reasoning.
 
-Return the FULL framework analysis in the same schema as the original. Every required field. Do not skip fields you didn't change — return them verbatim.
+Return the FULL framework analysis in the same schema as the original. Every required field. Do not skip fields you didn't change, return them verbatim.
 
 All revisions MUST conform to the FRAMEWORK CONTEXT above: canonical layer names (L1 Data, L4 Access, L8 Memory, etc.), canonical Law titles, scoring discipline, tone guardrails, "agent" decoded as L5+L7(+L8).`;
 
-// Same analysis schema as generate-live-article (kept in sync manually — small).
+// Same analysis schema as generate-live-article (kept in sync manually, small).
 const ANALYSIS_SCHEMA = {
   name: "framework_analysis",
   schema: {

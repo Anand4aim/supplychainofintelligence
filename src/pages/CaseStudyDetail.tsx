@@ -81,7 +81,7 @@ const CaseStudyDetailPage = () => {
 
   return (
     <SiteLayout>
-      <Seo title={`${study.title} — Case Study`} description={description} path={`/analysis/${study.slug}`} article />
+      <Seo title={`${study.title}, Case Study`} description={description} path={`/analysis/${study.slug}`} article />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
@@ -239,7 +239,7 @@ const CaseStudyDetailPage = () => {
                 <p className="font-display font-bold text-foreground">Anand Arivukkarasu</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Ex-Meta product leader. Creator of The Supply Chain of Intelligence™. Writes about where AI value
-                  accrues — and who can fire your product.{" "}
+                  accrues, and who can fire your product.{" "}
                   <a
                     href="https://www.linkedin.com/in/anandarivu"
                     target="_blank"
@@ -263,7 +263,7 @@ const CaseStudyDetailPage = () => {
               </Link>
             </div>
 
-            {/* Inbox capture — last */}
+            {/* Inbox capture, last */}
             <ArticleFooterCTA
               source={`case-study:${study.slug}`}
               shareUrl={url}

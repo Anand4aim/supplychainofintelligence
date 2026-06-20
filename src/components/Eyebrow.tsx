@@ -19,7 +19,7 @@ interface EyebrowProps {
  *
  * Single source of truth for the small uppercase mono label that appears above
  * page heroes and section headers. Always uses font-mono-marker, uppercase, and
- * the standard tracking. Never style the eyebrow text inline — use this.
+ * the standard tracking. Never style the eyebrow text inline, use this.
  */
 const Eyebrow: React.FC<EyebrowProps> = ({
   children,
@@ -50,7 +50,7 @@ const Eyebrow: React.FC<EyebrowProps> = ({
         className
       )}
     >
-      {dash && <span aria-hidden="true">— </span>}
+      {dash && <span aria-hidden="true"> -  </span>}
       {children}
     </Tag>
   );

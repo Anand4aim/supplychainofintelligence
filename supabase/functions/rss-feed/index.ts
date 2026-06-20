@@ -47,7 +47,7 @@ Deno.serve(async (req) => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Supply Chain of Intelligence — Live Feed</title>
+  <title>Supply Chain of Intelligence, Live Feed</title>
   <link>${SITE}/live</link>
   <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml" />
   <description>Every important AI move, scored on the 10-layer Supply Chain of Intelligence framework by Anand Arivukkarasu.</description>

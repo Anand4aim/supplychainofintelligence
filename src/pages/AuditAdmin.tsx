@@ -213,7 +213,7 @@ export default function AuditAdmin() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Helmet><title>Audit Admin — SCoAI</title><meta name="robots" content="noindex" /></Helmet>
+      <Helmet><title>Audit Admin, SCoAI</title><meta name="robots" content="noindex" /></Helmet>
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -232,7 +232,7 @@ export default function AuditAdmin() {
             <div className="flex items-center gap-3">
               <label className="text-xs uppercase tracking-wider text-muted-foreground">Run</label>
               <select value={activeRunId} onChange={(e)=>setActiveRunId(e.target.value)} className="bg-background border border-border rounded px-2 py-1 text-sm">
-                {runs.length === 0 && <option value="">— no runs yet —</option>}
+                {runs.length === 0 && <option value=""> -  no runs yet  - </option>}
                 {runs.map(r => <option key={r.id} value={r.id}>{r.id} · {r.status} · {r.completed_articles}/{r.total_articles}</option>)}
               </select>
               {activeRun && <Badge variant="outline" className="text-xs">{activeRun.models.join(" + ")}</Badge>}

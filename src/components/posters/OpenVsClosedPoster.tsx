@@ -135,9 +135,9 @@ const OpenVsClosedPoster = () => {
                 Read The Map
               </p>
               <ul className="text-[11px] text-foreground/80 leading-snug space-y-1.5">
-                <li>● <b>X</b> — how open the data/API is</li>
-                <li>● <b>Y</b> — how many trust gates protect it</li>
-                <li>● <b>Size</b> — depth of accumulated memory</li>
+                <li>● <b>X</b>, how open the data/API is</li>
+                <li>● <b>Y</b>, how many trust gates protect it</li>
+                <li>● <b>Size</b>, depth of accumulated memory</li>
               </ul>
             </div>
             <div

@@ -17,7 +17,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 const Methodology = () => (
   <SiteLayout>
     <Seo
-      title="Methodology — Two Registers, Monthly Cadence"
+      title="Methodology, Two Registers, Monthly Cadence"
       description="How the Supply Chain of Intelligence™ stays current: evergreen framework (the 10 layers) vs living market readings (placements, verdicts, predictions) re-reviewed monthly."
       path="/methodology"
     />
@@ -29,7 +29,7 @@ const Methodology = () => (
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed">
           The framework doesn't move. The placements do. This page is the contract
-          between what is evergreen and what is living — so readers always know
+          between what is evergreen and what is living, so readers always know
           which kind of claim they're reading.
         </p>
         <div className="mt-6">
@@ -43,12 +43,12 @@ const Methodology = () => (
         <div className="mb-10">
           <CanonicalDefinition variant="full" />
           <p className="text-xs text-muted-foreground mt-3">
-            The three registers below — Evergreen, Living, Cadence — are how
+            The three registers below, Evergreen, Living, Cadence, are how
             this site keeps the definition stable while the readings stay fresh.
           </p>
         </div>
 
-        <Section title="1. Evergreen — the framework">
+        <Section title="1. Evergreen, the framework">
           <p>
             The <strong>10 layers</strong>, the <strong>50 sublayers</strong>,
             the <strong>4 Laws of Defensibility</strong>,
@@ -62,15 +62,15 @@ const Methodology = () => (
           <p>
             If the framework itself ever changes, that is a versioned Paper bump
             recorded on the <Link to="/changelog" className="text-accent hover:underline">/changelog</Link>{" "}
-            — not a quiet edit.
+           , not a quiet edit.
           </p>
         </Section>
 
-        <Section title="2. Living — readings of the market">
+        <Section title="2. Living, readings of the market">
           <p>
             The <strong>Market Map</strong>, the <strong>Vertical Maps</strong>,{" "}
             <strong>Teardowns</strong>, <strong>Predictions</strong>, and{" "}
-            <strong>Verdicts</strong> are <strong>readings</strong> — applications of the
+            <strong>Verdicts</strong> are <strong>readings</strong>, applications of the
             framework to a market that moves every week. Every one of these
             surfaces carries an <FreshnessBadge asOf="Jun 2026" hideLink className="!inline-flex" /> badge
             and is re-reviewed on a fixed cadence.
@@ -86,19 +86,19 @@ const Methodology = () => (
         <Section title="3. The cadence">
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>1st of every month</strong> — re-review pass across all Market Maps,
+              <strong>1st of every month</strong>, re-review pass across all Market Maps,
               Vertical Maps, and Predictions. Verdicts get moved, dead companies
               get retired, freshness stamps get bumped.
             </li>
             <li>
-              <strong>Weekly</strong> — at least one new Teardown.
+              <strong>Weekly</strong>, at least one new Teardown.
             </li>
             <li>
-              <strong>Quarterly</strong> — the Paper is reviewed; bumped only if the
+              <strong>Quarterly</strong>, the Paper is reviewed; bumped only if the
               <em> framework</em> changed, not if examples did.
             </li>
             <li>
-              <strong>On-demand</strong> — when a major event happens (a model release, a
+              <strong>On-demand</strong>, when a major event happens (a model release, a
               regulatory move, a notable failure), the relevant Maps and
               Predictions get an out-of-cycle re-review the same week.
             </li>
@@ -109,7 +109,7 @@ const Methodology = () => (
           <p>
             A <FreshnessBadge asOf="Jun 2026" hideLink className="!inline-flex" /> badge means
             the page is a living reading and was reviewed in the month shown. If
-            you ever see a living surface without one, that is a bug — please
+            you ever see a living surface without one, that is a bug, please
             flag it.
           </p>
           <p>
@@ -122,7 +122,7 @@ const Methodology = () => (
         <Section title="5. Why this matters">
           <p>
             The most common criticism of any AI map is that it's already stale
-            by the time it's read. The answer isn't to publish less often — it's
+            by the time it's read. The answer isn't to publish less often, it's
             to be explicit about which claims are structural (the framework) and
             which are situational (the placements), then re-review the
             situational ones on a public cadence.

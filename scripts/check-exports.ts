@@ -1,5 +1,5 @@
 /**
- * check-exports.ts — fails fast if critical data-module exports are missing
+ * check-exports.ts, fails fast if critical data-module exports are missing
  * or shaped wrong, so the prerender step doesn't throw a cryptic Node ESM error.
  */
 

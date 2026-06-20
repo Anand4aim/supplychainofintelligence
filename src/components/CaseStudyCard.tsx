@@ -32,7 +32,7 @@ export interface CaseStudy {
   excerpt: string;
   layers: string[];
   /**
-   * Canonical sublayer ids (e.g. ["L1b","L5d","L8c"]) — drives sublayer-precision
+   * Canonical sublayer ids (e.g. ["L1b","L5d","L8c"]), drives sublayer-precision
    * chips and verdicts. Optional for back-compat with case studies that
    * haven't been upgraded from layer-level yet. See src/data/sublayerIndex.ts.
    */
@@ -65,7 +65,7 @@ export interface CaseStudy {
   /**
    * Pre-formatted ~120-150 word LinkedIn-ready snippet. Surfaces a "Copy as
    * LinkedIn post" affordance on the detail page. The CopySnippet component
-   * appends the canonical attribution footer automatically — do NOT include
+   * appends the canonical attribution footer automatically, do NOT include
    * the attribution in this string.
    */
   linkedin_snippet?: string;

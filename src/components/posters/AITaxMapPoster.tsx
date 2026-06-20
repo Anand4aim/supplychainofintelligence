@@ -8,7 +8,7 @@ const TAXES = [
   { layer: "L4", name: "API Dependency Tax",        tax: "Rate limits, deprecations, ToS shifts. Your roadmap = their decisions.", color: "L4" },
   { layer: "L5", name: "Context Tax",               tax: "Bigger windows = bigger bills. Context cost compounds per turn.", color: "L5" },
   { layer: "L5", name: "Orchestration Tax",         tax: "Each tool-call = a model hop. Latency × cost × failure surface.", color: "L5" },
-  { layer: "L7", name: "Distribution Tax",          tax: "App stores, ad platforms, search — they price you. You don't price them.", color: "L7" },
+  { layer: "L7", name: "Distribution Tax",          tax: "App stores, ad platforms, search, they price you. You don't price them.", color: "L7" },
 ];
 
 const AITaxMapPoster = () => {
@@ -89,7 +89,7 @@ const AITaxMapPoster = () => {
         {/* Footer */}
         <div className="mt-8 pt-4 flex flex-wrap items-baseline justify-between gap-3" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
           <p className="text-[11px] md:text-xs italic" style={{ color: MUTED, fontFamily: "'Playfair Display', serif" }}>
-            If you can't name your tax stack, your margin isn't real — it's just unbilled.
+            If you can't name your tax stack, your margin isn't real, it's just unbilled.
           </p>
           <p
             className="text-[9px] md:text-[10px] font-bold uppercase"

@@ -1,6 +1,6 @@
 // ─── Sublayer registry ──────────────────────────────────────────────
 // Single source of truth for sublayer lookups. Sublayer definitions
-// themselves live in `src/data/layers.ts` — this file just indexes them
+// themselves live in `src/data/layers.ts`, this file just indexes them
 // and exposes typed helpers so the rest of the app can cite sublayers
 // (L1b, L5d, L8c) instead of stopping at the layer level.
 //
@@ -24,7 +24,7 @@ export interface SublayerEntry {
   cssVar: string;       // --layer-1
   /** Anchor URL on the framework detail page, e.g. /framework/l1-data#l1b */
   href: string;
-  /** "L1b Proprietary Data" — canonical inline label */
+  /** "L1b Proprietary Data", canonical inline label */
   label: string;
 }
 
@@ -76,6 +76,6 @@ export const formatSublayers = (
     .join(sep);
 };
 
-/** Lookup wrapper — returns the name only, falling back to the id. */
+/** Lookup wrapper, returns the name only, falling back to the id. */
 export const sublayerName = (id: string): string =>
   SUBLAYER_LABEL[id] ?? id;

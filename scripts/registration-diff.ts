@@ -1,5 +1,5 @@
 /**
- * registration-diff.ts — white-box, prebuild diagnosis.
+ * registration-diff.ts, white-box, prebuild diagnosis.
  *
  * Compares the set of routes that SHOULD exist (DB rows + static registries)
  * against the set of routes that scripts/prerender.ts actually registers,
@@ -52,7 +52,7 @@ async function fetchLiveSlugs(): Promise<{ slugs: string[]; error?: string }> {
 
 /**
  * Parse scripts/prerender.ts as text and pull out the literal route strings
- * + the source files it imports from. We don't execute the script — that
+ * + the source files it imports from. We don't execute the script, that
  * would re-do the full Supabase fetch and import the SSR bundle. Reading
  * it as text is enough to know "did the author wire this source in?".
  */
@@ -122,7 +122,7 @@ async function main() {
 
   const reg = readPrerenderRegistration();
 
-  // Wiring report — fast "is the source even hooked up?" check.
+  // Wiring report, fast "is the source even hooked up?" check.
   console.log("Source wiring in scripts/prerender.ts:");
   const wiring: Array<[string, boolean]> = [
     ["live_articles → /live/*", reg.importsLiveSlugs],

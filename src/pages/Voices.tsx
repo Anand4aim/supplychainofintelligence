@@ -7,8 +7,8 @@ import { SketchBoard } from "@/components/sketch/SketchElements";
 const Voices = () => (
   <SiteLayout>
     <Seo
-      title="Voices — what operators say about the framework"
-      description="Product leaders, founders, and investors on how the Supply Chain of Intelligence™ — the 10 layers of the generative AI stack — changed how they reason about AI strategy."
+      title="Voices, what operators say about the framework"
+      description="Product leaders, founders, and investors on how the Supply Chain of Intelligence™, the 10 layers of the generative AI stack, changed how they reason about AI strategy."
       path="/voices"
     />
 
@@ -28,7 +28,7 @@ const Voices = () => (
           <p className="font-mono-marker text-[10px] tracking-[0.18em] text-amber-900 mb-1">PENDING APPROVAL</p>
           <p className="text-sm text-foreground/80 leading-relaxed">
             Quotes below are paraphrased reactions captured during workshops and 1:1s. Each person is listed with
-            their permission pending — every quote will be confirmed verbatim before being promoted publicly. If you
+            their permission pending, every quote will be confirmed verbatim before being promoted publicly. If you
             see your name and want to edit, remove, or sharpen your quote, <a href="mailto:anand@supplychainofai.com" className="text-accent underline underline-offset-2">email Anand</a>.
           </p>
         </SketchBoard>
@@ -72,7 +72,7 @@ const Voices = () => (
           The framework gets sharper when it gets challenged.
         </h2>
         <p className="text-muted-foreground mb-6">
-          If you have applied the 10 layers to your own product, roadmap, or investment thesis — share what
+          If you have applied the 10 layers to your own product, roadmap, or investment thesis, share what
           worked, what broke, and which layer definitions felt fuzzy. Counter-cases are especially welcome.
         </p>
         <a

@@ -20,7 +20,7 @@ const buildFallback = (fb?: Props["fallback"]): ForYou => {
   const layers = (fb?.layers ?? []).join(", ");
   if (v.includes("DEAD") || v.includes("EXPOSED")) {
     return {
-      product_leader: `If your roadmap leans on ${layers || "this layer"} alone, the moat is thin today. The counter-move is to deepen the stack — add proprietary data (L1), workflow execution (L5), or memory (L8) under what you already ship.`,
+      product_leader: `If your roadmap leans on ${layers || "this layer"} alone, the moat is thin today. The counter-move is to deepen the stack, add proprietary data (L1), workflow execution (L5), or memory (L8) under what you already ship.`,
       investor: `Re-underwrite positions concentrated in ${layers || "this layer"}. The thesis works only if management has a credible plan to add a deeper layer in the next 12–18 months.`,
       operator: `Hold off on multi-year commitments at this layer for now. Keep the relationship; renegotiate to shorter terms and watch how the vendor deepens.`,
     };
@@ -29,7 +29,7 @@ const buildFallback = (fb?: Props["fallback"]): ForYou => {
     return {
       product_leader: `This is the layer pattern worth studying: own at least one of L1 (data), L3 (compliance), or L8 (memory) under your surface. A pure L7 alone tends to compress over time.`,
       investor: `Durable layer ownership supports premium multiples. Underwrite the moat layer, not the ARR.`,
-      operator: `This is a reasonable stack to standardize on — switching cost is the feature, not the bug. Data and memory built here compounds for you.`,
+      operator: `This is a reasonable stack to standardize on, switching cost is the feature, not the bug. Data and memory built here compounds for you.`,
     };
   }
   if (v.includes("CONTESTED") || v.includes("CONSOLIDATING")) {

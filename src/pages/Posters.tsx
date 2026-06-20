@@ -65,8 +65,8 @@ const PosterBlock = ({ num, eyebrow, title, blurb, children, tone = "light" }: P
 const Posters = () => (
   <SiteLayout>
     <Seo
-      title="Posters — The Supply Chain of Intelligence™"
-      description="Twenty shareable posters of the 10-layer generative AI stack — the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
+      title="Posters, The Supply Chain of Intelligence™"
+      description="Twenty shareable posters of the 10-layer generative AI stack, the framework, the laws, the archetypes, the dynamics. Watermarked PNG and PDF. Free, citation-ready."
       path="/posters"
     />
     <SketchFilters />
@@ -79,7 +79,7 @@ const Posters = () => (
           Twenty posters of the framework.
         </h1>
         <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
-          The stack, the laws, the archetypes, the dynamics — every poster downloads as a watermarked PNG or PDF.
+          The stack, the laws, the archetypes, the dynamics, every poster downloads as a watermarked PNG or PDF.
           Use them in decks, on LinkedIn, on your wall. Citation-ready, no signup.
         </p>
         <Link
@@ -91,11 +91,11 @@ const Posters = () => (
       </div>
     </section>
 
-    {/* ──────────── SECTION I — THE STACK ──────────── */}
+    {/* ──────────── SECTION I, THE STACK ──────────── */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
         <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
-          I — The Stack
+          I, The Stack
         </p>
         <p className="font-display text-lg md:text-xl text-foreground/80 italic">
           Three ways to see all ten layers at once.
@@ -107,7 +107,7 @@ const Posters = () => (
       num="00"
       eyebrow="The Framework · One Image"
       title="At-a-Glance Summary"
-      blurb="The single image to answer 'what is this framework?' — 10 layers with a one-liner each, plus the 4 laws strip. Built for screenshot + paste."
+      blurb="The single image to answer 'what is this framework?', 10 layers with a one-liner each, plus the 4 laws strip. Built for screenshot + paste."
     >
       <FrameworkSummaryPoster />
     </PosterBlock>
@@ -135,7 +135,7 @@ const Posters = () => (
       num="03"
       eyebrow="One Square"
       title="The Stack, on a Square"
-      blurb="Sized for LinkedIn, X, decks, Pinterest. Ten chips, the tagline, the attribution — nothing else."
+      blurb="Sized for LinkedIn, X, decks, Pinterest. Ten chips, the tagline, the attribution, nothing else."
     >
       <div className="max-w-[640px]">
         <StackPoster />
@@ -152,11 +152,11 @@ const Posters = () => (
       <AboveBelowLinePoster />
     </PosterBlock>
 
-    {/* ──────────── SECTION II — THE ARGUMENTS ──────────── */}
+    {/* ──────────── SECTION II, THE ARGUMENTS ──────────── */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
         <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
-          II — The Arguments
+          II, The Arguments
         </p>
         <p className="font-display text-lg md:text-xl text-foreground/80 italic">
           The posters that win the disagreement.
@@ -196,17 +196,17 @@ const Posters = () => (
       num="08"
       eyebrow="Buzzword, Decoded"
       title="The Agent Decoder"
-      blurb="'Agent' is not a layer. It's L5 + L7 (+L8) packaging. Use this whenever someone announces an agent — and ask which three layers."
+      blurb="'Agent' is not a layer. It's L5 + L7 (+L8) packaging. Use this whenever someone announces an agent, and ask which three layers."
       tone="dark"
     >
       <AgentDecoderPoster />
     </PosterBlock>
 
-    {/* ──────────── SECTION III — THE MODELS ──────────── */}
+    {/* ──────────── SECTION III, THE MODELS ──────────── */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
         <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
-          III — The Models
+          III, The Models
         </p>
         <p className="font-display text-lg md:text-xl text-foreground/80 italic">
           The frameworks-within-the-framework.
@@ -237,7 +237,7 @@ const Posters = () => (
       num="11"
       eyebrow="For Non-Technical Readers"
       title="The Gold Mining Analogy"
-      blurb="The whole stack told as one extended metaphor — from the land itself to the polished jewelry. The poster to hand a board member."
+      blurb="The whole stack told as one extended metaphor, from the land itself to the polished jewelry. The poster to hand a board member."
     >
       <GoldMiningPoster />
     </PosterBlock>
@@ -252,11 +252,11 @@ const Posters = () => (
       <WhereDoYouLivePoster />
     </PosterBlock>
 
-    {/* ──────────── SECTION IV — THE DYNAMICS ──────────── */}
+    {/* ──────────── SECTION IV, THE DYNAMICS ──────────── */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
         <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
-          IV — The Dynamics
+          IV, The Dynamics
         </p>
         <p className="font-display text-lg md:text-xl text-foreground/80 italic">
           Where the framework becomes an operating system.
@@ -268,7 +268,7 @@ const Posters = () => (
       num="13"
       eyebrow="Where The Meter Runs"
       title="The AI Tax Map"
-      blurb="Seven taxes every AI product pays — token, context, orchestration, inference margin, API dependency, model lock-in, distribution. Most founders only price for two."
+      blurb="Seven taxes every AI product pays, token, context, orchestration, inference margin, API dependency, model lock-in, distribution. Most founders only price for two."
     >
       <AITaxMapPoster />
     </PosterBlock>
@@ -287,7 +287,7 @@ const Posters = () => (
       num="15"
       eyebrow="Four Strategic Arcs"
       title="The Migration Paths"
-      blurb="Companies that survive Law I migrate. Four archetypal arcs — Wrapper to Workflow, Surface to Memory, Tool to System, Data to Platform — cover almost every move worth making."
+      blurb="Companies that survive Law I migrate. Four archetypal arcs, Wrapper to Workflow, Surface to Memory, Tool to System, Data to Platform, cover almost every move worth making."
     >
       <MigrationPathsPoster />
     </PosterBlock>
@@ -314,18 +314,18 @@ const Posters = () => (
     <PosterBlock
       num="18"
       eyebrow="What Google Actually Said"
-      title="GEO is Just SEO — The Five Myths"
-      blurb="Google's Nov 2025 generative-AI search guide, decoded through the 10-layer stack. The AEO/GEO playbook being sold to founders is mostly noise — here's what actually moves the needle."
+      title="GEO is Just SEO, The Five Myths"
+      blurb="Google's Nov 2025 generative-AI search guide, decoded through the 10-layer stack. The AEO/GEO playbook being sold to founders is mostly noise, here's what actually moves the needle."
       tone="dark"
     >
       <GoogleGeoMythPoster />
     </PosterBlock>
 
-    {/* ──────────── SECTION V — FOR YOUR AUDIENCE ──────────── */}
+    {/* ──────────── SECTION V, FOR YOUR AUDIENCE ──────────── */}
     <section className="bg-secondary/30 border-t border-border">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-2">
         <p className="font-mono-marker text-[11px] tracking-[0.32em] uppercase text-accent font-bold mb-1">
-          V — For Your Audience
+          V, For Your Audience
         </p>
         <p className="font-display text-lg md:text-xl text-foreground/80 italic">
           Role-specific posters to share alongside your own POV.
@@ -337,7 +337,7 @@ const Posters = () => (
       num="19"
       eyebrow="For Product Leaders"
       title="The Product Leader's Lens"
-      blurb="Five questions to ask of any AI feature on your roadmap — mapped to the layer each one stress-tests. The poster that ends 'just a wrapper' arguments in a standup."
+      blurb="Five questions to ask of any AI feature on your roadmap, mapped to the layer each one stress-tests. The poster that ends 'just a wrapper' arguments in a standup."
     >
       <ProductLeaderLensPoster />
     </PosterBlock>
@@ -345,7 +345,7 @@ const Posters = () => (
     <PosterBlock
       num="20"
       eyebrow="For Investors"
-      title="The Investor's Lens — Rent or Own"
+      title="The Investor's Lens, Rent or Own"
       blurb="A 10-layer diligence map. Which layers compound, which commoditize, and the five questions every AI deal memo should answer before the check clears."
       tone="dark"
     >

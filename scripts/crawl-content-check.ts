@@ -1,5 +1,5 @@
 /**
- * Crawl content check — verifies that the prerendered HTML actually contains
+ * Crawl content check, verifies that the prerendered HTML actually contains
  * the page's own content, not the homepage shell.
  *
  * Failure mode this catches: a route is listed in App.tsx but missing from
@@ -46,7 +46,7 @@ type Check = {
   path: string;
   // Substring that MUST appear in the prerendered HTML for this route to
   // count as "real content". Usually the headline or a slug-derived phrase.
-  // Matched case-insensitively. Optional — if absent, we only check that
+  // Matched case-insensitively. Optional, if absent, we only check that
   // the route's HTML differs from "/".
   expect?: string;
   group: string;
@@ -82,7 +82,7 @@ async function fetchLiveSamples(): Promise<Array<{ slug: string; headline: strin
   }
 }
 
-// Build the sample set. We don't need every URL — a representative slice
+// Build the sample set. We don't need every URL, a representative slice
 // per page-type is enough to catch a missing prerender registration.
 function pick<T>(arr: T[], n: number): T[] {
   if (arr.length <= n) return arr;
@@ -93,7 +93,7 @@ function pick<T>(arr: T[], n: number): T[] {
 async function buildChecks(): Promise<Check[]> {
   const checks: Check[] = [];
 
-  // /live/:slug — the route family that was broken first
+  // /live/:slug, the route family that was broken first
   const live = await fetchLiveSamples();
   for (const a of pick(live, 5)) {
     checks.push({
@@ -104,7 +104,7 @@ async function buildChecks(): Promise<Check[]> {
     });
   }
 
-  // /market-map/:vertical — every "live" vertical (small set)
+  // /market-map/:vertical, every "live" vertical (small set)
   for (const v of VERTICALS.filter((v) => v.status === "live")) {
     checks.push({
       group: "market-map",
@@ -122,7 +122,7 @@ async function buildChecks(): Promise<Check[]> {
     });
   }
 
-  // /analysis/:slug — sample, including the 5 the audit flagged
+  // /analysis/:slug, sample, including the 5 the audit flagged
   const flaggedAnalysis = new Set([
     "jasper-vs-grammarly-copilot",
     "five-eras-of-software",
@@ -150,7 +150,7 @@ async function buildChecks(): Promise<Check[]> {
     });
   }
 
-  // /laws/:slug — all of them, it's a small set
+  // /laws/:slug, all of them, it's a small set
   for (const e of LAW_ESSAYS) {
     checks.push({
       group: "laws",
@@ -159,7 +159,7 @@ async function buildChecks(): Promise<Check[]> {
     });
   }
 
-  // /posts/:slug — sanity check, these were already passing
+  // /posts/:slug, sanity check, these were already passing
   for (const p of pick(POSTS, 3)) {
     checks.push({
       group: "posts",
@@ -184,7 +184,7 @@ async function run() {
 
   const home = await get("/");
   if (home.status !== 200) {
-    console.error(`✗ "/" returned ${home.status} — aborting.`);
+    console.error(`✗ "/" returned ${home.status}, aborting.`);
     process.exit(1);
   }
   const homeTitle = titleFrom(home.html);
@@ -208,11 +208,11 @@ async function run() {
       if (r.status !== 200) {
         reason = `HTTP ${r.status}`;
       } else if (r.bytes === homeBytes) {
-        reason = `byte-identical to "/" (${r.bytes} bytes — homepage shell served)`;
+        reason = `byte-identical to "/" (${r.bytes} bytes, homepage shell served)`;
       } else if (needle && !hay.includes(needle)) {
         reason = `expected "${check.expect}" not found in HTML`;
       } else if (!needle && title && title === homeTitle) {
-        reason = `<title> matches homepage — likely SPA fallback`;
+        reason = `<title> matches homepage, likely SPA fallback`;
       } else {
         ok = true;
         reason = needle ? `found "${check.expect}"` : `title differs from home`;

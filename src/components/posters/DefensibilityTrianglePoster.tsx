@@ -70,7 +70,7 @@ const DefensibilityTrianglePoster = () => {
               ALL THREE
             </text>
 
-            {/* Top vertex — L1b */}
+            {/* Top vertex, L1b */}
             <circle cx="300" cy="40" r="56" fill={c1} />
             <text x="300" y="36" textAnchor="middle" fontSize="22" fontWeight="700" fill="white" fontFamily="'JetBrains Mono', monospace">
               L1b
@@ -79,7 +79,7 @@ const DefensibilityTrianglePoster = () => {
               PROPRIETARY DATA
             </text>
 
-            {/* Bottom-right — L3 */}
+            {/* Bottom-right, L3 */}
             <circle cx="560" cy="480" r="56" fill={c3} />
             <text x="560" y="476" textAnchor="middle" fontSize="22" fontWeight="700" fill="white" fontFamily="'JetBrains Mono', monospace">
               L3
@@ -88,7 +88,7 @@ const DefensibilityTrianglePoster = () => {
               TRUST GATES
             </text>
 
-            {/* Bottom-left — L8 */}
+            {/* Bottom-left, L8 */}
             <circle cx="40" cy="480" r="56" fill={c8} />
             <text x="40" y="476" textAnchor="middle" fontSize="22" fontWeight="700" fill="white" fontFamily="'JetBrains Mono', monospace">
               L8

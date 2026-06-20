@@ -1,14 +1,14 @@
 import Eyebrow from "@/components/Eyebrow";
 
 /**
- * ThreeAreasOfAI — cold-open slide 1.
+ * ThreeAreasOfAI, cold-open slide 1.
  *
  * Scope-setter for first-time readers. AI is transforming three things;
  * this site is about one of them (Core Product). Disarms the
  * "what about copilots / RPA / data?" objection in 10 seconds.
  *
  * Visual: three concentric rings, Core Product highlighted as the
- * innermost — the hardest, most defensible, least talked-about area.
+ * innermost, the hardest, most defensible, least talked-about area.
  */
 
 type Area = {
@@ -99,7 +99,7 @@ const ThreeAreasOfAI = () => (
 
       <p className="mt-8 text-[13.5px] md:text-[14px] text-muted-foreground leading-relaxed max-w-3xl">
         The Supply Chain of Intelligence™ is a framework for{" "}
-        <span className="text-foreground font-semibold">area 03 — Core Product</span>.
+        <span className="text-foreground font-semibold">area 03, Core Product</span>.
         It does not score your internal copilots or your marketing automation.
         It scores whether the AI <em>inside what you sell</em> is defensible.
       </p>

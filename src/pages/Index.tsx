@@ -49,7 +49,7 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Supply Chain of Intelligence™ — The Universal AI Economy Paradigm"
+        title="Supply Chain of Intelligence™, The Universal AI Economy Paradigm"
         description="The universal paradigm for the generative AI economy. Adopted by product leaders and AI companies across all verticals. 10 layers, strong proof, real case studies."
         path="/"
       />
@@ -73,13 +73,13 @@ const Index = () => {
                 A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
               </h1>
               <p className="text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl mb-4">
-                Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong> — from compute and data to workflows, surfaces, and memory — and tells you where value actually accrues.
+                Is your product a moat, a workflow, or a wrapper a platform will absorb? The Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong>, from compute and data to workflows, surfaces, and memory, and tells you where value actually accrues.
               </p>
               <p className="font-display text-[15px] md:text-[16px] text-foreground/90 leading-relaxed max-w-xl mb-3 border-l-2 border-accent pl-3">
-                Designed as a universal industry paradigm for the entire AI economy — across all verticals and companies.
+                Designed as a universal industry paradigm for the entire AI economy, across all verticals and companies.
               </p>
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
-                The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack.
+                The Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/framework" className="btn-sketch">
@@ -95,7 +95,7 @@ const Index = () => {
             </motion.div>
 
 
-            {/* Right: L-1–L8 layer stack — editorial chip + sublayer cells */}
+            {/* Right: L-1–L8 layer stack, editorial chip + sublayer cells */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -123,12 +123,12 @@ const Index = () => {
                       transition={{ delay: 0.35 + i * 0.04 }}
                       className="grid grid-cols-[96px_1fr] gap-[6px] items-stretch"
                     >
-                      {/* Layer chip — colored, links to layer */}
+                      {/* Layer chip, colored, links to layer */}
                       <Link
                         to={`/framework#${layer.id}`}
                         className="rounded-md px-2.5 py-2 flex flex-col justify-center transition-transform hover:-translate-y-[1px]"
                         style={{ background: c }}
-                        title={`${layer.id} — ${layer.name}`}
+                        title={`${layer.id}, ${layer.name}`}
                       >
                         <div className="font-mono-marker text-white text-[11px] font-bold tracking-wider leading-none">
                           {layer.id === "L-1" ? "L−1" : layer.id}
@@ -184,7 +184,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ THE DEFINITION — three registers, canonical block ═══════════ */}
+      {/* ═══════════ THE DEFINITION, three registers, canonical block ═══════════ */}
       <section className="bg-background border-b border-border/40">
         <div className="max-w-3xl mx-auto px-6 py-12 md:py-16">
           <Eyebrow className="mb-4">The definition</Eyebrow>
@@ -199,7 +199,7 @@ const Index = () => {
       {/* ═══════════ RUN THE FRAMEWORK PROMPT ═══════════ */}
       <PromptSection />
 
-      {/* ═══════════ PLAIN-TEXT MIRRORS — AI assistant fallbacks ═══════════ */}
+      {/* ═══════════ PLAIN-TEXT MIRRORS, AI assistant fallbacks ═══════════ */}
       <section className="border-b border-border/40 bg-background">
         <div className="max-w-6xl mx-auto px-6 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1">
           <span className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground">
@@ -217,19 +217,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ COLD OPEN — Three Areas of AI Transformation ═══════════ */}
+      {/* ═══════════ COLD OPEN, Three Areas of AI Transformation ═══════════ */}
       <ThreeAreasOfAI />
 
-      {/* ═══════════ COLD OPEN — Two Lenses on Core Product ═══════════ */}
+      {/* ═══════════ COLD OPEN, Two Lenses on Core Product ═══════════ */}
       <TwoLensesOnCoreProduct />
 
-      {/* ═══════════ GOLD MINING ANCHOR — Tier-1 one-liner ═══════════ */}
+      {/* ═══════════ GOLD MINING ANCHOR, Tier-1 one-liner ═══════════ */}
       <GoldMiningAnchor />
 
-      {/* ═══════════ THREE-LAYER PROOF — Bloomberg / Harvey / Sierra ═══════════ */}
+      {/* ═══════════ THREE-LAYER PROOF, Bloomberg / Harvey / Sierra ═══════════ */}
       <ThreeLayerProof />
 
-      {/* ═══════════ CONTRAST ROW — Jasper vs Cursor ═══════════ */}
+      {/* ═══════════ CONTRAST ROW, Jasper vs Cursor ═══════════ */}
       <ContrastRow />
 
       {/* ═══════════ FRAMEWORK SUMMARY POSTER + WORKED EXAMPLE ═══════════ */}
@@ -242,7 +242,7 @@ const Index = () => {
 
 
 
-          {/* Framework summary poster — the "what is this?" image people screenshot and share */}
+          {/* Framework summary poster, the "what is this?" image people screenshot and share */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -264,7 +264,7 @@ const Index = () => {
 
 
 
-          {/* Worked example — Sales Tech layer matrix (now below the summary poster) */}
+          {/* Worked example, Sales Tech layer matrix (now below the summary poster) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -273,7 +273,7 @@ const Index = () => {
           >
             <ExportablePng
               fileName="scoi-sales-marketing-layer-matrix"
-              caption="Sales & Marketing Tech — Layer Matrix"
+              caption="Sales & Marketing Tech, Layer Matrix"
             >
             <SketchBoard className="p-5 md:p-8">
               <p className="font-mono-marker text-[11px] tracking-[0.2em] text-accent mb-2">
@@ -412,7 +412,7 @@ const Index = () => {
               </div>
 
               <p className="font-display italic text-[13px] md:text-[14px] text-orange-700 text-center mt-4 leading-relaxed max-w-3xl mx-auto">
-                Claude owns L2 and is reaching into L5/L6/L7 — gravity at work. Apollo thins toward a data + connector role
+                Claude owns L2 and is reaching into L5/L6/L7, gravity at work. Apollo thins toward a data + connector role
                 as Claude becomes the marketer's command center. Much of martech gets compressed unless it deepens into L1 or L8.
               </p>
             </SketchBoard>
@@ -421,30 +421,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* StartHereStrip removed in v3 — Three-Layer Proof now serves the lobby role */}
+      {/* StartHereStrip removed in v3, Three-Layer Proof now serves the lobby role */}
 
-      {/* ═══════════ AI DEFENSIBILITY AUDIT — hidden from public view ═══════════ */}
+      {/* ═══════════ AI DEFENSIBILITY AUDIT, hidden from public view ═══════════ */}
 
 
       {/* ═══════════ PROOF OF CORPUS ═══════════ */}
       <ProofOfCorpus />
 
 
-      {/* Gold Mining Analogy moved to /framework — canonical reference */}
+      {/* Gold Mining Analogy moved to /framework, canonical reference */}
 
 
-      {/* Full 10-Layer Map + Defensible Triangle moved to /framework — canonical reference */}
+      {/* Full 10-Layer Map + Defensible Triangle moved to /framework, canonical reference */}
 
 
-      {/* Four Structural Laws moved to /framework — canonical reference */}
+      {/* Four Structural Laws moved to /framework, canonical reference */}
 
 
       {/* ═══════════ VOICES ON THE FRAMEWORK ═══════════ */}
       <VoicesStrip />
 
-      {/* AI DEFENSIBILITY AUDIT — removed from public view */}
+      {/* AI DEFENSIBILITY AUDIT, removed from public view */}
 
-      {/* Crux moved up — right after the Framework summary poster */}
+      {/* Crux moved up, right after the Framework summary poster */}
 
 
       {/* ═══════════ CASE STUDIES ═══════════ */}
@@ -456,7 +456,7 @@ const Index = () => {
   The Framework in Action
 </Eyebrow>
               <h2 className="font-display text-[24px] md:text-[30px] font-bold text-foreground">
-                Case Studies — Proof Through the Stack
+                Case Studies, Proof Through the Stack
               </h2>
             </div>
             <Link to="/analysis" className="hidden md:inline-flex items-center gap-1 text-sm text-accent font-semibold hover:gap-2 transition-all">
@@ -478,7 +478,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════ PROOF RAIL — ALL 19 WORKED EXAMPLES ═══════════ */}
+      {/* ═══════════ PROOF RAIL, ALL 19 WORKED EXAMPLES ═══════════ */}
       <section id="proof-rail" className="bg-background border-y border-border">
         <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
           <motion.div {...fadeIn} className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-7">
@@ -488,7 +488,7 @@ const Index = () => {
                 All {CASE_STUDIES.length} worked examples, in one rail
               </h2>
               <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
-                Every analysis applies the same 10-layer lens to a real company or category — same framework, different verdicts. Scroll to scan; click any to read.
+                Every analysis applies the same 10-layer lens to a real company or category, same framework, different verdicts. Scroll to scan; click any to read.
               </p>
             </div>
             <Link to="/analysis" className="shrink-0 inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:gap-2 transition-all">
@@ -539,7 +539,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* The Intelligence Cube moved to /framework — canonical reference (Rule B) */}
+      {/* The Intelligence Cube moved to /framework, canonical reference (Rule B) */}
 
       {/* ═══════════ DIAGNOSTIC CTA ═══════════ */}
       <section className="bg-secondary/40">
@@ -557,7 +557,7 @@ const Index = () => {
                   "What layer do you think you own?",
                   "What sublayer is actually defensible?",
                   "What happens when L7 becomes free?",
-                  "Are you rising by gravity — or climbing down too late?",
+                  "Are you rising by gravity, or climbing down too late?",
                   "Do you own any part of the Defensible Triangle?",
                 ].map((q, i) => (
                   <div key={i} className="flex items-start gap-3">

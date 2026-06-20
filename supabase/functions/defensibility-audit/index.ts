@@ -1,4 +1,4 @@
-// Defensibility Audit — public tool.
+// Defensibility Audit, public tool.
 // Pipeline: Perplexity research -> GPT-5-mini drafter -> Gemini-2.5-pro critic -> reconcile.
 // Returns a structured framework-native verdict. If public data is thin, short-circuits
 // to a NO_DATA response rather than hallucinating.
@@ -38,7 +38,7 @@ async function researchPerplexity(company: string, userContext?: string): Promis
 7. Compliance / trust posture (SOC2, HIPAA, audit, eval, safety).
 8. Funding stage, lead investors, last round.
 ${userContext ? `\nADDITIONAL CONTEXT FROM USER (use this, but verify against public data):\n${userContext}\n` : ""}
-If you genuinely cannot find ANY public information matching this company name (e.g. it appears to be a typo or doesn't exist), say "INSUFFICIENT_PUBLIC_DATA" at the top. Otherwise, do your best with whatever public footprint exists — website copy, LinkedIn, press, GitHub, Crunchbase, podcasts. Cite specific products, customers, contracts, headcount, numbers when possible. No hype.`;
+If you genuinely cannot find ANY public information matching this company name (e.g. it appears to be a typo or doesn't exist), say "INSUFFICIENT_PUBLIC_DATA" at the top. Otherwise, do your best with whatever public footprint exists, website copy, LinkedIn, press, GitHub, Crunchbase, podcasts. Cite specific products, customers, contracts, headcount, numbers when possible. No hype.`;
 
   try {
     const r = await fetch("https://api.perplexity.ai/chat/completions", {
@@ -47,7 +47,7 @@ If you genuinely cannot find ANY public information matching this company name (
       body: JSON.stringify({
         model: "sonar-pro",
         messages: [
-          { role: "system", content: "You are a rigorous tech-industry analyst with deep AI/software coverage. Search broadly — company websites, LinkedIn, GitHub, Crunchbase, press, podcasts, investor decks. Be thorough; only declare INSUFFICIENT_PUBLIC_DATA if the name truly returns nothing." },
+          { role: "system", content: "You are a rigorous tech-industry analyst with deep AI/software coverage. Search broadly, company websites, LinkedIn, GitHub, Crunchbase, press, podcasts, investor decks. Be thorough; only declare INSUFFICIENT_PUBLIC_DATA if the name truly returns nothing." },
           { role: "user", content: q },
         ],
         temperature: 0.2,
@@ -58,7 +58,7 @@ If you genuinely cannot find ANY public information matching this company name (
     const j = await r.json();
     const text: string = j.choices?.[0]?.message?.content ?? "";
     const head = text.trim().slice(0, 200);
-    // Only the explicit marker counts. Drop the length heuristic — short answers about real
+    // Only the explicit marker counts. Drop the length heuristic, short answers about real
     // small companies were getting nuked. Critic+drafter handle thin-evidence downgrading.
     const insufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || text.trim().length < 120;
     return { text, insufficient };
@@ -92,7 +92,7 @@ ${userContext ? `\nUSER-PROVIDED CONTEXT:\n${userContext}\n` : ""}`;
 async function research(company: string, userContext?: string): Promise<{ text: string; insufficient: boolean }> {
   const pplx = await researchPerplexity(company, userContext);
   if (!pplx.insufficient) return pplx;
-  // Perplexity thin — try Gemini training knowledge as a second source
+  // Perplexity thin, try Gemini training knowledge as a second source
   const gem = await researchGeminiFallback(company, userContext);
   const head = gem.trim().slice(0, 200);
   const gemInsufficient = /^\s*INSUFFICIENT_PUBLIC_DATA\b/i.test(head) || gem.trim().length < 120;
@@ -100,7 +100,7 @@ async function research(company: string, userContext?: string): Promise<{ text: 
     const combined = [pplx.text && `[Perplexity]\n${pplx.text}`, `[Model knowledge]\n${gem}`, userContext && `[User context]\n${userContext}`].filter(Boolean).join("\n\n");
     return { text: combined, insufficient: false };
   }
-  // Both empty — only insufficient if no user context either
+  // Both empty, only insufficient if no user context either
   return { text: userContext || pplx.text || "", insufficient: !userContext || userContext.length < 200 };
 }
 
@@ -113,10 +113,10 @@ const AUDIT_SCHEMA = {
     verdict_tier: { type: "string", enum: ["fortress", "tilting_fortress", "mixed", "exposed", "wrapper_at_risk", "insufficient_data"] },
     score: { type: "integer", minimum: 0, maximum: 100, description: "Composite defensibility. 80+=fortress, 60-79=tilting, 40-59=mixed, 20-39=exposed, <20=wrapper." },
     one_line: { type: "string", description: "One-sentence verdict in Stratechery voice. Name the layers." },
-    aha: { type: "string", description: "ONE sentence that delivers a surprise — the non-obvious structural insight a smart reader wouldn't get from skimming the company's homepage. NOT a summary. NOT the verdict restated. Something that reframes how you see them. If you can't write a real aha, write 'No surprise: behaves exactly as positioned.'" },
+    aha: { type: "string", description: "ONE sentence that delivers a surprise, the non-obvious structural insight a smart reader wouldn't get from skimming the company's homepage. NOT a summary. NOT the verdict restated. Something that reframes how you see them. If you can't write a real aha, write 'No surprise: behaves exactly as positioned.'" },
     counter_thesis: { type: "string", description: "2-3 sentences. What would have to be true for this audit to read WRONG in 18 months? The strongest steelman that this company is actually defensible in ways the framework misses, or the move that would flip the verdict. Cite a specific layer." },
     domain: { type: "string", description: "Short domain/vertical label (e.g. 'Legal AI', 'CX Agents', 'Dev Tools')." },
-    layers_owned: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers the company structurally owns or is meaningfully building toward. Be brutal — max 4." },
+    layers_owned: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers the company structurally owns or is meaningfully building toward. Be brutal, max 4." },
     layers_rented: { type: "array", items: { type: "string", enum: ALL_LAYERS }, description: "Layers they depend on but do not own. This is their risk list." },
     sublayer_claims: {
       type: "array",
@@ -215,9 +215,9 @@ const AUDIT_SCHEMA = {
           priority: { type: "string", enum: ["P0", "P1", "P2"], description: "P0 = next 90d, existential. P1 = next 180d, defensive moat. P2 = next 365d, long-game." },
           horizon: { type: "string", enum: ["90d", "180d", "365d"] },
           sublayer: { type: "string", enum: ALL_SUBLAYERS },
-          move: { type: "string", description: "1-2 sentences. Concrete product/data/distribution action — not 'invest in AI'." },
+          move: { type: "string", description: "1-2 sentences. Concrete product/data/distribution action, not 'invest in AI'." },
           law: { type: "string", enum: ["Law I", "Law II", "Law III", "Law IV"], description: "Which structural Law this move is grounded in." },
-          why: { type: "string", description: "1 sentence beginning with the Law, e.g. 'Law II — without memory, every session restarts the relationship; closes the L8c gap before Anthropic ships persistent memory.'" },
+          why: { type: "string", description: "1 sentence beginning with the Law, e.g. 'Law II, without memory, every session restarts the relationship; closes the L8c gap before Anthropic ships persistent memory.'" },
         },
         required: ["priority", "horizon", "sublayer", "move", "law", "why"],
       },
@@ -299,7 +299,7 @@ function reconcile(draft: any, critic: any) {
     const c: any = criticMap.get(s);
     if (d && c) {
       const minConf = conf[d.confidence] <= conf[c.confidence] ? d.confidence : c.confidence;
-      // Take the WEAKER provenance — if one critic only inferred, mark inference.
+      // Take the WEAKER provenance, if one critic only inferred, mark inference.
       const dp = d.provenance || "assumption";
       const cp = c.provenance || "assumption";
       const minProv = provRank[dp] <= provRank[cp] ? dp : cp;
@@ -347,7 +347,7 @@ function reconcile(draft: any, critic: any) {
   }
   const sublayer_gaps = Array.from(gapMap.values()).slice(0, 4);
 
-  // Sublayer depth: take the MIN of the two critics per sublayer — stingy by design.
+  // Sublayer depth: take the MIN of the two critics per sublayer, stingy by design.
   // Anything only one model saw gets downgraded by 1 (with a floor of 0).
   const sublayer_depth: Record<string, number> = {};
   const dd = (draft.sublayer_depth || {}) as Record<string, number>;
@@ -361,7 +361,7 @@ function reconcile(draft: any, critic: any) {
     if (merged > 0) sublayer_depth[k] = merged;
   }
 
-  // Disagreement panel — surface what the two critics actually split on.
+  // Disagreement panel, surface what the two critics actually split on.
   const draftSubKeys = new Set((draft.sublayer_claims || []).map((c: any) => c.sublayer));
   const criticSubKeys = new Set((critic.sublayer_claims || []).map((c: any) => c.sublayer));
   const subs_only_drafter = [...draftSubKeys].filter((s) => !criticSubKeys.has(s));
@@ -475,7 +475,7 @@ Deno.serve(async (req) => {
         verdict_tier: "insufficient_data",
         score: null,
         one_line: `No substantive public footprint for "${co}". Either too early-stage to audit from public data, or the name didn't match a known company.`,
-        guidance: "Paste 2-3 paragraphs in the context box describing the product, customers, data, and how it works — we'll audit on that instead.",
+        guidance: "Paste 2-3 paragraphs in the context box describing the product, customers, data, and how it works, we'll audit on that instead.",
         research_snippet: researchText.slice(0, 600),
       }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
@@ -489,7 +489,7 @@ ${ctx ? `\nUSER-PROVIDED CONTEXT:\n${ctx}\n` : ""}
 PUBLIC RESEARCH:
 ${researchText.slice(0, 6000)}
 
-Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims. EACH claim MUST carry a provenance tag: evidence (cited from research/user context), inference (structural deduction from named facts), or assumption (framework-pattern guess). Be honest — over-tagging as 'evidence' will be penalized. (2) Identify 2-4 sublayer GAPS with provenance. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy — typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents. A "model wrapper" almost never exceeds 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players + 2-3 imminent L2/L4 juggernaut moves with timeframe. (6) Roadmap: exactly 5 moves. EACH must cite a specific sublayer AND a Law (I/II/III/IV); 'why' must START with the law name. (7) 3 open questions. (8) Strategic snippet. (9) **aha**: ONE sentence delivering a non-obvious structural surprise — what the smart reader wouldn't have seen by skimming the homepage. (10) **counter_thesis**: 2-3 sentences steelmanning what would make this audit read wrong in 18 months — the move that flips the verdict.`;
+Audit this company. (1) Map owned/rented layers + 3-7 sublayer claims. EACH claim MUST carry a provenance tag: evidence (cited from research/user context), inference (structural deduction from named facts), or assumption (framework-pattern guess). Be honest, over-tagging as 'evidence' will be penalized. (2) Identify 2-4 sublayer GAPS with provenance. (3) **sublayer_depth**: score EVERY sublayer they touch on the 0–5 scale. Default 0. Be stingy, typical startup has 3–10 non-zero cells, mostly 1s and 2s, maybe one 3. Reserve 4s for defensible-at-scale capabilities. Reserve 5s for industry-defining incumbents. A "model wrapper" almost never exceeds 2 outside L7. (4) Triangle. (5) Competitive landscape: 2-4 named adjacent players + 2-3 imminent L2/L4 juggernaut moves with timeframe. (6) Roadmap: exactly 5 moves. EACH must cite a specific sublayer AND a Law (I/II/III/IV); 'why' must START with the law name. (7) 3 open questions. (8) Strategic snippet. (9) **aha**: ONE sentence delivering a non-obvious structural surprise, what the smart reader wouldn't have seen by skimming the homepage. (10) **counter_thesis**: 2-3 sentences steelmanning what would make this audit read wrong in 18 months, the move that flips the verdict.`;
 
     const results = await Promise.allSettled([
       callLLM("openai/gpt-5-mini", system, userPrompt),

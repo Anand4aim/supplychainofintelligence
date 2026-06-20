@@ -77,8 +77,8 @@ const WhereDoYouLivePoster = () => {
           <div className="md:w-[260px] flex flex-col gap-4">
             {[
               { q: "Q1", t: "Which layers do you own?", h: "Tick boxes →" },
-              { q: "Q2", t: "Which is your bottleneck?", h: "The scarce one — Law II." },
-              { q: "Q3", t: "What happens if L2 ships it free?", h: "If nothing — you're inside Law I." },
+              { q: "Q2", t: "Which is your bottleneck?", h: "The scarce one, Law II." },
+              { q: "Q3", t: "What happens if L2 ships it free?", h: "If nothing, you're inside Law I." },
             ].map((c) => (
               <div
                 key={c.q}
@@ -100,7 +100,7 @@ const WhereDoYouLivePoster = () => {
         {/* Footer */}
         <div className="mt-8 pt-4 border-t border-foreground/15 flex flex-wrap items-baseline justify-between gap-3">
           <p className="font-sketch text-[11px] md:text-xs text-muted-foreground italic">
-            If the boxes you tick are only L7 — the model layer below you owns your roadmap.
+            If the boxes you tick are only L7, the model layer below you owns your roadmap.
           </p>
           <p className="font-mono-marker text-[9px] md:text-[10px] tracking-[0.15em] uppercase text-foreground/60">
             Anand Arivukkarasu · SupplyChainOfAI.com
