@@ -2,7 +2,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { TESTIMONIALS } from "@/data/testimonials";
-import { SketchBoard } from "@/components/sketch/SketchElements";
+
 
 const Voices = () => (
   <SiteLayout>
