@@ -76,7 +76,9 @@ const PostDetail = () => {
         description={post.excerpt}
         path={`/posts/${post.slug}`}
         article
+        datePublished={post.publishedAt}
       />
+
 
       <SketchFilters />
 
