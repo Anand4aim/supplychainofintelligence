@@ -49,8 +49,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Supply Chain of Intelligence™, The Universal AI Economy Paradigm"
-        description="The universal paradigm for the generative AI economy. Adopted by product leaders and AI companies across all verticals. 10 layers, strong proof, real case studies."
+        title="Supply Chain of Intelligence™, a structural framework for AI defensibility"
+        description="A structural framework for AI defensibility, not logistics. 10 layers, 50 sublayers, 4 laws, and worked case studies of named AI companies across the generative AI stack."
         path="/"
       />
 
