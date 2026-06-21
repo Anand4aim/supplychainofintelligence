@@ -86,10 +86,10 @@ interface Props {
  * Renders cards with initials avatars (no scraped photos) and optional
  * LinkedIn icon links. Source data: src/data/testimonials.ts.
  *
- * NOTE: All quotes are pending formal sign-off (approved: false). The strip
- * carries a small "permission pending" disclaimer to stay honest.
+ * Homepage strip shows only the 4–5 strongest verified voices
+ * (testimonials marked homepage: true). Full set lives on /voices.
  */
-const VoicesStrip: React.FC<Props> = ({ limit = 12 }) => {
+const VoicesStrip: React.FC<Props> = ({ limit = 5 }) => {
   const voices = TESTIMONIALS.filter((t) => t.homepage).slice(0, limit);
 
   return (
@@ -102,8 +102,8 @@ const VoicesStrip: React.FC<Props> = ({ limit = 12 }) => {
               Product leaders, founders, and investors using the 10-layer map.
             </h2>
             <p className="text-foreground/70 text-[15px] leading-relaxed mt-3 max-w-2xl">
-              Reactions from workshops, 1:1 reviews, and LinkedIn exchanges. Names and
-              quotes are listed with permission pending sign-off, not a marketing wall.
+              Reactions from workshops, 1:1 reviews, and LinkedIn exchanges with people who have applied
+              the framework to their own roadmap, thesis, or category.
             </p>
           </div>
           <Link
@@ -114,7 +114,7 @@ const VoicesStrip: React.FC<Props> = ({ limit = 12 }) => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {voices.map((t) => (
             <VoiceCard key={t.name} t={t} />
           ))}

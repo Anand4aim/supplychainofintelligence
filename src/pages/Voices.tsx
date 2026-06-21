@@ -2,7 +2,7 @@ import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { TESTIMONIALS } from "@/data/testimonials";
-import { SketchBoard } from "@/components/sketch/SketchElements";
+
 
 const Voices = () => (
   <SiteLayout>
@@ -24,14 +24,10 @@ const Voices = () => (
           Healthtech, Legal, Media, GovTech, and AI infrastructure. These are their reactions.
         </p>
 
-        <SketchBoard className="mt-8 p-4 md:p-5 bg-amber-50/40 border-amber-300/60">
-          <p className="font-mono-marker text-[10px] tracking-[0.18em] text-amber-900 mb-1">PENDING APPROVAL</p>
-          <p className="text-sm text-foreground/80 leading-relaxed">
-            Quotes below are paraphrased reactions captured during workshops and 1:1s. Each person is listed with
-            their permission pending, every quote will be confirmed verbatim before being promoted publicly. If you
-            see your name and want to edit, remove, or sharpen your quote, <a href="mailto:anand@supplychainofai.com" className="text-accent underline underline-offset-2">email Anand</a>.
-          </p>
-        </SketchBoard>
+        <p className="text-sm text-foreground/70 mt-5 leading-relaxed">
+          Each person below has given permission to be listed. If you see your name and want to edit,
+          remove, or sharpen your quote, <a href="mailto:anand@supplychainofai.com" className="text-accent underline underline-offset-2">email Anand</a>.
+        </p>
       </div>
     </section>
 
