@@ -76,7 +76,7 @@ const Index = () => {
                 Is your product a moat, a workflow, or a wrapper a platform will absorb? Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong>, from compute and data to workflows, surfaces, and memory, and tells you where value actually accrues.
               </p>
               <p className="font-display text-[15px] md:text-[16px] text-foreground/90 leading-relaxed max-w-xl mb-3 border-l-2 border-accent pl-3">
-                Designed as a universal industry paradigm for the entire AI economy, across all verticals and companies.
+                A structural map of where defensibility actually lives in the generative AI stack, layer by layer.
               </p>
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
                 Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
