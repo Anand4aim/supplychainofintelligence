@@ -22,6 +22,226 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "one-map-two-jobs-architecture-and-defensibility",
+    title: "One Map, Two Jobs: SCoI Is a Defensibility Lens and an Agent Architecture.",
+    subtitle:
+      "I built Supply Chain of Intelligence™ (SCoI) to tell wrappers from moats. Builders started using it to architect agents. The same map does both jobs because the underlying object was always a layered reference architecture, not a scoring rubric.",
+    excerpt:
+      "The defensibility framing is the wrapper. The underlying object is a 10-layer reference architecture with four structural laws. Investors read it to ask 'which layers does this company own?' Builders read it to ask 'which layers does my agent need to touch?' Same map. Two jobs. One canonical definition: think of AI as a supply chain.",
+    publishedAt: "2026-06-22",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 8,
+    heroPoster: "agent-decoder",
+    body: [
+      ">> “I've been using your framework for our agent architecture, not just defensibility. Every design review, we walk the layers.”",
+      "A founder I respect said that to me last week. It wasn't the first time. Over the last few months a quiet pattern has shown up in my inbox: builders, not investors, telling me they use Supply Chain of Intelligence™ (SCoI) inside design reviews. They sketch the ten layers on a whiteboard, mark which ones their agent touches, decide what to build, rent, and skip, then move on.",
+      "I built the framework for the other job. The headline use case has always been defensibility, **moat or wrapper, which layers does this company actually own**, the question a board member or a PE partner asks at diligence. That's the wedge. That's the contrarian hook. That's what gets shared.",
+      "But the builders are right. The same map does both jobs, and it's not a coincidence. This essay is the explicit decode of why, and what it means for how to read the rest of the site.",
+ 
+      "## The canonical definition hasn't moved",
+ 
+      "Before anything else, the definition: **intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node.** That sentence is evergreen. It names no company, no model, no layer. It cannot go stale.",
+      "Everything below it, the ten layers, the fifty sublayers, the four laws, the three currents, the Intelligence Cube™, is the _application_ of that definition. The application is the same whether you're scoring a target for an LP letter or whiteboarding a build plan for a new agent. The reader changes; the object does not.",
+      "Keep that in mind through the rest of this piece. The two “jobs” are not two frameworks. They're two questions asked of one map.",
+ 
+      "## Why the same map does both jobs",
+ 
+      "A defensibility framework that can score a company has, by construction, told you what would make that company defensible. Which means it has also told you what to build. The investor question and the builder question are the same question with the tense flipped:",
+      ">> Investor: which layers does this product own today, and which are absorbing it? Builder: which layers does my product need to own tomorrow, and which will absorb me if I don't?",
+      "Look at the four laws under that lens. **Law I (Intelligence Commoditizes Downward)** is a warning to investors that wrappers become features. It's also an instruction to builders not to ship at the layer below their moat. **Law II (Value Accrues at Bottlenecks)** tells an investor where durable value sits. It tells a builder which layer is worth the next two roadmap cycles. **Law III (Surface Captures Attention; Chain Captures Power)** tells an investor not to be fooled by a beautiful UI. It tells a builder that L7 alone is not a company, go deeper. **Law IV (Generation and Verification Must Be Separate)** tells an investor that L3 is non-absorbable in regulated industries. It tells a builder _not_ to try to be both L2 and L3 in those industries, ever.",
+      "The laws don't change voice. The reader does.",
+ 
+      "## What changes between the two jobs is altitude, not content",
+ 
+      "Investors use the framework at **quarterly cadence**, diligence, IC memos, strategy offsites, portfolio reviews. The artifact is a verdict (defensible, contested, exposed) and a layer attribution. The frequency is low. The stakes per use are high.",
+      "Builders use it at **weekly cadence**, design reviews, build-vs-rent calls, sprint planning, agent decomposition. The artifact is a layer map of the system under construction, plus a list of build, rent, skip decisions. The frequency is high. The stakes per use are smaller, but they compound.",
+      "A framework people reach for weekly builds mindshare far faster than one they reach for a few times a year. That, more than anything else, is why surfacing the builder use case matters. The defensibility lens is the wedge. The architecture lens is what makes the framework a **habit**.",
+ 
+      "## What the builder lens actually looks like, layer by layer",
+ 
+      "When a builder walks the stack for an agent, the questions per layer have a specific shape. None of them are new vocabulary; they're the same layers reframed in build language.",
+      "**L-1 Resources, L0 Infrastructure.** Not yours. Rent. Pick a cloud, pick a model host, pick an edge. The only build decision here is whether to multi-cloud the L0c interconnect for resilience or commit to one provider for velocity.",
+      "**L1 Data.** The first real fork. What proprietary corpus does your agent touch (**L1b**), what behavioral signal does it capture during use (**L1c**), and what outcome data does it log so the system improves (**L1d**). Skip L1b and you've built a wrapper. The Defensible Triangle starts here.",
+      "**L2 Models.** Rent for v1, always. The build decision is **L2b** (fine-tunes on your L1 corpus) and **L2c** (embeddings + retrieval). L2a is a vendor choice. L2d (routing) is a runtime concern that belongs at L6, not a separate product.",
+      "**L3 Gatekeeping.** The single most under-architected layer in agent builds. If your agent moves money, signs anything, touches health or legal data, or talks to customers in your name, **Law IV** says verification has to be separate from generation. Wire **L3b** (quality gates), **L3c** (safety/provenance), and where applicable **L3a** (compliance) _before_ launch, not after. This is the layer that determines whether your agent can ever leave the demo.",
+      "**L4 Access.** The pipes. MCP connectors, OAuth, tool registries, agent commerce. This is the substrate the agent rides on. Build only what you must; rent everything else. **L4b** (agent interface protocols) is worth designing carefully even if you don't ship it as a product, because it locks in how cleanly you can swap surfaces later.",
+      "**L5 Execution.** Your actual product. The agent's skills (**L5a**), the playbook it follows (**L5d**), the reasoning scaffold it uses (**L5b**). This is where the Defensible Triangle's middle vertex lives. If L5 is generic, the L2 layer below you absorbs it (Law I). If L5 is deep, you have a business.",
+      "**L6 Orchestration.** The loop. **L6a** (agent loops), **L6c** (role routing), **L6d** (context). Use a framework (LangGraph, CrewAI, your own thin wrapper), but own the policy that lives inside it. The framework is renting infrastructure; the policy is your code.",
+      "**L7 Surface.** Pick the modality that matches your buyer's actual habit (chat, embedded, async, voice, ambient). Don't fall in love with the surface. Law III: surface without depth is a graveyard.",
+      "**L8 Memory.** The ultimate moat and the most skipped layer in v1 builds. **L8a** session memory comes free. **L8b** user/entity profile takes a week. **L8c/d/e**, network learning, institutional knowledge, learned world models, take quarters and compound forever. If you intend to defend, start L8 in v1, even if it's a thin schema. Bolting memory on later is twice the work.",
+      "That sequence is a build plan. It's also a defensibility audit. Same ten boxes. Different verb tense.",
+ 
+      "[[poster:agent-decoder]]",
+ 
+      "## What the framework still warns you about, in both jobs",
+ 
+      "Two things stay true whether you're scoring or building.",
+      "**“Agent” is not a layer.** It's marketing for a package: L5 + L6, usually plus L7 and L8, riding on L4. If you're scoring a company that pitches an agent, decode it into layers. If you're building one, decompose your design the same way. Anyone using “agent” as if it were a layer (in a pitch, a deck, or your own roadmap doc) is hiding which layers they don't actually own.",
+      "**The Defensible Triangle is L1b + L5(a/b/d) + L8(c/d/e).** Investors test for it. Builders should design toward it. If your build plan doesn't put at least one vertex of that triangle under your control, the framework predicts the platform layer below you absorbs the product. That prediction works in both tenses.",
+ 
+      "## What this changes on the site",
+ 
+      "Not the hero. The defensibility wedge stays the lead, because it's the contrarian hook and it's what brings people in. But the architecture use case earns a co-equal home: a dedicated page for builders, an explicit Agent Decoder, and worked examples of teams using the framework to decompose real agents.",
+      "Two opinion pieces alongside this essay tell that story from the builder seat, **architecting an agent layer-by-layer** and **the build-vs-rent-vs-skip matrix** every agent team eventually writes on a whiteboard. Read them after this one if you build.",
+      "The framework didn't change. The site is finally telling both halves of what it always did.",
+ 
+      "---",
+ 
+      "The full framework, 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube™, is free at **supplychainofai.com**. No signup, no paywall.",
+ 
+      " -  Anand",
+    ],
+  },
+  {
+    slug: "architecting-an-agent-with-scoi",
+    title: "I Architected My Agent With SCoI. Here Is the Layer-by-Layer Build.",
+    subtitle:
+      "A builder's walkthrough: how a small team used Supply Chain of Intelligence™ to decompose a sales-ops agent into ten layers, pick what to build, what to rent, and what to skip, and ship in seven weeks without a wrapper.",
+    excerpt:
+      "Most agent builds start with the surface (a chat box) and work backward. That's how you ship a wrapper. Starting at L1 and walking up the stack inverts the order, you decide your defensibility before you decide your UI. Here's the layer-by-layer write-up of one real build, the calls, the trade-offs, the regrets.",
+    publishedAt: "2026-06-18",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 7,
+    heroPoster: "agent-decoder",
+    body: [
+      ">> “We stopped designing the chat box first. We started at L1 and walked up. The whole roadmap rewrote itself in an afternoon.”",
+      "A founder building an internal sales-ops agent for a mid-market B2B company told me that two weeks ago. The team had spent six weeks on a prompt-engineered chat surface that nobody used. They pulled up Supply Chain of Intelligence™ (SCoI), walked the layers, and rebuilt the architecture in a day. Seven weeks later they shipped a working agent that the sales org actually adopted.",
+      "This is the public write-up of how they did it, layer by layer, with permission. Names are abstracted. The structure is real, and it's a clean illustration of using the framework as an architecture tool instead of a scoring tool.",
+      "The definition that drives the whole thing is the same one the investor lens uses: **intelligence is a supply chain. Value accrues at the bottlenecks.** Build accordingly.",
+ 
+      "## The brief",
+ 
+      "An agent for a 40-person sales team. Jobs: pre-meeting research, account summarization, post-call CRM hygiene, and (eventually) outbound sequence drafting. Buyer is the VP Sales. Budget is internal. The constraint that mattered most: the team has six engineers and ninety days.",
+      "Old plan: ChatGPT wrapper over Salesforce, prompt-engineered, voice in Slack. Pretty demo. Zero adoption after launch.",
+      "New plan: walk the ten layers, decide each one explicitly, ship the smallest stack that owns at least one vertex of the Defensible Triangle.",
+ 
+      "## L-1 and L0: rent, with one decision",
+ 
+      "Resources and Infrastructure are not the build. Cloud is the team's existing AWS account. Models hosted on Bedrock for procurement reasons, not technical ones, the company already had the contract. The only L0 decision worth making was **L0e edge** versus pure cloud. They chose cloud for v1 because latency for an internal sales tool doesn't justify edge complexity. Revisit if voice-on-call ever becomes the surface.",
+      "Decision: rent everything. Two engineering days, mostly procurement.",
+ 
+      "## L1 Data: the first real fork",
+ 
+      "This is where the build actually starts. The question the team asked themselves, prompted by the framework: **what data does our agent have access to that a horizontal sales agent (Apollo, Clay, the inevitable Salesforce-native Einstein replacement) cannot get?**",
+      "Three answers, in order of moat strength:",
+      "**L1b Proprietary.** Closed-won and closed-lost deal histories, with notes, going back four years. The CRM has it; the horizontal players don't. **Build a clean ingest and a labeled training set. This is the company's only real moat at L1.**",
+      "**L1c Behavioral.** Email open/reply patterns, call recordings (Gong), Slack threads where deals get discussed. Already collected, never used as a corpus. **Build a pipeline to extract it into a queryable form.**",
+      "**L1d Outcome.** What the agent _suggested_ vs. what actually happened in the next two weeks. **Don't build this in v1. Instrument it in v1 so v2 can build it.** This is the single most common L1d mistake, teams skip instrumentation, then can't bootstrap outcome data when they need it.",
+      "Decision: build L1b ingest, L1c pipeline, L1d instrumentation. Two engineers, three weeks.",
+ 
+      "## L2 Models: rent, route at runtime, fine-tune later",
+ 
+      "No fine-tunes in v1. Frontier model for reasoning steps, mid-tier for summarization, embeddings model for retrieval. The team avoided the L2d trap of building a “smart router” as a product, **L2d is a sublayer, not a company**. They wired routing into L6 instead (see below).",
+      "Decision earmarked for v2: fine-tune a small model on the closed-won/lost corpus once L1b is clean. That fine-tune is the kind of L2b move that compounds the L1b moat, models that other companies cannot reproduce because they don't have the data.",
+ 
+      "## L3 Gatekeeping: under-architected nowhere",
+ 
+      "The team's instinct, like most teams', was to skip L3 in v1 and add it later. The framework caught it.",
+      "Sales agents touch revenue forecasts, customer commitments, and pipeline data that ends up in board decks. **Law IV** says: generation and verification must be separate. If the agent suggests an updated close date or a new opportunity amount, a human (or a second model with a different prompt) has to sign off before it writes to Salesforce.",
+      ">> The L3 question is not “do we need compliance”; it's “what does the agent _do_ that we'd be embarrassed to discover it did silently.”",
+      "Decision: build **L3b Quality Gates** as a separate verification step for every CRM write. Build **L3c Provenance** so every agent action has a trace. Skip **L3a Compliance** until the agent leaves the internal org. Two weeks of work that the team almost cut. They didn't, and that's the reason the sales VP approved the rollout.",
+ 
+      "## L4 Access: rent the pipes, design the seams",
+ 
+      "Salesforce API, Gong API, Slack API, Outlook (or Gmail) API. All rented. The L4 decision that mattered: **build a thin internal connector layer** so the agent doesn't talk to vendor APIs directly. Two reasons, both framework-driven. First, **L4 is the substrate that gets the most churn**, vendors deprecate endpoints, change auth flows, raise prices. An internal abstraction makes those changes one-file fixes. Second, when MCP-style connectors mature, swapping the underlying transport is local, not architectural.",
+      "Decision: rent every vendor API, wrap them in a small in-house L4 facade. One week.",
+ 
+      "## L5 Execution: the actual product",
+ 
+      "This is where the team's engineering hours mostly went, correctly. Three skills shipped in v1:",
+      "**L5a Tool use,** the agent calls the L4 facade to read CRM, read Gong transcripts, read inbox threads. No writes without an L3 gate.",
+      "**L5b Reasoning scaffolds,** structured prompts for each job (pre-meeting brief, post-call summary, CRM hygiene). The scaffolds are versioned and evaluated, not free-form prompts. **Versioning the scaffolds is what made the eval loop possible**, without it the team would have been tuning vibes.",
+      "**L5d Operating playbook,** a codified description of how _this company_ runs sales, MEDDIC-flavored, specific stages, specific exit criteria. The playbook is the company's IP and the most defensible sublayer on the whole stack. **It is also the layer a horizontal sales agent cannot replicate without buying the company.**",
+      "Decision: invest disproportionately here. Four engineers, six weeks. Worth every hour.",
+ 
+      "## L6 Orchestration: small, sharp, boring",
+ 
+      "Loop, role routing, context. The team picked an off-the-shelf agent framework, ripped out the parts they didn't need, and kept the loop tight. **L6d Context Management** is where they spent the most time, getting the model the right slice of the L1 corpus per step without exploding the context window. Retrieval at L2c, ranking at L6d, that seam is where most agent failures happen and where most teams under-invest.",
+      "Routing logic (which model for which step) sits here, not in a separate L2d service. Framework-consistent: L2d is the capability, L6 is the runtime that uses it.",
+ 
+      "## L7 Surface: pick the buyer's existing habit",
+ 
+      "Slack and Outlook. Not a new app. Not a chat box on a dashboard nobody opens. The framework's read: **surface should ride the user's existing attention, not compete for it**. Sales reps live in Slack and email. The agent shows up there. **L7a** for conversational queries, **L7e** for async digests (morning pre-meeting briefs, end-of-day CRM hygiene nudges).",
+      "Decision: build inside two surfaces the team uses anyway, ship no new app.",
+ 
+      "## L8 Memory: thin in v1, designed for v2",
+ 
+      "The single most important v1 decision: **start L8, even if thin.** Session memory and user profiles in v1 (L8a, L8b). Schema for institutional knowledge (L8d), what closed-won deals look like, what objection patterns repeat, what playbook variations work for which account type, designed in v1, populated continuously after launch.",
+      "L8c (aggregated network learning) and L8e (learned world models) are v3 problems. But the schema lives in the v1 database. **Bolting memory on later is twice the work**; framework warning applied verbatim.",
+ 
+      "## What the build looked like at the end",
+ 
+      "Seven weeks, six engineers. Stack owned: **L1b + L1c + L5a/b/d + L8a/b** in v1, with **L1d and L8d** instrumented and waiting. That's two vertices of the Defensible Triangle in v1, with the third (L8d) on the runway. The horizontal sales agent that will inevitably arrive can replicate L5a and L7. It cannot replicate this company's L1b or this company's L5d.",
+      "Adoption after launch: 31 of 40 reps active in week three. The VP Sales is the internal sponsor for the v2 budget. The framework didn't write the code. It wrote the order in which the code got written, and that was the difference.",
+ 
+      "## The transferable lesson, not the specifics",
+ 
+      "Most agent builds fail at the L7 → L5 → L1 inversion. Teams design the chat surface first, then bolt skills on, then realize they have no proprietary data and no memory. The framework forces the reverse order: **L1 first (what do we know nobody else does), L5 second (what do we do with it that's hard), L8 third (how does this compound), L7 last (where does the user meet it).**",
+      "That order is the architecture. The same ten layers an investor uses to verdict a company are the ten boxes a builder uses to design one. The definition that holds the whole thing together is the one that has not changed since day one: **intelligence is a supply chain. Build at the bottlenecks. Rent the rest.**",
+ 
+      "---",
+ 
+      "The full framework, ten layers, fifty sublayers, four laws, and the Agent Decoder, is free at **supplychainofai.com**. No signup, no paywall.",
+ 
+      " -  Anand",
+    ],
+  },
+  {
+    slug: "build-rent-skip-agent-stack-decisions",
+    title: "Build, Rent, Skip: The L0–L8 Decision Matrix Every Agent Team Eventually Writes.",
+    subtitle:
+      "Most agent teams reinvent the same whiteboard, ten layers, three columns, what do we build, what do we rent, what do we skip. Supply Chain of Intelligence™ gives you the matrix without the false starts, and a default answer per layer that's right most of the time.",
+    excerpt:
+      "Ninety percent of agent build-vs-buy debates are arguments about which layer the decision belongs to. The decision matrix doesn't change much from team to team: rent L0 and L2, build L5 and L8, gate L3, abstract L4, ride existing surfaces at L7. Here's the matrix, the defaults, and the three places teams get it wrong.",
+    publishedAt: "2026-06-14",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 6,
+    heroPoster: "agent-decoder",
+    body: [
+      ">> “Should we build our own vector database? Our own router? Our own eval framework? Our own connector layer?”",
+      "Every agent team I talk to is having some version of this debate, often all four at once, often without realizing they're four different layer-level decisions wearing the same coat. The fastest way out of the debate is to stop arguing about the components and start naming the layer each component lives on. Then apply a default.",
+      "Supply Chain of Intelligence™ (SCoI) gives you the matrix. The defaults below are the answers most teams should give most of the time, with the explicit conditions for when to deviate. Same canonical definition as always: **intelligence is a supply chain, value accrues at the bottlenecks.** That sentence implies most of the matrix on its own.",
+ 
+      "## The default matrix",
+ 
+      "Ten layers, three columns, one default per cell. Read this once and put it on the wall.",
+      "**L-1 Resources → Rent.** You are not running a fab or signing a 400MW PPA. The exception is hyperscalers and the very largest model labs, and if you're reading this, that's not you.",
+      "**L0 Infrastructure → Rent.** Cloud, GPUs, edge. The build-vs-rent debate here is a distraction in 95% of cases. Even fast-growing model companies are renting most of their compute through L+ year three.",
+      "**L1 Data → BUILD (the proprietary slice).** This is the most important cell in the matrix. **L1a** (public/open) is rented. **L1b** (proprietary), **L1c** (behavioral), **L1d** (outcome) are built, always. If you don't own at least one of L1b/c/d, the framework's prediction is that the platform layer below you absorbs your product. **Law I.**",
+      "**L2 Models → Rent base, build fine-tunes only after L1 is clean.** Foundation models are rented. **L2b** fine-tunes are built only when L1b gives you a corpus other people can't reproduce. **L2c** embeddings are rented unless your domain has weird tokenization. **L2d** routing is _not a build_, it's a runtime concern that lives in L6.",
+      "**L3 Gatekeeping → GATE (build verification, rent compliance tooling).** **L3b** quality gates and **L3c** provenance are almost always built in-house, because they encode your business's risk tolerance. **L3a** compliance tooling (SOC2 evidence, audit logs, eval harnesses) is rented from Vanta-style vendors. **Law IV** is non-negotiable in regulated spaces.",
+      "**L4 Access → Rent the pipes, build a thin facade.** Every vendor API (Stripe, Salesforce, Slack, MCP servers) is rented. The facade in front of them is built, because the facade is what protects you from vendor churn and what makes surface-swapping a local change.",
+      "**L5 Execution → BUILD.** This is your actual product. If L5 is rented (i.e., you're a thin wrapper over someone else's skill), you don't have a company; you have a feature. **L5a** tool use, **L5b** reasoning scaffolds, **L5d** operating playbooks, all built. **L5c** RAG plumbing can be partially rented.",
+      "**L6 Orchestration → Rent the framework, build the policy.** Use LangGraph, CrewAI, or your own thin wrapper for the loop primitives. **Build the policy** that lives inside it, role routing logic, context selection, retry/escalation rules. The framework is infrastructure; the policy is IP.",
+      "**L7 Surface → Ride existing habits before building new ones.** Slack, email, Teams, Notion, the user's IDE, the user's browser, the user's CRM. Build a new surface only when no existing surface fits the modality (voice agents, ambient devices). **Law III** warning applies: surface without depth is a graveyard.",
+      "**L8 Memory → BUILD, start thin in v1.** Session memory and entity profiles in v1, schemas for institutional knowledge designed in v1. **L8 is the most under-built layer in early agent products and the layer with the highest compounding return.** Don't skip it because it doesn't show in the demo.",
+ 
+      "[[poster:agent-decoder]]",
+ 
+      "## The three places teams get it wrong",
+ 
+      "Out of dozens of agent teams I've talked to in the last year, the same three mistakes show up regardless of vertical or team size. Each one is a misread of which column a layer belongs in.",
+      "**Mistake 1: Building L0 or L2 to “control the stack.”** The instinct is understandable. Cost optimization, latency, perceived lock-in. The framework reads it as a waste of engineering hours. **Law II** says value accrues at bottlenecks, and for an agent product the bottlenecks are L1b and L8, not L0 or L2. Every engineer-week spent on L0 infra is a week not spent on the layers that actually compound. The exception is companies whose business _is_ L0 or L2 (NVIDIA, Anthropic, OpenAI), which is again, not you.",
+      "**Mistake 2: Skipping L3 in v1.** “We'll add compliance and verification when we have customers.” The framework predicts you won't get the customers without it. Any agent that touches money, regulated data, or customer-facing communication needs **L3b** and **L3c** at launch. The work is small in v1 (logging, a verification step on writes, provenance traces). The work is enormous if you bolt it on after you've shipped. **Law IV** doesn't take a quarter off.",
+      "**Mistake 3: Treating L8 as a v2 problem.** Memory is the only layer where the cost of waiting is asymmetric. The schema decisions you make in v1 determine whether L8d (institutional knowledge) is buildable in v2 at all, or whether you have to do an expensive data migration first. The smallest viable L8 in v1 is a database with a clear entity model and event log. That's a week. Skipping it costs a quarter later.",
+ 
+      "## The matrix is the conversation",
+ 
+      "The reason this matrix is useful is not that the defaults are surprising. They aren't. Most senior builders would arrive at most of these cells on their own. The matrix is useful because it **gives the team one vocabulary to argue inside of**. Instead of debating components (Pinecone vs. pgvector, LangChain vs. CrewAI, OpenAI vs. Anthropic), the team debates layers (do we own L2c, do we build the L6 policy, what's our L3 gate). The component choice falls out of the layer decision, almost always.",
+      "Pin the matrix to the wall. Mark your current state in each cell. Mark your six-month state. The delta is your roadmap. The framework didn't invent the answers, it organized them so the team could stop re-debating the same question every sprint.",
+      "Same definition every time: **intelligence is a supply chain. Build at the bottlenecks. Rent the rest. Gate where the law of separation demands it. Skip nothing at L8.**",
+ 
+      "---",
+ 
+      "The full framework, ten layers, fifty sublayers, four laws, and the Agent Decoder, is free at **supplychainofai.com**. No signup, no paywall.",
+ 
+      " -  Anand",
+    ],
+  },
+  {
     slug: "why-workflows-and-distribution-are-not-new-layers",
     title: "Why Workflows and Distribution Are Not New Layers in SCoI.",
     subtitle:
