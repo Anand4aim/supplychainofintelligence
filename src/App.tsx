@@ -24,6 +24,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import RemasterAdmin from "./pages/RemasterAdmin";
+import StoryQueueAdmin from "./pages/StoryQueueAdmin";
 import AuditAdmin from "./pages/AuditAdmin";
 import CrawlAdmin from "./pages/CrawlAdmin";
 import Voices from "./pages/Voices";
@@ -69,6 +70,7 @@ const App = () => (
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin/remaster" element={<RemasterAdmin />} />
+        <Route path="/admin/queue" element={<StoryQueueAdmin />} />
         <Route path="/admin/audit" element={<AuditAdmin />} />
         <Route path="/admin/crawl" element={<CrawlAdmin />} />
         <Route path="/voices" element={<Voices />} />

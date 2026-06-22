@@ -407,6 +407,65 @@ export type Database = {
         }
         Relationships: []
       }
+      story_candidates: {
+        Row: {
+          company: string | null
+          created_at: string
+          discovered_for_date: string
+          headline: string
+          id: string
+          notes: string | null
+          published_article_id: string | null
+          rejected_reason: string | null
+          source_domains: Json
+          source_urls: Json
+          status: string
+          summary: string
+          tier1_verified: boolean
+          updated_at: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          discovered_for_date?: string
+          headline: string
+          id?: string
+          notes?: string | null
+          published_article_id?: string | null
+          rejected_reason?: string | null
+          source_domains?: Json
+          source_urls?: Json
+          status?: string
+          summary: string
+          tier1_verified?: boolean
+          updated_at?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          discovered_for_date?: string
+          headline?: string
+          id?: string
+          notes?: string | null
+          published_article_id?: string | null
+          rejected_reason?: string | null
+          source_domains?: Json
+          source_urls?: Json
+          status?: string
+          summary?: string
+          tier1_verified?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "story_candidates_published_article_id_fkey"
+            columns: ["published_article_id"]
+            isOneToOne: false
+            referencedRelation: "live_articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

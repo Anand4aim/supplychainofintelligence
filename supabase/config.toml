@@ -17,3 +17,9 @@ verify_jwt = false
 
 [functions.sitemap]
 verify_jwt = false
+
+[functions.discover-story-candidates]
+verify_jwt = false
+
+[functions.curate-story-candidate]
+verify_jwt = false
