@@ -28,7 +28,7 @@ export const POSTS: Post[] = [
       "Seed capital is contracting at the same moment AI made products cheap to build but customers no harder to win. The split everyone's noticing, $10M mega-seeds vs. tiny niche bets, isn't really about round size. It's about which layers of the Supply Chain of Intelligence™ a check is buying.",
     excerpt:
       "Capital Flows is the third Current in the SCoI framework, the force that decides whether a defensible layer compounds into a business. The current seed squeeze isn't a financing story; it's the market repricing layers. Mega-seeds underwrite L0 / L2 / L8 ambitions. Micro-checks fund L5 / L7 niches. Founders who read the stack first and the term sheet second will pick the right side. Founders who don't will raise the wrong shape of money for the layer they're actually building.",
-    publishedAt: "2026-06-24",
+    publishedAt: "2026-06-10",
     channel: "LinkedIn",
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 8,
