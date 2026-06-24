@@ -38,8 +38,8 @@ export const POSTS: Post[] = [
     heroPoster: "above-below",
     kind: "opinion",
     body: [
-      ">> “Supply of seed capital is shrinking. Demand from founders isn't. AI made the product cheap to build, but not the customer cheap to win. The early stage is splitting in two.”",
-      "A friend in venture sent me that observation last week. It's right, and it's the surface reading. The deeper reading is that capital isn't splitting by round size; it's splitting by **which layer of the stack the check is underwriting**. Once you see that, the $10M mega-seed and the $750K micro-check stop looking like two flavors of the same product. They're two different financing instruments aimed at two different parts of the Supply Chain of Intelligence™ (SCoI).",
+      ">> Seed capital is contracting. Founder demand isn't. AI made the product cheap to build, but not the customer cheap to win. The early stage is quietly splitting in two.",
+      "That's been the running observation in venture circles for a while now, and it's the surface reading. The deeper reading is that capital isn't really splitting by round size; it's splitting by **which layer of the stack the check is underwriting**. Once you see it that way, the mega-seeds at one end and the small niche checks at the other stop looking like two flavors of the same product. They're two different financing instruments aimed at two different parts of the Supply Chain of Intelligence™ (SCoI).",
       "This is what the framework calls **Current III: Capital Flows**, the horizontal force that decides whether a defensible layer position compounds into a real business. The Currents aren't layers. They flow _across_ the ten layers, and they distort which layers get over-funded, which get starved, and which get mispriced for years.",
 
       "## The canonical read: capital is reflexive, layers are real",
