@@ -22,6 +22,73 @@ export type Post = {
 
 export const POSTS: Post[] = [
   {
+    slug: "capital-flows-are-a-layer-decision",
+    title: "Capital Flows Are a Layer Decision: Why the Seed Squeeze Is Really a Stack Question.",
+    subtitle:
+      "Seed capital is contracting at the same moment AI made products cheap to build but customers no harder to win. The split everyone's noticing, $10M mega-seeds vs. tiny niche bets, isn't really about round size. It's about which layers of the Supply Chain of Intelligence™ a check is buying.",
+    excerpt:
+      "Capital Flows is the third Current in the SCoI framework, the force that decides whether a defensible layer compounds into a business. The current seed squeeze isn't a financing story; it's the market repricing layers. Mega-seeds underwrite L0 / L2 / L8 ambitions. Micro-checks fund L5 / L7 niches. Founders who read the stack first and the term sheet second will pick the right side. Founders who don't will raise the wrong shape of money for the layer they're actually building.",
+    publishedAt: "2026-06-24",
+    channel: "LinkedIn",
+    channelUrl: "https://www.linkedin.com/in/anandarivu",
+    readingMinutes: 8,
+    heroPoster: "above-below",
+    body: [
+      ">> “Supply of seed capital is shrinking. Demand from founders isn't. AI made the product cheap to build, but not the customer cheap to win. The early stage is splitting in two.”",
+      "A friend in venture sent me that observation last week. It's right, and it's the surface reading. The deeper reading is that capital isn't splitting by round size; it's splitting by **which layer of the stack the check is underwriting**. Once you see that, the $10M mega-seed and the $750K micro-check stop looking like two flavors of the same product. They're two different financing instruments aimed at two different parts of the Supply Chain of Intelligence™ (SCoI).",
+      "This is what the framework calls **Current III: Capital Flows**, the horizontal force that decides whether a defensible layer position compounds into a real business. The Currents aren't layers. They flow _across_ the ten layers, and they distort which layers get over-funded, which get starved, and which get mispriced for years.",
+
+      "## The canonical read: capital is reflexive, layers are real",
+
+      "The definition that anchors the whole framework, **intelligence is a supply chain; value accrues at the bottlenecks**, has a financing implication people skip past. A bottleneck isn't a bottleneck because it's hard. It's a bottleneck because **capital can't route around it on the timescale capital expects returns**.",
+      "L-1 (energy, fabs, water, skilled trades) is the cleanest example. Tens of billions flowed into L2 over three years and produced a generation glut, models per token kept halving in price. Near-zero flowed into L-1, and now L-1 is the constraint pinning the entire stack above it. That's not a market failure. That's capital doing exactly what capital does: chasing the layer with the shortest narrative arc and the cleanest comp, and ignoring the layer with a ten-year permitting cycle.",
+      "Meta is the cleanest live case. The $14B Scale AI investment, the multi-year, multi-gigawatt power deals, the $60B+ annualized capex run-rate, none of it is a model bet. It's a layer bet, **L-1 + L0 + L1**, with L2 as the visible output but not the moat. Zuckerberg isn't buying intelligence; he's buying the substrate intelligence has to run on, the data it has to train on, and the power it has to consume. The bet is that L-1 and L1 will be the binding constraints, and that owning them lets you commoditize L2 against everyone who only owns L2.",
+      "That is a Capital Flows decision read off a layer map, not off a round-size table.",
+
+      "## The seed squeeze, decoded layer by layer",
+
+      "Now the same lens on the contraction in early-stage venture. The supply of seed capital is shrinking; the demand is rising. Both halves of that statement are true. Neither half is interesting until you sort founders by **which layer they're trying to own**.",
+      "**L0 / L2 ambitions (frontier models, foundation infrastructure, novel silicon).** These never were a seed product. They are now $50M-$200M Series A's masquerading as seed rounds, led by multi-stage funds writing $10M checks because the next round is $200M and they want the option. Boutique seed funds were never going to compete here; their disappearance from this segment isn't a contraction, it's a category correction. **The mega-seed is L0/L2 financing in seed's clothing.**",
+      "**L1 plays (proprietary data, behavioral data, outcome data).** The most under-capitalized layer in the current market. Building a real L1b corpus is slow, unglamorous, contract-heavy, regulator-adjacent, and produces revenue late. It doesn't fit the multi-stage fund's J-curve and it doesn't fit the micro-fund's check size. **L1 is where the capital flow is most distorted today**, and where a patient $3M-$5M seed from a focused fund is the right instrument and almost nobody is writing it. If you're a founder in L1, the supply contraction is real and it's hurting you specifically.",
+      "**L3 plays (compliance, quality gates, provenance, editorial / distribution gates).** Underwritten as if they were L5 wrappers, which is why so many are mispriced. Law IV says L3 above L2/L5 is structurally permanent in regulated industries. The boutique funds that understood this layer are exactly the funds struggling to raise their next vehicle, so the layer keeps getting served by generalists who don't underwrite it differently from any other vertical SaaS. **Capital is pricing L3 like a feature; the framework prices it like a moat.** That gap is an opportunity for the funds still operating here.",
+      "**L5 / L7 niches (vertical execution, embedded surface).** This is where the micro-fund and incubator world is concentrating, and correctly. AI did make the product cheap to build at L5 and L7. The cost of customer acquisition didn't move. So the right capital shape is small, fast, niche, with explicit acceptance that most checks will produce $20M-$100M outcomes rather than decacorns. **The “smaller niche bets” half of the seed split is L5/L7 financing, and it's healthy, not a downgrade.**",
+      "**L8 plays (memory, institutional knowledge, learned world models).** Almost no seed capital is targeted here yet, because L8 doesn't look like a company in its first eighteen months, it looks like a schema. The funds that learn to underwrite L8 in the next two years will own the next cycle's best book. Memory is the layer the framework calls the ultimate moat, and the financing market hasn't caught up.",
+
+      "[[poster:above-below]]",
+
+      "## The four laws, read as financing rules",
+
+      "The structural laws of the framework aren't just operating advice. Each one has a capital-flows implication that should change how a partner writes a check.",
+      "**Law I: Intelligence Commoditizes Downward.** A check written into a company whose only differentiation is generic L2 capability is a check the platform layer below will absorb. Wrappers don't go to zero; they become features of the layer they were renting from. **Pricing a wrapper at a defensible-layer multiple is the most common Capital Flows mistake of the last 24 months.**",
+      "**Law II: Value Accrues at Bottlenecks.** Read the funding map as a distortion field, not a value signal. Where capital is _absent_ relative to structural importance (L-1, L1b, L3, L8) is where the next decade's returns sit. Where capital is _piled up_ (L2 foundation models, L6 orchestration frameworks, generic L7 chat surfaces) is where the returns have already been priced in or, worse, priced past in.",
+      "**Law III: Surface Captures Attention; the Chain Captures Power.** A beautiful L7 demo at seed is the easiest check to write and the hardest to defend three years later. The framework's read: discount L7-only stories, ask which deeper layer is being built quietly underneath, and only fund the surface if the deeper layer is real.",
+      "**Law IV: Generation and Verification Must Be Separate.** In regulated verticals, do not fund the company trying to be both L2/L5 _and_ L3. It will lose to a focused L3 player above it (Vanta over AWS, Snyk over Copilot, audit over the system being audited). **Underwriting an integrated stack in a Law IV vertical is a category error, not a portfolio bet.**",
+      "Those aren't four rules. They're a single underwriting checklist: name the layer, test for the bottleneck, discount the surface, respect the gate.",
+
+      "## What Meta tells you about everyone else",
+
+      "Back to the Meta example, because it's the cleanest illustration of the whole essay. Strip the headlines and look at what the capital actually bought.",
+      "**Scale AI ($14B).** That's L1 (data) plus a hedge on L3 (eval / RLHF / quality gates that future regulators may bless as the standard). Not L2.",
+      "**Power purchase agreements (nuclear, geothermal, multi-gigawatt grid).** Pure L-1a. The bet is that energy interconnect, not GPUs, will be the binding constraint by 2028.",
+      "**Capex on data centers and silicon.** L0a + L0b + L0c. Owning the substrate the L2 layer above has to rent.",
+      "**Llama, open-weight strategy.** A deliberate commoditization move at L2 against closed-model peers. Meta wins more by making L2 cheaper for everyone than by owning L2 directly, because Meta's revenue is captured at L7 (the surfaces) and L8 (the social graph and behavioral memory) where the commoditization can't reach.",
+      "Read the whole position as one sentence: **Meta is letting capital flow to the layers where ownership compounds, and starving the layer (L2) where ownership decays.** That is the framework as a treasury policy. Any company at any stage can ask the same question. The check is small, the layer logic is identical.",
+
+      "## What the founder should do with this",
+
+      "Three practical moves, all framework-driven, none of them about round size.",
+      "**Name your layer before you name your round.** If you're an L5/L7 niche play, raise the niche-shaped check; the micro-fund world is healthy and the smaller round is the right instrument. If you're an L1 / L8 / L3 play, fight harder for the boutique check that understands the layer; the mega-seed will misprice you and the next round will be miserable. If you're somehow an L0/L2 play at seed, you're raising a Series A, call it that.",
+      "**Underwrite your own capital plan against Law I.** Ask which layer of your stack the foundation-model layer below you will absorb in eighteen months. If the answer is most of it, the round you should raise is smaller, faster, and aimed at proving a deeper layer, not at outrunning the absorption. Capital can't outrun a structural law; it only postpones the reckoning.",
+      "**Treat L8 as a seed-stage decision, not a Series B decision.** Memory schema is a v1 design choice. It's also the layer the next cycle of capital will be looking for. Founders who can show a credible L8 design at seed will price differently in twelve months than founders who can't.",
+
+      "## The closing read",
+
+      "The seed market isn't really splitting in two. It's being **resorted by layer**, and the round-size split is the visible artifact. Capital Flows is doing what the framework predicts it always does: overheating the fashionable layer (L2 still, L6 next), starving the unglamorous one (L-1, L1b, L3, L8), and forcing founders and funds to choose the layer first and the financing instrument second.",
+      "Meta is the loudest version of that choice. The friend's seed-market observation is the quietest. They're the same essay. Capital is a current; the layers are the geography. The current shapes the geography over time, but it doesn't get to invent it. The bottlenecks are where the bottlenecks are. The job, for an investor or a founder, is to read the map first.",
+      ">> Intelligence is a supply chain. Value accrues at the bottlenecks. Capital is the current; the layers are real.",
+    ],
+  },
+  {
     slug: "one-map-two-jobs-architecture-and-defensibility",
     title: "One Map, Two Jobs: SCoI Is a Defensibility Lens and an Agent Architecture.",
     subtitle:
