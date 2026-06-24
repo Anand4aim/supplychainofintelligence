@@ -177,7 +177,9 @@ const summarizeSources = (urls: string[] | null | undefined): { count: number; o
 const LivePage = () => {
   const [articles, setArticles] = useState<LiveArticle[]>([]);
   const [loading, setLoading] = useState(true);
-  const [tab, setTab] = useState<"news" | "opinion">("news");
+  const [tab, setTab] = useState<"news" | "opinion" | "essay">("news");
+  const opinions = useMemo(() => POSTS.filter((p) => p.kind === "opinion"), []);
+  const essays = useMemo(() => POSTS.filter((p) => p.kind !== "opinion"), []);
 
   const load = async () => {
     const { data } = await supabase
@@ -230,11 +232,10 @@ const LivePage = () => {
               <Eyebrow>The Live Feed</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
-              Every important AI move, <br />watched, tracked, analyzed, and scored.
+              News, opinion, and essays. <br />One feed, one framework.
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed mb-3">
-              An always-on read of the AI market, every consequential launch, funding round, and structural shift run through the
-              Supply Chain of Intelligence™ framework, the four laws, and the vertical lens that matters.
+              Three reads of the same map. <strong>News</strong> tracks every consequential AI launch, funding round, and structural shift through the Supply Chain of Intelligence™. <strong>Opinion</strong> is the timely take on what just moved. <strong>Essays</strong> are the evergreen framework pieces underneath.
             </p>
             <p className="text-sm text-muted-foreground/80 italic mb-6">
               New analysis published as the news breaks · Weekly issue cadence · Free to read, copy, and repost anywhere.
