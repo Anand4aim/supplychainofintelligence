@@ -260,7 +260,8 @@ const LivePage = () => {
           <div className="mb-10 flex items-center gap-2 border-b border-foreground/10">
             {([
               { id: "news", label: "News", icon: Rss, count: articles.length },
-              { id: "opinion", label: "Opinion", icon: BookOpen, count: POSTS.length },
+              { id: "opinion", label: "Opinion", icon: FileText, count: opinions.length },
+              { id: "essay", label: "Essays", icon: BookOpen, count: essays.length },
             ] as const).map((t) => {
               const active = tab === t.id;
               const Icon = t.icon;
@@ -284,51 +285,65 @@ const LivePage = () => {
             })}
           </div>
 
-          {tab === "opinion" ? (
-            <div className="space-y-5">
-              <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">
-                <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                  Opinion · Long-form essays
-                </h2>
-                <p className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground whitespace-nowrap">
-                  {POSTS.length} {POSTS.length === 1 ? "essay" : "essays"}
-                </p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-5">
-                {POSTS.map((post, idx) => {
-                  const issueNum = POSTS.length - idx;
-                  return (
-                    <motion.article
-                      key={post.slug}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.03 }}
-                      className="relative border border-foreground/10 bg-card hover:border-accent/60 transition-colors group"
-                    >
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent/40 group-hover:bg-accent transition-colors" />
-                      <Link to={`/posts/${post.slug}`} className="block p-6 md:p-7">
-                        <div className="flex items-center gap-2 mb-3 font-mono-marker text-[10px] uppercase tracking-[0.16em] text-muted-foreground flex-wrap">
-                          <span>Essay #{issueNum}</span>
-                          <span>·</span>
-                          <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
-                          <span>·</span>
-                          <span>{post.readingMinutes} min</span>
-                        </div>
-                        <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight mb-3 group-hover:text-accent transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-4">
-                          {post.excerpt}
-                        </p>
-                        <span className="inline-flex items-center gap-1 text-accent font-sketch font-bold text-sm">
-                          Read <ArrowRight size={13} />
-                        </span>
-                      </Link>
-                    </motion.article>
-                  );
-                })}
-              </div>
-            </div>
+          {tab === "opinion" || tab === "essay" ? (
+            (() => {
+              const list = tab === "opinion" ? opinions : essays;
+              const isOpinion = tab === "opinion";
+              const noun = isOpinion ? "opinion" : "essay";
+              const Noun = isOpinion ? "Opinion" : "Essay";
+              return (
+                <div className="space-y-5">
+                  <div className="flex items-baseline justify-between gap-4 mb-4 pb-3 border-b border-foreground/10">
+                    <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                      {isOpinion
+                        ? "Opinion · Timely takes on what just moved"
+                        : "Essays · Evergreen framework pieces"}
+                    </h2>
+                    <p className="font-mono-marker text-[10px] uppercase tracking-wider text-muted-foreground whitespace-nowrap">
+                      {list.length} {list.length === 1 ? noun : `${noun}s`}
+                    </p>
+                  </div>
+                  {list.length === 0 ? (
+                    <p className="text-muted-foreground py-12 text-center">Nothing here yet.</p>
+                  ) : (
+                    <div className="grid md:grid-cols-2 gap-5">
+                      {list.map((post, idx) => {
+                        const issueNum = list.length - idx;
+                        return (
+                          <motion.article
+                            key={post.slug}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.03 }}
+                            className="relative border border-foreground/10 bg-card hover:border-accent/60 transition-colors group"
+                          >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent/40 group-hover:bg-accent transition-colors" />
+                            <Link to={`/posts/${post.slug}`} className="block p-6 md:p-7">
+                              <div className="flex items-center gap-2 mb-3 font-mono-marker text-[10px] uppercase tracking-[0.16em] text-muted-foreground flex-wrap">
+                                <span>{Noun} #{issueNum}</span>
+                                <span>·</span>
+                                <span>{new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
+                                <span>·</span>
+                                <span>{post.readingMinutes} min</span>
+                              </div>
+                              <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight mb-3 group-hover:text-accent transition-colors">
+                                {post.title}
+                              </h3>
+                              <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-4">
+                                {post.excerpt}
+                              </p>
+                              <span className="inline-flex items-center gap-1 text-accent font-sketch font-bold text-sm">
+                                Read <ArrowRight size={13} />
+                              </span>
+                            </Link>
+                          </motion.article>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })()
           ) : loading ? (
             <div className="flex items-center justify-center py-20 text-muted-foreground">
               <Loader2 className="animate-spin mr-2" size={18} /> Loading the feed…
