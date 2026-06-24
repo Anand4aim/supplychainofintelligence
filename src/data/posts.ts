@@ -36,6 +36,7 @@ export const POSTS: Post[] = [
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 8,
     heroPoster: "above-below",
+    kind: "opinion",
     body: [
       ">> “Supply of seed capital is shrinking. Demand from founders isn't. AI made the product cheap to build, but not the customer cheap to win. The early stage is splitting in two.”",
       "A friend in venture sent me that observation last week. It's right, and it's the surface reading. The deeper reading is that capital isn't splitting by round size; it's splitting by **which layer of the stack the check is underwriting**. Once you see that, the $10M mega-seed and the $750K micro-check stop looking like two flavors of the same product. They're two different financing instruments aimed at two different parts of the Supply Chain of Intelligence™ (SCoI).",
@@ -175,6 +176,7 @@ export const POSTS: Post[] = [
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 7,
     heroPoster: "agent-decoder",
+    kind: "opinion",
     body: [
       ">> “We stopped designing the chat box first. We started at L1 and walked up. The whole roadmap rewrote itself in an afternoon.”",
       "A founder building an internal sales-ops agent for a mid-market B2B company told me that two weeks ago. The team had spent six weeks on a prompt-engineered chat surface that nobody used. They pulled up Supply Chain of Intelligence™ (SCoI), walked the layers, and rebuilt the architecture in a day. Seven weeks later they shipped a working agent that the sales org actually adopted.",
@@ -270,6 +272,7 @@ export const POSTS: Post[] = [
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
     heroPoster: "agent-decoder",
+    kind: "opinion",
     body: [
       ">> “Should we build our own vector database? Our own router? Our own eval framework? Our own connector layer?”",
       "Every agent team I talk to is having some version of this debate, often all four at once, often without realizing they're four different layer-level decisions wearing the same coat. The fastest way out of the debate is to stop arguing about the components and start naming the layer each component lives on. Then apply a default.",
@@ -728,6 +731,7 @@ export const POSTS: Post[] = [
     channelUrl: "https://www.linkedin.com/in/anandarivu",
     readingMinutes: 6,
     heroPoster: "hero",
+    kind: "opinion",
     body: [
       "Every AI strategy conversation I've sat in for the last eighteen months has been happening at the wrong layer of the stack.",
 
