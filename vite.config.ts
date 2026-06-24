@@ -20,6 +20,6 @@ export default defineConfig(() => ({
   },
   ssr: {
     // Bundle CJS-only deps so the SSR output is plain ESM that Node can import.
-    noExternal: ["react-helmet-async", "react-router-dom", "@tanstack/react-query"],
+    noExternal: ["react-helmet-async", "react-router", "react-router-dom", "@tanstack/react-query"],
   },
 }));
