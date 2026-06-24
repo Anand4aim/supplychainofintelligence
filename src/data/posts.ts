@@ -18,6 +18,9 @@ export type Post = {
   body: string[];
   /** Optional image references shown above the fold. */
   heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one" | "no-new-layers";
+  /** Editorial kind. "opinion" = timely take/POV reacting to a market signal.
+   *  "essay" = evergreen framework piece. Defaults to "essay" if omitted. */
+  kind?: "opinion" | "essay";
 };
 
 export const POSTS: Post[] = [
