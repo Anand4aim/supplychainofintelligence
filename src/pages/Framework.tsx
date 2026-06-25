@@ -52,7 +52,7 @@ const SectionHeader = ({
   eyebrow: string;
   question: string;
   title: string;
-  lede: string;
+  lede?: string;
 }) => (
   <div className="max-w-3xl mb-10">
     <div className="flex items-baseline gap-3 mb-3">
@@ -70,7 +70,7 @@ const SectionHeader = ({
     >
       {title}
     </h2>
-    <p className="text-foreground/80 text-[16px] leading-[1.75]">{lede}</p>
+    {lede && <p className="text-foreground/80 text-[16px] leading-[1.75]">{lede}</p>}
   </div>
 );
 
