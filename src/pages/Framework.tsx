@@ -52,7 +52,7 @@ const SectionHeader = ({
   eyebrow: string;
   question: string;
   title: string;
-  lede: string;
+  lede?: string;
 }) => (
   <div className="max-w-3xl mb-10">
     <div className="flex items-baseline gap-3 mb-3">
@@ -70,7 +70,7 @@ const SectionHeader = ({
     >
       {title}
     </h2>
-    <p className="text-foreground/80 text-[16px] leading-[1.75]">{lede}</p>
+    {lede && <p className="text-foreground/80 text-[16px] leading-[1.75]">{lede}</p>}
   </div>
 );
 
@@ -133,10 +133,19 @@ const FrameworkPage = () => (
           eyebrow="The Definition"
           question="What is it?"
           title="Intelligence is a supply chain."
-          lede="One sentence, evergreen. Names no technology, no company, no layer. The same altitude as Christensen's “people hire products to get a job done.” JTBD told us what users want. Supply Chain of Intelligence tells us where AI value accrues, and which products a foundation model, hyperscaler, or productivity suite can absorb."
         />
         <div className="max-w-3xl">
-          <CanonicalDefinition variant="compact" />
+          <CanonicalDefinition variant="compact" showPositioning={false} />
+
+          <div className="mt-10 border-l-2 border-accent/60 pl-5">
+            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-2">
+              How it sits next to the AI stack
+            </p>
+            <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
+              The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible.
+            </p>
+          </div>
+
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to="/paper" className="text-accent font-display font-semibold text-sm inline-flex items-center gap-1 hover:gap-2 transition-all">
               Read the Paper <ArrowRight size={14} />
