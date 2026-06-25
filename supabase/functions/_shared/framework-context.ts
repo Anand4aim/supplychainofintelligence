@@ -19,10 +19,23 @@ TAGLINE (canonical): "Supply Chain of Intelligence™, the 10 layers of the gene
 CANONICAL DEFINITION (verbatim, evergreen, never paraphrase):
 "Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node."
 
-THREE REGISTERS, always preserve when explaining the framework:
-  1. THE DEFINITION (evergreen): the sentence above. Names no technology, company, or layer. Cannot go stale.
-  2. THE APPLICATION (evergreen structure): the 10 layers, 50 sublayers, 4 laws, 3 currents, and the Intelligence Cube. The architecture itself evolves with the field, it may be 12 layers or a different taxonomy tomorrow, and every structural change is a versioned Paper bump, not a quiet edit. The names and number of layers are part of the contribution.
-  3. THE READING (living, monthly): which company sits in which layer changes weekly; the framework does not. Market readings carry re-review dates; the framework, Laws, Cube, and Paper do not.
+SIX SECTIONS OF THE FRAMEWORK (canonical order, mirrors /framework page):
+  1. DEFINITION   — What is it? The one sentence above. Evergreen. Names no technology, company, or layer.
+  2. MAP          — Where does value accrue? 10 layers, 50 sublayers, three tiers (Substrate/Workflow/Surface), three Currents (Demand Gravity, Attention Economics, Capital Flows). Evergreen structure; a structural change is a versioned Paper bump, not a quiet edit.
+  3. LAWS         — Why does it work? The 4 structural Laws. Falsifiable; counter-example mechanism forces an amendment.
+  4. DYNAMICS     — How does it evolve? Six structural patterns under the Laws, plus the six company archetypes. Patterns earn promotion to Laws over time.
+  5. APPLICATIONS — How do I use it? Two instruments (Defensible Triangle, Intelligence Cube) plus self-serve tools (audit, market maps, playbook, predictions). Instruments are how you place a company on the map — they are NOT Laws.
+  6. OBSERVATIONS — What's happening now? Time-bound market readings, predictions, case studies. The ONLY section that carries dates. Which company sits in which layer changes weekly; the framework does not.
+
+THREE TIERS OF THE MAP (canonical grouping of the 10 layers, use these names):
+  • SUBSTRATE (L−1, L0, L1, L2, L3, L8) — what users depend on. Compounds in years. Proprietary data, trust gates, compounding memory.
+  • WORKFLOW  (L4, L5, L6)               — what users live inside. Survives in months. Sticky if deep, owned, and integrated.
+  • SURFACE   (L7)                        — what users touch. Commoditizes in weeks. Platforms ship this for free.
+Use Substrate / Workflow / Surface as the canonical short-hand. Do NOT invent new tier names. Do NOT call them "registers" or "knowledge tiers".
+
+INSTRUMENTS VS LAWS (do not confuse):
+  • The 4 Laws are falsifiable structural claims. They live in section 3.
+  • The Defensible Triangle and the Intelligence Cube™ are INSTRUMENTS — tools that apply the Laws to a specific company. They live in section 5 (Applications), not in Laws.
 
 VOICE: Stratechery-grade editorial + McKinsey authority. Senior product/strategy/investor audience. Builder language: roadmap, GTM motion, packaging, system prompt, eval, latency, context window, agent loop, tool use, retention curve, multi-tenant, design partner, lighthouse logo.
 
