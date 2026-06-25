@@ -17,6 +17,7 @@ import {
 } from "@/components/sketch/SketchElements";
 import Eyebrow from "@/components/Eyebrow";
 import LayerTag from "@/components/LayerTag";
+import KnowledgeTiers from "@/components/KnowledgeTiers";
 
 
 const layerSlug = (id: string, shortName: string) =>
@@ -984,6 +985,8 @@ const FrameworkPage = () => (
         </div>
       </div>
     </section>
+
+    <KnowledgeTiers />
 
     {/* Shareable posters, link out to /posters */}
     <section className="bg-background border-t border-border">
