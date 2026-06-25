@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this framework in academic work, analysis, or product strategy, please cite it as below."
+title: "The Supply Chain of Intelligence — the 10 layers of the generative AI stack"
+abstract: >-
+  An open structural framework for analyzing where value is created, captured,
+  and defended in generative AI products. Defines 10 layers (L−1 Resources
+  through L8 Memory), 50 sublayers, three tiers (Substrate, Workflow, Surface),
+  four structural Laws, three Currents, the Intelligence Cube, and six company
+  archetypes. Distinct from the conventional AI stack, which describes how AI
+  is built; this framework describes where AI value accrues.
+type: dataset
+authors:
+  - family-names: Arivukkarasu
+    given-names: Anand
+    affiliation: "Independent (personal capacity)"
+    city: San Francisco
+    country: US
+    orcid: ""
+url: "https://supplychainofai.com/framework"
+repository-code: ""
+license: CC-BY-4.0
+keywords:
+  - artificial intelligence
+  - generative AI
+  - product strategy
+  - AI stack
+  - defensibility
+  - moats
+  - bottlenecks
+  - structural laws
+version: "1.0"
+date-released: 2026-06-25

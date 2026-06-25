@@ -1,0 +1,489 @@
+{
+  "$schema": "https://supplychainofai.com/spec/schema/layers.v1.json",
+  "version": "1.0",
+  "framework": "Supply Chain of Intelligence",
+  "canonical_url": "https://supplychainofai.com/framework",
+  "license": "CC-BY-4.0",
+  "defensible_triangle": "L1b + L5a/b/d + L8c/d/e",
+  "tiers": {
+    "substrate": [
+      "L-1",
+      "L0",
+      "L1",
+      "L2",
+      "L3",
+      "L8"
+    ],
+    "workflow": [
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "surface": [
+      "L7"
+    ]
+  },
+  "layers": [
+    {
+      "id": "L-1",
+      "name": "Resources",
+      "short_name": "Resources",
+      "description": "What supports the chain. Energy, water, fabs, materials, skilled trades, the inputs the entire stack consumes.",
+      "detail": "Before chips, before data centers, before models, there's power, water, foundries, rare earths, and the humans who build it all. When AI demand explodes, the bottleneck isn't algorithms. It's megawatts and skilled trades.",
+      "verdict": "The real bottleneck. Slow to build, impossible to fake.",
+      "sample_players": [
+        "NextEra",
+        "TSMC fabs",
+        "MP Materials",
+        "Vistra",
+        "Bechtel"
+      ],
+      "sublayers": [
+        {
+          "id": "L-1a",
+          "name": "Energy & Grid Interconnect",
+          "description": "Power generation, PPAs, transmission, and the multi-year grid-interconnect queue, the megawatts the stack consumes and the wait to get them switched on",
+          "defensible": false
+        },
+        {
+          "id": "L-1b",
+          "name": "Thermal & Water Management",
+          "description": "Cooling systems, water access, immersion/liquid cooling, heat reuse, the thermodynamic ceiling on every GPU cluster",
+          "defensible": false
+        },
+        {
+          "id": "L-1c",
+          "name": "Fabrication & Foundry",
+          "description": "Leading-edge chip fabrication capacity, EUV lithography, advanced packaging (CoWoS), the physical floor of L0",
+          "defensible": false
+        },
+        {
+          "id": "L-1d",
+          "name": "Critical Materials & Supply Chain",
+          "description": "Rare earths, lithium, cobalt, gallium, specialty substrates, and the refining, logistics, and geopolitical chokepoints that gate them",
+          "defensible": false
+        },
+        {
+          "id": "L-1e",
+          "name": "Skilled Trades & Human Capital",
+          "description": "Electricians, HVAC techs, data-center builders, fab process engineers, robotics technicians, the labor pool no model can synthesize",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L0",
+      "name": "Infrastructure",
+      "short_name": "Infra",
+      "description": "The shovels. Chips, data centers, networking, cloud, edge, what is needed to process intelligence.",
+      "detail": "The compute substrate. NVIDIA doesn't care which model wins, they sell to all of them. When L2 commoditizes, value accrues to L0.",
+      "verdict": "Shovel sellers win every gold rush.",
+      "sample_players": [
+        "NVIDIA",
+        "AMD",
+        "TSMC",
+        "CoreWeave",
+        "Equinix"
+      ],
+      "sublayers": [
+        {
+          "id": "L0a",
+          "name": "Silicon & Memory",
+          "description": "GPUs, TPUs, custom AI accelerators, plus HBM and high-bandwidth memory (SK Hynix, Micron, Samsung), the invisible bottleneck behind every chip cycle",
+          "defensible": false
+        },
+        {
+          "id": "L0b",
+          "name": "Data Centers",
+          "description": "Physical facilities housing compute at scale",
+          "defensible": false
+        },
+        {
+          "id": "L0c",
+          "name": "Interconnect Fabric",
+          "description": "Networking between chips, racks, regions, clouds",
+          "defensible": false
+        },
+        {
+          "id": "L0d",
+          "name": "Compute & State Infrastructure",
+          "description": "On-demand compute, scheduling, and durable agent state (checkpointing, workflow state, runtime memory stores)",
+          "defensible": false
+        },
+        {
+          "id": "L0e",
+          "name": "Edge & On-Device Compute",
+          "description": "Local inference on phones, vehicles, sensors, endpoints",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "name": "Data",
+      "short_name": "Data",
+      "description": "The raw input. What data do you have that nobody else can get?",
+      "detail": "Proprietary datasets are the raw fuel. More agents = more demand for data. The L1b test: if your data is public, the model layer wins.",
+      "verdict": "Structurally safe. API-first wins.",
+      "sample_players": [
+        "Apollo.io",
+        "Bloomberg",
+        "ZoomInfo",
+        "Scale AI"
+      ],
+      "sublayers": [
+        {
+          "id": "L1a",
+          "name": "Public & Open Data",
+          "description": "Common Crawl, Wikipedia, government data, open datasets",
+          "defensible": false
+        },
+        {
+          "id": "L1b",
+          "name": "Proprietary Data",
+          "description": "Licensed, paywalled, or internally generated training corpora",
+          "defensible": true
+        },
+        {
+          "id": "L1c",
+          "name": "Behavioral & Sensor Data",
+          "description": "Clicks, sessions, interaction logs, and camera, LiDAR, IMU, telemetry, and physical-world sensor streams for robotics and autonomy",
+          "defensible": true
+        },
+        {
+          "id": "L1d",
+          "name": "Outcome Data",
+          "description": "Labels, results, conversions, win/loss, audit trails, what actually happened after the model acted",
+          "defensible": true
+        },
+        {
+          "id": "L1e",
+          "name": "Synthetic & Simulation Data",
+          "description": "Machine-generated corpora and simulated environments (Isaac Sim, CARLA, Omniverse, world-sim) for training, augmentation, and embodied agent rollout",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L2",
+      "name": "Models",
+      "short_name": "Models",
+      "description": "Intelligence refinement. Rent early, build custom at scale.",
+      "detail": "Foundation models are the smelters, expensive, few can operate at scale. Once refined, the gold is a commodity, which is why model providers need to move up the chain.",
+      "verdict": "Winner-take-most. Commodity risk high.",
+      "sample_players": [
+        "OpenAI",
+        "Anthropic",
+        "Google DeepMind",
+        "Meta AI"
+      ],
+      "sublayers": [
+        {
+          "id": "L2a",
+          "name": "Foundation & Multimodal Models",
+          "description": "Large pre-trained generalists, GPT, Claude, Gemini, Llama, and vision-language-action and video models (Sora, Veo) that span text, image, audio, and motion",
+          "defensible": false
+        },
+        {
+          "id": "L2b",
+          "name": "Specialized & Fine-Tuned Models",
+          "description": "Domain-tuned, distilled, and PEFT/LoRA-adapted models for specific verticals or tasks (BloombergGPT, Med-PaLM, Codestral)",
+          "defensible": false
+        },
+        {
+          "id": "L2c",
+          "name": "Embedding & Retrieval",
+          "description": "Vector representations, search indices, reranking, and RAG infrastructure",
+          "defensible": false
+        },
+        {
+          "id": "L2d",
+          "name": "Model Routing & Composition",
+          "description": "Selecting, chaining, ensembling, or mixture-of-experts routing across multiple models per task to balance cost, latency, and quality",
+          "defensible": false
+        },
+        {
+          "id": "L2e",
+          "name": "Reasoning & World Models",
+          "description": "Extended chain-of-thought, planning, and multi-step inference, plus predictive world models (V-JEPA, Genie, Sora-as-simulator) that let agents and robots imagine outcomes before acting",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L3",
+      "name": "Gatekeeping",
+      "short_name": "Gates",
+      "description": "Trust, acceptance, approval. Can the system be allowed in?",
+      "detail": "Without the hallmark, no enterprise buyer touches it. L3 is the slowest moat to build and the hardest to replicate.",
+      "verdict": "Essential. More agents = more access control.",
+      "sample_players": [
+        "Vanta",
+        "Drata",
+        "OneTrust",
+        "Apple App Store"
+      ],
+      "sublayers": [
+        {
+          "id": "L3a",
+          "name": "Compliance & Export Controls",
+          "description": "Regulatory, legal, and policy filters (HIPAA, GDPR, SOC 2, EU AI Act), plus chip export controls, model sovereignty, and data-residency regimes that decide where the stack is allowed to run",
+          "defensible": false
+        },
+        {
+          "id": "L3b",
+          "name": "Quality Gates",
+          "description": "Accuracy, hallucination detection, output grading, eval harnesses, regression suites",
+          "defensible": false
+        },
+        {
+          "id": "L3c",
+          "name": "Safety, Security & Provenance",
+          "description": "Harmful-content filtering, adversarial defense, prompt-injection protection, and content provenance (C2PA, watermarking, deepfake attestation) that proves what was generated and by whom",
+          "defensible": false
+        },
+        {
+          "id": "L3d",
+          "name": "Editorial Gates",
+          "description": "Tone, brand voice, style, taste, the human judgment layer",
+          "defensible": true
+        },
+        {
+          "id": "L3e",
+          "name": "Distribution Gates",
+          "description": "App store approval, ranking, marketplace curation, discovery control",
+          "defensible": true
+        }
+      ]
+    },
+    {
+      "id": "L4",
+      "name": "Access",
+      "short_name": "Access",
+      "description": "Connectivity, permissions, integrations, the pipes layer.",
+      "detail": "Grammarly survived because it had railroad tracks (plugins) into Word, Gmail, Chrome. Jasper had no tracks. Deep integrations and agent identity create switching costs.",
+      "verdict": "Load-bearing walls. Invest accordingly.",
+      "sample_players": [
+        "AWS",
+        "Snowflake",
+        "Supabase",
+        "Twilio"
+      ],
+      "sublayers": [
+        {
+          "id": "L4a",
+          "name": "API & Integration Layer",
+          "description": "REST/GraphQL endpoints, SDKs, webhooks connecting AI to systems",
+          "defensible": false
+        },
+        {
+          "id": "L4b",
+          "name": "Agent Interface Protocols",
+          "description": "MCP, tool-use specs, agent-to-agent communication standards",
+          "defensible": true
+        },
+        {
+          "id": "L4c",
+          "name": "Access Governance & Agent Commerce",
+          "description": "Who can use what, RBAC, scoping, audit trails, and agent-payment rails (Stripe/Visa/Mastercard agent-pay, spend limits, programmatic checkout, machine-to-machine billing)",
+          "defensible": false
+        },
+        {
+          "id": "L4d",
+          "name": "Real-Time Interaction Infrastructure",
+          "description": "Streaming, voice pipelines, video, low-latency modality transport",
+          "defensible": false
+        },
+        {
+          "id": "L4e",
+          "name": "Agent Identity & Provenance",
+          "description": "Verifying which agent acted, credential chains, trust signatures",
+          "defensible": true
+        }
+      ]
+    },
+    {
+      "id": "L5",
+      "name": "Execution",
+      "short_name": "Execution",
+      "description": "Applied skills and capabilities. Doing the actual work.",
+      "detail": "A jeweler takes refined gold and crafts rings, necklaces, watches, each requiring specialized skill. L5 is THE entry point for AI-native companies.",
+      "verdict": "Durable if deep. Generic skills get absorbed.",
+      "sample_players": [
+        "Harvey",
+        "Sierra",
+        "11x",
+        "Cursor"
+      ],
+      "sublayers": [
+        {
+          "id": "L5a",
+          "name": "Domain Execution & Tool Use",
+          "description": "Doing the actual work, legal drafting, code generation, diagnosis, underwriting, including function calling, code interpreter, browser/computer use, and structured tool invocation that turns a model into an operator",
+          "defensible": true
+        },
+        {
+          "id": "L5b",
+          "name": "Decision Frameworks & Reasoning Scaffolds",
+          "description": "Structured thinking patterns, checklists, rubrics the agent follows",
+          "defensible": true
+        },
+        {
+          "id": "L5c",
+          "name": "Retrieval-Augmented Workflows",
+          "description": "Grounding execution in retrieved context, knowledge, and documents",
+          "defensible": false
+        },
+        {
+          "id": "L5d",
+          "name": "Operating Playbooks",
+          "description": "Company-specific SOPs, rules, preferences encoded for agents",
+          "defensible": true
+        },
+        {
+          "id": "L5e",
+          "name": "Interaction Skills & Actuation",
+          "description": "Tone, empathy, negotiation, persuasion, and physical-world actuation (robotic control, valve/vehicle/device operation)",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L6",
+      "name": "Orchestration",
+      "short_name": "Orchestration",
+      "description": "Workflow, routing, coordination. How skills compose into outcomes.",
+      "detail": "A single ring is useful. A curated jewelry collection with tasting, fitting, and custom design is an experience. Orchestration composes skills into workflows.",
+      "verdict": "Contested. Becoming a feature, not a product.",
+      "sample_players": [
+        "LangChain",
+        "CrewAI",
+        "Zapier (at risk)",
+        "Make (at risk)"
+      ],
+      "sublayers": [
+        {
+          "id": "L6a",
+          "name": "Agent Loops",
+          "description": "Single-agent plan-act-observe cycles",
+          "defensible": false
+        },
+        {
+          "id": "L6b",
+          "name": "Human-in-the-Loop",
+          "description": "Escalation patterns, approval workflows, human override design",
+          "defensible": true
+        },
+        {
+          "id": "L6c",
+          "name": "Role Routing & Task Decomposition",
+          "description": "Breaking complex work into subtasks and assigning to the right agent",
+          "defensible": false
+        },
+        {
+          "id": "L6d",
+          "name": "Context & State Management",
+          "description": "Maintaining working memory, session state, context windows across steps",
+          "defensible": false
+        },
+        {
+          "id": "L6e",
+          "name": "Runtime Assurance & Learning Loops",
+          "description": "Post-deployment monitoring, evals, feedback pipelines, drift detection",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L7",
+      "name": "Surface",
+      "short_name": "Surface",
+      "description": "Interface, presentation, experience. How the user meets the intelligence.",
+      "detail": "People see the ring on the finger, the surface, the sparkle. If all you own is the display case (L7), anyone can build another display case. Embedded and transactional surfaces are the moats.",
+      "verdict": "Modality = commodity. Context = moat.",
+      "sample_players": [
+        "ChatGPT",
+        "Gemini",
+        "Copilot",
+        "ElevenLabs"
+      ],
+      "sublayers": [
+        {
+          "id": "L7a",
+          "name": "Conversational",
+          "description": "Voice and chat interfaces, the talking layer",
+          "defensible": false
+        },
+        {
+          "id": "L7b",
+          "name": "Visual Interfaces & Media",
+          "description": "Dashboards, generated images, video, rich media output",
+          "defensible": false
+        },
+        {
+          "id": "L7c",
+          "name": "Embedded & Embodied AI",
+          "description": "AI woven into existing tools (IDE copilots, email assistants, in-app agents) and embodied in physical hardware (robots, devices, vehicles)",
+          "defensible": true
+        },
+        {
+          "id": "L7d",
+          "name": "Transaction Surface",
+          "description": "Where the AI closes a deal, books an appointment, processes a payment",
+          "defensible": true
+        },
+        {
+          "id": "L7e",
+          "name": "Async & Ambient Surfaces",
+          "description": "Background agents, notifications, proactive nudges, always-on monitoring",
+          "defensible": false
+        }
+      ]
+    },
+    {
+      "id": "L8",
+      "name": "Memory",
+      "short_name": "Memory",
+      "description": "Retention, learning, compounding context. What the system remembers.",
+      "detail": "The jeweler keeps records: which designs sold, which metals each customer prefers. Over time, this memory makes every decision better. Memory is the only layer that gets stronger every day.",
+      "verdict": "The ultimate moat. Memory that compounds wins.",
+      "sample_players": [
+        "Sierra",
+        "Notion (partial)",
+        "Rewind AI"
+      ],
+      "sublayers": [
+        {
+          "id": "L8a",
+          "name": "Session & Short-Term Memory",
+          "description": "Within-conversation context, scratch state, working memory",
+          "defensible": false
+        },
+        {
+          "id": "L8b",
+          "name": "User & Entity Profiles",
+          "description": "Persistent preferences, history, relationship context per user or account",
+          "defensible": false
+        },
+        {
+          "id": "L8c",
+          "name": "Aggregated Network Learning",
+          "description": "Patterns learned across many users/customers, fleet intelligence",
+          "defensible": true
+        },
+        {
+          "id": "L8d",
+          "name": "Institutional Knowledge",
+          "description": "What the organization knows, docs, decisions, tribal knowledge encoded",
+          "defensible": true
+        },
+        {
+          "id": "L8e",
+          "name": "Learned World Models",
+          "description": "The system's accumulated causal understanding of how things work",
+          "defensible": true
+        }
+      ]
+    }
+  ]
+}

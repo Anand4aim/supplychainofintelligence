@@ -1,111 +1,102 @@
-## The strategy in one line
+## Goal
 
-Make SupplyChainOfAI.com the **undeniable citation target** for the 10-layer framework by shipping (1) a canonical paper everyone links to, (2) a teardown engine that forces application, and (3) a staggered seeding loop with a few high-authority voices, while you out-publish everyone using your own term.
+Package the existing site content into three platform-ready articles you can copy-paste, plus a public GitHub-ready spec folder. Same words, three surfaces. No new arguments — just distribution.
 
-You already have the trademark, the framework, the posters, the sketch register, and ~30 case studies. The gap is **citation infrastructure** and **distribution choreography**, not more framework content.
+## The three articles (sequenced)
 
----
+1. **Article 1 — "The Supply Chain of Intelligence: a 10-layer map of the generative AI stack"** (the framework intro). Source: `/framework` definition + Map + the 10-layer summary.
+2. **Article 2 — "The 4 Laws of the AI Supply Chain"** (why wrappers die, where value accrues, Generation ≠ Verification, Surface vs Chain). Source: `src/data/lawEssays.ts` + `/framework` Laws section.
+3. **Article 3 — "Apollo and the SaaSpocalypse: a thin-stack survivor, decoded"** (the case study). Source: `src/data/caseStudies.ts` apollo-thin-stack-survivor.
 
-## Five workstreams (ranked by leverage)
+## What I'll deliver per article
 
-### 1. The Canonical Paper, `/paper` (or `/the-supply-chain-of-intelligence`)
+For each of the three, three files, all under a new `docs/distribution/` folder so it's version-controlled and auto-syncs to GitHub:
 
-One URL. One PDF. One thing every link in the world points to. Stratechery has "Aggregation Theory." Christensen has "JTBD." You need yours.
+```text
+docs/distribution/
+├── README.md                          ← index + "how to repost" instructions for you
+├── 01-framework/
+│   ├── linkedin-article.md            ← paste-into-LinkedIn copy; image URLs inline; CTA back to /framework
+│   ├── substack-medium.md             ← same body, with "Originally published at supplychainofai.com/framework" header + canonical link note
+│   └── images.md                      ← list of hosted image URLs + suggested alt text + caption
+├── 02-four-laws/
+│   └── (same three files)
+└── 03-apollo-teardown/
+    └── (same three files)
+```
 
-Build:
-- A new long-form route `/paper`, the definitive ~6–8K word essay. All 10 layers, the 4 Laws, the Cube, the 3 Currents, the Agent decoder, the Defensible Triangle. Numbered sections so people can deep-link (`/paper#law-1`, `/paper#l3-gates`).
-- A **versioned PDF** at `/paper.pdf` (e.g. `v1.0, Nov 2026`). PDFs get cited in decks, papers, LinkedIn carousels because they're stable artifacts. Build via the existing `scripts/build-stack-pdf.py`.
-- **`ScholarlyArticle` JSON-LD** with author, datePublished, version, license (CC-BY 4.0 with attribution to Anand Arivukkarasu, *requires* a link back). CC-BY is the citation cheat code.
-- **"How to cite this paper"** block at the bottom with APA, MLA, BibTeX, and a one-line LinkedIn-ready quote. Copy buttons on each (re-use `CopySnippet`).
-- A short DOI-style permalink convention: `SCoI/L3` → `/paper#l3-gates`, printed on every poster footer so people quoting the poster end up on `/paper`.
+LinkedIn articles don't render Markdown — but pasting Markdown into LinkedIn's article editor preserves headings, bold, lists, and inline images. I'll keep formatting LinkedIn-safe (no tables, no footnotes, no code fences for prose).
 
-This is the spine. Every other workstream points here.
+## Hosted diagrams (Substack/Medium need URLs, LinkedIn needs file uploads)
 
-### 2. The Teardown Engine, application is what makes frameworks spread
+I'll generate PNG exports of the key visuals and host them at stable URLs on the site so Substack/Medium can embed by URL and you can download the same PNGs for LinkedIn upload.
 
-You have `/analysis` with case studies. Re-frame it as the **Teardown Engine** and industrialize it.
+Diagrams per article:
 
-- **Weekly teardown cadence.** Every Tuesday: one company (Cursor, Harvey, Glean, Perplexity, the hottest deal that week) decoded through the layers. 600–900 words. Same template. Same sketch hero. Same "Where they live: L1b + L2 + L7" verdict box.
-- A reusable `<TeardownTemplate>` so each one is ~30 min to write, not a day. Slots: company, layers occupied, defensible triangle score, what they're really selling (agent → decode), prediction + counter-move.
-- **Open-source the template.** Publish `/teardown-kit`, the markdown skeleton + the sketch hero recipe + the LinkedIn caption pattern. People who want to copy your style end up linking to you to credit the format. JTBD spread exactly this way (Bob Moesta's worksheet).
-- Hot-deal hijack: when a16z/Sequoia announces a round, you publish the SCoI decode within 24h. Speed = citations.
+| Article | Diagrams |
+|---|---|
+| 1. Framework | 10-layer stack (full color), Substrate/Workflow/Surface tier diagram, Defensible Triangle |
+| 2. Four Laws | One poster per Law (4 images), built from existing `FourLawsPoster` styling |
+| 3. Apollo | Layer-by-layer decode strip (L1b + L2 + L7), thin-stack-survivor diagram |
 
-### 3. The Citation Surface, make linking the path of least resistance
+Two delivery modes, both shipped:
 
-Most people don't link because it's friction. Remove the friction.
+- **Hosted URLs**: PNGs written to `public/og/distribution/` so they live at `https://supplychainofai.com/og/distribution/<file>.png`. Substack/Medium embed by URL.
+- **Downloadable copies**: Same PNGs duplicated to `/mnt/documents/distribution/` so you can drag-drop into LinkedIn's article editor.
 
-- **`<CiteThis>` component** on every framework page, law essay, layer page, and teardown. One click → copies a pre-formatted citation (LinkedIn, X, blog HTML, BibTeX) with the canonical URL baked in. Extend the existing `CopySnippet`.
-- **Embeddable widgets.** A tiny `/embed/layer/L3` iframe (~200×120) showing the L3 chip + one-line definition + "via SupplyChainOfAI.com™" footer. Anyone can drop it into a Substack post. Each embed = a backlink.
-- **"As cited by"** strip on `/paper` and home, logos/quotes from the highest-authority mentions you get. Social proof loops: the more visible the citations, the more people want to be on the wall.
-- **Author bio kit** at `/press`, Anand's bio, headshot, the trademark notice, the canonical tagline, suggested link text ("the 10-layer Supply Chain of Intelligence™"). Journalists and analysts copy-paste; control what they paste.
+Rendering: a small Playwright script (`scripts/export-distribution-pngs.ts`) navigates to the existing poster routes (`/posters`), screenshots each at 2x DPI, writes both copies. Reuses the visuals already on the site — no new design work, exact color system preserved.
 
-### 4. The Seeding Choreography, a few authoritative voices, staggered
+## GitHub repo shape
 
-You're right: 1 known investor post > 50 randos, and identical posts in a week smells like a campaign. Choreograph this like a release window.
+You asked to work directly on GitHub. Since this Lovable project is already GitHub-synced (the codebase auto-pushes), I'll structure the framework as an open spec **inside this same repo** under a new top-level `/spec/` folder. It becomes a documentation surface visible on GitHub immediately, without spinning up a second repo:
 
-Make a private spreadsheet (off-site) of ~15 target voices: 3 investors, 3 founders, 3 analysts/journalists, 3 academics/researchers, 3 product-leader peers. Pitch each a **different angle**:
+```text
+/spec/
+├── README.md                  ← landing page: definition, 10 layers TL;DR, canonical link
+├── LICENSE                    ← CC BY 4.0 (matches "give it away as a standard" intent)
+├── CITATION.cff               ← so GitHub renders a "Cite this repository" button
+├── layers/
+│   ├── L-1-resources.md
+│   ├── L0-infrastructure.md
+│   ├── ... (one per layer, generated from src/data/layers.ts)
+│   └── L8-memory.md
+├── laws.md                    ← the 4 Laws verbatim
+├── currents.md                ← the 3 Currents
+├── intelligence-cube.md       ← Functions × Verticals × Layers
+└── data/
+    ├── layers.json            ← machine-readable, generated from src/data/layers.ts
+    └── sublayers.json
+```
 
-| Angle | Who you ask | What they post |
-|---|---|---|
-| Apply it | A founder | "I mapped our company through the 10 layers, here's where we actually live" |
-| Critique it | A skeptic analyst | "Where I'd push back on Anand's framework, and where I think it's right" |
-| Extend it | A researcher | "Adding a 9th layer? Why I'd argue [X] deserves its own row" |
-| Use it as a lens | An investor | "Three deals I passed on this quarter, decoded through SCoI" |
-| Teach it | A product leader | "What I teach my PMs about the 10 layers" |
+If you later want a separate standalone `supply-chain-of-intelligence` repo on GitHub, you can fork `/spec/` out — but starting here means zero new infra and the spec stays in lockstep with the live site (single source of truth = `src/data/layers.ts`).
 
-Stagger over 3–6 months. Each post adds something genuinely new. All link to `/paper`. Movement, not campaign.
+## Voice and tone
 
-You don't need to build software for this, but the **site** needs to make their angle frictionless: the Citation Surface (#3), the Teardown Kit (#2), and a `/contributors` page that credits each angle with their byline and a backlink (reciprocity is real).
+- Stratechery editorial + McKinsey authority (matches your existing tone memory).
+- No harsh verdicts. Soft-framing per `mem://preferences/tone`.
+- Personal-capacity safe: no "hire me / engagement / advisory" CTAs. CTAs are editorial — "read the full framework", "run the self-assessment", "follow on LinkedIn".
+- Brand line on every piece: *"The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack."*
+- Attribution footer auto-appended to every article: `Originally published at supplychainofai.com/<path>. © Anand Arivukkarasu, personal capacity.`
 
-### 5. Your own high-frequency output, be the most prolific user of your own term
+## Order of operations
 
-Right now you have ~6–8 opinion posts. The owner of a framework should publish faster than anyone else who uses it.
+1. Build the PNG export script + render all diagrams to `public/og/distribution/` and `/mnt/documents/distribution/`.
+2. Write Article 1 (Framework) in all three formats. Show it to you for tone check before I generate 2 and 3.
+3. On your green light, ship Articles 2 + 3 in parallel.
+4. Build `/spec/` from `src/data/layers.ts` (auto-generated where possible, hand-edited landing README).
+5. Final deliverable: a single chat summary linking each LinkedIn `.md`, each Substack `.md`, the hosted image URLs, and the GitHub `/spec/` folder URL.
 
-- **Cadence target:** 1 teardown/week + 1 opinion post / 2 weeks + 1 layer-deep-dive / month. ~6 pieces/month.
-- **Name-attached every time.** Title pattern: *"[Company/Topic]: An SCoI Teardown"* or *"The [L#] [Layer] Problem with [Topic]"*. Trademark + acronym in every title. Crawlers learn the association.
-- **`/now` page**, a single-screen "what I'm publishing this month" with the next 4 pieces queued. Signals momentum to anyone who lands cold.
-- **RSS + LinkedIn cross-post.** You already have `rss-feed`. Auto-cross-post via a simple n8n/Zapier (off-platform) using the RSS. Every LinkedIn post links back to canonical SCoI.com URL.
+## What I won't do
 
----
+- Won't rewrite the arguments. Direct lift from `/framework`, `lawEssays.ts`, and `caseStudies.ts`, reformatted per platform.
+- Won't create a separate GitHub repo (no auth to do that; the Lovable sync already pushes this repo). If you want a dedicated repo later, you fork `/spec/` out manually — 5 min job.
+- Won't add forms, lead capture, or any transactional CTA. L-1A safe.
 
-## SEO mechanics layered on top
+## Open question before I start
 
-Google's Nov 2025 doctrine (already in mem://preferences/seo-doctrine) says authority comes from unique first-hand content, not GEO tricks. The above IS the SEO play. Mechanics to add:
+Two visual-spec choices that change rendering — pick now so I render once:
 
-- **`ScholarlyArticle` + `DefinedTerm` JSON-LD** on `/paper` and on each `/framework/L#` page. `DefinedTerm` is how Google understands "this site defines this term." Pairs with the trademark.
-- **`citation` schema property** on every teardown, pointing back to `/paper`. Internal citation graph = topical authority signal.
-- **Anchor-text discipline.** Internal links to the paper always use the same anchor: "The Supply Chain of Intelligence™" or "the 10-layer framework". Consistency teaches Google the entity.
-- **Sitemap + IndexNow on every publish.** Wire the existing `scripts/indexnow-submit.ts` into the post-publish flow so new teardowns get crawled within hours.
-- **`llms.txt` already exists**, add `/paper.md` (markdown version of the paper) so Claude/Perplexity/ChatGPT cite the canonical text verbatim. This is huge for AI search: LLMs cite whoever gives them clean, attributable markdown.
+- LinkedIn cover image aspect ratio: **1200×627** (LinkedIn's documented optimum) or **1920×1080** (looks better on Substack/Medium hero)? I'd default to **1200×627** and crop-safe the design so it works on both.
+- Diagram background: **navy (#0F172A, matches site)** or **white (better for LinkedIn light-mode feed thumbnails)**? I'd default to **navy** for brand consistency.
 
----
-
-## What I'd build first (this PR-sized)
-
-1. `/paper` route + the long-form canonical essay (stitched from existing framework content + new connective tissue).
-2. The "How to cite" block + `<CiteThis>` component.
-3. `ScholarlyArticle` + `DefinedTerm` JSON-LD.
-4. `/paper.md` for LLM citation, linked from `llms.txt`.
-5. Teardown template + 1 example teardown (Cursor or Harvey) to prove the cadence.
-
-Workstreams 4 (seeding) and the weekly teardown cadence are operational, not code, but the site primitives above make them possible.
-
----
-
-## Personal-capacity guardrail
-
-Everything above stays editorial/analytical. No "hire me", no "request a teardown", no lead capture. The CTAs are *"cite the paper"*, *"copy the snippet"*, *"download the PDF"*, *"read the next teardown"*. Fully L-1A compliant.
-
----
-
-## My recommendation
-
-Approve this and I'll start with **steps 1–4 above** in this order:
-1. Scaffold `/paper` route with the canonical essay structure (we can fill prose iteratively).
-2. Build `<CiteThis>` and drop it into the paper, framework, laws, and teardowns.
-3. Add `ScholarlyArticle` + `DefinedTerm` JSON-LD and a `/paper.md` mirror.
-4. Ship one Cursor or Harvey teardown using a new `<TeardownTemplate>` to prove the format.
-
-That gives you the citation spine + one applied teardown in one push. Then we choreograph #4 and turn on cadence for #5.
-
-Want me to start with the `/paper` scaffold?
+Reply "go" with any overrides and I'll start with the PNG render + Article 1.

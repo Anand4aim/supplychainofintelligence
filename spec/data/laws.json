@@ -1,0 +1,136 @@
+{
+  "$schema": "https://supplychainofai.com/spec/schema/laws.v1.json",
+  "version": "1.0",
+  "framework": "Supply Chain of Intelligence",
+  "canonical_url": "https://supplychainofai.com/framework",
+  "license": "CC-BY-4.0",
+  "laws": [
+    {
+      "num": "I",
+      "title": "Intelligence Commoditizes Downward",
+      "short_title": "Intelligence commoditizes downward",
+      "description": "If your product depends only on generic model capability, the platform layer below you will eventually absorb it. Wrappers don't survive, wrappers become features.",
+      "live_example": "Jasper ($1.5B → ~$300M) was a wrapper on GPT. Once ChatGPT shipped, the value flowed to L2.",
+      "predicts": "Predicts WHO gets absorbed."
+    },
+    {
+      "num": "II",
+      "title": "Value Accrues at Bottlenecks",
+      "short_title": "Value accrues at bottlenecks",
+      "description": "Durable value rarely sits in the model or the UI. It sits at the scarce layer, proprietary data, workflow control, verification, distribution, memory, compliance, or trust. Find the bottleneck. Own it.",
+      "live_example": "NVIDIA owns L0 silicon. Vanta owns L3 compliance. Bloomberg owns L1b data. Each is the bottleneck in their chain.",
+      "predicts": "Predicts WHERE value is going."
+    },
+    {
+      "num": "III",
+      "title": "The Surface Captures Attention; the Chain Captures Power",
+      "short_title": "Surface captures attention, chain captures power",
+      "description": "A beautiful UI may get users. But durable companies own a deeper layer of the intelligence chain, data, execution, memory, gates. Surface without depth rarely compounds.",
+      "live_example": "Gamma owns L7 surface. Replit owns agent + code-gen + hosting + auth + database (L4 + L5 + L6 + L8). Same prompt-to-output category. Different fate.",
+      "predicts": "Predicts WHO survives the platform era."
+    },
+    {
+      "num": "IV",
+      "title": "Generation and Verification Must Be Separate",
+      "short_title": "Generation and verification must be separate",
+      "description": "Wherever output carries fiduciary, regulatory, safety, or reputational weight, the generator and the verifier must be separate economic entities. L3 above L2/L5 is structurally permanent, the model can't audit itself, the codegen can't certify itself, the drafter can't approve itself.",
+      "live_example": "Vanta (L3) over AWS/OpenAI. Snyk (L3) over Copilot. Big-4 audit over SAP. Ironclad over Harvey. The verifier survives every model generation.",
+      "predicts": "Predicts WHERE L3 is non-absorbable."
+    }
+  ],
+  "observations": [
+    {
+      "num": 1,
+      "title": "The Two-Vendor Rule",
+      "short_title": "Two vendors when mistakes are unrecoverable",
+      "description": "Enterprises will pay for two vendors when one vendor's mistake is unrecoverable. Codegen + code-security. Draft + review. Model + eval. Trade + clearing. The buyer pays the duplication tax to avoid the single-point-of-failure tax.",
+      "examples": [
+        "Cursor for codegen + Snyk/Semgrep for security review, no CISO accepts the same vendor doing both.",
+        "Harvey drafts contracts; Ironclad/Kira reviews them. The drafter is structurally not allowed to be the approver."
+      ],
+      "layer_tags": [
+        "L3",
+        "L5"
+      ],
+      "case_study": null
+    },
+    {
+      "num": 2,
+      "title": "Regulatory Half-Life",
+      "short_title": "Regulated industries outlast 3+ model generations",
+      "description": "The more regulated the industry, the longer L3 outlives L2 churn. A compliance gate written into law is a moat measured in decades, not quarters. Models cycle every 6 months; SOC 2, HIPAA, EU AI Act, FDA 510(k) cycle every 5–10 years.",
+      "examples": [
+        "Vanta and Drata are 4 model generations old and untouched. The frontier model labs are not certifying themselves.",
+        "Epic's L3+L4 position in healthcare predates the entire AI wave and will outlive GPT-7."
+      ],
+      "layer_tags": [
+        "L3"
+      ],
+      "case_study": null
+    },
+    {
+      "num": 3,
+      "title": "The Bundling Asymmetry",
+      "short_title": "Platforms bundle adjacent layers, never across trust boundaries",
+      "description": "Foundation model labs will expand from L2 into L5/L6/L7, adjacent value, because the buyer accepts the same vendor doing both. They will not expand across the trust boundary into L3 above themselves. OpenAI will ship agents. OpenAI will not issue its own SOC 2 audit.",
+      "examples": [
+        "OpenAI shipped GPTs, the Apps SDK, Operator, and Codex, all L5/L6/L7 expansion. None of it is self-certification.",
+        "AWS ships hundreds of services but pays Vanta/Drata for compliance evidence. The platform respects the boundary."
+      ],
+      "layer_tags": [
+        "L2",
+        "L3"
+      ],
+      "case_study": null
+    },
+    {
+      "num": 4,
+      "title": "Memory Is Not Truth",
+      "short_title": "L8 memory is defensible; L8 truth-claims need L3",
+      "description": "L8 memory of what happened, what the user said, did, preferred, is a clean moat. L8 claims about what is true, diagnoses, legal positions, financial valuations, require an L3 verifier above them. The moment memory makes a truth claim, it inherits a regulator.",
+      "examples": [
+        "Notion AI remembers your docs (L8b, defensible). It does not diagnose your patients.",
+        "An AI medical scribe (L8) is valuable; the same scribe issuing a diagnosis triggers FDA (L3) and an MD signature requirement."
+      ],
+      "layer_tags": [
+        "L8",
+        "L3"
+      ],
+      "case_study": null
+    },
+    {
+      "num": 5,
+      "title": "Distribution Eats Generation",
+      "short_title": "When generation commoditizes, the moment-of-consumption captures the surplus",
+      "description": "Once L2 commoditizes (and it always does), the surplus flows to whichever layer owns the user's moment of consumption, L7c (embedded copilot) or L7d (transaction surface). The model is generic; the context of use is not.",
+      "examples": [
+        "Cursor captures the codegen surplus, not the model underneath it. The model is interchangeable; the IDE moment is not.",
+        "Perplexity captures the answer surplus by owning the question moment. The model could be any of four, the surface is the moat."
+      ],
+      "layer_tags": [
+        "L2",
+        "L7"
+      ],
+      "case_study": null
+    },
+    {
+      "num": 6,
+      "title": "The Gatekeeper Tax is Always Arbitraged",
+      "short_title": "Every gatekeeper margin attracts an arbitrageur",
+      "description": "Wherever a gatekeeper extracts rent between the marginal cost of supply and the perceived value of demand, an arbitrageur, API shim, cloud automation, open-source replacement, lateral integration, or regulatory appeal, will step into the gap. The gatekeeper's pricing power is bounded by the cost of the workaround. The arbitrageur lives at L7 and quietly reaches down into L5 to widen the margin further.",
+      "examples": [
+        "Dripify (L7) arbitrages LinkedIn's (L1+L3) connection-request bottleneck: cloud automation + proxies cost pennies, sales teams pay $39–$99/seat/month. Newer entrants now hook L5 open-source LLMs to auto-reply, compressing the last human cost.",
+        "Plaid (L4b) arbitraged the bank gatekeepers' API absence for a decade; the moment banks shipped their own APIs, Plaid's margin compressed and it had to migrate up into identity and data."
+      ],
+      "layer_tags": [
+        "L1",
+        "L3",
+        "L7"
+      ],
+      "case_study": {
+        "slug": "dripify-linkedin-arbitrage",
+        "label": "Dripify vs LinkedIn, the L7 arbitrageur"
+      }
+    }
+  ]
+}
