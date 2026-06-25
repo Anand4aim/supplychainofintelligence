@@ -26,6 +26,8 @@ import ThreeLayerProof from "@/components/home/ThreeLayerProof";
 import ContrastRow from "@/components/home/ContrastRow";
 import ThreeAreasOfAI from "@/components/home/ThreeAreasOfAI";
 import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
+import StackVsSupplyChainTable from "@/components/StackVsSupplyChainTable";
+import CursorThroughBothLenses from "@/components/CursorThroughBothLenses";
 import PromptSection from "@/components/PromptSection";
 
 const fadeIn = {
@@ -49,8 +51,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Supply Chain of Intelligence™, a structural framework for AI defensibility"
-        description="A structural framework for AI defensibility, not logistics. 10 layers, 50 sublayers, 4 laws, and worked case studies of named AI companies across the generative AI stack."
+        title="Supply Chain of Intelligence™ — a strategic framework for AI"
+        description="The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible. 10 layers, 50 sublayers, 4 laws, and worked case studies."
         path="/"
       />
 
@@ -67,16 +69,16 @@ const Index = () => {
               transition={{ duration: 0.7 }}
             >
               <Eyebrow tone="accent" dash={false} className="mb-4">
-                Strategic Framework · AI Defensibility
+                Strategic Framework for AI · Not a Stack
               </Eyebrow>
               <h1 className="font-display text-[32px] md:text-[42px] lg:text-[48px] font-bold leading-[1.1] mb-5 text-foreground">
                 A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
               </h1>
+              <p className="font-display text-[15px] md:text-[17px] text-foreground/90 leading-snug max-w-xl mb-4 border-l-2 border-accent pl-3">
+                The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes <strong className="text-foreground">economically defensible</strong>.
+              </p>
               <p className="text-base md:text-lg text-foreground/85 leading-relaxed max-w-xl mb-4">
                 Is your product a moat, a workflow, or a wrapper a platform will absorb? Supply Chain of Intelligence™ scores every AI product across <strong className="text-foreground">10 layers and 50 sublayers</strong>, from compute and data to workflows, surfaces, and memory, and tells you where value actually accrues.
-              </p>
-              <p className="font-display text-[15px] md:text-[16px] text-foreground/90 leading-relaxed max-w-xl mb-3 border-l-2 border-accent pl-3">
-                A structural map of where defensibility actually lives in the generative AI stack, layer by layer.
               </p>
               <p className="font-mono-marker text-[11px] tracking-[0.16em] uppercase text-muted-foreground mb-6">
                 Supply Chain of Intelligence™, the 10 layers of the generative AI stack.
@@ -217,6 +219,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ CATEGORY REFRAME, Stack vs Supply Chain ═══════════ */}
+      <section className="bg-background border-b border-border/40">
+        <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
+          <StackVsSupplyChainTable path="/" />
+        </div>
+      </section>
+
       {/* ═══════════ COLD OPEN, Three Areas of AI Transformation ═══════════ */}
       <ThreeAreasOfAI />
 
@@ -231,6 +240,9 @@ const Index = () => {
 
       {/* ═══════════ CONTRAST ROW, Jasper vs Cursor ═══════════ */}
       <ContrastRow />
+
+      {/* ═══════════ KILLER DEMO, Cursor through both lenses ═══════════ */}
+      <CursorThroughBothLenses path="/" />
 
       {/* ═══════════ FRAMEWORK SUMMARY POSTER + WORKED EXAMPLE ═══════════ */}
       <section className="bg-background">

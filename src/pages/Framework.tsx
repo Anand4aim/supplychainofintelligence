@@ -157,8 +157,8 @@ const FrameworkPage = () => (
           id="map"
           eyebrow="The Map"
           question="Where does value accrue?"
-          title="10 layers. 50 sublayers. Three tiers."
-          lede="The 10 layers (L−1 Resources → L8 Memory) are the structural vocabulary. They group into three tiers — Substrate, Workflow, Surface — that compound on very different timescales. Three market currents (Demand Gravity, Attention Economics, Capital Flows) flow horizontally across all of them and decide whether a defensible position becomes a business."
+          title="A map of where value accrues, not where code runs."
+          lede="The 10 layers (L−1 Resources → L8 Memory) are the structural vocabulary. They group into three tiers — Substrate, Workflow, Surface — that compound on very different timescales. Three market currents (Demand Gravity, Attention Economics, Capital Flows) flow horizontally across all of them and decide whether a defensible position becomes a business. This is the map an AI stack diagram can't draw."
         />
 
         {/* TIERS TL;DR — Substrate / Workflow / Surface */}

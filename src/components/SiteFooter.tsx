@@ -22,10 +22,10 @@ const SiteFooter = () => (
             <span className="font-mono-marker text-[10px] text-foreground/40 ml-1 tracking-wider" style={{ textTransform: 'none' }}>(SCoI)</span>
           </h3>
           <p className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-accent mb-3">
-            the 10 layers of the generative AI stack
+            a strategic framework for AI
           </p>
           <p className="text-sm leading-relaxed max-w-md mb-5">
-            A structural framework that maps where AI companies live, compete, and die.
+            The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where it becomes economically defensible. 10 layers · 50 sublayers · 4 laws.
           </p>
           <NewsletterCTA source="footer" variant="footer" />
           <p className="text-xs mt-4 text-muted-foreground">
@@ -39,6 +39,7 @@ const SiteFooter = () => (
           <div className="space-y-2.5">
             <Link to="/paper" className="block text-sm font-semibold text-foreground hover:text-accent transition-colors">The Paper (canonical) →</Link>
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
+            <Link to="/not-a-stack" className="block text-sm hover:text-foreground transition-colors">Not Another AI Stack</Link>
             <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
             <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
