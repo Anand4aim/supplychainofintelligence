@@ -219,6 +219,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════ CATEGORY REFRAME, Stack vs Supply Chain ═══════════ */}
+      <section className="bg-background border-b border-border/40">
+        <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
+          <StackVsSupplyChainTable path="/" />
+        </div>
+      </section>
+
       {/* ═══════════ COLD OPEN, Three Areas of AI Transformation ═══════════ */}
       <ThreeAreasOfAI />
 
@@ -233,6 +240,9 @@ const Index = () => {
 
       {/* ═══════════ CONTRAST ROW, Jasper vs Cursor ═══════════ */}
       <ContrastRow />
+
+      {/* ═══════════ KILLER DEMO, Cursor through both lenses ═══════════ */}
+      <CursorThroughBothLenses path="/" />
 
       {/* ═══════════ FRAMEWORK SUMMARY POSTER + WORKED EXAMPLE ═══════════ */}
       <section className="bg-background">
