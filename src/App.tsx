@@ -41,6 +41,7 @@ import Audit from "./pages/Audit";
 import Paper from "./pages/Paper";
 import Methodology from "./pages/Methodology";
 import Changelog from "./pages/Changelog";
+import NotAStack from "./pages/NotAStack";
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,8 @@ const App = () => (
         <Route path="/paper" element={<Paper />} />
         <Route path="/methodology" element={<Methodology />} />
         <Route path="/changelog" element={<Changelog />} />
+        <Route path="/not-a-stack" element={<NotAStack />} />
+        <Route path="/vs-ai-stack" element={<Navigate to="/not-a-stack" replace />} />
         <Route path="/the-supply-chain-of-intelligence" element={<Navigate to="/paper" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
