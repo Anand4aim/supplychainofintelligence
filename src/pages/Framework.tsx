@@ -986,6 +986,8 @@ const FrameworkPage = () => (
       </div>
     </section>
 
+    <KnowledgeTiers />
+
     {/* Shareable posters, link out to /posters */}
     <section className="bg-background border-t border-border">
       <div className="max-w-3xl mx-auto px-6 py-12 text-center">
