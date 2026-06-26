@@ -21,7 +21,9 @@ const Voices = () => (
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
           Supply Chain of Intelligence™ has been pressure-tested in 1:1 strategy sessions, a 25-person product
           leadership workshop, and dozens of conversations with founders, PMs, and investors across FinTech,
-          Healthtech, Legal, Media, GovTech, and AI infrastructure. These are their reactions.
+          Healthtech, Legal, Media, GovTech, and AI infrastructure. Several venture partners have described it
+          as &ldquo;a macroeconomic, industry-defining model&rdquo; once they see the Applications view and the vertical
+          maps side by side. These are their reactions.
         </p>
 
         <p className="text-sm text-foreground/70 mt-5 leading-relaxed">
