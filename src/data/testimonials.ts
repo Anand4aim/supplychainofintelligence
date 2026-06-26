@@ -23,6 +23,16 @@ export type Testimonial = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    name: "Partner, Multi-Stage Venture Fund",
+    role: "Investment Partner (attribution withheld)",
+    industry: "Venture",
+    quote:
+      "Most 'AI frameworks' are taxonomies. This one is absolutely designed to be a macroeconomic, industry-defining model. Once you see the Applications view, the vertical maps, and the Cube together, it stops feeling like a stack diagram and starts feeling like a way to price an entire industry.",
+    layerTag: "Macro lens",
+    source: "1:1",
+    homepage: true,
+  },
+  {
     name: "Bill Leece",
     role: "AI Product Leader, ex-Google",
     company: "Indeed (AI Agents & Evals)",

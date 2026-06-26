@@ -103,7 +103,8 @@ const VoicesStrip: React.FC<Props> = ({ limit = 5 }) => {
             </h2>
             <p className="text-foreground/70 text-[15px] leading-relaxed mt-3 max-w-2xl">
               Reactions from workshops, 1:1 reviews, and LinkedIn exchanges with people who have applied
-              the framework to their own roadmap, thesis, or category.
+              the framework to their own roadmap, thesis, or category. Venture partners have called it
+              &ldquo;a macroeconomic, industry-defining model&rdquo; once the Applications view and vertical maps click into place.
             </p>
           </div>
           <Link
