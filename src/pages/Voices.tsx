@@ -123,6 +123,39 @@ const Voices = () => (
       </div>
     </section>
 
+    <section className="bg-background border-t border-foreground/10">
+      <div className="max-w-4xl mx-auto px-6 py-14">
+        <Eyebrow tone="accent" className="mb-3">Cited By · Independent Writers</Eyebrow>
+        <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 text-foreground">
+          Writers picking up the framework on their own.
+        </h2>
+        <p className="text-muted-foreground mb-8 max-w-3xl">
+          Posts and essays by people who independently discovered the framework and wrote about it on
+          their own surfaces. Not commissioned, not paid, not co-authored. If you have written about the
+          10 layers and want to be listed here, <a href="mailto:anand@supplychainofai.com" className="text-accent underline underline-offset-2">email Anand</a>.
+        </p>
+        <ul className="space-y-4">
+          {CITED_BY.map((c) => (
+            <li key={c.url} className="border border-border rounded-lg p-5 bg-card/40">
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-base md:text-lg font-semibold text-foreground hover:text-accent"
+              >
+                {c.title} →
+              </a>
+              <div className="font-mono-marker text-[10px] tracking-[0.14em] text-muted-foreground uppercase mt-2">
+                {c.name} · {c.role} · {c.venue}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+
+
     <section className="bg-card/30 border-t border-foreground/10">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
         <Eyebrow tone="muted" className="mb-3">Want to add your voice?</Eyebrow>
