@@ -7,6 +7,9 @@ Background: Ex-Meta product leader
 /* DEFINITION (canonical, evergreen) */
 Intelligence is a supply chain.
 Value accrues at the bottlenecks, not the most visible node.
+The true precision of the Supply Chain of Intelligence™ (SCoI) framework lies in its micro-level
+diagnostic capabilities across its 50 sublayers and vertical-specific mappings, laws, and dynamics
+including flywheels.
 
 /* APPLICATION (evergreen structure) */
 The framework resolves that definition into a working map:
