@@ -1,8 +1,60 @@
+import { Helmet } from "react-helmet-async";
 import SiteLayout from "@/components/SiteLayout";
 import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { TESTIMONIALS } from "@/data/testimonials";
 
+const SITE = "https://supplychainofai.com";
+
+// Real third-party writers who have publicly discussed the framework.
+// Verified via web search; add new entries only when a public URL exists.
+const CITED_BY = [
+  {
+    name: "Sam Israel",
+    role: "SaaS, AI & IT Services analyst",
+    title: "The 10 Layers of the Supply Chain of Intelligence",
+    venue: "LinkedIn",
+    url: "https://www.linkedin.com/pulse/7-layers-supply-chain-intelligence-sam-israel-lj3ac",
+  },
+  {
+    name: "Neel Chhabra",
+    role: "Writer · Neel's Newsletter",
+    title: "The Supply Chain of Intelligence: And the Coherence Problem at Its Heart",
+    venue: "Substack · Apr 2026",
+    url: "https://neelchhabra.substack.com/p/the-supply-chain-of-intelligence",
+  },
+  {
+    name: "Softlandia",
+    role: "AI consultancy",
+    title: "AI Juggernauts Are Compressing the Stack — a webinar on the Supply Chain of Intelligence™ framework",
+    venue: "Webinar",
+    url: "https://softlandia.com/webinars",
+  },
+];
+
+// Build legitimate Review JSON-LD for each testimonial. Subject = the framework
+// (CreativeWork). No AggregateRating — we don't collect numeric ratings, and
+// CreativeWork isn't a Google-eligible type for review stars anyway.
+const reviewSchemas = TESTIMONIALS.map((t) => ({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  itemReviewed: {
+    "@type": "CreativeWork",
+    name: "Supply Chain of Intelligence™",
+    url: SITE,
+    author: { "@type": "Person", name: "Anand Arivukkarasu" },
+  },
+  author: {
+    "@type": "Person",
+    name: t.name,
+    ...(t.role || t.company
+      ? { jobTitle: [t.role, t.company].filter(Boolean).join(", ") }
+      : {}),
+    ...(t.linkedin ? { sameAs: [t.linkedin] } : {}),
+  },
+  reviewBody: t.quote,
+  publisher: { "@type": "Person", name: "Anand Arivukkarasu" },
+}));
 
 const Voices = () => (
   <SiteLayout>
@@ -11,6 +63,14 @@ const Voices = () => (
       description="Product leaders, founders, and investors on how Supply Chain of Intelligence™, the 10 layers of the generative AI stack, changed how they reason about AI strategy."
       path="/voices"
     />
+    <Helmet>
+      {reviewSchemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      ))}
+    </Helmet>
+
 
     <section className="bg-background border-b border-foreground/10">
       <div className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-10">
@@ -62,6 +122,39 @@ const Voices = () => (
         ))}
       </div>
     </section>
+
+    <section className="bg-background border-t border-foreground/10">
+      <div className="max-w-4xl mx-auto px-6 py-14">
+        <Eyebrow tone="accent" className="mb-3">Cited By · Independent Writers</Eyebrow>
+        <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 text-foreground">
+          Writers picking up the framework on their own.
+        </h2>
+        <p className="text-muted-foreground mb-8 max-w-3xl">
+          Posts and essays by people who independently discovered the framework and wrote about it on
+          their own surfaces. Not commissioned, not paid, not co-authored. If you have written about the
+          10 layers and want to be listed here, <a href="mailto:anand@supplychainofai.com" className="text-accent underline underline-offset-2">email Anand</a>.
+        </p>
+        <ul className="space-y-4">
+          {CITED_BY.map((c) => (
+            <li key={c.url} className="border border-border rounded-lg p-5 bg-card/40">
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-base md:text-lg font-semibold text-foreground hover:text-accent"
+              >
+                {c.title} →
+              </a>
+              <div className="font-mono-marker text-[10px] tracking-[0.14em] text-muted-foreground uppercase mt-2">
+                {c.name} · {c.role} · {c.venue}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+
 
     <section className="bg-card/30 border-t border-foreground/10">
       <div className="max-w-3xl mx-auto px-6 py-14 text-center">
