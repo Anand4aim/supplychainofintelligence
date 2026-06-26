@@ -69,7 +69,7 @@ const Index = () => {
               transition={{ duration: 0.7 }}
             >
               <Eyebrow tone="accent" dash={false} className="mb-4">
-                Strategic Framework for AI · Not a Stack
+                An industry-defining macroeconomic model for AI · across verticals
               </Eyebrow>
               <h1 className="font-display text-[32px] md:text-[42px] lg:text-[48px] font-bold leading-[1.1] mb-5 text-foreground">
                 A <SketchUnderline color="hsl(var(--accent))"><span className="text-accent">defensibility map</span></SketchUnderline> for AI companies.
