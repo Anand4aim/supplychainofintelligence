@@ -159,16 +159,7 @@ const FrameworkPage = () => (
           <CanonicalDefinition variant="compact" showPositioning={false} />
 
 
-          <div className="mt-8 border-l-2 border-foreground/20 pl-5">
-            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-2">
-              How it sits next to the AI stack
-            </p>
-            <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
-              The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible.
-            </p>
-          </div>
-
-          {/* What you miss if you only look at AI as a stack or a value chain — the paradigm claim lives here */}
+          {/* Paradigm callout — promoted to sit immediately after the canonical definition */}
           <div className="mt-10 rounded-xl border border-accent/30 bg-accent/[0.04] p-6 md:p-7">
             <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-3">
               A new paradigm — contains and extends
@@ -199,6 +190,16 @@ const FrameworkPage = () => (
               A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — gatekeeping, bottlenecks, currents, flywheels, absorption — which is the level at which durable AI strategy can actually be reasoned about.
             </p>
           </div>
+
+          <div className="mt-8 border-l-2 border-foreground/20 pl-5">
+            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-2">
+              How it sits next to the AI stack
+            </p>
+            <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
+              The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible.
+            </p>
+          </div>
+
 
 
           <div className="mt-6 flex flex-wrap gap-3">
