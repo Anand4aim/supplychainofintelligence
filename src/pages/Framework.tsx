@@ -79,8 +79,8 @@ const SectionHeader = ({
 const FrameworkPage = () => (
   <SiteLayout>
     <Seo
-      title="The Framework — an advanced AI Value Chain framework"
-      description="Supply Chain of Intelligence is an advanced AI Value Chain framework. It moves beyond the conventional AI stack and conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, and the Intelligence Cube."
+      title="The Framework — an industry-defining macroeconomic AI framework"
+      description="Supply Chain of Intelligence is an industry-defining, macroeconomic AI Value Chain framework — across verticals. It goes beyond the conventional AI stack and the conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
       path="/framework"
     />
     <Helmet>
