@@ -1,6 +1,7 @@
 import {
   POSITIONING_LINE,
   DEFINITION_ONE_LINER,
+  CATEGORY_LINE,
   APPLICATION_LINE,
   READING_LINE,
 } from "@/data/definition";
@@ -61,6 +62,13 @@ const CanonicalDefinition = ({
 
       {variant !== "oneliner" && (
         <>
+          <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mt-6 mb-2">
+            The Category
+          </p>
+          <p className="text-[15px] text-foreground/85 leading-relaxed mb-0">
+            {CATEGORY_LINE}
+          </p>
+
           <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mt-6 mb-2">
             The Application
           </p>

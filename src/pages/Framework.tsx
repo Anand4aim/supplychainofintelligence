@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import SiteLayout from "@/components/SiteLayout";
 import CanonicalDefinition from "@/components/CanonicalDefinition";
 import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI, OBSERVATIONS } from "@/data/layers";
+import { CATEGORY_LINE, DEFINITION_LONG, ALTERNATE_NAMES } from "@/data/definition";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import IntelligenceGrid from "@/components/IntelligenceGrid";
 import ExportablePng from "@/components/ExportablePng";
@@ -77,10 +79,29 @@ const SectionHeader = ({
 const FrameworkPage = () => (
   <SiteLayout>
     <Seo
-      title="The Framework, 10 Layers of the AI Stack"
-      description="Definition, Map, Laws, Dynamics, Applications, Observations. The canonical reference for the Supply Chain of Intelligence: 10 layers, 50 sublayers, 4 structural laws, the Intelligence Cube."
+      title="The Framework — an advanced AI Value Chain framework"
+      description="Supply Chain of Intelligence is an advanced AI Value Chain framework. It moves beyond the conventional AI stack and conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, and the Intelligence Cube."
       path="/framework"
     />
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        name: "Supply Chain of Intelligence",
+        alternateName: [...ALTERNATE_NAMES],
+        description: CATEGORY_LINE,
+        inDefinedTermSet: {
+          "@type": "DefinedTermSet",
+          name: "Supply Chain of Intelligence™",
+          url: "https://supplychainofai.com/framework",
+        },
+        url: "https://supplychainofai.com/framework",
+        sameAs: [
+          "https://supplychainofai.com/paper",
+          "https://supplychainofai.com/not-a-stack",
+        ],
+      })}</script>
+    </Helmet>
     <SketchFilters />
 
     {/* ═══════════ HERO ═══════════ */}
@@ -139,6 +160,15 @@ const FrameworkPage = () => (
 
           <div className="mt-10 border-l-2 border-accent/60 pl-5">
             <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-2">
+              The category, in one sentence
+            </p>
+            <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
+              {CATEGORY_LINE}
+            </p>
+          </div>
+
+          <div className="mt-8 border-l-2 border-foreground/20 pl-5">
+            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-2">
               How it sits next to the AI stack
             </p>
             <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
