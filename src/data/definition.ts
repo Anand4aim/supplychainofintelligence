@@ -42,6 +42,19 @@ export const ALTERNATE_NAMES = [
   "SCoI",
 ] as const;
 
+/**
+ * The "blindspots" line — what an AI Stack or AI Value Chain view misses.
+ * Pairs with CATEGORY_LINE: first we ride the generic phrases, then we name
+ * the gap that forces holistic supply-chain thinking. Six blindspots map to
+ * Currents (Capital, Demand), Laws (Law IV verification, Law I commoditization),
+ * Dynamics (flywheels), and the Cube (vertical adjacency).
+ */
+export const BLINDSPOTS_LINE =
+  "Look at AI only as a stack or a value chain and six things go missing: the bottlenecks above and below the visible layers (L−1 resources, L3 verification, L8 memory), the currents that move value sideways (capital, demand, attention), the flywheels that compound across sublayers, the vertical adjacencies the Intelligence Cube exposes, the absorption risk a platform poses to every layer beneath it, and the timing of when each layer commoditizes. A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — bottlenecks, currents, flywheels, and absorption — which is the only level at which durable AI strategy can be reasoned about.";
+
+export const BLINDSPOTS_SHORT =
+  "A stack shows the parts. A value chain shows the flow. Only a supply chain of intelligence shows the bottlenecks, currents, flywheels, and absorption risk that decide who actually keeps the value.";
+
 export const DEFINITION_ONE_LINER =
   "Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node.";
 

@@ -13,6 +13,12 @@ Investors and operators search for "AI Value Chain framework" and "AI stack". Do
 
 > Supply Chain of Intelligence is an advanced AI Value Chain framework for investors and operators. It moves beyond the conventional AI stack and conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, and the Intelligence Cube.
 
+**Blindspots line** (`BLINDSPOTS_SHORT` + `BLINDSPOTS_LINE`, pairs with CATEGORY_LINE; names *what you miss* if you stop at stack/value-chain):
+
+> A stack shows the parts. A value chain shows the flow. Only a supply chain of intelligence shows the bottlenecks, currents, flywheels, and absorption risk that decide who actually keeps the value.
+
+Six blindspots, in this canonical order (do not reorder): **bottlenecks above/below visible layers (L−1, L3, L8) · currents (capital, demand, attention) · flywheels across sublayers · vertical adjacencies (Intelligence Cube) · absorption risk from platforms · timing of commoditization**. Renders as the accent callout in `/framework` Definition section, and as a sentence in `public/llms.txt`.
+
 **Six-verb mnemonic** (do not reorder, do not swap synonyms): *created · constrained · verified · distributed · embedded · defended*. Quietly maps to L1 · L−1/L0 · L3 · L4 · L7 · L1b+L5+L8.
 
 **Surfaces** (single source of truth = `CATEGORY_LINE` / `ALTERNATE_NAMES`):
