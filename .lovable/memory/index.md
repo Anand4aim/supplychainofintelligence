@@ -27,4 +27,5 @@ Position SCoI as a "strategic framework for AI" — never "AI framework", never 
 - [SEO doctrine](mem://preferences/seo-doctrine), Google's Nov 2025 AI search guide as project rule: no GEO/AEO snake-oil, no chunking, no AI-rewrites, no fake mentions
 - [Framework page IA](mem://features/framework-ia), Six-section IA of /framework: Definition · Map · Laws · Dynamics · Applications · Observations. Substrate/Workflow/Surface tier grouping. Instruments vs Laws.
 - [Category reframe (vs. AI stack)](mem://preferences/category-reframe), Canonical reframe sentence, 7-axis comparison table, /not-a-stack page, StackVsSupplyChainTable + CursorThroughBothLenses components. Never defend layer count — reframe the category.
+- [AI Value Chain positioning](mem://preferences/value-chain-positioning), CATEGORY_LINE: SCoI = advanced AI Value Chain framework. Six-verb mnemonic (created · constrained · verified · distributed · embedded · defended). Ships in CanonicalDefinition, /framework Definition, llms.txt, humans.txt, StackVsSupplyChainTable, JSON-LD alternateName.
 
