@@ -158,14 +158,6 @@ const FrameworkPage = () => (
         <div className="max-w-3xl">
           <CanonicalDefinition variant="compact" showPositioning={false} />
 
-          <div className="mt-10 border-l-2 border-accent/60 pl-5">
-            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-2">
-              The category, in one sentence
-            </p>
-            <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
-              {CATEGORY_LINE}
-            </p>
-          </div>
 
           <div className="mt-8 border-l-2 border-foreground/20 pl-5">
             <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-2">
