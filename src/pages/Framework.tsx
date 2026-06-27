@@ -6,7 +6,7 @@ import CanonicalDefinition from "@/components/CanonicalDefinition";
 import Seo from "@/components/Seo";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { LAYERS, DEFENSIBLE_TRIANGLE, GOLD_KEY_INSIGHT, LAWS, JTBD_VS_SCOI, OBSERVATIONS } from "@/data/layers";
-import { CATEGORY_LINE, DEFINITION_LONG, ALTERNATE_NAMES } from "@/data/definition";
+import { CATEGORY_LINE, DEFINITION_LONG, ALTERNATE_NAMES, BLINDSPOTS_LINE, BLINDSPOTS_SHORT } from "@/data/definition";
 import { SketchIcon } from "@/components/sketch/SketchIcons";
 import IntelligenceGrid from "@/components/IntelligenceGrid";
 import ExportablePng from "@/components/ExportablePng";
@@ -173,6 +173,30 @@ const FrameworkPage = () => (
             </p>
             <p className="font-display text-[16px] md:text-[18px] leading-snug text-foreground/85">
               The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible.
+            </p>
+          </div>
+
+          {/* What you miss if you only look at AI as a stack or a value chain */}
+          <div className="mt-10 rounded-xl border border-accent/30 bg-accent/[0.04] p-6 md:p-7">
+            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-3">
+              Why the stack view, and the value chain view, are not enough
+            </p>
+            <p className="font-display text-[17px] md:text-[19px] leading-snug text-foreground mb-4 border-l-2 border-accent pl-4">
+              {BLINDSPOTS_SHORT}
+            </p>
+            <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-3">
+              Six things that go missing
+            </p>
+            <ul className="space-y-2.5 text-[14.5px] md:text-[15px] text-foreground/85 leading-relaxed">
+              <li><strong className="text-foreground">Bottlenecks above and below the visible layers</strong> — L−1 resources, L3 verification, L8 memory. Stack diagrams crop them out.</li>
+              <li><strong className="text-foreground">Currents that move value sideways</strong> — capital, demand, attention flow across layers and decide which defensible position becomes a business.</li>
+              <li><strong className="text-foreground">Flywheels that compound across sublayers</strong> — L5 → L1d → L8c is a loop, not a list of components.</li>
+              <li><strong className="text-foreground">Vertical adjacencies</strong> the Intelligence Cube exposes — the same layer behaves differently in Legal vs. Health vs. FinTech.</li>
+              <li><strong className="text-foreground">Absorption risk</strong> a platform poses to every layer beneath it — the stack shows neighbors, not predators.</li>
+              <li><strong className="text-foreground">Timing</strong> — when each layer commoditizes, and what survives the compression.</li>
+            </ul>
+            <p className="text-[13.5px] text-muted-foreground italic mt-5 leading-relaxed">
+              A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — bottlenecks, currents, flywheels, and absorption — which is the level at which durable AI strategy can actually be reasoned about.
             </p>
           </div>
 
