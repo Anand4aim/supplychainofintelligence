@@ -24,6 +24,24 @@
 export const POSITIONING_LINE =
   "The AI stack explains how intelligence is built. The Supply Chain of Intelligence explains where intelligence becomes economically defensible.";
 
+/**
+ * Category line. Rides the generic phrases ("AI Value Chain framework", "AI stack")
+ * and upgrades the reader to SCoI. Six verbs (created · constrained · verified ·
+ * distributed · embedded · defended) double as a mnemonic across the 10 layers.
+ * Ships in meta descriptions, llms.txt, humans.txt, <CanonicalDefinition>, the
+ * Framework Definition section, and JSON-LD alternateName.
+ */
+export const CATEGORY_LINE =
+  "Supply Chain of Intelligence is an advanced AI Value Chain framework for investors and operators. It moves beyond the conventional AI stack and conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, and the Intelligence Cube.";
+
+/** Short alternate names for JSON-LD / SEO so search engines link the generic phrases to SCoI. */
+export const ALTERNATE_NAMES = [
+  "AI Value Chain Framework",
+  "Advanced AI Value Chain Framework",
+  "Advanced AI Stack Framework",
+  "SCoI",
+] as const;
+
 export const DEFINITION_ONE_LINER =
   "Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node.";
 

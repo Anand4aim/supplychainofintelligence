@@ -13,6 +13,7 @@ import Eyebrow from "@/components/Eyebrow";
  */
 
 const ROWS: Array<{ axis: string; stack: string; scoi: string }> = [
+  { axis: "Category",     stack: "AI Stack / AI Value Chain", scoi: "Advanced AI Value Chain framework" },
   { axis: "Question",     stack: "How is AI built?",   scoi: "Where does value accrue?" },
   { axis: "Lens",         stack: "Architecture",       scoi: "Economics" },
   { axis: "Unit",         stack: "Components",         scoi: "Bottlenecks" },
