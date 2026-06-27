@@ -162,7 +162,7 @@ const FrameworkPage = () => (
           {/* Paradigm callout — promoted to sit immediately after the canonical definition */}
           <div className="mt-10 rounded-xl border border-accent/30 bg-accent/[0.04] p-6 md:p-7">
             <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-accent mb-3">
-              A new paradigm — contains and extends
+              A deeper, fuller view — beyond the older stack and value chain lenses
             </p>
             <p className="font-display text-[17px] md:text-[19px] leading-snug text-foreground mb-5 border-l-2 border-accent pl-4">
               {BLINDSPOTS_PARADIGM_LINE}

@@ -43,17 +43,18 @@ export const ALTERNATE_NAMES = [
 ] as const;
 
 /**
- * The "blindspots" block — what an AI Stack or AI Value Chain view misses,
- * and why SCoI is a new paradigm that contains and extends them. This is the
+ * The "blindspots" block — what the older AI Stack and AI Value Chain views
+ * miss, and why SCoI is a deeper, fuller view of the same system. This is the
  * one place we make the paradigm claim. The core CATEGORY_LINE and DEFINITION
- * stay evergreen and unchanged; this section is where the comparison move lives.
+ * stay evergreen and unchanged; this section is where the comparison lives.
  *
- * Move: an AI stack and an AI value chain are two surfaces of SCoI. SCoI adds
- * what they cannot show — gatekeeping, absorption, currents, flywheels,
- * vertical adjacency, and timing.
+ * Move: the AI stack and the AI value chain are older, partial ways of looking
+ * at AI. They each show one slice. SCoI is the deeper, fuller view — and it
+ * surfaces what those older views structurally cannot: gatekeeping, absorption
+ * risk, currents, flywheels, vertical adjacency, and timing.
  */
 export const BLINDSPOTS_PARADIGM_LINE =
-  "An AI stack and an AI value chain are two surfaces of the Supply Chain of Intelligence — not rival frameworks. SCoI contains both, and adds what they structurally cannot show: gatekeeping, absorption risk, currents, flywheels, vertical adjacency, and timing.";
+  "The AI stack and the AI value chain are older, partial ways of seeing AI — each shows one slice and misses the rest. The Supply Chain of Intelligence is the deeper, fuller view of the same system: it surfaces what those older lenses structurally cannot — gatekeeping, absorption risk, currents, flywheels, vertical adjacency, and timing — so strategy can be reasoned about at the level where value is actually won or lost.";
 
 export const BLINDSPOTS_LINE =
   "Look at AI only as a stack or a value chain and seven things go missing: gatekeeping (who controls each chokepoint), the bottlenecks above and below the visible layers (L−1 resources, L3 verification, L8 memory), the currents that move value sideways (capital, demand, attention), the flywheels that compound across sublayers, the vertical adjacencies the Intelligence Cube exposes, the absorption risk a platform poses to every layer beneath it, and the timing of when each layer commoditizes. A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — and is the only level at which durable AI strategy can be reasoned about.";

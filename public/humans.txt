@@ -17,10 +17,11 @@ not the most visible node. It maps the generative AI stack across 10 layers,
 Also indexed as: Supply Chain of AI · Intelligence Supply Chain · AI Value Chain Framework · SCoI.
 
 /* PARADIGM (where the comparison lives — not in the core line) */
-An AI stack and an AI value chain are two surfaces of the Supply Chain of
-Intelligence — not rival frameworks. SCoI contains both, and adds what they
-structurally cannot show: gatekeeping, absorption risk, currents, flywheels,
-vertical adjacency, and timing.
+The AI stack and the AI value chain are older, partial ways of seeing AI —
+each shows one slice and misses the rest. The Supply Chain of Intelligence
+is the deeper, fuller view of the same system: it surfaces what those older
+lenses structurally cannot — gatekeeping, absorption risk, currents,
+flywheels, vertical adjacency, and timing.
 
 The true precision of the Supply Chain of Intelligence™ (SCoI) framework lies in its
 micro-level diagnostic capabilities across its 50 sublayers and vertical-specific
