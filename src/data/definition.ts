@@ -32,13 +32,13 @@ export const POSITIONING_LINE =
  * Framework Definition section, and JSON-LD alternateName.
  */
 export const CATEGORY_LINE =
-  "Supply Chain of Intelligence is an advanced AI Value Chain framework for investors and operators. It moves beyond the conventional AI stack and conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, and the Intelligence Cube.";
+  "Supply Chain of Intelligence is an industry-defining, macroeconomic AI Value Chain framework for investors and operators — across verticals. It goes beyond the conventional AI stack and the conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.";
 
 /** Short alternate names for JSON-LD / SEO so search engines link the generic phrases to SCoI. */
 export const ALTERNATE_NAMES = [
   "AI Value Chain Framework",
-  "Advanced AI Value Chain Framework",
-  "Advanced AI Stack Framework",
+  "Macroeconomic AI Framework",
+  "Intelligence Supply Chain",
   "SCoI",
 ] as const;
 
