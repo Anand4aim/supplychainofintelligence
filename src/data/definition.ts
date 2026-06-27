@@ -32,29 +32,34 @@ export const POSITIONING_LINE =
  * Framework Definition section, and JSON-LD alternateName.
  */
 export const CATEGORY_LINE =
-  "Supply Chain of Intelligence is a new paradigm for understanding AI — beyond the AI stack, beyond the AI value chain. It is an industry-defining, macroeconomic model for investors and operators, across verticals, that maps where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.";
+  "Supply Chain of Intelligence is a strategic framework for AI built on a simple claim: intelligence is a supply chain, and value accrues at the bottlenecks — not the most visible node. It maps the generative AI stack across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.";
 
 /** Short alternate names for JSON-LD / SEO so search engines link the generic phrases to SCoI. */
 export const ALTERNATE_NAMES = [
   "Supply Chain of AI",
   "Intelligence Supply Chain",
-  "Macroeconomic AI Framework",
   "AI Value Chain Framework",
   "SCoI",
 ] as const;
 
 /**
- * The "blindspots" line — what an AI Stack or AI Value Chain view misses.
- * Pairs with CATEGORY_LINE: first we ride the generic phrases, then we name
- * the gap that forces holistic supply-chain thinking. Six blindspots map to
- * Currents (Capital, Demand), Laws (Law IV verification, Law I commoditization),
- * Dynamics (flywheels), and the Cube (vertical adjacency).
+ * The "blindspots" block — what an AI Stack or AI Value Chain view misses,
+ * and why SCoI is a new paradigm that contains and extends them. This is the
+ * one place we make the paradigm claim. The core CATEGORY_LINE and DEFINITION
+ * stay evergreen and unchanged; this section is where the comparison move lives.
+ *
+ * Move: an AI stack and an AI value chain are two surfaces of SCoI. SCoI adds
+ * what they cannot show — gatekeeping, absorption, currents, flywheels,
+ * vertical adjacency, and timing.
  */
+export const BLINDSPOTS_PARADIGM_LINE =
+  "An AI stack and an AI value chain are two surfaces of the Supply Chain of Intelligence — not rival frameworks. SCoI contains both, and adds what they structurally cannot show: gatekeeping, absorption risk, currents, flywheels, vertical adjacency, and timing.";
+
 export const BLINDSPOTS_LINE =
-  "Look at AI only as a stack or a value chain and six things go missing: the bottlenecks above and below the visible layers (L−1 resources, L3 verification, L8 memory), the currents that move value sideways (capital, demand, attention), the flywheels that compound across sublayers, the vertical adjacencies the Intelligence Cube exposes, the absorption risk a platform poses to every layer beneath it, and the timing of when each layer commoditizes. A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — bottlenecks, currents, flywheels, and absorption — which is the only level at which durable AI strategy can be reasoned about.";
+  "Look at AI only as a stack or a value chain and seven things go missing: gatekeeping (who controls each chokepoint), the bottlenecks above and below the visible layers (L−1 resources, L3 verification, L8 memory), the currents that move value sideways (capital, demand, attention), the flywheels that compound across sublayers, the vertical adjacencies the Intelligence Cube exposes, the absorption risk a platform poses to every layer beneath it, and the timing of when each layer commoditizes. A stack describes parts. A value chain describes flow. A supply chain of intelligence describes the whole system — and is the only level at which durable AI strategy can be reasoned about.";
 
 export const BLINDSPOTS_SHORT =
-  "A stack shows the parts. A value chain shows the flow. Only a supply chain of intelligence shows the bottlenecks, currents, flywheels, and absorption risk that decide who actually keeps the value.";
+  "A stack shows the parts. A value chain shows the flow. Only a supply chain of intelligence shows gatekeeping, bottlenecks, currents, flywheels, and absorption — the forces that decide who actually keeps the value.";
 
 export const DEFINITION_ONE_LINER =
   "Intelligence is a supply chain. Value accrues at the bottlenecks, not the most visible node.";

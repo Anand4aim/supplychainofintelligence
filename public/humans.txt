@@ -9,13 +9,18 @@ Intelligence is a supply chain.
 Value accrues at the bottlenecks, not the most visible node.
 
 /* CATEGORY (how to introduce it) */
-Supply Chain of Intelligence is a new paradigm for understanding AI — beyond the
-AI stack, beyond the AI value chain. It is an industry-defining, macroeconomic
-model for investors and operators, across verticals, that maps where intelligence
-is created, constrained, verified, distributed, embedded, and defended — across
-10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.
+Supply Chain of Intelligence is a strategic framework for AI built on a simple
+claim: intelligence is a supply chain, and value accrues at the bottlenecks —
+not the most visible node. It maps the generative AI stack across 10 layers,
+50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube.
 
-Also indexed as: Supply Chain of AI · Intelligence Supply Chain · Macroeconomic AI Framework · AI Value Chain Framework · SCoI.
+Also indexed as: Supply Chain of AI · Intelligence Supply Chain · AI Value Chain Framework · SCoI.
+
+/* PARADIGM (where the comparison lives — not in the core line) */
+An AI stack and an AI value chain are two surfaces of the Supply Chain of
+Intelligence — not rival frameworks. SCoI contains both, and adds what they
+structurally cannot show: gatekeeping, absorption risk, currents, flywheels,
+vertical adjacency, and timing.
 
 The true precision of the Supply Chain of Intelligence™ (SCoI) framework lies in its
 micro-level diagnostic capabilities across its 50 sublayers and vertical-specific
