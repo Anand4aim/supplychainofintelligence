@@ -51,8 +51,8 @@ const Index = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Supply Chain of Intelligence™ — an industry-defining macroeconomic AI framework"
-        description="Supply Chain of Intelligence is an industry-defining, macroeconomic AI Value Chain framework for investors and operators — across verticals. It goes beyond the conventional AI stack and the conventional AI value chain by mapping where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
+        title="Supply Chain of Intelligence™ — a new paradigm for understanding AI"
+        description="Supply Chain of Intelligence is a new paradigm for understanding AI — beyond the AI stack, beyond the AI value chain. An industry-defining, macroeconomic model for investors and operators, across verticals, that maps where intelligence is created, constrained, verified, distributed, embedded, and defended — across 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
         path="/"
       />
 
