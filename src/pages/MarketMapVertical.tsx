@@ -80,8 +80,16 @@ const MarketMapVertical = () => {
   return (
     <SiteLayout>
       <Seo
-        title={`${entry.label} AI Market Map, 10 Layers × 50 Sublayers`}
-        description={`Every AI-native ${entry.label.toLowerCase()} company placed on Supply Chain of Intelligence™, 10 layers × 50 sublayers. ${entry.blurb}`}
+        title={
+          isLive
+            ? `${entry.label} AI Market Map, 10 Layers × 50 Sublayers`
+            : `${entry.label} AI, mapped on the Supply Chain of Intelligence™`
+        }
+        description={
+          isLive
+            ? `Every AI-native ${entry.label.toLowerCase()} company placed on Supply Chain of Intelligence™, 10 layers × 50 sublayers. ${entry.blurb}`
+            : `${entry.blurb} How ${entry.label} AI companies map to the 10 layers and 50 sublayers of the Supply Chain of Intelligence™, the framework Anand Arivukkarasu uses to place where value accrues in the generative AI stack.`
+        }
         path={`/market-map/${entry.slug}`}
       />
 
@@ -95,15 +103,20 @@ const MarketMapVertical = () => {
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-2 mb-3">
               <Map size={16} className="text-accent" />
-              <Eyebrow>Vertical Market Map · {entry.slug === "legal" ? "1" : entry.slug === "wealth" ? "2" : " - "} of 24</Eyebrow>
+              <Eyebrow>Vertical Market Map · {entry.label}</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[44px] font-bold text-foreground leading-[1.05] mb-3">
               {entry.label} AI, mapped across 10 layers &amp; 50 sublayers.
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl">{entry.blurb}</p>
-            {dataset && (
+            {isLive && dataset && (
               <div className="mt-4">
                 <FreshnessBadge asOf={dataset.asOf} />
+              </div>
+            )}
+            {!isLive && (
+              <div className="mt-4 inline-flex items-center gap-2 rounded border border-foreground/15 bg-secondary/40 px-2.5 py-1 text-[10px] font-mono-marker tracking-wider uppercase text-muted-foreground">
+                <Lock size={10} /> In research · dataset queued
               </div>
             )}
           </motion.div>
