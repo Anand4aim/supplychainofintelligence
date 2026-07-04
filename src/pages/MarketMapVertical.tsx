@@ -13,6 +13,7 @@ import SublayerGrid from "@/components/SublayerGrid";
 import MarketMapShareCard from "@/components/MarketMapShareCard";
 import { VERTICAL_REGISTRY, getVertical } from "@/data/verticalsRegistry";
 import { VERTICAL_DATASETS } from "@/data/verticals/legal";
+import { LAYERS } from "@/data/layers";
 
 const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
   <aside className="md:sticky md:top-20 self-start">
