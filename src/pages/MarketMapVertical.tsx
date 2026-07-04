@@ -72,9 +72,10 @@ const MarketMapVertical = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   if (!entry) return <Navigate to="/market-map" replace />;
-  if (entry.status !== "live") return <Navigate to="/market-map" replace />;
 
-  const dataset = VERTICAL_DATASETS[entry.slug];
+  const dataset = entry.status === "live" ? VERTICAL_DATASETS[entry.slug] : undefined;
+  const isLive = entry.status === "live" && !!dataset;
+  const liveVerticals = VERTICAL_REGISTRY.filter((v) => v.status === "live" && v.slug !== entry.slug);
 
   return (
     <SiteLayout>
