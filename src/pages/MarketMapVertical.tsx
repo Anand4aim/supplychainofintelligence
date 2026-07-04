@@ -164,8 +164,77 @@ const MarketMapVertical = () => {
               </ExportablePng>
 
             ) : (
-              <div className="bg-background p-6 text-sm text-muted-foreground italic">
-                Detailed sublayer dataset for this vertical is in progress.
+              <div className="bg-background p-6 md:p-8 space-y-8">
+                <div className="max-w-3xl space-y-3">
+                  <h2 className="font-display text-2xl font-bold text-foreground">
+                    What this map will answer for {entry.label}
+                  </h2>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    The Supply Chain of Intelligence™ places every AI company at the
+                    layer(s) where it structurally lives, so you can see who is defensible,
+                    who gets absorbed by a platform below them, and where the whitespace
+                    is. This is the scaffold the {entry.label} map is being built against.
+                    Two verticals are live today ({liveVerticals.map((v, i) => (
+                      <span key={v.slug}>
+                        {i > 0 ? ", " : ""}
+                        <Link to={`/market-map/${v.slug}`} className="underline hover:text-foreground">{v.label}</Link>
+                      </span>
+                    ))}); {entry.label} is queued behind them and follows the same
+                    10&nbsp;×&nbsp;5 discipline &mdash; no fake density, no filler cells.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="font-mono-marker text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-3">
+                    The 10 layers · 50 sublayers · the questions we answer per vertical
+                  </div>
+                  <ol className="space-y-3">
+                    {LAYERS.map((layer) => (
+                      <li key={layer.id} className="border-l-2 pl-3 py-1" style={{ borderColor: layer.color }}>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="font-mono-marker text-[11px] tracking-wider" style={{ color: layer.color }}>
+                            {layer.id}
+                          </span>
+                          <span className="font-display font-semibold text-sm text-foreground">
+                            {layer.name}
+                          </span>
+                          <span className="text-[11px] text-muted-foreground">
+                            &mdash; who owns {layer.name.toLowerCase()} in {entry.label}?
+                          </span>
+                        </div>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-0.5 text-[11px] text-muted-foreground">
+                          {layer.sublayers.map((s) => (
+                            <li key={s.id}>
+                              <span className="font-mono-marker text-foreground/70">{s.id}</span>{" "}
+                              {s.name}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div className="rounded border border-foreground/10 bg-secondary/30 p-4 text-sm text-muted-foreground">
+                  <div className="font-mono-marker text-[10px] tracking-wider uppercase text-foreground mb-1.5">
+                    Read next
+                  </div>
+                  <ul className="space-y-1">
+                    <li>
+                      <Link to="/framework" className="underline hover:text-foreground">The framework</Link> &mdash; the 10 layers, 4 laws, 3 currents, and the Intelligence Cube.
+                    </li>
+                    <li>
+                      <Link to="/market-map" className="underline hover:text-foreground">All 24 verticals</Link> &mdash; what is live, what is queued.
+                    </li>
+                    {liveVerticals.map((v) => (
+                      <li key={v.slug}>
+                        <Link to={`/market-map/${v.slug}`} className="underline hover:text-foreground">
+                          {v.label} AI market map
+                        </Link> &mdash; {v.blurb}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             )}
           </div>
