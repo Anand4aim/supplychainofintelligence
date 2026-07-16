@@ -71,6 +71,16 @@ async function fetchCandidates(perplexityKey: string): Promise<Candidate[]> {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
+    const expectedPasscode = Deno.env.get("REMASTER_ADMIN_PASSCODE");
+    if (!expectedPasscode) throw new Error("REMASTER_ADMIN_PASSCODE not configured");
+    const body = await req.json().catch(() => ({} as { passcode?: string }));
+    if (!body?.passcode || body.passcode !== expectedPasscode) {
+      await new Promise((r) => setTimeout(r, 250));
+      return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), {
+        status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const perplexityKey = Deno.env.get("PERPLEXITY_API_KEY");
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
