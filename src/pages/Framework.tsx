@@ -117,7 +117,7 @@ const FrameworkPage = () => (
             <span style={{ textTransform: "none" }}>SCoI</span>, the 10 layers of the generative AI stack
           </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            One page. Six questions. The canonical reference.
+            One page. Seven questions. The canonical reference — and the reasoning protocol to run it.
           </p>
         </motion.div>
       </div>
