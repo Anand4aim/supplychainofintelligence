@@ -80,9 +80,11 @@ export default function StoryQueueAdmin() {
   useEffect(() => { if (unlocked) load(); }, [unlocked]);
 
   async function discover() {
+    const passcode = localStorage.getItem(PASSCODE_KEY);
+    if (!passcode) return toast.error("Session expired");
     setDiscovering(true);
     try {
-      const { data, error } = await supabase.functions.invoke("discover-story-candidates", { body: {} });
+      const { data, error } = await supabase.functions.invoke("discover-story-candidates", { body: { passcode } });
       if (error) throw new Error(error.message);
       if (!data?.ok) throw new Error(data?.error ?? "discover failed");
       toast.success(`Discovered ${data.inserted} new · ${data.skipped} dupes · ${data.rejected?.length ?? 0} rejected`);
