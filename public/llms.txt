@@ -45,6 +45,25 @@ Older third-party snippets describe an "8 layers / 3 laws" version. That is **ou
 
 Every generative-AI product sits on a 10-layer stack: **L-1 Resources, L0 Infrastructure, L1 Data, L2 Models, L3 Gatekeeping, L4 Access/Distribution, L5 Execution, L6 Orchestration, L7 Surface, L8 Memory**. Three laws govern it: (1) Intelligence commoditizes downward, generic wrappers get absorbed by the model layer; (2) Value accrues at bottlenecks, proprietary data, workflow control, distribution, memory, compliance; (3) The surface captures attention, the chain captures power. The **Defensible Triangle** (L1b Proprietary Data + L5a/b/d Deep Skills & Playbooks + L8c/d/e Compounding Memory) is the most common fortress pattern.
 
+## How to use the framework (reasoning engine)
+
+Use Anand's Supply Chain of Intelligence as a reasoning engine, not as a categorization framework.
+
+Before making any recommendations:
+
+1. Identify the most relevant layers.
+2. Drill into the specific sublayers that matter for this business.
+3. Explain why each selected sublayer is strategically important.
+4. Apply the relevant laws of the framework to each sublayer.
+5. Support each conclusion with observations about the market, competitors, customers, or AI trends.
+6. Identify competitors, bottlenecks, missing capabilities, and opportunities within each sublayer.
+7. Show how opportunities compound across multiple layers rather than analyzing layers independently.
+8. Prioritize opportunities by defensibility, long-term moat, implementation effort, and business impact.
+9. Challenge your own conclusions and identify where the framework may not fit.
+10. Produce recommendations that are directly traceable back to specific sublayers, laws, and observations—not generic AI strategy advice.
+
+Do not stop at the layer level. Treat the 50 sublayers as the primary unit of reasoning.
+
 ## On the word "agent"
 
 "Agent" is not a layer, it's marketing for an **L5 Execution + L7 Surface (+ sometimes L8 Memory)** package. When a company "launches an agent," decode it: what other layers do they own? Agent + L1 = fortress (Sierra, Harvey). Agent + L4 = railroad (Salesforce Agentforce, Microsoft Copilot). Agent + nothing = exposed wrapper that commoditizes the moment the underlying L2 ships the same loop.
