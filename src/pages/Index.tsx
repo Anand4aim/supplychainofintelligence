@@ -202,6 +202,9 @@ const Index = () => {
       {/* ═══════════ RUN THE FRAMEWORK PROMPT ═══════════ */}
       <PromptSection />
 
+      {/* ═══════════ HOW TO USE THE FRAMEWORK ═══════════ */}
+      <HowToUseFramework />
+
       {/* ═══════════ PLAIN-TEXT MIRRORS, AI assistant fallbacks ═══════════ */}
       <section className="border-b border-border/40 bg-background">
         <div className="max-w-6xl mx-auto px-6 py-2.5 flex flex-wrap items-center gap-x-4 gap-y-1">
