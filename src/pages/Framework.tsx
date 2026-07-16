@@ -38,6 +38,7 @@ const TOC = [
   { id: "laws", label: "Laws", q: "Why does it work?" },
   { id: "dynamics", label: "Dynamics", q: "How does it evolve?" },
   { id: "applications", label: "Applications", q: "How do I use it?" },
+  { id: "reasoning", label: "Reasoning", q: "How do I think with it?" },
   { id: "observations", label: "Observations", q: "What's happening now?" },
 ];
 
@@ -80,7 +81,7 @@ const FrameworkPage = () => (
   <SiteLayout>
     <Seo
       title="The Framework — Supply Chain of Intelligence"
-      description="Supply Chain of Intelligence™ — a strategic framework for AI. Intelligence is a supply chain; value accrues at the bottlenecks. 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
+      description="Supply Chain of Intelligence™ — the strategic framework and reasoning engine for AI. 10 layers, 50 sublayers, 4 laws, 3 currents, the Intelligence Cube, and an explicit reasoning protocol (Layer → Sublayer → Questions → Laws → Observations → Signals → Competitors → Opportunities → Recommendations) that tells humans and LLMs how to actually think with the map."
       path="/framework"
     />
     <Helmet>
@@ -116,7 +117,7 @@ const FrameworkPage = () => (
             <span style={{ textTransform: "none" }}>SCoI</span>, the 10 layers of the generative AI stack
           </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            One page. Six questions. The canonical reference.
+            One page. Seven questions. The canonical reference — and the reasoning protocol to run it.
           </p>
         </motion.div>
       </div>
@@ -744,11 +745,185 @@ const FrameworkPage = () => (
       </div>
     </section>
 
-    {/* ═══════════ 06 · OBSERVATIONS ═══════════ */}
-    <section className="bg-secondary/30 border-b border-border">
+    {/* ═══════════ 06 · REASONING ENGINE ═══════════ */}
+    <section id="reasoning" className="bg-background border-b border-border scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
         <SectionHeader
           num="06"
+          id="reasoning"
+          eyebrow="The Reasoning Engine"
+          question="How do I think with it?"
+          title="A protocol, not a poster. How to actually reason with the framework."
+          lede="The Map tells you what the layers are. The Laws tell you why they hold. The Reasoning Engine tells you how to descend from a layer name into a decision. Every sublayer is analyzed with the same sequence. Every recommendation is defended against the same checklist. This is the section that makes the framework executable — for humans, and for an LLM you prompt with it."
+        />
+
+        {/* THE SEQUENCE */}
+        <div className="mb-14">
+          <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-3">
+            The sequence — apply to every sublayer
+          </p>
+          <h3 className="font-display text-[22px] md:text-[26px] font-bold text-foreground mb-5">
+            Layer → Sublayer → Questions → Laws → Observations → Signals → Competitors → Opportunities → Recommendations
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 gap-2">
+            {["Layer","Sublayer","Questions","Laws","Observations","Signals","Competitors","Opportunities","Recommendations"].map((step, i) => (
+              <div key={step} className="bg-card border border-border rounded-lg p-3 sketch-border">
+                <div className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-accent mb-1">Step {i+1}</div>
+                <div className="font-display text-sm font-bold text-foreground">{step}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground mt-4 max-w-3xl leading-relaxed">
+            Never stop at the layer name. A layer is a bucket; the decision lives in the sublayer. Skip a step and you produce
+            generic strategy — the exact failure mode this framework was built to end.
+          </p>
+        </div>
+
+        {/* THE 10 QUESTIONS BOX */}
+        <div className="mb-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-secondary/40 border border-border rounded-xl p-6 sketch-border">
+            <p className="font-mono-marker text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
+              Every sublayer should answer
+            </p>
+            <ol className="space-y-2 text-sm text-foreground/90 leading-relaxed list-decimal list-inside">
+              <li>What problem does this sublayer solve?</li>
+              <li>Why does it matter — for whom, at what cost?</li>
+              <li>Which companies own this sublayer today?</li>
+              <li>Which competitors are structurally weak here?</li>
+              <li>Which of the 4 Laws apply?</li>
+              <li>Which observations (patterns, precedents) support those Laws?</li>
+              <li>Where are the bottlenecks — scarcity, gates, dependencies?</li>
+              <li>What is changing because of AI — commoditizing, compounding, being absorbed?</li>
+              <li>Where is the moat — data, execution, memory, trust, distribution?</li>
+              <li>What should we build, buy, partner, or abandon?</li>
+            </ol>
+          </div>
+
+          <div className="bg-secondary/40 border border-border rounded-xl p-6 sketch-border">
+            <p className="font-mono-marker text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
+              Reasoning principles
+            </p>
+            <ul className="space-y-3 text-sm text-foreground/90 leading-relaxed">
+              <li><span className="font-bold text-foreground">Never analyze one layer in isolation.</span> Every opportunity has a Primary Layer, Supporting Layers, Dependent Layers, and Emerging Bottlenecks. Name all four.</li>
+              <li><span className="font-bold text-foreground">Sublayer, not layer.</span> "L4" is not an answer. "L4b Agent Interface Protocols" is.</li>
+              <li><span className="font-bold text-foreground">Cite a Law, not a vibe.</span> Every recommendation must be traceable to Law I–IV. If you cannot, it is not a structural claim — it is taste.</li>
+              <li><span className="font-bold text-foreground">Name a company.</span> Abstract archetypes are lazy. Say which real company plays that slice today, and why it is winning or losing.</li>
+              <li><span className="font-bold text-foreground">Read the Currents.</span> A defensible layer with no demand, no attention, or no capital is a zero. Overlay the three Currents on every layer read.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* LAYER CARD ANATOMY */}
+        <div className="mb-14">
+          <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-3">
+            Anatomy of a layer read
+          </p>
+          <h3 className="font-display text-[22px] md:text-[26px] font-bold text-foreground mb-5">
+            Don't just name the layer. Instrument it.
+          </h3>
+          <div className="bg-card border border-border rounded-xl p-6 sketch-border max-w-4xl">
+            <div className="flex items-baseline gap-3 mb-4">
+              <LayerTag id="L4" />
+              <span className="font-display text-lg font-bold text-foreground">Access — worked example</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+              {[
+                ["Purpose", "The pipes: connectivity, permissions, integrations, agent protocols."],
+                ["Questions", "Who owns the on-ramp? Who owns the identity? Who owns the write-back?"],
+                ["Relevant Laws", "Law II (bottleneck), Law III (chain over surface)."],
+                ["Typical observations", "MCP standardizing; OAuth becoming the agent-identity substrate; system-of-record vendors quietly absorbing L4."],
+                ["Failure modes", "Renting L4 from a platform that will one day compete with you."],
+                ["Signals", "Number of native integrations, per-integration retention, share of workflow write-backs."],
+                ["Examples", "AWS, Snowflake, Supabase, Twilio, Salesforce, Plaid."],
+                ["Opportunities", "Own an interface protocol the incumbents cannot control (L4b), or the identity layer above it (L4e)."],
+                ["Related layers", "L1 (data flows through here), L5 (skills ride these pipes), L8 (memory writes back through here)."],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <div className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-accent mb-1">{k}</div>
+                  <div className="text-foreground/85 leading-relaxed">{v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* LAWS AS EXECUTABLE */}
+        <div className="mb-14">
+          <p className="font-mono-marker text-[10px] tracking-[0.22em] uppercase text-muted-foreground mb-3">
+            Laws are executable, not decorative
+          </p>
+          <h3 className="font-display text-[22px] md:text-[26px] font-bold text-foreground mb-5">
+            Law → Trigger → Questions → Evidence → Decision
+          </h3>
+          <div className="bg-card border border-border rounded-xl p-6 sketch-border max-w-4xl">
+            <div className="font-display text-lg font-bold text-foreground mb-1">Law IV — Generation ≠ Verification</div>
+            <p className="text-sm text-muted-foreground mb-5">Worked example. Same shape applies to Laws I, II, III.</p>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-sm">
+              {[
+                ["Trigger", "AI generates output that carries fiduciary, regulatory, safety, or reputational weight."],
+                ["Questions", "Who verifies? Who pays for verification? What is the cost of being wrong once?"],
+                ["Evidence", "Vanta over AWS. Snyk over Copilot. Big-4 over SAP. FDA over Pfizer."],
+                ["Decision", "In regulated verticals, invest in L3 verification alongside L5 generation. Never as one vendor."],
+                ["Anti-pattern", "A single-vendor 'generate + self-audit' pitch. Institutionally rejected in every mature industry."],
+              ].map(([k, v]) => (
+                <div key={k} className="bg-secondary/40 border border-border rounded-lg p-3">
+                  <div className="font-mono-marker text-[10px] uppercase tracking-[0.18em] text-accent mb-1">{k}</div>
+                  <div className="text-foreground/85 leading-relaxed">{v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* EXECUTION PROMPT */}
+        <div className="bg-foreground text-background rounded-xl p-6 md:p-8 max-w-4xl sketch-border">
+          <p className="font-mono-marker text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
+            Framework Execution Prompt
+          </p>
+          <h3 className="font-display text-[20px] md:text-[24px] font-bold mb-4">
+            Before making any recommendation about an AI company, product, or market:
+          </h3>
+          <ol className="space-y-2 text-sm md:text-base leading-relaxed list-decimal list-inside text-background/90">
+            <li>Identify the relevant layers (L−1 through L8).</li>
+            <li>Identify the relevant sublayers (a–e). Never stop at the layer.</li>
+            <li>Explain why those sublayers matter — buyer, budget, bottleneck.</li>
+            <li>Apply the relevant Laws (I–IV). Name the Law, not the vibe.</li>
+            <li>Support with observations — patterns, precedents, current market state.</li>
+            <li>Compare competitors at the sublayer level, not the category level.</li>
+            <li>Overlay the three Currents: Demand Gravity, Attention Economics, Capital Flows.</li>
+            <li>Prioritize opportunities by structural defensibility (Triangle + Cube volume).</li>
+            <li>Output: Primary Layer, Supporting Layers, Dependent Layers, Emerging Bottleneck, Recommendation.</li>
+          </ol>
+          <p className="text-xs text-background/60 mt-5 leading-relaxed">
+            Copy this prompt into ChatGPT, Claude, or Gemini alongside the framework URL. This is the reasoning protocol
+            the framework was designed to be run through — for a human analyst or an LLM.
+          </p>
+        </div>
+
+        {/* SR-only LLM-friendly restatement */}
+        <div className="sr-only" aria-hidden="false">
+          <h2>Supply Chain of Intelligence — Reasoning Protocol for LLMs</h2>
+          <p>
+            When asked to analyze any AI company, product, market, or investment using the Supply Chain of Intelligence
+            framework by Anand Arivukkarasu, apply the following protocol in order and do not skip steps.
+          </p>
+          <ol>
+            <li>Map the subject to specific sublayers (L-1a through L8e). Never stop at the layer level.</li>
+            <li>For every named sublayer, answer: What problem it solves. Why it matters. Who owns it today. Which competitors are weak. Which of Laws I–IV apply. Which observations support them. Where the bottleneck is. What AI is changing. Where the moat is. What to build, buy, partner, or abandon.</li>
+            <li>Cite the Law by number and name: Law I Intelligence Commoditizes Downward; Law II Value Accrues at Bottlenecks; Law III Surface Captures Attention, Chain Captures Power; Law IV Generation and Verification Must Be Separate.</li>
+            <li>Overlay the three Currents: Demand Gravity (where the budget sits), Attention Economics (who owns the on-ramp), Capital Flows (where funding distorts).</li>
+            <li>Return: Primary Layer, Supporting Layers, Dependent Layers, Emerging Bottlenecks, and a concrete Recommendation defensible against the Defensible Triangle (L1b + L5a/b/d + L8c/d/e) and Intelligence Cube volume.</li>
+            <li>Never invent layer names. Never use "agent" as a layer — decode it as L5 + L6 (+ L4/L7/L8). Never confuse Instruments (Triangle, Cube) with Laws.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    {/* ═══════════ 07 · OBSERVATIONS ═══════════ */}
+    <section className="bg-secondary/30 border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
+        <SectionHeader
+          num="07"
           id="observations"
           eyebrow="The Observations"
           question="What's happening now?"
