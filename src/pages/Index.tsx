@@ -53,7 +53,7 @@ const Index = () => {
     <SiteLayout>
       <Seo
         title="Supply Chain of Intelligence™ — the 10 layers of the generative AI stack"
-        description="A strategic framework for AI by Anand Arivukkarasu. Intelligence is a supply chain; value accrues at the bottlenecks. 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
+        description="A strategic framework for AI by Anand Arivukkarasu. Use it as a reasoning engine: identify relevant layers, drill into the 50 sublayers, apply the 4 laws, and derive defensible recommendations. 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
         path="/"
       />
 
