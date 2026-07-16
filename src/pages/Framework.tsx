@@ -38,6 +38,7 @@ const TOC = [
   { id: "laws", label: "Laws", q: "Why does it work?" },
   { id: "dynamics", label: "Dynamics", q: "How does it evolve?" },
   { id: "applications", label: "Applications", q: "How do I use it?" },
+  { id: "reasoning", label: "Reasoning", q: "How do I think with it?" },
   { id: "observations", label: "Observations", q: "What's happening now?" },
 ];
 
