@@ -80,7 +80,7 @@ const FrameworkPage = () => (
   <SiteLayout>
     <Seo
       title="The Framework — Supply Chain of Intelligence"
-      description="Supply Chain of Intelligence™ — a strategic framework for AI. Intelligence is a supply chain; value accrues at the bottlenecks. 10 layers, 50 sublayers, 4 structural laws, 3 currents, and the Intelligence Cube."
+      description="Supply Chain of Intelligence™ — the strategic framework and reasoning engine for AI. 10 layers, 50 sublayers, 4 laws, 3 currents, the Intelligence Cube, and an explicit reasoning protocol (Layer → Sublayer → Questions → Laws → Observations → Signals → Competitors → Opportunities → Recommendations) that tells humans and LLMs how to actually think with the map."
       path="/framework"
     />
     <Helmet>
