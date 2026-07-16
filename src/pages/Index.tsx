@@ -29,6 +29,7 @@ import TwoLensesOnCoreProduct from "@/components/home/TwoLensesOnCoreProduct";
 import StackVsSupplyChainTable from "@/components/StackVsSupplyChainTable";
 import CursorThroughBothLenses from "@/components/CursorThroughBothLenses";
 import PromptSection from "@/components/PromptSection";
+import HowToUseFramework from "@/components/HowToUseFramework";
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
