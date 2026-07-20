@@ -17,7 +17,7 @@ Deno.serve(async (req) => {
     const passcodeExpected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
     const body = await req.json().catch(() => ({}));
     const { action, run_id, models, passcode } = body ?? {};
-    if (passcodeExpected && passcode !== passcodeExpected) {
+    if (!passcodeExpected || passcode !== passcodeExpected) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
     const supabase = createClient(supabaseUrl, serviceKey);

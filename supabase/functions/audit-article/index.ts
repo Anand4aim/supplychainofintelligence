@@ -292,7 +292,7 @@ Deno.serve(async (req) => {
     const body = await req.json();
     const { article_id, run_id, model, passcode, models_expected } = body ?? {};
     if (!article_id || !run_id || !model) return new Response(JSON.stringify({ error: "article_id, run_id, model required" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-    if (passcodeExpected && passcode !== passcodeExpected) return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    if (!passcodeExpected || passcode !== passcodeExpected) return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
     const supabase = createClient(supabaseUrl, serviceKey);
     const { data: article, error: aerr } = await supabase.from("live_articles").select("*").eq("id", article_id).maybeSingle();
