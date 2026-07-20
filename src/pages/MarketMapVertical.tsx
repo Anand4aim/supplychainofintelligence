@@ -174,7 +174,7 @@ const MarketMapVertical = () => {
                     layer(s) where it structurally lives, so you can see who is defensible,
                     who gets absorbed by a platform below them, and where the whitespace
                     is. This is the scaffold the {entry.label} map is being built against.
-                    Two verticals are live today ({liveVerticals.map((v, i) => (
+                    Three verticals are live today ({liveVerticals.map((v, i) => (
                       <span key={v.slug}>
                         {i > 0 ? ", " : ""}
                         <Link to={`/market-map/${v.slug}`} className="underline hover:text-foreground">{v.label}</Link>
