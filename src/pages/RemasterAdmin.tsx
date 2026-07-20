@@ -110,7 +110,7 @@ export default function RemasterAdmin() {
 
   // Re-verify any stored passcode on mount (in case it changed server-side)
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
@@ -121,7 +121,7 @@ export default function RemasterAdmin() {
   }, []);
 
   async function loadQueue() {
-    const passcode = localStorage.getItem(PASSCODE_KEY);
+    const passcode = (getAdminPasscode() || null);
     if (!passcode) return;
     const { data, error } = await supabase.functions.invoke("admin-read", {
       body: { passcode, resource: "remaster_queue" },

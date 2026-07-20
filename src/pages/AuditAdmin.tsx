@@ -96,7 +96,7 @@ export default function AuditAdmin() {
   const tickTimer = useRef<number | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
@@ -107,7 +107,7 @@ export default function AuditAdmin() {
   }, []);
 
   async function loadAll() {
-    const code = passcode || localStorage.getItem(PASSCODE_KEY) || "";
+    const code = passcode || getAdminPasscode();
     if (!code) return;
     const [{ data: rd }, { data: ad }] = await Promise.all([
       supabase.functions.invoke("admin-read", { body: { passcode: code, resource: "audit_runs" } }),
@@ -122,7 +122,7 @@ export default function AuditAdmin() {
 
   async function loadRunData(runId: string) {
     if (!runId) return;
-    const code = passcode || localStorage.getItem(PASSCODE_KEY) || "";
+    const code = passcode || getAdminPasscode();
     if (!code) return;
     const { data, error } = await supabase.functions.invoke("admin-read", {
       body: { passcode: code, resource: "run_data", run_id: runId },

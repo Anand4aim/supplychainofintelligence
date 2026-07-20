@@ -143,7 +143,7 @@ export default function CrawlAdmin() {
   const [homeBaseline, setHomeBaseline] = useState<{ bytes: number; title: string } | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {

@@ -59,7 +59,7 @@ export default function StoryQueueAdmin() {
   const [filter, setFilter] = useState<"all" | "pending" | "published" | "rejected">("pending");
 
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
@@ -69,7 +69,7 @@ export default function StoryQueueAdmin() {
   }, []);
 
   async function load() {
-    const passcode = localStorage.getItem(PASSCODE_KEY);
+    const passcode = (getAdminPasscode() || null);
     if (!passcode) return;
     const { data, error } = await supabase.functions.invoke("admin-read", {
       body: { passcode, resource: "story_candidates" },
@@ -80,7 +80,7 @@ export default function StoryQueueAdmin() {
   useEffect(() => { if (unlocked) load(); }, [unlocked]);
 
   async function discover() {
-    const passcode = localStorage.getItem(PASSCODE_KEY);
+    const passcode = (getAdminPasscode() || null);
     if (!passcode) return toast.error("Session expired");
     setDiscovering(true);
     try {
