@@ -14,15 +14,18 @@ Deno.serve(async (req) => {
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const expected = Deno.env.get("REMASTER_ADMIN_PASSCODE");
 
-    // Auth: require admin passcode (sent by pg_cron job and any manual caller)
+    // Auth: fail-closed passcode check. pg_cron job must send the passcode
+    // in the JSON body (`{"passcode":"..."}`) or the `x-admin-passcode`
+    // header. Without a matching REMASTER_ADMIN_PASSCODE env var + caller
+    // credential this endpoint returns 401 to every request.
     let passcode: string | null = req.headers.get("x-admin-passcode");
     if (req.method === "POST") {
       const body = await req.json().catch(() => ({}));
       passcode = body?.passcode ?? passcode;
     }
-    // Auth removed: cron-only worker, no destructive ops beyond processing one
-    // already-queued item. Passcode check was blocking pg_cron from running.
-    void passcode; void expected;
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
 
     const supabase = createClient(supabaseUrl, serviceKey);
 

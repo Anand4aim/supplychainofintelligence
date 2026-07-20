@@ -215,10 +215,12 @@ Deno.serve(async (req) => {
         passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
-    // Auth removed: this endpoint is rate-bounded by its cron schedule (weekly +
-    // daily) and the only side effect is inserting a generated article. Keeping
-    // a passcode broke the cron job; opening it lets the live feed flow again.
-    void passcode; void expected;
+    // Auth: fail-closed passcode check. pg_cron / weekly schedule must
+    // send `{"passcode":"..."}` (or an `x-admin-passcode` header). Without
+    // REMASTER_ADMIN_PASSCODE configured and matched, every request 401s.
+    if (!expected || passcode !== expected) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
 
     console.log("[live-article] fetching news via Perplexity", topic ? `(topic: ${topic})` : "(weekly auto)");
     const newsContext = await fetchLatestNews(perplexityKey, topic);

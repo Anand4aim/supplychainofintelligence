@@ -58,7 +58,7 @@ function getPayload(target_type: string, target_id: string): { content: string; 
   }
 }
 
-const PASSCODE_KEY = "remaster_admin_passcode";
+import { setAdminPasscode, getAdminPasscode, clearAdminPasscode } from "@/lib/adminPasscode";
 
 function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
   const [code, setCode] = useState("");
@@ -73,7 +73,7 @@ function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
         toast.error("Invalid passcode");
         return;
       }
-      localStorage.setItem(PASSCODE_KEY, code.trim());
+      setAdminPasscode(code.trim());
       onUnlock(code.trim());
     } finally {
       setBusy(false);
@@ -110,18 +110,18 @@ export default function RemasterAdmin() {
 
   // Re-verify any stored passcode on mount (in case it changed server-side)
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
         if (!error && data?.ok) setUnlocked(true);
-        else localStorage.removeItem(PASSCODE_KEY);
+        else clearAdminPasscode();
       })
       .finally(() => setChecking(false));
   }, []);
 
   async function loadQueue() {
-    const passcode = localStorage.getItem(PASSCODE_KEY);
+    const passcode = (getAdminPasscode() || null);
     if (!passcode) return;
     const { data, error } = await supabase.functions.invoke("admin-read", {
       body: { passcode, resource: "remaster_queue" },
@@ -146,7 +146,7 @@ export default function RemasterAdmin() {
   }, [unlocked]);
 
   async function enqueue(items: Array<{ target_type: string; target_id: string; target_label: string; notes?: string; content?: string }>) {
-    const passcode = localStorage.getItem(PASSCODE_KEY) ?? "";
+    const passcode = getAdminPasscode();
     const { data, error } = await supabase.functions.invoke("enqueue-remaster", { body: { items, passcode } });
     if (error) return toast.error(error.message);
     if (!data?.success) return toast.error(data?.error ?? "Failed");
@@ -157,7 +157,7 @@ export default function RemasterAdmin() {
   async function processItem(item: QueueRow) {
     setProcessing(item.id);
     try {
-      const passcode = localStorage.getItem(PASSCODE_KEY) ?? "";
+      const passcode = getAdminPasscode();
       const payload = item.target_type === "live_article" ? null : getPayload(item.target_type, item.target_id);
       const body: Record<string, unknown> = { item_id: item.id, passcode };
       if (payload) body.payload = payload;

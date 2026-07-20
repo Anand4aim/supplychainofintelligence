@@ -24,7 +24,7 @@ import { POSTS } from "@/data/posts";
 import { VERTICAL_REGISTRY } from "@/data/verticalsRegistry";
 import { LAYERS } from "@/data/layers";
 
-const PASSCODE_KEY = "remaster_admin_passcode";
+import { setAdminPasscode, getAdminPasscode, clearAdminPasscode } from "@/lib/adminPasscode";
 
 type Group = "live" | "market-map" | "analysis" | "laws" | "posts" | "framework" | "static";
 
@@ -62,7 +62,7 @@ function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
         { body: { passcode: code.trim() } },
       );
       if (error || !data?.ok) { toast.error("Invalid passcode"); return; }
-      localStorage.setItem(PASSCODE_KEY, code.trim());
+      setAdminPasscode(code.trim());
       onUnlock(code.trim());
     } finally { setBusy(false); }
   }
@@ -143,12 +143,12 @@ export default function CrawlAdmin() {
   const [homeBaseline, setHomeBaseline] = useState<{ bytes: number; title: string } | null>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(PASSCODE_KEY);
+    const stored = (getAdminPasscode() || null);
     if (!stored) { setChecking(false); return; }
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
         if (!error && data?.ok) setUnlocked(true);
-        else localStorage.removeItem(PASSCODE_KEY);
+        else clearAdminPasscode();
       })
       .finally(() => setChecking(false));
   }, []);
