@@ -1,102 +1,53 @@
-## Goal
+## Sales Tech AI Market Map — `/market-map/sales-tech`
 
-Package the existing site content into three platform-ready articles you can copy-paste, plus a public GitHub-ready spec folder. Same words, three surfaces. No new arguments — just distribution.
+Build a full 10×50 sublayer placement dataset for AI-native Sales Tech, at the same discipline as the Legal map. Same file structure, same components, same freshness/export/share-card wiring — only the data is new.
 
-## The three articles (sequenced)
+### Scope (locked from your answer)
+SDR/AE/CRM-adjacent workflows only: prospecting, enrichment, outbound (email/calling/social), meeting intelligence, deal execution, CRM hygiene/RevOps automation, forecasting. **Excluded:** marketing automation, ABM ad platforms, CS/PLG, pricing, deal-desk suites — those go in a sibling GTM/marketing map later if we do one.
 
-1. **Article 1 — "The Supply Chain of Intelligence: a 10-layer map of the generative AI stack"** (the framework intro). Source: `/framework` definition + Map + the 10-layer summary.
-2. **Article 2 — "The 4 Laws of the AI Supply Chain"** (why wrappers die, where value accrues, Generation ≠ Verification, Surface vs Chain). Source: `src/data/lawEssays.ts` + `/framework` Laws section.
-3. **Article 3 — "Apollo and the SaaSpocalypse: a thin-stack survivor, decoded"** (the case study). Source: `src/data/caseStudies.ts` apollo-thin-stack-survivor.
+### Company universe (~50, grouped by natural cluster)
+Each gets a full record: tier, stage, focus, SCoI position, funding line with source-date, "why," optional `flag:` for anything I can't triple-verify.
 
-## What I'll deliver per article
+- **AI SDR / agentic outbound** — 11x, Artisan (Ava), Regie.ai, AiSDR, Piper (Qualified), Jazon (Lyzr), Bosh (Relevance)
+- **Prospecting data + enrichment** — Clay, Apollo (AI additions), Ocean.io, Common Room, UserGems, Warmly
+- **Dialer / parallel calling** — Nooks, Orum, Salesfinity, PhoneReady (Prospeo)
+- **Meeting / call intelligence** — Gong, Chorus (ZoomInfo), Attention, Fathom, Fireflies, Otter (biz), Rilla (field)
+- **Deal execution / revenue orchestration** — Rox, Unify, Default, Momentum, Pocus, Endgame, Amplemarket
+- **CRM-adjacent / RevOps AI** — People.ai, Aviso, Clari (AI), Scratchpad, Salesloft (AI), Outreach (AI)
+- **AI-native CRM challengers** — Attio (AI), Day.ai, Twenty (open source)
+- **Deal desk / proposal AI** — DealHub AI, Tabs, PandaDoc AI
+- **Cautionary / exits** — anything acquired/failed in the last 18 months (e.g. Chili Piper–Qualified overlap, ZoomInfo's Chorus integration story, Salesloft/Outreach commoditization)
 
-For each of the three, three files, all under a new `docs/distribution/` folder so it's version-controlled and auto-syncs to GitHub:
+Final list will drop anyone I can't verify with 2+ public sources. Better to ship 40 real than 55 half-real.
 
-```text
-docs/distribution/
-├── README.md                          ← index + "how to repost" instructions for you
-├── 01-framework/
-│   ├── linkedin-article.md            ← paste-into-LinkedIn copy; image URLs inline; CTA back to /framework
-│   ├── substack-medium.md             ← same body, with "Originally published at supplychainofai.com/framework" header + canonical link note
-│   └── images.md                      ← list of hosted image URLs + suggested alt text + caption
-├── 02-four-laws/
-│   └── (same three files)
-└── 03-apollo-teardown/
-    └── (same three files)
-```
+### The editorial thesis (draft, will sharpen as I research)
+Sales Tech is the vertical where the L5→L1 bifurcation is happening *fastest*: Clay owns L1b/L1c (prospect data + intent), Gong owns L1d (call outcome data), and a wave of L5a agent platforms (11x, Artisan, Rox, Unify) are fighting to be the "execution OS." The compression risk is severe — Salesloft/Outreach/Apollo are absorbing agent features into the incumbent platform, and OpenAI/Anthropic ship each new capability directly into the L5a moat. The defensible whitespace is L1d (deal-outcome data beyond meeting transcripts), L8d (institutional selling memory per-account), and L3a (compliance for regulated-industry outbound: TCPA, GDPR, CAN-SPAM enforcement).
 
-LinkedIn articles don't render Markdown — but pasting Markdown into LinkedIn's article editor preserves headings, bold, lists, and inline images. I'll keep formatting LinkedIn-safe (no tables, no footnotes, no code fences for prose).
+### Deliverables
+1. `src/data/verticals/salesTech.ts` — mirrors `legal.ts` structure exactly (`SALES_TECH_MAP: VerticalMapData`).
+2. Register it in `src/data/verticalsRegistry.ts` (`sales-tech`, status `live`).
+3. Wire dataset into `MarketMapVertical.tsx` alongside `VERTICAL_DATASETS` (the current import from `./verticals/legal` will move to a barrel or extend the map).
+4. Update sidebar count in `MarketMapVertical.tsx` from "24 verticals · 2 live" → "24 · 3 live" copy.
+5. Sitemap + `crawl-content-check` picks up the new live URL automatically (it reads the registry).
 
-## Hosted diagrams (Substack/Medium need URLs, LinkedIn needs file uploads)
+### Honesty guardrails
+- Every funding line cites the round/date/lead investor from a public press release or filing. Anything I can't verify gets a `flag:` field (same convention as Supio's $3B/$400M note).
+- No fake company placements. If a sublayer is empty in Sales Tech, it gets a `gap:` annotation (whitespace / absorbed feature / horizontal-owned) — same as legal's L8a, L4a-d, etc.
+- I'll flag Salesloft/Outreach/Apollo carefully — they're pre-AI incumbents bolting AI on, not AI-native. They belong on the map but I'll mark them differently (probably `tier: "Incumbent (AI-bolted)"`).
+- "Cross-LLM critic" pass: after I generate `salesTech.ts`, I'll produce a `docs/research/sales-tech-critic-brief.md` — a structured prompt + the raw placement list you can paste into ChatGPT/Claude/Gemini for an adversarial "who's mispositioned, what's missing, what funding looks wrong" review. That's the honest version of "cross-model validation" — you (or I in a next turn) run it and I incorporate the corrections.
 
-I'll generate PNG exports of the key visuals and host them at stable URLs on the site so Substack/Medium can embed by URL and you can download the same PNGs for LinkedIn upload.
+### What I will NOT do
+- Not touch `Framework.tsx`, homepage, or any other page.
+- Not add new components — reuse `SublayerGrid`, `MarketMapShareCard`, `ExportablePng` as-is.
+- Not invent a new "AI SDR" sublayer — 11x etc. go at L5a + L6a, which is where they structurally live.
+- Not include marketing-automation companies (Jasper, Copy.ai, HubSpot AI) even if borderline. They belong in the GTM/marketing map if you commission it later.
 
-Diagrams per article:
+### Two-turn execution
+- **This turn (if you approve):** research + ship `salesTech.ts`, registry entry, sidebar count update, critic brief. Roughly one large file + two small edits.
+- **Next turn (optional):** you paste the critic brief into ChatGPT/Claude, send me back the diff, I apply corrections and add a `flag:` note wherever the second model flagged uncertainty.
 
-| Article | Diagrams |
-|---|---|
-| 1. Framework | 10-layer stack (full color), Substrate/Workflow/Surface tier diagram, Defensible Triangle |
-| 2. Four Laws | One poster per Law (4 images), built from existing `FourLawsPoster` styling |
-| 3. Apollo | Layer-by-layer decode strip (L1b + L2 + L7), thin-stack-survivor diagram |
-
-Two delivery modes, both shipped:
-
-- **Hosted URLs**: PNGs written to `public/og/distribution/` so they live at `https://supplychainofai.com/og/distribution/<file>.png`. Substack/Medium embed by URL.
-- **Downloadable copies**: Same PNGs duplicated to `/mnt/documents/distribution/` so you can drag-drop into LinkedIn's article editor.
-
-Rendering: a small Playwright script (`scripts/export-distribution-pngs.ts`) navigates to the existing poster routes (`/posters`), screenshots each at 2x DPI, writes both copies. Reuses the visuals already on the site — no new design work, exact color system preserved.
-
-## GitHub repo shape
-
-You asked to work directly on GitHub. Since this Lovable project is already GitHub-synced (the codebase auto-pushes), I'll structure the framework as an open spec **inside this same repo** under a new top-level `/spec/` folder. It becomes a documentation surface visible on GitHub immediately, without spinning up a second repo:
-
-```text
-/spec/
-├── README.md                  ← landing page: definition, 10 layers TL;DR, canonical link
-├── LICENSE                    ← CC BY 4.0 (matches "give it away as a standard" intent)
-├── CITATION.cff               ← so GitHub renders a "Cite this repository" button
-├── layers/
-│   ├── L-1-resources.md
-│   ├── L0-infrastructure.md
-│   ├── ... (one per layer, generated from src/data/layers.ts)
-│   └── L8-memory.md
-├── laws.md                    ← the 4 Laws verbatim
-├── currents.md                ← the 3 Currents
-├── intelligence-cube.md       ← Functions × Verticals × Layers
-└── data/
-    ├── layers.json            ← machine-readable, generated from src/data/layers.ts
-    └── sublayers.json
-```
-
-If you later want a separate standalone `supply-chain-of-intelligence` repo on GitHub, you can fork `/spec/` out — but starting here means zero new infra and the spec stays in lockstep with the live site (single source of truth = `src/data/layers.ts`).
-
-## Voice and tone
-
-- Stratechery editorial + McKinsey authority (matches your existing tone memory).
-- No harsh verdicts. Soft-framing per `mem://preferences/tone`.
-- Personal-capacity safe: no "hire me / engagement / advisory" CTAs. CTAs are editorial — "read the full framework", "run the self-assessment", "follow on LinkedIn".
-- Brand line on every piece: *"The Supply Chain of Intelligence™ — the 10 layers of the generative AI stack."*
-- Attribution footer auto-appended to every article: `Originally published at supplychainofai.com/<path>. © Anand Arivukkarasu, personal capacity.`
-
-## Order of operations
-
-1. Build the PNG export script + render all diagrams to `public/og/distribution/` and `/mnt/documents/distribution/`.
-2. Write Article 1 (Framework) in all three formats. Show it to you for tone check before I generate 2 and 3.
-3. On your green light, ship Articles 2 + 3 in parallel.
-4. Build `/spec/` from `src/data/layers.ts` (auto-generated where possible, hand-edited landing README).
-5. Final deliverable: a single chat summary linking each LinkedIn `.md`, each Substack `.md`, the hosted image URLs, and the GitHub `/spec/` folder URL.
-
-## What I won't do
-
-- Won't rewrite the arguments. Direct lift from `/framework`, `lawEssays.ts`, and `caseStudies.ts`, reformatted per platform.
-- Won't create a separate GitHub repo (no auth to do that; the Lovable sync already pushes this repo). If you want a dedicated repo later, you fork `/spec/` out manually — 5 min job.
-- Won't add forms, lead capture, or any transactional CTA. L-1A safe.
-
-## Open question before I start
-
-Two visual-spec choices that change rendering — pick now so I render once:
-
-- LinkedIn cover image aspect ratio: **1200×627** (LinkedIn's documented optimum) or **1920×1080** (looks better on Substack/Medium hero)? I'd default to **1200×627** and crop-safe the design so it works on both.
-- Diagram background: **navy (#0F172A, matches site)** or **white (better for LinkedIn light-mode feed thumbnails)**? I'd default to **navy** for brand consistency.
-
-Reply "go" with any overrides and I'll start with the PNG render + Article 1.
+### Technical notes
+- File location: `src/data/verticals/salesTech.ts` (camelCase to match `legalDomains.ts` convention).
+- Registry entry: `{ slug: "sales-tech", label: "Sales Tech", status: "live", blurb: "..." }`.
+- `MarketMapVertical.tsx` currently imports `VERTICAL_DATASETS` from `./verticals/legal`. I'll either extend that export or introduce `src/data/verticals/index.ts` as a barrel — cleaner and future-proof for the remaining 22 verticals.
+- Sidebar copy update is a two-line change in `VerticalSidebar`.

@@ -18,7 +18,7 @@ import { LAYERS } from "@/data/layers";
 const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
   <aside className="md:sticky md:top-20 self-start">
     <div className="font-mono-marker text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-3">
-      24 Verticals
+      25 Verticals · 3 live
     </div>
     <nav className="flex flex-col">
       {VERTICAL_REGISTRY.map((v) => {
@@ -53,7 +53,7 @@ const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
       })}
     </nav>
     <div className="mt-4 text-[11px] text-muted-foreground leading-snug">
-      Two verticals published. Twenty-two more in the queue, each researched on the same 10×5 grid.
+      Three verticals published. Twenty-two more in the queue, each researched on the same 10×5 grid.
     </div>
   </aside>
 );
@@ -224,7 +224,7 @@ const MarketMapVertical = () => {
                       <Link to="/framework" className="underline hover:text-foreground">The framework</Link> &mdash; the 10 layers, 4 laws, 3 currents, and the Intelligence Cube.
                     </li>
                     <li>
-                      <Link to="/market-map" className="underline hover:text-foreground">All 24 verticals</Link> &mdash; what is live, what is queued.
+                      <Link to="/market-map" className="underline hover:text-foreground">All 25 verticals</Link> &mdash; what is live, what is queued.
                     </li>
                     {liveVerticals.map((v) => (
                       <li key={v.slug}>

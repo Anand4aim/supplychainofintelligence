@@ -370,8 +370,10 @@ export const LEGAL_MAP: VerticalMapData = {
 };
 
 import { WEALTH_MAP } from "./wealth";
+import { SALES_TECH_MAP } from "./salesTech";
 
 export const VERTICAL_DATASETS: Record<string, VerticalMapData> = {
   legal: LEGAL_MAP,
   wealth: WEALTH_MAP,
+  "sales-tech": SALES_TECH_MAP,
 };
