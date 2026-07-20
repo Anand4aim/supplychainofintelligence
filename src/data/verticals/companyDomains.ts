@@ -1,6 +1,7 @@
 // Company-key → domain mapping for favicon lookups in SublayerGrid.
-// Keys match the company keys in src/data/verticals/legal.ts.
-export const LEGAL_DOMAINS: Record<string, string> = {
+// Keys match company keys across all vertical datasets (legal, wealth, sales-tech, etc.).
+export const COMPANY_DOMAINS: Record<string, string> = {
+  // Legal AI
   harvey: "harvey.ai",
   legora: "legora.com",
   evenup: "evenuplaw.com",
@@ -40,7 +41,8 @@ export const LEGAL_DOMAINS: Record<string, string> = {
   vlex: "vlex.com",
   regbase: "regbase.com",
   robin: "robinai.com",
-  // WealthTech vertical
+
+  // WealthTech
   farther: "farther.com",
   savvy: "savvywealth.com",
   arta: "artafinance.com",
@@ -55,4 +57,46 @@ export const LEGAL_DOMAINS: Record<string, string> = {
   fpalpha: "fpalpha.com",
   brightwave: "brightwave.io",
   rogo: "rogo.ai",
+
+  // Sales Tech
+  elevenx: "11x.ai",
+  artisan: "artisan.co",
+  regie: "regie.ai",
+  aisdr: "aisdr.com",
+  piper: "qualified.com",
+  relevance: "relevanceai.com",
+  clay: "clay.earth",
+  apollo: "apollo.io",
+  commonroom: "commonroom.io",
+  usergems: "usergems.com",
+  warmly: "warmly.ai",
+  oceanio: "ocean.io",
+  nooks: "nooks.ai",
+  orum: "orum.com",
+  salesfinity: "salesfinity.com",
+  gong: "gong.io",
+  chorus: "chorus.ai",
+  attention: "attention.ai",
+  fathom: "fathom.video",
+  fireflies: "fireflies.ai",
+  rilla: "rilla.io",
+  rox: "rox.ai",
+  unify: "unify.ai",
+  default: "default.com",
+  momentum: "momentum.io",
+  pocus: "pocus.com",
+  endgame: "endgame.ai",
+  amplemarket: "amplemarket.com",
+  salesloft: "salesloft.com",
+  outreach: "outreach.io",
+  clari: "clari.com",
+  aviso: "aviso.ai",
+  people: "people.ai",
+  scratchpad: "scratchpad.com",
+  attio: "attio.com",
+  day: "day.ai",
+  twenty: "twenty.com",
+  regal: "regal.ai",
+  chilipiper: "chilipiper.com",
+  // robin_sales intentionally omitted — placeholder/cautionary entry, not a real active company.
 };
