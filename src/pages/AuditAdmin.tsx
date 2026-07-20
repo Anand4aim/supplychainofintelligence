@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import LayerTag from "@/components/LayerTag";
 
-const PASSCODE_KEY = "remaster_admin_passcode";
+import { setAdminPasscode, getAdminPasscode, clearAdminPasscode } from "@/lib/adminPasscode";
 const TICK_INTERVAL_MS = 75_000;
 
 interface Article { id: string; slug: string; headline: string; verdict: string; analysis: any; }
@@ -63,7 +63,7 @@ function PasscodeGate({ onUnlock }: { onUnlock: (code: string) => void }) {
     try {
       const { data, error } = await supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: code.trim() } });
       if (error || !data?.ok) { toast.error("Invalid passcode"); return; }
-      localStorage.setItem(PASSCODE_KEY, code.trim());
+      setAdminPasscode(code.trim());
       onUnlock(code.trim());
     } finally { setBusy(false); }
   }
@@ -101,7 +101,7 @@ export default function AuditAdmin() {
     supabase.functions.invoke("verify-remaster-passcode", { body: { passcode: stored } })
       .then(({ data, error }) => {
         if (!error && data?.ok) { setUnlocked(true); setPasscode(stored); }
-        else localStorage.removeItem(PASSCODE_KEY);
+        else clearAdminPasscode();
       })
       .finally(() => setChecking(false));
   }, []);
