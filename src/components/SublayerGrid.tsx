@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
 import { LAYERS, SUBLAYER_LABEL, layerColor, layerVar } from "@/data/layers";
-import { LEGAL_DOMAINS } from "@/data/verticals/legalDomains";
+import { COMPANY_DOMAINS } from "@/data/verticals/companyDomains";
 
 const LogoMark = ({ companyKey, name, size = 28 }: { companyKey: string; name: string; size?: number }) => {
-  const domain = LEGAL_DOMAINS[companyKey];
+  const domain = COMPANY_DOMAINS[companyKey];
   const [failed, setFailed] = useState(!domain);
   const initial = name.charAt(0).toUpperCase();
   const innerSize = Math.round(size * 0.8);
