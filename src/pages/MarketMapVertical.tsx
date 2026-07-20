@@ -18,7 +18,7 @@ import { LAYERS } from "@/data/layers";
 const VerticalSidebar = ({ activeSlug }: { activeSlug: string }) => (
   <aside className="md:sticky md:top-20 self-start">
     <div className="font-mono-marker text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-3">
-      24 Verticals
+      25 Verticals · 3 live
     </div>
     <nav className="flex flex-col">
       {VERTICAL_REGISTRY.map((v) => {
