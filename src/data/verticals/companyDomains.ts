@@ -99,4 +99,21 @@ export const COMPANY_DOMAINS: Record<string, string> = {
   regal: "regal.ai",
   chilipiper: "chilipiper.com",
   // robin_sales intentionally omitted — placeholder/cautionary entry, not a real active company.
+
+  // Field Sales (private /labs map)
+  practis: "practis.com",
+  yoodli: "yoodli.ai",
+  hyperbound: "hyperbound.ai",
+  secondnature: "secondnature.ai",
+  quantified: "quantified.ai",
+  retorio: "retorio.com",
+  awarathon: "awarathon.com",
+  mindtickle: "mindtickle.com",
+  allego: "allego.com",
+  siro: "siro.ai",
+  sandler: "sandler.com",
+  franchisors: "franchise.org",
+  pesponsors: "wrenchgroup.com",
+  fountain: "fountain.com",
+  paradox: "paradox.ai",
 };

@@ -148,6 +148,7 @@ Allow: /
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /labs/
 
 # -----------------------------------------------------------------------------
 # 6. Discovery
