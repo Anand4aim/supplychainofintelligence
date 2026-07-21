@@ -2,11 +2,11 @@
 // Not in the public verticals registry, not in the sitemap, noindex.
 // This is a working artifact for internal use / share-by-link only.
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Lock, Map as MapIcon, ChevronRight } from "lucide-react";
+import { Lock, Map as MapIcon, ChevronRight, Layers } from "lucide-react";
 
 import SiteLayout from "@/components/SiteLayout";
 import Eyebrow from "@/components/Eyebrow";
@@ -15,6 +15,8 @@ import ExportablePng from "@/components/ExportablePng";
 import SublayerGrid from "@/components/SublayerGrid";
 import MarketMapShareCard from "@/components/MarketMapShareCard";
 import { FIELD_SALES_MAP } from "@/data/verticals/fieldSales";
+import { SALES_TECH_MAP } from "@/data/verticals/salesTech";
+import type { VerticalMapData, SublayerPlacement } from "@/data/verticals/legal";
 
 const STATE_TAG: Record<string, string> = {
   scarce: "Scarce · captured",
@@ -23,8 +25,47 @@ const STATE_TAG: Record<string, string> = {
   contested: "Contested",
 };
 
+// Workshop view: overlay B2B Sales Tech as dimmed CONTEXT behind the Field Sales
+// opportunity map. Field Sales entries stay PRIMARY (highlighted). Every Sales Tech
+// chip drops to SECONDARY (faded) so the audience sees the big picture and where
+// the field-sales opportunity is structurally different. On key collisions (e.g.
+// `rilla` — present in both maps) the Field Sales entry wins.
+function mergeWithContext(fs: VerticalMapData, ctx: VerticalMapData): VerticalMapData {
+  const companies = { ...ctx.companies, ...fs.companies };
+  const byId = new Map<string, SublayerPlacement>();
+  for (const p of ctx.placements) {
+    byId.set(p.id, {
+      id: p.id,
+      secondary: [...(p.primary ?? []), ...(p.secondary ?? [])],
+      gap: p.gap,
+    });
+  }
+  for (const p of fs.placements) {
+    const prev = byId.get(p.id);
+    const fsKeys = new Set([...(p.primary ?? []), ...(p.secondary ?? [])]);
+    const ctxSecondary = (prev?.secondary ?? []).filter((k) => !fsKeys.has(k));
+    const hasChips = (p.primary?.length ?? 0) + (p.secondary?.length ?? 0) + ctxSecondary.length > 0;
+    byId.set(p.id, {
+      id: p.id,
+      primary: p.primary,
+      secondary: [...(p.secondary ?? []), ...ctxSecondary],
+      whitespace: p.whitespace,
+      gap: hasChips ? undefined : (p.gap ?? prev?.gap),
+    });
+  }
+  return {
+    ...fs,
+    companies,
+    placements: Array.from(byId.values()),
+  };
+}
+
 const FieldSalesLab = () => {
-  const dataset = FIELD_SALES_MAP;
+  const [showContext, setShowContext] = useState(true);
+  const dataset = useMemo(
+    () => (showContext ? mergeWithContext(FIELD_SALES_MAP, SALES_TECH_MAP) : FIELD_SALES_MAP),
+    [showContext],
+  );
   const [copied, setCopied] = useState(false);
 
   const copyShareUrl = async () => {
