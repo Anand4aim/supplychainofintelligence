@@ -2,11 +2,11 @@
 // Not in the public verticals registry, not in the sitemap, noindex.
 // This is a working artifact for internal use / share-by-link only.
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Lock, Map as MapIcon, ChevronRight } from "lucide-react";
+import { Lock, Map as MapIcon, ChevronRight, Layers } from "lucide-react";
 
 import SiteLayout from "@/components/SiteLayout";
 import Eyebrow from "@/components/Eyebrow";
@@ -15,6 +15,8 @@ import ExportablePng from "@/components/ExportablePng";
 import SublayerGrid from "@/components/SublayerGrid";
 import MarketMapShareCard from "@/components/MarketMapShareCard";
 import { FIELD_SALES_MAP } from "@/data/verticals/fieldSales";
+import { SALES_TECH_MAP } from "@/data/verticals/salesTech";
+import type { VerticalMapData, SublayerPlacement } from "@/data/verticals/legal";
 
 const STATE_TAG: Record<string, string> = {
   scarce: "Scarce · captured",
@@ -23,8 +25,47 @@ const STATE_TAG: Record<string, string> = {
   contested: "Contested",
 };
 
+// Workshop view: overlay B2B Sales Tech as dimmed CONTEXT behind the Field Sales
+// opportunity map. Field Sales entries stay PRIMARY (highlighted). Every Sales Tech
+// chip drops to SECONDARY (faded) so the audience sees the big picture and where
+// the field-sales opportunity is structurally different. On key collisions (e.g.
+// `rilla` — present in both maps) the Field Sales entry wins.
+function mergeWithContext(fs: VerticalMapData, ctx: VerticalMapData): VerticalMapData {
+  const companies = { ...ctx.companies, ...fs.companies };
+  const byId = new Map<string, SublayerPlacement>();
+  for (const p of ctx.placements) {
+    byId.set(p.id, {
+      id: p.id,
+      secondary: [...(p.primary ?? []), ...(p.secondary ?? [])],
+      gap: p.gap,
+    });
+  }
+  for (const p of fs.placements) {
+    const prev = byId.get(p.id);
+    const fsKeys = new Set([...(p.primary ?? []), ...(p.secondary ?? [])]);
+    const ctxSecondary = (prev?.secondary ?? []).filter((k) => !fsKeys.has(k));
+    const hasChips = (p.primary?.length ?? 0) + (p.secondary?.length ?? 0) + ctxSecondary.length > 0;
+    byId.set(p.id, {
+      id: p.id,
+      primary: p.primary,
+      secondary: [...(p.secondary ?? []), ...ctxSecondary],
+      whitespace: p.whitespace,
+      gap: hasChips ? undefined : (p.gap ?? prev?.gap),
+    });
+  }
+  return {
+    ...fs,
+    companies,
+    placements: Array.from(byId.values()),
+  };
+}
+
 const FieldSalesLab = () => {
-  const dataset = FIELD_SALES_MAP;
+  const [showContext, setShowContext] = useState(true);
+  const dataset = useMemo(
+    () => (showContext ? mergeWithContext(FIELD_SALES_MAP, SALES_TECH_MAP) : FIELD_SALES_MAP),
+    [showContext],
+  );
   const [copied, setCopied] = useState(false);
 
   const copyShareUrl = async () => {
@@ -77,7 +118,33 @@ const FieldSalesLab = () => {
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <FreshnessBadge asOf={dataset.asOf} />
+              <FreshnessBadge asOf={FIELD_SALES_MAP.asOf} />
+              <div className="inline-flex rounded border border-foreground/20 overflow-hidden text-[11px] font-mono-marker tracking-wider uppercase">
+                <button
+                  type="button"
+                  onClick={() => setShowContext(true)}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 transition-colors ${
+                    showContext
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  title="Overlay B2B Sales Tech vendors as dimmed context. Best for workshops."
+                >
+                  <Layers size={11} /> Workshop view · with B2B context
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowContext(false)}
+                  className={`px-2.5 py-1 border-l border-foreground/20 transition-colors ${
+                    !showContext
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  title="Show only field-sales-specific vendors."
+                >
+                  Field sales only
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={copyShareUrl}
@@ -86,6 +153,17 @@ const FieldSalesLab = () => {
                 {copied ? "Link copied" : "Copy private link"}
               </button>
             </div>
+
+            {showContext && (
+              <div className="mt-3 rounded border border-foreground/15 bg-card px-3 py-2 text-[12px] text-foreground/80 max-w-3xl">
+                <b className="font-display">Reading this view.</b>{" "}
+                Bright chips = field-sales-native vendors (Practis, Rilla, Siro, Yoodli, Hyperbound…).
+                Faded chips = the full B2B Sales Tech landscape (Gong, Clay, 11x, Apollo, Outreach…),
+                shown as context so the workshop audience can see where field sales is the{" "}
+                <i>structural inverse</i>: L5a still filling here, L1c already a fortress,
+                L3d/L5d wide open.
+              </div>
+            )}
 
             <div className="mt-4 rounded border border-[hsl(var(--layer-5)/0.35)] bg-[hsl(var(--layer-5)/0.06)] px-3 py-2 text-[12px] text-foreground/80 max-w-3xl">
               <b className="font-display">Emptiness warning.</b>{" "}
