@@ -118,7 +118,33 @@ const FieldSalesLab = () => {
             </p>
 
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <FreshnessBadge asOf={dataset.asOf} />
+              <FreshnessBadge asOf={FIELD_SALES_MAP.asOf} />
+              <div className="inline-flex rounded border border-foreground/20 overflow-hidden text-[11px] font-mono-marker tracking-wider uppercase">
+                <button
+                  type="button"
+                  onClick={() => setShowContext(true)}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 transition-colors ${
+                    showContext
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  title="Overlay B2B Sales Tech vendors as dimmed context. Best for workshops."
+                >
+                  <Layers size={11} /> Workshop view · with B2B context
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowContext(false)}
+                  className={`px-2.5 py-1 border-l border-foreground/20 transition-colors ${
+                    !showContext
+                      ? "bg-foreground text-background"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  title="Show only field-sales-specific vendors."
+                >
+                  Field sales only
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={copyShareUrl}
@@ -127,6 +153,17 @@ const FieldSalesLab = () => {
                 {copied ? "Link copied" : "Copy private link"}
               </button>
             </div>
+
+            {showContext && (
+              <div className="mt-3 rounded border border-foreground/15 bg-card px-3 py-2 text-[12px] text-foreground/80 max-w-3xl">
+                <b className="font-display">Reading this view.</b>{" "}
+                Bright chips = field-sales-native vendors (Practis, Rilla, Siro, Yoodli, Hyperbound…).
+                Faded chips = the full B2B Sales Tech landscape (Gong, Clay, 11x, Apollo, Outreach…),
+                shown as context so the workshop audience can see where field sales is the{" "}
+                <i>structural inverse</i>: L5a still filling here, L1c already a fortress,
+                L3d/L5d wide open.
+              </div>
+            )}
 
             <div className="mt-4 rounded border border-[hsl(var(--layer-5)/0.35)] bg-[hsl(var(--layer-5)/0.06)] px-3 py-2 text-[12px] text-foreground/80 max-w-3xl">
               <b className="font-display">Emptiness warning.</b>{" "}
