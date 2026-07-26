@@ -199,8 +199,9 @@ def build(path, blocks, running_title, cover=None):
     for blk in blocks:
         kind, payload = (blk, None) if isinstance(blk, str) else blk
         if kind == "h1":
-            story.append(Paragraph(payload, S["h1"]))
-            story.append(rule(GOLD, 1.1, 0, 8))
+            story.append(KeepTogether([Paragraph(payload, S["h1"]),
+                                       rule(GOLD, 1.1, 0, 8)]))
+
         elif kind == "h2":
             story.append(Paragraph(payload, S["h2"]))
         elif kind == "h3":
