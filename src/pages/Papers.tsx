@@ -25,23 +25,27 @@ interface PaperDoc {
 const DOCS: PaperDoc[] = [
   {
     id: "theory-brief",
-    file: "/papers/scoi-theory-brief.pdf",
+    file: "/papers/scoi-verification-boundary.pdf",
     audience: "For academics and reviewers",
     title: "The Verification Boundary",
     subtitle:
-      "Why generation and verification separate into distinct firms as artificial intelligence commoditizes",
-    pages: "6 pages",
+      "Institutional independence as a boundary condition on platform expansion in AI markets",
+    pages: "15 pages · Version 4.0",
     icon: GraduationCap,
     accent: "var(--layer-3)",
     abstract:
-      "One primary theoretical claim, stated so it can be refuted. Where automated output carries fiduciary, regulatory, safety, or reputational weight, the generator and the verifier separate into distinct economic entities — and the separation is stable under improvements in generator capability.",
+      "One claim, stated so it can be refuted: where an automated output can impose material, difficult-to-recover losses on parties beyond the producer, and where money, permission, admissibility, or liability depends on a credible assertion of conformity, verification must remain institutionally independent from generation. The brief proposes a stopping rule that platform envelopment leaves open, and answers the obvious objection that this is regulation in theoretical costume.",
     contents: [
-      "Proposition IV stated formally, with scope conditions",
-      "Relationship to Teece, Porter, Baldwin & Clark, Jacobides, Akerlof, Coase",
-      "Five falsifiable predictions with explicit refutation criteria",
-      "Boundary conditions and what would break the claim",
+      "The proposition, its scope conditions, and the consequence test",
+      "Four forms of independence, from protected internal function to separate firm",
+      "Positioning against Teece, Eisenmann–Parker–Van Alstyne, Coase, Williamson, Akerlof, Power",
+      "Why the claim is not reducible to regulation, with a discriminating test",
+      "Six falsifiable predictions (P1–P6) with explicit refutation criteria",
+      "Where the boundary sits in Layer 3 (Gatekeeping), sublayer by sublayer",
+      "Limitations, an empirical program, and how to cite",
     ],
   },
+
   {
     id: "working-paper",
     file: "/papers/scoi-working-paper.pdf",
@@ -115,7 +119,7 @@ const Papers = () => {
     <SiteLayout>
       <Seo
         title="Papers — Supply Chain of Intelligence (PDF downloads)"
-        description="Three PDF documents on the Supply Chain of Intelligence: a 6-page academic theory brief, a 19-page working paper, and a 45-page practitioner guide. Free, CC-BY 4.0."
+        description="Three PDF documents on the Supply Chain of Intelligence: a 15-page academic theory brief on the verification boundary, a 19-page working paper, and a 45-page practitioner guide. Free, CC-BY 4.0."
         path="/papers"
       />
       <Helmet>

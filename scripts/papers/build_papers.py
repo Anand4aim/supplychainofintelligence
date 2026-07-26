@@ -1176,7 +1176,10 @@ def practitioner_guide():
 
 
 if __name__ == "__main__":
+    # theory_brief() is superseded by scripts/papers/build_theory_brief_v4.py,
+    # which publishes public/papers/scoi-verification-boundary.pdf.
     os.makedirs(OUT, exist_ok=True)
-    for fn in (theory_brief, working_paper, practitioner_guide):
+    for fn in (working_paper, practitioner_guide):
         path = fn()
         print("wrote", os.path.relpath(path, ROOT))
+
