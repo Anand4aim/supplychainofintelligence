@@ -239,20 +239,34 @@ const Papers = () => {
             advantage accumulates in artificial intelligence markets</em> (Version 2.0).
             https://supplychainofai.com/papers
           </p>
-          <pre className="mt-4 overflow-x-auto rounded border border-border bg-background p-4 text-xs leading-relaxed text-muted-foreground">
-{`@misc{arivukkarasu2026scoi,
-  author = {Arivukkarasu, Anand},
-  title  = {Supply Chain of Intelligence},
-  year   = {2026},
-  note   = {Version 2.0},
-  url    = {https://supplychainofai.com/papers}
-}`}
-          </pre>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Every document has its own BibTeX, RIS, APA, MLA, and Chicago entry, with
+            downloadable <code>.bib</code> and <code>.ris</code> files, on{" "}
+            <Link to="/cite" className="underline underline-offset-4">
+              the citation page
+            </Link>
+            .
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              to="/cite"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              Citation formats
+            </Link>
+            <Link
+              to="/endorse"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              Comment, critique, or endorse
+            </Link>
+          </div>
           <p className="mt-4 text-xs text-muted-foreground">
             Released {RELEASED}. Licensed CC-BY 4.0. Supply Chain of Intelligence™ and
             The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
           </p>
         </section>
+
 
         <div className="mt-12">
           <PersonalCapacityNotice />
