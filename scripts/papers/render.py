@@ -14,7 +14,7 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import (
+from reportlab.platypus import (CondPageBreak, 
     BaseDocTemplate,
     Frame,
     HRFlowable,
@@ -66,11 +66,11 @@ S = {
     "cover-meta": ParagraphStyle("cover-meta", fontName="Sans", fontSize=9.5, leading=15,
                                  textColor=MUTED),
     "h1": ParagraphStyle("h1", fontName="Serif-Bold", fontSize=16, leading=20, textColor=INK,
-                         spaceBefore=20, spaceAfter=8, keepWithNext=1),
+                         spaceBefore=20, spaceAfter=8),
     "h2": ParagraphStyle("h2", fontName="Serif-Bold", fontSize=12.5, leading=16, textColor=INK,
-                         spaceBefore=14, spaceAfter=5, keepWithNext=1),
+                         spaceBefore=14, spaceAfter=5),
     "h3": ParagraphStyle("h3", fontName="Sans-Bold", fontSize=9.5, leading=13,
-                         textColor=ACCENT, spaceBefore=11, spaceAfter=3, keepWithNext=1),
+                         textColor=ACCENT, spaceBefore=11, spaceAfter=3),
     "p": ParagraphStyle("p", fontName="Serif", fontSize=10, leading=15.4, textColor=INK,
                         alignment=TA_JUSTIFY, spaceAfter=8),
     "small": ParagraphStyle("small", fontName="Serif", fontSize=8.8, leading=13.4,
@@ -233,14 +233,18 @@ def build(path, blocks, running_title, cover=None):
         raise ValueError(f"unknown block: {kind}")
 
     HEADINGS = ("h1", "h2", "h3")
-    FOLLOWERS = ("p", "small", "quote", "bullets", "numbers", "callout", "table",
-                 "table-split", "layer", "ref", "toc", "caption")
+    # Tables and callouts are large, indivisible-ish blocks: binding a heading to
+    # them balloons the page count. A conditional break handles those instead.
+    FOLLOWERS = ("p", "small", "quote", "bullets", "numbers", "layer", "ref", "toc", "caption")
 
     items = [(blk, None) if isinstance(blk, str) else blk for blk in blocks]
     i = 0
     while i < len(items):
         kind, payload = items[i]
         chunk = flow(kind, payload)
+        if kind in ("h1", "h2", "h3"):
+            # Never let a heading sit in the last inch of a page.
+            story.append(CondPageBreak(1.0 * inch))
         # A heading never ends a page alone: bind it to the block that follows.
         if kind in HEADINGS and i + 1 < len(items):
             nkind, npayload = items[i + 1]
