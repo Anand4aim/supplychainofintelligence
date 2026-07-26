@@ -9,7 +9,7 @@ const corsHeaders = {
 
 type Req = {
   passcode?: string;
-  resource?: "remaster_queue" | "audit_runs" | "run_data" | "live_articles_admin" | "story_candidates";
+  resource?: "remaster_queue" | "audit_runs" | "run_data" | "live_articles_admin" | "story_candidates" | "endorsements";
   run_id?: string;
 };
 
