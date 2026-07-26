@@ -25,7 +25,7 @@ DATE = "July 2026"
 
 def blocks():
     return [
-        ("h1", "The Verification Boundary &mdash; one page"),
+        ("h1", "The Verification Boundary &mdash; summary brief"),
         ("small",
          "Anand Arivukkarasu &middot; Supply Chain of Intelligence &middot; "
          f"{VERSION} &middot; {DATE} &middot; supplychainofai.com/papers &middot; CC-BY 4.0"),
@@ -108,7 +108,7 @@ def blocks():
 
 def main():
     path = build(os.path.join(OUT, "scoi-onepager.pdf"), blocks(),
-                 "The Verification Boundary \u00b7 One-page summary")
+                 "The Verification Boundary \u00b7 Summary brief")
     print("wrote", path)
 
 
