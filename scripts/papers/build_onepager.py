@@ -38,10 +38,8 @@ def blocks():
          "AI platforms have strong incentives to absorb adjacent workflow, data, and assurance "
          "functions. Existing theories explain why integration occurs; none isolates the recurring "
          "case in which integration destroys the value of the asset being acquired. This work "
-         "develops the <b>verification boundary</b>: a condition under which accepted verification "
-         "must remain institutionally independent from generation, however capable the generator "
-         "becomes. The scarce asset is not superior intelligence, nor even superior error "
-         "detection. It is credible independence."),
+         "develops the <b>verification boundary</b>. The scarce asset is not superior intelligence, "
+         "nor even superior error detection. It is credible independence."),
 
         ("h3", "The proposition"),
         ("quote",
@@ -80,10 +78,9 @@ def blocks():
          "appropriability (Teece, 1986); transaction costs (Coase, 1937; Williamson, 1985); "
          "credence goods and audit institutions (Akerlof, 1970; Dulleck &amp; Kerschbamer, 2006; "
          "DeAngelo, 1981; Power, 1997). The full paper also tests the claim against independent "
-         "V&amp;V (Lewis, 1992), conformity assessment (Terlaak &amp; King, 2006; B&uuml;the &amp; "
-         "Mattli, 2011), structural separation (Newbery, 1999), and credible commitment (North "
-         "&amp; Weingast, 1989). Current anchors: SR 11-7 independent model validation; the mixed "
-         "self-assessment and notified-body regime of the EU AI Act. In the Supply Chain of "
+         "V&amp;V, conformity assessment, structural separation, and credible commitment, any of "
+         "which may already contain it. Current anchors: SR 11-7 independent model validation; the "
+         "mixed self-assessment and notified-body regime of the EU AI Act. In the Supply Chain of "
          "Intelligence taxonomy the boundary grounds Layer 3, Gatekeeping &mdash; context, not a "
          "premise."),
 
@@ -98,15 +95,15 @@ def blocks():
             ["P1 Separation",
              "Where all three conditions hold, accepted assurance flows through a protected "
              "function, ring-fenced entity, regulated role, or separate firm.",
-             "Conditioning parties routinely accept generator assurance with no governance "
-             "separation, across multiple cycles."],
+             "Conditioning parties routinely accept generator assurance with no separation, "
+             "across multiple cycles."],
             ["P2 Capability",
              "As accuracy rises, verification automates and narrows; independent accountability "
              "persists.",
              "Higher accuracy systematically causes assurance requirements to be dropped."],
             ["P3 Expansion bends",
-             "Platforms expand into workflow, access, and surface more readily than into assurance "
-             "of their own outputs.",
+             "Platforms expand into workflow, access, and surface more readily than into "
+             "assurance of their own outputs.",
              "A platform repeatedly absorbs such assurance, controls its governance, and keeps "
              "third-party acceptance."],
             ["P4 Private demand",
@@ -126,22 +123,19 @@ def blocks():
         ("h3", "Whole-claim refutation, with coding rules fixed in advance"),
         ("small",
          "One well-documented market in which all three scope conditions hold and the generator's "
-         "own attestation is durably accepted by the conditioning third party. <b>Durably "
-         "accepted</b>: reliance continues across more than two renewal, audit, or certification "
-         "cycles. <b>Scope conditions</b>: coded independently of whether separation is observed. "
-         "<b>No separation</b>: the attesting unit has no protected reporting line, no "
-         "non-overridable refusal right, and no external accreditation. A case meeting these rules "
-         "settles the question."),
+         "own attestation is durably accepted. <b>Durably accepted</b>: reliance continues across "
+         "more than two renewal, audit, or certification cycles. <b>Scope conditions</b>: coded "
+         "independently of whether separation is observed. <b>No separation</b>: no protected "
+         "reporting line, no non-overridable refusal right, no external accreditation."),
 
         ("h3", "Conceded limits"),
         ("small",
          "Separation does not guarantee good verification: issuer-pays ratings and Andersen show "
          "nominal independence can be hollowed out, in which case the prediction is crisis and "
-         "re-separation, not permanent absorption. Where an assertion reduces to <i>this "
-         "computation ran on this input</i>, cryptographic attestation can displace institutional "
-         "independence entirely, so the claim narrows to assertions containing irreducible "
-         "judgment. Indemnification substitutes a balance sheet for an assertion and is predicted "
-         "to work only where loss is financial and recoverable."),
+         "re-separation, not absorption. Where an assertion reduces to <i>this computation ran on "
+         "this input</i>, cryptographic attestation can displace institutional independence, so "
+         "the claim narrows to assertions containing irreducible judgment. Indemnification is "
+         "predicted to work only where loss is financial and recoverable."),
 
         ("h3", "The one question asked of reviewers"),
         ("small",
