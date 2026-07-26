@@ -160,13 +160,18 @@ const Papers = () => {
           </p>
 
           <p className="mt-4 text-sm text-muted-foreground">
-            All three are free, licensed CC-BY 4.0, and generated directly from the
-            canonical data behind{" "}
+            All are free, licensed CC-BY 4.0, and generated directly from the canonical
+            data behind{" "}
             <Link to="/framework" className="underline underline-offset-4">
               /framework
             </Link>
-            , so they cannot drift from the site.
+            , so they cannot drift from the site. Ready-made citations live on{" "}
+            <Link to="/cite" className="underline underline-offset-4">
+              /cite
+            </Link>
+            .
           </p>
+
         </header>
 
         <div className="space-y-8">
