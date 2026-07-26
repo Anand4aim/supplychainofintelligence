@@ -28,8 +28,8 @@ const DOCS: PaperDoc[] = [
     file: "/papers/scoi-onepager.pdf",
     audience: "Start here · for professors and reviewers",
     title: "The Verification Boundary — summary brief",
-    subtitle: "The abstract, the claim, and the refutation criteria, on two pages",
-    pages: "2 pages · Version 1.0",
+    subtitle: "The abstract, the proposition, and the refutation criteria in three pages",
+    pages: "3 pages · Version 1.1",
     icon: FileText,
     accent: "var(--layer-4)",
     abstract:
@@ -49,7 +49,7 @@ const DOCS: PaperDoc[] = [
     title: "The Verification Boundary",
     subtitle:
       "Institutional independence as a boundary condition on platform expansion in AI markets",
-    pages: "15 pages · Version 4.0",
+    pages: "19 pages · Version 4.1",
     icon: GraduationCap,
     accent: "var(--layer-3)",
     abstract:
@@ -139,7 +139,7 @@ const Papers = () => {
     <SiteLayout>
       <Seo
         title="Papers — Supply Chain of Intelligence (PDF downloads)"
-        description="Three PDF documents on the Supply Chain of Intelligence: a 15-page academic theory brief on the verification boundary, a 19-page working paper, and a 45-page practitioner guide. Free, CC-BY 4.0."
+        description="Three PDF documents on the Supply Chain of Intelligence: a 19-page academic theory paper on the verification boundary, a 19-page working paper, and a 45-page practitioner guide. Free, CC-BY 4.0."
         path="/papers"
       />
       <Helmet>
