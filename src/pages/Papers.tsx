@@ -24,6 +24,25 @@ interface PaperDoc {
 
 const DOCS: PaperDoc[] = [
   {
+    id: "onepager",
+    file: "/papers/scoi-onepager.pdf",
+    audience: "Start here · for professors and reviewers",
+    title: "The Verification Boundary — summary brief",
+    subtitle: "The abstract, the claim, and the refutation criteria, on two pages",
+    pages: "2 pages · Version 1.0",
+    icon: FileText,
+    accent: "var(--layer-4)",
+    abstract:
+      "The whole argument compressed to what a reviewer needs before deciding whether to read further: the abstract, the proposition with its three scope conditions, all six falsifiable predictions with refutation criteria, where the claim sits relative to prior literature, and the one question being asked. Designed to be read in four minutes and forwarded without apology.",
+    contents: [
+      "Abstract and the key claim in full",
+      "The three conjunctive scope conditions and four forms of independence",
+      "P1–P6 with refutation criteria, plus whole-claim refutation",
+      "Positioning against Teece, Eisenmann–Parker–Van Alstyne, Coase, Akerlof, Power",
+      "How to cite",
+    ],
+  },
+  {
     id: "theory-brief",
     file: "/papers/scoi-verification-boundary.pdf",
     audience: "For academics and reviewers",
@@ -45,6 +64,7 @@ const DOCS: PaperDoc[] = [
       "Limitations, an empirical program, and how to cite",
     ],
   },
+
 
   {
     id: "working-paper",
