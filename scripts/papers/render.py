@@ -111,7 +111,7 @@ def callout(title, body, color=ACCENT, tint=TINT):
     return KeepTogether([t, Spacer(1, 10)])
 
 
-def data_table(rows, widths, header=True):
+def data_table(rows, widths, header=True, keep=True):
     body = [[Paragraph(c, S["cellb"] if (header and r == 0) else S["cell"]) for c in row]
             for r, row in enumerate(rows)]
     t = Table(body, colWidths=[w * inch for w in widths], repeatRows=1 if header else 0)
@@ -126,7 +126,10 @@ def data_table(rows, widths, header=True):
     if header:
         style.append(("BACKGROUND", (0, 0), (-1, 0), TINT))
     t.setStyle(TableStyle(style))
+    if not keep:
+        return t
     return KeepTogether([t, Spacer(1, 10)])
+
 
 
 def layer_header(layer_id, name, tagline):
