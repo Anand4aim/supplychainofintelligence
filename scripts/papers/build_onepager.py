@@ -58,7 +58,7 @@ def blocks():
          "eliminate the independence requirement."),
 
         ("h3", "Scope conditions (conjunctive) and forms of independence"),
-        ("table", ([
+        ("table-split", ([
             ["Scope condition", "Coded as"],
             ["<b>1. External consequence</b>",
              "An erroneous output can impose material, difficult-to-recover loss on a party beyond "
