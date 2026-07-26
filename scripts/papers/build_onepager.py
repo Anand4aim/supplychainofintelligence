@@ -55,19 +55,16 @@ def blocks():
          "eliminate the independence requirement."),
 
         ("h3", "Scope conditions (conjunctive) and forms of independence"),
-        ("table-split", ([
-            ["Scope condition", "Coded as"],
-            ["<b>1. External consequence</b>",
-             "An erroneous output can impose material, difficult-to-recover loss on a party beyond "
-             "the producer. Coded ex ante from reversibility, litigation exposure, and insurance "
-             "loss experience."],
-            ["<b>2. External conditioning</b>",
-             "A third party conditions money, permission, coverage, admissibility, authorization, "
-             "or liability on an assurance about the output."],
-            ["<b>3. Determinate standard</b>",
-             "A sufficiently determinate standard, recognized by the conditioning party, exists "
-             "against which conformity can be asserted. A quality preference does not qualify."],
-        ], [1.55, 4.95])),
+        ("bullets", [
+            "<b>External consequence.</b> An erroneous output can impose material, "
+            "difficult-to-recover loss on a party beyond the producer. Coded ex ante from "
+            "reversibility, litigation exposure, and insurance loss experience.",
+            "<b>External conditioning.</b> A third party conditions money, permission, coverage, "
+            "admissibility, authorization, or liability on an assurance about the output.",
+            "<b>Determinate standard.</b> A sufficiently determinate standard, recognized by the "
+            "conditioning party, exists against which conformity can be asserted. A quality "
+            "preference does not qualify.",
+        ]),
         ("small",
          "Independence admits four governance forms, in ascending strength: protected internal "
          "function; ring-fenced entity; regulated professional role; separate firm. <b>The boundary "
@@ -149,9 +146,8 @@ def blocks():
         ("h3", "The one question asked of reviewers"),
         ("small",
          "Is the verification boundary already established under another name? If it is, a citation "
-         "is the most useful reply and the work should be withdrawn to a summary of prior results. "
-         "If it is not, the sharpest contribution is a counter-example satisfying all three scope "
-         "conditions that survives the coding rules above."),
+         "is the most useful reply. If not, the sharpest contribution is a counter-example "
+         "satisfying all three scope conditions that survives the coding rules above."),
 
         ("h3", "How to cite"),
         ("small",
