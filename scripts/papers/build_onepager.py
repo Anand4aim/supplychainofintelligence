@@ -58,7 +58,7 @@ def blocks():
          "not the proposition itself."),
 
         ("h3", "Falsifiable predictions (five-year horizon)"),
-        ("table", ([
+        ("table-split", ([
             ["", "Expected observation", "Refuted if"],
             ["P1 Governance separation",
              "Accepted assurance flows through a protected function, ring-fenced entity, regulated "
