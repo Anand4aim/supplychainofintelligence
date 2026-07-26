@@ -362,7 +362,7 @@ def theory_brief():
     b += [("ref", r) for r in REFERENCES]
     b += [("space", 8)] + CITE_BLOCK
     return build(os.path.join(OUT, "scoi-theory-brief.pdf"), b,
-                 "The Verification Boundary &middot; Theory Brief", cover)
+                 "The Verification Boundary · Theory Brief", cover)
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -679,7 +679,7 @@ def working_paper():
           ("space", 10)]
     b += CITE_BLOCK
     return build(os.path.join(OUT, "scoi-working-paper.pdf"), b,
-                 "Supply Chain of Intelligence &middot; Working Paper", cover)
+                 "Supply Chain of Intelligence · Working Paper", cover)
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -1172,7 +1172,7 @@ def practitioner_guide():
           ("space", 6)]
     b += CITE_BLOCK
     return build(os.path.join(OUT, "scoi-practitioner-guide.pdf"), b,
-                 "Supply Chain of Intelligence &middot; Practitioner Guide", cover)
+                 "Supply Chain of Intelligence · Practitioner Guide", cover)
 
 
 if __name__ == "__main__":

@@ -196,7 +196,8 @@ def build(path, blocks, running_title, cover=None):
     else:
         story.append(NextPageTemplate("body"))
 
-    for kind, payload in blocks:
+    for blk in blocks:
+        kind, payload = (blk, None) if isinstance(blk, str) else blk
         if kind == "h1":
             story.append(Paragraph(payload, S["h1"]))
             story.append(rule(GOLD, 1.1, 0, 8))
