@@ -307,6 +307,41 @@ def blocks():
              "Extends the logic to AI market structure and separates technical checking from assurance "
              "whose credibility rests on institutional independence."],
         ], [1.5, 2.4, 2.6])),
+        ("h2", "Adjacent literatures that could already contain the claim"),
+        ("p", "Five further streams sit close enough that a reviewer may reasonably suspect the "
+              "proposition is already known under another name. They are named here rather than "
+              "omitted, because the most useful reply to this paper is a citation showing that one "
+              "of them already states it."),
+        ("table", ([
+            ["Stream", "Closest existing result", "Why the claim is not simply contained in it"],
+            ["Independent verification and validation (Lewis, 1992)",
+             "Safety-critical software practice separates V&amp;V from development, and the "
+             "separation survives tooling improvement.",
+             "States the practice as an engineering norm within a project. It does not derive when "
+             "the separation becomes a market boundary, nor tie it to third-party conditioning."],
+            ["Certification and conformity assessment (Terlaak &amp; King, 2006; B&uuml;the &amp; "
+             "Mattli, 2011)",
+             "Third-party certification resolves information asymmetry, and private standard-setters "
+             "supply governance where states do not.",
+             "Explains demand for certification given a standard and a certifier. The proposition "
+             "predicts where the certifier role must be separately governed, and where it will not "
+             "form at all."],
+            ["Structural separation in regulated industries (Newbery, 1999)",
+             "Unbundling generation from transmission or gatekeeping prevents self-preferencing.",
+             "Rests on market power and access discrimination. Here the mechanism is credibility of "
+             "an assertion, which binds even where the producer has no market power."],
+            ["Professional independence and its critics (DeAngelo, 1981; Bazerman et al., 1997)",
+             "Independence has measurable value, and is corrodible by structural conflict even "
+             "without intent.",
+             "Explains behaviour inside a profession that already exists. Says nothing about which "
+             "new markets create such a role, or when."],
+            ["Credible commitment and legitimacy (North &amp; Weingast, 1989; Suchman, 1995)",
+             "Actors bind themselves institutionally to make promises believable and gain acceptance.",
+             "Supplies the general logic. The proposition specifies the conditions under which the "
+             "binding must be located outside the producer's governance rather than inside it."],
+        ], [1.6, 2.4, 2.5])),
+        ("p", "Ratings agencies (White, 2010) are the sharpest case in the other direction and are "
+              "treated as a hard case in Section 4, not as support."),
         ("p", "The nearest neighbour is the audit-independence literature. The difference is directional: "
               "that work explains why independence has value inside an established assurance profession, "
               "taking the profession's existence as given. The proposition here predicts <i>where new "
@@ -324,8 +359,10 @@ def blocks():
             "party beyond the producer.",
             "<b>External conditioning.</b> A third party conditions money, permission, admissibility, "
             "insurance, liability, or authorization on an assurance about the output.",
-            "<b>Assurable standard.</b> A standard exists, or can be constructed, against which "
-            "conformity can be assessed and asserted.",
+            "<b>Determinate standard.</b> A sufficiently determinate standard exists, recognized or "
+            "accepted by the conditioning party, against which conformity can be assessed and "
+            "asserted. A quality preference does not qualify; the absence of an accepted standard is "
+            "why the boundary does not bind in most creative and advisory work.",
         ]),
         ("p", "Where one or more conditions are absent, integrated checking, producer warranties, brand "
               "reputation, user review, or ordinary contractual remedies may be sufficient. The theory "
@@ -351,7 +388,7 @@ def blocks():
              "Separation, via independent model validation and adverse-action reviewability."],
         ], [1.5, 1.85, 3.15])),
         ("h2", "Genuine hard cases"),
-        ("p", "Three cases sit uncomfortably with the proposition and should be treated as live tests "
+        ("p", "Four cases sit uncomfortably with the proposition and should be treated as live tests "
               "rather than confirmations. First, cloud security certification, where hyperscalers "
               "supply both infrastructure and substantial attestation tooling; the boundary holds only "
               "because the final assertion is still made by an accredited external assessor, and a "
@@ -360,7 +397,18 @@ def blocks():
               "generating firm and independence survives only as a protected internal function. "
               "Third, closed clinical systems in single-payer settings, where the payer, regulator, "
               "and provider can be the same institution, and the four forms of independence collapse "
-              "toward the first. Each is a place where the theory could fail informatively."),
+              "toward the first. Fourth, and most damaging if left unaddressed, the conflicted verifier: "
+              "credit ratings under issuer-pays (White, 2010), and the Andersen-era audit failures, "
+              "show that formal separation can coexist with captured incentives, and that acceptance "
+              "can persist for years after independence has been hollowed out. The proposition does "
+              "not claim that separation guarantees good verification. It claims that accepted "
+              "verification requires a governance arrangement preserving independence, and the "
+              "conflicted-verifier record refines rather than rescues that claim: where the "
+              "arrangement is nominal, the observable prediction is a credibility crisis followed by "
+              "re-separation, not permanent absorption. Sarbanes-Oxley and the post-2008 ratings "
+              "reforms are the pattern; a case where hollowed-out independence is durably accepted "
+              "with no re-separation would count against the proposition. Each of the four is a place "
+              "where the theory could fail informatively."),
 
         # ── 5. Rebuttal ──────────────────────────────────────────
         ("h1", "5. Is this regulation wearing a theoretical costume?"),
@@ -400,6 +448,36 @@ def blocks():
                      "stable. Cyber-insurance, lender-side valuation, and acquisition diligence are the "
                      "cleanest available settings for the comparison, because the mandate is absent and "
                      "the money is real.")),
+        ("h2", "The claim in current AI markets"),
+        ("p", "Two present-day regimes let the proposition be examined without waiting five years. "
+              "US model risk management guidance (SR 11-7) already requires that model validation be "
+              "performed by parties independent of model development, with the independence located "
+              "as a protected internal function rather than a separate firm; it is the cleanest "
+              "instance of the first governance form applied to automated decision systems. The EU AI "
+              "Act (Regulation 2024/1689) mixes the forms: high-risk systems face conformity "
+              "assessment that is, in several categories, self-performed by the provider, while other "
+              "categories route through notified bodies. That mixture is a natural experiment. The "
+              "proposition predicts that self-assessed categories will attract buyer-side or "
+              "insurer-side demand for independent assessment where the consequence and conditioning "
+              "conditions hold, and that the categories routed through notified bodies will not "
+              "collapse back into provider self-attestation as models improve."),
+        ("p", "Two mechanisms are frequently proposed as ways around the boundary, and both are "
+              "better understood as tests of it. The first is <b>indemnification</b>: a generator "
+              "assumes the downstream liability itself, as several AI vendors now do for copyright "
+              "exposure. This substitutes a balance sheet for an independent assertion, and the "
+              "proposition predicts it works where the loss is financial and recoverable, and fails "
+              "where the conditioning party needs permission, admissibility, or authorization rather "
+              "than compensation. A court does not accept evidence because the vendor promised to pay "
+              "if it is wrong. The second is <b>cryptographic attestation</b>: zero-knowledge proofs "
+              "and trusted execution environments (Ben-Sasson et al., 2014) can make claims about "
+              "computation verifiable without a trusted verifier. This is the most serious challenge "
+              "in the paper, and it is conceded in part. Where the assertion reduces to <i>this "
+              "computation ran on this input</i>, cryptography can displace institutional "
+              "independence entirely. Where the assertion is that the standard was correctly "
+              "interpreted and applied to a contested situation, it cannot: a proof establishes "
+              "provenance, not judgment. The proposition therefore narrows to assertions containing "
+              "irreducible judgment, and widespread acceptance of purely cryptographic assurance in "
+              "judgment-laden domains would refute it."),
         ("h2", "A second objection: is separation just transitional?"),
         ("p", "The alternative reading is that verification is separate today because models are "
               "unreliable, and that the boundary dissolves once reliability is high enough. This is "
@@ -436,7 +514,9 @@ def blocks():
              "retains third-party acceptance across multiple audit or renewal cycles."],
             ["P4. Private conditioning is sufficient",
              "Separation appears in unregulated markets wherever a private payer conditions money or "
-             "liability on the assurance, at comparable rates to regulated markets.",
+             "liability on the assurance. Operationally: within a matched sample of consequential "
+             "markets, the share of unregulated markets exhibiting any of the four governance forms "
+             "is at least half the share observed in regulated markets.",
              "Separation is observed only where a statute or regulator mandates it, and unregulated "
              "consequential markets integrate assurance without buyer resistance."],
             ["P5. Acquisition without ring-fencing degrades acceptance",
@@ -446,8 +526,10 @@ def blocks():
              "acceptance and pricing power over multiple cycles."],
             ["P6. New mandates produce roles, not absorption",
              "Where an assurance requirement is newly imposed, an independent role, accreditation, or "
-             "vendor emerges within roughly two years rather than the function being absorbed by "
-             "incumbent generators.",
+             "vendor emerges rather than the function being absorbed by incumbent generators. "
+             "Operationally: within 24 months of the requirement taking effect, at least one "
+             "accredited or separately governed provider is accepted by the conditioning party in a "
+             "majority of observed jurisdictions.",
              "Newly regulated domains routinely resolve into single-vendor generation-plus-verification "
              "with no structural separation."],
         ], [1.45, 2.55, 2.5])),
@@ -459,6 +541,16 @@ def blocks():
               "accurate and that the separation persists anyway. Nor would isolated instances of "
               "self-certification in low-consequence settings, which fall outside scope by "
               "construction."),
+        ("p", "To keep that standard from absorbing every counterexample, the coding rules are fixed "
+              "in advance. <b>Durably accepted</b> means the conditioning party continues to condition "
+              "its decision on the generator's own attestation across more than two renewal, audit, or "
+              "certification cycles, with no accredited assessor, protected function, regulated role, "
+              "or independent vendor in the chain. <b>Scope conditions hold</b> is coded from the "
+              "Section 7 measures, independently of whether separation is observed. <b>No governance "
+              "separation</b> means the attesting unit has no protected reporting line, no refusal "
+              "right the generator cannot override, and no external accreditation. A case coded on "
+              "these three rules refutes the proposition regardless of how well it is explained "
+              "afterwards; a reviewer who supplies one has settled the question."),
 
         # ── 7. Empirical program ─────────────────────────────────
         ("h1", "7. An empirical program"),
@@ -576,6 +668,15 @@ def blocks():
               "cross-jurisdictional variation may confound tests, since the same activity can face "
               "mandated independence in one regime and none in another. That variation is also an "
               "opportunity, since it provides a natural experiment for P4."),
+        ("h1", "11. The question asked of reviewers"),
+        ("p", "This paper asks one question, and it is prior to any question of merit: <b>is the "
+              "verification boundary already established in the literature under another name?</b> "
+              "Section 3 names the five adjacent streams where it is most likely to be hiding. If the "
+              "result exists, a citation is the most valuable possible reply, and the paper should be "
+              "withdrawn to a summary of prior work. If it does not, the second most valuable reply "
+              "is a counter-example: a market satisfying all three scope conditions in which the "
+              "generator's own attestation is durably accepted under the coding rules in Section 6. "
+              "Comments, citations, and refutations are welcome at linkedin.com/in/anandarivu."),
         ("h1", "References"),
     ]
     b += [("ref", r) for r in REFERENCES]
@@ -584,12 +685,12 @@ def blocks():
         ("h2", "How to cite"),
         ("small", "Arivukkarasu, A. (2026). <i>The verification boundary: institutional independence "
                   "as a boundary condition on platform expansion in AI markets</i> (Academic Theory "
-                  "Brief, Version 4.0). Supply Chain of Intelligence. "
+                  "Paper, Version 4.1). Supply Chain of Intelligence. "
                   "https://supplychainofai.com/papers"),
         ("small", "BibTeX: @techreport{arivukkarasu2026vb, author = {Arivukkarasu, Anand}, "
                   "title = {The Verification Boundary: Institutional Independence as a Boundary "
                   "Condition on Platform Expansion in AI Markets}, year = {2026}, "
-                  "number = {Academic Theory Brief v4.0}, institution = {Supply Chain of "
+                  "number = {Academic Theory Paper v4.1}, institution = {Supply Chain of "
                   "Intelligence}, url = {https://supplychainofai.com/papers}}"),
         ("small", "Licensed CC-BY 4.0. Supply Chain of Intelligence&trade; and The Intelligence "
                   "Cube&trade; are trademarks of Anand Arivukkarasu. Earlier drafts used the term "
@@ -602,16 +703,16 @@ def blocks():
 def main():
     cover = cover_page(
         TITLE, SUB,
-        f"Supply Chain of Intelligence &middot; Academic Theory Brief &middot; {VERSION} "
+        f"Supply Chain of Intelligence &middot; Academic Theory Paper &middot; {VERSION} "
         f"&middot; {DATE}",
         [BYLINE,
          "Canonical source: supplychainofai.com/papers &nbsp;&middot;&nbsp; "
          "linkedin.com/in/anandarivu &nbsp;&middot;&nbsp; Licensed CC-BY 4.0",
-         "This brief develops one claim and asks to be judged on it alone."],
+         "This paper develops one claim and asks to be judged on it alone."],
         abstract=ABSTRACT,
     )
     path = build(os.path.join(OUT, "scoi-verification-boundary.pdf"), blocks(),
-                 "The Verification Boundary \u00b7 Academic Theory Brief v4.0", cover)
+                 "The Verification Boundary \u00b7 Academic Theory Paper v4.1", cover)
     print("wrote", path)
 
 
