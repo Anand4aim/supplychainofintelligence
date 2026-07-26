@@ -213,7 +213,7 @@ def theory_brief():
         "The Verification Boundary",
         "Why generation and verification separate into distinct firms as artificial "
         "intelligence commoditizes",
-        "Academic theory brief &middot; " + VERSION,
+        "Academic theory brief \u00b7 " + VERSION,
         [BYLINE, CANON, LICENSE],
         abstract=(
             "This brief contains one primary theoretical claim and a small number of supporting "
@@ -372,7 +372,7 @@ def working_paper():
     cover = cover_page(
         "Supply Chain of Intelligence",
         "A framework for understanding where competitive advantage accumulates in AI markets",
-        "Working paper &middot; " + VERSION + " &middot; " + DATE,
+        "Working paper \u00b7 " + VERSION + " \u00b7 " + DATE,
         [BYLINE, CANON, LICENSE],
         abstract=(
             "As generative capability commoditizes, the question of where durable advantage "
@@ -690,7 +690,7 @@ def practitioner_guide():
         "Supply Chain of Intelligence",
         "The practitioner guide: taxonomy, laws, instruments, and applications for operators "
         "and investors",
-        "Practitioner guide &middot; " + VERSION + " &middot; " + DATE,
+        "Practitioner guide \u00b7 " + VERSION + " \u00b7 " + DATE,
         [BYLINE, CANON, LICENSE],
         abstract=(
             "This is the operational companion to the theory. It contains the full ten-layer "

@@ -247,7 +247,7 @@ def build(path, blocks, running_title, cover=None):
 
 def cover_page(title, subtitle, kicker, meta_lines, abstract=None):
     out = [Spacer(1, 1.0 * inch),
-           Paragraph(kicker.upper(), S["h3"]),
+           Paragraph(kicker.upper().replace("&MIDDOT;", "\u00b7"), S["h3"]),
            Paragraph(title, S["title"]),
            Paragraph(subtitle, S["subtitle"]),
            rule(GOLD, 1.4, 0, 16)]
