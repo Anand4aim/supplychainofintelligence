@@ -144,7 +144,7 @@ def blocks():
               "because the phrasing invites the opposite reading: <b>the boundary constrains "
               "governance control, not necessarily firm boundaries.</b> A protected internal "
               "function or a ring-fenced subsidiary can satisfy it."),
-        ("h2", "The gap this brief addresses"),
+        ("h2", "The gap this paper addresses"),
         ("p", "Platform envelopment explains why platforms absorb adjacent markets: shared user bases, "
               "bundling economics, and cost complementarities make the move attractive and often "
               "decisive. Existing theories identify technical, regulatory, transaction-cost, "
