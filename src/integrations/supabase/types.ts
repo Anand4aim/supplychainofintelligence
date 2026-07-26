@@ -281,6 +281,45 @@ export type Database = {
         }
         Relationships: []
       }
+      endorsements: {
+        Row: {
+          created_at: string
+          document: string | null
+          email: string | null
+          id: string
+          institution: string | null
+          name: string
+          permission_public: boolean
+          quote: string
+          status: string
+          title: string | null
+        }
+        Insert: {
+          created_at?: string
+          document?: string | null
+          email?: string | null
+          id?: string
+          institution?: string | null
+          name: string
+          permission_public?: boolean
+          quote: string
+          status?: string
+          title?: string | null
+        }
+        Update: {
+          created_at?: string
+          document?: string | null
+          email?: string | null
+          id?: string
+          institution?: string | null
+          name?: string
+          permission_public?: boolean
+          quote?: string
+          status?: string
+          title?: string | null
+        }
+        Relationships: []
+      }
       live_articles: {
         Row: {
           analysis: Json
