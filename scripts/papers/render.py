@@ -66,11 +66,11 @@ S = {
     "cover-meta": ParagraphStyle("cover-meta", fontName="Sans", fontSize=9.5, leading=15,
                                  textColor=MUTED),
     "h1": ParagraphStyle("h1", fontName="Serif-Bold", fontSize=16, leading=20, textColor=INK,
-                         spaceBefore=20, spaceAfter=8),
+                         spaceBefore=20, spaceAfter=8, keepWithNext=1),
     "h2": ParagraphStyle("h2", fontName="Serif-Bold", fontSize=12.5, leading=16, textColor=INK,
-                         spaceBefore=14, spaceAfter=5),
+                         spaceBefore=14, spaceAfter=5, keepWithNext=1),
     "h3": ParagraphStyle("h3", fontName="Sans-Bold", fontSize=9.5, leading=13,
-                         textColor=ACCENT, spaceBefore=11, spaceAfter=3),
+                         textColor=ACCENT, spaceBefore=11, spaceAfter=3, keepWithNext=1),
     "p": ParagraphStyle("p", fontName="Serif", fontSize=10, leading=15.4, textColor=INK,
                         alignment=TA_JUSTIFY, spaceAfter=8),
     "small": ParagraphStyle("small", fontName="Serif", fontSize=8.8, leading=13.4,
@@ -202,8 +202,9 @@ def build(path, blocks, running_title, cover=None):
     for blk in blocks:
         kind, payload = (blk, None) if isinstance(blk, str) else blk
         if kind == "h1":
-            story.append(KeepTogether([Paragraph(payload, S["h1"]),
-                                       rule(GOLD, 1.1, 0, 8)]))
+            grp = KeepTogether([Paragraph(payload, S["h1"]), rule(GOLD, 1.1, 0, 8)])
+            grp.keepWithNext = 1
+            story.append(grp)
 
         elif kind == "h2":
             story.append(Paragraph(payload, S["h2"]))
