@@ -19,43 +19,47 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 OUT = os.path.join(ROOT, "public", "papers")
 
-VERSION = "Version 4.0"
+VERSION = "Version 4.1"
 DATE = "July 2026"
 
 TITLE = "The Verification Boundary"
 SUB = ("Institutional independence as a boundary condition on platform "
        "expansion in AI markets")
 
-BYLINE = ("Anand Arivukkarasu. Former product leader, Meta (Instagram); product leadership in "
-          "high-growth Bay Area companies, including one that reached unicorn scale. Kellogg MBA. "
-          "San Francisco. Written in a personal capacity.")
+BYLINE = ("Anand Arivukkarasu &middot; Supply Chain of Intelligence &middot; former product "
+          "leader, Meta (Instagram) &middot; written in a personal capacity.")
 
 ABSTRACT = (
-    "Existing strategy and organization theories explain why firms integrate complementary assets, "
-    "envelop adjacent markets, and choose governance structures that economize on transaction costs. "
-    "They do not specify a recurring limit that appears when an automated system produces "
-    "consequential outputs and another party must rely on an assurance about those outputs. This "
-    "brief develops the <b>verification boundary</b>: where an output can impose material, "
-    "difficult-to-recover losses on parties beyond the producer, and where money, permission, "
-    "admissibility, or liability depends on a credible assertion of conformity, verification must "
-    "remain institutionally independent from generation. The scarce asset is not superior "
-    "intelligence, nor even superior error detection. It is credible independence. That independence "
-    "can be preserved through protected internal separation, a ring-fenced subsidiary, a regulated "
-    "professional role, or a separate firm; separate-firm formation is a contingent organizational "
-    "response, not the proposition itself. The argument predicts a <i>credibility</i> boundary to "
-    "platform envelopment rather than a technical one, specifies when integrated assurance remains "
-    "sufficient, states six falsifiable predictions with refutation criteria over a five-year "
-    "horizon, and distinguishes the claim from the weaker proposition that regulated activity "
-    "attracts more oversight. The wider Supply Chain of Intelligence taxonomy is treated as "
-    "supporting context and is not required to evaluate the claim."
+    "AI platforms have strong incentives to absorb adjacent workflow, data, and assurance "
+    "functions. Existing theories explain why integration occurs, but do not isolate a recurring "
+    "case in which integration can destroy the value of the asset being acquired. This paper "
+    "proposes the <b>verification boundary</b>. When an automated output can impose material, "
+    "difficult-to-recover loss on a party beyond the producer; when a third party conditions "
+    "money, permission, coverage, admissibility, authorization, or liability on an assurance about "
+    "that output; and when conformity can be assessed against a sufficiently determinate standard "
+    "accepted by that party, accepted verification requires a governance arrangement that "
+    "preserves institutional independence from the generating function. Independence may be "
+    "preserved through a protected internal function, a ring-fenced entity, a regulated "
+    "professional role, or a separate firm: the boundary constrains governance control, not "
+    "necessarily firm boundaries. Improvements in model accuracy can automate and narrow "
+    "verification, but do not by themselves make self-attestation acceptable. The paper "
+    "distinguishes technical checking from governance-based assurance, states six falsifiable "
+    "predictions with refutation criteria and coding rules, treats conflicted-verifier episodes "
+    "and cryptographic attestation as live tests rather than confirmations, and proposes an "
+    "empirical program for identifying where platform envelopment bends rather than passes "
+    "through. The wider Supply Chain of Intelligence taxonomy is supporting context and is not "
+    "required to evaluate the claim."
 )
 
 PROP = (
-    "<b>Proposition (the verification boundary).</b> When an automated output can create material, "
-    "difficult-to-recover losses for parties beyond its producer, and an external actor conditions "
-    "money, permission, admissibility, or liability on an assurance about that output, credible "
-    "verification must remain institutionally independent from generation. Improvements in the "
-    "generator's technical capability do not, by themselves, relax this requirement."
+    "<b>Proposition (the verification boundary).</b> When an automated output can impose material, "
+    "difficult-to-recover loss on a party beyond the producer; when a third party conditions money, "
+    "permission, coverage, admissibility, authorization, or liability on an assurance about that "
+    "output; and when conformity can be assessed against a sufficiently determinate standard "
+    "accepted by the conditioning party, <b>accepted verification will require a governance "
+    "arrangement that preserves institutional independence from the generating function.</b> "
+    "Improvements in generation or checking capability may reduce the cost and scope of "
+    "verification, but do not by themselves eliminate the independence requirement."
 )
 
 REFERENCES = [
