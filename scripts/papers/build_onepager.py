@@ -93,7 +93,7 @@ def blocks():
          "Within the Supply Chain of Intelligence taxonomy the boundary grounds Layer 3, "
          "Gatekeeping; the taxonomy is context, not a premise."),
 
-        ("pagebreak",),
+        "pagebreak",
 
         # ── Page 2: how to refute it ─────────────────────────────
         ("h1", "Falsifiable predictions and refutation standard"),
