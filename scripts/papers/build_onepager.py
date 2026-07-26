@@ -80,9 +80,7 @@ def blocks():
          "DeAngelo, 1981; Power, 1997). The full paper also tests the claim against independent "
          "V&amp;V, conformity assessment, structural separation, and credible commitment, any of "
          "which may already contain it. Current anchors: SR 11-7 independent model validation; the "
-         "mixed self-assessment and notified-body regime of the EU AI Act. In the Supply Chain of "
-         "Intelligence taxonomy the boundary grounds Layer 3, Gatekeeping &mdash; context, not a "
-         "premise."),
+         "EU AI Act's mixed self-assessment and notified-body regime."),
 
 
         # ── Page 2: how to refute it ─────────────────────────────
@@ -108,15 +106,15 @@ def blocks():
              "third-party acceptance."],
             ["P4 Private demand",
              "Separation appears wherever a private payer conditions money or liability with no "
-             "mandate, at half or more the rate seen in matched regulated markets.",
+             "mandate, at half or more the regulated-market rate.",
              "Separation appears only under statute, and unregulated consequential markets "
              "integrate assurance without buyer resistance."],
             ["P5 Acquisition",
-             "Acquired assurance providers are ring-fenced or lose third-party acceptance.",
+             "Acquired assurance providers are ring-fenced, or lose acceptance.",
              "Fully integrated providers keep acceptance and pricing power over multiple cycles."],
             ["P6 New mandates",
-             "Within 24 months of a new requirement, an accredited or separately governed provider "
-             "is accepted in most observed jurisdictions.",
+             "Within 24 months of a new requirement, an accredited or separately governed "
+             "provider is accepted in most jurisdictions.",
              "Newly regulated domains resolve into single-vendor generation-plus-verification."],
         ], [1.1, 2.75, 2.65])),
 
