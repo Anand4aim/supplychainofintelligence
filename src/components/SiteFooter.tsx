@@ -38,6 +38,7 @@ const SiteFooter = () => (
           <h4 className="font-mono-marker text-[10px] uppercase tracking-[0.14em] text-foreground/60 mb-4">The Framework</h4>
           <div className="space-y-2.5">
             <Link to="/paper" className="block text-sm font-semibold text-foreground hover:text-accent transition-colors">The Paper (canonical) →</Link>
+            <Link to="/papers" className="block text-sm text-muted-foreground hover:text-accent transition-colors">Papers &amp; guides (PDF)</Link>
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
             <Link to="/not-a-stack" className="block text-sm hover:text-foreground transition-colors">Not Another AI Stack</Link>
             <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>
