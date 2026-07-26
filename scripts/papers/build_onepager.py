@@ -31,7 +31,7 @@ def blocks():
         ("small",
          "Summary brief &middot; Anand Arivukkarasu &middot; Supply Chain of Intelligence &middot; "
          f"{VERSION} &middot; {DATE} &middot; supplychainofai.com/papers &middot; CC-BY 4.0. "
-         "Companion: Academic Theory Paper v4.1 (15 pp.), which is the canonical statement."),
+         "Companion: Academic Theory Paper v4.1 (19 pp.), which is the canonical statement."),
 
         ("h3", "Abstract"),
         ("small",

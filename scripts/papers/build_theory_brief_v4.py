@@ -1,5 +1,5 @@
 """
-Build the Academic Theory Brief v4.0 — The Verification Boundary.
+Build the Academic Theory Paper v4.1 — The Verification Boundary.
 
   public/papers/scoi-verification-boundary.pdf
 

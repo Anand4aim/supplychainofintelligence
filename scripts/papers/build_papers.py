@@ -1166,7 +1166,7 @@ def practitioner_guide():
           ("bullets", [
               "<b>Academic theory paper (v4.1)</b> &mdash; the single theoretical claim, its "
               "relationship to prior literature, and six falsifiable predictions.",
-              "<b>Working paper (15 pages)</b> &mdash; literature review, theory, vignettes, "
+              "<b>Working paper (19 pages)</b> &mdash; literature review, theory, vignettes, "
               "alternative explanations, and research agenda.",
               "<b>This practitioner guide</b> &mdash; the full taxonomy, instruments, and applications.",
           ]),
