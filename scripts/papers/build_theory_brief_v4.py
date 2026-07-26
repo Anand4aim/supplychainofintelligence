@@ -68,6 +68,14 @@ REFERENCES = [
     "Akerlof, G. A. (1970). The market for &ldquo;lemons&rdquo;: quality uncertainty and the market "
     "mechanism. <i>Quarterly Journal of Economics</i>, 84(3), 488&ndash;500.",
     "Baldwin, C. Y., &amp; Clark, K. B. (2000). <i>Design Rules: The Power of Modularity</i>. MIT Press.",
+    "Bazerman, M. H., Morgan, K. P., &amp; Loewenstein, G. F. (1997). The impossibility of auditor "
+    "independence. <i>Sloan Management Review</i>, 38(4), 89&ndash;94.",
+    "Ben-Sasson, E., Chiesa, A., Tromer, E., &amp; Virza, M. (2014). Succinct non-interactive zero "
+    "knowledge for a von Neumann architecture. <i>USENIX Security Symposium</i>, 781&ndash;796.",
+    "Board of Governors of the Federal Reserve System &amp; OCC (2011). <i>Supervisory Guidance on "
+    "Model Risk Management</i> (SR 11-7 / OCC 2011-12).",
+    "B&uuml;the, T., &amp; Mattli, W. (2011). <i>The New Global Rulers: The Privatization of "
+    "Regulation in the World Economy</i>. Princeton University Press.",
     "Coase, R. H. (1937). The nature of the firm. <i>Economica</i>, 4(16), 386&ndash;405.",
     "DeAngelo, L. E. (1981). Auditor independence, &ldquo;low balling,&rdquo; and disclosure "
     "regulation. <i>Journal of Accounting and Economics</i>, 3(2), 113&ndash;127.",
@@ -75,12 +83,18 @@ REFERENCES = [
     "economics of credence goods. <i>Journal of Economic Literature</i>, 44(1), 5&ndash;42.",
     "Eisenmann, T., Parker, G., &amp; Van Alstyne, M. (2011). Platform envelopment. "
     "<i>Strategic Management Journal</i>, 32(12), 1270&ndash;1285.",
+    "European Union (2024). Regulation (EU) 2024/1689 laying down harmonised rules on artificial "
+    "intelligence (the AI Act). <i>Official Journal of the European Union</i>.",
     "Gawer, A. (2014). Bridging differing perspectives on technological platforms. "
     "<i>Research Policy</i>, 43(7), 1239&ndash;1249.",
     "Holmstrom, B. (1979). Moral hazard and observability. <i>Bell Journal of Economics</i>, "
     "10(1), 74&ndash;91.",
     "Jacobides, M. G., Cennamo, C., &amp; Gawer, A. (2018). Towards a theory of ecosystems. "
     "<i>Strategic Management Journal</i>, 39(8), 2255&ndash;2276.",
+    "Lewis, R. O. (1992). <i>Independent Verification and Validation: A Life Cycle Engineering "
+    "Process for Quality Software</i>. Wiley.",
+    "North, D. C., &amp; Weingast, B. R. (1989). Constitutions and commitment. <i>Journal of "
+    "Economic History</i>, 49(4), 803&ndash;832.",
     "Porter, M. E. (1985). <i>Competitive Advantage</i>. Free Press.",
     "Power, M. (1997). <i>The Audit Society: Rituals of Verification</i>. Oxford University Press.",
     "Rochet, J.-C., &amp; Tirole, J. (2003). Platform competition in two-sided markets. "
@@ -88,8 +102,15 @@ REFERENCES = [
     "Shapiro, C. (1983). Premiums for high quality products as returns to reputations. "
     "<i>Quarterly Journal of Economics</i>, 98(4), 659&ndash;679.",
     "Spence, M. (1973). Job market signaling. <i>Quarterly Journal of Economics</i>, 87(3), 355&ndash;374.",
+    "Suchman, M. C. (1995). Managing legitimacy: strategic and institutional approaches. "
+    "<i>Academy of Management Review</i>, 20(3), 571&ndash;610.",
+    "Terlaak, A., &amp; King, A. A. (2006). The effect of certification with the ISO 9000 quality "
+    "management standard. <i>Journal of Economic Behavior &amp; Organization</i>, 60(4), "
+    "579&ndash;602.",
     "Teece, D. J. (1986). Profiting from technological innovation. <i>Research Policy</i>, "
     "15(6), 285&ndash;305.",
+    "White, L. J. (2010). Markets: the credit rating agencies. <i>Journal of Economic "
+    "Perspectives</i>, 24(2), 211&ndash;226.",
     "Williamson, O. E. (1985). <i>The Economic Institutions of Capitalism</i>. Free Press.",
 ]
 
@@ -119,14 +140,20 @@ def blocks():
               "claim that generators cannot check their own work, that all verification must occur in "
               "separate firms, or that every consequential AI use will spawn a verification industry. "
               "It predicts <i>when</i> assurance becomes an economically distinct role because "
-              "independence is part of what the relying party is purchasing."),
+              "independence is part of what the relying party is purchasing. Stated once, plainly, "
+              "because the phrasing invites the opposite reading: <b>the boundary constrains "
+              "governance control, not necessarily firm boundaries.</b> A protected internal "
+              "function or a ring-fenced subsidiary can satisfy it."),
         ("h2", "The gap this brief addresses"),
         ("p", "Platform envelopment explains why platforms absorb adjacent markets: shared user bases, "
               "bundling economics, and cost complementarities make the move attractive and often "
-              "decisive. The theory is deliberately silent on where absorption stops. Existing "
-              "stopping conditions in the literature are largely technical or regulatory: the "
-              "adjacency is too distant, capabilities do not transfer, or an authority forbids the "
-              "move. This brief proposes an additional stopping condition that is neither. Expansion "
+              "decisive. Existing theories identify technical, regulatory, transaction-cost, "
+              "legitimacy, and capability constraints on integration: the adjacency is too distant, "
+              "capabilities do not transfer, an authority forbids the move, legitimacy is withheld "
+              "(Suchman, 1995). None of them isolates the condition examined here, in which "
+              "acquiring control of the assurance function can destroy the third-party credibility "
+              "that gives that function its value. This paper proposes that condition as an "
+              "additional stopping rule. Expansion "
               "bends where the enveloping firm's own governance destroys the value of the asset it "
               "is trying to acquire, because that asset is the credibility of an assertion about "
               "the firm's own output."),
@@ -144,6 +171,11 @@ def blocks():
                                            "accountability are sufficiently separated from the "
                                            "generator to make the assertion credible to the "
                                            "relying party."],
+            ["Determinate standard", "A specification against which conformity can be asserted and "
+                                     "assessed, recognized or accepted by the conditioning party. "
+                                     "Distinguished from a <i>quality preference</i>: the belief "
+                                     "that one output is better than another, with no criterion a "
+                                     "third party will accept."],
             ["Conditioning third party", "A regulator, insurer, auditor, court, board, lender, "
                                          "counterparty, or affected customer that conditions money, "
                                          "permission, admissibility, coverage, or liability on the "
@@ -169,7 +201,10 @@ def blocks():
             "can make a producer's own assurance credible when losses are recoverable and punishment is "
             "timely (Shapiro, 1983). The boundary arises when those devices do not adequately protect "
             "the relying party, or when law, insurance, professional duty, or governance rules require "
-            "assurance from a separately accountable actor.",
+            "assurance from a separately accountable actor. Recoverability is coded <i>ex ante</i> from the "
+            "measures in Section 7 &mdash; reversibility of the harm, litigation and insurance loss "
+            "experience, and the presence of reliance clauses &mdash; so that markets are classified "
+            "before separation is observed, rather than inferred from it.",
             "<b>Credibility depends on separable incentives and accountability.</b> Verification has "
             "economic value only when the verifier can investigate, refuse certification, disclose "
             "adverse findings, and bear consequences without being overruled by the generator "
@@ -182,12 +217,16 @@ def blocks():
             "the generator is an acceptable <i>sole attestor</i> where the relying party requires "
             "independence. The scarce asset is credible independence, not intelligence.",
         ]),
-        ("callout", ("OBSERVABLE COROLLARY: THE TWO-VENDOR RULE",
-                     "Where a single vendor's error is unrecoverable, procurement selects two vendors, "
-                     "paying a duplication tax to avoid a single-point-of-failure tax. The behaviour is "
-                     "observable and priced in security, audit, clinical, and financial procurement, and "
-                     "it long predates AI. It is a market-side signal that independence is bought "
-                     "separately from capability.")),
+        ("callout", ("OBSERVABLE COROLLARY: THE INDEPENDENCE PREMIUM",
+                     "Where a producer's error can impose material, difficult-to-recover loss, buyers "
+                     "routinely pay for a separately governed source of review, assurance, redundancy, "
+                     "or refusal authority: a second vendor, an accredited assessor, a protected "
+                     "internal function, or an independent testing regime. The expenditure often "
+                     "duplicates technical capability the producer already has. What it buys is "
+                     "independence from the producer's incentives and control. The premium is priced "
+                     "in security, audit, clinical, and financial procurement, and long predates AI. "
+                     "Which form a buyer selects is contingent; that some separately governed source "
+                     "is purchased is the prediction.")),
         ("h2", "The consequence test"),
         ("table", ([
             ["Step", "Question", "Outcome"],
@@ -198,8 +237,11 @@ def blocks():
             ["3. Conditioning test", "Does an external actor condition money, permission, "
                                      "admissibility, or liability on an assurance about the output?",
              "No: integrated assurance, with reputational discipline only."],
-            ["4. Standard test", "Does an assurable standard exist, or can one be constructed?",
-             "No: no assurance market forms; the demand is latent until a standard emerges."],
+            ["4. Standard test", "Is there a sufficiently determinate standard, recognized or "
+                                 "accepted by the conditioning party, against which conformity can "
+                                 "be asserted?",
+             "No: no assurance market forms. Demand stays latent until a standard is specified and "
+             "accepted; a quality preference is not enough."],
             ["5. Crossing the boundary", "All three scope conditions hold simultaneously.",
              "Yes: independent assurance. A separately governed actor makes the accepted assertion."],
         ], [1.15, 2.6, 2.75])),
