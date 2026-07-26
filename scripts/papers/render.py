@@ -231,6 +231,13 @@ def build(path, blocks, running_title, cover=None):
         elif kind == "table":
             rows, widths = payload
             story.append(data_table(rows, widths))
+        elif kind == "table-split":
+            # Same as "table" but allowed to break across pages.
+            rows, widths = payload
+            story.append(data_table(rows, widths).__dict__["_content"][0]
+                         if False else data_table(rows, widths)._content[0])
+            story.append(Spacer(1, 10))
+
         elif kind == "layer":
             story += layer_header(*payload)
         elif kind == "rule":
