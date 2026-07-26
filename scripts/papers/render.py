@@ -218,6 +218,9 @@ def build(path, blocks, running_title, cover=None):
             return [callout(*payload)]
         if kind == "table":
             rows, widths = payload
+            # Long tables split across pages rather than leaving half a page blank.
+            if len(rows) > 5:
+                return [data_table(rows, widths, keep=False), Spacer(1, 10)]
             return [data_table(rows, widths)]
         if kind == "table-split":
             rows, widths = payload
