@@ -1,11 +1,11 @@
 """
-Build the professor-facing one-pager.
+Build the professor-facing summary brief.
 
   public/papers/scoi-onepager.pdf
 
-A single page: abstract, the key claim, the six falsifiable predictions in
-compressed form, where the claim sits in the framework, and how to cite.
-Designed to be the first attachment in an academic outreach email.
+Two pages by design, not by overflow. Page one carries the claim, its scope
+conditions, and its positioning. Page two carries the falsifiable predictions,
+the refutation standard, the one question asked of reviewers, and the citation.
 
 Run: python3 scripts/papers/build_onepager.py
 """
@@ -19,51 +19,94 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 OUT = os.path.join(ROOT, "public", "papers")
 
-VERSION = "Version 1.0"
+VERSION = "Version 1.1"
 DATE = "July 2026"
 
 
 def blocks():
     return [
-        ("h1", "The Verification Boundary &mdash; summary brief"),
+        # ── Page 1: the claim ────────────────────────────────────
+        ("h1", "The Verification Boundary: institutional independence as a limit on "
+               "platform expansion in AI markets"),
         ("small",
-         "Anand Arivukkarasu &middot; Supply Chain of Intelligence &middot; "
-         f"{VERSION} &middot; {DATE} &middot; supplychainofai.com/papers &middot; CC-BY 4.0"),
+         "Summary brief &middot; Anand Arivukkarasu &middot; Supply Chain of Intelligence &middot; "
+         f"{VERSION} &middot; {DATE} &middot; supplychainofai.com/papers &middot; CC-BY 4.0. "
+         "Companion: Academic Theory Paper v4.1 (15 pp.), which is the canonical statement."),
 
         ("h3", "Abstract"),
         ("small",
-         "Strategy and organization theory explain why firms integrate complementary assets, "
-         "envelop adjacent markets, and select governance that economizes on transaction costs. "
-         "They do not specify the recurring limit that appears when an automated system produces "
-         "consequential outputs and a third party must rely on an assurance about them. This work "
-         "develops the <b>verification boundary</b>, a stopping rule that platform envelopment "
-         "leaves open. The scarce asset is not superior intelligence, nor even superior error "
-         "detection; it is credible independence."),
+         "AI platforms have strong incentives to absorb adjacent workflow, data, and assurance "
+         "functions. Existing theories explain why integration occurs; none isolates a recurring "
+         "case in which integration destroys the value of the asset being acquired. This work "
+         "develops the <b>verification boundary</b>. Where an automated output can impose material, "
+         "difficult-to-recover loss beyond the producer, where a third party conditions money, "
+         "permission, coverage, admissibility, authorization, or liability on an assurance about "
+         "that output, and where conformity can be assessed against a sufficiently determinate "
+         "standard, accepted verification requires a governance arrangement that preserves "
+         "institutional independence from generation. The scarce asset is not superior "
+         "intelligence, nor even superior error detection. It is credible independence."),
 
-        ("h3", "Key claim"),
+        ("h3", "The proposition"),
         ("quote",
-         "When an automated output can create material, difficult-to-recover losses for parties "
-         "beyond its producer, and an external actor conditions money, permission, admissibility, "
-         "or liability on an assurance about that output, credible verification must remain "
-         "institutionally independent from generation. Improvements in the generator&rsquo;s "
-         "technical capability do not, by themselves, relax this requirement."),
-        ("small",
-         "Scope conditions are conjunctive: <b>(i)</b> consequential output, <b>(ii)</b> reliance "
-         "by a party other than the producer, <b>(iii)</b> an external actor conditioning a "
-         "decision on the assurance. Independence admits four forms, by strength: protected "
-         "internal function, ring-fenced subsidiary, regulated professional role, separate firm. "
-         "Separate-firm formation is a contingent response, not the proposition. The boundary sits "
-         "at Layer 3 (Gatekeeping) of the ten-layer framework, which is context, not a premise. "
-         "Positioning: Eisenmann, Parker &amp; Van Alstyne (2011); Teece (1986); Coase (1937); "
-         "Williamson (1985); Akerlof (1970); Dulleck &amp; Kerschbamer (2006); Power (1997)."),
+         "When an automated output can impose material, difficult-to-recover loss on a party beyond "
+         "the producer; when a third party conditions money, permission, coverage, admissibility, "
+         "authorization, or liability on an assurance about that output; and when conformity can be "
+         "assessed against a sufficiently determinate standard accepted by the conditioning party, "
+         "accepted verification will require a governance arrangement that preserves institutional "
+         "independence from the generating function. Improvements in generation or checking "
+         "capability may reduce the cost and scope of verification, but do not by themselves "
+         "eliminate the independence requirement."),
 
-        ("h3", "Falsifiable predictions (five-year horizon)"),
+        ("h3", "Scope conditions (conjunctive) and forms of independence"),
+        ("table", ([
+            ["Scope condition", "Coded as"],
+            ["<b>1. External consequence</b>",
+             "An erroneous output can impose material, difficult-to-recover loss on a party beyond "
+             "the producer. Coded ex ante from reversibility, litigation exposure, and insurance "
+             "loss experience."],
+            ["<b>2. External conditioning</b>",
+             "A third party conditions money, permission, coverage, admissibility, authorization, "
+             "or liability on an assurance about the output."],
+            ["<b>3. Determinate standard</b>",
+             "A sufficiently determinate standard, recognized by the conditioning party, exists "
+             "against which conformity can be asserted. A quality preference does not qualify."],
+        ], [1.55, 4.95])),
+        ("small",
+         "Independence admits four governance forms, in ascending strength: protected internal "
+         "function; ring-fenced entity; regulated professional role; separate firm. <b>The boundary "
+         "constrains governance control, not necessarily firm boundaries</b> &mdash; separate-firm "
+         "formation is a contingent response, not the proposition."),
+
+        ("h3", "Positioning"),
+        ("small",
+         "Existing theories identify technical, regulatory, transaction-cost, legitimacy, and "
+         "capability constraints on integration; none isolates the condition examined here, where "
+         "controlling the assurance function destroys the third-party credibility that gives it "
+         "value. Nearest neighbours: platform envelopment (Eisenmann, Parker &amp; Van Alstyne, "
+         "2011); appropriability (Teece, 1986); transaction costs (Coase, 1937; Williamson, 1985); "
+         "credence goods and audit institutions (Akerlof, 1970; Dulleck &amp; Kerschbamer, 2006; "
+         "DeAngelo, 1981; Power, 1997). The full paper also examines independent V&amp;V (Lewis, "
+         "1992), conformity assessment (Terlaak &amp; King, 2006; B&uuml;the &amp; Mattli, 2011), "
+         "structural separation (Newbery, 1999), and credible commitment (North &amp; Weingast, "
+         "1989), any of which may already contain the claim. Current anchors: SR 11-7 independent "
+         "model validation; the mixed self-assessment and notified-body regime of the EU AI Act. "
+         "Within the Supply Chain of Intelligence taxonomy the boundary grounds Layer 3, "
+         "Gatekeeping; the taxonomy is context, not a premise."),
+
+        ("pagebreak",),
+
+        # ── Page 2: how to refute it ─────────────────────────────
+        ("h1", "Falsifiable predictions and refutation standard"),
+        ("small", "Five-year horizon from publication. P1&ndash;P3 test the mechanism; "
+                  "P4&ndash;P6 test the claim against its two closest rivals, the regulatory "
+                  "account and the transitional account."),
         ("table-split", ([
             ["", "Expected observation", "Refuted if"],
             ["P1 Separation",
-             "Accepted assurance flows through a protected function, ring-fenced entity, regulated "
-             "role, or separate firm.",
-             "Conditioning parties routinely accept generator assurance with no separation."],
+             "In markets meeting all three conditions, accepted assurance flows through a protected "
+             "function, ring-fenced entity, regulated role, or separate firm.",
+             "Conditioning parties routinely accept generator assurance with no governance "
+             "separation, across multiple cycles."],
             ["P2 Capability",
              "As accuracy rises, verification automates and narrows; independent accountability "
              "persists.",
@@ -71,38 +114,59 @@ def blocks():
             ["P3 Expansion bends",
              "Platforms expand into workflow, access, and surface more readily than into assurance "
              "of their own outputs.",
-             "A platform repeatedly absorbs such assurance and keeps third-party acceptance."],
+             "A platform repeatedly absorbs such assurance, controls its governance, and keeps "
+             "third-party acceptance."],
             ["P4 Private demand",
              "Separation appears wherever a private payer conditions money or liability, absent any "
-             "mandate.",
-             "Separation appears only under statute."],
+             "mandate: at least half the rate observed in matched regulated markets.",
+             "Separation appears only under statute, and unregulated consequential markets "
+             "integrate assurance without buyer resistance."],
             ["P5 Acquisition",
              "Acquired assurance providers are ring-fenced or lose third-party acceptance.",
-             "Integrated providers keep acceptance and pricing power over multiple cycles."],
+             "Fully integrated providers keep acceptance and pricing power over multiple cycles."],
             ["P6 New mandates",
-             "New requirements produce an independent role or accreditation within roughly two "
-             "years.",
+             "Within 24 months of a new requirement, an accredited or separately governed provider "
+             "is accepted in a majority of observed jurisdictions.",
              "Newly regulated domains resolve into single-vendor generation-plus-verification."],
         ], [1.1, 2.75, 2.65])),
+
+        ("h3", "Whole-claim refutation, with coding rules fixed in advance"),
         ("small",
-         "<b>Whole-claim refutation.</b> One well-documented market in which all three scope "
-         "conditions hold and the generator&rsquo;s own attestation is durably accepted by the "
-         "conditioning third party, across multiple cycles and without ring-fencing."),
+         "One well-documented market in which all three scope conditions hold and the generator's "
+         "own attestation is <b>durably accepted</b> by the conditioning third party. Durably "
+         "accepted: reliance continues across more than two renewal, audit, or certification "
+         "cycles. Scope conditions: coded from consequence and conditioning measures independently "
+         "of whether separation is observed. No governance separation: the attesting unit has no "
+         "protected reporting line, no non-overridable refusal right, and no external "
+         "accreditation. A case meeting these rules settles the question."),
+
+        ("h3", "Conceded limits"),
+        ("small",
+         "The claim does not hold that separation guarantees good verification: issuer-pays ratings "
+         "and the Andersen-era audit failures show nominal independence can be hollowed out, and "
+         "the proposition then predicts crisis and re-separation rather than permanent absorption. "
+         "Where an assertion reduces to <i>this computation ran on this input</i>, cryptographic "
+         "attestation can displace institutional independence entirely; the claim narrows to "
+         "assertions containing irreducible judgment. Vendor indemnification substitutes a balance "
+         "sheet for an assertion, and is predicted to work only where the loss is financial and "
+         "recoverable."),
 
         ("h3", "The one question asked of reviewers"),
         ("small",
-         "Is the verification boundary already contained in an existing result under another name? "
-         "If it is, a citation is the most useful reply. If it is not, the sharpest contribution is "
-         "a counter-example satisfying all three scope conditions that survives the test above."),
+         "Is the verification boundary already established under another name? If it is, a citation "
+         "is the most useful reply and the work should be withdrawn to a summary of prior results. "
+         "If it is not, the sharpest contribution is a counter-example satisfying all three scope "
+         "conditions that survives the coding rules above."),
 
         ("h3", "How to cite"),
         ("small",
          "Arivukkarasu, A. (2026). <i>The verification boundary: institutional independence as a "
-         "boundary condition on platform expansion in AI markets</i> (Academic Theory Brief, "
-         "Version 4.0). Supply Chain of Intelligence. https://supplychainofai.com/papers &nbsp;&middot;&nbsp; "
-         "BibTeX and other formats: supplychainofai.com/cite &nbsp;&middot;&nbsp; Full brief (15 pp.), "
-         "working paper (19 pp.), practitioner guide (45 pp.): supplychainofai.com/papers. "
-         "Comments and refutations: linkedin.com/in/anandarivu. Written in a personal capacity."),
+         "boundary condition on platform expansion in AI markets</i> (Academic Theory Paper, "
+         "Version 4.1). Supply Chain of Intelligence. https://supplychainofai.com/papers "
+         "&nbsp;&middot;&nbsp; BibTeX, RIS, APA, MLA, Chicago: supplychainofai.com/cite "
+         "&nbsp;&middot;&nbsp; Full paper (15 pp.) and practitioner guide (45 pp.): "
+         "supplychainofai.com/papers. Comments and refutations: linkedin.com/in/anandarivu. "
+         "Licensed CC-BY 4.0. Written in a personal capacity."),
     ]
 
 
