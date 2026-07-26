@@ -9,7 +9,7 @@ const corsHeaders = {
 
 type Req = {
   passcode?: string;
-  resource?: "remaster_queue" | "audit_runs" | "run_data" | "live_articles_admin" | "story_candidates";
+  resource?: "remaster_queue" | "audit_runs" | "run_data" | "live_articles_admin" | "story_candidates" | "endorsements";
   run_id?: string;
 };
 
@@ -74,6 +74,17 @@ Deno.serve(async (req) => {
         out.candidates = data ?? [];
         break;
       }
+      case "endorsements": {
+        const { data, error } = await supabase
+          .from("endorsements")
+          .select("*")
+          .order("created_at", { ascending: false })
+          .limit(200);
+        if (error) throw error;
+        out.endorsements = data ?? [];
+        break;
+      }
+
       case "run_data": {
         if (!body.run_id) throw new Error("run_id required");
         const [{ data: au, error: e1 }, { data: su, error: e2 }] = await Promise.all([

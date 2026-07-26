@@ -39,6 +39,8 @@ const SiteFooter = () => (
           <div className="space-y-2.5">
             <Link to="/paper" className="block text-sm font-semibold text-foreground hover:text-accent transition-colors">The Paper (canonical) →</Link>
             <Link to="/papers" className="block text-sm text-muted-foreground hover:text-accent transition-colors">Papers &amp; guides (PDF)</Link>
+            <Link to="/cite" className="block text-sm text-muted-foreground hover:text-accent transition-colors">How to cite</Link>
+
             <Link to="/framework" className="block text-sm hover:text-foreground transition-colors">Framework</Link>
             <Link to="/not-a-stack" className="block text-sm hover:text-foreground transition-colors">Not Another AI Stack</Link>
             <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>

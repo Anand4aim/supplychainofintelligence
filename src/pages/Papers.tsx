@@ -24,6 +24,25 @@ interface PaperDoc {
 
 const DOCS: PaperDoc[] = [
   {
+    id: "onepager",
+    file: "/papers/scoi-onepager.pdf",
+    audience: "Start here · for professors and reviewers",
+    title: "The Verification Boundary — summary brief",
+    subtitle: "The abstract, the claim, and the refutation criteria, on two pages",
+    pages: "2 pages · Version 1.0",
+    icon: FileText,
+    accent: "var(--layer-4)",
+    abstract:
+      "The whole argument compressed to what a reviewer needs before deciding whether to read further: the abstract, the proposition with its three scope conditions, all six falsifiable predictions with refutation criteria, where the claim sits relative to prior literature, and the one question being asked. Designed to be read in four minutes and forwarded without apology.",
+    contents: [
+      "Abstract and the key claim in full",
+      "The three conjunctive scope conditions and four forms of independence",
+      "P1–P6 with refutation criteria, plus whole-claim refutation",
+      "Positioning against Teece, Eisenmann–Parker–Van Alstyne, Coase, Akerlof, Power",
+      "How to cite",
+    ],
+  },
+  {
     id: "theory-brief",
     file: "/papers/scoi-verification-boundary.pdf",
     audience: "For academics and reviewers",
@@ -45,6 +64,7 @@ const DOCS: PaperDoc[] = [
       "Limitations, an empirical program, and how to cite",
     ],
   },
+
 
   {
     id: "working-paper",
@@ -130,22 +150,28 @@ const Papers = () => {
         <header className="mb-14">
           <Eyebrow>Downloads · {VERSION}</Eyebrow>
           <h1 className="mt-3 font-serif text-4xl leading-tight text-foreground md:text-5xl">
-            Three documents, three audiences
+            Four documents, three audiences
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The same framework written three ways. Scholars evaluate the theoretical
-            claim on its own terms; researchers get the full argument with its
-            literature; operators get the taxonomy and the instruments. Start with
-            whichever matches the question you arrived with.
+            The same framework written four ways. The two-page summary is the fastest
+            route to the claim; scholars can then evaluate it on its own terms;
+            researchers get the full argument with its literature; operators get the
+            taxonomy and the instruments.
           </p>
+
           <p className="mt-4 text-sm text-muted-foreground">
-            All three are free, licensed CC-BY 4.0, and generated directly from the
-            canonical data behind{" "}
+            All are free, licensed CC-BY 4.0, and generated directly from the canonical
+            data behind{" "}
             <Link to="/framework" className="underline underline-offset-4">
               /framework
             </Link>
-            , so they cannot drift from the site.
+            , so they cannot drift from the site. Ready-made citations live on{" "}
+            <Link to="/cite" className="underline underline-offset-4">
+              /cite
+            </Link>
+            .
           </p>
+
         </header>
 
         <div className="space-y-8">
@@ -219,20 +245,34 @@ const Papers = () => {
             advantage accumulates in artificial intelligence markets</em> (Version 2.0).
             https://supplychainofai.com/papers
           </p>
-          <pre className="mt-4 overflow-x-auto rounded border border-border bg-background p-4 text-xs leading-relaxed text-muted-foreground">
-{`@misc{arivukkarasu2026scoi,
-  author = {Arivukkarasu, Anand},
-  title  = {Supply Chain of Intelligence},
-  year   = {2026},
-  note   = {Version 2.0},
-  url    = {https://supplychainofai.com/papers}
-}`}
-          </pre>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Every document has its own BibTeX, RIS, APA, MLA, and Chicago entry, with
+            downloadable <code>.bib</code> and <code>.ris</code> files, on{" "}
+            <Link to="/cite" className="underline underline-offset-4">
+              the citation page
+            </Link>
+            .
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              to="/cite"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              Citation formats
+            </Link>
+            <Link
+              to="/endorse"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            >
+              Comment, critique, or endorse
+            </Link>
+          </div>
           <p className="mt-4 text-xs text-muted-foreground">
             Released {RELEASED}. Licensed CC-BY 4.0. Supply Chain of Intelligence™ and
             The Intelligence Cube™ are trademarks of Anand Arivukkarasu.
           </p>
         </section>
+
 
         <div className="mt-12">
           <PersonalCapacityNotice />
