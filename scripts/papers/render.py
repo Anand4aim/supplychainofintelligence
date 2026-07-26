@@ -199,59 +199,59 @@ def build(path, blocks, running_title, cover=None):
     else:
         story.append(NextPageTemplate("body"))
 
-    for blk in blocks:
-        kind, payload = (blk, None) if isinstance(blk, str) else blk
+    def flow(kind, payload):
+        """Render one block to a list of flowables."""
         if kind == "h1":
-            grp = KeepTogether([Paragraph(payload, S["h1"]), rule(GOLD, 1.1, 0, 8)])
-            grp.keepWithNext = 1
-            story.append(grp)
-
-        elif kind == "h2":
-            story.append(Paragraph(payload, S["h2"]))
-        elif kind == "h3":
-            story.append(Paragraph(payload.upper(), S["h3"]))
-        elif kind == "p":
-            story.append(Paragraph(payload, S["p"]))
-        elif kind == "small":
-            story.append(Paragraph(payload, S["small"]))
-        elif kind == "ref":
-            story.append(Paragraph(payload, S["ref"]))
-        elif kind == "quote":
-            story.append(Paragraph(payload, S["quote"]))
-        elif kind == "caption":
-            story.append(Paragraph(payload, S["caption"]))
-        elif kind == "toc":
-            story.append(Paragraph(payload, S["toc"]))
-        elif kind == "bullets":
-            for b in payload:
-                story.append(Paragraph(b, S["bullet"], bulletText="\u2022"))
-            story.append(Spacer(1, 6))
-        elif kind == "numbers":
-            for i, b in enumerate(payload, 1):
-                story.append(Paragraph(b, S["bullet"], bulletText=f"{i}."))
-            story.append(Spacer(1, 6))
-        elif kind == "callout":
-            story.append(callout(*payload))
-        elif kind == "table":
+            return [Paragraph(payload, S["h1"]), rule(GOLD, 1.1, 0, 8)]
+        if kind == "h2":
+            return [Paragraph(payload, S["h2"])]
+        if kind == "h3":
+            return [Paragraph(payload.upper(), S["h3"])]
+        if kind in ("p", "small", "ref", "quote", "caption", "toc"):
+            return [Paragraph(payload, S[kind])]
+        if kind == "bullets":
+            return [Paragraph(b, S["bullet"], bulletText="\u2022") for b in payload] + [Spacer(1, 6)]
+        if kind == "numbers":
+            return [Paragraph(b, S["bullet"], bulletText=f"{i}.")
+                    for i, b in enumerate(payload, 1)] + [Spacer(1, 6)]
+        if kind == "callout":
+            return [callout(*payload)]
+        if kind == "table":
             rows, widths = payload
-            story.append(data_table(rows, widths))
-        elif kind == "table-split":
-            # Same as "table" but allowed to break across pages.
+            return [data_table(rows, widths)]
+        if kind == "table-split":
             rows, widths = payload
-            story.append(data_table(rows, widths, keep=False))
-            story.append(Spacer(1, 10))
+            return [data_table(rows, widths, keep=False), Spacer(1, 10)]
+        if kind == "layer":
+            return list(layer_header(*payload))
+        if kind == "rule":
+            return [rule()]
+        if kind == "space":
+            return [Spacer(1, payload)]
+        if kind == "pagebreak":
+            return [PageBreak()]
+        raise ValueError(f"unknown block: {kind}")
 
+    HEADINGS = ("h1", "h2", "h3")
+    FOLLOWERS = ("p", "small", "quote", "bullets", "numbers", "callout", "table",
+                 "table-split", "layer", "ref", "toc", "caption")
 
-        elif kind == "layer":
-            story += layer_header(*payload)
-        elif kind == "rule":
-            story.append(rule())
-        elif kind == "space":
-            story.append(Spacer(1, payload))
-        elif kind == "pagebreak":
-            story.append(PageBreak())
-        else:
-            raise ValueError(f"unknown block: {kind}")
+    items = [(blk, None) if isinstance(blk, str) else blk for blk in blocks]
+    i = 0
+    while i < len(items):
+        kind, payload = items[i]
+        chunk = flow(kind, payload)
+        # A heading never ends a page alone: bind it to the block that follows.
+        if kind in HEADINGS and i + 1 < len(items):
+            nkind, npayload = items[i + 1]
+            if nkind in FOLLOWERS:
+                chunk = chunk + flow(nkind, npayload)
+                i += 1
+                story.append(KeepTogether(chunk))
+                i += 1
+                continue
+        story += chunk
+        i += 1
 
     doc.build(story)
     return path
