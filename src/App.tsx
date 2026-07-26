@@ -89,6 +89,8 @@ const App = () => (
         <Route path="/posts/:slug" element={<PostDetail />} />
         <Route path="/audit" element={<Audit />} />
         <Route path="/paper" element={<Paper />} />
+        <Route path="/papers" element={<Papers />} />
+
         <Route path="/methodology" element={<Methodology />} />
         <Route path="/changelog" element={<Changelog />} />
         <Route path="/not-a-stack" element={<NotAStack />} />
