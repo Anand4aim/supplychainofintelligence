@@ -225,7 +225,7 @@ def theory_brief():
             "workflow and interface layers, but cannot credibly integrate into the verification "
             "function performed above themselves. The brief states the proposition, positions it "
             "against appropriability, ecosystem, modularity, and information-asymmetry literatures, "
-            "specifies boundary conditions, and offers five falsifiable predictions with explicit "
+            "specifies boundary conditions, and offers falsifiable predictions with explicit "
             "refutation criteria. The broader taxonomy from which the proposition is drawn &mdash; a "
             "ten-layer supply chain of intelligence &mdash; is deliberately relegated to appendices "
             "and companion documents."))
@@ -596,8 +596,9 @@ def working_paper():
           ], [1.6, 2.45, 2.45])),
           ("h1", "7. Predictions and tests"),
           ("p", "The five predictions below are stated over a five-year horizon. Each is accompanied "
-                "by the observation that would refute it. They are restated verbatim in the companion "
-                "theory brief so that the two documents cannot drift."),
+                "by the observation that would refute it. The companion theory paper (v4.1) is the "
+                "canonical statement and carries an expanded set of six predictions with "
+                "refutation criteria and coding rules."),
           ("numbers", [
               "No frontier model provider issues self-certification that a regulated buyer accepts in "
               "place of independent verification.",
@@ -1163,9 +1164,9 @@ def practitioner_guide():
           ("table", ([["Term", "Definition"]] + [[f"<b>{t}</b>", d] for t, d in gloss], [1.6, 4.9])),
           ("h2", "Companion documents"),
           ("bullets", [
-              "<b>Academic theory brief (4 pages)</b> &mdash; the single theoretical claim, its "
-              "relationship to prior literature, and five falsifiable predictions.",
-              "<b>Working paper (15 pages)</b> &mdash; literature review, theory, vignettes, "
+              "<b>Academic theory paper (v4.1)</b> &mdash; the single theoretical claim, its "
+              "relationship to prior literature, and six falsifiable predictions.",
+              "<b>Working paper (19 pages)</b> &mdash; literature review, theory, vignettes, "
               "alternative explanations, and research agenda.",
               "<b>This practitioner guide</b> &mdash; the full taxonomy, instruments, and applications.",
           ]),
