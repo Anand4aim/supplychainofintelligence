@@ -150,14 +150,15 @@ const Papers = () => {
         <header className="mb-14">
           <Eyebrow>Downloads · {VERSION}</Eyebrow>
           <h1 className="mt-3 font-serif text-4xl leading-tight text-foreground md:text-5xl">
-            Three documents, three audiences
+            Four documents, three audiences
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            The same framework written three ways. Scholars evaluate the theoretical
-            claim on its own terms; researchers get the full argument with its
-            literature; operators get the taxonomy and the instruments. Start with
-            whichever matches the question you arrived with.
+            The same framework written four ways. The two-page summary is the fastest
+            route to the claim; scholars can then evaluate it on its own terms;
+            researchers get the full argument with its literature; operators get the
+            taxonomy and the instruments.
           </p>
+
           <p className="mt-4 text-sm text-muted-foreground">
             All three are free, licensed CC-BY 4.0, and generated directly from the
             canonical data behind{" "}
