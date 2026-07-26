@@ -101,6 +101,7 @@ try {
 const routes: string[] = [
   "/",
   "/paper",
+  "/papers",
   "/start",
   "/predictions",
   "/framework",
