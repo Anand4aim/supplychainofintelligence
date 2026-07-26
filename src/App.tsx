@@ -40,6 +40,10 @@ import PostDetail from "./pages/PostDetail";
 import Audit from "./pages/Audit";
 import Paper from "./pages/Paper";
 import Papers from "./pages/Papers";
+import Cite from "./pages/Cite";
+import Endorse from "./pages/Endorse";
+import EndorsementsAdmin from "./pages/EndorsementsAdmin";
+
 import Methodology from "./pages/Methodology";
 import Changelog from "./pages/Changelog";
 import NotAStack from "./pages/NotAStack";
