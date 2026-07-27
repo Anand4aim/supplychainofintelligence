@@ -208,6 +208,7 @@ Deno.serve(async (req) => {
     let publishedAt: string | undefined;
     // "draft" keeps the piece off /live until a quality gate clears it.
     let requestedStatus = "published";
+    let skipRefine = false;
     let passcode: string | null = req.headers.get("x-admin-passcode");
     try {
       if (req.method === "POST") {
@@ -215,9 +216,11 @@ Deno.serve(async (req) => {
         topic = typeof body?.topic === "string" ? body.topic : undefined;
         publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
         if (body?.status === "draft") requestedStatus = "draft";
+        if (body?.skip_refine === true) skipRefine = true;
         passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
+
 
     // Auth: fail-closed passcode check. pg_cron / weekly schedule must
     // send `{"passcode":"..."}` (or an `x-admin-passcode` header). Without
