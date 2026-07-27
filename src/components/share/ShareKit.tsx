@@ -58,8 +58,9 @@ const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
       </h2>
       <p className="text-[15px] text-muted-foreground mb-6 max-w-2xl">
         Three artifacts, one argument. The image carries the diagram, the short post stops the
-        scroll, the detailed article is formatted for LinkedIn's Pulse editor, headings, bullets
-        and quotes only, no tables.
+        scroll, the detailed article is plain-text clean for LinkedIn's Pulse editor, no markdown
+        markers and no tables. Paste it, then style the section lines with LinkedIn's H2 and the
+        quoted lines with its quote block.
       </p>
 
       {/* Hero image */}
