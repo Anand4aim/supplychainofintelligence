@@ -41,15 +41,19 @@ Deno.serve(async (req) => {
 
     const body = (await req.json().catch(() => ({}))) as {
       passcode?: string;
+      cron_token?: string;
       max?: number;
       threshold?: number;
       candidate_id?: string;
     };
 
-    if (body.passcode !== expected) {
-      await new Promise((r) => setTimeout(r, 250));
-      return json({ ok: false, error: "unauthorized" }, 401);
-    }
+    const supabase = createClient(supabaseUrl, serviceKey);
+
+    const authorized = await isAuthorizedJobCall(supabase, {
+      passcode: body.passcode,
+      cronToken: body.cron_token,
+    });
+    if (!authorized) return json({ ok: false, error: "unauthorized" }, 401);
 
     const threshold =
       typeof body.threshold === "number" && body.threshold >= 0 && body.threshold <= 100
@@ -57,6 +61,8 @@ Deno.serve(async (req) => {
         : PUBLISH_THRESHOLD;
     // One per invocation by default: generation + refinement + two audits is slow.
     const max = Math.min(Math.max(Number(body.max) || 1, 1), 3);
+
+
 
     const supabase = createClient(supabaseUrl, serviceKey);
 
