@@ -65,7 +65,7 @@ const BattleCard = ({
   }) => (
     <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
       <div
-        className="font-mono-marker text-[8px] md:text-[10px] tracking-[0.18em] uppercase px-2 py-1 text-white mb-2 self-start"
+        className="font-mono-marker text-[8px] md:text-[10px] tracking-[0.18em] uppercase px-2 py-1 text-white mb-2 self-start shrink-0 whitespace-nowrap"
         style={{ background: color }}
       >
         {label}
@@ -73,7 +73,7 @@ const BattleCard = ({
       {rows.length === 0 ? (
         <p className="font-sketch text-[11px] md:text-[13px] text-muted-foreground italic">{empty}</p>
       ) : (
-        <ul className="space-y-1.5 md:space-y-2">
+        <ul className="space-y-1.5 md:space-y-2 overflow-hidden">
           {rows.slice(0, 2).map((r, i) => (
             <li key={i} className="leading-[1.25]">
               <span className="font-display font-bold text-foreground text-[12px] md:text-[15px]">
