@@ -202,7 +202,7 @@ const PostDetail = () => {
           <ShareKit
             slug={post.slug}
             feedPost={buildPostFeed(post)}
-            pulseArticle={buildPostPulse(post)}
+            pulseArticle={buildPostPulseDoc(post)}
             hero={{
               eyebrow: post.kind === "opinion" ? "Opinion" : "Essay",
               title: post.title,
