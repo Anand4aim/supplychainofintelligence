@@ -13,6 +13,8 @@ import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
+import ShareKit from "@/components/share/ShareKit";
+import { buildLivePulse, buildLiveFeedPost, type PulseLiveArticle } from "@/lib/pulseText";
 
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
@@ -443,6 +445,23 @@ const LiveArticleDetail = () => {
               By <Link to="/about" className="text-accent underline">Anand Arivukkarasu</Link> · Ex-Meta Product Leader.
             </p>
           </div>
+
+          {/* LinkedIn share kit: hero image + short post + Pulse article */}
+          <ShareKit
+            slug={article.slug}
+            feedPost={buildLiveFeedPost(article as unknown as PulseLiveArticle, article.linkedin_post)}
+            pulseArticle={buildLivePulse(article as unknown as PulseLiveArticle)}
+            hero={{
+              eyebrow: "Live Analysis",
+              title: article.headline,
+              subtitle: article.subheadline,
+              date: article.published_at,
+              verdict: article.verdict,
+              intensities: Object.fromEntries(
+                (article.analysis.layer_scores ?? []).map((s) => [s.layer, s.intensity ?? (s.owned ? 2 : 0)]),
+              ),
+            }}
+          />
 
           {/* Inbox capture, last */}
           <ArticleFooterCTA

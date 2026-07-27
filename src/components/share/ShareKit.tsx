@@ -1,0 +1,133 @@
+import { useState } from "react";
+import { Check, Copy, Image as ImageIcon } from "lucide-react";
+import { toast } from "sonner";
+import Eyebrow from "@/components/Eyebrow";
+import ShareHero, { type ShareHeroProps } from "@/components/share/ShareHero";
+
+interface Props {
+  /** Short feed post text (150-250 words). */
+  feedPost: string;
+  /** Long-form, Pulse-safe article text. */
+  pulseArticle: string;
+  /** Props for the hero image, minus the shape/fileName which are set here. */
+  hero: Omit<ShareHeroProps, "shape" | "fileName">;
+  /** Slug used for image filenames. */
+  slug: string;
+}
+
+type Tab = "feed" | "pulse";
+
+const CopyButton = ({ text, label }: { text: string; label: string }) => {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+          setCopied(true);
+          toast.success("Copied", { description: "Paste straight into LinkedIn. Attribution included." });
+          setTimeout(() => setCopied(false), 2200);
+        } catch {
+          toast.error("Couldn't access clipboard");
+        }
+      }}
+      className="inline-flex items-center gap-2 text-sm font-semibold text-foreground border border-foreground/20 rounded-md px-3 py-1.5 hover:bg-foreground hover:text-background transition-colors"
+    >
+      {copied ? <Check size={14} /> : <Copy size={14} />}
+      {copied ? "Copied" : label}
+    </button>
+  );
+};
+
+/**
+ * ShareKit, the three-artifact distribution block:
+ *   1. Hero image (wide for the article header, square for the feed)
+ *   2. Short feed post
+ *   3. Full "detailed article" for LinkedIn Pulse (tables stripped, sections kept)
+ */
+const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
+  const [tab, setTab] = useState<Tab>("feed");
+  const [shape, setShape] = useState<"wide" | "square">("wide");
+  const text = tab === "feed" ? feedPost : pulseArticle;
+
+  return (
+    <section className="mt-14 pt-10 border-t border-foreground/10">
+      <Eyebrow className="mb-2">Share kit</Eyebrow>
+      <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+        Take this to LinkedIn
+      </h2>
+      <p className="text-[15px] text-muted-foreground mb-6 max-w-2xl">
+        Three artifacts, one argument. The image carries the diagram, the short post stops the
+        scroll, the detailed article is plain-text clean for LinkedIn's Pulse editor, no markdown
+        markers and no tables. Paste it, then style the section lines with LinkedIn's H2 and the
+        quoted lines with its quote block.
+      </p>
+
+      {/* Hero image */}
+      <div className="mb-8">
+        <div className="flex items-center gap-2 mb-3">
+          <ImageIcon size={13} className="text-muted-foreground" />
+          <span className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground mr-1">
+            Hero image
+          </span>
+          {(["wide", "square"] as const).map((s) => (
+            <button
+              key={s}
+              onClick={() => setShape(s)}
+              className={`font-mono-marker text-[10px] tracking-[0.12em] uppercase px-2 py-0.5 border rounded ${
+                shape === s
+                  ? "bg-foreground text-background border-foreground"
+                  : "border-foreground/20 text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {s === "wide" ? "1200×627" : "1:1 feed"}
+            </button>
+          ))}
+        </div>
+        <ShareHero {...hero} shape={shape} fileName={`scoi-${slug}-${shape}`} />
+        <p className="font-sketch text-[13px] text-muted-foreground mt-2" style={{ fontWeight: 500 }}>
+          ↑ hover the card and hit PNG to download
+        </p>
+      </div>
+
+      {/* Text tabs */}
+      <div className="flex items-center gap-2 mb-3">
+        {([
+          ["feed", "Short post"],
+          ["pulse", "Detailed article (Pulse)"],
+        ] as const).map(([k, label]) => (
+          <button
+            key={k}
+            onClick={() => setTab(k)}
+            className={`font-mono-marker text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 border rounded ${
+              tab === k
+                ? "bg-foreground text-background border-foreground"
+                : "border-foreground/20 text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <div className="bg-card border border-foreground/10 rounded-md">
+        <pre className="p-5 text-[13.5px] leading-[1.7] text-foreground/85 whitespace-pre-wrap font-body max-h-[420px] overflow-auto">
+          {text}
+        </pre>
+        <div className="border-t border-foreground/10 px-5 py-3 flex flex-wrap items-center gap-3">
+          <CopyButton
+            text={text}
+            label={tab === "feed" ? "Copy feed post" : "Copy full article"}
+          />
+          <span className="text-[12px] text-muted-foreground">
+            {tab === "feed"
+              ? "Paste into “Start a post”, attach the square image."
+              : "Paste into “Write article”, use the 1200×627 image as the cover, then apply H2 to the section lines."}
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ShareKit;
