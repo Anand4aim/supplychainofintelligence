@@ -1,9 +1,11 @@
 // Serializers that turn site content into LinkedIn-Pulse-safe long-form text.
 //
-// LinkedIn's Article editor preserves headings, bold, bullets, numbered lists
-// and blockquotes on paste. It drops tables, colors, and components. So every
-// table-shaped thing (layer scores, sublayer impact) becomes prose bullets here,
-// and the diagram work is carried by the exported hero PNG instead.
+// LinkedIn's Article (Pulse) editor does NOT parse markdown on paste. It keeps
+// line structure only, and the author applies heading / quote styles in-editor.
+// So we emit clean plain text: bare heading lines, bullet characters, and
+// typographic quotes. No #, **, _ or > markers, they would paste literally.
+// Tables never survive, so every table-shaped thing (layer scores, sublayer
+// impact) becomes prose bullets here, and the diagrams are carried by the PNG.
 
 import { LAYER_SHORT_LABEL } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
@@ -86,7 +88,7 @@ const layerBullets = (scores: PulseLayerScore[]): string[] =>
     .map((s) => {
       const short = LAYER_SHORT_LABEL[s.layer] ?? "";
       const bits = [s.owned ? "owned" : "contested", intensityWord(s.intensity)].filter(Boolean);
-      return `- **${s.layer}${short ? ` ${short}` : ""}** (${bits.join(", ")}) — ${clean(s.note)}`;
+      return `• ${s.layer}${short ? ` ${short}` : ""} (${bits.join(", ")}) — ${clean(s.note)}`;
     });
 
 const sublayerBullets = (scores: PulseLayerScore[]): string[] => {
@@ -96,7 +98,7 @@ const sublayerBullets = (scores: PulseLayerScore[]): string[] => {
       const name = typeof sub === "string" ? sub : sub.name;
       const who = typeof sub === "string" ? "" : sub.who;
       if (!name) continue;
-      out.push(`- **${name}**${who ? ` — ${who}` : ""}`);
+      out.push(`• ${name}${who ? ` — ${who}` : ""}`);
     }
   }
   return out.slice(0, 10);
@@ -104,8 +106,6 @@ const sublayerBullets = (scores: PulseLayerScore[]): string[] => {
 
 const attribution = (path: string) =>
   [
-    "---",
-    "",
     AUTHOR_LINE,
     "",
     BRAND_LINE,
@@ -123,98 +123,98 @@ export function buildLivePulse(a: PulseLiveArticle): string {
   L.push(clean(a.headline));
   L.push("");
   if (a.subheadline) {
-    L.push(`_${clean(a.subheadline)}_`);
+    L.push(clean(a.subheadline));
     L.push("");
   }
 
-  L.push("## What happened");
+  L.push("What happened");
   L.push("");
   L.push(clean(a.news_summary));
   L.push("");
 
   const quote = sharpestSentence(an.structural_take);
   if (quote) {
-    L.push(`> ${quote}`);
+    L.push(`“${quote}”`);
     L.push("");
   }
 
   if (an.why_now) {
-    L.push("## Why it matters now");
+    L.push("Why it matters now");
     L.push("");
     L.push(clean(an.why_now));
     L.push("");
   }
 
-  L.push("## The structural read");
+  L.push("The structural read");
   L.push("");
   L.push(clean(an.structural_take));
   L.push("");
 
   const bullets = layerBullets(an.layer_scores ?? []);
   if (bullets.length) {
-    L.push("## Where it lands on the supply chain");
+    L.push("Where it lands on the supply chain");
     L.push("");
     L.push(...bullets);
     L.push("");
-    L.push(`**Verdict: ${verdictLabel(a.verdict)}**`);
+    L.push(`Verdict: ${verdictLabel(a.verdict)}.`);
     L.push("");
   }
 
   const subs = sublayerBullets(an.layer_scores ?? []);
   if (subs.length) {
-    L.push("### The sublayers actually moving");
+    L.push("The sublayers actually moving");
     L.push("");
     L.push(...subs);
     L.push("");
   }
 
   if (an.second_order_effects) {
-    L.push("## Second-order effects");
+    L.push("Second-order effects");
     L.push("");
     L.push(clean(an.second_order_effects));
     L.push("");
   }
 
   if (an.who_wins?.length || an.who_loses?.length) {
-    L.push("## Who gains, who is exposed");
+    L.push("Who gains, who is exposed");
     L.push("");
     if (an.who_wins?.length) {
-      L.push("**Gaining ground**");
+      L.push("Gaining ground");
       L.push("");
-      L.push(...an.who_wins.map((w) => `- **${w.name}** — ${clean(w.reason)}`));
+      L.push(...an.who_wins.map((w) => `• ${w.name} — ${clean(w.reason)}`));
       L.push("");
     }
     if (an.who_loses?.length) {
-      L.push("**Under pressure**");
+      L.push("Under pressure");
       L.push("");
-      L.push(...an.who_loses.map((w) => `- **${w.name}** — ${clean(w.reason)}`));
+      L.push(...an.who_loses.map((w) => `• ${w.name} — ${clean(w.reason)}`));
       L.push("");
     }
   }
 
   if (an.counter_thesis) {
-    L.push("## The counter-case");
+    L.push("The counter-case");
     L.push("");
     L.push(clean(an.counter_thesis));
     L.push("");
   }
 
   if (an.what_to_watch?.length) {
-    L.push("## What to watch next");
+    L.push("What to watch next");
     L.push("");
     L.push(...an.what_to_watch.map((s, i) => `${i + 1}. ${clean(s)}`));
     L.push("");
   }
 
   if (an.new_law_candidate && an.new_law_candidate.trim()) {
-    L.push(`> ${clean(an.new_law_candidate)}`);
+    L.push(`“${clean(an.new_law_candidate)}”`);
     L.push("");
   }
 
   if (a.source_urls?.length) {
-    L.push("## Sources");
+    L.push("Sources");
     L.push("");
-    L.push(...a.source_urls.map((u) => `- ${u}`));
+    L.push(...a.source_urls.map((u) => `• ${u}`));
     L.push("");
   }
 
@@ -261,7 +261,7 @@ export function buildPostPulse(p: PulsePost): string {
   const L: string[] = [];
   L.push(clean(p.title));
   L.push("");
-  L.push(`_${clean(p.subtitle).replace(/\*\*/g, "")}_`);
+  L.push(clean(p.subtitle).replace(/\*\*/g, ""));
   L.push("");
 
   for (const para of p.body) {
@@ -272,23 +272,23 @@ export function buildPostPulse(p: PulsePost): string {
       continue;
     }
     if (t.startsWith("## ")) {
-      L.push(`## ${t.slice(3)}`);
+      L.push(t.slice(3));
       L.push("");
       continue;
     }
     if (t.startsWith(">> ")) {
-      L.push(`> ${t.slice(3)}`);
+      L.push(`“${t.slice(3)}”`);
       L.push("");
       continue;
     }
     if (t.startsWith("^^ ")) {
-      L.push(`_${t.slice(3)}_`);
+      L.push(t.slice(3));
       L.push("");
       continue;
     }
     // Inline poster markers have no text equivalent, they become the hero PNG.
     if (/^\[\[poster:[a-z-]+\]\]$/.test(t)) continue;
-    L.push(t);
+    L.push(t.replace(/\*\*/g, ""));
     L.push("");
   }
 
