@@ -461,6 +461,19 @@ const LiveArticleDetail = () => {
                 (article.analysis.layer_scores ?? []).map((s) => [s.layer, s.intensity ?? (s.owned ? 2 : 0)]),
               ),
             }}
+            battle={{
+              title: article.headline,
+              date: article.published_at,
+              intensities: Object.fromEntries(
+                (article.analysis.layer_scores ?? []).map((s) => [s.layer, s.intensity ?? (s.owned ? 2 : 0)]),
+              ),
+              notes: Object.fromEntries(
+                (article.analysis.layer_scores ?? []).filter((s) => s.note).map((s) => [s.layer, s.note]),
+              ),
+              wins: article.analysis.who_wins ?? [],
+              loses: article.analysis.who_loses ?? [],
+              counter: article.analysis.counter_thesis ?? article.analysis.new_law_candidate ?? null,
+            }}
           />
 
           {/* Inbox capture, last */}
