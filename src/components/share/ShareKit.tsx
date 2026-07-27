@@ -4,12 +4,13 @@ import { toast } from "sonner";
 import Eyebrow from "@/components/Eyebrow";
 import ShareHero, { type ShareHeroProps } from "@/components/share/ShareHero";
 import BattleCard, { type BattleCardProps } from "@/components/share/BattleCard";
+import type { PulseDoc } from "@/lib/pulseText";
 
 interface Props {
   /** Short feed post text (150-250 words). */
   feedPost: string;
-  /** Long-form, Pulse-safe article text. */
-  pulseArticle: string;
+  /** Long-form Pulse document: rich HTML flavour + plain-text fallback. */
+  pulseArticle: PulseDoc;
   /** Props for the hero image, minus the shape/fileName which are set here. */
   hero: Omit<ShareHeroProps, "shape" | "fileName">;
   /** Optional battle-card data: who moves where, who gains, who is exposed. */
@@ -20,15 +21,39 @@ interface Props {
 
 type Tab = "feed" | "pulse";
 
-const CopyButton = ({ text, label }: { text: string; label: string }) => {
+/**
+ * Copies rich text when `html` is given. Pulse keeps h2 / bold / italic /
+ * blockquote / lists from a text/html clipboard flavour, and falls back to the
+ * plain flavour anywhere that strips formatting.
+ */
+const CopyButton = ({
+  text,
+  html,
+  label,
+  note,
+}: {
+  text: string;
+  html?: string;
+  label: string;
+  note: string;
+}) => {
   const [copied, setCopied] = useState(false);
   return (
     <button
       onClick={async () => {
         try {
-          await navigator.clipboard.writeText(text);
+          if (html && typeof ClipboardItem !== "undefined" && navigator.clipboard?.write) {
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                "text/html": new Blob([html], { type: "text/html" }),
+                "text/plain": new Blob([text], { type: "text/plain" }),
+              }),
+            ]);
+          } else {
+            await navigator.clipboard.writeText(text);
+          }
           setCopied(true);
-          toast.success("Copied", { description: "Paste straight into LinkedIn. Attribution included." });
+          toast.success("Copied", { description: note });
           setTimeout(() => setCopied(false), 2200);
         } catch {
           toast.error("Couldn't access clipboard");
@@ -41,6 +66,7 @@ const CopyButton = ({ text, label }: { text: string; label: string }) => {
     </button>
   );
 };
+
 
 /**
  * ShareKit, the three-artifact distribution block:
