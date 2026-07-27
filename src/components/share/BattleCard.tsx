@@ -75,13 +75,13 @@ const BattleCard = ({
       ) : (
         <ul className="space-y-1.5 md:space-y-2 overflow-hidden">
           {rows.slice(0, 2).map((r, i) => (
-            <li key={i} className="leading-[1.25]">
+            <li key={i} className="leading-[1.25] line-clamp-2">
               <span className="font-display font-bold text-foreground text-[12px] md:text-[15px]">
                 {r.name}
               </span>
               <span className="font-body text-foreground/70 text-[10px] md:text-[12.5px]">
                 {" "}
-                — {clip(r.reason, square ? 60 : 74)}
+                — {clip(r.reason, square ? 58 : 66)}
               </span>
             </li>
           ))}
@@ -184,7 +184,7 @@ const BattleCard = ({
             <span className="font-mono-marker text-[8px] md:text-[9.5px] tracking-[0.16em] uppercase text-muted-foreground block mb-0.5">
               Expected counter-move
             </span>
-            {counter ? clip(counter, square ? 120 : 150) : "Defend the layer below: proprietary outcome data and the verification boundary."}
+            {counter ? clip(counter, square ? 118 : 132) : "Defend the layer below: proprietary outcome data and the verification boundary."}
           </p>
           <p className="font-mono-marker text-[8px] md:text-[10px] tracking-[0.15em] uppercase text-foreground/60 shrink-0 text-right">
             Anand Arivukkarasu
