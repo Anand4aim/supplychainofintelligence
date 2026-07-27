@@ -95,10 +95,10 @@ const ShareHero = ({
           </h2>
           {subtitle && (
             <p
-              className={`font-sketch text-foreground/75 leading-snug mt-3 pl-3 ${
-                square ? "text-[15px] md:text-[18px]" : "text-[14px] md:text-[17px]"
+              className={`font-body text-foreground/75 leading-snug mt-3 pl-3 ${
+                square ? "text-[14px] md:text-[16px]" : "text-[13px] md:text-[15px]"
               }`}
-              style={{ fontWeight: 500, borderLeft: "3px solid hsl(0 65% 48%)" }}
+              style={{ borderLeft: "3px solid hsl(0 65% 48%)", textTransform: "none" }}
             >
               {subtitle.length > 180 ? `${subtitle.slice(0, 177)}…` : subtitle}
             </p>

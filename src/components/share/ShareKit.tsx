@@ -121,7 +121,7 @@ const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
           <span className="text-[12px] text-muted-foreground">
             {tab === "feed"
               ? "Paste into “Start a post”, attach the square image."
-              : "Paste into “Write article”, use the 1200×627 image as the cover."}
+              : "Paste into “Write article”, use the 1200×627 image as the cover, then apply H2 to the section lines."}
           </span>
         </div>
       </div>
