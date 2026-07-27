@@ -64,8 +64,6 @@ Deno.serve(async (req) => {
 
 
 
-    const supabase = createClient(supabaseUrl, serviceKey);
-
     let query = supabase
       .from("story_candidates")
       .select("*")
