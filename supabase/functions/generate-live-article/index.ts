@@ -270,7 +270,9 @@ Deno.serve(async (req) => {
       linkedin_post: analysis.linkedin_post,
       verdict: analysis.verdict,
       vertical: analysis.vertical,
+      status: requestedStatus,
     };
+
     // Date priority: explicit published_at param > model-extracted news_date > now().
     // Clamp to now(), the model sometimes hallucinates future dates (e.g. "2026-06-05"),
     // which then pin the article to the top of the feed forever. Past dates are fine.
