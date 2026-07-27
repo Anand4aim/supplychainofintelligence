@@ -23,3 +23,10 @@ verify_jwt = false
 
 [functions.curate-story-candidate]
 verify_jwt = false
+
+[functions.auto-publish-candidates]
+verify_jwt = false
+
+[functions.audit-article]
+verify_jwt = false
+
