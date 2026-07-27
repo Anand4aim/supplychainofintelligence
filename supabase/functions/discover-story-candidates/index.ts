@@ -4,6 +4,7 @@
 // `story_candidates` for human approval. NO article is generated here.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { filterTier1Urls, TIER1_OUTLET_DOMAINS, TIER1_COMPANY_DOMAINS, extractDomain } from "../_shared/tier1-sources.ts";
+import { isAuthorizedJobCall } from "../_shared/job-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
