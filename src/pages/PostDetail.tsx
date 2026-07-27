@@ -197,6 +197,20 @@ const PostDetail = () => {
           </div>
 
 
+
+          {/* LinkedIn share kit: hero image + short post + Pulse article */}
+          <ShareKit
+            slug={post.slug}
+            feedPost={buildPostFeed(post)}
+            pulseArticle={buildPostPulse(post)}
+            hero={{
+              eyebrow: post.kind === "opinion" ? "Opinion" : "Essay",
+              title: post.title,
+              subtitle: post.subtitle.replace(/\*\*/g, ""),
+              date: post.publishedAt,
+            }}
+          />
+
           {/* Tail CTA, drive back to framework + LinkedIn */}
           <div className="mt-14 pt-8 border-t border-border">
             <p className="text-sm text-muted-foreground mb-4">
