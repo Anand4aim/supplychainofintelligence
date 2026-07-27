@@ -292,20 +292,25 @@ Deno.serve(async (req) => {
     if (error) throw error;
     console.log("[live-article] published:", inserted.slug);
 
-    // Fire-and-forget refinement loop (2 critics + enhancer). Don't block the response.
+    // Refinement (2 critics + enhancer) is slow. Callers that orchestrate their
+    // own pipeline pass skip_refine and run refine-live-article as its own step,
+    // otherwise the combined chain blows the gateway timeout.
     let refineStatus: unknown = "skipped";
-    try {
-      const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
-        method: "POST",
-        headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
-        body: JSON.stringify({ article_id: inserted.id, passcode: expected }),
-      });
-      refineStatus = await refineRes.json();
-      console.log("[live-article] refine result:", JSON.stringify(refineStatus));
-    } catch (refineErr) {
-      console.error("[live-article] refine failed (article still published):", refineErr);
-      refineStatus = { success: false, error: String(refineErr) };
+    if (!skipRefine) {
+      try {
+        const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
+          body: JSON.stringify({ article_id: inserted.id, passcode: expected }),
+        });
+        refineStatus = await refineRes.json();
+        console.log("[live-article] refine result:", JSON.stringify(refineStatus));
+      } catch (refineErr) {
+        console.error("[live-article] refine failed (article still published):", refineErr);
+        refineStatus = { success: false, error: String(refineErr) };
+      }
     }
+
 
     return new Response(JSON.stringify({ success: true, article: inserted, refine: refineStatus }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
