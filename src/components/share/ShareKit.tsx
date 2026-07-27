@@ -160,21 +160,35 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
       </div>
 
       <div className="bg-card border border-foreground/10 rounded-md">
-        <pre className="p-5 text-[13.5px] leading-[1.7] text-foreground/85 whitespace-pre-wrap font-body max-h-[420px] overflow-auto">
-          {text}
-        </pre>
+        {tab === "feed" ? (
+          <pre className="p-5 text-[13.5px] leading-[1.7] text-foreground/85 whitespace-pre-wrap font-body max-h-[420px] overflow-auto">
+            {feedPost}
+          </pre>
+        ) : (
+          <div
+            className="pulse-preview p-5 text-[14px] leading-[1.7] text-foreground/85 font-body max-h-[520px] overflow-auto"
+            dangerouslySetInnerHTML={{ __html: pulseArticle.html }}
+          />
+        )}
         <div className="border-t border-foreground/10 px-5 py-3 flex flex-wrap items-center gap-3">
           <CopyButton
-            text={text}
-            label={tab === "feed" ? "Copy feed post" : "Copy full article"}
+            text={tab === "feed" ? feedPost : pulseArticle.text}
+            html={tab === "pulse" ? pulseArticle.html : undefined}
+            label={tab === "feed" ? "Copy feed post" : "Copy formatted article"}
+            note={
+              tab === "feed"
+                ? "Paste straight into LinkedIn. Attribution included."
+                : "Rich text copied. Headings, bold, quotes and lists survive the paste into Pulse."
+            }
           />
           <span className="text-[12px] text-muted-foreground">
             {tab === "feed"
               ? "Paste into “Start a post”, attach the square image."
-              : "Paste into “Write article”, use the 1200×627 image as the cover, then apply H2 to the section lines."}
+              : "Paste into “Write article”, use the 1200×627 image as the cover. Formatting comes across as-is."}
           </span>
         </div>
       </div>
+
     </section>
   );
 };
