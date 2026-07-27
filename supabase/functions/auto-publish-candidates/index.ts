@@ -9,6 +9,7 @@
 //
 // Fail-closed: requires REMASTER_ADMIN_PASSCODE on every call.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { isAuthorizedJobCall } from "../_shared/job-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
