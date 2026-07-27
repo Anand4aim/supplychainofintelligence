@@ -78,7 +78,6 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
   const [tab, setTab] = useState<Tab>("feed");
   const [shape, setShape] = useState<"wide" | "square">("wide");
   const [card, setCard] = useState<"hero" | "battle">(battle ? "battle" : "hero");
-  const text = tab === "feed" ? feedPost : pulseArticle;
 
   return (
     <section className="mt-14 pt-10 border-t border-foreground/10">
@@ -88,9 +87,9 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
       </h2>
       <p className="text-[15px] text-muted-foreground mb-6 max-w-2xl">
         Three artifacts, one argument. The image carries the diagram, the short post stops the
-        scroll, the detailed article is plain-text clean for LinkedIn's Pulse editor, no markdown
-        markers and no tables. Paste it, then style the section lines with LinkedIn's H2 and the
-        quoted lines with its quote block.
+        scroll, and the detailed article copies as rich text, so headings, bold lead-ins, italic
+        standfirsts, pull-quotes and bulleted lists land in LinkedIn's Pulse editor already
+        styled. No markdown markers, no tables, nothing to reformat by hand.
       </p>
 
       {/* Hero image */}
