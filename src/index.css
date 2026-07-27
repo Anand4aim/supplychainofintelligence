@@ -228,3 +228,38 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* LinkedIn Pulse preview, mirrors how the pasted rich text renders in Pulse. */
+.pulse-preview h1 {
+  @apply font-display text-[22px] font-bold text-foreground leading-tight mb-2;
+}
+.pulse-preview h2 {
+  @apply font-display text-[17px] font-bold text-foreground mt-6 mb-2;
+}
+.pulse-preview p {
+  @apply mb-3;
+}
+.pulse-preview strong {
+  @apply font-semibold text-foreground;
+}
+.pulse-preview em {
+  @apply italic;
+}
+.pulse-preview blockquote {
+  @apply border-l-4 border-accent pl-4 my-4 text-foreground;
+}
+.pulse-preview blockquote p {
+  @apply mb-0 text-[15px];
+}
+.pulse-preview ul {
+  @apply list-disc pl-5 mb-3 space-y-1.5;
+}
+.pulse-preview ol {
+  @apply list-decimal pl-5 mb-3 space-y-1.5;
+}
+.pulse-preview hr {
+  @apply my-5 border-foreground/15;
+}
+.pulse-preview a {
+  @apply text-accent underline break-words;
+}
