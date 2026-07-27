@@ -3,6 +3,7 @@ import { Check, Copy, Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 import Eyebrow from "@/components/Eyebrow";
 import ShareHero, { type ShareHeroProps } from "@/components/share/ShareHero";
+import BattleCard, { type BattleCardProps } from "@/components/share/BattleCard";
 
 interface Props {
   /** Short feed post text (150-250 words). */
@@ -11,6 +12,8 @@ interface Props {
   pulseArticle: string;
   /** Props for the hero image, minus the shape/fileName which are set here. */
   hero: Omit<ShareHeroProps, "shape" | "fileName">;
+  /** Optional battle-card data: who moves where, who gains, who is exposed. */
+  battle?: Omit<BattleCardProps, "shape" | "fileName">;
   /** Slug used for image filenames. */
   slug: string;
 }
@@ -45,9 +48,10 @@ const CopyButton = ({ text, label }: { text: string; label: string }) => {
  *   2. Short feed post
  *   3. Full "detailed article" for LinkedIn Pulse (tables stripped, sections kept)
  */
-const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
+const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
   const [tab, setTab] = useState<Tab>("feed");
   const [shape, setShape] = useState<"wide" | "square">("wide");
+  const [card, setCard] = useState<"hero" | "battle">(battle ? "battle" : "hero");
   const text = tab === "feed" ? feedPost : pulseArticle;
 
   return (
@@ -70,6 +74,21 @@ const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
           <span className="font-mono-marker text-[10px] tracking-[0.14em] uppercase text-muted-foreground mr-1">
             Hero image
           </span>
+          {battle &&
+            (["hero", "battle"] as const).map((c) => (
+              <button
+                key={c}
+                onClick={() => setCard(c)}
+                className={`font-mono-marker text-[10px] tracking-[0.12em] uppercase px-2 py-0.5 border rounded ${
+                  card === c
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-foreground/20 text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {c === "hero" ? "Headline" : "Battle card"}
+              </button>
+            ))}
+          <span className="w-px h-4 bg-foreground/15 mx-1" />
           {(["wide", "square"] as const).map((s) => (
             <button
               key={s}
@@ -84,7 +103,11 @@ const ShareKit = ({ feedPost, pulseArticle, hero, slug }: Props) => {
             </button>
           ))}
         </div>
-        <ShareHero {...hero} shape={shape} fileName={`scoi-${slug}-${shape}`} />
+        {battle && card === "battle" ? (
+          <BattleCard {...battle} shape={shape} fileName={`scoi-${slug}-battle-${shape}`} />
+        ) : (
+          <ShareHero {...hero} shape={shape} fileName={`scoi-${slug}-${shape}`} />
+        )}
         <p className="font-sketch text-[13px] text-muted-foreground mt-2" style={{ fontWeight: 500 }}>
           ↑ hover the card and hit PNG to download
         </p>
