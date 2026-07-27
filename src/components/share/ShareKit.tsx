@@ -4,12 +4,13 @@ import { toast } from "sonner";
 import Eyebrow from "@/components/Eyebrow";
 import ShareHero, { type ShareHeroProps } from "@/components/share/ShareHero";
 import BattleCard, { type BattleCardProps } from "@/components/share/BattleCard";
+import type { PulseDoc } from "@/lib/pulseText";
 
 interface Props {
   /** Short feed post text (150-250 words). */
   feedPost: string;
-  /** Long-form, Pulse-safe article text. */
-  pulseArticle: string;
+  /** Long-form Pulse document: rich HTML flavour + plain-text fallback. */
+  pulseArticle: PulseDoc;
   /** Props for the hero image, minus the shape/fileName which are set here. */
   hero: Omit<ShareHeroProps, "shape" | "fileName">;
   /** Optional battle-card data: who moves where, who gains, who is exposed. */
@@ -20,15 +21,39 @@ interface Props {
 
 type Tab = "feed" | "pulse";
 
-const CopyButton = ({ text, label }: { text: string; label: string }) => {
+/**
+ * Copies rich text when `html` is given. Pulse keeps h2 / bold / italic /
+ * blockquote / lists from a text/html clipboard flavour, and falls back to the
+ * plain flavour anywhere that strips formatting.
+ */
+const CopyButton = ({
+  text,
+  html,
+  label,
+  note,
+}: {
+  text: string;
+  html?: string;
+  label: string;
+  note: string;
+}) => {
   const [copied, setCopied] = useState(false);
   return (
     <button
       onClick={async () => {
         try {
-          await navigator.clipboard.writeText(text);
+          if (html && typeof ClipboardItem !== "undefined" && navigator.clipboard?.write) {
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                "text/html": new Blob([html], { type: "text/html" }),
+                "text/plain": new Blob([text], { type: "text/plain" }),
+              }),
+            ]);
+          } else {
+            await navigator.clipboard.writeText(text);
+          }
           setCopied(true);
-          toast.success("Copied", { description: "Paste straight into LinkedIn. Attribution included." });
+          toast.success("Copied", { description: note });
           setTimeout(() => setCopied(false), 2200);
         } catch {
           toast.error("Couldn't access clipboard");
@@ -42,6 +67,7 @@ const CopyButton = ({ text, label }: { text: string; label: string }) => {
   );
 };
 
+
 /**
  * ShareKit, the three-artifact distribution block:
  *   1. Hero image (wide for the article header, square for the feed)
@@ -52,7 +78,6 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
   const [tab, setTab] = useState<Tab>("feed");
   const [shape, setShape] = useState<"wide" | "square">("wide");
   const [card, setCard] = useState<"hero" | "battle">(battle ? "battle" : "hero");
-  const text = tab === "feed" ? feedPost : pulseArticle;
 
   return (
     <section className="mt-14 pt-10 border-t border-foreground/10">
@@ -62,9 +87,9 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
       </h2>
       <p className="text-[15px] text-muted-foreground mb-6 max-w-2xl">
         Three artifacts, one argument. The image carries the diagram, the short post stops the
-        scroll, the detailed article is plain-text clean for LinkedIn's Pulse editor, no markdown
-        markers and no tables. Paste it, then style the section lines with LinkedIn's H2 and the
-        quoted lines with its quote block.
+        scroll, and the detailed article copies as rich text, so headings, bold lead-ins, italic
+        standfirsts, pull-quotes and bulleted lists land in LinkedIn's Pulse editor already
+        styled. No markdown markers, no tables, nothing to reformat by hand.
       </p>
 
       {/* Hero image */}
@@ -134,21 +159,35 @@ const ShareKit = ({ feedPost, pulseArticle, hero, battle, slug }: Props) => {
       </div>
 
       <div className="bg-card border border-foreground/10 rounded-md">
-        <pre className="p-5 text-[13.5px] leading-[1.7] text-foreground/85 whitespace-pre-wrap font-body max-h-[420px] overflow-auto">
-          {text}
-        </pre>
+        {tab === "feed" ? (
+          <pre className="p-5 text-[13.5px] leading-[1.7] text-foreground/85 whitespace-pre-wrap font-body max-h-[420px] overflow-auto">
+            {feedPost}
+          </pre>
+        ) : (
+          <div
+            className="pulse-preview p-5 text-[14px] leading-[1.7] text-foreground/85 font-body max-h-[520px] overflow-auto"
+            dangerouslySetInnerHTML={{ __html: pulseArticle.html }}
+          />
+        )}
         <div className="border-t border-foreground/10 px-5 py-3 flex flex-wrap items-center gap-3">
           <CopyButton
-            text={text}
-            label={tab === "feed" ? "Copy feed post" : "Copy full article"}
+            text={tab === "feed" ? feedPost : pulseArticle.text}
+            html={tab === "pulse" ? pulseArticle.html : undefined}
+            label={tab === "feed" ? "Copy feed post" : "Copy formatted article"}
+            note={
+              tab === "feed"
+                ? "Paste straight into LinkedIn. Attribution included."
+                : "Rich text copied. Headings, bold, quotes and lists survive the paste into Pulse."
+            }
           />
           <span className="text-[12px] text-muted-foreground">
             {tab === "feed"
               ? "Paste into “Start a post”, attach the square image."
-              : "Paste into “Write article”, use the 1200×627 image as the cover, then apply H2 to the section lines."}
+              : "Paste into “Write article”, use the 1200×627 image as the cover. Formatting comes across as-is."}
           </span>
         </div>
       </div>
+
     </section>
   );
 };

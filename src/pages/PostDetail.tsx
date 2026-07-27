@@ -19,7 +19,7 @@ import FrameworkComparisonHero from "@/components/posts/FrameworkComparisonHero"
 import FrameworkCoverageMatrix from "@/components/posts/FrameworkCoverageMatrix";
 import { getPostBySlug } from "@/data/posts";
 import ShareKit from "@/components/share/ShareKit";
-import { buildPostPulse, buildPostFeed } from "@/lib/pulseText";
+import { buildPostPulseDoc, buildPostFeed } from "@/lib/pulseText";
 import { ArrowLeft, Linkedin } from "lucide-react";
 
 // Inline poster markers in post body:
@@ -202,7 +202,7 @@ const PostDetail = () => {
           <ShareKit
             slug={post.slug}
             feedPost={buildPostFeed(post)}
-            pulseArticle={buildPostPulse(post)}
+            pulseArticle={buildPostPulseDoc(post)}
             hero={{
               eyebrow: post.kind === "opinion" ? "Opinion" : "Essay",
               title: post.title,
