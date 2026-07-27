@@ -4,6 +4,7 @@
 // `story_candidates` for human approval. NO article is generated here.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { filterTier1Urls, TIER1_OUTLET_DOMAINS, TIER1_COMPANY_DOMAINS, extractDomain } from "../_shared/tier1-sources.ts";
+import { isAuthorizedJobCall } from "../_shared/job-auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -71,22 +72,25 @@ async function fetchCandidates(perplexityKey: string): Promise<Candidate[]> {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
-    const expectedPasscode = Deno.env.get("REMASTER_ADMIN_PASSCODE");
-    if (!expectedPasscode) throw new Error("REMASTER_ADMIN_PASSCODE not configured");
-    const body = await req.json().catch(() => ({} as { passcode?: string }));
-    if (!body?.passcode || body.passcode !== expectedPasscode) {
-      await new Promise((r) => setTimeout(r, 250));
-      return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), {
-        status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
     const perplexityKey = Deno.env.get("PERPLEXITY_API_KEY");
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     if (!perplexityKey || !supabaseUrl || !serviceKey) throw new Error("Missing env");
 
     const supabase = createClient(supabaseUrl, serviceKey);
+
+    const body = await req.json().catch(() => ({} as { passcode?: string; cron_token?: string }));
+    const ok = await isAuthorizedJobCall(supabase, {
+      passcode: body?.passcode,
+      cronToken: body?.cron_token,
+    });
+    if (!ok) {
+      return new Response(JSON.stringify({ ok: false, error: "unauthorized" }), {
+        status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+
     const raw = await fetchCandidates(perplexityKey);
 
     const today = new Date().toISOString().slice(0, 10);

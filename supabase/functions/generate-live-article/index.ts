@@ -206,15 +206,22 @@ Deno.serve(async (req) => {
 
     let topic: string | undefined;
     let publishedAt: string | undefined;
+    // "draft" keeps the piece off /live until a quality gate clears it.
+    let requestedStatus = "published";
+    let skipRefine = false;
     let passcode: string | null = req.headers.get("x-admin-passcode");
     try {
       if (req.method === "POST") {
         const body = await req.json();
         topic = typeof body?.topic === "string" ? body.topic : undefined;
         publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
+        if (body?.status === "draft") requestedStatus = "draft";
+        if (body?.skip_refine === true) skipRefine = true;
         passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
+
+
     // Auth: fail-closed passcode check. pg_cron / weekly schedule must
     // send `{"passcode":"..."}` (or an `x-admin-passcode` header). Without
     // REMASTER_ADMIN_PASSCODE configured and matched, every request 401s.
@@ -266,7 +273,9 @@ Deno.serve(async (req) => {
       linkedin_post: analysis.linkedin_post,
       verdict: analysis.verdict,
       vertical: analysis.vertical,
+      status: requestedStatus,
     };
+
     // Date priority: explicit published_at param > model-extracted news_date > now().
     // Clamp to now(), the model sometimes hallucinates future dates (e.g. "2026-06-05"),
     // which then pin the article to the top of the feed forever. Past dates are fine.
@@ -286,20 +295,25 @@ Deno.serve(async (req) => {
     if (error) throw error;
     console.log("[live-article] published:", inserted.slug);
 
-    // Fire-and-forget refinement loop (2 critics + enhancer). Don't block the response.
+    // Refinement (2 critics + enhancer) is slow. Callers that orchestrate their
+    // own pipeline pass skip_refine and run refine-live-article as its own step,
+    // otherwise the combined chain blows the gateway timeout.
     let refineStatus: unknown = "skipped";
-    try {
-      const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
-        method: "POST",
-        headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
-        body: JSON.stringify({ article_id: inserted.id, passcode: expected }),
-      });
-      refineStatus = await refineRes.json();
-      console.log("[live-article] refine result:", JSON.stringify(refineStatus));
-    } catch (refineErr) {
-      console.error("[live-article] refine failed (article still published):", refineErr);
-      refineStatus = { success: false, error: String(refineErr) };
+    if (!skipRefine) {
+      try {
+        const refineRes = await fetch(`${supabaseUrl}/functions/v1/refine-live-article`, {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${serviceKey}`, "Content-Type": "application/json", "x-admin-passcode": expected ?? "" },
+          body: JSON.stringify({ article_id: inserted.id, passcode: expected }),
+        });
+        refineStatus = await refineRes.json();
+        console.log("[live-article] refine result:", JSON.stringify(refineStatus));
+      } catch (refineErr) {
+        console.error("[live-article] refine failed (article still published):", refineErr);
+        refineStatus = { success: false, error: String(refineErr) };
+      }
     }
+
 
     return new Response(JSON.stringify({ success: true, article: inserted, refine: refineStatus }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
