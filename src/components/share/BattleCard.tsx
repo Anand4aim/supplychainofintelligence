@@ -94,7 +94,7 @@ const BattleCard = ({
     <ExportablePng fileName={fileName} caption="Battle card" exportBackground="hsl(40 30% 97%)">
       <div
         className={`relative w-full mx-auto flex flex-col ${
-          square ? "aspect-square max-w-[600px] p-6 md:p-8" : "aspect-[1200/627] max-w-[820px] p-6 md:p-9"
+          square ? "aspect-square max-w-[600px] p-6 md:p-8" : "aspect-[1200/800] max-w-[820px] p-6 md:p-9"
         }`}
         style={{
           background: "linear-gradient(150deg, hsl(40 30% 97%) 0%, hsl(38 26% 93%) 100%)",
