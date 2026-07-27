@@ -1,13 +1,18 @@
 // Auto-publish pipeline: no human approval gate.
 //
-// For each pending story candidate:
-//   1. generate-live-article writes the piece as a DRAFT (not visible on /live)
-//   2. two independent critics from different vendors audit it (cross-LLM)
-//   3. composite score >= PUBLISH_THRESHOLD (90/100 == 9+/10) -> published
-//      otherwise the article stays a draft with the score recorded, so it can
-//      be fixed by hand instead of shipping weak analysis.
+// Publishing a candidate takes four slow model passes (draft, refine, two
+// critics). Chaining them inside one request blows the gateway timeout, so this
+// function is a RESUMABLE STATE MACHINE: each invocation advances exactly one
+// candidate by exactly one step, then returns. Cron ticks it every few minutes.
 //
-// Fail-closed: requires REMASTER_ADMIN_PASSCODE on every call.
+//   pending   -> draft written (status "draft", invisible on /live)  -> drafting
+//   drafting  -> refine-live-article (2 critics + enhancer)          -> drafted
+//   drafted   -> one cross-LLM audit per tick                        -> auditing
+//   auditing  -> both critics in? score >= threshold ? published : held
+//
+// Fail-closed: requires the admin passcode or the scheduler token.
+// Never publishes on a partial critic panel, and never publishes below the bar,
+// a weak piece stays a draft with its score recorded instead of shipping.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { isAuthorizedJobCall } from "../_shared/job-auth.ts";
 
@@ -20,6 +25,8 @@ const corsHeaders = {
 const PUBLISH_THRESHOLD = 90;
 // Two vendors, deliberately. A single family grading itself is not a cross-check.
 const CRITIC_MODELS = ["google/gemini-2.5-pro", "openai/gpt-5"];
+// A candidate stuck mid-pipeline (function crashed, timeout) is retried after this.
+const STALE_MINUTES = 20;
 
 type Json = Record<string, unknown>;
 
@@ -42,7 +49,6 @@ Deno.serve(async (req) => {
     const body = (await req.json().catch(() => ({}))) as {
       passcode?: string;
       cron_token?: string;
-      max?: number;
       threshold?: number;
       candidate_id?: string;
     };
@@ -59,134 +65,164 @@ Deno.serve(async (req) => {
       typeof body.threshold === "number" && body.threshold >= 0 && body.threshold <= 100
         ? body.threshold
         : PUBLISH_THRESHOLD;
-    // One per invocation by default: generation + refinement + two audits is slow.
-    const max = Math.min(Math.max(Number(body.max) || 1, 1), 3);
 
+    const call = async (fn: string, payload: Json) => {
+      const res = await fetch(`${supabaseUrl}/functions/v1/${fn}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${serviceKey}`,
+          apikey: serviceKey,
+        },
+        body: JSON.stringify({ ...payload, passcode: expected }),
+      });
+      const text = await res.text();
+      let parsed: Json = {};
+      try { parsed = JSON.parse(text); } catch { parsed = { raw: text.slice(0, 300) }; }
+      return { ok: res.ok, status: res.status, body: parsed };
+    };
 
+    // ---- pick the one candidate to advance ------------------------------
+    const staleBefore = new Date(Date.now() - STALE_MINUTES * 60_000).toISOString();
 
-    let query = supabase
-      .from("story_candidates")
-      .select("*")
-      .eq("status", "pending")
-      .order("tier1_verified", { ascending: false })
-      .order("created_at", { ascending: false })
-      .limit(max);
-    if (body.candidate_id) query = supabase.from("story_candidates").select("*").eq("id", body.candidate_id).limit(1);
+    const pickInFlight = async () => {
+      const { data } = await supabase
+        .from("story_candidates")
+        .select("*")
+        .in("status", ["drafting", "drafted", "auditing"])
+        .order("updated_at", { ascending: true })
+        .limit(1);
+      return data?.[0] ?? null;
+    };
+    const pickNew = async () => {
+      const { data } = await supabase
+        .from("story_candidates")
+        .select("*")
+        .eq("status", "pending")
+        .order("tier1_verified", { ascending: false })
+        .order("created_at", { ascending: false })
+        .limit(1);
+      return data?.[0] ?? null;
+    };
 
-    const { data: candidates, error: qErr } = await query;
-    if (qErr) throw qErr;
-    if (!candidates?.length) return json({ ok: true, processed: [], note: "no pending candidates" });
+    let candidate: any = null;
+    if (body.candidate_id) {
+      const { data } = await supabase.from("story_candidates").select("*").eq("id", body.candidate_id).maybeSingle();
+      candidate = data;
+    } else {
+      // Finish what's already started before opening a new one.
+      candidate = (await pickInFlight()) ?? (await pickNew());
+    }
+    if (!candidate) return json({ ok: true, step: "idle", note: "nothing to do" });
 
-    const results: Json[] = [];
+    const runId = (candidate.notes || "").match(/run:([a-z0-9-]+)/)?.[1] ?? null;
+    const articleId: string | null = candidate.published_article_id ?? null;
 
-    for (const candidate of candidates) {
-      if (candidate.status !== "pending") continue;
-      await supabase.from("story_candidates").update({ status: "processing" }).eq("id", candidate.id);
+    const touch = (patch: Json) =>
+      supabase
+        .from("story_candidates")
+        .update({ ...patch, updated_at: new Date().toISOString() })
+        .eq("id", candidate.id);
 
-      try {
-        // 1. Draft.
-        const sources = Array.isArray(candidate.source_urls) ? candidate.source_urls : [];
-        const topic = `${candidate.headline}. ${candidate.summary}\n\nKnown sources: ${sources.join(", ")}`;
-        const genRes = await fetch(`${supabaseUrl}/functions/v1/generate-live-article`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${serviceKey}`,
-            apikey: serviceKey,
-          },
-          body: JSON.stringify({ topic, passcode: expected, status: "draft" }),
-        });
-        const genJson = await genRes.json().catch(() => ({}));
-        if (!genRes.ok || !genJson?.success || !genJson?.article?.id) {
-          throw new Error(`generation failed: ${genJson?.error ?? genRes.statusText}`);
-        }
-        const article = genJson.article as { id: string; slug: string; headline: string };
-
-        // 2. Cross-LLM audit, same run so the summary is a real consensus.
-        const runId = `auto-${Date.now().toString(36)}-${article.id.slice(0, 8)}`;
-        const auditErrors: string[] = [];
-        for (const model of CRITIC_MODELS) {
-          const aRes = await fetch(`${supabaseUrl}/functions/v1/audit-article`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${serviceKey}`,
-              apikey: serviceKey,
-            },
-            body: JSON.stringify({
-              article_id: article.id,
-              run_id: runId,
-              model,
-              passcode: expected,
-              models_expected: CRITIC_MODELS,
-            }),
-          });
-          if (!aRes.ok) auditErrors.push(`${model}: ${await aRes.text()}`);
-          else await aRes.text();
-        }
-
-        const { data: summary } = await supabase
-          .from("article_audit_summary")
-          .select("composite_score, composite_severity, models_run")
-          .eq("article_id", article.id)
-          .eq("run_id", runId)
-          .maybeSingle();
-
-        const score = summary?.composite_score ?? null;
-        const critics = (summary?.models_run ?? []).length;
-        // Never publish on a partial panel: one grader is not a cross-check.
-        const passed = score !== null && score >= threshold && critics >= CRITIC_MODELS.length;
-
-        if (passed) {
-          await supabase
-            .from("live_articles")
-            .update({ status: "published", published_at: new Date().toISOString() })
-            .eq("id", article.id);
-          await supabase
-            .from("story_candidates")
-            .update({
-              status: "published",
-              published_article_id: article.id,
-              notes: `auto-published, cross-LLM ${score}/100 (${critics} critics, run ${runId})`,
-            })
-            .eq("id", candidate.id);
-        } else {
-          await supabase
-            .from("story_candidates")
-            .update({
-              status: "held",
-              published_article_id: article.id,
-              rejected_reason:
-                score === null
-                  ? `audit produced no score${auditErrors.length ? `: ${auditErrors[0]}` : ""}`
-                  : `scored ${score}/100 with ${critics} critics, below ${threshold}. Draft kept for manual fix.`,
-              notes: `draft: /live/${article.slug} (run ${runId})`,
-            })
-            .eq("id", candidate.id);
-        }
-
-        results.push({
-          candidate: candidate.headline,
-          article_id: article.id,
-          slug: article.slug,
-          score,
-          critics,
-          threshold,
-          published: passed,
-          audit_errors: auditErrors,
-        });
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
-        console.error("[auto-publish] candidate failed:", candidate.id, msg);
-        await supabase
-          .from("story_candidates")
-          .update({ status: "pending", rejected_reason: msg.slice(0, 500) })
-          .eq("id", candidate.id);
-        results.push({ candidate: candidate.headline, error: msg, published: false });
+    // ---- step: pending -> draft -----------------------------------------
+    if (candidate.status === "pending") {
+      await touch({ status: "drafting", rejected_reason: null });
+      const sources = Array.isArray(candidate.source_urls) ? candidate.source_urls : [];
+      const topic = `${candidate.headline}. ${candidate.summary}\n\nKnown sources: ${sources.join(", ")}`;
+      const gen = await call("generate-live-article", { topic, status: "draft", skip_refine: true });
+      const article = (gen.body as any)?.article;
+      if (!gen.ok || !article?.id) {
+        await touch({ status: "pending", rejected_reason: `draft failed: ${(gen.body as any)?.error ?? gen.status}` });
+        return json({ ok: false, step: "draft", candidate: candidate.headline, error: (gen.body as any)?.error ?? gen.status });
       }
+      const newRun = `auto-${Date.now().toString(36)}-${String(article.id).slice(0, 8)}`;
+      await touch({
+        status: "drafting",
+        published_article_id: article.id,
+        notes: `run:${newRun} draft:/live/${article.slug}`,
+      });
+      return json({ ok: true, step: "draft", candidate: candidate.headline, article_id: article.id, slug: article.slug });
     }
 
-    return json({ ok: true, threshold, processed: results });
+    // Stale guard: if an in-flight candidate hasn't moved, the previous tick died.
+    const isStale = (candidate.updated_at ?? "") < staleBefore;
+
+    // ---- step: refine ----------------------------------------------------
+    if (candidate.status === "drafting") {
+      if (!articleId) {
+        await touch({ status: "pending", rejected_reason: "lost draft reference" });
+        return json({ ok: false, step: "refine", error: "no article id" });
+      }
+      const refine = await call("refine-live-article", { article_id: articleId });
+      // Refinement is quality polish, not a gate. If it fails, still audit the draft.
+      await touch({
+        status: "drafted",
+        notes: `${candidate.notes ?? ""} refine:${refine.ok ? "ok" : "failed"}`.trim(),
+      });
+      return json({ ok: true, step: "refine", refined: refine.ok, article_id: articleId });
+    }
+
+    // ---- step: audit, one critic per tick --------------------------------
+    if (candidate.status === "drafted" || candidate.status === "auditing") {
+      if (!articleId || !runId) {
+        await touch({ status: "pending", rejected_reason: "lost run reference" });
+        return json({ ok: false, step: "audit", error: "no run id" });
+      }
+
+      const { data: done } = await supabase
+        .from("article_audits")
+        .select("model, status")
+        .eq("article_id", articleId)
+        .eq("run_id", runId);
+      const haveModels = new Set((done ?? []).filter((d) => d.status === "complete").map((d) => d.model));
+      const next = CRITIC_MODELS.find((m) => !haveModels.has(m));
+
+      if (next && !(isStale && candidate.status === "auditing" && haveModels.size === 0 && (done ?? []).length > 0)) {
+        await touch({ status: "auditing" });
+        const audit = await call("audit-article", {
+          article_id: articleId,
+          run_id: runId,
+          model: next,
+          models_expected: CRITIC_MODELS,
+        });
+        return json({ ok: audit.ok, step: "audit", model: next, remaining: CRITIC_MODELS.length - haveModels.size - (audit.ok ? 1 : 0) });
+      }
+
+      // Both critics in: decide.
+      const { data: summary } = await supabase
+        .from("article_audit_summary")
+        .select("composite_score, models_run")
+        .eq("article_id", articleId)
+        .eq("run_id", runId)
+        .maybeSingle();
+
+      const score = summary?.composite_score ?? null;
+      const critics = (summary?.models_run ?? []).length;
+      const passed = score !== null && score >= threshold && critics >= CRITIC_MODELS.length;
+
+      if (passed) {
+        await supabase
+          .from("live_articles")
+          .update({ status: "published", published_at: new Date().toISOString() })
+          .eq("id", articleId);
+        await touch({
+          status: "published",
+          notes: `${candidate.notes ?? ""} auto-published ${score}/100 (${critics} critics)`.trim(),
+        });
+      } else {
+        await touch({
+          status: "held",
+          rejected_reason:
+            score === null
+              ? "audit produced no composite score"
+              : `scored ${score}/100 with ${critics} critics, below ${threshold}. Draft kept for manual fix.`,
+        });
+      }
+
+      return json({ ok: true, step: "decide", published: passed, score, critics, threshold, article_id: articleId });
+    }
+
+    return json({ ok: true, step: "skip", status: candidate.status });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("[auto-publish] error:", msg);
