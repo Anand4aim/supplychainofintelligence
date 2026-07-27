@@ -1,53 +1,96 @@
-## Sales Tech AI Market Map — `/market-map/sales-tech`
+## The strategy
 
-Build a full 10×50 sublayer placement dataset for AI-native Sales Tech, at the same discipline as the Legal map. Same file structure, same components, same freshness/export/share-card wiring — only the data is new.
+Two different jobs, so **two different artifacts** — not one.
 
-### Scope (locked from your answer)
-SDR/AE/CRM-adjacent workflows only: prospecting, enrichment, outbound (email/calling/social), meeting intelligence, deal execution, CRM hygiene/RevOps automation, forecasting. **Excluded:** marketing automation, ABM ad platforms, CS/PLG, pricing, deal-desk suites — those go in a sibling GTM/marketing map later if we do one.
+1. **Feed post** (short, ~150-250 words, hook + 3 beats + link). Already exists as `linkedin_post`. Its job is to stop the scroll and send traffic to the site.
+2. **Pulse / LinkedIn Article** (long-form, 900-1,500 words). Its job is to rank and be read *inside* LinkedIn. Different rhythm, different formatting rules, and it must survive LinkedIn's editor: **no tables, no color, no components** — only H2/H3, bold, bullets, numbered lists, and blockquotes.
 
-### Company universe (~50, grouped by natural cluster)
-Each gets a full record: tier, stage, focus, SCoI position, funding line with source-date, "why," optional `flag:` for anything I can't triple-verify.
+So: keep them separate, side by side under one "Share this" block. Same argument, two surfaces.
 
-- **AI SDR / agentic outbound** — 11x, Artisan (Ava), Regie.ai, AiSDR, Piper (Qualified), Jazon (Lyzr), Bosh (Relevance)
-- **Prospecting data + enrichment** — Clay, Apollo (AI additions), Ocean.io, Common Room, UserGems, Warmly
-- **Dialer / parallel calling** — Nooks, Orum, Salesfinity, PhoneReady (Prospeo)
-- **Meeting / call intelligence** — Gong, Chorus (ZoomInfo), Attention, Fathom, Fireflies, Otter (biz), Rilla (field)
-- **Deal execution / revenue orchestration** — Rox, Unify, Default, Momentum, Pocus, Endgame, Amplemarket
-- **CRM-adjacent / RevOps AI** — People.ai, Aviso, Clari (AI), Scratchpad, Salesloft (AI), Outreach (AI)
-- **AI-native CRM challengers** — Attio (AI), Day.ai, Twenty (open source)
-- **Deal desk / proposal AI** — DealHub AI, Tabs, PandaDoc AI
-- **Cautionary / exits** — anything acquired/failed in the last 18 months (e.g. Chili Piper–Qualified overlap, ZoomInfo's Chorus integration story, Salesloft/Outreach commoditization)
+The **hero image** is the third artifact and it carries all the structure that Pulse strips out. Anything table-shaped (layer scores, sublayer impact, who wins/loses) becomes the image, not the text. That's the trade: image does the diagram, text does the argument.
 
-Final list will drop anyone I can't verify with 2+ public sources. Better to ship 40 real than 55 half-real.
+## What gets built
 
-### The editorial thesis (draft, will sharpen as I research)
-Sales Tech is the vertical where the L5→L1 bifurcation is happening *fastest*: Clay owns L1b/L1c (prospect data + intent), Gong owns L1d (call outcome data), and a wave of L5a agent platforms (11x, Artisan, Rox, Unify) are fighting to be the "execution OS." The compression risk is severe — Salesloft/Outreach/Apollo are absorbing agent features into the incumbent platform, and OpenAI/Anthropic ship each new capability directly into the L5a moat. The defensible whitespace is L1d (deal-outcome data beyond meeting transcripts), L8d (institutional selling memory per-account), and L3a (compliance for regulated-industry outbound: TCPA, GDPR, CAN-SPAM enforcement).
+**A. Per-article hero poster (auto-generated, on-brand)**
 
-### Deliverables
-1. `src/data/verticals/salesTech.ts` — mirrors `legal.ts` structure exactly (`SALES_TECH_MAP: VerticalMapData`).
-2. Register it in `src/data/verticalsRegistry.ts` (`sales-tech`, status `live`).
-3. Wire dataset into `MarketMapVertical.tsx` alongside `VERTICAL_DATASETS` (the current import from `./verticals/legal` will move to a barrel or extend the map).
-4. Update sidebar count in `MarketMapVertical.tsx` from "24 verticals · 2 live" → "24 · 3 live" copy.
-5. Sitemap + `crawl-content-check` picks up the new live URL automatically (it reads the registry).
+A new `LiveArticleHero` React poster wrapped in the existing `ExportablePng`, rendered at LinkedIn's 1200×627 ratio, populated from data already on every article:
 
-### Honesty guardrails
-- Every funding line cites the round/date/lead investor from a public press release or filing. Anything I can't verify gets a `flag:` field (same convention as Supio's $3B/$400M note).
-- No fake company placements. If a sublayer is empty in Sales Tech, it gets a `gap:` annotation (whitespace / absorbed feature / horizontal-owned) — same as legal's L8a, L4a-d, etc.
-- I'll flag Salesloft/Outreach/Apollo carefully — they're pre-AI incumbents bolting AI on, not AI-native. They belong on the map but I'll mark them differently (probably `tier: "Incumbent (AI-bolted)"`).
-- "Cross-LLM critic" pass: after I generate `salesTech.ts`, I'll produce a `docs/research/sales-tech-critic-brief.md` — a structured prompt + the raw placement list you can paste into ChatGPT/Claude/Gemini for an adversarial "who's mispositioned, what's missing, what funding looks wrong" review. That's the honest version of "cross-model validation" — you (or I in a next turn) run it and I incorporate the corrections.
+```text
+┌──────────────────────────────────────────┐
+│ SCoI · LIVE ANALYSIS      Nov 2026       │
+│                                          │
+│ Headline (display, 2-3 lines)            │
+│ Subheadline (sketch, 1 line)             │
+│                                          │
+│ L-1 L0 L1 L2 L3 L4 L5 L6 L7 L8           │
+│  ▁  ▃  █  ▅  █  ▂  ▆  ▃  █  ▄  ← impact  │
+│                                          │
+│ VERDICT: CONTESTED   supplychainofai.com │
+└──────────────────────────────────────────┘
+```
 
-### What I will NOT do
-- Not touch `Framework.tsx`, homepage, or any other page.
-- Not add new components — reuse `SublayerGrid`, `MarketMapShareCard`, `ExportablePng` as-is.
-- Not invent a new "AI SDR" sublayer — 11x etc. go at L5a + L6a, which is where they structurally live.
-- Not include marketing-automation companies (Jasper, Copy.ai, HubSpot AI) even if borderline. They belong in the GTM/marketing map if you commission it later.
+The layer-intensity bar strip is the signature — it makes every share instantly recognizable as SCoI without anyone reading a word. Verdict pill uses the existing verdict tone colors. One-click PNG download via the existing export button. No AI-generated art: it's rendered from the framework so it can never drift and never looks generic.
 
-### Two-turn execution
-- **This turn (if you approve):** research + ship `salesTech.ts`, registry entry, sidebar count update, critic brief. Roughly one large file + two small edits.
-- **Next turn (optional):** you paste the critic brief into ChatGPT/Claude, send me back the diff, I apply corrections and add a `flag:` note wherever the second model flagged uncertainty.
+A second variant, **1:1 square**, for the feed post (LinkedIn crops 1200×627 badly in-feed on mobile). Both downloadable.
 
-### Technical notes
-- File location: `src/data/verticals/salesTech.ts` (camelCase to match `legalDomains.ts` convention).
-- Registry entry: `{ slug: "sales-tech", label: "Sales Tech", status: "live", blurb: "..." }`.
-- `MarketMapVertical.tsx` currently imports `VERTICAL_DATASETS` from `./verticals/legal`. I'll either extend that export or introduce `src/data/verticals/index.ts` as a barrel — cleaner and future-proof for the remaining 22 verticals.
-- Sidebar copy update is a two-line change in `VerticalSidebar`.
+**B. "Detailed article" block — Pulse-ready**
+
+New collapsible section at the bottom of each live article, above the CTA:
+
+- Tab 1 — **Short post** (existing `linkedin_post`, copy button)
+- Tab 2 — **Full article for LinkedIn Pulse** (new)
+
+The Pulse text is assembled client-side from fields the article already has, so it works retroactively across every existing article with zero DB migration and zero re-generation cost:
+
+```text
+[Headline]
+[Subheadline as italic standfirst]
+
+## What happened
+news_summary
+
+> pull-quote: the sharpest line from structural_take
+
+## Why it matters now
+why_now
+
+## The structural read
+structural_take
+
+## Where it lands on the stack
+- L3 Gates — owned, high impact — note
+- L7 Surface — contested — note
+  (prose bullets, never a table)
+
+## Who gains, who's exposed
+who_wins / who_loses as two bullet lists
+
+## The counter-case
+counter_thesis
+
+## What to watch
+numbered list from what_to_watch
+
+> new_law_candidate as a closing pull-quote
+
+[Author line + canonical link + personal-capacity line]
+```
+
+Copy button puts it on the clipboard as plain text with markdown-ish structure LinkedIn's editor preserves on paste (headings, bullets, blockquotes survive; nothing else does). Attribution and canonical URL auto-appended — never hand-written.
+
+**C. Reuse, not duplication**
+
+- Same block is dropped into `/posts/:slug` so essays and opinion pieces get the same treatment.
+- All copy goes through the existing `CopySnippet` attribution logic.
+- Hero poster registered so `/posters` can show one live example.
+
+## Technical notes
+
+- New: `src/components/live/LiveArticleHero.tsx` (16:9 + 1:1 variants), `src/lib/pulseText.ts` (pure serializer, unit-testable), `src/components/ShareKit.tsx` (tabbed copy/download block).
+- Wired into `src/pages/LiveArticleDetail.tsx` and `src/pages/PostDetail.tsx`.
+- No database changes, no edge-function changes, no new generation cost — everything derives from `analysis` fields already stored.
+- Tone rules and personal-capacity disclosure applied to generated Pulse text automatically.
+
+## Open question before I build
+
+Should the Pulse version be **derived** (as above — free, retroactive, consistent) or **LLM-written per article** (better prose, costs a generation pass, needs a new DB column and a backfill)? My recommendation: ship derived now, and if the prose feels mechanical on two or three real articles, add an optional LLM polish pass on top later.
