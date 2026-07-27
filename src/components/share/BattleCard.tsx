@@ -63,7 +63,7 @@ const BattleCard = ({
     rows: BattleSide[];
     empty: string;
   }) => (
-    <div className="flex-1 min-w-0 flex flex-col">
+    <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
       <div
         className="font-mono-marker text-[8px] md:text-[10px] tracking-[0.18em] uppercase px-2 py-1 text-white mb-2 self-start"
         style={{ background: color }}
@@ -74,14 +74,14 @@ const BattleCard = ({
         <p className="font-sketch text-[11px] md:text-[13px] text-muted-foreground italic">{empty}</p>
       ) : (
         <ul className="space-y-1.5 md:space-y-2">
-          {rows.slice(0, square ? 2 : 3).map((r, i) => (
+          {rows.slice(0, 2).map((r, i) => (
             <li key={i} className="leading-[1.25]">
               <span className="font-display font-bold text-foreground text-[12px] md:text-[15px]">
                 {r.name}
               </span>
               <span className="font-body text-foreground/70 text-[10px] md:text-[12.5px]">
                 {" "}
-                — {clip(r.reason, square ? 68 : 96)}
+                — {clip(r.reason, square ? 60 : 74)}
               </span>
             </li>
           ))}
@@ -118,7 +118,7 @@ const BattleCard = ({
             square ? "text-[20px] md:text-[26px]" : "text-[19px] md:text-[27px]"
           }`}
         >
-          {clip(title, square ? 96 : 120)}
+          {clip(title, square ? 84 : 92)}
         </h2>
 
         {/* Territory strip: which layers the move takes */}
@@ -166,14 +166,14 @@ const BattleCard = ({
 
         {/* Three columns */}
         <div
-          className={`mt-3 md:mt-4 flex ${square ? "flex-col gap-3" : "gap-5 md:gap-7"} flex-1 min-h-0`}
+          className={`mt-3 md:mt-4 flex ${square ? "flex-col gap-3" : "gap-5 md:gap-7"} flex-1 min-h-0 overflow-hidden`}
         >
           <Column
             label="The move"
             color="hsl(25 15% 20%)"
             rows={
               moveNote
-                ? [{ name: topLayers[0] ? `${topLayers[0]} ${LAYER_SHORT_LABEL[topLayers[0]] ?? ""}` : "Move", reason: moveNote }]
+                ? [{ name: topLayers[0] ? `${topLayers[0]} ${LAYER_SHORT_LABEL[topLayers[0]] ?? ""}` : "Move", reason: clip(moveNote, square ? 90 : 110) }]
                 : []
             }
             empty="Territory shown above."
@@ -193,7 +193,7 @@ const BattleCard = ({
         </div>
 
         {/* Counter-move footer */}
-        <div className="mt-auto pt-2.5 md:pt-3 border-t border-foreground/10 flex items-end justify-between gap-4">
+        <div className="mt-2 shrink-0 pt-2.5 md:pt-3 border-t border-foreground/10 flex items-end justify-between gap-4">
           <p
             className={`font-body text-foreground/80 leading-snug ${square ? "text-[10.5px]" : "text-[11px] md:text-[13px]"}`}
             style={{ borderLeft: "3px solid hsl(0 65% 48%)", paddingLeft: 10 }}
@@ -201,7 +201,7 @@ const BattleCard = ({
             <span className="font-mono-marker text-[8px] md:text-[9.5px] tracking-[0.16em] uppercase text-muted-foreground block mb-0.5">
               Expected counter-move
             </span>
-            {counter ? clip(counter, square ? 150 : 200) : "Defend the layer below: proprietary outcome data and the verification boundary."}
+            {counter ? clip(counter, square ? 120 : 150) : "Defend the layer below: proprietary outcome data and the verification boundary."}
           </p>
           <p className="font-mono-marker text-[8px] md:text-[10px] tracking-[0.15em] uppercase text-foreground/60 shrink-0 text-right">
             Anand Arivukkarasu
