@@ -13,6 +13,8 @@ import ArticleFooterCTA from "@/components/ArticleFooterCTA";
 import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
+import ShareKit from "@/components/share/ShareKit";
+import { buildLivePulse, buildLiveFeedPost, type PulseLiveArticle } from "@/lib/pulseText";
 
 
 type SubLayer = string | { name: string; impact?: number; who?: string };
