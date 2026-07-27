@@ -446,6 +446,23 @@ const LiveArticleDetail = () => {
             </p>
           </div>
 
+          {/* LinkedIn share kit: hero image + short post + Pulse article */}
+          <ShareKit
+            slug={article.slug}
+            feedPost={buildLiveFeedPost(article as unknown as PulseLiveArticle, article.linkedin_post)}
+            pulseArticle={buildLivePulse(article as unknown as PulseLiveArticle)}
+            hero={{
+              eyebrow: "Live Analysis",
+              title: article.headline,
+              subtitle: article.subheadline,
+              date: article.published_at,
+              verdict: article.verdict,
+              intensities: Object.fromEntries(
+                (article.analysis.layer_scores ?? []).map((s) => [s.layer, s.intensity ?? (s.owned ? 2 : 0)]),
+              ),
+            }}
+          />
+
           {/* Inbox capture, last */}
           <ArticleFooterCTA
             source={`live:${article.slug}`}
