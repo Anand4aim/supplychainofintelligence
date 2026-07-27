@@ -206,15 +206,19 @@ Deno.serve(async (req) => {
 
     let topic: string | undefined;
     let publishedAt: string | undefined;
+    // "draft" keeps the piece off /live until a quality gate clears it.
+    let requestedStatus = "published";
     let passcode: string | null = req.headers.get("x-admin-passcode");
     try {
       if (req.method === "POST") {
         const body = await req.json();
         topic = typeof body?.topic === "string" ? body.topic : undefined;
         publishedAt = typeof body?.published_at === "string" ? body.published_at : undefined;
+        if (body?.status === "draft") requestedStatus = "draft";
         passcode = body?.passcode ?? passcode;
       }
     } catch (_) { /* no body */ }
+
     // Auth: fail-closed passcode check. pg_cron / weekly schedule must
     // send `{"passcode":"..."}` (or an `x-admin-passcode` header). Without
     // REMASTER_ADMIN_PASSCODE configured and matched, every request 401s.
