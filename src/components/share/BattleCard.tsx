@@ -122,62 +122,44 @@ const BattleCard = ({
         </h2>
 
         {/* Territory strip: which layers the move takes */}
-        <div className="mt-3 md:mt-4">
+        <div className="mt-2.5 md:mt-3 shrink-0">
           <div className="flex items-end gap-[3px] md:gap-1.5" aria-hidden>
             {LAYER_ORDER.map((l) => {
               const v = intensities[l] ?? 0;
               const taken = v >= 2;
               return (
-                <div key={l} className="flex-1 flex flex-col items-center gap-1">
-                  <span
-                    className="font-mono-marker text-[7px] md:text-[9px] leading-none"
-                    style={{ color: taken ? layerColor(l) : "transparent" }}
-                  >
-                    ▼
-                  </span>
+                <div key={l} className="flex-1 flex flex-col items-center gap-[3px]">
                   <div
                     className="w-full"
                     style={{
-                      height: square ? 22 : 20,
+                      height: square ? 20 : 16,
                       background: layerColor(l),
-                      opacity: taken ? 1 : 0.16,
+                      opacity: taken ? 1 : 0.14,
                     }}
                   />
                   <span
                     className="font-mono-marker text-[7px] md:text-[9px] tracking-wide leading-none"
-                    style={{ color: taken ? layerColor(l) : "hsl(25 8% 62%)" }}
+                    style={{ color: taken ? layerColor(l) : "hsl(25 8% 62%)", fontWeight: taken ? 700 : 400 }}
                   >
                     {l}
-                  </span>
-                  <span className="font-sketch text-[7px] md:text-[8.5px] text-muted-foreground leading-none truncate w-full text-center hidden md:block">
-                    {LAYER_SHORT_LABEL[l] ?? ""}
                   </span>
                 </div>
               );
             })}
           </div>
           <p className="font-sketch text-[10px] md:text-[12px] text-muted-foreground mt-1.5">
-            ▼ layers this move takes:{" "}
+            Territory taken:{" "}
             <span className="text-foreground font-semibold">
               {topLayers.length ? topLayers.map((l) => `${l} ${LAYER_SHORT_LABEL[l] ?? ""}`).join(" · ") : "—"}
             </span>
+            {moveNote && <span className="hidden md:inline"> — {clip(moveNote, 84)}</span>}
           </p>
         </div>
 
-        {/* Three columns */}
+        {/* Two columns: who gains, who is exposed */}
         <div
-          className={`mt-3 md:mt-4 flex ${square ? "flex-col gap-3" : "gap-5 md:gap-7"} flex-1 min-h-0 overflow-hidden`}
+          className={`mt-3 flex ${square ? "flex-col gap-3" : "gap-6 md:gap-8"} flex-1 min-h-0 overflow-hidden`}
         >
-          <Column
-            label="The move"
-            color="hsl(25 15% 20%)"
-            rows={
-              moveNote
-                ? [{ name: topLayers[0] ? `${topLayers[0]} ${LAYER_SHORT_LABEL[topLayers[0]] ?? ""}` : "Move", reason: clip(moveNote, square ? 90 : 110) }]
-                : []
-            }
-            empty="Territory shown above."
-          />
           <Column
             label="Gains ground"
             color="hsl(var(--verdict-fortified))"
@@ -191,6 +173,7 @@ const BattleCard = ({
             empty="No incumbent clearly exposed."
           />
         </div>
+
 
         {/* Counter-move footer */}
         <div className="mt-2 shrink-0 pt-2.5 md:pt-3 border-t border-foreground/10 flex items-end justify-between gap-4">
