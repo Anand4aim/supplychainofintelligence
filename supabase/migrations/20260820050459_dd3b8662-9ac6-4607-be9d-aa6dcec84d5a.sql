@@ -1,0 +1,1 @@
+DELETE FROM public.live_articles WHERE status='draft' AND slug IN ('xai-grok-4-6-agent-or-context','xai-grok-4-6-agent-chase-l2-commodity-trap');
