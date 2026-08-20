@@ -125,24 +125,64 @@ Deno.serve(async (req) => {
         .eq("id", candidate.id);
 
     // ---- step: pending -> draft -----------------------------------------
+    // Generation is slow (news fetch + framework analysis). When the caller
+    // (cron) disconnects on timeout the edge runtime cancels this function mid
+    // flight, AFTER the draft row landed, so the candidate never records it and
+    // the next tick regenerates the same story forever. Guard two ways:
+    //   1. adopt any unclaimed recent draft before spending another generation
+    //   2. cap attempts, then hold the candidate for a human
     if (candidate.status === "pending") {
-      await touch({ status: "drafting", rejected_reason: null });
+      const claim = async (article: { id: string; slug?: string | null }, how: string) => {
+        const newRun = `auto-${Date.now().toString(36)}-${String(article.id).slice(0, 8)}`;
+        await touch({
+          status: "drafting",
+          rejected_reason: null,
+          published_article_id: article.id,
+          notes: `run:${newRun} draft:/live/${article.slug ?? ""}`,
+        });
+        return json({ ok: true, step: "draft", how, candidate: candidate.headline, article_id: article.id, slug: article.slug });
+      };
+
+      // 1. unclaimed drafts from a previous, cancelled tick
+      const { data: claimed } = await supabase
+        .from("story_candidates")
+        .select("published_article_id")
+        .not("published_article_id", "is", null);
+      const taken = new Set((claimed ?? []).map((c) => c.published_article_id));
+      const { data: recentDrafts } = await supabase
+        .from("live_articles")
+        .select("id, slug, created_at")
+        .eq("status", "draft")
+        .gte("created_at", new Date(Date.now() - 45 * 60_000).toISOString())
+        .order("created_at", { ascending: false })
+        .limit(20);
+      const orphan = (recentDrafts ?? []).find((d) => !taken.has(d.id));
+      if (orphan) return await claim(orphan, "adopted");
+
+      const attempt = Number((candidate.notes || "").match(/attempt:(\d+)/)?.[1] ?? 0) + 1;
+      if (attempt > 3) {
+        await touch({ status: "held", rejected_reason: "draft failed 3 times, needs manual review" });
+        return json({ ok: false, step: "draft", candidate: candidate.headline, error: "attempt cap reached" });
+      }
+      // Record the attempt BEFORE generating: if this tick is cancelled the count
+      // still went up, so a permanently failing candidate cannot loop.
+      await touch({ notes: `attempt:${attempt}`, rejected_reason: null });
+
       const sources = Array.isArray(candidate.source_urls) ? candidate.source_urls : [];
       const topic = `${candidate.headline}. ${candidate.summary}\n\nKnown sources: ${sources.join(", ")}`;
       const gen = await call("generate-live-article", { topic, status: "draft", skip_refine: true });
       const article = (gen.body as any)?.article;
-      if (!gen.ok || !article?.id) {
-        await touch({ status: "pending", rejected_reason: `draft failed: ${(gen.body as any)?.error ?? gen.status}` });
-        return json({ ok: false, step: "draft", candidate: candidate.headline, error: (gen.body as any)?.error ?? gen.status });
+      if (!article?.id) {
+        await touch({
+          notes: `attempt:${attempt}`,
+          rejected_reason: `draft failed: ${(gen.body as any)?.error ?? gen.status}`,
+        });
+        return json({ ok: false, step: "draft", candidate: candidate.headline, attempt, error: (gen.body as any)?.error ?? gen.status });
       }
-      const newRun = `auto-${Date.now().toString(36)}-${String(article.id).slice(0, 8)}`;
-      await touch({
-        status: "drafting",
-        published_article_id: article.id,
-        notes: `run:${newRun} draft:/live/${article.slug}`,
-      });
-      return json({ ok: true, step: "draft", candidate: candidate.headline, article_id: article.id, slug: article.slug });
+      return await claim(article, "generated");
     }
+
+
 
     // Stale guard: if an in-flight candidate hasn't moved, the previous tick died.
     const isStale = (candidate.updated_at ?? "") < staleBefore;
