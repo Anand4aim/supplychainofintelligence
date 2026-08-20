@@ -225,8 +225,15 @@ Deno.serve(async (req) => {
           model: next,
           models_expected: CRITIC_MODELS,
         });
-        return json({ ok: audit.ok, step: "audit", model: next, remaining: CRITIC_MODELS.length - haveModels.size - (audit.ok ? 1 : 0) });
+        const remaining = CRITIC_MODELS.length - haveModels.size - (audit.ok ? 1 : 0);
+        // Only pause the tick when critics are still outstanding. When this was
+        // the last critic, fall through and decide now so a passing article
+        // publishes on the same tick instead of waiting for the next one.
+        if (!audit.ok || remaining > 0) {
+          return json({ ok: audit.ok, step: "audit", model: next, remaining });
+        }
       }
+
 
       // Both critics in: decide.
       const { data: summary } = await supabase
