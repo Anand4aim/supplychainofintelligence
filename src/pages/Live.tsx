@@ -222,15 +222,6 @@ const LivePage = () => {
         title="AI News Feed: Every Major AI Move, Scored by Layer"
         description="Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
         path="/live"
-        section="AI Strategy"
-        keywords={[
-          "AI news analysis",
-          "generative AI stack",
-          "AI strategy",
-          "AI defensibility",
-          "Supply Chain of Intelligence",
-          "AI layer map",
-        ]}
       />
 
 
