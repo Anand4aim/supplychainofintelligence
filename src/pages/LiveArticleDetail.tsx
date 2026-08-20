@@ -157,7 +157,7 @@ const LiveArticleDetail = () => {
             {article.headline}
           </motion.h1>
           {article.subheadline && (
-            <p className="text-xl text-foreground/80 italic mb-10 leading-relaxed">{article.subheadline}</p>
+            <p className="speakable-answer text-xl text-foreground/80 italic mb-10 leading-relaxed">{article.subheadline}</p>
           )}
 
           {/* The news */}
