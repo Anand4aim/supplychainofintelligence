@@ -124,7 +124,7 @@ const Terms = () => (
             The Site is provided "as is" and "as available." We make no
             warranties, express or implied, about accuracy, completeness,
             timeliness, fitness for a particular purpose, or non-infringement.
-            The market map, case studies, predictions, and live feed reflect
+            The market map, case studies, predictions, and news feed reflect
             judgments based on public information at a point in time and may
             be wrong, incomplete, or outdated.
           </p>

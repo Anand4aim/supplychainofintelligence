@@ -23,7 +23,7 @@ import LayerTag from "@/components/LayerTag";
  *   3. Laws          — Why does it work?
  *   4. Dynamics      — How does it evolve?
  *   5. Applications  — How do I use it?  (Cube and Triangle live here as instruments.)
- *   6. Observations  — What's happening now?  (Pointer to the live feed.)
+ *   6. Observations  — What's happening now?  (Pointer to the news feed.)
  *
  * Each section is a summary + deep-links. The page is the table of contents;
  * deep dives live at their own routes.

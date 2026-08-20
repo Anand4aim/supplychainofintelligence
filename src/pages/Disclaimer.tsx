@@ -45,7 +45,7 @@ const Disclaimer = () => (
           </h2>
           <p>
             All company, product, and service names referenced on this site  - 
-            including but not limited to those in case studies, the live feed,
+            including but not limited to those in case studies, the news feed,
             the market map, and the Board, are used{" "}
             <strong className="text-foreground">descriptively, for editorial
             analysis</strong>, and remain the trademarks of their respective

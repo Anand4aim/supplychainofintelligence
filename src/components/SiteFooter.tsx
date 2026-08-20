@@ -45,7 +45,7 @@ const SiteFooter = () => (
             <Link to="/not-a-stack" className="block text-sm hover:text-foreground transition-colors">Not Another AI Stack</Link>
             <Link to="/audit" className="block text-sm hover:text-foreground transition-colors">Defensibility Audit</Link>
             <Link to="/analysis" className="block text-sm hover:text-foreground transition-colors">Case Studies</Link>
-            <Link to="/live" className="block text-sm hover:text-foreground transition-colors">Live Feed</Link>
+            <Link to="/live" className="block text-sm hover:text-foreground transition-colors">News Feed</Link>
             <Link to="/market-map" className="block text-sm hover:text-foreground transition-colors">Market Map</Link>
             <Link to="/glossary" className="block text-sm hover:text-foreground transition-colors">Glossary</Link>
             <Link to="/methodology" className="block text-sm hover:text-foreground transition-colors">Methodology</Link>

@@ -83,7 +83,7 @@ const ProofOfCorpus = () => (
           10 layer deep-dives →
         </Link>
         <Link to="/live" className="text-foreground/70 hover:text-foreground">
-          Live feed →
+          News feed →
         </Link>
         <Link to="/market-map" className="text-foreground/70 hover:text-foreground">
           Market map →
