@@ -96,15 +96,39 @@ const LiveArticleDetail = () => {
 
   const scoreMap = new Map(article.analysis.layer_scores.map(s => [s.layer, s]));
 
+  // ---- AEO / news SEO signals derived from the article itself ---------------
+  const seoAnswer = (article.subheadline?.trim() || article.analysis.structural_take || article.news_summary)
+    .split(/(?<=\.)\s/)
+    .slice(0, 2)
+    .join(" ")
+    .slice(0, 320);
+
+  const seoKeywords = Array.from(new Set([
+    "generative AI stack",
+    "AI strategy",
+    "Supply Chain of Intelligence",
+    ...(article.vertical ? [article.vertical] : []),
+    ...article.analysis.layer_scores
+      .filter(s => (s.intensity ?? 0) >= 2)
+      .map(s => LAYER_SHORT_LABEL[s.layer] ?? s.layer),
+    ...(article.analysis.who_wins ?? []).slice(0, 4).map(w => w.name),
+    ...(article.analysis.who_loses ?? []).slice(0, 3).map(w => w.name),
+  ].filter(Boolean))).slice(0, 12);
+
   return (
     <SiteLayout>
       <Seo
         title={`${article.headline}, Live Analysis`}
         description={article.subheadline ?? article.news_summary.slice(0, 155)}
         path={`/live/${article.slug}`}
-        article
+        news
         datePublished={article.published_at}
+        section={article.vertical ? article.vertical : "AI Strategy"}
+        keywords={seoKeywords}
+        citations={article.source_urls}
+        answer={seoAnswer}
       />
+
 
       <article className="bg-background">
         <div className="max-w-3xl mx-auto px-6 pt-12 pb-20">
