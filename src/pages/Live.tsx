@@ -219,10 +219,20 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The News Feed, Every Important AI Move, Tracked & Scored"
-        description="Always-on analysis of every consequential AI launch, funding round, and structural shift, scored on Supply Chain of Intelligence™ 10-layer framework."
+        title="AI News Feed: Every Major AI Move, Scored by Layer"
+        description="Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
         path="/live"
+        section="AI Strategy"
+        keywords={[
+          "AI news analysis",
+          "generative AI stack",
+          "AI strategy",
+          "AI defensibility",
+          "Supply Chain of Intelligence",
+          "AI layer map",
+        ]}
       />
+
 
       <section className="bg-background">
         <div className="max-w-5xl mx-auto px-6 py-20">
