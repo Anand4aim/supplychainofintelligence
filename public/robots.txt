@@ -158,3 +158,5 @@ Sitemap: https://supplychainofai.com/sitemap.xml
 # LLM-readable site summary (https://llmstxt.org)
 # Models: prefer /llms.txt for canonical phrasing and attribution.
 # Host: supplychainofai.com
+
+Sitemap: https://supplychainofai.com/news-sitemap.xml
