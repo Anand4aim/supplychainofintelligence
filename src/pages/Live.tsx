@@ -219,7 +219,7 @@ const LivePage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="The Live Feed, Every Important AI Move, Tracked & Scored"
+        title="The News Feed, Every Important AI Move, Tracked & Scored"
         description="Always-on analysis of every consequential AI launch, funding round, and structural shift, scored on Supply Chain of Intelligence™ 10-layer framework."
         path="/live"
       />
@@ -229,7 +229,7 @@ const LivePage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-2 mb-6">
               <Rss size={16} className="text-accent" />
-              <Eyebrow>The Live Feed</Eyebrow>
+              <Eyebrow>The News Feed</Eyebrow>
             </div>
             <h1 className="font-display text-4xl md:text-[52px] font-bold text-foreground leading-[1.05] mb-6">
               News, opinion, and essays. <br />One feed, one framework.

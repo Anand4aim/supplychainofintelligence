@@ -6,7 +6,7 @@ import Seo from "@/components/Seo";
 import Eyebrow from "@/components/Eyebrow";
 import { POSTS } from "@/data/posts";
 
-// Posted, long-form essays. Shares the Live Feed visual vocabulary
+// Posted, long-form essays. Shares the News Feed visual vocabulary
 // (mono-marker eyebrows, color-rail spine, secondary/30 section bg, issue
 // indexing) but adopts a magazine rhythm: one featured cover essay + a
 // generous 2-col list. Essays earn the visual gravity that Live's river
@@ -170,7 +170,7 @@ const Posts = () => {
               to="/live"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground border border-foreground/20 rounded-md px-3 py-1.5 hover:bg-foreground hover:text-background transition-colors"
             >
-              Read The Live Feed <ArrowRight size={13} />
+              Read The News Feed <ArrowRight size={13} />
             </Link>
           </div>
         </div>
