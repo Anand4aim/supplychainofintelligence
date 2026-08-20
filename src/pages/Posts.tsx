@@ -22,8 +22,8 @@ const Posts = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Posted, Long-Form Essays on the Generative AI Stack"
-        description="Long-form essays on Supply Chain of Intelligence™, the 10-layer generative AI stack (not logistics). Archived here as the canonical version."
+        title="AI Essays: Long-Form Analysis of the Generative AI Stack"
+        description="Long-form essays on AI defensibility, architecture, and capital flows, mapped to the 10-layer Supply Chain of Intelligence™ generative AI stack (not logistics)."
         path="/posts"
       />
 
