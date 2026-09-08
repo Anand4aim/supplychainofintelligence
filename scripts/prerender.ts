@@ -82,17 +82,11 @@ const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqb2NvY3R0dWlmeWJyd3N4c2N5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5NzEyNTgsImV4cCI6MjA5NDU0NzI1OH0.95DgDAjIqVcUxi3Yxf7u3CG2pWAK0GC8CCVM1tvHUx0";
 
 let liveSlugs: string[] = [];
+let liveRows: Array<Record<string, any> & { slug: string }> = [];
 try {
-  // Pull FULL rows (not just slugs). They are stashed on globalThis so
-  // LiveArticleDetail can read its article synchronously during SSR, which is
-  // what makes per-article <title>/description/NewsArticle JSON-LD land in the
-  // static HTML for non-JS crawlers (LinkedIn, Slack, X, Google News).
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/live_articles?select=*&status=eq.published&order=published_at.desc&limit=500`,
-    { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
-  );
-  if (res.ok) {
-    const rows = (await res.json()) as Array<Record<string, unknown> & { slug: string }>;
+...
+    const rows = (await res.json()) as Array<Record<string, any> & { slug: string }>;
+    liveRows = rows;
     liveSlugs = rows.map((r) => r.slug).filter(Boolean);
     const bySlug: Record<string, unknown> = {};
     for (const row of rows) if (row.slug) bySlug[row.slug] = row;
@@ -211,6 +205,68 @@ function buildHtml(route: string): string {
   );
 
   return out;
+}
+
+// ---------- RSS feed (dist/rss.xml) ----------
+// Built from the same published-article rows fetched above so the feed always
+// matches what the News Feed shows. Static file = fast, cacheable, crawlable.
+function xmlEscape(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+try {
+  const items = liveRows.slice(0, 50).map((a) => {
+    const url = `${BASE}/live/${a.slug}`;
+    const title = xmlEscape(String(a.headline ?? a.slug));
+    const desc = xmlEscape(String(a.subheadline ?? a.news_summary ?? "").slice(0, 300));
+    const pubDate = a.published_at ? new Date(a.published_at).toUTCString() : "";
+    const categories = [a.vertical, a.verdict]
+      .filter(Boolean)
+      .map((c) => `      <category>${xmlEscape(String(c))}</category>`)
+      .join("\n");
+    return `    <item>
+      <title>${title}</title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <description>${desc}</description>
+      ${pubDate ? `<pubDate>${pubDate}</pubDate>` : ""}
+      <author>hello@supplychainofai.com (Anand Arivukkarasu)</author>
+${categories}
+    </item>`;
+  });
+
+  const lastBuild =
+    liveRows[0]?.published_at
+      ? new Date(liveRows[0].published_at).toUTCString()
+      : new Date().toUTCString();
+
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News Feed — The Supply Chain of Intelligence™</title>
+    <link>${BASE}/live</link>
+    <atom:link href="${BASE}/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Daily analysis of the generative AI stack through the 10-layer Supply Chain of Intelligence™ framework. AI strategy news, not logistics.</description>
+    <language>en-us</language>
+    <lastBuildDate>${lastBuild}</lastBuildDate>
+    <image>
+      <url>${BASE}/og-image.png</url>
+      <title>The Supply Chain of Intelligence™</title>
+      <link>${BASE}/live</link>
+    </image>
+${items.join("\n")}
+  </channel>
+</rss>
+`;
+  writeFileSync(resolve(DIST, "rss.xml"), rss);
+  console.log(`prerender: wrote dist/rss.xml with ${items.length} items`);
+} catch (err) {
+  console.warn("prerender: rss.xml generation failed", err);
 }
 
 let count = 0;
