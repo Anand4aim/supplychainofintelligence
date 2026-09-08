@@ -397,7 +397,7 @@ const LivePage = () => {
                     <div className="space-y-5">
                       {group.items.map((a, i) => {
                         const src = summarizeSources(a.source_urls);
-                        const isFeatured = gIdx === 0 && i === 0;
+                        const isFeatured = currentPage === 1 && gIdx === 0 && i === 0;
 
                         if (isFeatured) {
                           return (
@@ -520,6 +520,55 @@ const LivePage = () => {
                   </div>
                 ))}
               </div>
+
+              {totalPages > 1 && (
+                <nav
+                  className="mt-16 pt-8 border-t border-foreground/10 flex items-center justify-between gap-4 flex-wrap"
+                  aria-label="News feed pagination"
+                >
+                  {currentPage > 1 ? (
+                    <Link
+                      to={pagePath(currentPage - 1)}
+                      rel="prev"
+                      className="font-mono-marker text-[11px] uppercase tracking-wider text-foreground border border-foreground/20 px-3 py-2 hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      ← Newer
+                    </Link>
+                  ) : <span />}
+
+                  <ol className="flex items-center gap-1.5 flex-wrap justify-center">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                      <li key={n}>
+                        {n === currentPage ? (
+                          <span
+                            aria-current="page"
+                            className="inline-block font-mono-marker text-[11px] px-2.5 py-1.5 bg-foreground text-background"
+                          >
+                            {n}
+                          </span>
+                        ) : (
+                          <Link
+                            to={pagePath(n)}
+                            className="inline-block font-mono-marker text-[11px] px-2.5 py-1.5 border border-foreground/15 text-muted-foreground hover:border-accent hover:text-accent transition-colors"
+                          >
+                            {n}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+
+                  {currentPage < totalPages ? (
+                    <Link
+                      to={pagePath(currentPage + 1)}
+                      rel="next"
+                      className="font-mono-marker text-[11px] uppercase tracking-wider text-foreground border border-foreground/20 px-3 py-2 hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      Older →
+                    </Link>
+                  ) : <span />}
+                </nav>
+              )}
             </>
           )}
         </div>
