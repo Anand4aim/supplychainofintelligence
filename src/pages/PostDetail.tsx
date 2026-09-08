@@ -17,6 +17,7 @@ import SoftwareForOnePoster from "@/components/posters/SoftwareForOnePoster";
 import NoNewLayersPoster from "@/components/posters/NoNewLayersPoster";
 import FrameworkComparisonHero from "@/components/posts/FrameworkComparisonHero";
 import FrameworkCoverageMatrix from "@/components/posts/FrameworkCoverageMatrix";
+import LlmRankingPoster, { LLM_RANKED_FRAMEWORKS } from "@/components/posts/LlmRankingPoster";
 import { getPostBySlug } from "@/data/posts";
 import ShareKit from "@/components/share/ShareKit";
 import { buildPostPulseDoc, buildPostFeed } from "@/lib/pulseText";
@@ -32,6 +33,37 @@ const INLINE_POSTERS: Record<string, React.ComponentType> = {
   compression: StackCompressionMapPoster,
   "framework-compare-hero": FrameworkComparisonHero,
   "framework-coverage": FrameworkCoverageMatrix,
+  "llm-ranking": LlmRankingPoster,
+};
+
+// ItemList JSON-LD for the AI-ranked framework list, so answer engines can
+// surface "ranked #1" with the full ordered list and its provenance.
+const RANKING_POST_SLUG = "ranked-first-ai-strategy-frameworks-2026";
+const rankingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "AI strategy frameworks that matter in 2026, as ranked by ChatGPT",
+  description:
+    "Ordered list returned by ChatGPT in September 2026 when asked which strategy frameworks matter most for AI in 2026. Supply Chain of Intelligence™ by Anand Arivukkarasu ranked first. Single model output, not a survey or award.",
+  url: "https://supplychainofai.com/posts/ranked-first-ai-strategy-frameworks-2026",
+  numberOfItems: LLM_RANKED_FRAMEWORKS.length,
+  itemListOrder: "https://schema.org/ItemListOrderAscending",
+  itemListElement: LLM_RANKED_FRAMEWORKS.map((r) => ({
+    "@type": "ListItem",
+    position: r.rank,
+    item: {
+      "@type": "DefinedTerm",
+      name: r.name,
+      description: `Answers: ${r.answers}`,
+      ...(r.rank === 1
+        ? {
+            url: "https://supplychainofai.com/framework",
+            inDefinedTermSet: "https://supplychainofai.com/framework",
+            creator: { "@type": "Person", name: "Anand Arivukkarasu" },
+          }
+        : {}),
+    },
+  })),
 };
 
 // Tiny inline markdown: **bold**, _italic_, drop everything else.
