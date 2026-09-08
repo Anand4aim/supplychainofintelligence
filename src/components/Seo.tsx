@@ -20,6 +20,10 @@ interface SeoProps {
   citations?: string[];
   /** One-paragraph direct answer to the article's question, for answer engines (AEO). */
   answer?: string;
+  /** Previous page URL path in a paginated series, emitted as <link rel="prev">. */
+  prevPath?: string;
+  /** Next page URL path in a paginated series, emitted as <link rel="next">. */
+  nextPath?: string;
   /** Extra JSON-LD graphs to emit alongside the article schema. */
   jsonLd?: Record<string, unknown>[];
 }
@@ -39,6 +43,8 @@ const Seo = ({
   keywords,
   citations,
   answer,
+  prevPath,
+  nextPath,
   jsonLd,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
@@ -92,6 +98,8 @@ const Seo = ({
       <meta name="description" content={description} />
       <meta name="author" content={AUTHOR} />
       <link rel="canonical" href={url} />
+      {prevPath && <link rel="prev" href={`${SITE}${prevPath}`} />}
+      {nextPath && <link rel="next" href={`${SITE}${nextPath}`} />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
