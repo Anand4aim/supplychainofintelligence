@@ -14,6 +14,7 @@ import { LAYER_LABEL, LAYER_SHORT_LABEL } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 import ShareKit from "@/components/share/ShareKit";
+import { getPrerenderedLiveArticle } from "@/lib/liveArticleCache";
 import { buildLivePulseDoc, buildLiveFeedPost, type PulseLiveArticle } from "@/lib/pulseText";
 
 
@@ -75,17 +76,20 @@ const verdictTone = (v: string) => {
 
 const LiveArticleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [article, setArticle] = useState<LiveArticle | null>(null);
-  const [loading, setLoading] = useState(true);
+  // During the build-time prerender the row is already in memory, so the
+  // static HTML ships with real content + per-article SEO tags.
+  const prerendered = getPrerenderedLiveArticle<LiveArticle>(slug);
+  const [article, setArticle] = useState<LiveArticle | null>(prerendered);
+  const [loading, setLoading] = useState(!prerendered);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug || prerendered) return;
     (async () => {
       const { data } = await supabase.from("live_articles").select("*").eq("slug", slug).maybeSingle();
       setArticle(data ? (data as unknown as LiveArticle) : null);
       setLoading(false);
     })();
-  }, [slug]);
+  }, [slug, prerendered]);
 
   if (loading) {
     return <SiteLayout><div className="max-w-3xl mx-auto py-32 text-center text-muted-foreground"><Loader2 className="animate-spin inline mr-2" size={18}/>Loading…</div></SiteLayout>;

@@ -20,6 +20,7 @@ import { LAYERS } from "../src/data/layers";
 import { LAW_ESSAYS } from "../src/data/lawEssays";
 import { POSTS } from "../src/data/posts";
 import { VERTICAL_REGISTRY as VERTICALS } from "../src/data/verticalsRegistry";
+import { LIVE_ARTICLE_CACHE_KEY } from "../src/lib/liveArticleCache";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
@@ -82,13 +83,20 @@ const SUPABASE_KEY =
 
 let liveSlugs: string[] = [];
 try {
+  // Pull FULL rows (not just slugs). They are stashed on globalThis so
+  // LiveArticleDetail can read its article synchronously during SSR, which is
+  // what makes per-article <title>/description/NewsArticle JSON-LD land in the
+  // static HTML for non-JS crawlers (LinkedIn, Slack, X, Google News).
   const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/live_articles?select=slug&order=published_at.desc&limit=500`,
+    `${SUPABASE_URL}/rest/v1/live_articles?select=*&status=eq.published&order=published_at.desc&limit=500`,
     { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
   );
   if (res.ok) {
-    const rows = (await res.json()) as Array<{ slug: string }>;
+    const rows = (await res.json()) as Array<Record<string, unknown> & { slug: string }>;
     liveSlugs = rows.map((r) => r.slug).filter(Boolean);
+    const bySlug: Record<string, unknown> = {};
+    for (const row of rows) if (row.slug) bySlug[row.slug] = row;
+    g[LIVE_ARTICLE_CACHE_KEY] = bySlug;
     console.log(`prerender: fetched ${liveSlugs.length} live articles`);
   } else {
     console.warn(`prerender: live_articles fetch returned ${res.status}`);
