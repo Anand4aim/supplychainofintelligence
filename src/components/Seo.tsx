@@ -104,6 +104,20 @@ const Seo = ({
       }
     : null;
 
+  const breadcrumbLd =
+    breadcrumbs && breadcrumbs.length > 1
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumbs.map((crumb, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: crumb.name,
+            item: `${SITE}${crumb.path}`,
+          })),
+        }
+      : null;
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -140,6 +154,9 @@ const Seo = ({
       <meta name="twitter:image:alt" content={title} />
       {articleLd && (
         <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
+      )}
+      {breadcrumbLd && (
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       )}
       {jsonLd?.map((graph, i) => (
         <script key={i} type="application/ld+json">{JSON.stringify(graph)}</script>
