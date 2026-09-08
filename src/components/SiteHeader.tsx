@@ -83,6 +83,15 @@ const SiteHeader = () => {
               {item.label}
             </Link>
           ))}
+          <a
+            href="/rss.xml"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-1.5 font-mono-marker text-xs text-foreground/70"
+          >
+            <Rss size={12} /> RSS Feed
+          </a>
         </div>
       )}
     </header>
