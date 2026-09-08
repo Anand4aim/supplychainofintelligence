@@ -121,8 +121,21 @@ Deno.serve(async () => {
 
     // News category (layer) + tag (topic) landing pages.
     // Mirrors src/lib/newsTaxonomy.ts — keep the two in sync.
-    const slugify = (s: string) =>
+    const rawSlug = (s: string) =>
       s.toLowerCase().trim().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    // Keep in sync with TOPIC_ALIASES in src/lib/newsTaxonomy.ts.
+    const TOPIC_ALIASES: Record<string, string> = {
+      custcare: "customer-experience", cx: "customer-experience", mktg: "marketing",
+      "dev-eng": "engineering", deveng: "engineering", devtools: "developer-tools",
+      ecom: "e-commerce", gov: "government-and-defense", health: "healthcare",
+      fintech: "financial-services", saas: "saas", "enterprise-saas": "enterprise-saas",
+      ops: "operations", hr: "hr-and-recruiting", edu: "education",
+      media: "media-and-entertainment", sales: "sales-and-gtm",
+    };
+    const slugify = (s: string) => {
+      const base = rawSlug(s);
+      return TOPIC_ALIASES[base] ?? base;
+    };
     const layerCounts = new Map<string, number>();
     const topicCounts = new Map<string, number>();
     for (const row of data ?? []) {
