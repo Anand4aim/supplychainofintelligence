@@ -188,6 +188,8 @@ const LivePage = () => {
   const [tab, setTab] = useState<"news" | "opinion" | "essay">("news");
   const opinions = useMemo(() => POSTS.filter((p) => p.kind === "opinion"), []);
   const essays = useMemo(() => POSTS.filter((p) => p.kind !== "opinion"), []);
+  const feedTags = useMemo(() => topicTags(articles), [articles]);
+
 
   const load = async () => {
     const { data } = await supabase
