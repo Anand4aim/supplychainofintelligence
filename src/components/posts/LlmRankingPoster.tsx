@@ -1,5 +1,3 @@
-import rankingShot from "@/assets/chatgpt-framework-ranking-2026.png.asset.json";
-
 /** The ten frameworks ChatGPT returned, in rank order, when asked which AI
  *  strategy frameworks matter most in 2026. Kept as text (not just the
  *  screenshot) so the ranking is crawlable and quotable. */
@@ -57,7 +55,7 @@ const LlmRankingPoster = () => (
     </div>
 
     <img
-      src={rankingShot.url}
+      src="/chatgpt-framework-ranking-2026.png"
       alt="Screenshot of ChatGPT ranking AI strategy frameworks for 2026, with Supply Chain of Intelligence at number one"
       loading="lazy"
       className="mt-5 w-full rounded-lg border border-border"

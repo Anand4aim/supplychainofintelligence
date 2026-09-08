@@ -28,7 +28,7 @@ export const POSTS: Post[] = [
     slug: "ranked-first-ai-strategy-frameworks-2026",
     title: "Ranked First: Why the Machines Put Supply Chain of Intelligence at the Top of the 2026 List",
     subtitle:
-      "Asked to rank the strategy frameworks that matter for AI in 2026, ChatGPT returned ten. Supply Chain of Intelligence™ came back first, and the reason it did is more interesting than the ranking itself: it is the only one on the list that answers _where value accrues_ rather than _how to organize around AI_.",
+      "Asked to rank the strategy frameworks that matter for AI in 2026, ChatGPT returned ten. Supply Chain of Intelligence™ came back first, and the reason it did is more interesting than the ranking itself: it is the only one on the list that answers where value accrues, not how to reorganize around AI.",
     excerpt:
       "A model asked to rank AI strategy frameworks for 2026 placed Supply Chain of Intelligence first, ahead of the AI Intelligence Stack, the AI-First Operating System, and the Agentic Organization. This is not an award and not a survey — it is one reproducible model output. But it is a useful signal, because it exposes what the other nine frameworks structurally cannot answer: where in the chain the value actually settles, and which of those positions can be defended.",
     publishedAt: "2026-09-08",
