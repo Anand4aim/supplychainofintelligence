@@ -64,6 +64,7 @@ const Seo = ({
         "@type": news ? "NewsArticle" : "Article",
         headline: title.slice(0, 110),
         description,
+        image: [imageUrl],
         ...(answer ? { abstract: answer } : {}),
         url,
         mainEntityOfPage: { "@type": "WebPage", "@id": url },
