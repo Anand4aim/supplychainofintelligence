@@ -20,6 +20,8 @@ interface SeoProps {
   citations?: string[];
   /** One-paragraph direct answer to the article's question, for answer engines (AEO). */
   answer?: string;
+  /** Extra JSON-LD graphs to emit alongside the article schema. */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const SITE = "https://supplychainofai.com";
