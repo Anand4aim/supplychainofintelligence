@@ -26,6 +26,8 @@ interface SeoProps {
   nextPath?: string;
   /** Extra JSON-LD graphs to emit alongside the article schema. */
   jsonLd?: Record<string, unknown>[];
+  /** Absolute or site-relative social share image. Defaults to the site OG image. */
+  image?: string;
 }
 
 const SITE = "https://supplychainofai.com";
@@ -46,8 +48,14 @@ const Seo = ({
   prevPath,
   nextPath,
   jsonLd,
+  image,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
+  const imageUrl = image
+    ? image.startsWith("http")
+      ? image
+      : `${SITE}${image}`
+    : `${SITE}/og-image.png`;
   const isArticle = article || news;
 
   const articleLd = isArticle
@@ -104,6 +112,9 @@ const Seo = ({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={isArticle ? "article" : "website"} />
+      <meta property="og:site_name" content="Supply Chain of Intelligence™" />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={title} />
       <meta property="article:author" content={AUTHOR} />
       {datePublished && <meta property="article:published_time" content={datePublished} />}
       {(dateModified ?? datePublished) && (
@@ -116,9 +127,13 @@ const Seo = ({
       {keywords?.length ? <meta name="keywords" content={keywords.join(", ")} /> : null}
       {news && <meta name="news_keywords" content={(keywords ?? []).join(", ")} />}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@anandarivu" />
+      <meta name="twitter:site" content="@anandarivu" />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={title} />
       {articleLd && (
         <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
       )}
