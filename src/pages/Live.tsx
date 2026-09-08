@@ -247,6 +247,13 @@ const LivePage = () => {
         path={pagePath(currentPage)}
         prevPath={currentPage > 1 ? pagePath(currentPage - 1) : undefined}
         nextPath={currentPage < totalPages ? pagePath(currentPage + 1) : undefined}
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "News Feed", path: "/live" },
+          ...(currentPage > 1
+            ? [{ name: `Page ${currentPage}`, path: pagePath(currentPage) }]
+            : []),
+        ]}
       />
 
 
