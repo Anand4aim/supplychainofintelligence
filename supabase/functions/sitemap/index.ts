@@ -107,6 +107,11 @@ Deno.serve(async () => {
       const lastmod = row.published_at ? new Date(row.published_at).toISOString().slice(0, 10) : today;
       entries.push({ loc: `/live/${row.slug}`, lastmod, changefreq: "monthly", priority: "0.75" });
     }
+    // Paginated news archive pages (page 1 is /live). Keep in sync with PAGE_SIZE in src/pages/Live.tsx.
+    const pageCount = Math.ceil((data?.length ?? 0) / 12);
+    for (let p = 2; p <= pageCount; p++) {
+      entries.push({ loc: `/live/page/${p}`, changefreq: "weekly", priority: "0.6" });
+    }
   } catch (e) {
     console.error("sitemap: live_articles fetch failed", e);
   }
