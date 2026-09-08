@@ -84,7 +84,15 @@ const SUPABASE_KEY =
 let liveSlugs: string[] = [];
 let liveRows: Array<Record<string, any> & { slug: string }> = [];
 try {
-...
+  // Pull FULL rows (not just slugs). They are stashed on globalThis so
+  // LiveArticleDetail can read its article synchronously during SSR, which is
+  // what makes per-article <title>/description/NewsArticle JSON-LD land in the
+  // static HTML for non-JS crawlers (LinkedIn, Slack, X, Google News).
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/live_articles?select=*&status=eq.published&order=published_at.desc&limit=500`,
+    { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } },
+  );
+  if (res.ok) {
     const rows = (await res.json()) as Array<Record<string, any> & { slug: string }>;
     liveRows = rows;
     liveSlugs = rows.map((r) => r.slug).filter(Boolean);
