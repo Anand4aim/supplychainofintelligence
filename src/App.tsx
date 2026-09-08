@@ -13,6 +13,7 @@ import ForInvestors from "./pages/ForInvestors";
 import AboutPage from "./pages/About";
 import LivePage from "./pages/Live";
 import LiveArticleDetail from "./pages/LiveArticleDetail";
+import LiveTaxonomy from "./pages/LiveTaxonomy";
 import MarketMap from "./pages/MarketMap";
 import MarketMapVertical from "./pages/MarketMapVertical";
 import FaqPage from "./pages/Faq";
@@ -69,6 +70,8 @@ const App = () => (
         <Route path="/about" element={<AboutPage />} />
         <Route path="/live" element={<LivePage />} />
         <Route path="/live/page/:page" element={<LivePage />} />
+        <Route path="/live/layer/:slug" element={<LiveTaxonomy kind="layer" />} />
+        <Route path="/live/topic/:slug" element={<LiveTaxonomy kind="topic" />} />
         <Route path="/live/:slug" element={<LiveArticleDetail />} />
         <Route path="/market-map" element={<MarketMap />} />
         <Route path="/market-map/:vertical" element={<MarketMapVertical />} />
