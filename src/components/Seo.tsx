@@ -28,6 +28,8 @@ interface SeoProps {
   jsonLd?: Record<string, unknown>[];
   /** Absolute or site-relative social share image. Defaults to the site OG image. */
   image?: string;
+  /** Breadcrumb trail (Home first, current page last) — emitted as BreadcrumbList JSON-LD. */
+  breadcrumbs?: { name: string; path: string }[];
 }
 
 const SITE = "https://supplychainofai.com";
@@ -49,6 +51,7 @@ const Seo = ({
   nextPath,
   jsonLd,
   image,
+  breadcrumbs,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
   const imageUrl = image
