@@ -39,6 +39,7 @@ const Seo = ({
   keywords,
   citations,
   answer,
+  jsonLd,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
   const isArticle = article || news;
@@ -113,6 +114,9 @@ const Seo = ({
       {articleLd && (
         <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
       )}
+      {jsonLd?.map((graph, i) => (
+        <script key={i} type="application/ld+json">{JSON.stringify(graph)}</script>
+      ))}
     </Helmet>
   );
 };
