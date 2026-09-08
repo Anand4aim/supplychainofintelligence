@@ -20,6 +20,8 @@ interface SeoProps {
   citations?: string[];
   /** One-paragraph direct answer to the article's question, for answer engines (AEO). */
   answer?: string;
+  /** Extra JSON-LD graphs to emit alongside the article schema. */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const SITE = "https://supplychainofai.com";
@@ -37,6 +39,7 @@ const Seo = ({
   keywords,
   citations,
   answer,
+  jsonLd,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
   const isArticle = article || news;
@@ -111,6 +114,9 @@ const Seo = ({
       {articleLd && (
         <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
       )}
+      {jsonLd?.map((graph, i) => (
+        <script key={i} type="application/ld+json">{JSON.stringify(graph)}</script>
+      ))}
     </Helmet>
   );
 };
