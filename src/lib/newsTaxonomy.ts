@@ -57,14 +57,43 @@ export function articlesInLayer<T extends TaxonomyArticle>(articles: T[], layerI
   return articles.filter((a) => articleLayerIds(a).includes(layerId));
 }
 
+/** Expand the shorthand tags the pipeline writes into human, searchable names. */
+const TOPIC_ALIASES: Record<string, string> = {
+  custcare: "Customer Experience",
+  cx: "Customer Experience",
+  mktg: "Marketing",
+  "dev-eng": "Engineering",
+  deveng: "Engineering",
+  devtools: "Developer Tools",
+  ecom: "E-commerce",
+  gov: "Government and Defense",
+  health: "Healthcare",
+  fintech: "Financial Services",
+  saas: "SaaS",
+  "enterprise-saas": "Enterprise SaaS",
+  ops: "Operations",
+  hr: "HR and Recruiting",
+  edu: "Education",
+  media: "Media and Entertainment",
+  legal: "Legal",
+  sales: "Sales and GTM",
+  product: "Product",
+  strategy: "Strategy",
+  design: "Design",
+  consumer: "Consumer",
+  horizontal: "Horizontal",
+  enterprise: "Enterprise",
+};
+
 /** Topic tags an article carries: its vertical plus cube verticals and functions. */
 export function articleTopics(a: TaxonomyArticle): { slug: string; label: string }[] {
   const cube = a.analysis?.cube_position ?? {};
   const raw = [a.vertical ?? "", ...(cube.verticals ?? []), ...(cube.functions ?? [])];
   const out = new Map<string, string>();
   for (const r of raw) {
-    const label = (r ?? "").trim();
-    if (!label || label.length > 48) continue;
+    const trimmed = (r ?? "").trim();
+    if (!trimmed || trimmed.length > 48) continue;
+    const label = TOPIC_ALIASES[slugify(trimmed)] ?? trimmed;
     const s = slugify(label);
     if (!s) continue;
     if (!out.has(s)) out.set(s, label);
