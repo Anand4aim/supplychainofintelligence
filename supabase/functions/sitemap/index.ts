@@ -33,6 +33,12 @@ const FRAMEWORK_LAYERS = [
   "l5-execution","l6-orchestration","l7-surface","l8-memory",
 ];
 
+// News-feed layer categories (/live/layer/:slug) — same slugs as FRAMEWORK_LAYERS.
+const NEWS_LAYER_CATEGORIES = FRAMEWORK_LAYERS.map((slug) => ({
+  slug,
+  id: (slug.startsWith("l-1") ? "L-1" : slug.split("-")[0]).toUpperCase(),
+}));
+
 const CASE_STUDIES = [
   "jasper-vs-grammarly-copilot","chegg-collapse","gamma-thin-layer-graveyard",
   "stack-overflow-decline","apollo-vs-zoominfo","sierra-vs-salesforce",
@@ -97,7 +103,7 @@ Deno.serve(async () => {
   try {
     const { data, error } = await supabase
       .from("live_articles")
-      .select("slug, published_at")
+      .select("slug, published_at, vertical, analysis")
       .eq("status", "published")
       .order("published_at", { ascending: false })
       .limit(1000);
@@ -111,6 +117,36 @@ Deno.serve(async () => {
     const pageCount = Math.ceil((data?.length ?? 0) / 12);
     for (let p = 2; p <= pageCount; p++) {
       entries.push({ loc: `/live/page/${p}`, changefreq: "weekly", priority: "0.6" });
+    }
+
+    // News category (layer) + tag (topic) landing pages.
+    // Mirrors src/lib/newsTaxonomy.ts — keep the two in sync.
+    const slugify = (s: string) =>
+      s.toLowerCase().trim().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    const layerCounts = new Map<string, number>();
+    const topicCounts = new Map<string, number>();
+    for (const row of data ?? []) {
+      const cube = (row as any)?.analysis?.cube_position ?? {};
+      const layers: string[] = Array.isArray(cube.layers) ? cube.layers : [];
+      for (const id of new Set(layers.map((l) => String(l).trim().toUpperCase()))) {
+        const hit = NEWS_LAYER_CATEGORIES.find((c) => c.id === id);
+        if (hit) layerCounts.set(hit.slug, (layerCounts.get(hit.slug) ?? 0) + 1);
+      }
+      const topics = [
+        (row as any).vertical ?? "",
+        ...(Array.isArray(cube.verticals) ? cube.verticals : []),
+        ...(Array.isArray(cube.functions) ? cube.functions : []),
+      ];
+      for (const s of new Set(topics.map((t) => slugify(String(t ?? ""))).filter(Boolean))) {
+        topicCounts.set(s, (topicCounts.get(s) ?? 0) + 1);
+      }
+    }
+    for (const [slug] of layerCounts) {
+      entries.push({ loc: `/live/layer/${slug}`, changefreq: "weekly", priority: "0.7" });
+    }
+    for (const [slug, count] of topicCounts) {
+      if (count < 2) continue; // thin tag pages stay out of the index
+      entries.push({ loc: `/live/topic/${slug}`, changefreq: "weekly", priority: "0.65" });
     }
   } catch (e) {
     console.error("sitemap: live_articles fetch failed", e);
