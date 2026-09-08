@@ -28,6 +28,8 @@ interface SeoProps {
   jsonLd?: Record<string, unknown>[];
   /** Absolute or site-relative social share image. Defaults to the site OG image. */
   image?: string;
+  /** Breadcrumb trail (Home first, current page last) — emitted as BreadcrumbList JSON-LD. */
+  breadcrumbs?: { name: string; path: string }[];
 }
 
 const SITE = "https://supplychainofai.com";
@@ -49,6 +51,7 @@ const Seo = ({
   nextPath,
   jsonLd,
   image,
+  breadcrumbs,
 }: SeoProps) => {
   const url = `${SITE}${path}`;
   const imageUrl = image
@@ -101,6 +104,20 @@ const Seo = ({
       }
     : null;
 
+  const breadcrumbLd =
+    breadcrumbs && breadcrumbs.length > 1
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumbs.map((crumb, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: crumb.name,
+            item: `${SITE}${crumb.path}`,
+          })),
+        }
+      : null;
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -137,6 +154,9 @@ const Seo = ({
       <meta name="twitter:image:alt" content={title} />
       {articleLd && (
         <script type="application/ld+json">{JSON.stringify(articleLd)}</script>
+      )}
+      {breadcrumbLd && (
+        <script type="application/ld+json">{JSON.stringify(breadcrumbLd)}</script>
       )}
       {jsonLd?.map((graph, i) => (
         <script key={i} type="application/ld+json">{JSON.stringify(graph)}</script>

@@ -131,6 +131,11 @@ const LiveArticleDetail = () => {
         keywords={seoKeywords}
         citations={article.source_urls}
         answer={seoAnswer}
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "News Feed", path: "/live" },
+          { name: article.headline, path: `/live/${article.slug}` },
+        ]}
       />
 
 
