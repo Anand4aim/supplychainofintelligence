@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Loader2, Rss, FileText, BookOpen } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
@@ -10,6 +10,7 @@ import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 import { POSTS } from "@/data/posts";
+import { getPrerenderedLiveArticles } from "@/lib/liveArticleCache";
 
 interface LiveArticle {
   id: string;
@@ -174,9 +175,15 @@ const summarizeSources = (urls: string[] | null | undefined): { count: number; o
   return { count: list.length, outlets };
 };
 
+/** News items per paginated page. Keeps each page light and crawl-friendly. */
+const PAGE_SIZE = 12;
+const pagePath = (n: number) => (n <= 1 ? "/live" : `/live/page/${n}`);
+
 const LivePage = () => {
-  const [articles, setArticles] = useState<LiveArticle[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { page: pageParam } = useParams<{ page: string }>();
+  const prerendered = getPrerenderedLiveArticles<LiveArticle>();
+  const [articles, setArticles] = useState<LiveArticle[]>(prerendered ?? []);
+  const [loading, setLoading] = useState(!prerendered);
   const [tab, setTab] = useState<"news" | "opinion" | "essay">("news");
   const opinions = useMemo(() => POSTS.filter((p) => p.kind === "opinion"), []);
   const essays = useMemo(() => POSTS.filter((p) => p.kind !== "opinion"), []);
@@ -191,14 +198,22 @@ const LivePage = () => {
     setLoading(false);
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { if (!prerendered) load(); }, [prerendered]);
+
+  const totalPages = Math.max(1, Math.ceil(articles.length / PAGE_SIZE));
+  const requested = Number.parseInt(pageParam ?? "1", 10);
+  const currentPage = Number.isFinite(requested) ? Math.min(Math.max(requested, 1), totalPages) : 1;
+  const pageArticles = useMemo(
+    () => articles.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [articles, currentPage],
+  );
 
   // Group by ISO week
   const grouped = useMemo(() => {
     const groups: { key: string; label: string; issueNum: number; items: LiveArticle[] }[] = [];
-    const totalCount = articles.length;
+    const totalCount = pageArticles.length;
     const map = new Map<string, { label: string; items: LiveArticle[] }>();
-    articles.forEach((a) => {
+    pageArticles.forEach((a) => {
       const d = new Date(a.published_at);
       const { year, week } = weekKey(d);
       const key = `${year}-W${String(week).padStart(2, "0")}`;
@@ -214,14 +229,24 @@ const LivePage = () => {
     });
     void totalCount;
     return groups;
-  }, [articles]);
+  }, [pageArticles]);
 
   return (
     <SiteLayout>
       <Seo
-        title="AI News Feed: Every Major AI Move, Scored by Layer"
-        description="Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
-        path="/live"
+        title={
+          currentPage > 1
+            ? `AI News Feed, Page ${currentPage} of ${totalPages}: Every Major AI Move, Scored by Layer`
+            : "AI News Feed: Every Major AI Move, Scored by Layer"
+        }
+        description={
+          currentPage > 1
+            ? `Page ${currentPage} of the AI news archive: older launches, funding rounds, and structural shifts in the generative AI stack (not logistics), each scored on the 10-layer Supply Chain of Intelligence™.`
+            : "Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
+        }
+        path={pagePath(currentPage)}
+        prevPath={currentPage > 1 ? pagePath(currentPage - 1) : undefined}
+        nextPath={currentPage < totalPages ? pagePath(currentPage + 1) : undefined}
       />
 
 
@@ -372,7 +397,7 @@ const LivePage = () => {
                     <div className="space-y-5">
                       {group.items.map((a, i) => {
                         const src = summarizeSources(a.source_urls);
-                        const isFeatured = gIdx === 0 && i === 0;
+                        const isFeatured = currentPage === 1 && gIdx === 0 && i === 0;
 
                         if (isFeatured) {
                           return (
@@ -495,6 +520,55 @@ const LivePage = () => {
                   </div>
                 ))}
               </div>
+
+              {totalPages > 1 && (
+                <nav
+                  className="mt-16 pt-8 border-t border-foreground/10 flex items-center justify-between gap-4 flex-wrap"
+                  aria-label="News feed pagination"
+                >
+                  {currentPage > 1 ? (
+                    <Link
+                      to={pagePath(currentPage - 1)}
+                      rel="prev"
+                      className="font-mono-marker text-[11px] uppercase tracking-wider text-foreground border border-foreground/20 px-3 py-2 hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      ← Newer
+                    </Link>
+                  ) : <span />}
+
+                  <ol className="flex items-center gap-1.5 flex-wrap justify-center">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                      <li key={n}>
+                        {n === currentPage ? (
+                          <span
+                            aria-current="page"
+                            className="inline-block font-mono-marker text-[11px] px-2.5 py-1.5 bg-foreground text-background"
+                          >
+                            {n}
+                          </span>
+                        ) : (
+                          <Link
+                            to={pagePath(n)}
+                            className="inline-block font-mono-marker text-[11px] px-2.5 py-1.5 border border-foreground/15 text-muted-foreground hover:border-accent hover:text-accent transition-colors"
+                          >
+                            {n}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+
+                  {currentPage < totalPages ? (
+                    <Link
+                      to={pagePath(currentPage + 1)}
+                      rel="next"
+                      className="font-mono-marker text-[11px] uppercase tracking-wider text-foreground border border-foreground/20 px-3 py-2 hover:bg-foreground hover:text-background transition-colors"
+                    >
+                      Older →
+                    </Link>
+                  ) : <span />}
+                </nav>
+              )}
             </>
           )}
         </div>

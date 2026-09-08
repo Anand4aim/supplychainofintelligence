@@ -20,7 +20,7 @@ import { LAYERS } from "../src/data/layers";
 import { LAW_ESSAYS } from "../src/data/lawEssays";
 import { POSTS } from "../src/data/posts";
 import { VERTICAL_REGISTRY as VERTICALS } from "../src/data/verticalsRegistry";
-import { LIVE_ARTICLE_CACHE_KEY } from "../src/lib/liveArticleCache";
+import { LIVE_ARTICLE_CACHE_KEY, LIVE_ARTICLE_LIST_KEY } from "../src/lib/liveArticleCache";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
@@ -97,6 +97,7 @@ try {
     const bySlug: Record<string, unknown> = {};
     for (const row of rows) if (row.slug) bySlug[row.slug] = row;
     g[LIVE_ARTICLE_CACHE_KEY] = bySlug;
+    g[LIVE_ARTICLE_LIST_KEY] = rows;
     console.log(`prerender: fetched ${liveSlugs.length} live articles`);
   } else {
     console.warn(`prerender: live_articles fetch returned ${res.status}`);
@@ -129,6 +130,11 @@ const routes: string[] = [
   "/posts",
   ...POSTS.map((p) => `/posts/${p.slug}`),
   "/live",
+  // Paginated archive pages (page 1 is /live itself). Must match PAGE_SIZE in src/pages/Live.tsx.
+  ...Array.from(
+    { length: Math.max(0, Math.ceil(liveSlugs.length / 12) - 1) },
+    (_, i) => `/live/page/${i + 2}`,
+  ),
   ...liveSlugs.map((s) => `/live/${s}`),
   // Other static pages that were falling back to the homepage shell
   "/disclaimer",
