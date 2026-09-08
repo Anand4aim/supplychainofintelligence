@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Rss } from "lucide-react";
 
 const navItems = [
   { label: "Framework", path: "/framework" },
@@ -46,6 +46,16 @@ const SiteHeader = () => {
               {item.label}
             </Link>
           ))}
+          <a
+            href="/rss.xml"
+            target="_blank"
+            rel="noopener"
+            aria-label="RSS feed — News Feed"
+            title="RSS feed — News Feed"
+            className="text-foreground/70 hover:text-accent transition-colors"
+          >
+            <Rss size={15} />
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -73,6 +83,15 @@ const SiteHeader = () => {
               {item.label}
             </Link>
           ))}
+          <a
+            href="/rss.xml"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-1.5 font-mono-marker text-xs text-foreground/70"
+          >
+            <Rss size={12} /> RSS Feed
+          </a>
         </div>
       )}
     </header>
