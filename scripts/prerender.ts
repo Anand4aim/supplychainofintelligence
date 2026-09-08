@@ -21,6 +21,7 @@ import { LAW_ESSAYS } from "../src/data/lawEssays";
 import { POSTS } from "../src/data/posts";
 import { VERTICAL_REGISTRY as VERTICALS } from "../src/data/verticalsRegistry";
 import { LIVE_ARTICLE_CACHE_KEY, LIVE_ARTICLE_LIST_KEY } from "../src/lib/liveArticleCache";
+import { LAYER_CATEGORIES, articlesInLayer, topicTags } from "../src/lib/newsTaxonomy";
 
 const BASE = "https://supplychainofai.com";
 const DIST = resolve("dist");
@@ -137,6 +138,11 @@ const routes: string[] = [
     { length: Math.max(0, Math.ceil(liveSlugs.length / 12) - 1) },
     (_, i) => `/live/page/${i + 2}`,
   ),
+  // Category (layer) + tag (topic) landing pages for the news feed.
+  ...LAYER_CATEGORIES.filter((c) => articlesInLayer(liveRows as any, c.id).length > 0).map(
+    (c) => `/live/layer/${c.slug}`,
+  ),
+  ...topicTags(liveRows as any).map((t) => `/live/topic/${t.slug}`),
   ...liveSlugs.map((s) => `/live/${s}`),
   // Other static pages that were falling back to the homepage shell
   "/disclaimer",
