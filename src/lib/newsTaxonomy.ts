@@ -2,7 +2,7 @@
 // topic tags (/live/topic/:slug). Both are derived from the article rows so
 // the landing pages, the prerenderer, and the sitemap stay in sync.
 
-import { LAYERS } from "@/data/layers";
+import { LAYERS } from "../data/layers";
 
 export interface TaxonomyArticle {
   slug: string;
