@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Loader2, Rss, FileText, BookOpen } from "lucide-react";
 import SiteLayout from "@/components/SiteLayout";
@@ -10,6 +10,7 @@ import { LAYER_SHORT_LABEL, layerVar } from "@/data/layers";
 import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 import { POSTS } from "@/data/posts";
+import { getPrerenderedLiveArticles } from "@/lib/liveArticleCache";
 
 interface LiveArticle {
   id: string;
@@ -174,9 +175,15 @@ const summarizeSources = (urls: string[] | null | undefined): { count: number; o
   return { count: list.length, outlets };
 };
 
+/** News items per paginated page. Keeps each page light and crawl-friendly. */
+const PAGE_SIZE = 12;
+const pagePath = (n: number) => (n <= 1 ? "/live" : `/live/page/${n}`);
+
 const LivePage = () => {
-  const [articles, setArticles] = useState<LiveArticle[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { page: pageParam } = useParams<{ page: string }>();
+  const prerendered = getPrerenderedLiveArticles<LiveArticle>();
+  const [articles, setArticles] = useState<LiveArticle[]>(prerendered ?? []);
+  const [loading, setLoading] = useState(!prerendered);
   const [tab, setTab] = useState<"news" | "opinion" | "essay">("news");
   const opinions = useMemo(() => POSTS.filter((p) => p.kind === "opinion"), []);
   const essays = useMemo(() => POSTS.filter((p) => p.kind !== "opinion"), []);
@@ -191,14 +198,22 @@ const LivePage = () => {
     setLoading(false);
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { if (!prerendered) load(); }, [prerendered]);
+
+  const totalPages = Math.max(1, Math.ceil(articles.length / PAGE_SIZE));
+  const requested = Number.parseInt(pageParam ?? "1", 10);
+  const currentPage = Number.isFinite(requested) ? Math.min(Math.max(requested, 1), totalPages) : 1;
+  const pageArticles = useMemo(
+    () => articles.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE),
+    [articles, currentPage],
+  );
 
   // Group by ISO week
   const grouped = useMemo(() => {
     const groups: { key: string; label: string; issueNum: number; items: LiveArticle[] }[] = [];
-    const totalCount = articles.length;
+    const totalCount = pageArticles.length;
     const map = new Map<string, { label: string; items: LiveArticle[] }>();
-    articles.forEach((a) => {
+    pageArticles.forEach((a) => {
       const d = new Date(a.published_at);
       const { year, week } = weekKey(d);
       const key = `${year}-W${String(week).padStart(2, "0")}`;
@@ -214,14 +229,24 @@ const LivePage = () => {
     });
     void totalCount;
     return groups;
-  }, [articles]);
+  }, [pageArticles]);
 
   return (
     <SiteLayout>
       <Seo
-        title="AI News Feed: Every Major AI Move, Scored by Layer"
-        description="Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
-        path="/live"
+        title={
+          currentPage > 1
+            ? `AI News Feed, Page ${currentPage} of ${totalPages}: Every Major AI Move, Scored by Layer`
+            : "AI News Feed: Every Major AI Move, Scored by Layer"
+        }
+        description={
+          currentPage > 1
+            ? `Page ${currentPage} of the AI news archive: older launches, funding rounds, and structural shifts in the generative AI stack (not logistics), each scored on the 10-layer Supply Chain of Intelligence™.`
+            : "Daily AI news analysis, opinion, and essays on the generative AI stack (not logistics). Every launch, funding round, and shift scored on the 10-layer Supply Chain of Intelligence™."
+        }
+        path={pagePath(currentPage)}
+        prevPath={currentPage > 1 ? pagePath(currentPage - 1) : undefined}
+        nextPath={currentPage < totalPages ? pagePath(currentPage + 1) : undefined}
       />
 
 
