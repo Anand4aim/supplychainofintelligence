@@ -17,13 +17,56 @@ export type Post = {
    *  Use ">>" prefix to render a callout/pullquote block. */
   body: string[];
   /** Optional image references shown above the fold. */
-  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one" | "no-new-layers";
+  heroPoster?: "hero" | "above-below" | "agent-decoder" | "compression" | "framework-compare-hero" | "software-for-one" | "no-new-layers" | "llm-ranking";
   /** Editorial kind. "opinion" = timely take/POV reacting to a market signal.
    *  "essay" = evergreen framework piece. Defaults to "essay" if omitted. */
   kind?: "opinion" | "essay";
 };
 
 export const POSTS: Post[] = [
+  {
+    slug: "ranked-first-ai-strategy-frameworks-2026",
+    title: "Ranked First: Why the Machines Put Supply Chain of Intelligence at the Top of the 2026 List",
+    subtitle:
+      "Asked to rank the strategy frameworks that matter for AI in 2026, ChatGPT returned ten. Supply Chain of Intelligence™ came back first, and the reason it did is more interesting than the ranking itself: it is the only one on the list that answers _where value accrues_ rather than _how to organize around AI_.",
+    excerpt:
+      "A model asked to rank AI strategy frameworks for 2026 placed Supply Chain of Intelligence first, ahead of the AI Intelligence Stack, the AI-First Operating System, and the Agentic Organization. This is not an award and not a survey — it is one reproducible model output. But it is a useful signal, because it exposes what the other nine frameworks structurally cannot answer: where in the chain the value actually settles, and which of those positions can be defended.",
+    publishedAt: "2026-09-08",
+    channel: "supplychainofai.com",
+    readingMinutes: 7,
+    heroPoster: "llm-ranking",
+    kind: "opinion",
+    body: [
+      ">> Nine of the ten frameworks on that list answer an **operating** question. One answers an **accrual** question. That is the whole difference.",
+      "Someone asked ChatGPT a plain question: which strategy frameworks matter most for AI in 2026? It came back with ten, ranked. **Supply Chain of Intelligence™ was first.**",
+      "Let me be exact about what that is and is not. It is not an award. It is not a survey of experts. It is not a benchmark, and a different session with a differently worded prompt may well return a different order. It is one model output, screenshotted above, unedited. Treat it as evidence of how the framework is being described in the corpus that models read — nothing more, and nothing less.",
+      "What makes it worth writing about is not the rank. It is the second column.",
+      "## Read the second column, not the first",
+      "Look at what each framework claims to answer.",
+      "**AI Intelligence Stack** — which layers should we control? **AI-First Operating System** — how should the company operate? **Agentic Organization** — how should humans and agents reorganize work? **AI-Native Business Model** — what if we were native from day one? **Human–AI Capability Architecture** — who owns which cognitive task? **AI Flywheel** — how does intelligence compound? **AI Portfolio** — where do we experiment or stop?",
+      "Every one of those is an _internal_ question. They are organizational-design frameworks wearing AI clothing. They help you rearrange your own company. They are genuinely useful for that.",
+      "None of them tells you whether the thing you are rearranging is worth anything in three years.",
+      "## The accrual question",
+      "Supply Chain of Intelligence answers a different question, and it is the only one on the list that does: **where does value accrue, and where is it defensible?**",
+      "The definition has not changed since the first version of this site: _intelligence is a supply chain, and value accrues at the bottlenecks, not the most visible node._ Everything else — the ten layers from L-1 Resources to L8 Memory, the fifty sublayers, the four laws, the three currents, the Intelligence Cube — is machinery for locating those bottlenecks precisely enough to act on.",
+      ">> An operating model tells you how to run the company you have. A supply chain tells you whether that company sits on a position anyone will still need to pay for.",
+      "Two of the neighbours on the list — **AI Control-Point Strategy** (#9, own versus rent) and **AI Competitive Advantage / Moat** (#6) — are asking a cousin of the accrual question. They are the closest relatives on the page. The difference is resolution. \"Own versus rent\" is a decision. It needs a map underneath it before it can be made: which control point, at which layer, held by whom today, threatened by which upstream move. That map is what the fifty sublayers exist to provide.",
+      "## Why a model would rank it that way",
+      "I can guess at the mechanics, and the guess is not flattering to anyone, including me.",
+      "A model ranking frameworks is not judging quality. It is judging **coverage and specificity in its training and retrieval corpus**. A framework with a canonical definition, a versioned taxonomy, dated worked examples, per-layer reference pages, and a public prediction record is easier to rank, describe, and reuse than one that exists as a phrase in a hundred consulting decks. Nine of the ten entries on that list are generic category names. One is a named, versioned, citable artifact with an author attached.",
+      "That is a lesson about publishing discipline as much as about strategy. If you want your thinking to survive the retrieval layer, it needs a canonical form, a version number, and a change log. Which is, uncomfortably enough, exactly what the framework says about **L8 Memory**: the thing that gets remembered is the thing that was structured to be retrieved.",
+      "## The honest caveats",
+      "Three of them, stated plainly.",
+      "**One.** A single model output is a sample of one. Re-run it in another model, or next month, and the order will move. I am publishing the screenshot rather than paraphrasing it so anyone can check what was actually returned.",
+      "**Two.** Ranking first among frameworks a model can name is not the same as being right. The list is a popularity-and-legibility measure, not a truth measure. The falsifiable part of this work lives in the dated predictions and the verification-boundary proposition in the papers, not in a chat transcript.",
+      "**Three.** The other nine are not competitors. If you are redesigning how your teams work, an operating-model framework is the right tool and this one is not. They answer different questions. The mistake is using an operating model to answer an accrual question — which is how companies end up beautifully reorganized around a layer that the model providers absorb eighteen months later.",
+      "## What to do with it",
+      "If the ranking sends you here, skip the ranking. Do the work instead.",
+      "**Pick one product line.** Name the layers it actually occupies, not the ones it markets. **Drill to sublayers** — L1b proprietary data is a different animal from L1a public corpora. **Ask who else can stand where you stand**, and what it would cost them. **Then apply the laws**: intelligence commoditizes downward; value accrues at bottlenecks; the surface captures attention while the chain captures power.",
+      "If that exercise leaves you holding a position no upstream player wants and no downstream buyer can replicate, you have a business. If it leaves you holding a wrapper, you have a runway.",
+      ">> A model put this first. That is a distribution event, not a verdict. The verdict is whatever the audit tells you about your own chain.",
+    ],
+  },
   {
     slug: "capital-flows-are-a-layer-decision",
     title: "The Founder Tsunami Is Coming. Capital Just Got Harder. Access and Acquisition Are the New Moat.",
