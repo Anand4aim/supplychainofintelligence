@@ -11,6 +11,7 @@ import { verdictLabel } from "@/data/verdictLabels";
 import Eyebrow from "@/components/Eyebrow";
 import { POSTS } from "@/data/posts";
 import { getPrerenderedLiveArticles } from "@/lib/liveArticleCache";
+import { LAYER_CATEGORIES, layerCategoryPath, titleCase, topicPath, topicTags } from "@/lib/newsTaxonomy";
 
 interface LiveArticle {
   id: string;
@@ -580,6 +581,43 @@ const LivePage = () => {
           )}
         </div>
       </section>
+
+      {/* Category + tag landing pages */}
+      <section className="bg-background border-b border-foreground/10">
+        <div className="max-w-5xl mx-auto px-6 py-14 space-y-10">
+          <div>
+            <h2 className="font-display text-xl font-bold text-foreground mb-4">Browse news by layer</h2>
+            <div className="flex flex-wrap gap-2">
+              {LAYER_CATEGORIES.map((c) => (
+                <Link
+                  key={c.slug}
+                  to={layerCategoryPath(c.slug)}
+                  className="font-mono-marker text-[11px] border border-foreground/20 text-muted-foreground px-2.5 py-1.5 hover:border-accent hover:text-accent transition-colors"
+                >
+                  {c.id} {c.short}
+                </Link>
+              ))}
+            </div>
+          </div>
+          {feedTags.length > 0 && (
+            <div>
+              <h2 className="font-display text-xl font-bold text-foreground mb-4">Browse news by topic</h2>
+              <div className="flex flex-wrap gap-2">
+                {feedTags.map((t) => (
+                  <Link
+                    key={t.slug}
+                    to={topicPath(t.slug)}
+                    className="font-mono-marker text-[11px] border border-foreground/20 text-muted-foreground px-2.5 py-1.5 hover:border-accent hover:text-accent transition-colors"
+                  >
+                    {titleCase(t.label)} <span className="opacity-60">{t.count}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
 
       {/* ═══════════ INBOX CAPTURE, LAST ═══════════ */}
       {!loading && articles.length > 0 && (
