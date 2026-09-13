@@ -10,7 +10,6 @@ import { Download, FileText } from "lucide-react";
 
 const PAPER_VERSION = "SSRN v1.0";
 const PAPER_DATE = "2026-05-31";
-const PAPER_UPDATED = "2026-09-13"; // v2.1 appendix expansion; v1.0 PDF preserved
 const PAPER_TITLE = "Supply Chain of Intelligence™, the 10 layers of the generative AI stack";
 const PAPER_PATH = "/paper";
 const PAPER_URL = `https://supplychainofai.com${PAPER_PATH}`;
@@ -37,7 +36,6 @@ const Paper = () => {
     url: PAPER_URL,
     mainEntityOfPage: PAPER_URL,
     datePublished: PAPER_DATE,
-    dateModified: PAPER_UPDATED,
     version: PAPER_VERSION,
     inLanguage: "en",
     license: "https://creativecommons.org/licenses/by/4.0/",
