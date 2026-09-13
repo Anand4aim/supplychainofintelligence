@@ -8,8 +8,8 @@ import CiteThis from "@/components/CiteThis";
 import { LAYERS } from "@/data/layers";
 import { Download, FileText } from "lucide-react";
 
-const PAPER_VERSION = "v1.0";
-const PAPER_DATE = "2026-01-04";
+const PAPER_VERSION = "SSRN v1.0";
+const PAPER_DATE = "2026-05-31";
 const PAPER_TITLE = "Supply Chain of Intelligence™, the 10 layers of the generative AI stack";
 const PAPER_PATH = "/paper";
 const PAPER_URL = `https://supplychainofai.com${PAPER_PATH}`;
