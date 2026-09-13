@@ -404,6 +404,45 @@ const Paper = () => {
             </p>
           </section>
 
+          {/* Version history */}
+          <section id="versions" className="mt-16 pt-10 border-t border-border scroll-mt-24">
+            <Eyebrow size="sm" tone="muted" className="mb-2">§ Version history</Eyebrow>
+            <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
+              Every version stays available
+            </h2>
+            <p className="text-[15px] text-foreground/80 mb-6">
+              Earlier versions are never removed, so citations keep resolving.
+              The canonical download above is always the current version.
+            </p>
+            <ul className="space-y-4">
+              <li className="flex flex-wrap items-baseline justify-between gap-2 border border-border rounded-lg p-4">
+                <div>
+                  <p className="font-semibold text-[15px]">v2.1 · Appendix expanded</p>
+                  <p className="text-[13px] text-muted-foreground mt-1">
+                    September 2026 · Appendix B rebuilt against the live Defensibility
+                    Map dimensions, case-note links restored to the six Section 6
+                    teardowns, Law IV corollary aligned with the site&apos;s wording.
+                  </p>
+                </div>
+                <a href="/paper-v2.1.pdf" className="btn-sketch inline-flex items-center gap-2 text-[13px]">
+                  <Download size={13} /> PDF
+                </a>
+              </li>
+              <li className="flex flex-wrap items-baseline justify-between gap-2 border border-border rounded-lg p-4">
+                <div>
+                  <p className="font-semibold text-[15px]">v1.0 · SSRN submission</p>
+                  <p className="text-[13px] text-muted-foreground mt-1">
+                    May 2026 · The original working paper as submitted to SSRN.
+                    Preserved unchanged as the citation of record.
+                  </p>
+                </div>
+                <a href="/paper.pdf" className="btn-sketch inline-flex items-center gap-2 text-[13px]">
+                  <Download size={13} /> PDF
+                </a>
+              </li>
+            </ul>
+          </section>
+
           {/* How to cite */}
           <section id="cite" className="mt-16 pt-10 border-t border-border scroll-mt-24">
             <Eyebrow size="sm" tone="muted" className="mb-2">§ How to cite this paper</Eyebrow>
